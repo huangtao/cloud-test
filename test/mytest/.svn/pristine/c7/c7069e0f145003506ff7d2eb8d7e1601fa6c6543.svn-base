@@ -1,0 +1,77 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.PersonInfoPage;
+import com.boyaa.testholdemsina.uilib.SettingsPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="个人信息")
+public class PersonInfoTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private PersonInfoPage personInfoPage=null;
+	private SettingsPage settingpage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		commonBusiness=new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		personInfoPage=new PersonInfoPage();
+		settingpage=new SettingsPage();
+	}
+	
+	@CaseDesc(id="PersonInfo", name="查看个人消息")
+	@Test(description="查看个人消息")
+	public void test01_personInfo() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("个人头像").click();	
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "PersonInfoEditBefore.png");
+	}
+	@CaseDesc(id="EditPersonInfo", name="修改个人消息")
+	@Test(description="修改个人消息")
+	public void test02_editPersonInfo() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("个人头像").click();	
+		String nameBefore=personInfoPage.waitSubElement("昵称").getText();
+		System.out.println("修改前的昵称："+nameBefore);
+		personInfoPage.waitSubElement("修改").click();
+		personInfoPage.waitSubElement("修改性别").click();
+		personInfoPage.waitSubElement("修改昵称").sendKeys("小鱼小鱼"+System.currentTimeMillis());
+		personInfoPage.waitSubElement("确认修改").click();
+		String nameAfter=personInfoPage.waitSubElement("昵称").getText();
+		System.out.println("修改后的昵称："+nameAfter);		
+		assertNotEquals(nameBefore, nameAfter,"预期结果：修改后与修改前的昵称不一致，实际结果：修改后与修改前的昵称一致");
+		personInfoPage.waitSubElement("关闭").click();
+		lobbyPage.waitSubElement("设置").click();
+		settingpage.waitSubElement("切换").click();
+		Thread.sleep(2*1000);
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(10*1000);
+		//commonBusiness.closeAutoPage();
+		//lobbyPage.waitSubElement("个人头像").click();	
+		lobbyPage.waitSubElement("个人头像").click();
+		CommonBusiness.takesScreenShot(getDriver(), "PersonInfoEditAfter.png");
+		personInfoPage.waitSubElement("修改").click();
+		//personInfoPage.waitSubElement("修改性别").click();
+		personInfoPage.waitSubElement("修改昵称").sendKeys("小鱼小鱼");
+		personInfoPage.waitSubElement("确认修改").click();
+	
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+
+}

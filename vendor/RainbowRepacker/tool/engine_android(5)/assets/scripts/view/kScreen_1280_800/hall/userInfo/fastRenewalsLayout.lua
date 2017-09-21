@@ -1,0 +1,35 @@
+local fastRenewalsLayout=
+{
+	name="fastRenewalsLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shadeBg",type=1,typeName="Image",time=31057625,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="centerView",type=0,typeName="View",time=77698533,report=0,x=0,y=0,width=800,height=480,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="bg",type=1,typeName="Image",time=77699401,report=0,x=0,y=0,width=728,height=388,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=77698535,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=77698536,report=0,x=0,y=-8,width=140,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[快速续费]]
+			}
+		},
+		{
+			name="closeBtn",type=2,typeName="Button",time=77698537,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="bottomView",type=0,typeName="View",time=77698546,report=0,x=0,y=0,width=0,height=0,fillTopLeftX=5,fillTopLeftY=320,fillBottomRightX=5,fillBottomRightY=5,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,
+			{
+				name="renewalsBtns",type=2,typeName="Button",time=30962483,report=0,x=0,y=0,width=276,height=88,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="name",type=4,typeName="Text",time=30963316,report=0,x=0,y=0,width=74,height=43,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[续费]]
+				}
+			}
+		},
+		{
+			name="vipTypeListView",type=0,typeName="ListView",time=117821021,x=0,y=-10,width=608,height=200,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0
+		}
+	}
+}
+return fastRenewalsLayout;

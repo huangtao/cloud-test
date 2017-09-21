@@ -1,0 +1,24 @@
+language: objective-c
+os: osx
+osx_image: xcode7.3
+notifications:
+  email: false
+node_js:
+  - "7"
+  - "6"
+  - "4"
+env:
+  global:
+    - _FORCE_LOGS=1
+  matrix:
+    - CI_CONFIG=unit
+    - CI_CONFIG=functional
+install:
+  - node --version
+  - npm install
+  - npm install -g gulp jshint
+script:
+  - gulp eslint
+  - make travis
+after_success:
+  - gulp coveralls

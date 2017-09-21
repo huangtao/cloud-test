@@ -1,0 +1,107 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.RegisterPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="新手注册流程")
+public class NewUserGuideTest extends TestCaseBase{	
+		private LoginPage loginPage = null;
+		private RegisterPage registerPage=null;
+		private LobbyPage lobbyPage=null;
+		private CommonBusiness commonBusiness=null;
+		@BeforeMethod
+		public void setUp() {
+			super.setUp();
+			commonBusiness=new CommonBusiness();
+			loginPage = new LoginPage();
+			registerPage=new RegisterPage();
+			lobbyPage=new LobbyPage();
+		}
+		
+		@CaseDesc(id="pass_rigester_guide", name="跳过新手注册流程")
+		@Test(description="跳过新手注册流程")
+		public void test01_pass_newuser_guide() throws Exception{
+			Thread.sleep(10*1000);
+			loginPage.waitSubElement("随机游客").click();
+			Thread.sleep(1*1000);
+			loginPage.waitSubElement("测试环境").click();
+			Thread.sleep(1*1000);
+			loginPage.waitSubElement("立即登录").click();
+			Thread.sleep(2*1000);
+			loginPage.waitSubElement("游客登陆确认").click();
+			Thread.sleep(15*1000);
+			commonBusiness.closeAutoPage();	
+//			registerPage.waitSubElement("确认").click();
+			Thread.sleep(2*1000);
+			registerPage.waitSubElement("跳过").click();
+			assertTrue(registerPage.isSubElementPresent("未注册奖励"),"预期结果：奖励为800，实际结果：奖励不为800");
+			
+		} 
+		
+		@CaseDesc(id="newUser_rigester_guide", name="新手注册流程")
+		@Test(description="新手注册流程")
+		public void test02_newuser_guide() throws Exception{
+			Thread.sleep(10*1000);
+			loginPage.waitSubElement("随机游客").click();
+			Thread.sleep(1*1000);
+			loginPage.waitSubElement("测试环境").click();
+			Thread.sleep(1*1000);
+			loginPage.waitSubElement("立即登录").click();
+			Thread.sleep(2*1000);
+			loginPage.waitSubElement("游客登陆确认").click();
+			Thread.sleep(15*1000);
+			commonBusiness.closeAutoPage();
+			registerPage.waitSubElement("马上去学").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("继续").click();
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("继续").click();
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("继续").click();
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("继续").click();
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("三条").click();
+			registerPage.waitSubElement("继续").click();	
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("跟10").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("一对").click();		
+			registerPage.waitSubElement("领取奖励").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("看牌").click();
+			Thread.sleep(6*1000);
+			registerPage.waitSubElement("两对").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("领取奖励").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("跟40").click();
+			Thread.sleep(2*1000);
+			registerPage.waitSubElement("同花").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("领取奖励").click();
+			Thread.sleep(5*1000);
+			registerPage.waitSubElement("加注").click();
+			registerPage.waitSubElement("Allin").click();
+			Thread.sleep(7*1000);
+			registerPage.waitSubElement("再学一次").click();
+			Thread.sleep(3*1000);
+			registerPage.waitSubElement("返回").click();
+			assertTrue(registerPage.isSubElementPresent("注册奖励"),"预期结果：奖励为2,188，实际结果：奖励不为2,188");			
+		}
+
+		@AfterMethod
+		public void tearDown() {
+			super.tearDown();
+//			CommonBusiness.nativeDriver.quit();
+		}	
+}

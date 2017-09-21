@@ -1,0 +1,112 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.business.CommonBusiness.RoomLevel;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.MttPage;
+import com.boyaa.testholdemsina.uilib.RoomListPage;
+import com.boyaa.testholdemsina.uilib.RoomPage;
+import com.boyaa.testholdemsina.uilib.SngPage;
+import com.boyaa.testholdemsina.uilib.SngRoomPage;
+import com.boyaa.testholdemsina.uilib.SngRoomPage.LeaveRoomDialog;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="游戏基本逻辑检查")
+public class PlayLogicTest extends TestCaseBase {
+	private LobbyPage lobbyPage = null;
+	private LoginPage loginPage = null;
+	private RainbowDriver rd = null;
+	
+	public PlayLogicTest(){
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		lobbyPage = new LobbyPage();
+		loginPage = new LoginPage();
+		loginPage.loginWithMachineCodeIntoTestEnv(CommonBusiness.machineCode);//Todo:for test
+//		loginPage.loginWithMachineCode(CommonBusiness.machineCode);
+	}
+
+	
+	@CaseDesc(id="play_game_common", name="普通场游戏")
+	@Test(description="普通场游戏")
+	public void test_PlayGameCommon() throws InterruptedException{
+		lobbyPage.waitSubElement("游戏大厅").click();
+		
+		RoomListPage roomListPage = new RoomListPage();
+		//首次登录会出现房间搜索引导页面
+		roomListPage.waitSubElement("金币数").click();
+		roomListPage.waitSubElement("金币数").click();
+		
+		roomListPage.intoRoom();
+		
+		RoomPage roomPage = new RoomPage();
+		//TODO:“等待下一局”出现
+		roomPage.waitSubElement("下拉菜单").click();
+		roomPage.waitSubElement("站起选项").click();
+		//TODO:“等待下一局”消失
+		
+		//TODO:点击座位按钮
+//		RoomPage.PayDialog payDialog = roomPage.getPayDialog();
+//		assertTrue(payDialog.isSubElementPresent("购买坐下按钮"), "预期结果：【购买坐下】按钮出现，实际结果：【购买坐下】按钮未出现");
+//		payDialog.waitSubElement("购买坐下按钮").click();
+		//TODO:“等待下一局”出现
+		roomPage.waitSubElement("下拉菜单").click();
+		roomPage.waitSubElement("返回选项").click();
+		assertTrue(roomListPage.isSubElementPresent("房名/ID_header"),"预期结果：出现“房名/ID”，实际结果：未出现“房名/ID”");
+	}
+	
+	@CaseDesc(id="play_game_sng", name="sng场游戏")
+	@Test(description="sng场游戏")
+	public void test_PlayGameSng() throws InterruptedException{
+		lobbyPage.waitPresent();
+		lobbyPage.waitSubElement("淘汰赛").click();
+		
+		SngPage sngPage = new SngPage();
+		sngPage.waitPresent();
+		sngPage.waitSubElement("第一赛场").click();//选择左边第一场
+
+		//TODO:无法识别弹出框
+		//点击【立即报名】按钮
+		SngPage.PayDialog payDialog = sngPage.getPayDialog();
+//		assertTrue(payDialog.isSubElementPresent("立即报名按钮"), "预期结果：【立即报名】按钮出现，实际结果：【立即报名】按钮未出现");
+//		payDialog.waitSubElement("立即报名按钮").click();
+		payDialog.waitSubElement("关闭按钮").click();
+		
+//		SngRoomPage sngRoomPage = new SngRoomPage();
+//		sngRoomPage.waitPresent();
+//		//TODO:“等待下一局”出现
+//		sngRoomPage.waitSubElement("下拉菜单").click();
+//		sngRoomPage.waitSubElement("返回选项").click();
+//		
+//		LeaveRoomDialog leaveRoomDialog = sngRoomPage.getLeaveRoomDialog();
+//		assertTrue(leaveRoomDialog.isSubElementPresent("离开按钮"), "预期结果：【离开】按钮出现，实际结果：【离开】按钮未出现");
+//		leaveRoomDialog.waitSubElement("离开按钮").click();
+//		
+//		assertTrue(sngPage.isSubElementPresent("淘汰赛图片"), "预期结果：【淘汰赛】图片出现，实际结果：【淘汰赛】图片未出现");
+	}
+	
+	@CaseDesc(id="play_game_mtt", name="MTT场游戏")
+	@Test(description="MTT场游戏")
+	public void test_PlayGameMtt() throws InterruptedException{
+		lobbyPage.waitSubElement("锦标赛").click();
+		
+		MttPage mttPage = new MttPage();
+		mttPage.waitSubElement("报名按钮").click();
+		
+		rd.pressBack();
+		assertTrue(mttPage.isSubElementPresent("已报名按钮"), "预期结果：【已报名】按钮出现，实际结果：【已报名】按钮未出现");
+		
+	}
+}

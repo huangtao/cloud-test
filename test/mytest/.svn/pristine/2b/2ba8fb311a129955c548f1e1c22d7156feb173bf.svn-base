@@ -1,0 +1,2370 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- 友盟统计新浪繁体appkey -->
+    <string name="appkey">514feef556240b9876007ebd</string>
+    <!-- Global -->
+    <string name="app_name">博雅德州扑克</string>
+    <string name="not_support">该游戏暂不支持您手机的分辨率，无法安装，很抱歉！</string>
+    <string name="quit_game">退出游戏</string>
+    <!-- Login -->
+    <string name="login_title">用户登录</string>
+    <string name="login_name">博雅账号</string>
+    <string name="login_pwd">密码</string>
+    <string name="regist_name">注册账号</string>
+    <string name="regist_name_textview_tip">注册账号</string>
+    <string name="login">登 录</string>
+    <string name="yj_login_textview_tip">一 键 登 录</string>
+    <string name="no_login_textview_tip">91通行证登录</string>
+    <string name="auto_login">自动登录</string>
+    <string name="remenber_pwd">记住密码</string>
+    <string name="user_name_error">对不起，用户名有误！</string>
+    <string name="user_name_null">请填写用户名！</string>
+    <string name="user_pwd_null">请填写密码！</string>
+    <string name="registing">正在注册...</string>
+    <string name="regist_success">注册成功</string>
+    <string name="regist_fail">注册失败，注册账号已被使用，请重新注册。</string>
+    <string name="net_state_bad">您当前的网络不稳定，请稍后重试！</string>
+    <string name="sex">性别</string>
+    <string name="sex_op_man">男</string>
+    <string name="sex_op_woman">女</string>
+    <string name="regist_code_not_understand">看不清?</string>
+    <string name="game_wait">请等待下一局开始</string>
+    <string name="socket_connect_failed">网络连接异常，点击确定后将会退回到大厅</string>
+    <string name="net_error">网络异常，请检查网络是否连接</string>
+    <string name="net_data_error">数据有误</string>
+    <string name="login_fail">信息加载失败，请检查网络连接或稍后重试</string>
+    <string name="pay_network_fail">您当前的网络状态不是很好，请在网络比较好时再购买商品！</string>
+    <string name="QQ_login_fail">用户信息获取失败，请重新尝试</string>
+    <string name="QQ_token_fail">用户信息过时，请返回大厅注销后登陆再重新尝试</string>
+    <string name="QQ_get_Message">正在验证帐户信息，请稍等...</string>
+    <string name="QQ_get_Socket_failed">很抱歉，您获取网络连接信息失败，请返回腾讯大厅后重新登录</string>
+    <string name="check_update">正在检查更新，请稍等...</string>
+    <string name="update_title">程序更新提示</string>
+    <string name="update_select">立即更新</string>
+    <string name="update_notify1">你没有安装android market，无法更新！</string>
+    <string name="update_notify2">你必须安装新版本才能继续！</string>
+    <!-- Regist -->
+    <string name="regist_title">用户注册</string>
+    <string name="name_reg_error">请填写正确的用户邮箱</string>
+    <string name="name_len_error">昵称在4—18个字符</string>
+    <string name="msg_loss">请填完表格</string>
+    <string name="pwd_len_error">密码长度至少为6位</string>
+    <string name="pwd_reg_error">两次密码输入不一致</string>
+    <string name="regist_email">电子邮箱</string>
+    <string name="regist_email_tips">博雅账号</string>
+    <string name="regist_nick">昵称</string>
+    <string name="regist_nick_tip">财主</string>
+    <string name="regist_pwd">密码</string>
+    <string name="regist_repwd">验证密码</string>
+    <string name="regist_back_to_login">返回登录</string>
+    <string name="regist_regist">注册</string>
+    <string name="regist_code">验证码</string>
+    <string name="regist_code_error">验证码输入错误</string>
+    <string name="today_get">今日领取</string>
+    <!-- market login -->
+    <string name="login_text_fb">facebook登录</string>
+    <string name="login_text_guest">立即开始*[游客登录]</string>
+    <string name="login_text_sina">新浪微博登录</string>
+    <string name="login_text_message">正在加载用户信息...</string>
+    <string name="out_game">确定回到登录界面？</string>
+    <!-- market logout -->
+    <string name="login_text_logout">注销</string>
+    <!-- Function -->
+    <string name="menu_close">关闭菜单</string>
+    <string name="stand">起身</string>
+    <string name="back_to_hall">返回大厅</string>
+    <string name="go_on_tutorial">继续教程</string>
+    <string name="vipmessage">您的VIP服务还将持续</string>
+    <string name="day">天</string>
+    <string name="EveryDayAcca">恭喜您，获得登录奖励</string>
+    <string name="yourAcca">您当前的游戏币为</string>
+    <string name="getUsePropertyAcca">恭喜您，获得使用道具赠送</string>
+    <string name="service_loss">对不起，暂不提供此项服务~</string>
+    <string name="hall">游戏大厅</string>
+    <string name="market">道具商城</string>
+    <string name="setting">设置</string>
+    <string name="help">帮助</string>
+    <string name="logout">登 出</string>
+    <string name="no_center">个人中心 </string>
+    <string name="userfeedback">用户回馈 </string>
+    <string name="newcomerteach">新手教程 </string>
+    <string name="wenxing_thishi">温馨提示：</string>
+    <string name="get_tablelist">正在获取桌子列表，请稍等...</string>
+    <string name="init_loginroom">正在初始化登录房间信息，请稍等...</string>
+    <string name="update_room">正在更新登录房间信息，请稍等...</string>
+    <string name="gameresult_title">游戏币结算</string>
+    <string name="gameresult_zhiqian">之前游戏币：$</string>
+    <string name="gameresult_xianzai">现在游戏币：$</string>
+    <string name="gameresult_win">获得：+$</string>
+    <string name="gameresult_lose">失去：-$</string>
+    <!-- Hall -->
+    <string name="chengjiu_loading">成就列表正在获取中，请稍后重试</string>
+    <string name="list_parse_fail">房间列表初始化失败！</string>
+    <string name="zstip_1">您今天第一次登录游戏\n系统赠送游戏币</string>
+    <string name="zstip_2">系统赠送游戏币</string>
+    <string name="game_loss">对不起您已经破产，您可以通过购买游戏币或明日领取登录奖励继续游戏！</string>
+    <string name="back">返回</string>
+    <string name="yxc">游戏场</string>
+    <string name="bsc">比赛场</string>
+    <string name="ksks">快速开始</string>
+    <string name="fj">房间</string>
+    <string name="dxmz">小/大盲注</string>
+    <string name="zwrs">在玩人数</string>
+    <string name="zxxd">最小携带</string>
+    <string name="zdxd">最大携带</string>
+    <string name="xsc">新手场</string>
+    <string name="cjc">初级场</string>
+    <string name="zjc">中级场</string>
+    <string name="gjc">高级场</string>
+    <string name="ksc">快速场</string>
+    <string name="common_game">普通场</string>
+    <string name="hidden_full_room">隐藏人满房间</string>
+    <string name="hidden_null_room">隐藏空房间</string>
+    <string name="hidden_in_room">隐藏进行中的房间</string>
+    <string name="alert_null__new_room">新手区暂不开设快速场</string>
+    <string name="alert_null_room">很抱歉，您的操作会使列表显示为空，故不执行该操作！</string>
+    <string name="csf">参赛费</string>
+    <string name="fwf">服务费</string>
+    <string name="tts">淘汰赛</string>
+    <string name="jjs">晋级赛</string>
+    <string name="status1">准备中</string>
+    <string name="status2">游戏中</string>
+    <!-- Setting -->
+    <string name="general">通用</string>
+    <string name="yx">屏幕亮度</string>
+    <string name="yy">震动</string>
+    <string name="sdms">省电模式</string>
+    <string name="automaticSatdown">进房间自动坐下</string>
+    <string name="setting_game">游戏设置</string>
+    <!-- newComerTeach -->
+    <string name="next">下一步</string>
+    <string name="pre">上一步</string>
+    <string name="rule">1:比牌规则 </string>
+    <string name="rule1">2:玩牌规则 </string>
+    <string name="rule2">葫芦赢</string>
+    <string name="seeall1">第一轮 </string>
+    <string name="seeall2">第二轮 </string>
+    <string name="seeall3">第三轮 </string>
+
+    <string-array name="seeonly">
+        <item>手里牌</item>
+        <item>（只有自己可见）</item>
+    </string-array>
+
+    <string name="waiting">等待... </string>
+    <!-- Room -->
+    <string name="sendmoneyalert">赠送游戏币间隔1分钟 </string>
+    <string name="back_to_halllist">返回房间列表</string>
+    <!-- chat -->
+    <string name="send">发送</string>
+    <string name="am">[上午</string>
+    <string name="pm">[下午</string>
+    <string name="b_button_text">宝贝表情</string>
+    <string name="m_button_text">VIP表情</string>
+    <string name="q_button_text">Q表情</string>
+    <string name="common_language_menu">常用语</string>
+    <string name="expression_menu">表情</string>
+    <string name="chat_story_menu">聊天记录</string>
+    <string name="common_language_1">大家好，很高兴见到各位</string>
+    <string name="common_language_2">快点吧，我等到花儿都谢了</string>
+    <string name="common_language_3">冲动是魔鬼！淡定！</string>
+    <string name="common_language_4">玩太小没意思</string>
+    <string name="common_language_5">ALL IN他！</string>
+    <string name="common_language_6">让看看牌先嘛</string>
+    <string name="common_language_7">风水不好，换个位置.</string>
+    <string name="common_language_8">走一个，跟了！</string>
+    <string name="common_language_9">高手！佩服</string>
+    <string name="common_language_10">哇，你抢钱啊！</string>
+    <string name="common_language_11">又断线了，郁闷！</string>
+    <string name="common_language_12">不要吵了，有什么好吵的，专心玩游戏.</string>
+    <string name="common_language_13">下次再来，我要走了.</string>
+    <string name="common_language_14">太不和谐了吧.</string>
+    <string name="common_language_15">看来我是你的克星.</string>
+    <string name="common_language_16">搞笑了，想弃牌按到加注！</string>
+    <string name="common_language_17">这样都行？人品啊.</string>
+    <string name="common_language_18">我快被打晕了，能来点好牌吗?</string>
+    <string name="common_language_19">各位，不好意思，离开一会.</string>
+    <string name="no_chat_story">暂未任何聊天记录！</string>
+    <string name="no_services">对不起，暂不提供此服务~</string>
+    <string name="send_expression_error_1">很抱歉，坐下之后您才能使用表情！</string>
+    <string name="send_expression_error_2">很抱歉您的游戏币不够！</string>
+    <string name="send_expression_error_3">很抱歉，坐下之后您才能发送聊天信息！</string>
+    <string name="send_expression_error_4">很抱歉，出局之后您不能使用表情！</string>
+    <string name="send_expression_error_5">很抱歉，出局之后您不能发送聊天信息！</string>
+    <string name="tip">提示</string>
+    <string name="quit_tip">正在退出房间，请稍等...</string>
+    <string name="net_connect_fail">网络连接失败，请重新登录！</string>
+    <string name="submit">确定</string>
+    <string name="again">再看一次</string>
+    <string name="backtohall">回到大厅</string>
+    <string name="statrt_game">开始游戏</string>
+    <string name="init_fail">用户信息初始化失败，请检查网络是否正常连接！</string>
+    <string name="cancel">取消</string>
+    <string name="reload">刷新</string>
+    <string name="chipin_fail">您刚才的下注失败了哦...</string>
+    <string name="net_conflict">很抱歉，网络冲突，您的账号在别处登录！</string>
+    <string name="findseat_fail">很抱歉，该座位已经有人，请您选择其他座位！</string>
+    <string name="net_timeout">很抱歉，您当前的网络不稳定，请稍后重试！</string>
+    <string name="exception">很抱歉，程序遇到异常即将关闭，请您稍后重新启动！</string>
+    <string name="sys_to_user_chip">再接再厉！系统赠送您 </string>
+    <string name="sys_to_user_other">对不起您已经破产，您可以通过购买游戏币或明日领取登录奖励继续游戏！</string>
+    <string name="room_win_tips">恭喜，您赢了！</string>
+    <string name="room_login_failed_message1">很抱歉，由于您长时间未操作，已退出游戏，请重新登录，或者联系客服</string>
+    <string name="room_login_failed_message2">很抱歉，数据库无法连接，您可以点击刷新请重新登录，或者联系客服</string>
+    <string name="room_login_failed_message3">很抱歉，您进入的桌子目前不存在，请重新进入或稍后再试</string>
+    <string name="room_login_failed_message4">很抱歉，进入桌子失败，请重新进入坐下</string>
+    <string name="room_login_failed_message5">很抱歉，该桌子旁观人数已满，请您重新选择房间进入</string>
+    <string name="room_login_failed_message6">很抱歉，您被人踢出房间了，请换个房间进入</string>
+    <string name="room_login_failed_message7">很抱歉，您的账号有存在异常，无法登录</string>
+    <string name="room_login_failed_message8">很抱歉，同一IP不能进入相同房间，请您更换房间进入</string>
+    <string name="room_login_failed_message9">服务器升级完成，请您回到大厅重新进入游戏！</string>
+    <string name="room_cannot_seat">很抱歉，您的游戏币已超过$6000，请到初级场或更高级别的场次！</string>
+    <string name="room_login_failed_messagex">很抱歉，连接失败，您可以点击刷新请重新登录，或者联系客服</string>
+    <string name="room_sit_failed_message1">对不起，房间现在满人啦~</string>
+    <string name="room_sit_failed_message2">很抱歉，同一IP不能坐下，请您重新选择房间进入</string>
+    <string name="room_sit_failed_message3">很抱歉，您的游戏币不够，请您重新选择房间进入</string>
+    <string name="room_sit_failed_message4">很抱歉，该桌子没有空座位，请您重新选择房间进入</string>
+    <string name="room_sit_failed_message5">很抱歉，该座位已经有人，请再换个位置坐下！</string>
+    <string name="room_sit_failed_message6">很抱歉，您的资产过高，不能坐下，请您重新选择房间进入</string>
+    <string name="room_money_less">游戏币不足</string>
+    <string name="room_money_less2">很抱歉，您的游戏币不足，请移步低盲注房间</string>
+    <string name="room_less_money_to_market">进入储值中心</string>
+    <string name="buy_youxibi">购买游戏币</string>
+    <string name="room_have_money">您的总资产：</string>
+    <!-- Entity -->
+    <string name="sitStr">坐下</string>
+    <string name="standUp">站起</string>
+    <string name="money_flow">您的余额超过5000，建议更换到其他场！</string>
+    <string name="default_name">新用户</string>
+    <string name="user_state_chiping">下注中.</string>
+    <string name="user_fold">弃牌</string>
+    <string name="user_goon">跟注</string>
+    <string name="user_look">看牌</string>
+    <string name="user_add">加注</string>
+    <string name="user_allin">全下</string>
+    <string name="user_win">赢</string>
+    <string name="user_zp">杂牌</string>
+    <string name="user_gp">高牌</string>
+    <string name="user_dz">对子</string>
+    <string name="user_ld">两对</string>
+    <string name="user_st">三条</string>
+    <string name="user_sz">顺子</string>
+    <string name="user_th">同花</string>
+    <string name="user_hl">葫芦</string>
+    <string name="user_sty">四条</string>
+    <string name="user_ths">同花顺</string>
+    <string name="user_hjths">皇家同花顺</string>
+    <string name="user_gp_win">高牌赢</string>
+    <string name="user_dz_win">对子赢</string>
+    <string name="user_ld_win">两对赢</string>
+    <string name="user_st_win">三条赢</string>
+    <string name="user_sz_win">顺子赢</string>
+    <string name="user_th_win">同花赢</string>
+    <string name="user_hl_win">葫芦赢</string>
+    <string name="user_sty_win">四条赢</string>
+    <string name="user_ths_win">同花顺赢</string>
+    <string name="user_hjths_win">皇家同花顺赢</string>
+    <string name="user_self_next">等待下一局</string>
+    <string name="user_next">下一轮</string>
+    <string name="user_bigblind">大盲注</string>
+    <string name="user_smallblind">小盲注</string>
+    <string name="user_out">出局</string>
+    <string name="buy_chips_continue">继续加注</string>
+    <string name="buy_chips_cancle">取消加注</string>
+    <!-- ChipinStr -->
+    <string name="auto_look">自动看牌</string>
+    <string name="look_fold">看或弃牌</string>
+    <string name="goon_every">跟任何注</string>
+    <string name="fold">弃牌</string>
+    <string name="goon">跟注</string>
+    <string name="add">加注</string>
+    <string name="look">看牌</string>
+    <string name="allin">全下</string>
+    <string name="hide_result">隐藏结果</string>
+    <!-- UserInfoBox -->
+    <string name="userinfo_message">个人信息</string>
+    <string name="userinfo_name">昵称：</string>
+    <string name="userinfo_id">ID：</string>
+    <string name="userinfo_sex">性别：</string>
+    <string name="userinfo_property">资产：</string>
+    <string name="userinfo_level">等级：</string>
+    <string name="userinfo_city">城市：</string>
+    <string name="userinfo_sendchip">赠送游戏币</string>
+    <string name="userinfo_cannotsend">无法赠送</string>
+    <string name="userinfo_send">赠送$</string>
+    <string name="userinfo_secret">保密</string>
+    <string name="userinfo_playtohave">赢一局马上有</string>
+    <string name="userinfo_andfriend">加为牌友</string>
+    <string name="userinfo_alertphoto">举报</string>
+    <string name="userinfo_tongji">统计</string>
+    <string name="userinfo_paiju">已进行牌局：%1$d局</string>
+    <string name="userinfo_shengfu">胜 负：%1$d胜/%2$d负</string>
+    <string name="userinfo_shenglv">胜 率：%1$s胜率</string>
+    <string name="userinfo_mostlarge">最 大 手 牌：</string>
+    <string name="userinfo_card_name">道具名称：踢人卡</string>
+    <string name="userinfo_card_name_self">道具名称: 救济卡</string>
+    <string name="userinfo_card_num">剩余张数:%1$d张</string>
+    <string name="userinfo_card_desc">道具用途：在房间内使用，发起踢人投票，坐下的玩家超过半数赞成，踢人生效。</string>
+    <string name="userinfo_card_desc_self">道具用途：当游戏币低于500时候才可使用，使用时得到1万游戏币。</string>
+    <string name="userinfo_photowarn">您是否举报该用户的头像图片不符合国家相关规范标准</string>
+    <string name="userinfo_phototips">(提示：为了维护您的游戏环境，请勿恶意举报！感谢您的支持与配合）</string>
+    <string name="room_loadding">正在登录房间，请稍等...</string>
+    <string name="roomusers_loadding">冲动不是魔鬼,犹豫才是</string>
+    <string name="loadding">loading...</string>
+    <string name="logout_confirm">确定注销账户？</string>
+    <string name="exit_game">确定退出当前游戏？</string>
+    <string name="continue_watch">继续旁观</string>
+    <string name="buy_sit">购买坐下</string>
+    <string name="min_buy">最小买入</string>
+    <string name="max_buy">最大买入</string>
+    <string name="user_base_info">基本信息</string>
+    <string name="user_head_modify">修改头像</string>
+    <string name="losing">胜率 :  </string>
+    <string name="besthand">最大手牌 :</string>
+    <string name="addressnow">现居住地 :</string>
+    <string name="savesure">确定保存</string>
+    <string name="namenotnull">用户昵称不能为空</string>
+    <string name="namelength">用户昵称不能超过20个字符</string>
+    <!-- Market -->
+    <string name="buy">购买</string>
+    <string name="tool_num_tip">数量</string>
+    <string name="price">价格：</string>
+    <string name="total">总价：</string>
+    <string name="tool_buy_less">您的91豆不足，无法完成购买！</string>
+    <string name="use">使用</string>
+    <string name="tool_pay_tip">对不起，目前尚未提供该功能，我们将尽快添加！</string>
+    <string name="tool_no_buy">对不起，您的91豆不足！</string>
+    <string name="market_buy_notice1">您成功购买  %1$s ，道具需要使用才能生效，请选择！</string>
+    <string name="market_buy_notice2">您成功购买  %1$s ，欢迎下次光临！</string>
+    <!-- help -->
+    <string name="help_subject">帮助主题</string>
+    <string name="basic_play">基本玩法</string>
+    <string name="bottom_card">底牌</string>
+    <string name="play_A">玩家A</string>
+    <string name="play_B">玩家B</string>
+    <string name="public_card">公共牌</string>
+    <string name="adult_card">成手牌</string>
+    <string name="game_rule">游戏规则</string>
+    <string name="game_rule_describle"> 从底牌和公共牌中选出最大的5张，组成\"成手牌\"，与其它玩家比较，牌型最大的\n玩家胜出。\n
+		上图中，玩家A的成手牌有三条，玩家B有一对，根据比牌的规则，三条大于一对，\n所以玩家A胜出。</string>
+    <string name="award_distribution">奖池分配</string>
+    <string name="award_distribution_title">奖 池 分 配 说 明</string>
+    <string name="award_distribution_describle">每一成手牌必定由五张牌组成。如果两个玩家的主牌型相同，比如同样\n有一对\"A\"，则比较主牌型下其他牌的大小。较大者胜出。
+</string>
+    <string name="award">奖池 :</string>
+    <string name="award_describle">指玩家在牌局中对本局牌所下的游戏币的总计。</string>
+    <string name="award_join">参与奖池 :</string>
+    <string name="award_join_describle">指该玩家在该奖池中投入了游戏币。</string>
+    <string name="award_subjectandside">主池和边池:</string>
+    <string name="award_subjectandside_describle_1">在每个牌局中，奖池有可能分级，当只有一个人ALL IN时，</string>
+    <string name="award_subjectandside_describle_2">主池由ALL IN全下的玩家和其他玩家下注组成，边池由超出ALL
+		IN玩家下\n注的游戏币部分组成。在几个玩家ALL IN时，可以建立多个边池。</string>
+    <string name="distribution_rule">分配原则:</string>
+    <string name="distribution_describle">1.只有参与了该奖池玩家方有资格参与奖池分配.\n2.每个奖池中只有最大牌型者能够获胜，其余玩家均无法获得游戏币.\n3.分配是从最后边池开始，根据边池构成的时间依次发放.
+</string>
+    <string name="award_distribution_describle_1"> 发底牌1号玩家，2号玩家下注1000，同时3号玩家，4号玩家，5号\n玩家跟注。</string>
+    <string name="award_distribution_describle_2"> 发翻牌牌时，3号玩家下注800，同时4号玩家，5号玩家跟注。</string>
+    <string name="award_distribution_describle_3"> 发转牌时，4号玩家下注500，同时5号玩家跟注。</string>
+    <string name="award_distribution_describle_4"> 亮牌时1号玩家，2号玩家，3号玩家，4号玩家全部ALL
+		IN。5号玩家下注2300\n游戏币。主池5000游戏币，由五位玩家每人出1000游戏币凑成。所以此奖池为他们当中\n最大牌型者获得。1号玩家获得5000游戏币
+</string>
+    <string name="award_subject">主奖池由\n一号玩家\n获得</string>
+    <string name="award_side_1">边池1由\n3号玩家\n获得</string>
+    <string name="award_side_2">边池2由\n4号玩家\n获得</string>
+    <string name="award_distribution_describle_5">		边池1有2400游戏币，由3，4，5三人中每人出800游戏币凑成所以此奖池为他们当\n中最大牌型者获得。即三号玩家获2400游戏币。边池2有1000游戏币由4，5两人中每人\n出500游戏币凑成所以此奖池为他们当中最大牌型四号玩家获得1000游戏币。
+</string>
+    <string name="game_process">游戏流程</string>
+    <string name="big_blind">大盲注</string>
+    <string name="small_blind">小盲注</string>
+    <string name="game_process_describle">第一轮：每个选手发到2张不公开的底牌\n由大盲注的左侧玩家开始下注依次选择，在没有人加注的情况下，直到庄家结束。\n有人加注的情况下，直到加注玩家右侧第一玩家结束。
+</string>
+    <string name="flop">翻牌</string>
+    <string name="flop_describle">第二轮：发出前3张公共牌(翻牌)\n由小盲注开始押注依次选择，在没有人加注的情况下，直到庄家结束。\n有人加注的情况下、直到加注玩家右侧第一个玩家结束。
+</string>
+    <string name="turn_card">转牌</string>
+    <string name="turn_card_describle">第三轮：发出第四张牌(转牌)\n基本和上一轮相同。(注意：多了一张公共牌，你的牌面转变了，要重\n新判断自己的形势了)。
+</string>
+    <string name="river_card">河牌</string>
+    <string name="river_card_describle">第四轮：发出第5张公共牌(河牌)\n同上。(提醒：你的牌面已经固定下来了，比牌还是放弃，输赢就在这\n里决定了)
+</string>
+    <string name="compare_card_rule">比牌规则</string>
+    <string name="compare_card_rule_describle">		比牌不分花色，从大到小比牌(如：都有一对，对子大的胜出;对子相同，则比单张牌更大的胜出。以此类推)。若依次比完双方大小相同，则均分注码池内的注码。
+</string>
+    <string name="compare_card_order">皇家同花顺-->同花顺-->四条-->葫芦-->同花-->顺子-->三条-->两对-->一对-->高牌</string>
+    <string name="royal_flush">1.皇家同花顺</string>
+    <string name="royal_flush_describle">(同一花色最大的顺子)</string>
+    <string name="straight_flush">2.同花顺</string>
+    <string name="straight_flush_describle">(同一花色的顺子)</string>
+    <string name="four_of_a_Kind">3.四条  </string>
+    <string name="four_of_a_Kind_describle">(四张相同+单张)</string>
+    <string name="full_house">4.葫芦 </string>
+    <string name="full_house_describle">(三张相同+对子)</string>
+    <string name="flush">5.同花 </string>
+    <string name="flush_describle">(同一花色)</string>
+    <string name="straight">6.顺子 </string>
+    <string name="straight_describle">(花色不一样的顺子)</string>
+    <string name="three_of_a_Kind">7.三条</string>
+    <string name="three_of_a_Kind_describle">(三张相同+两张单)</string>
+    <string name="two_pairs">8.两对</string>
+    <string name="two_pairs_describle">(两个对子+单张)</string>
+    <string name="one_pair">9.一对</string>
+    <string name="highcard">10.高牌 </string>
+    <string name="competition_notes">比赛须知 </string>
+    <string name="competition_notes_title">得克萨斯九人制比赛规则 </string>
+    <string name="competition_notes_describle">1，玩家坐下时需扣除固定数额的游戏币作为奖池。坐下后系统给每位玩家\n
+		1000游戏币。\n2，每桌需坐满9位玩家，比赛正式开始(中途不能加入比赛)。\n3，盲注每5分钟增加一次。中途站起或返回大厅视为放弃比赛，游戏币及参赛\n
+		费不再返还。\n4，比赛采用淘汰制，游戏币输光即离开比赛。最后离开比赛的三位玩家可获\n 得总奖池50％，30％，20％的奖励。
+</string>
+    <string name="ui_introduction">界面介绍</string>
+    <string name="ui_introduction_1">手指停顿在使用者头像上方时，弹出个人面板，显示个人详细信息。</string>
+    <string name="ui_introduction_2">初始时间20秒。玩家必须在\n20秒时间内完成押注操作，\n倒计时圈走完的时候，操作\n结束，如果用户还无操作则\n自动弃牌。
+</string>
+    <string name="ui_introduction_3">顺时针轮流持有的标志。</string>
+    <string name="ui_introduction_4">要是拿不准可以选择看牌，\n看牌是不下注的。</string>
+    <string name="ui_introduction_5">牌不好，就选择弃牌。</string>
+    <string name="ui_introduction_6">如果对自己的牌非常有信\n心的话，就全押了吧。</string>
+    <string name="ui_introduction_7">下一轮自动选择看牌。</string>
+    <string name="ui_introduction_8">下一轮自动选择弃牌。</string>
+    <string name="ui_introduction_9">首选看牌如需加注则放弃\n牌局。</string>
+    <string name="ui_introduction_10">要是觉得还可以就可以\n跟注。</string>
+    <string name="ui_introduction_11">觉得优势明显就可以加注。</string>
+    <string name="ui_introduction_12">跟注 886</string>
+    <string name="ui_introduction_13">加注 886</string>
+    <string name="ui_introduction_14">看或弃</string>
+    <string name="ui_introduction_15">自动弃牌</string>
+    <string name="noun_explained">名词解释</string>
+    <string name="noun_explained_1">翻 牌</string>
+    <string name="noun_explained_2">转\n牌</string>
+    <string name="noun_explained_3">河\n牌</string>
+    <string name="noun_explained_4">底 牌:</string>
+    <string name="noun_explained_4_describle">每个玩家得到的两张牌。</string>
+    <string name="noun_explained_5">底牌圈:</string>
+    <string name="noun_explained_5_describle">每个玩家得到底牌后的押注圈。</string>
+    <string name="noun_explained_6">副牌圈:</string>
+    <string name="noun_explained_6_describle">同时发出三张公共牌后的押注圈。</string>
+    <string name="noun_explained_7">转牌圈:</string>
+    <string name="noun_explained_7_describle">发出第四张公共牌后的押注圈。</string>
+    <string name="noun_explained_8">河牌圈:</string>
+    <string name="noun_explained_8_describle">发出五张公共牌后的押注圈。</string>
+    <string name="noun_explained_9">什么是盲注?</string>
+    <string name="noun_explained_9_describle">在发牌之前，首先确定庄家的位置。庄家是顺时针轮流持有的标志。庄家左侧的两个\n玩家必须投放盲注。由于这两个人还没有看到他们的牌，所以他们被称为盲注。
+</string>
+    <string name="noun_explained_10">盲注要下多少?</string>
+    <string name="noun_explained_10_describle">庄家左边第一个玩家需要投最小下注额的一半也叫(小盲注)，庄家左边第二个玩家需要\n投和最小下注额相等也就是(大盲注)。大盲注的注码是小盲注的一倍。
+</string>
+    <string name="game_example">游戏举例</string>
+    <string name="play1_card">玩家1的最佳牌：A 10 10 3 3</string>
+    <string name="play2_card">玩家2的最佳牌：A J J 3 3</string>
+    <string name="play3_card">玩家3的最佳牌：A K Q 3 3</string>
+    <string name="play4_card">玩家4的最佳牌：A Q J 3 3</string>
+    <string name="game_example_result">		结果已经知道了，你看出来了吗？根据比牌规则，两对比一对大，所以排除\n了玩家三和玩家四。玩家二的两对比玩家一的两对大，所以玩家二赢。
+</string>
+    <!-- market -->
+    <string name="props_market">博雅币购买</string>
+    <string name="buy_by_boyabi">道具商城</string>
+    <string name="props_using">使用中道具</string>
+    <string name="props_used">未使用道具</string>
+    <string name="no_tool_tip">您还没有相应的道具哦！</string>
+    <string name="tool_pay_yxb">游戏币</string>
+    <string name="tool_pay_byb">91豆</string>
+    <string name="tool_using_last">剩余天数：</string>
+    <string name="tool_card_num">数量：</string>
+    <string name="tool_buy_success">购买成功</string>
+    <string name="tool_buy_fail">购买失败</string>
+    <string name="market_title">商城</string>
+    <string name="market_vip_btntx">VIP卡</string>
+    <string name="market_prop_btntx">道具</string>
+    <string name="market_my_goods_btntx">我的物品</string>
+    <string name="market_buy_details_btntx">购买明细</string>
+    <string name="market_vip_clew">购买VIP会员卡成功后您将自动升级为会员</string>
+    <string name="market_prop_clew">道具购买成功后请到“我的物品”栏中点击使用</string>
+    <string name="market_vip_buy_btntx">购买</string>
+    <string name="market_goods_detail_name">详情：</string>
+    <string name="market_buy_details_num">数量：</string>
+    <string name="market_buy_details_time">购买时间:</string>
+    <string name="market_buy_details_money">金\t\t额:</string>
+    <string name="market_boyaa_money">博雅币</string>
+    <string name="market_91_money">(91豆)</string>
+    <string name="market_gfan_money">(机锋券)</string>
+    <string name="market_paypal_money">(博雅币)</string>
+    <string name="market_unuse">未使用</string>
+    <string name="market_useing">已使用</string>
+    <string name="market_null_data">暂无数据</string>
+    <string name="market_geting_data">正在获取资料，请稍等...</string>
+    <string name="market_logining">正在进入，请稍等...</string>
+    <string name="market_buy_faled">购买失败！</string>
+    <string name="market_buy_success_vip">恭喜您，购买Vip卡成功！</string>
+    <string name="market_buy_success_press">恭喜您，购买道具成功！</string>
+    <string name="market_buy_directness_use">物品直接生效！</string>
+    <string name="market_buy_success_prop">恭喜您，购买成功！\n钻石类道具需要点击使用才能生效！</string>
+    <string name="market_buy_loging">正在发送资料，请稍等...</string>
+    <string name="market_buy_result">正在更新列表，请稍等...</string>
+    <string name="market_use_faled">使用 道具操作失败，请回馈给我们或稍后再重试</string>
+    <string name="market_no_tool_tip">您还没有相应的道具哦！</string>
+    <string name="market_page_init_failed">对不起，充值页面初始化失败，请稍后重试</string>
+    <string name="market_sure_buy_goods">购买物品将扣除您的博雅币，请问确认购买?</string>
+    <string name="market_sure_buy_goods_vip">购买物品将扣除您的博雅币，请问确认购买?</string>
+    <string name="market_sure_enter_recharge_page">对不起，您的博雅币不足，是否进入充值页面?</string>
+    <string name="market_room_boyaacache_less">对不起，您的博雅币不足，请充值！</string>
+    <string name="market_no_91_user">网络连接错误，请稍后重试.</string>
+    <string name="market_buy_failed">对不起，购买失败.</string>
+    <string name="market_buy_cancel">你取消了购买.</string>
+    <string name="recharge_title">充值</string>
+    <string name="Paypage_title">支付</string>
+    <string name="close_recharge">关闭</string>
+    <string name="market_unuser">稍后使用</string>
+    <string name="out_time_failed">超时失败</string>
+    <string name="need_confirm">需要验证</string>
+    <string name="boyaa_cach_less">余额不足</string>
+    <string name="pay_failed">支付失败</string>
+    <string name="order_id">订单ID</string>
+    <string name="order_time">下单时间</string>
+    <string name="user_order_message">您当前的订单信息为：\n</string>
+    <string name="order_prodect_name">物品名称</string>
+    <string name="order_status">订单状态</string>
+    <string name="support_to_us">如有疑问，请联系或回馈我们！</string>
+    <string name="order_detail_look">订单其他信息请参看储值中心下失败订单！</string>
+    <string name="load_recharge_page">正在载入页面，请稍等...</string>
+    <string name="load_recharge_page_failed">对不起，加载页面失败，请稍后再重试</string>
+    <string name="comfirm_cash_money">正在验证用户余额，请稍等...</string>
+    <!-- market  qq -->
+    <string name="market_sendgoods">正在请求服务器发货，请稍等...</string>
+    <string name="config_net_state">正在测试网络状态，请稍等...</string>
+    <string name="page_badfor_recharge">对不起，您当前的网络状态不佳，为了保证您的购买操作能正常进行，请稍后再购买</string>
+    <string name="net_badfor_recharge">对不起，您当前的网络状态不佳，为了保证您的充值操作能正常进行，请稍后再充值</string>
+    <string name="meney_less_torecharge">由于您的博雅币不足导致购买失败，进入充值页面充值.</string>
+    <string name="market_buy_tips">请先充值Q币，并用Q币购买博雅币后，即可使用博雅币在道具商城中购买道具物品</string>
+    <!-- 普通场 -->
+    <string name="bianhao_name">ID/房名</string>
+    <string name="blind">小/大盲注</string>
+    <string name="carry">最小/最大携带</string>
+    <string name="play">在玩人数</string>
+    <!-- match -->
+    <string name="eliminated">淘汰场</string>
+    <string name="bonus">一/二/三名奖金</string>
+    <string name="servicecharge">参赛费+服务费</string>
+    <string name="state">状态</string>
+    <string name="sixgames">六人场</string>
+    <string name="ninegames">九人场</string>
+    <string name="back_to_buypage">返回淘汰赛</string>
+    <string name="raise_blind">下一局盲注将增加为：</string>
+    <string name="match_user_notice">当前还剩%1$d名选手，您排名第%2$d。加油哦！</string>
+    <string name="need_players_1">还差  </string>
+    <string name="need_players_2"> 人方可开始比赛</string>
+    <string name="match_result_lose_1">本次比赛您的排名为第  </string>
+    <string name="match_result_lose_2"> 名，</string>
+    <string name="match_result_lose_3">下次一定要加油哦！</string>
+    <string name="match_result_win_1">您是第   </string>
+    <string name="match_result_win_2"> 名，</string>
+    <string name="match_result_win_3">赢得  </string>
+    <string name="match_result_win_4"> 游戏币！</string>
+    <string name="match_result_win_5">触摸屏幕退出游戏</string>
+    <string name="chips">游戏币:+</string>
+    <string name="win_point">本局积分:</string>
+    <string name="total_point">总积分:</string>
+    <string name="match_sitdown_1">奖励  </string>
+    <string name="match_sitdown_2"> 游戏币</string>
+    <string name="match_sitdown_6">最先被淘汰的选手将被扣除比赛积分  </string>
+    <string name="match_sitdown_7">参赛费：</string>
+    <string name="match_sitdown_8">服务费：</string>
+    <string name="match_quit_tournament">中途退出比赛将会扣除您:$</string>
+    <string name="match_only_vip_expression">比赛场只有VIP才能使用表情</string>
+    <string name="server_upgrade">对不起，服务器正在升级，请稍等...</string>
+    <string name="cancel_auto_login">取消自动登录</string>
+    <string name="only_vip_expression">对不起，您不能使用该表情，成为VIP可免费使用</string>
+    <string name="only_pet_expression">请到商场购买开心宝贝表情包获得该表情</string>
+    <string name="table_full_match">很抱歉，该参赛费对应的房间已满，请移步其他参赛费的房间或稍后重试！</string>
+    <string name="joinmatch">加入比赛</string>
+    <!-- 大厅接口所用的文字 -->
+    <string name="function_level">等\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020级 :</string>
+    <string name="function_winrate">胜负/胜率 :</string>
+    <string name="function_winrate_text">%1$d胜%2$d负/%3$d%%胜率</string>
+    <string name="function_messages">消息</string>
+    <string name="function_friends">互动</string>
+    <string name="function_community">小区</string>
+    <string name="function_market">储值中心</string>
+    <string name="function_help">帮助</string>
+    <string name="function_setting">设置</string>
+    <string name="function_honor">成就</string>
+    <string name="function_activity">活动</string>
+    <string name="players_num">	当前在线人数: <xliff:g id="num">%1$d</xliff:g></string>
+    <string name="players_tip">当前在线人数:</string>
+    <string name="quick_start">快速开始</string>
+    <string name="game_lobby">游戏大厅</string>
+    <string name="konckout_match">淘汰赛</string>
+    <string name="rank_match">晋级赛</string>
+    <string name="teaching"> 新手教学</string>
+    <string name="function_rewards">领取\n奖励</string>
+    <string name="first">第一名</string>
+    <string name="second">第二名</string>
+    <string name="third">第三名</string>
+    <string name="first_award">总奖池50%奖励</string>
+    <string name="second_award">总奖池30%奖励</string>
+    <string name="third_award">总奖池20%奖励</string>
+    <string name="joinservicefee">参赛费/服务费</string>
+    <!-- 说明文字 -->
+    <string name="help_title">帮助</string>
+    <string name="help_play_method">基本玩法</string>
+    <string name="help_desk_directory">桌面指南</string>
+    <string name="help_card_compare">牌型比较</string>
+    <string name="help_function_intro">功能键介绍</string>
+    <string name="help_user_info">账号信息</string>
+    <string name="help_desk_directory_01">桌面指南1/3</string>
+    <string name="help_desk_directory_02">桌面指南2/3</string>
+    <string name="help_desk_directory_03">桌面指南3/3</string>
+    <string name="help_adettitle">支持</string>
+    <string name="help_feedbackbtn">意见回馈</string>
+    <string name="help_historybtn">历史提问</string>
+    <string name="help_faqbtn">FAQ</string>
+    <string name="help_feedbackname">您的昵称:</string>
+    <string name="help_feedbackhint">请提供联系电话方便客服及时处理您的问题</string>
+    <string name="help_sendbtn">发送</string>
+    <string name="help_companyname">得克萨斯扑克(由深圳东方博雅有限公司开发)</string>
+    <string name="help_urlname">客服电话：0755-86630020</string>
+    <string name="help_version">版本号：V%1$s</string>
+    <string name="help_default_version">1.0</string>
+    <string name="help_userid">用户ID</string>
+    <string name="help_send_loading">正在发送回馈，请稍等...</string>
+    <string name="help_test">测试</string>
+    <string name="help_send_defeat">提交回馈信息失败！可能是您的信息中含有特殊字符，请检查后再次回馈给我们！谢谢！</string>
+    <string name="help_send_succeed">发送成功！</string>
+    <string name="help_inputemp">输入不能为空</string>
+    <string name="help_history_defeat">"获取历史提问资料失败！</string>
+    <string name="help_input_move">【您输入的文字超过限制字数，请重新输入】</string>
+    <string name="help_question_hint">【您的回馈正在处理中】</string>
+    <string name="help_history_emp_hint">获取资料失败</string>
+    <string name="help_faqinfo_1">为什么没有获得每日登录奖励？</string>
+    <string name="help_faqinfo_2">只有每天的第一次登录才有机会获得每日登录奖励，如果两天的登录时间是连续的，需要下线一次重新登录才可再次领取。</string>
+    <string name="help_faqinfo_3">比赛场是什么？</string>
+    <string name="help_faqinfo_4">比赛场分淘汰赛和晋级赛，是为了让高手玩家体验竞技乐趣设立的场次，都需要一定的参与费用才可加入。淘汰赛将采用9人出局方式，最后前三名会根据比例分得所有选手的参与费用。晋级赛稍后开放.</string>
+    <string name="help_faqinfo_5">我购买的道具不见了？ 我的游戏币不见了？</string>
+    <string name="help_faqinfo_6">请在回馈中及时提交您的游戏道具丢失时间和数量，以及您的联系方式，以便我们查证。</string>
+    <string name="help_faqinfo_7">为什么我离开一下就弃牌了？</string>
+    <string name="help_faqinfo_8">为保证所以玩家游戏顺畅，当你出牌超过时间，系统会自动帮你弃牌。</string>
+    <string name="help_faqinfo_9">如何赠送别人游戏币？</string>
+    <string name="help_faqinfo_10">进入房间选择位置坐下，点击某一位玩家头像，可根据提示进行操作。</string>
+    <string name="help_faqinfo_11">为什么有些表情要扣费，有些表情我没有？</string>
+    <string name="help_faqinfo_12">目前表情分为三类：Q表情、M表情和B表情。Q表情和M表情VIP会员可以免费使用；普通用户仅能使用Q表情且每次使用需扣除当前房间最小盲注的等价值；B表情为特殊道具，需要单独购买才能使用。</string>
+    <string name="help_game_rule">游戏规则</string>
+    <string name="help_game_rule_describle">\t\t从底牌和公共牌中选出最大的5张，组成\"成手牌\"，与其它玩家比较，牌型最大的玩家胜出。\n\t\t上图中，玩家A的成手牌有三条，玩家B有一对，根据比牌的规则，三条大于一对，所以玩家A胜出。</string>
+    <string name="help_compare_card_rule">比牌规则</string>
+    <string name="help_compare_card_rule_describle">\t\t比牌不分花色，从大到小比牌(如：都有一对，对子大的胜出;对子相同，则比单张牌更大的胜出。以此类推)。若依次比完双方大小相同，则均分注码池内的注码。</string>
+    <string name="help_compare_card_order_01">皇家同花顺</string>
+    <string name="help_compare_card_order_02">同花顺</string>
+    <string name="help_compare_card_order_03">四条</string>
+    <string name="help_compare_card_order_04">葫芦</string>
+    <string name="help_compare_card_order_05">同花</string>
+    <string name="help_compare_card_order_06">顺子</string>
+    <string name="help_compare_card_order_07">三条</string>
+    <string name="help_compare_card_order_08">两对</string>
+    <string name="help_compare_card_order_09">一对</string>
+    <string name="help_compare_card_order_010">高牌</string>
+    <string name="help_royal_flush">1.皇家同花顺</string>
+    <string name="help_royal_flush_describle">(同一花色最大的顺子)</string>
+    <string name="help_straight_flush">2.同花顺</string>
+    <string name="help_straight_flush_describle">(同一花色的顺子)</string>
+    <string name="help_four_of_a_Kind">3.四条  </string>
+    <string name="help_four_of_a_Kind_describle">(四张相同+单张)</string>
+    <string name="help_full_house">4.葫芦 </string>
+    <string name="help_full_house_describle">(三张相同+对子)</string>
+    <string name="help_flush">5.同花 </string>
+    <string name="help_flush_describle">(同一花色)</string>
+    <string name="help_straight">6.顺子 </string>
+    <string name="help_straight_describle">(花色不一样的顺子)</string>
+    <string name="help_three_of_a_Kind">7.三条</string>
+    <string name="help_three_of_a_Kind_describle">(三张相同+两张单)</string>
+    <string name="help_two_pairs">8.两对</string>
+    <string name="help_two_pairs_describle">(两个对子+单张)</string>
+    <string name="help_one_pair">9.一对</string>
+    <string name="help_highcard">10.高牌 </string>
+    <string name="help_ui_introduction">界面介绍</string>
+    <string name="help_ui_introduction_2">初始时间20秒。玩家必须在20秒时间内完成押注操作，倒计时圈走完的时候，操作结束，如果用户还无操作则自动弃牌。</string>
+    <string name="help_ui_introduction_3">要是拿不准可以选择看牌，看牌是不下注的。</string>
+    <string name="help_ui_introduction_4">牌不好，就选择弃牌。</string>
+    <string name="help_ui_introduction_5">如果对自己的牌非常有信心的话，就全押了吧。</string>
+    <string name="help_ui_introduction_6">下一轮自动选择看牌。</string>
+    <string name="help_ui_introduction_7">首选看牌如需加注则放弃牌局。</string>
+    <string name="help_ui_introduction_8">要是觉得还可以就可以跟注。</string>
+    <string name="help_ui_introduction_9">觉得优势明显就可以加注。</string>
+    <string name="help_ui_introduction_10">下一轮自动选择跟任何注</string>
+    <string name="help_order_message">失败订单</string>
+    <string name="dayacc">恭喜您获得每日奖励</string>
+    <string name="dayacc_done">今日奖励已经领取，欢迎明天继续</string>
+    <!-- error info -->
+    <string name="get_data_failed">网络异常，获取数据失败...请稍后重试</string>
+    <string name="emp_data">暂无数据...</string>
+    <string name="json_err">获取资料失败，请稍后重试</string>
+    <string name="network_err">网络状况不佳，请检查后重试</string>
+    <string name="fail">操作失败，请稍后重试</string>
+    <string name="user_msg_load">正在获取用户消息，请稍等...</string>
+    <string name="sys_msg_load">正在获取系统消息，请稍等...</string>
+    <string name="msg_title">消息中心</string>
+    <string name="user_msg">个人动态</string>
+    <string name="sys_msg">系统消息</string>
+    <string name="no_message">您还没有消息！</string>
+    <string name="hall_teach">欢迎来到博雅德州扑克！</string>
+    <string name="hall_teachr">完成新手教学，立即获得</string>
+    <string name="go_teach">开始教学</string>
+    <string name="go_game">开始游戏 </string>
+    <string name="network_fail">检测到当前网络响应较慢.</string>
+    <string name="network_lining">网络正在重新连接.</string>
+    <string name="get_bag_fail">获取宝箱奖励失败</string>
+    <string name="online_experience_fail">获取在线经验失败</string>
+    <string name="online_experience_success">获取在线经验成功</string>
+    <!-- php提示信息 -->
+    <string name="php_login">正在登录，请稍等...</string>
+    <string name="php_loading">正在加载用户信息，请稍等...</string>
+    <string name="php_exit">正在退出房间，请稍等...</string>
+    <string name="php_pochan">正在获取奖励，请稍等...</string>
+    <string name="php_nocomplement">此功能尚未实现...</string>
+    <string name="php_checkroom">正在选择房间，请稍等...</string>
+    <string name="php_severmessage">正在获取服务器信息，请稍等...</string>
+    <string name="php_qingqiufahuo">正在请求服务器发货\n(该操作不能中断)</string>
+    <string name="nd_boyaa_buy">博雅道具购买</string>
+    <string name="market_buy_fail">支付失败，请稍后重试！</string>
+    <string name="market_buy_success">支付成功</string>
+    <string name="php_sendresult">正在发送结果\n(该操作不能中断)</string>
+    <!-- 新手教程 -->
+    <string name="tutorial_more">请把值加到200</string>
+    <string name="tutorial_complement">恭喜您完成新手教学！</string>
+    <string name="tutorial_dont_click">您领取的次数过多，请勿频繁点击</string>
+    <string name="tutorial_done1">恭喜您，已成功获得</string>
+    <string name="tutorial_done3">恭喜您，已成功获得上局未领取奖励</string>
+    <string name="tutorial_done2">游戏币，快去游戏中一展赌技吧，希望您好运连连！</string>
+    <!-- 设置 -->
+    <string name="setting_sound">屏幕亮度与震动</string>
+    <string name="setting_tongyong">通用</string>
+    <!-- 运营位 -->
+    <string name="huodong_title"> 活动中心</string>
+    <string name="huodong_time_title"> 活动时间</string>
+    <string name="immediate_get"> 立即领取</string>
+    <string name="nohuodong_tips">即将推出,敬请期待!</string>
+    <string name="huodong_getrewardfail">网络问题，请重试</string>
+    <string name="huodong_content_wait">正在载入活动内容，请稍等...</string>
+    <string name="huodong_image_wait">正在加载活动图片，请稍等...</string>
+    <string name="huodong_reward_wait">正在载入活动奖励，请稍等...</string>
+    <string name="noreward">网络问题,请您重新抽奖!</string>
+    <!-- 踢人提示 -->
+    <string name="kick_agree">同意</string>
+    <string name="kick_disagree">不同意</string>
+    <string name="kick_giveup">弃权</string>
+    <string name="no_sd">没有SD卡</string>
+    <!-- 好友界面 -->
+    <string name="friend_paiyou">牌友</string>
+    <string name="friend_caifupaihang">全国财富排行</string>
+    <string name="friend_heimingdan">已删牌友</string>
+    <string name="friend_gift">礼物</string>
+    <string name="friend_xulie">序列</string>
+    <string name="friend_roomname">房间名称</string>
+    <string name="friend_caifu">个人资产</string>
+    <string name="friend_caozuo">操作</string>
+    <string name="friend_get">正在获取好友列表</string>
+    <string name="friend_notify1">站起状态不能加牌友！</string>
+    <string name="friend_notify2">等待或出局状态不能加对方牌友！</string>
+    <string name="friend_notify3">等待状态不能加对方牌友！</string>
+    <string name="friend_notify4">一分钟只能加一次牌友！</string>
+    <string name="friend_notify5">该用户已加为牌友！</string>
+    <string name="friend_notify6">很抱歉，您的牌友个数已到达上限！</string>
+    <string name="friend_notify7">很抱歉，您目前还没有已删除牌友</string>
+    <string name="friend_notify8">很抱歉，您目前还没有牌友，您可以去玩牌接口添加牌友。</string>
+    <string name="friend_notify9">不能加出局玩家为牌友！</string>
+    <string name="friend_getcardfriend">正在获取牌友列表，请稍等...</string>
+    <string name="friend_huanyuan">正在还原，请稍等...</string>
+    <string name="friend_deletecardfriend">正在删除牌友，请稍等...</string>
+    <string name="friend_getheimingdan">正在获取已删除牌友列表，请稍等...</string>
+    <string name="friend_deleteheimingdan">正在彻底删除牌友，请稍等...</string>
+    <string name="friend_getcaifu">正在获取财富排行，请稍等...</string>
+    <string name="friend_roomstate1">大厅</string>
+    <string name="friend_roomstate2">离线</string>
+    <string name="friend_roomstate3">房间ID</string>
+    <string name="friend_button_genzhong">跟踪</string>
+    <string name="friend_button_del">删除</string>
+    <string name="revert">还原</string>
+    <!-- 成就 -->
+    <string name="card_type_achievement">牌型成就</string>
+    <string name="board_achievement">资产成就</string>
+    <string name="achievements_list">全国成就排名榜</string>
+    <string name="achievement_list">成就榜</string>
+    <string name="ranking">排名</string>
+    <string name="level">等级</string>
+    <string name="achievement_num">成就数量</string>
+    <string name="view">查看</string>
+    <string name="getachievement">正在获取成就排行，请稍等...</string>
+    <!-- 每日任务 -->
+    <string name="day1">1\n天</string>
+    <string name="day2">2\n天</string>
+    <string name="day3">3\n天</string>
+    <string name="day4">4\n天</string>
+    <string name="day5">5\n天</string>
+    <string name="day6">6\n天</string>
+    <string name="day1_">1天</string>
+    <string name="day2_">2天</string>
+    <string name="day3_">3天</string>
+    <string name="day4_">4天</string>
+    <string name="day5_">5天</string>
+    <string name="day6_">6天</string>
+    <string name="daily_task_list">每日任务</string>
+    <string name="describe">任务名称</string>
+    <string name="progressin">任务描述</string>
+    <string name="ward">奖励:</string>
+    <string name="complete">已完成</string>
+    <string name="incomplete">未完成</string>
+    <string name="uncomplete">您还未完成该任务，请继续努力</string>
+    <string name="mainiji">每日上线领取一次</string>
+    <string name="gamecount">游戏局数</string>
+    <string name="winbywincount">连赢次数</string>
+    <string name="wincount">赢牌局数</string>
+    <string name="maxwinward">单局最高收入</string>
+    <string name="getable">领取奖励</string>
+    <string name="listgetting">正在获取每日任务列表,请稍等...</string>
+    <string name="awardgetting">正在领取每日任务奖励,请稍等...</string>
+    <string name="daily_login_reward">每日登录奖励</string>
+    <string name="random">随机</string>
+    <string name="daily_login_first">每日登录第一次</string>
+
+    <!-- 等级描述 -->
+    <string name="gradedesc_titile">等级描述</string>
+    <string name="gradedesc_titile_01">内容</string>
+    <string name="gradedesc_01_q">等级经验计算规则 :</string>
+    <string name="gradedesc_01_w_01">获得方式\n
+        第一种：可通过玩牌获得，每局玩牌输牌时最低可获得3点经验，赢牌时可获得最高165点经验，
+        经验获得多少与牌桌上的人数多少、所在盲注场大小相关，人数越多，盲注场越高，可获得经验越高\n
+        第二种：可通过在线累积时间获得经验值，每天最高可获得435点经验值\n
+        第三种：可通过参加活动中心里各种运营活动获得                           
+    </string>
+    <string name="continuous_dayward">每日登录领奖</string>
+    <!-- 登录错误提示 -->
+    <string name="loginfail_0">对不起，登录失败！</string>
+    <string name="loginfail_2">对不起，您的账号已被禁用！</string>
+    <string name="loginfail_3">对不起，今日注册已达上限！</string>
+    <string name="loginfail_4">对不起，信息验证失败！</string>
+    <string name="loginfail_6">对不起，注册已暂时关闭！</string>
+    <string name="loginfail_7">对不起，您的设备今日注册达到上限！</string>
+    <string name="loginfail_8">对不起，您的IP今日注册达到上限！</string>
+    <string name="roomlist_quick_notify">如果你想降低牌局中的下注时间，更快速玩牌，可选择快速场。</string>
+    <!-- 上传头像的提示信息 -->
+    <string name="photowarn">尊敬的玩家：\n\u0020\u0020\u0020\u0020
+	     \u0020\u0020\u0020\u0020请确认您所上传的头像符合国家网络安全相关规定，如果涉黄或违背相关规定，责任将由个人承担，官方有权进行封号操作。</string>
+    <string name="phototip">选择头像后，请耐心等待“上传成功”提示</string>
+    <string name="uploadphoto_ok">头像上传成功</string>
+    <string name="uploadphoto_fail">头像上传失败</string>
+    <string name="prosecutphoto_ok">您的举报信息已成功提交，感谢您对游戏的支持 </string>
+    <string name="prosecutphoto_fail">亲爱的玩家：您今日的举报次数已达上限，请明日继续，感谢您对游戏的积极支持！</string>
+    <string name="protsecutphoto_timefail">您的举报过于频繁（间隔1分钟）</string>
+    <string name="photo_pick_err">操作失败</string>
+    <string name="yourturn">游戏中轮到您出牌了，请及时操作</string>
+    <!-- 后面添加的string -->
+    <string name="friend_addsuccess">添加牌友成功！请到互动接口确认！</string>
+    <string name="friend_addfail">添加牌友失败！</string>
+    <string name="friend_addlimit">很抱歉，牌友人数已达上限！</string>
+    <string name="friend_wantadd"> 想添加你为牌友，请选择</string>
+    <string name="get_goldbox">领取</string>
+    <string name="kick_cannot">不会</string>
+    <string name="kick_notice1"> 根据投票结果，玩家%1$s将</string>
+    <string name="kick_notice2">被请出房间</string>
+    <string name="kick_notice3"> 根据投票结果，本局结束您将%1$s被请出房间</string>
+    <string name="kick_notice4">你被请出该房间需要等待%1$d分钟才能进入该房间</string>
+    <string name="kick_notice5">使用 了投票踢人卡，请投出你宝贵的一票</string>
+    <string name="kick_notice6">对</string>
+    <string name="kick_fail_notice1">正在投票</string>
+    <string name="kick_fail_notice2">对方已经跑了</string>
+    <string name="kick_fail_notice3">人数不够最少大于总人数的一半</string>
+    <string name="kick_fail_notice4">操作失败</string>
+    <string name="kick_fail_notice5">不能踢自已</string>
+    <string name="show_result">显示结果</string>
+    <string name="relieve_money">您没达到使用救济卡的最低500游戏币要求</string>
+    <string name="relieve_getmoney">您已使用救济卡，得到一万游戏币的救助！下局更新</string>
+    <string name="facebook_notice1">正在获取facebook信息，请稍后...</string>
+    <string name="facebook_notice2">获取facebook信息失败，请稍后重试</string>
+    <string name="phh_medal_loading">正在加载成就信息，请稍等…</string>
+    <!-- Gree平台 start -->
+    <string name="loading">载入中</string>
+    <string name="loading_data">数据加载中…</string>
+    <string name="not_login">未登录</string>
+    <string name="friends">Friends</string>
+    <string name="everyone">Everyone</string>
+    <string name="all_data_loaded">数据加载完毕</string>
+    <string name="get_rankings_failed">获取排名失败</string>
+    <string name="gree_total">全部</string>
+    <string name="weekly">每周</string>
+    <string name="daily">每日</string>
+    <string name="my_score">我的得分:</string>
+    <string name="get_profile_score_fail">获取用户的高分失败</string>
+    <string name="set_new_score_button_text">设置新的高分</string>
+    <string name="set_new_score_popout_title">请设置新的高分..</string>
+    <string name="set_new_score_success">高分设置成功</string>
+    <string name="set_new_score_fail">高分设置失败</string>
+    <string name="set_new_score_cancel">高分设置取消</string>
+    <string name="sync_failed">Failed To Get Data</string>
+    <string name="load_profile_icon_failed">Load profile icon failed</string>
+    <string name="get_user_info_fail">获取用户信息失败</string>
+    <string name="buy_confirm">确认购买</string>
+    <string name="request_get_goods">购买成功，正在请求发货，请稍等…</string>
+    <!-- Gree平台 end -->
+    <string name="chip_in_notication">到您下注了</string>
+    <string name="login_verify_hint">看不清？点击图片换一张</string>
+    <string name="login_verify_input_hint">请输入答案</string>
+    <string name="login_verify_error_hint">对不起，验证码输入有误，请重新输入</string>
+    <string name="input_verify">请输入验证码</string>
+    <string name="commit">提交</string>
+    <string name="load_verify_image_fail">验证码加载失败，请检查网络是否连接</string>
+    <!-- 代码中硬编码 start -->
+    <string name="security_service_version">正在检测安全支付服务版本</string>
+    <string name="mddesc">完成：经理，CEO，百万富翁，仟万富翁，资本家，亿万富翁</string>
+    <string name="boyaa_texas_poker">博雅德州扑克</string>
+    <string name="choose_head_image">请选择头像</string>
+    <string name="run_game">运行游戏</string>
+    <string name="got_prize">已领取</string>
+    <string name="getting_prize">正在领奖</string>
+    <string name="fail_modify_message">修改信息失败，请稍后重试</string>
+    <string name="wait_modify_message">正在修改信息，请稍后...</string>
+    <string name="get_bankruptcy_prize_fail">获取破产奖励失败</string>
+    <string name="boyaa_game_desc">博雅德州扑克全称为texas hold\'em poker,中文简称德州扑克，是一种玩家对玩家的公共</string>
+    <string name="check_app_update">检测到有新的更新程序，是否立即更新？</string>
+    <string name="use_prop">使用道具</string>
+    <string name="share">分享</string>
+    <string name="share_success">分享成功</string>
+    <!-- 代码中硬编码 end -->
+    <string name="vip_outtime">您的VIP到期时间为：</string>
+    <string name="chip_autobuy">自动买入,永远不会失去您的座位!</string>
+    <string name="notOpen">暂未开放</string>
+
+    <!-- <string name="share_content">刚刚在Android博雅德州扑克（中文版）里以一手${typename}牌型赢得了奖池中的${chips}游戏币，感觉真的很不错，立刻免费下载吧！\nAndroid:</string> -->
+
+    <string name="please_choose">你需要先下载此应用，请选择</string>
+    <string name="golden_coin">游戏币</string>
+    <string name="match_sitdown_9">持有游戏币：</string>
+    <string name="continuous_explain">连续登录可获更多游戏币</string>
+    <string name="got_gold_coin">获得游戏币</string>
+    <string name="push_message8">哇啊，又领到了这么多游戏币，赶快回去收起来</string>
+    <string name="push_message10">在你离开期间，系统发游戏币啦，快去账户查看吧</string>
+    <string name="push_message11">天上掉游戏币了，快点来领吧，再不领我们就收走啦</string>
+    <!-- Version1.9 新增 添加在此 -->
+    <string name="interactive_msg1">#对#狠狠的丢了个臭鸡蛋</string>
+    <string name="interactive_msg2">#对#奋力的丢了个高爆手雷</string>
+    <string name="interactive_msg3">#对#优雅的抛了个真心玫瑰</string>
+    <string name="interactive_msg4">#向#表示合作愉快</string>
+    <string name="interactive_msg5">#敬了#一杯冰镇啤酒</string>
+    <string name="interactive_msg6">#对#奋力丢了个烂西红柿</string>
+    <string name="noInteractive">您未购买互动道具，需前往道具商城购买才能使用！</string>
+    <string name="useInter_fail">使用互动道具失败！</string>
+    <string name="useInter_error_1">很抱歉，坐下之后您才能使用互动道具！</string>
+    <string name="useInter_error_2">不能对自己使用互动道具！</string>
+    <string name="box_warning">再过*钟就能领取奖励了，继续加油！</string>
+    <string name="box_warning_hour">小时</string>
+    <string name="box_warning_min">分</string>
+    <string name="box_warning_sec">秒</string>
+    <string name="game_type">联网游戏</string>
+    <string name="try_again">请重试</string>
+    <string name="login_help_info1">博雅德州扑克 Android#(由深圳市东方博雅科技有限公司开发)</string>
+    <string name="login_help_info2">意见邮箱：</string>
+    <string name="up_email">申诉邮箱：</string>
+    <string name="cardfriend_loading">载入中...</string>
+    <string name="cardfriend_no_more">没有更多了!</string>
+    <string name="company_name">博雅互动</string>
+    <string name="int_using_last">剩余次数：</string>
+    <string name="not_checkoutpay">对不起,您的手机暂不支持checkout支付!</string>
+    <string name="sorry_checkoutpay">对不起,您所在地区不支持checkout支付!</string>
+
+    <!-- 2.0需求 添加在此 -->
+    <string name="cardfriend_footclick">点击载入更多</string>
+    <string name="progress_new">进 度</string>
+    <string name="interact">互动</string>
+    <string name="paiyou_act">牌友动态</string>
+    <string name="game_count">已玩局数：</string>
+    <string name="send_gifs">赠送神秘礼物</string>
+    <string name="receive_gifs">接收礼物</string>
+    <string name="back_gifs">回赠礼物</string>
+    <string name="had_send">已赠送</string>
+    <string name="had_send_back">已回赠</string>
+    <string name="sendmoney_info">正在请求服务器赠送神秘礼物，请稍后...</string>
+    <string name="get_gifs_text">正在接收神秘礼物，请稍后...</string>
+    <string name="sendmoney_info_no">您的牌友所玩版本不支持接收免费神秘礼物!</string>
+    <string name="sendmoney_info_success">赠送神秘礼物成功!</string>
+    <string name="del_info_conf">确定要删除该记录吗？</string>
+    <string name="get_gifs_info">收到了#个赠送游戏币</string>
+    <string name="match_help1">游戏开始时需扣除固定数额的游戏币作为奖池。开始后系统给每位玩家1000个游戏币。</string>
+    <string name="match_help2">比赛开始前站起或离开房间，不会扣除参赛费。</string>
+    <string name="match_help3">每桌需坐满9位玩家，比赛正式开始（中途不能加入比赛）。</string>
+    <string name="match_help4">盲注每5分钟增加一次。中途站起或返回大厅视为放弃比赛，游戏币及参赛费不再返还。</string>
+    <string name="match_help5" formatted="false">比赛采用淘汰制，游戏币输光即离开比赛。最后离开比赛的三位玩家分别获得总奖池的50%、30%、20%。</string>
+    <string name="match_helptitle">淘汰赛帮助</string>
+    <string name="match_help_notice1">点击这里可以进行排序</string>
+    <string name="match_help_notice2">想要快速找到座位，建议隐藏进行中的房间</string>
+    <string name="match_help_notice3">想要快速开始比赛，建议隐藏空房间</string>
+    <string name="match_help_notice4">查看淘汰赛说明，了解比赛规则</string>
+    <string name="halllist_help_notice2">想要快速找到座位，建议隐藏人满房间</string>
+    <string name="halllist_help_notice3">想要快速开始游戏，建议隐藏空房间</string>
+    <string name="halllist_help_notice4">快速场的等待时间只有普通场的一半哦</string>
+    <string name="game_help_notice">及时进行牌型大小比较</string>
+    <string name="youxibi">游戏币</string>
+    <string name="understand_play">我了解玩法</string>
+    <string name="photo_choose">请选择头像</string>
+    <string name="photo_photos">本地相册</string>
+    <string name="photo_camera">手机拍照</string>
+    <string name="photo_cancel">取消</string>
+    <string name="vip_flag">VIP会员专属标志，成为会员立即拥有</string>
+    <string name="vip_time_to">您的VIP将于#过期</string>
+    <string name="weibo_cancel">今天不再提示</string>
+    <string name="push_message1">闲暇时不如来玩博雅德州扑克，免费游戏币天天领！</string>
+    <string name="push_message2">你快回来，一个人始终玩不来，你快回来！德州扑克有你才精彩.</string>
+    <string name="push_message3">上博雅德州扑克玩一玩，睡觉就是香。今天你玩了么？</string>
+    <string name="push_message4">快回来呀，你有看到那些闪闪发光的免费游戏币么？！</string>
+    <string name="push_message5">快看，这些玩家看起来值得一战！快来打败他们吧！</string>
+    <string name="push_message6">我才不会告诉你，这里有很多美女在打德州！</string>
+    <string name="push_message7">好多天没见你来玩德州扑克了，人家好想你</string>
+    <string name="push_message9">我的眼睛亮瞎了，那闪闪发光的游戏币啊！</string>
+    <string name="push_message12">屌丝变富翁，尽在博雅德州扑克</string>
+    <string name="push_message13">博雅魅力女郎温馨提示您快去领奖了！</string>
+
+    <!-- 排行榜BillBoard -->
+    <string name="billboard_title">排行榜</string>
+    <string name="billboard_daily">今日排行</string>
+    <string name="billboard_total">生涯排行</string>
+    <string name="achievement_title">成就</string>
+    <string name="billboard_amongfriend">好友排行</string>
+    <string name="billboard_nationwide">全国排行</string>
+    <string name="fetching_billboards">正在拉取排行榜信息&#8230;</string>
+    <string name="loading_billboards">正在加载排行榜信息&#8230;</string>
+    <string name="king_of_gamblers_board">赌神排行榜</string>
+    <string name="chip_board_desc">玩家总资产</string>
+    <string name="best_winner_board_desc">单局赢取游戏币数</string>
+    <string name="king_of_gamblers_board_desc">当日赢牌局数</string>
+    <string name="not_decodable_board">无法解析的排行榜</string>
+    <string name="not_decodable_board_desc">服务器数据错误</string>
+    <string name="rank_friendwide">我的好友排名: </string>
+    <string name="rank_nationwide">我的全国排名: </string>
+    <string name="not_in_the_rinking">未进排行榜</string>
+    <string name="my_place">我的排名: </string>
+    <string name="congratulations_to_champion">你已经荣登榜首了, 真棒!</string>
+    <string name="distance_from_ranking">距离第${rank}名还有</string>
+    <string name="distance_from_previous">距离前一名还有</string>
+    <string name="suffix_of_distance">, 加了个油!</string>
+    <string name="not_in_board">对不起, 你还不在排行榜中!</string>
+    <string name="share_via_weibo">微博分享</string>
+    <string name="share_via_weixin">微信分享</string>
+    <string name="share_via_fb">FB分享</string>
+    <string name="achievement_hand">牌型成就</string>
+    <string name="achievement_chip">资产成就</string>
+    <string name="achievement_overall">综合成就</string>
+    <string name="no_friends_in_board">没有牌友进入此排行榜哦!</string>
+    <string name="no_victory_today">您今天还没有赢牌哦!</string>
+    <!-- End of Billboard -->
+
+    <string name="tutorial_processnotice">目前您已经完成了%1$s您确定退出新手教程吗?</string>
+    <string name="checkout_title">储值中心支付</string>
+    <string name="checkout_youxibi">游戏币购买</string>
+    <string name="checkout_boyaabi">博雅币购买</string>
+    <string name="rule01">Welcome！只需7步，立即可掌握德州扑克的玩法 </string>
+    <string name="rule02">游戏开始时，每个玩家可以得到两张手牌（只有自己可见）</string>
+    <string name="rule03">桌面上会分三轮发出5张公共牌（所有玩家可见），每一轮发牌前你都可以选择加注、不加注、放弃 </string>
+    <string name="rule04">当最后一轮加注结束时，玩家亮出自己的手牌，与公共牌组合成五张最好的牌进行比较</string>
+    <string name="rule05">例如现在你能组合成最好的牌型是顺子，6 7 8 9 10</string>
+    <string name="rule06">玩家Fiona能组合的最好牌型是三条 8 8 8 10 A</string>
+    <string name="rule07">玩家Bruce能组合的最好牌型是两对 10 10 A A 9</string>
+    <string name="rule08">因为顺子大过三条，三条大过两对，所以这一轮获胜的是得到顺子的你！</string>
+    <string name="rule09">恭喜你已经掌握了德州扑克的基本玩法，系统赠送你0游戏币，现在开始你的德州竞技之旅吧，希望你好运连连！</string>
+    <string name="dailyward_running">进行中</string>
+    <string name="nickname_no_char">昵称不允许包含{\u0026,\u003f,\u0027,\u0022}这些字符,请修改.</string>
+    <string name="manual_pay">订单管理</string>
+    <string name="manual_submit">自动发货</string>
+    <string name="user_order_id">订单ID</string>
+    <string name="trade_no">交易号</string>
+    <string name="manual_order_success">成功</string>
+    <string name="manual_order_err">错误，请与客服联系！</string>
+    <string name="get_gifs_errornotice">今日接受游戏币已达上限或者礼物已过期</string>
+
+    <!-- 2.0.5 -->
+    <string name="choose_pay_type">请选择支付方式</string>
+    <string name="login_text_qq">QQ账号登录</string>
+    <string name="login_failed">登录失败</string>
+    <string name="market_buy_success_delay">支付成功，系统将在一分钟后发货</string>
+
+    <!-- 2.1需求 添加在此 ，多语言粘贴出现已定义冲突时，保留此处的，删除之前的 -->
+    <string name="friend_delnotify">是否将牌友 %1$s 删除？删除后将无法找回，请谨慎操作。</string>
+    <string name="stand_confirm_game">坐累了，起来旁观一下？您已下注的游戏币将被全部扣除！</string>
+    <string name="stand_confirm">坐累了，起来旁观一下？</string>
+    <string name="room_logout_to_interact">您将离开房间回到互动</string>
+    <string name="room_logout_to_interact2">您将离开房间回到互动，离开后您已下注的游戏币将被全部扣除！</string>
+    <string name="room_logout_to_paihang">您将离开房间回到排行榜</string>
+    <string name="room_logout_to_paihang2">您将离开房间回到排行榜，离开后您已下注的游戏币将被全部扣除！</string>
+    <string name="room_logout_confirm">您将离开房间回到大厅，离开后您已下注的游戏币将被全部扣除！</string>
+    <string name="room_logout_to_halllist">您将离开房间回到房间列表</string>
+    <string name="room_logout_confirm_nonseat">您将离开房间回到大厅</string>
+    <string name="room_logout_to_halllist_confirm">您将离开房间回到房间列表，离开后您已下注的游戏币将被全部扣除！</string>
+    <string name="match_logout_to_halllist">您将退出淘汰赛，离开后不会扣除您的参赛费</string>
+    <string name="room_logout_confirm_match">您将退出淘汰赛，离开后您的参赛费将被扣除！</string>
+    <string name="room_money_less3">很抱歉，您的游戏币不足。您可以移步低盲注房间。</string>
+    <string name="nine_peo">9人场</string>
+    <string name="six_peo">6人场</string>
+    <string name="agree">接受</string>
+    <string name="ignore">忽略</string>
+    <string name="go_on_match">继续比赛</string>
+    <string name="go_away">离开</string>
+    <string name="go_on_wait">继续等待</string>
+    <string name="go_on_play">继续玩牌</string>
+    <string name="go_on_look">继续旁观</string>
+    <string name="back_to_interact">返回至互动</string>
+    <string name="back_to_paihang">返回至排行榜</string>
+    <string name="exit_knockout">您将退出淘汰赛</string>
+    <string name="hall_faq">回馈</string>
+    <!-- 多语言需要搜索 金币 ，筹码  然后替换为 游戏币 -->
+    <string name="room_menu_set">游戏设置</string>
+    <string name="room_menu_up">站起旁观</string>
+    <string name="share_via_weibo_statue_login">最新博雅德州扑克Android2.0版本新鲜出炉：新版排行榜强势推出，与你的好友一比高下吧！全新的互动接口，可以给好友赠送神秘礼物哦！下载连结：http://t.cn/zWyJErF</string>
+    <string name="weixin_not_available">您还没有安装微信, 或微信版本过低!</string>
+    <string name="tuosong_set">接收推送</string>
+    <string name="tuosong_set_warn">开启推送每天都可以领取奖励哦</string>
+    <!-- 2.1需求文字 -->
+    <string name="home_index_wrong">请看一下小提示，再选一次吧</string>
+    <string name="home_index_right">恭喜你答对了，开启你的竞技之旅吧</string>
+    <string name="room_hint_1">操作提示已开启</string>
+    <string name="room_hint_2">再次点击可关闭</string>
+    <string name="room_hint_3">操作提示已关闭</string>
+    <string name="room_hint_4">再次点击可开启</string>
+    <string name="room_hint_01">如果没有玩家加注，轮到你时自动进行看牌；如果有玩家加注，轮到你时自动进行弃牌</string>
+    <string name="room_hint_02">如果没有玩家加注，轮到你时自动进行看牌；如果有玩家加注，轮到你时需要重新进行操作</string>
+    <string name="room_hint_03">轮到你时同意下注%1$s筹码，若有玩家加更高注，需要重新进行操作</string>
+    <string name="room_hint_04">轮到你时同意下注任何筹码，直到ALL IN</string>
+    <string name="room_hint_05">你将退出当前这一局游戏，之前下注的筹码不能拿回。</string>
+    <string name="room_hint_06">你同意在不加注的情况下看下一张牌</string>
+    <string name="room_hint_07">点击按钮，移动滑块增加你想下注的筹码数。</string>
+    <string name="room_hint_08">同意跟注%1$s筹码</string>
+    <string name="room_hint_09">同意下注你的所有筹码</string>
+    <string name="interact_delete_record">正在删除该记录</string>
+
+    <!-- 分享功能中的台词 -->
+    <string name="share_hand_weibo_message">刚刚在博雅德州扑克游戏中${user_name}$[with_who]以一手 ${hand_type}牌型赢取了奖池中${chips}筹码！感觉真的很不错，立刻免费下载吧！\nAndroid: ${link}</string>
+    <string name="share_hand_weibo_with">与${other_users}同桌pk，</string>
+    <!-- 此句将可能会替换前一句中的  $[with_who] -->
+    <string name="share_popup_content">恭喜您获得了${typename},赢得了大笔游戏币赶快和你的好友分享吧！！</string>
+    <string name="share_dailyward">我已经在${top_word}中领取到了连续登录${day}天的奖励${chips}游戏币,大家也一起来玩吧！下载连结：${link}</string>
+    <string name="match_result_share">触摸屏幕分享荣誉</string>
+    <string name="share_match_result">刚刚在得克萨斯扑克淘汰赛中${user_name}最终获得了第${rank}名，赢得${chips}游戏币，是不是很给力！开始游戏：${link}</string>
+    <string name="share_template">我在博雅德州扑克中${which_board}排名第${rank}！来和我一起玩吧!开始游戏：${link}</string>
+    <!-- End of 分享功能 -->
+    <string name="wait_for_goods">正在发货，请稍等</string>
+
+    <!-- 进入房间loading的时候随机显示文字 -->
+    <string-array name="loading_tips">
+        <item>点击房间左上角，可以切换至竖屏模式！</item>
+        <item>玩荣誉淘汰赛，丰厚奖品等你来换！</item>
+        <item>房间列表支持手势滑动了，赶紧去试试吧！</item>
+        <item>开启自动买入功能，无需等待快速游戏！</item>
+    </string-array>
+
+    <!-- 2.1版本 -->
+    <!-- 等待状态tips轮播文字 start -->
+    <string-array name="wait_tips" formatted="false">
+        <item>每个玩家在牌局开始的时候都会发得两张面朝下的底牌。</item>
+        <item>每个玩家在轮到叫注的时候都有五个选择：押注、跟注、看牌、加注或弃牌。</item>
+        <item>台面上必须有“盲注”,这是对玩家强制性的押注,为的是确保“底池”至少有个数。</item>
+        <item>德州扑克与“梭哈”不同的是，每个玩家只分得两张牌，称之为“底牌”。</item>
+        <item>每一圈押注的顺序决定于庄家“按钮”的位置。</item>
+        <item>第一圈押注称为“前翻牌圈”或者“底牌圈”。</item>
+        <item>底牌圈过后是“翻牌圈”，即在同时发出三张公共牌以后进行。</item>
+        <item>接下来是“转牌圈”，在第四张公共牌发出以后进行。</item>
+        <item>五张公共牌都出现的押注圈就是“河牌圈”。</item>
+        <item>在德州扑克里，四种花色不分大小。</item>
+        <item>高牌:五张牌没有上面任何一种情况，其大小由面值最大的牌决定。</item>
+        <item>一对:一对牌加三张散牌(比如: 一对7加一张4，一张10，一张Q)。</item>
+        <item>两对:两对不同的牌加一张散牌(比如.一对Q，一对5加一张10)。</item>
+        <item>三条:五张牌里有三张同号牌另外两张为散牌(比如三张3加一张5一张Q)。</item>
+        <item>A，2，3，4，5 这五张牌属于最小的顺子。</item>
+        <item>顺子:五张牌相连但不同花(比如: 7 , 8 , 9 , 10 , J 五张牌但不是同一花色)。</item>
+        <item>同花:五张牌同一花色但并不连牌(比如: 4, 5, 7, 10, K五张牌全是黑桃)。</item>
+        <item>葫芦：三张同号牌加一对同号牌(比如: 3张10加一对6，三张K加一对5等)。</item>
+        <item>四条：四张同样的牌(比如: 四张8或四张Q)。</item>
+        <item>同花顺:五张牌既是顺子又是同花(比如8,9,10,J,Q 五张牌全是黑桃)。</item>
+        <item>德州扑克使用52张扑克牌，没有王牌。</item>
+        <item>盲注只在牌局开始的时候押。</item>
+        <item>每局后庄家位置下移一位，大小盲注也相应移动。</item>
+        <item>开始游戏前先定庄家（就是按顺序最后下注的）位置。</item>
+        <item>比牌不分花色，从大到小比牌。</item>
+        <item>皇家同花顺>同花顺>四条>葫芦>同花>顺子>三条>两对>一对>高牌</item>
+        <item>一旦有人全押，本轮其他玩家就要选择是否跟注，或者放弃。</item>
+        <item>加注：抬高注额，下一个人想要继续参与游戏就得押上和众人一样高的注额，否则弃牌。</item>
+        <item>每一个押注圈在大家都“跟注”至同等的注额时结束，并进入另一圈押注。</item>
+        <item>跟注Call：押下和本轮上个玩家一样多的注额。</item>
+        <item>在一圈里尚未有人押上筹码的时候押上筹码称之为“下注”。</item>
+        <item>放弃Fold：弃牌，同时放弃本局之前所下的筹码。</item>
+        <item>每圈押注由庄家左侧的玩家开始顺时针押注，坐庄的玩家当然就是最后一个下注的人。</item>
+        <item>庄家的位置决定发牌前谁下盲注。</item>
+        <item>赌注总额：一局牌台面上已经下的全部赌注。</item>
+        <item>庄家总是最后一个叫注。</item>
+        <item>庄家按钮是顺时针轮流持有的标志。</item>
+        <item>庄家的位置是较为有利的，因为他可以在参考众人的决定后才想出应对策略。</item>
+        <item>底牌是发到你手里的两张牌（只有自己可以看到）。</item>
+        <item>翻牌是就是指最初的3张公共牌。</item>
+        <item>转牌是德州扑克中发的第四张公共牌。</item>
+        <item>河牌是在德州扑克中发第5张公共牌即最后一张公共牌。</item>
+        <item>全下即（All In）指的是把剩下的所有筹码一次全部压上。</item>
+        <item>庄家左侧两个玩家由于没有看到自己的牌，但必须投注，故称为盲注。</item>
+        <item>小盲注是庄家左侧第一个玩家，投的数额是最小下注额的一半。</item>
+        <item>大盲注是庄家左侧第二个玩家，需要投的数额与最小下注额相等。</item>
+        <item>皇家同花顺是最大的！如:10,J,Q,K,A 要求同样花色。</item>
+        <item>你知道么,庄家右手边第二个玩家就是大盲注。</item>
+        <item>新手建议只玩AA、KK、QQ、JJ、AK、AQ、AJ等那种比较大的手牌。</item>
+        <item>拿到高牌的概率为1/2</item>
+        <item>拿到一对的概率为1/3</item>
+        <item>拿到两对的概率为1/21</item>
+        <item>拿到三条的概率为1/47</item>
+        <item>拿到顺子的概率为1/254</item>
+        <item>拿到同花的概率为1/508</item>
+        <item>拿到葫芦的概率为1/694</item>
+        <item>拿到四条的概率为1/4165</item>
+        <item>拿到同花顺的概率为1/72193</item>
+        <item>拿到皇家同花顺的概率为1/649740</item>
+        <item>输钱是从赢钱开始的。</item>
+        <item>不要惧怕任何人,更不要小视任何人。</item>
+        <item>打牌要打出气势 没有胆量就没有产量。</item>
+        <item>虽然保守不一定是最好的战略，但冲动只会让你结束得更快。</item>
+        <item>宁可忍让一时 切莫冲动一次。</item>
+        <item>all in 吧，下一个出局的就是你。</item>
+        <item>人生不如意之事十之八九，牌局也是一样，没有一番风顺的！</item>
+        <item>任何时候都要保持清醒的头脑和平和的心态。</item>
+        <item>不要看人家有多少钱，要看自己有什么牌。</item>
+        <item>德州扑克制胜格言：冷静的头脑加出众的判断。</item>
+        <item>风水不好时,换个位置。</item>
+        <item>忍是为了下一次all in。</item>
+        <item>机会面前人人平等，等赢了再说这句话也不迟。</item>
+        <item>别指望狗屎运能给你带来胜利。</item>
+        <item>冲动不是魔鬼，犹豫才是。</item>
+        <item>别说60%，即使有95%的机会赢，我也不会在公共牌还没发出来就ALL IN。</item>
+        <item>德州扑克的最大悬念是河牌？不，是你的心态！</item>
+        <item>把游戏币当作是自己的私房钱，你还会随便ALL IN吗？</item>
+        <item>拿到一副烂牌不要抱怨，你要想我只是下底要省下多少游戏币。</item>
+        <item>打牌要打出拳手的风范，进可攻，退可守。</item>
+        <item>每个牌局都好似人生,该出手时就要出手,不要错过机会而感到后悔。</item>
+        <item>断臂虽然痛苦但能让你生存。</item>
+        <item>心态起决定性作用。</item>
+        <item>冷静，冷静---还是冷静。</item>
+        <item>定力和眼力是德州扑克的两大法宝。</item>
+        <item>人生就像一场牌局，开局都一样！过程却大不相同，把握机遇，让生活更精彩！</item>
+        <item>勇敢的加注吧，你会发现对手的牌并不象想象中那么可怕。</item>
+        <item>应该懂得在什么时候放弃。</item>
+        <item>有时输钱是一种赢钱的策略，扮猪吃虎有时很有效果。</item>
+        <item>你不能控制输赢，但可以控制输赢的多少 ！</item>
+        <item>将30万分成20把输给你的对手,然后用一把的时间赢回1000万。</item>
+        <item>攻击,不断的攻击，一名优秀的德州扑克选手，必然是善于玩弄别人心理的。</item>
+        <item>牌不分大小！赢了就叫好牌！赌的不是运气！赢的是你智慧！</item>
+        <item>冲动是魔鬼，心态好，运气自然来！</item>
+        <item>识时务，明事理，知进退。德州扑克何尝不是这样啊。</item>
+        <item>德州桌上最重要的是什么——河牌啊！</item>
+        <item>帮你赢钱的都是些普通的牌，起手的好牌负责送你下地狱。</item>
+        <item>做人要厚道，玩牌切务贪，无妄无想才是正道。</item>
+        <item>尊重自己，尊重别人是长久胜利的口粮。</item>
+        <item>做一个绅士，即使输掉所有筹码但仍然可以向对手致敬。</item>
+        <item>做一个绅士，赢掉对方所有的筹码然后再礼貌的对他说其实自己运气好而已。</item>
+        <item>扑克也是哲学，舍得——舍就是得，要勇于舍得！</item>
+        <item>当运气的大门向你关闭的时候，用你的技术从窗户爬进去。</item>
+        <item>德州永远是勇敢人的游戏，只有不断的冲，你才能获得一个又一个胜利！</item>
+        <item>输赢不是问题，要的是瞬间的感觉，即使要离开那也是上帝的安排。</item>
+        <item>神奇河牌的故事每天都在继续！</item>
+        <item>如果你在三十分钟还找不到桌子上的鱼，那么你就是那条鱼。——电影《赌王之王》</item>
+        <item>不会从失败中找寻教训的人；他们的成功之路是遥远的。 ——拿破仑</item>
+        <item>一个人的失败,是他自己的直接结果。 ——詹姆斯.艾伦</item>
+        <item>拼命去争取成功，但不要期望一定会成功。——法拉第</item>
+        <item>游戏有它的规则，遵守规则是一个牌手最基本的要求。</item>
+        <item>当你玩牌的时候，千万不要数钱，胜负决出后，你有足够的时间计算自己的输赢。</item>
+        <item>无奈的放弃总好过一无所有。</item>
+        <item>等待也是一种幸福，因为运气不知何时就会降临,只要你还活着。</item>
+        <item>人生就像打牌，不要在意抓到多好的牌，关键是怎样打好一手烂牌！</item>
+        <item>保持住最适合自己的风格，一次失败就患得患失，将是自己最大的敌人。</item>
+        <item>人生就像赌博，洗牌的是上天，但是玩牌的是自己。</item>
+        <item>去赢下该赢的，别去输不该输的。</item>
+        <item>有时需有胆量方可成赢家。</item>
+        <item>凡完美之人有如下特征：趣味高雅，才智精纯，意志明晰，判断老练。</item>
+        <item>没有一种胜利比战胜自己及自己的冲动情绪更伟大。</item>
+        <item>交朋结友有助于博学多闻，要乐于和悟性高的人一起相处。</item>
+        <item>先知他人别有所图的心思，再伺机行事 。</item>
+        <item>扑克也是哲学，舍得——舍就是得，要勇于舍得！</item>
+        <item>尊重自己，尊重别人是长久胜利的口粮。</item>
+        <item>人生就像打牌，不要在意抓到多好的牌，关键是怎样打好一手烂牌！</item>
+        <item>人生就像赌博，洗牌的是上天，但是玩牌的是自己。</item>
+        <item>去赢下该赢的，别去输不该输的，把运气让给别人！</item>
+        <item>不要总花费筹码去看公共牌，放弃也是一种赢取。</item>
+        <item>通过最后一张公共牌获得同花的概率约为20%，而不是25%。</item>
+    </string-array>
+    <!-- 等待状态tips轮播文字 end -->
+    <string name="watch">旁观</string>
+    <string name="help_content_11">1、基本玩法</string>
+    <string name="help_content_12">用手中的两张底牌加上桌面上的五张公共牌，选出最大的一手五张牌来比拼胜负。</string>
+    <string name="help_content_21">2、牌型比较</string>
+    <string name="help_content_22">比牌不分花色，从大到小比牌（如：都有一对，对子大的胜出；对子相同，则比单张牌更大的胜出）。若依次比完双方大小相同，则平分奖池内的筹码。</string>
+    <string name="help_content_23">皇家同花顺>同花顺>四条>葫芦>同花>顺子>三条>两对>一对>高牌</string>
+    <string name="help_content_31">3、奖池分配</string>
+    <string name="help_content_32">每一成手牌必定由五张牌组成。如果两个玩家的主牌型相同，比如同样有一对“A”，则比较主牌型下其他牌的大小。较大者胜出。</string>
+    <string name="help_content_33">奖池：指玩家在牌局中对本局牌所下的筹码的总计。</string>
+    <string name="help_content_34">参与奖池：指该玩家在该奖池中投入了筹码。</string>
+    <string name="help_content_35">主池和边池：在每个牌局中，奖池有可能分级，当只有一个人all in时，主池由all in全下的玩家和其他玩家下注组成，边池由超出all in玩家下注的筹码部分组成。在几个玩家all in时，可以建立多个边池。</string>
+    <string name="help_content_36">分配原则：</string>
+    <string name="help_content_37">a．只有参与了该奖池玩家方有资格参与奖池分配。</string>
+    <string name="help_content_38">b．每个奖池中只有最大牌型者能够获胜。其余玩家均无法获得筹码；</string>
+    <string name="help_content_39">c．分配是从最后边池开始，根据边池构成的时间依次发放。</string>
+    <string name="help_content_41">4、账号信息</string>
+    <string name="help_content_51">5、联系我们</string>
+    <string name="help_content_52">回馈邮箱：</string>
+    <string name="chip_board">富豪排行榜</string>
+    <string name="best_winner_board">大赢家排行榜</string>
+    <string name="php_loading_market">正在加载商品信息，请稍等...</string>
+    <string name="guide_title1">勇敢者的游戏，玩的不只是运气</string>
+    <string name="guide_title2">用手中的两张牌加上桌面上的五张公共牌，选出最大的一手${5}张牌来比拼胜负</string>
+    <string name="guide_tips">小提示 : 同花>顺子</string>
+    <string name="guide_win">谁将获得最终胜利？</string>
+    <string name="image_view_loading">图片加载中...</string>
+    <!-- 2.2版本文字 -->
+    <string name="pay_type_sms_confirm_text">点击确定即发送短信进行购买\n%1$s\n资费：%2$s元/次(不含通信费)</string>
+    <string name="pay_type_sms_send_success">购买短信发送成功，即将为您扣款并发货，成功后你将收到扣款短信息</string>
+    <string name="pay_type_sms_send_fail">购买短信发送失败，请重试</string>
+    <string name="pay_checkout_hint">有订单正在处理，请稍后再购买</string>
+    <string name="have_no_gifs">快去给你的牌友赠送筹码吧，他们也会回赠给你哟</string>
+
+    <!-- 关于 -->
+    <string name="about_info">　　  《德州扑克Android版服务协议》（以下简称“本协议”）是使用者您与深圳市东方博雅科技有限公司（以下简称“东方博雅”）之间关于使用博雅德州扑克Android版所订立的协定。博雅德州扑克是竞技类棋牌游戏，在您使用本游戏前请您审慎阅读、充分理解本协议各条款内容，特别是免除或者限制责任的条款，您使用东方博雅的服务即视为您已阅读并同意本协议的约束。如果您未满18周岁，请在法定监护人的陪同下阅读本协议，并特别注意未成年人使用条款。除非您同意并接受本协议中的所有条款，否则您无权接收、下载、安装、启动、升级、登录、显示、运行、截屏游戏，亦无权使用该游戏软件的某项功能、某一部分或者以其他的方式使用该游戏软件。您接收、下载、安装、启动、升级、登录、显示、运行、截屏游戏，或者使用该游戏软件的某项功能、某一部分或者以其他的方式使用该游戏软件的行为，即视为您同意并接受本协议所有条款的约束。\n
+
+    1、“博雅德州扑克Android版”应用于Android1.6及以上版本,如在其它品牌或者型号上使用本软件，对于出现的任何问题东方博雅不承担责任。本软件是由东方博雅开发，非经博雅或博雅授权开发并正式发布的其它任何由本软件衍生的软件均属非法。\n
+    2、下载安装和使用此类非法软件，将可能导致不可预知的风险，由此产生的一些法律责任与纠纷一概与东方博雅无关。对于任何因为使用破解越狱而导致的被盗号、无法登陆等问题，东方博雅不承担责任。\n
+    3、您不得进行任何侵犯“博雅德州扑克Android版”或其软件要素作品的知识产权的行为，或者进行其他的有损于东方博雅或其他玩家合法权益的行为，这些行为包括但不限于：\n
+　　 （1）进行任何破坏游戏公平性或者其他影响游戏正常秩序的行为，如主动或被动刷分、刷币、导币、合伙作弊、使用游戏外挂或者其他的作弊软件、利用BUG（又叫“漏洞”或者“缺陷”）来获得不正当的非法利益，或者利用互联网或其他方式将游戏外挂、作弊软件、BUG公之于众；\n
+        （2）进行任何诸如发布广告、销售商品的商业行为，或者进行任何非法的侵害东方博雅利益的行为，如倒卖BYCARD卡（即博雅币）、外挂、游戏币、游戏道具、游戏装备等行为；\n
+        （3）发表、转发、传播含有谩骂、诅咒、诋毁、攻击、诽谤东方博雅和/或第三方内容的，或者含有封建迷信、淫秽、色情、下流、恐怖、暴力、凶杀、赌博、反动、扇动民族仇恨、危害祖国统一、颠覆国家政权等让人反感、厌恶的内容的非法言论，或者设置含有上述内容的头像、网名、游戏角色名；\n 
+        （4）利用“博雅德州扑克”故意传播恶意软件或计算机病毒，或者利用“博雅德州扑克”发表、转发、传播侵犯协力广告商知识产权、肖像权、姓名权、名誉权、隐私或其他合法权益的文字、图片、照片、程序、视频或动画等数据，发布假冒“博雅德州扑克”官方网站网址或连结。\n
+    4、东方博雅有权采取技术和法律措施防止您从事第3条相关行为，如果您违反约定从事第3条的行为，东方博雅有权根据情节严重程度对您给予如下惩处措施：\n
+        （1）暂时封号，即暂时封停您的游戏账号，使之在封停期限内不能登陆博雅德州扑克游戏；\n
+        （2）删除赃物，即永久性地、不可撤销地将您非法获取的游戏币、游戏道具等游戏物品删除，或者将其返还给原来的通过合法途径取得其使用权的其他用户；\n
+        （3）清零，即永久性地、不可撤销地将您非法获取的积分、等级和/或荣誉取消或清零。\n
+        （4）删除广告、非法言论、虚假、不良信息，即永久性地、不可撤销地将您发布的广告、虚假信息或者非法言论删除，或者采取其他的阻止其传播的措施；\n
+        （5）清空数据，永久性地、不可撤销地删除您当前使用的游戏账号项下的某一游戏角色及依附于该游戏角色的所有游戏币、游戏道具、积分、等级荣誉等数据以及相应的游戏数据；\n           
+        （6）永久封号，即永久性地、不可撤销地禁止您凭借在当前使用的账号登陆博雅德州扑克游戏，并删除、清空该账号在博雅德州扑克游戏当中产生的所有游戏数据、游戏币、游戏道具等数据；\n
+        （7）其他措施，即采取上列措施之外的其他的措施。\n
+    5、如果您违反约定从事第3条的行为，相关国家机关或机构可能会对您提起诉讼、罚款或采取其他制裁措施，并要求东方博雅给予协助。如因您的行为导致任何第三方损害的，您应当独立承担责任；东方博雅因此遭受损失的，您也应当一并赔偿。\n
+    6、东方博雅为您提供了诸如“商城”的获得游戏币、游戏道具、游戏装备等游戏物品的途径，您可以从东方博雅提供的这些途径获得上述游戏物品。东方博雅不提倡您通过购买、接受赠与或者其他的方式从第三方获得上述游戏物品，尤其是第三方开设的电子网络交易平台网站。因为从第三方获得的上述游戏物品可能是盗号分子盗窃得来的赃物或者存在其他的权利瑕疵，受害者可能会通过各种手段要求索回。则您自身的损失应自行承担。\n 
+    7、如东方博雅对外正式发布博雅德州扑克升级版本（又称“公测”）之前或之后发布一些供用户体验、测试并回馈意见的软件测试版本。东方博雅将会在认为其已经完成使命的时候将该版本之服务器软件从服务器上删除，或者用新的软件版本将其替换掉。一经删除或者替换：\n 
+        （1）您将不能继续登录、使用该版本；\n
+        （2）您在体验、测试过程中产生的游戏数据将会被永久性删除；\n
+        （3）您在体验、测试过程中取得的游戏币、游戏道具、游戏装备、积分、等级或者荣誉等将会被永久性删除，您将永远不能在博雅德州扑克游戏使用这些数据，即便是您使用同一个游戏账号登录、使用该软件的其他的版本，亦是如此。 \n
+         上述类型的软件测试版本，一般都是正式运营版本以及不删档内测版本和公测版本之外的其他的软件测试版本，包括但不限于封测版本、内测版本和外部测试版本。 \n
+    8、您就账号等游戏数据的使用权归属等存在争议，可以通过东方博雅邮箱：kefu@boyaa.com 、客服电话0755-86630020或东方博雅提供的其他方式请求东方博雅客户服务人员处理。\n
+    9、您承诺遵守东方博雅处理此类事务的要求、流程，对自己的主张提供相应的材料予以证明。如您不能提供充分材料证明主张成立，因此致使您受到损害，则由您独立承担全部责任。 \n
+    10、您同意以东方博雅系统所记载的数据作为处理您与其他用户之间或您与东方博雅之间纠纷的判断标准。 \n
+    11、未成年人使用者在使用本服务时应注意以下事项，提高安全意识，加强自我保护：\n
+　　（1）认清网络世界与现实世界的区别，避免沉迷于网络，影响日常的学习生活；\n
+　　（2）填写个人资料时，加强个人保护意识，以免不良分子对个人生活造成骚扰；\n
+　　（3）在监护人或老师的指导下，学习正确使用网络；\n
+　　（4）避免陌生网友随意会面或参与联谊活动，以免不法分子有机可乘，危及自身安全。\n
+</string>
+
+    <!-- 二维码版本专用 -->
+    <string name="login_web">登录网页版</string>
+    <string name="ready_to_scan">开始扫描</string>
+    <string name="logout_pc">退出登录</string>
+    <string name="confirm_login_pc">确认登录</string>
+    <string name="cancel_login_pc">取消登录</string>
+    <string name="description_about_how_to_scan">在计算机上打开#扫描二维码，即可登录德州扑克网页版。</string>
+    <string name="erwei_html">texas.boyaagame.com </string>
+    <string name="description_about_login_pc_success">成功登入PC版德州，移动与PC可以保持同时在线，但同一时刻只有一方能够进入游戏哦！</string>
+    <string name="erwei_error1">用户验证失败，请重新登录客户端！</string>
+    <string name="erwei_error2">二维码已被使用，请刷新！</string>
+    <string name="erwei_error3">登录失败，请刷新二维码接口，重新扫描！</string>
+    <string name="logout_pc_success">已成功注销网页德州扑克！</string>
+    <string name="logout_pc_error">注销失败，请稍后重试！</string>
+    <string name="notice_connect_pc">正在连接PC端...</string>
+    <string name="notice_get_pcstate">正在获取状态...</string>
+    <string name="notice_logout_pc">正在注销网页德州...</string>
+
+    <!-- 二维码Zxing开源包 -->
+    <string name="app_picker_name">应用程序</string>
+    <string name="bookmark_picker_name">书签</string>
+    <string name="button_add_calendar">加入事件至日历</string>
+    <string name="button_add_contact">加入联络人</string>
+    <string name="button_back">返回</string>
+    <string name="button_book_search">打开图书搜索</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_clipboard_empty">剪贴簿清空</string>
+    <string name="button_custom_product_search">自定义搜索</string>
+    <string name="button_dial">拨号</string>
+    <string name="button_done">完成</string>
+    <string name="button_email">发送email</string>
+    <string name="button_get_directions">取得地址</string>
+    <string name="button_google_shopper">谷歌购物</string>
+    <string name="button_mms">发送MMS</string>
+    <string name="button_ok">确定</string>
+    <string name="button_open_browser">打开浏览器</string>
+    <string name="button_product_search">打开产品搜索</string>
+    <string name="button_read_book">浏览本书</string>
+    <string name="button_search_book_contents">搜索图书内容</string>
+    <string name="button_share_app">共享应用程序</string>
+    <string name="button_share_bookmark">分享书签</string>
+    <string name="button_share_by_email">通过Email分享</string>
+    <string name="button_share_by_sms">通过简讯分享</string>
+    <string name="button_share_clipboard">分享剪贴簿</string>
+    <string name="button_share_contact">分享联络人</string>
+    <string name="button_show_map">显示地图</string>
+    <string name="button_sms">发送简讯</string>
+    <string name="button_web_search">网页搜索</string>
+    <string name="button_wifi">连接到网络</string>
+    <string name="contents_contact">联络人信息</string>
+    <string name="contents_email">Email地址</string>
+    <string name="contents_location">地理坐标</string>
+    <string name="contents_phone">电话号码</string>
+    <string name="contents_sms">简讯地址</string>
+    <string name="contents_text">纯文本</string>
+    <string name="history_clear_text">删除记录</string>
+    <string name="history_email_title">条形码扫描仪记录</string>
+    <string name="history_send">发送记录</string>
+    <string name="history_title">记录</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_help">帮助</string>
+    <string name="menu_history">记录</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_share">分享</string>
+    <string name="msg_about">使用ZXing开放原始码的条形码数据库</string>
+    <string name="msg_buggy">该装置有已知的错误导致条形码扫描有问题。如需更多信息，请至 http://code.google.com/p/zxing/wiki/FrequentlyAskedQuestions</string>
+    <string name="msg_bulk_mode_scanned">散装模式：条形码扫描，并保存</string>
+    <string name="msg_camera_framework_bug">很抱歉，相机出现问题。您可能需要重新启动设备。</string>
+    <string name="msg_default_contents">内容</string>
+    <string name="msg_default_format">格式</string>
+    <string name="msg_default_meta">元数据</string>
+    <string name="msg_default_mms_subject">哈啰</string>
+    <string name="msg_default_status">将条形码放置于镜头范围内进行扫描。  </string>
+    <string name="msg_default_time">时间</string>
+    <string name="msg_default_type">类型</string>
+    <string name="msg_encode_barcode_failed">找不到条形码。</string>
+    <string name="msg_encode_contents_failed">无法读取条形码。   </string>
+    <string name="msg_google_shopper_missing">未安装谷歌购物</string>
+    <string name="msg_install_google_shopper">谷歌购物结合条形码扫描价格，评论，更无需打开浏览器。您想试用吗？</string>
+    <string name="msg_intent_failed">抱歉，无法打开所需软件。 条形码内容可能无效。</string>
+    <string name="msg_loading_apps">加载应用程序</string>
+    <string name="msg_not_our_results">离开此应用程序。搜寻结果: 无此应用程序。</string>
+    <string name="msg_sbc_book_not_searchable">抱歉，无法找到此图书。</string>
+    <string name="msg_sbc_failed">抱歉，搜索时遇到错误。</string>
+    <string name="msg_sbc_no_page_returned">没有返回页面</string>
+    <string name="msg_sbc_page">页面</string>
+    <string name="msg_sbc_searching_book">搜索图书</string>
+    <string name="msg_sbc_snippet_unavailable">无法始用摘要</string>
+    <string name="msg_sbc_unknown_page">未知页面</string>
+    <string name="msg_share_explanation">你可以在你的手机屏幕上显示条形码，并使用其他手机扫描此条形码方式并传送或分享给朋友</string>
+    <string name="msg_share_subject_line">这是我所扫描条形码的内容</string>
+    <string name="msg_unmount_usb">对不起，无法读取SD卡。</string>
+    <string name="preferences_actions_title">找到条形码时</string>
+    <string name="preferences_bulk_mode_summary">条形码扫描和挽救了许多人不断</string>
+    <string name="preferences_bulk_mode_title">批量扫描模式</string>
+    <string name="preferences_copy_to_clipboard_title">复制到剪贴簿</string>
+    <string name="preferences_custom_product_search_summary">使用％s作为占位符的产品ID</string>
+    <string name="preferences_custom_product_search_title">自定义搜索网址</string>
+    <string name="preferences_decode_1D_title">解碼一维条形码</string>
+    <string name="preferences_decode_Data_Matrix_title">数据矩阵码译码</string>
+    <string name="preferences_decode_QR_title">解碼QR条形码</string>
+    <string name="preferences_front_light_summary">改善在低光源的环境下扫描的成功率, 但有可能造成过度曝光的现象</string>
+    <string name="preferences_front_light_title">使用前光源</string>
+    <string name="preferences_general_title">一般设置</string>
+    <string name="preferences_name">设置</string>
+    <string name="preferences_play_beep_title">提示音</string>
+    <string name="preferences_result_title">结果设定</string>
+    <string name="preferences_scanning_title">当扫描条形码</string>
+    <string name="preferences_vibrate_title">振动</string>
+    <string name="result_address_book">找到联络人</string>
+    <string name="result_calendar">找到日历事件</string>
+    <string name="result_email_address">找到Email地址</string>
+    <string name="result_geo">找到坐标</string>
+    <string name="result_isbn">找到图书</string>
+    <string name="result_product">找到产品</string>
+    <string name="result_sms">找到简讯</string>
+    <string name="result_tel">找到电话号码</string>
+    <string name="result_text">找到纯文本</string>
+    <string name="result_uri">找到URL</string>
+    <string name="result_wifi">发现网络配置</string>
+    <string name="sbc_name">Google图书搜索</string>
+    <string name="share_name">通过条形码分享</string>
+    <string name="title_about">条形码扫描仪</string>
+    <string name="wa_name">网络配置</string>
+    <string name="wifi_changing_network">不断变化的网络</string>
+    <string name="wifi_connect_failed">网络连接失败</string>
+    <string name="wifi_connected">连接的</string>
+    <string name="wifi_creating_network">创建网络</string>
+    <string name="wifi_modifying_network">修改网络</string>
+    <string name="wifi_ssid_label">网络名称</string>
+    <string name="wifi_ssid_missing">网络实名失踪</string>
+    <string name="wifi_type_incorrect">网络类型不正确</string>
+    <string name="wifi_type_label">类型</string>
+    <string name="zxing_url">http://code.google.com/p/zxing</string>
+
+    <!-- 二维码 end -->
+
+
+    <!-- 第三方支付 -->
+    <string name="loginPage">登陆网页版</string>
+    <string name="paypal">PayPal</string>
+    <string name="mokredit">moKredit</string>
+    <string name="mycard">Mycard</string>
+    <!-- end -->
+
+
+    <!-- 多语言2.5需要的翻译 -->
+    <string name="hallist_help_notice">点击这里选择更多房间</string>
+    <string name="prop">道具：</string>
+    <string name="change">兑换</string>
+    <string name="cur_honor">当前荣誉:</string>
+    <string name="userinfo_empty_goods">空空的什么都没有</string>
+    <string name="userinfo_go_market">去道具商城逛逛</string>
+    <string name="set_gameresult_tips">游戏币结算提醒</string>
+    <string name="localize_tips">游戏币单位本地化</string>
+    <string name="set_cardtype_tips">牌型提示</string>
+    <string name="set_about_tips">隐私策略及服务条款</string>
+    <string name="five_people_room">5人场</string>
+    <string name="other_room">其他场</string>
+    <string name="add_shortcut">添加 “桌面快捷方式” 能够快捷启动本应用。是否添加？</string>
+    <string name="helpful_tip">玩家每24小时购买金额有限，若出现无法购买的情况，请明天再试</string>
+    <string name="recharge_boyaa_coin">充值博雅币</string>
+    <string name="my_account">我的账户</string>
+    <string name="my_prop">我的道具</string>
+    <string name="integral_item_desc">荣誉#剩余#件</string>
+    <string name="submit_for_reward">提交资料，发奖品</string>
+    <string name="hint_for_reward">请您填写详细数据，以便我们为您发放奖品</string>
+    <string name="phone">电话</string>
+    <string name="phone_number">电话号码</string>
+    <string name="hint_area_code">+国际区号</string>
+    <string name="email">邮箱</string>
+    <string name="remark">备注</string>
+    <string name="submit_ok">确定提交</string>
+    <string name="integral_error_hint_01">数据未填写完整</string>
+    <string name="integral_error_hint_02">邮箱格式不正确</string>
+    <string name="change_integral_fail">对不起，积分对换失败</string>
+    <string name="change_integral_not_enough">您的荣誉值不够兑换该奖品，请继续加油！</string>
+    <string name="change_integral_not_product">对不起，该奖品已兑完，请及时关注</string>
+    <string name="change_integral_share_status">刚刚在博雅德州扑克积分淘汰赛中以%1$d个荣誉成功兑换%2$s（奖品）！ 大家也一起来玩吧！下载连结：%3$s</string>
+    <string name="play_once_more">再来一局</string>
+    <string name="change_integral_confirm">您确定要用%1$d荣誉值兑换%2$s吗？</string>
+    <string name="current_market_boyaa_money">现有博雅币</string>
+    <string name="no_hint">不再提示</string>
+    <string name="game_result_share">刚刚在博雅德州扑克赢得了%1$s游戏币！真是太给力了！大家也一起来玩吧！下载连结：%2$s</string>
+    <string name="game_result_toast_text">【设置】中可打开【游戏币结算提醒】</string>
+    <string name="evaluate_text">哇~你已经赢了%1$d局了，真是太棒了！喜欢我们的游戏就去给个好评吧！</string>
+    <string name="wait_operation">稍后再说</string>
+    <string name="evaluate">去评价</string>
+    <string name="notice_addfriend">请求加你为好友</string>
+    <string name="upward_sliding">向上滑动可翻开</string>
+    <!-- 多语言新支付 -->
+    <string name="more_pay">更多</string>
+    <string name="coming_soon">敬请期待</string>
+    <string name="try_buy">你将试图购买游戏币</string>
+    <!-- 多语言新支付end -->
+
+    <string name="match_stand">您将自动出局，确定站起吗？</string>
+    <string name="goto_land">切换到横屏</string>
+    <string name="goto_port">切换到竖屏</string>
+    <string name="tclpay">银联支付</string>
+    <string name="not_open">暂未开通</string>
+    <string name="thrid_pay">其它支付</string>
+    <string name="get_gifs_error">接受礼物失败，请稍后重试</string>
+    <string name="sendmoney_info_fail">好友今日接受赠送已达上限！</string>
+    <string name="roomtomarket_notice">即将退出房间进入储值中心</string>
+
+    <!-- 多语言2.5翻译 end -->
+
+    <string name="verify_change">换一张</string>
+    <string name="verify_clean">清空选择</string>
+    <string name="questionnaire_title">问卷调查</string>
+    <string name="questionnaire_write">填写问卷</string>
+    <string name="questionnaire_submit">提交问卷</string>
+    <string name="huodong_submitquestionnaire_wait">正在提交问卷调查信息，请稍等...</string>
+    <string name="questionnaire_notfinish_tip">你还没有完成问卷，完成问卷提交才能获得奖励哦。</string>
+    <string name="questionnaire_continue">继续回答</string>
+    <string name="questionnaire_rewrite">重新填写</string>
+    <string name="questionnaire_leave">我要走了</string>
+    <string name="mobile_payment">话费支付</string>
+    <string name="qiehuan_zhanghao">切换账号</string>
+    
+    
+    <!-- 2.6需求start -->
+    <string name="dailyaward_first">请先领取登录奖励！</string>
+    <string name="send_gifs_text">委托系统给您送了神秘礼物!</string>
+	<string name="tomorrow_warn">明日提醒</string>
+	<string name="task_title">连续登录奖励</string>
+	<string name="sp_task">特殊奖励</string>
+	<string name="go_task">去做任务</string>
+	<string name="task_tips">连续登录可以获得更多的奖励，每天最高#的奖励</string>
+	<string name="is_sure_using">是否确定使用</string>
+    <string name="sure_using">确定使用</string>
+    <string name="payment_question">如遇支付未到账情况请提供订单号、时间、金额方便我们能快速处理</string>
+    <string name="account_question">请尽可能具体描述您所遇到的问题和时间，方便我们能快速处理您的问题</string>
+    <string name="play_question">请尽可能具体描述您所遇到的问题和时间，方便我们能快速处理您的问题</string>
+    <string name="advice">如对游戏有任何建议都可提交，建议被采纳会有额外奖励</string>
+    <string name="payment_question1">支付问题</string>
+    <string name="account_question2">账号问题</string>
+    <string name="play_question3">游戏/活动bug</string>
+    <string name="advice_question4">游戏建议</string>
+    <string name="Leave_page">离开该页面后截图及文字将不会保存</string>
+    <string name="nouse_t">站起状态不能使用踢人卡</string>
+    
+    <string name="updata_usermoney">正在刷新游戏币，请稍候...</string>
+    <string name="upload_pic">上传图片</string>
+
+    <string name="out_of_memory">手机可用内存不足, 或被恶意软件越权拦截!</string>
+    
+    <!-- 2.6繁体需求start -->
+    <string name="room_payment_way">请选择支付方式</string>
+    <string name="mycard_title">Mycard储值中心</string>
+    <string name="mycard_notice1">若您在尚未点击储值或交易尚未成功前发生任何问题，请致电MyCard客服中心：</string>
+    <string name="mycard_notice2">\u3000\u3000\u3000\u3000\u3000\u3000\u3000查询反应，Mycard客服将竭诚为你服务。</string>
+    <string name="mycard_cardtext">卡号:</string>
+    <string name="mycard_cardtext_hint">请输入16位的卡号</string>
+    <string name="mycard_passwordtext">密码:</string>
+    <string name="mycard_passwordtext_hint">请输入16位的密码</string>
+    <string name="mycard_chuzhi">储值游戏币</string>
+    <string name="mycard_dianshu">点数  = </string>
+    <string name="mycard_youxibi">游戏币</string>
+    <string name="mycard_onlineser">在线客服回复系统:</string>
+    <string name="mycard_servicecen">客服中心-【常见问题】 :</string>
+    
+    <string name="roompay_now">现有游戏币：</string>
+    
+    <string name="money_qian">千</string>
+    <string name="money_wan">万</string>
+    <string name="money_qianwan">千万</string>
+    <string name="money_yi">亿</string>
+    <!-- 服务条款 -->
+	<string name="about1">服务条款</string>
+	<!-- 隐私协议 -->
+	<string name="about2">隐私策略</string>
+    <!-- 2.6繁体需求end -->
+
+    <!-- 2.7需求start -->
+	<!-- 荷官感谢提示 -->
+	<string-array name="dealer_thx_tips">
+	    <item>xx，您人真好！</item>
+		<item>xx，谢谢您！</item>
+		<item>xx，祝您好运！</item>
+		<item>xx，小费到，财运到！</item>
+		<item>xx，小费多多，AA多多！</item>
+		<item>谢谢xx赏赐！</item>
+	</string-array>
+	<string name="hint_wrongtable">只有在500小盲注以上的场次才能给荷官赠送小费哦~</string>
+	<string name="dealer_hint_wrongstate">亲，都还没坐下玩牌就不要浪费钱啦~</string>
+	<string name="dealer_hint_nomoney">您当前携带的游戏币不够哦，下次再送我吧~</string>
+	<string name="dealer_nickname">性感小甜心</string>
+	
+	<string name="about_server">服务条款</string>
+	<string name="about_method">隐私策略</string>
+    
+    
+    <!-- 2.7需求 -->
+    <!-- 猜手牌 -->
+    <string name="hand_card_notify1">站起状态不可购买猜手牌</string>
+    <string name="hand_card_notify2">你已站起，购买的猜手牌无效</string>
+    <string name="hand_card_notify3">不够钱买入</string>
+    <string name="hand_card_notify4">猜手牌功能未开</string>
+    <string name="hand_card_notify5">购买猜手牌失败</string>
+    <string name="hand_card_notify6">已购买猜手牌，牌局开始前可重新选择买入值</string>
+    <string name="guess_handcard">猜手牌</string>
+    <string name="win_des">赢取说明</string>
+    <string name="win_record">中奖记录</string>
+    <string name="buy_handcard_tip">下一局开始每局都购买</string>
+    <string name="buy_handcard_btn">购买#</string>
+    <string name="win_handcard">赢取#游戏币</string>
+    <string name="smallblind_tip">猜手牌只在小盲#及以上的房间开启</string>
+    <string name="already_buy">已购买</string>
+    <string name="win_record_tip">买入#，赢取#</string>
+    <string name="handcard_help_title">猜手牌玩法</string>
+<string name="handcard_help_content">选择一个买入值，从当前携带外的资产中扣除，买入后下一轮若拿到的手牌与赢取说明中的手牌一样，则可以获得对应的奖励。 \n买入值越大，则奖励越高。 \n携带外资产=总资产-牌桌上买入的筹码</string>
+    <string name="hand_card_notify7">这里有新玩意儿，赶紧来试试吧</string>
+    <string name="smallfee">幸运小费</string>
+     <!-- 2.7需求 -->
+     <!-- 破产奖励 -->
+    <string name="bankruptReward_title_tips1">破产奖励</string>
+    <string name="bankruptReward_title_tips2">你破产了，这不科学！领取系统奖励可以立即开始游戏</string>
+    <string name="goto_daily_tasks_tips">您还有破产奖励没有领取，确定跳转到每日任务</string>
+    <string name="goto_Interact_tips">您还有破产奖励没有领取，确定跳转到牌友动态</string>
+    <string name="bankruptReward_loading_tips">正在载入破产奖励,请稍等...</string>
+
+    <!-- 好友邀请 -->
+    <string name="invite_friend_tip1">邀请你的好友一起来玩，每天可获得更多免费游戏币哦</string>
+    <string name="invite_friend">邀请好友</string>
+    <string name="invite_friend_tip2">请选择邀请方式</string>
+    <string name="invite_contract">通信录</string>
+    <string name="invite_fb">FaceBook</string>
+    <string name="invite_friend_tip3">邀请好友越多，可获得更多奖励，每天最多可获得#游戏币</string>
+    <string name="invite_friend_tip4">正在邀请中...</string>
+    <string name="choose_nums">选中#人</string>
+    <string name="choose_zero_nums">选中0人</string>
+    <string name="invite">邀请</string>
+    <string name="search">搜索</string>
+    <string name="choose_others">换一批</string>
+    <string name="invite_friend_tip5">已成功发送邀请,获得#游戏币</string>
+    <string name="invite_friend_tip6">发送邀请失败</string>
+    <string name="invite_friend_tip7">已成功发送邀请，今日领奖已达上限</string>
+    <string name="invite_friend_tip8">暂无好友</string>
+    
+   <string name="hand_card_notify8">携带外资产不足，不能购买</string>
+   <string name="bankrup_null">很抱歉，您当前还不能够领取破产奖励</string>
+<string name="goto_daily_tasks_tips2">确定跳转到每日任务</string>
+    <string name="goto_Interact_tips2">确定跳转到牌友动态</string>
+
+     <!-- 多语言 V 2.7功能-房间列表商城入口及购买提示 -->
+    <string name="roommarket_tip1">现有游戏币: </string>
+    <string name="roommarket_tip2">玩家每24小时购买金额有限, 若出现无法购买的情况, 请明天再试!</string>
+    <string name="no_money_tip">您的资产不足该场次的最小携带值请及时充值</string>
+    <string name="sms_payment">短信支付</string>
+
+    <!-- 多语言 V 2.7功能-邮件回馈优化 -->
+    <string name="email_feedback">邮件回馈</string>
+    <string name="device_version">设备型号: </string>
+    <string name="version">版本号: </string>
+    
+    <!-- 多语言V 2.7功能每日任务领奖增加道具 -->
+    <string name="get_ward_succeed">成功领取 # </string>
+    <string name="room_task_tips">恭喜你完成任务获得#，更多奖励等你来拿</string>
+
+    <!-- 2.8 需求  新手注册大礼包 -->
+    <string name="giftbag_title">新手注册大礼包</string>
+    <string name="giftbag_autogive_title">已自动发放</string>
+    <string name="giftbag_canget_title">可领取</string>
+    <string name="giftbag_alreadyget_title">已领取</string>
+    <string name="giftbag_cannotget_title">还不可领取</string>
+    <string name="giftbag_noget_title">未领取</string>
+    <string name="giftbag_getreward_success_tips">恭喜您已成功领取新手注册礼包.</string>
+    <string name="giftbag_day01_proname">800游戏币</string>
+    <string name="giftbag_day02_proname">7天VIP</string>
+    <string name="giftbag_day03_proname">7天表情包</string>
+    <string name="giftbag_day04_proname">10次互动道具包</string>
+    <string name="giftbag_day01_regist_tips">注册第一天</string>
+    <string name="giftbag_day02_regist_tips">注册第二天</string>
+    <string name="giftbag_day03_regist_tips">注册第三天</string>
+    <string name="giftbag_day04_regist_tips">注册第四天</string>
+    <string name="giftbag_backgame">返回游戏</string>
+    <string name="giftbag_exitgame">确定退出</string>
+    
+    <!-- 2.8 需求新手场优化（调戏荷官） -->
+    <string name="newcomer_field_touch_dealer">专心玩牌，不要乱摸我哦！</string>
+    <string-array name="newcomer_field_userwin_dealerTalk">
+	    <item>xx，你真的是太棒了！</item>
+		<item>xx，你就快成为德州高手了！</item>
+		<item>xx，你赢得太漂亮了！</item>
+	</string-array>
+	<string-array name="newcomer_field_userlose_dealerTalk">
+	    <item>xx，请继续加油哦！</item>
+		<item>xx，好运会是你的！</item>
+		<item>xx，我会支持你哦！</item>
+	</string-array>
+    <!-- 新手教学优化 -->
+    <string name="see_again">再看一次</string>
+    <!-- 活动兑奖 -->
+    <string name="check">查看</string>
+    <string name="goodscheck_text">具体可到“我的物品”中进行查看</string>
+    <string name="net_error_text">网络连接异常，请重试</string>
+    <string name="duijiang_desc_default">二维码/兑奖码请到XXX出领奖</string>
+    <string name="fixed_text2">，每个账号仅限领取一次</string>
+    <string name="fixed_text1">注：</string>
+    <string name="duihuanma_text">兑换码兑换</string>
+    <string name="duihuanma_hint">  请输入兑换码</string>
+    <string name="ok_duihuan_text">确定兑换</string>
+    <string name="duihuanma_touch_text">或兑换码兑换>></string>
+    <string name="erweima_text">二维码兑换</string>
+    <string name="duijiang_title">奖励兑换</string>
+    <string name="invalid_duihuanma">无效兑换码</string>
+    <string name="invalid_erweima">无效二维码</string>
+    <string name="verficate_text">正在验证信息...</string>
+    <string name="menu_enter_duijiang">兑奖</string>
+    
+    <string name="bankruptReward_not_have_data">网络连接失败，请稍后重试...</string>
+    <string name="about_title">关于</string>
+    
+    <string name="boyaa_copyright_1">Copyright@2009-2012博雅互动(Boyaa Interactive)</string>
+    <string name="boyaa_copyright_2">批准文号：科技与数字[2010]237号|著作权登记号：2013SR053100号</string>
+    
+    <!-- 2.8优化翻译 -->
+    <string name="gain_award_hint">如您获得的奖励为实物，请将您的详细地址填在此处</string>
+    <string name="tomorrow_login">明天登录</string>
+    <string name="have_gifts">有大奖相赠哦！</string>
+    <string name="confirm_logout">确定注销</string>
+    
+    <!-- 2.9翻译 -->
+    <string name="halllist_search">搜索房间ID</string>
+    <string name="halllist_search_tips">通过ID快速查找房间</string>
+    <string name="setting_system">系统设置</string>
+    <string name="volume">音量</string>
+    <string name="silence">静音</string>
+    
+    <string name="privateroom_description_title">私人房说明</string>
+    <string name="privateroom_description_contents">1、选择创建快速场私人房or普通场私人房；\n2、选择小盲（##），房间将自动生成；\n3、若设置密码，其他玩家进入房间需输入正确密码；若不设密码，其他玩家可直接进入房间；\n4、私人房的有效期为2小时，房间创建者若离开房间，房间将会在当前牌局结束后被收回</string>
+    <string name="privateroom">私人房</string>
+    <string name="text_500">500</string>
+    <string name="text_1000">1000</string>
+    <string name="text_10K">10K</string>
+    <string name="text_25K">25K</string>
+    <string name="text_50K">50K</string>
+    <string name="smallblind">小盲</string>
+    <string name="psw">密码</string>
+    <string name="psw_edit_prompt">（1-6位数字或字母）</string>
+    <string name="create">创建</string>
+    <string name="hidden_privateroom">隐藏私人房间</string>
+    <string name="privateroom_setting_info">正在获取设置信息...</string>
+    <string name="iscreate_privateroom">正在创建房间...</string>
+    <string name="level_notenough">立即成为金卡及以上会员，免费创建私人房，和好友玩牌将不受打扰！</string>
+    <string name="money_notenough">资产不足该房间的最小买入，请立即充值！</string>
+    <string name="psw_wrong">请输入1~6位数字或者字母作为密码，不可以输入特殊字符！</string>
+    <string name="nothave_room">当前私人房数目已达上限，请稍后再试！</string>
+    <string name="tabid_and_psw">房间ID：#密码：#有效时间   </string>
+    <string name="create_sucess">创建成功</string>
+    <string name="privateroom_psw">私人房密码</string>
+    <string name="copy">复制</string>
+    <string name="wrong_psw">密码错误！请重新输入</string>
+    <string name="vertify_psw">正在验证密码...</string>
+    <string name="room_login_failed_message16">密码错误！</string>
+    <string name="room_login_failed_message17">该房间已被系统回收，请选择其他房间进行游戏</string>
+    <string name="room_recover_waring_owner">亲爱的玩家，您创建的私人房已经到期，系统将在5分钟后回收房间</string>
+    <string name="room_recover_waring_all">亲爱的玩家，您所在的房间已经过期，请选择其他房间进行游戏</string>
+    <string name="room_owner_out">亲爱的玩家，您所在房间的房主已经退出，请选择其他房间进行游戏</string>
+    <string name="room_time_out">亲爱的玩家，由于您长时间未开始牌局，本房间已经被系统回收，请选择其他房间进行游戏</string>
+    <string name="owner_exit_waring">您将离开私人房回到大厅，离开后本房间被系统回收</string>
+    <string name="no_psw">密码不能为空</string>
+    <string name="psw_hint">不输入默认为空</string>
+    
+    <string name="no_friends_to_invite">没有可邀请的好友</string>
+    
+    <!-- checkVersion -->
+    <string name="check_newVersion_text">检查更新</string>
+    <string name="ok">确定</string>
+    <string name="hint">Hints</string>
+    <string name="exceptionNetwork">Please check again with your network.</string>
+    <string name="is_downloading">正在下载</string>
+    <string name="download">下载安装</string>
+    <string name="finished">已完成</string>
+    <string name="downloading">Downloading</string>
+    <string name="noNetwork">There is not suitable network, please re-set your network before download.</string>
+    <string name="latestversion">您当前已经是最新版本了！</string>
+    <string name="update_tip">更新提示</string>
+    <string name="version_text">博雅德州扑克  %1$s</string>
+    <string name="version_update_tip">请点击下载安装在线升级，如果升级失败，请到http://poker.boyaagame.com/adp/apps/index.php下载最新版本</string>
+    <string name="downloading_version_text_left">博雅德州扑克 </string>
+    <string name="downloading_version_text_center">V2.9</string>
+    <string name="downloading_version_text_right">下载中</string>
+    <string name="download_file_size">共%1$s</string>
+    <string name="download_file_percent">已完成%1$s</string>
+    <string name="tips">温馨提示</string>
+    <string name="tipscontent">新版本正在下载中，马上就好了！现在退出将继续在后台下载，这可能会影响到您玩牌的体验，确定退出么？</string>
+
+	<!-- 繁体2.9 start -->
+	<string name="aiRoom_msg1">恭喜您，您的好运来了，抓住运势，赢取更多筹码！！</string>
+	<string name="aiRoom_msg2">这个房间风水不太好呢，换个房间说不定好运气就来了。</string>
+	<string name="aiRoom_msg3">去挑战</string>
+	<string name="aiRoom_msg4">换房间</string>
+	<string name="aiRoom_msg5">您破产了，获得*破产救济金！</string>
+	<!-- 繁体2.9 end -->
+	
+	    <!-- 小喇叭中所用到的文字 -->
+	<string name="xlb_parenthint">系统通知:</string>
+    <string name="xlb_messagehint">小喇叭还没有任何消息哦！</string>
+    <string name="xlb_title">小喇叭交流</string>
+    <string name="xlb_attention">注：发送小喇叭消息需扣除2博雅币</string>
+    <string name="xlb_hint">在线所有玩家都能接受到您的小喇叭消息哦！</string>
+    <string name="xlb_msgpay"> 短信获取        </string>
+    <string name="xlb_buyshop"> 购买更多       </string>
+    <string name="xlb_wenxin"> 温馨提示      </string>
+    <string name="xlb_contentkk">  您还没有小喇叭，请赶快购买吧！   </string>
+    <string name="xlb_sendbutton"> 发送      </string>
+    <string name="buy_good">  购买物品: </string>
+    <string name="buy_name"> 小喇叭</string>
+    <string name="xlb_price"> 单价: </string>
+    <string name="one_price">  2博雅币     </string>
+    <string name="xlb_total"> 共计:</string>
+    <string name="xlb_num"> 购买数量: </string>
+    <string name="qd_but">  确定    </string>
+    <string name="boyabi">  博雅币    </string>
+    <string name="load_sendmsg_xlb">正在发送小喇叭消息，请稍等...</string>
+    <string name="sendmsgpopo_over">注：小喇叭消息已超过30个字符！</string>
+    <string name="sendmsgpopo_z">注：小喇叭消息不能超过30个字符！</string>
+    <string name="sendmsgpopo_null">注：小喇叭发送不能为空！</string>
+    <string name="xiaolb_m">小喇叭:</string>
+    <string name="xiaolb_hello">小喇叭可以给在线所有玩家发消息了噢~大家High起来吧！！</string>
+    <string name="xiaolb_sendmsg">可以通过小喇叭发送广播哦！</string>
+    <string name="xiaolb_receivemsg">小喇叭消息在线的人都能收到!</string>
+    <string name="xiaolb_sendsussce">恭喜你，小喇叭发言成功！</string>
+    <string name="xiaolb_sorry">抱歉，小喇叭功能还未开启！</string>
+    <string name="xiaolb_sorrya">抱歉，您的小喇叭数量不够！</string>
+    <string name="boyaabibugou">注：您现拥有的博雅币数量不足</string>
+    <string name="function_bestcards">最大手牌 :</string>
+    <string name="userinfo_mostwin">最多赢取：</string>
+    <string name="daily_tasks">任务</string>
+    
+    <string name="invite_friend_canntfindmen">找不到联系人</string>
+    <string name="xiaolb_text">[小喇叭]</string>
+
+    <!-- e2pay -->
+    <string name="confirmOrder">您将购买选定物品，购买结果以短信形式回复，确认下单！</string>
+    <string name="waittominutes">充值需要30秒或者1分钟，请稍等</string>
+    <string name="pay_success">充值成功了!</string>
+    <string name="ordering">正在下单</string>
+    <string name="yxb_28k">28K游戏币#3RM</string>
+    <string name="yxb_125k">125K游戏币#10RM</string>
+    <string name="yxb_455k">455K游戏币#30RM</string>
+    <string name="yxb_880k">880K游戏币#50RM</string>
+    <string name="boyabi_6">6博雅币#3RM</string>
+    <string name="boyabi_22">22博雅币#10RM</string>
+    <string name="boyabi_70">70博雅币#30RM</string>
+    <string name="boyabi_125">125博雅币#50RM</string>
+    <string name="buy_notify">物品购买成功后，可能需要一到两分钟到账。由此引起的不便尽请谅解。</string>
+    
+    <string name="order_is_operating">您的订单正在确认中，请勿重复点击购买。</string>
+    
+    <string name="sim_invaliable">当前使用的运营商网络暂不支持该支付渠道</string>
+    <string name="sim_select">请选择您所使用的SIM卡</string>
+    <string name="hava_no_sim">请检测设备是否安装了可用的SIM卡</string>
+    <string name="no_orderid">拿取商品订单号失败，请重试</string>
+
+    
+    <string name="cardtypejiedu_playerself">玩家自己</string>
+    <string name="cardtypejiedu_title">牌型解读</string>
+    <string name="cardtypejiedu_nomoretips">不再提醒</string>
+    <string name="cardtypejiedu_publiccard">公共牌:</string>
+    <string name="cardtypejiedu_handcard_kuohao">(手牌)</string>
+    <string name="cardtypejiedu_publiccard_kuohao">(公共牌)</string>
+    <string name="yourhandcards">你的手牌</string>
+    <string name="dealerflag">庄家标识</string>
+    
+    <!-- 网页版活动中心 -->
+    <string name="no_seat_forweb">XXXXXXX</string>
+    <string name="isloading">正在载入活动内容...</string>
+    <string name="back_hall">返回大厅</string>
+    
+        <!-- 老虎机 -->
+    <string name="reward_list_text">奖金表</string>
+    <string name="my_reward">我的中奖记录</string>
+    <string name="recent_reward">最近中奖记录</string>
+    <string name="shake_out">摇出</string>
+    <string name="win">赢取</string>
+    <string name="gongxi">恭喜</string>
+    <string name="tigermachine_neterror">当前网络错误，已返还您的下注金额，请稍后重试</string>
+    <string name="tigermachine_win_money">赢取：</string>
+    <string name="tigermachine_mostwin_money">最高赢取：</string>
+    <string name="tigermachine_less_money1">资产不足1万，进入储值中心</string>
+    <string name="tigermachine_less_money2">资产不足5万，进入储值中心</string>
+    
+    <string name="tigermachine_less_money3">资产不足20万，进入储值中心</string>
+    <string name="tigermachine_inroom_less_money1">外资产不足1万，进入房间内商城</string>
+    <string name="tigermachine_inroom_less_money2">外资产不足5万，进入房间内商城</string>
+    <string name="tigermachine_inroom_less_money3">外资产不足20万，进入房间内商城</string>
+    <string name="tigermachine_auto_play">自动玩</string>
+    <string name="tigermachine_inroom_auto_play">自动玩</string>
+    <string name="tigermachine_goodluck">祝您好运</string>
+    <string name="tigermachine_details">详情</string>
+    <string name="tigermachine_choose_lucky_icon">选择幸运图片</string> 
+    <string name="tigermachine_name">老虎机</string>
+
+    <string name="tigermachine_guide_tips1">滑动可选择幸运图案</string>
+    <string name="tigermachine_guide_tips2">当旋转出来的图案=幸运图案，奖励值会翻倍哦</string>
+    <string name="tigermachine_guide_tips3">拉动拉杆开始转动</string>
+    
+    <string name="unziptip">正在解析数据，请稍候...</string>
+    <string name="notNet">没有网络，请检查网络设置</string>
+    <string name="tip3gnet">可能需要消耗您的流量？</string>
+    <string name="soundpooldewnloaded">音效已下载</string>
+    <string name="featureisnotturnedon">功能未开启</string>
+    
+    <!-- 表情包下载 -->
+    <string name="download_text">下载</string>
+    <string name="download_fail">资源下载失败</string>
+    <string name="unzip_fail">资源解压失败</string>
+    <string name="no_net">请检测网络是否可用</string>
+    <string name="grps_download_notify">将使用一定流量下载该资源</string>
+    <string name="has_downloaded">文件已下载</string>
+    <string name="expression_unnable">亲，你的权限已过期，请续费哦</string>
+    <string name="expression_money_less_torecharge">由于您的博雅币不足导致购买失败，请进入大厅储值中心充值</string>
+    
+    <string name="codapay_loading">Memuat</string>
+    <string name="codapay_loading_tips">Lagi memuat, silahkan tunggu..</string>
+    <string name="mimopay">You can use a Smartfren prepaid card to recharge in game</string>
+    
+    <string name="third_payment_fortumo">简讯支付</string>
+    <string name="third_payment_gash">GASH点卡</string>
+    <string name="third_payment_telepay">远传/威宝/亚太\n手机储值</string>
+    <string name="third_payment_fetnet">远传电信</string>
+    
+    <string name="buy_success_download">恭喜您，购买道具成功！正在下载资源</string>
+    
+    <string name="codapay_msg1">S$5 = 28 博雅币</string>
+    <string name="codapay_msg2">S$10 = 60 博雅币</string>
+    <string name="codapay_msg3">S$20 = 100 博雅币</string>
+    <string name="codapay_msg4">S$50 = 330 博雅币</string>
+    <string name="codapay_msg5">S$5 = 160,000 游戏币</string>
+    <string name="codapay_msg6">S$10 = 400,000 游戏币</string>
+    <string name="codapay_msg7">S$20 = 900,000 游戏币</string>
+    <string name="codapay_msg8">S$50 = 2,700,000 游戏币</string>
+    
+    <string name="sorryOrder">Order failed</string>
+    
+    <!-- facebook sdk -->
+    <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
+    <string name="com_facebook_loginview_log_out_button">Log Out</string>
+    <string name="com_facebook_loginview_log_in_button">Log In</string>
+    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Log Out</string>
+    <string name="com_facebook_loginview_cancel_action">Cancel</string>
+    <string name="com_facebook_logo_content_description">Facebook Logo</string>
+    <string name="com_facebook_usersettingsfragment_log_in_button">Log In&#8230;</string>
+    <string name="com_facebook_usersettingsfragment_logged_in">Logged In</string>
+    <string name="com_facebook_usersettingsfragment_not_logged_in">Not Logged In</string>
+    <string name="com_facebook_placepicker_subtitle_format">%1$s • %2$,d were here</string>
+    <string name="com_facebook_placepicker_subtitle_catetory_only_format">%1$s</string>
+    <string name="com_facebook_placepicker_subtitle_were_here_only_format">%1$,d were here</string>
+    <string name="com_facebook_picker_done_button_text">Done</string>
+    <string name="com_facebook_choose_friends">Choose Friends</string>
+    <string name="com_facebook_nearby">Nearby</string>
+    <string name="com_facebook_loading">Loading...</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
+    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
+    <string name="com_facebook_requesterror_web_login">Your Facebook account is locked. Please log into www.facebook.com to continue.</string>
+    <string name="com_facebook_requesterror_relogin">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
+
+    <!-- 3.0后 功能优化 -->
+    <!-- 小喇叭优化-->
+    <string name="xiaolaba_consume_youxibi">每次发送小喇叭消息需要扣除游戏币</string>
+    <!-- 破产倒计时 -->
+    <string name="wait_time">等待时间</string>
+	<string name="receive">领取</string>
+	<string name="bankrupt_tip">没关系，还有救济可以领</string>
+	<string name="bankrupt_tip2">您尚未满足领取破产奖励的条件</string>
+	<string name="bankrupt_tip3">获取破产奖励数据失败</string>
+	<string name="bankrupt_tip4">破产奖励功能尚未开启</string>
+	<string name="bankrupt_tip5">很遗憾!您已经破产了 </string>
+	<string name="receive_bankrupt">正在领取破产救济金，请稍候...</string>
+	<string name="fortumo_text">短讯支付</string>
+	<string name="buy_btn_text">立即获取</string>
+    
+    <!-- 限制pc登录 -->
+    <string name="pc_login_ban">禁止PC端登录</string>
+    <string name="notify_php">正在保存设置，请稍后...</string>
+    <string name="close_pc_login_notice">当前您的账号设置为无法在PC端登录</string>
+    <string name="pc_login_notice">当前您的账号设置可在PC端登录</string>
+    <string name="error_notify2">CMS没有打开PC限制登录功能</string>
+    <string name="error_notify1">用户验证有误</string>
+    <string name="error_notify3">参数有误</string>
+    <string name="error_notify4">未知错误</string>
+    
+    <string name="quick_payment_e2p">E2P支付</string>
+    <string name="language_name">简体中文</string>
+    <string name="language_switch">语言选择</string>
+    <string name="language_switch_back">返回</string>
+    
+    <!-- 禁言 -->
+    <string name="notify_speech_limit">很抱歉，你已被禁言，#天后才可以使用聊天功能</string>
+    <string name="notify_sendemotion_limit">很抱歉，你已被禁言，#天后才可以发送表情</string>
+    <string name="notify_props_limit">很抱歉，你已被禁言，#后才可以使用互动道具</string>
+    <string name="notify_voice_limit">很抱歉，你已被禁言，#后才可以语音功能</string>
+    
+     <string name="invite_tips">(使用该功能将会产生相应短信费)</string>
+    
+    <string name="sure_buy">确定购买</string>
+    <string name="fetnet_buy">远传电信支付</string>
+    
+    <string name="fanti_sms">简讯储值</string>
+    <string name="fanti_sms_tip">交易商品：100,000游戏币\n金额：90台币\n点击确定后则立即发送短信到55968\n扣费成功后您将收到成功简讯并获得游戏币"</string>
+    
+    <string name="input_card_num">请输入卡号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="store_fail">储值失败</string>
+    <string name="store_suc">储值成功</string>
+    <string name="wrong_input">您输入的卡号或密码错误</string>
+    <string name="system_fail">对不起，系统意外失败。</string>
+    <string name="card_used">该卡号已被使用过，请更换卡号。</string>
+    
+    <string name="go_identify">进行认证</string>
+    <string name="phone_num">手机号码</string>
+    <string name="input_phone_num">请输入您的手机号码</string>
+    <string name="card_num">身份证号码</string>
+    <string name="input_idcard_num">请输入您的身份证号码</string>
+    <string name="operator">运营商</string>
+    <string name="yuanchuan_operator">远传电信</string>
+    <string name="yatai_operator">亚太电信</string>
+    <string name="weibao_operator">威宝电信</string>
+    <string name="auth_code">验证码</string>
+    <string name="input_auth_code">请输入验证码</string>
+    <string name="re_get_auth_code">重获验证码</string>
+    <string name="sure_pay">确认支付</string>
+    <string name="limit_operator">本服务限远传电信/亚太电信/威宝电信号码使用</string>
+    <string name="choose_operator">请选择运营商</string>
+    <string name="identifying">正在认证…</string>
+    <string name="identify_fail">认证失败</string>
+    <string name="system_send_sms">系统已发送一条资讯到</string>
+    <string name="go_check">请查收(有效期3分钟)</string>
+     
+    <string name="Hall_market">储值中心</string>
+    <!-- 分享抽奖 -->
+    <string name="share_lottery">分享抽奖</string>
+    <string name="share_fb_notify">正在分享截图到FB相册，请稍后...</string>
+    <string name="share_guest_notify">正在分享内容给好友</string>
+    <string name="share_fb_sucess">截图已在FB主页分享成功</string>
+    <string name="share_fb_fail">对不起，截图在FB主页分享失败</string>
+    <string name="share_msg_notify">短信已发送，抽奖次数已增加哦</string>
+    <string name="share_msg_fail">短信分享内容为空</string>
+    <string name="msg_share">短信分享</string>
+    <string name="no_sim_card">请检查是否正确安装了SIM卡</string>
+    <string name="msg_share_notify">选择好友以短信分享赢得更多抽奖次数</string>
+    
+    <string name="happy_square_name">欢乐广场</string>
+    <string name="face_to_face_play_name">当面玩</string>
+    <string name="face_to_face_play_again">再来一次</string>
+    <string name="face_to_face_play_searching">正在搜索…</string>
+    <string name="face_to_face_play_together_press">与附近的伙伴同时按下按钮，就可以一起玩牌了噢！</string>
+    <string name="face_to_face_play_search_fail">搜索失败，请点击重新搜索</string>
+    <string name="face_to_face_play_search_success">定位成功，请稍候…</string>
+    <string name="face_to_face_play_get_user">正在获取玩家列表…</string>
+    <string name="face_to_face_play_has_user">已经搜索到用户，松开手即可显示</string>
+    <string name="face_to_face_play_no_user">很遗憾，没有搜索到同时按下按钮的小伙伴，请确认周围的伙伴没有被外星人带走。</string>
+    <string name="face_to_face_play_no_room">很抱歉，没有找到合适的房间，请重新搜索</string>
+    <string name="face_to_face_play_go_room">已进入房间</string>
+    <string name="face_to_face_play_out_room">未进入房间</string>
+    <string name="face_to_face_play_sametime_user">同时按下的玩家：</string>
+    <string name="face_to_face_play_go_game">进入游戏</string>
+    <string name="face_to_face_play_title">一起按，玩德州</string>
+    <string name="face_to_face_play_scan_room">扫描房间</string>
+    <string name="face_to_face_play_less_money">你的游戏币不足，无法进入房间，请先到商城充值游戏币后再使用此功能</string>
+    <string name="room_qr_code_howtouse">使用“扫描房间”功能扫描此二维码可加入该房间</string>
+    <string name="room_qr_code_title">房间信息</string>
+    <string name="happy_square_guide_tips">这里有很多小玩法哦！</string>
+    <string name="room_qr_code_guide_tips">让朋友和你一起玩牌</string>
+    <!-- 绑定手机号码 -->
+    <string name="upgrade_result">系统赠送您%1$s游戏币，若账号出现异常我们将马上通知到您%2$s的手机上</string>
+    <string name="upgrade_tips">您的资产十分丰厚，我们建议您立即安全升级以保护您的账户安全</string>
+    <string name="upgrade_title">账号安全升级</string>
+    <string name="upgrade_Starttxt">立即升级</string>
+    <string name="upgrade_phonenum">手机号码</string>
+    <string name="upgrade_getcode">获取验证码</string>
+    <string name="upgrade_getcodetips">手机收到的X位验证码</string>
+    <string name="upgrade_submit">提交</string>
+    <string name="upgrade_completeok">确定</string>
+    <string name="upgrade_regetcode">重新获取</string>
+    <string name="upgrade_doing">正在升级...</string>
+    <string name="upgrade_getcodeloading">获取验证码...</string>
+    <string name="upgrade_failedsms">短信发送失败</string>
+    <string name="upgrade_errorcode">验证码错误</string>
+    <string name="upgrade_codetoast">验证码发送成功，如果30秒内未收到讯息请重新获取验证码...</string>
+    <string name="upgrade_nophone">手机号缺失</string>
+    <string name="upgrade_hasbind">帐号已经绑定了手机号</string>
+    <string name="upgrade_smsofen">获取验证码过于频繁</string>
+    <string name="upgrade_failbind">保存手机号失败</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- 老虎机快捷充值 -->
+    <string name="recharge_now">立即支付</string>
+    <string name="recharge_tips">啊哦,您的金币不足#了呢,是时候充实您的金库了!</string>
+    
+    <!-- 淘汰赛6人快速场 -->
+    <string name="sng_win">恭喜您赢得比赛！</string>
+    <string name="sng_lose">很遗憾，您输了！</string>
+    <string name="sng_win_tip">您获得本次比赛的第#名，领取奖励#游戏币</string>
+    <string name="sng_lose_tip">排名为本次比赛的第#名，下次一定要加油哦</string>
+    <string name="sng_integral">积分</string>
+
+       
+    <!-- 推送支付 -->
+	<string name="pushpay_getreward">领取奖励</string>
+	<string name="pushpay_googlepay">谷歌支付</string>
+	<string name="pushpay_gtelepay">亚太支付</string>
+	<string name="pushpay_molpay">MOL支付</string>
+	<string name="pushpay_mimopay">MIMO支付</string>
+	<string name="pushpay_unpaytitle">未完成订单</string>
+	
+ 	<string name="dailytast_reward">奖励%1$s</string>
+    <string name="dailytast_continus">连续登录第%1$s天</string>
+    <string name="dailytast_after_day_reward">明日奖励%1$s</string> 
+    
+    <string name="continue_buy">继续支付</string>
+    <string name="pusypay_exit_title">温馨提示</string>
+    <string name="pusypay_gift">赠送</string>
+    
+    <string name="exit_market_tips1">离开</string>
+    <string name="exit_market_tips2">再来逛逛</string> 
+    <string name="daily_task_open">打开</string>
+    <string name="buy_now_wanliu">继续购买</string>
+    
+    <string name="taiwan_telepay">中华电信/台湾大哥大手机储值</string>
+    <string name="taiwan_coin">台币</string>
+    <string name="taiwan_telepay_tip">请选择储值额度</string>
+    
+     <!-- 猜手牌优化 -->
+    <string name="guess_handcard_tips">如此好牌却没有买入猜手牌，\n亡羊补牢，为时未晚！</string>
+    <string name="guess_handcard_full_edition">完整版</string>
+    <string name="guess_handcard_buy_in_one">买1局</string>
+    <string name="guess_handcard_buy_in_ten">买10局</string>
+    <string name="guess_handcard_one_winning_rate">9.5%\n中奖</string>
+    <string name="guess_handcard_ten_winning_rate">63%\n中奖</string>
+    <string name="guess_handcard_record">手牌记录</string>
+    <string name="guess_handcard_detail">详情</string>
+    <string name="guess_handcard_end_tips">自动买入10局已结束，赶快查看一下战果吧</string>
+    <string name="guess_handcard_had_buy_one">购买额度{money} 已买入1局</string>
+    <string name="guess_handcard_had_buy_ten">购买额度{money} 已买入第#局…</string>
+    <string name="guess_handcard_had_buy_auto">每局都买{money} 自动买入第#局…</string>
+    <string name="guess_handcard_buy_one_succ">成功买入1局</string>
+    <string name="guess_handcard_buy_ten_succ">成功买入10局</string>
+    <string name="guess_handcard_buy_auto_succ">已自动买入</string>
+    <string name="guess_handcard_not_buy">未买</string>
+    <string name="guess_handcard_dz">对子</string>
+    <string name="guess_handcard_th">同花</string>
+    <string name="guess_handcard_fth">非同花</string>
+    <string name="guess_handcard_record_win">买入${buyin},#赢取${winmoney}</string>
+    <string name="guess_handcard_record_lost">买入${buyin},未中</string>
+    <string name="guess_handcard_less_money">携带外资产不够买入猜手牌，是否需要进入储值中心</string>
+    <string name="bcall_sucess">恭喜你，购买成功！</string>
+    
+    
+    <!-- 房间内加注条样式修改  -->
+    <string name="add_money">加注   {add}</string>
+    
+    <!-- 禁言 -->
+    <string name="ban_talk">禁言</string>
+    <string name="interactive_msg7">{fname}对{tname}使用了禁言</string>
+    <string name="ban_interactive_tips">你已被对方禁言</string>
+    <string name="ban_interactive_tips2">站起状态不能使用禁言</string>
+    <string name="ban_interactive_tips3">你向#使用了禁言</string>
+    <string name="ban_interactive_tips4">不能对金卡VIP以上的用户使用禁言</string>
+    <string name="ban_interactive_had_ban">已禁言</string>
+    <string name="ban_prop_title">VIP特权</string>
+    <string name="ban_prop_tips">购买金卡VIP,可以对玩家禁言,还可获得游戏币和钻石！</string>
+    <!-- 大场引导 -->
+    <string name="higher_room_guide_tips">小赌养家糊口，大赌发家致富！你的资产已经达到${usermoney}了，去挑战德州高手赢取更多筹码吧！</string>
+    <string name="higher_room_guide_accept_challenge">接受挑战</string>
+    <string name="tigermachine_hint">老虎机后台自动玩，每局需扣除对应的游戏币</string> 
+    <string name="guess_handcard_other_win_tips">恭喜{name}买入猜手牌中奖{money}！\n亡羊補牢，為時未晚！</string>
+    <string name="guess_handcard_buy10_end_tips_win">恭喜您，买入猜手牌赢得游戏币{money}</string>
+    <string name="guess_handcard_buy10_end_tips_notwin">很遗憾，运气不佳没有赢得奖励！</string>
+    <string name="guess_handcard_continu_buy">每局都买</string>
+    <string name="guess_handcard_less_money">您当前资产不足以买入，购买游戏币赢取更多中奖机会！</string>
+    
+    
+    <string name="today_getreward">今日领取</string>
+            <!-- UI界面优化 -->
+    <string name="receive_reward">领奖</string>
+    <string name="edit">编辑</string>
+    <string name="modify_user_photo">更改头像</string>
+    <string name="modify_message_success">修改资料成功</string>
+    <string name="share_rank">分享排名</string>
+    <string name="cannot_share">当前名次无法分享</string>
+    <string name="help_center">帮助中心</string>
+    <string name="basic_play_content">每个玩家分两张牌作为“底牌”（仅自己可见），荷官会分三次陆续朝上发出五张公共牌（3张+1张+1张）。在牌局开始的时候，每个玩家都会发得两张面朝下的底牌，在经过所有的押注圈以后，若仍不能分出胜负，游戏则会进入“摊牌”阶段，也就是让所剩的玩家亮出各自的底牌以较高下，持大牌者获胜。
+            \n比牌不分花色，大小规则为“皇家同花顺>同花顺>四条>葫芦>同花>顺子>三条>两队>一对>高牌”。若两个玩家各有一对，则大对子胜出；对子相同，则单张牌更大的胜出，以此类推。若依此比完牌，大小仍相同，则均分奖池内的游戏币。</string>
+    <string name="fun_key_introduce">看牌：要是拿不准可以选择看牌，看牌时不下注的；\n弃牌：牌不好，最好选择弃牌；\n全下：如果对自己的牌非常有信心的话，就全押了吧；\n跟注：要是觉得自己牌还不错就可以跟注；\n加注：要是优势明显就可以进行加注；\n自动看牌：下一轮自动选择看牌；\n看或弃牌：首选看牌，如需下注则自动弃牌；\n牌型：在玩牌时可以随时对比自己的牌型的大小；</string>
+    <string name="first_day">第一天</string>
+    <string name="second_day">第二天</string>
+    <string name="third_day">第三天</string>
+    <string name="forth_day">第四天</string>
+    <string name="fifth_day">第五天</string>
+    <string name="sixth_day">第六天</string>
+    <string name="sp_task_tip">每日{task}，奖{money}游戏币，每天每个账号只能领一次。</string> 
+    <string name="coin_nums">筹码数：</string>
+    <string name="win_counts">赢牌数：</string>
+    <string name="national_rank">全国排行：</string>
+    <string name="friend_rank">好友排行：</string>
+    <string name="room_id">房号</string>
+    
+	<string name="quick_recharge_buyin_lessmoney">您的游戏币不足，请充值游戏币或到低盲注房间玩牌。</string>
+	<!-- 土豪限制 -->
+    <string name="room_cannot_seat2">游戏币已经超过$#，请到更高场次玩牌</string>
+    <string name="room_cannot_seat3">游戏币低于$#，请到低场次玩牌</string>
+    <string name="tuhao_window_btn">推荐房间</string>
+    <string name="seat_to_play">坐下玩牌</string>   
+    <string name="guess_state">当前的竞猜情况</string>
+    <string name="guess_submit">提交</string>
+    <string name="twm_pay">大哥大支付</string>
+    <string name="more_pay_channel">更多支付</string>
+    <string name="room_sit_failed_message7">很抱歉，您的等级不够，不能坐下，请您重新选择房间进入</string>
+    
+    <!-- 留座离桌 -->
+    <string name="room_back">返  回</string>
+    <string name="keep_seat">留  座</string>
+    <string name="stand_out">站  起</string>
+    <string name="room_set">设  置</string>
+    <string name="chg_screen">切换屏幕</string>
+    <string name="lan_screen">横屏</string>
+    <string name="por_screen">竖屏</string>
+    <string name="now_leave">暂离</string>
+    <string name="cancel_fail_tip">您已进入留座状态</string>
+    <string name="back_seat">回到座位</string>
+    <string name="keep_seat_tip1">下一局开始，进入留座离桌状态</string>
+    <string name="keep_seat_tip2">取消留座</string>
+    <string name="keep_seat_tip3">回到座位，请等待下局开始</string>
+    <string name="keep_seat_tip4">时间已到，为您预留的座位已被收回了噢，下次早点回来</string>
+    <string name="keep_seat_tip5">现在离开预留的座位将被回收，是否确定离开？</string>
+    <string name="keep_seat_tip6">暂离状态不可以购买猜手牌</string>
+    <string name="keep_seat_tip7">站起后预留的座位将被回收，是否确定站起？</string>
+            <!-- 猜手牌优化-Darbelyuan -->
+    <string name="guesshandcard_tip_switch1">系统为您买入猜手牌剩余局数，您也可以重新选择买入额度。</string>
+    <string name="guesshandcard_tip_switch2">系统自动为您买入猜手牌，您也可以重新选择买入额度。</string>
+    <string name="guesshandcard_tip_cancel">已取消买入</string>
+    <string name="guesshandcard_cancelbuystr">取消买入</string>
+    <!-- 淘汰赛改版 -->
+    <string name="newmatch_event">#人开赛</string>
+<!--     <string name="newmatch_tips">1、报名人数满9人即可开赛。\n2、每名玩家将携带同等的筹码报名参赛。\n3、淘汰赛中途不可以增加筹码，输完筹码后默认离桌。\n4、按照玩家筹码的多少实时排名，并角逐出前3名；当比赛只剩\n&#160;&#160;&#160;&#160;&#160;&#160;最后一名玩家时结束。
+\n5、为增强竞技性，比赛中盲注会随着时间逐渐增大。
+\n6、淘汰赛除了游戏币奖励，还可获得荣誉值，比赛区越高获得的\n&#160;&#160;&#160;&#160;&#160;&#160;奖励会越多。
+\n7、荣誉值可以直接兑换相关道具奖励，*荣誉值会在每月最后一天\n&#160;&#160;&#160;&#160;&#160;&#160;清零，请及时兑换。</string> -->
+	<string name="newmatch_tips">1、淘汰赛分6人场和9人场,报名人数达到要求即可开赛。\n2、每名玩家将携带同等的筹码报名参赛。\n3、淘汰赛中途不可以增加筹码，输完筹码后默认离桌。\n4、按照玩家筹码的多少实时排名，当比赛只剩下最后一名玩家时\n&#160;&#160;&#160;&#160;&#160;&#160;结束。\n5、为增强竞技性，比赛中盲注会随着时间逐渐增大。\n6、淘汰赛除了游戏币奖励，还可以获得荣誉值，6人场前2名(9人\n&#160;&#160;&#160;&#160;&#160;&#160;场前3名)可以获得奖励，比赛区越高获得的奖励会越多。\n7、荣誉值可以直接兑换丰厚的道具奖励，*荣誉值会在每月最后一\n&#160;&#160;&#160;&#160;&#160;&#160;天清零，请及时兑换。</string>
+ 	<string name="newmatch_curchips">当前资产:</string>
+ 	<string name="newmatch_tyro">新手赛</string>
+ 	<string name="newmatch_pro">专业赛</string>
+ 	<string name="newmatch_master">大师赛</string>
+ 	<string name="newmatch_entry">报名</string>
+ 	<string name="newmatch_sixornine">满#人即可开赛</string>
+ 	<string name="newmatch_changesuccess">恭喜，兑换成功</string>
+ 	<string name="newmatch_gameover">房间解散，即将返回大厅</string>
+ 	<string name="newmatch_rankval">第#名</string>
+ 	<string name="newmatch_norank">无排名</string>
+ 	<string name="newmatch_exchange_leftnum">剩余: #件</string>
+ 	<string name="newmatch_exchange_vip">普通会员</string>
+ 	<string name="newmatch_rule_title">规则说明</string>
+ 	<string name="newmatch_repute">荣誉值</string>
+ 	<string name="newmatch_losetips">还差一点就可以获奖啦~继续加油哦~</string>
+ 	<string name="newmatch_rule">规则</string>
+ 	<string name="newmatch_yxb">游戏币:</string>
+ 	<string name="newmatch_repute2">荣誉值:</string>
+ 	<string name="newmatch_change">兑换奖品</string>
+ 	<string name="newmatch_details">详情>></string>
+ 	<string name="newmatch_clean">七天后本轮荣誉清空</string>
+ 	<string name="newmatch_entrynow">立即报名</string>
+ 	<string name="newmatch_resultget">您获得:</string>
+ 	<string name="newmatch_resultagin">再战一场</string>
+    
+    <!-- 补币    游戏币购买互动道具 -->
+    <string name="user_paiju">已进行牌局：</string>
+    <string name="user_shengfu">胜负：</string>
+    <string name="user_shenglv">胜率：</string>
+    <string name="user_mostwin">最多赢取：</string>
+    <string name="user_mostcard">最大手牌：</string>
+    <string name="user_city">住址：</string>
+    <string name="user_ju">#局</string>
+    <string name="user_sf">#胜/*负</string>
+     <string name="user_addchips">增加桌上筹码</string>
+    <string name="max_value">最大\n#</string>
+    <string name="min_value">最小\n#</string>
+    <string name="add_chips_tip">牌局结束后将为您补充#游戏币</string>
+    <string name="multiple_add_err">一个牌局中不能进行多次补币操作，请稍候进行</string>
+    <string name="addchips_success">已自动帮您补充#游戏币，再战三百回合</string>
+    <string name="add_error1">您目前没有剩余筹码可补充，如需增加筹码请充值</string>
+    <string name="add_error2">已达到房间最大携带，暂时不能增加筹码</string>
+    <string name="add_error3">当前游戏场次不支持补币</string>
+    <string name="auto_buy">自动买入</string>
+	<string name="auto_add">自动补充</string>
+	<string name="room_add_alreadyMax">筹码已达到最大值，不能再增加更多筹码了</string>
+	<string name="room_add_tips">补充筹码将在下局增加</string>
+	<string name="room_add_coins">增加筹码</string>
+	<string name="room_add_coins_limit">站起状态，不能增加筹码</string>
+	<string name="give_smallfee">送小费</string>
+    <string name="use_interact_props_lessmoney">亲，你的游戏币不够啦，无法使用互动道具了哦~</string>
+    <string name="interact_props_download_tips">亲，你现在使用的是2G/3G网络，该互动道具(大小：{size})需要下载后才能使用，现在下载么？</string>
+    <string name="interact_props_download_finish_tips">恭喜你，新的互动道具已经下载完成</string>
+    <string name="interact_props_download_failed_tips">新的互动道具下载失败，请重新点击下载</string>
+    <string name="interact_props_download_tips2">玩家{name}对你使用了一个{prop}，你还没有下载该互动道具，需要现在下载么？</string>
+    <string name="interact_props_download_tips_no">否</string>
+    <string name="interact_props_download_tips_yes">是</string>
+    <string name="interact_props_tips1">点我试试</string>
+    <string name="interact_props_tips2">连续点我试试</string>
+    <string name="interact_props_match_not_support">比赛场不支持以游戏币使用互动道具</string>
+	<string name="panicbuy">立即抢购</string>
+</resources>

@@ -1,0 +1,18 @@
+package com.boyaa.hallbase;
+
+import com.boyaa.rainbow2.RainbowTestCase;
+
+public class BaseTestCase extends RainbowTestCase{
+	
+	public void setUp(String apkPath) {
+		super.setCapability("app", apkPath);
+		super.setUp();
+	}
+	
+	public void startApp(boolean uninstallWhenAppStop) {
+		super.setCapability("fullReset", uninstallWhenAppStop);
+		super.setCapability("noReset", !uninstallWhenAppStop);
+		super.createRainbowDriver();
+	}
+
+}

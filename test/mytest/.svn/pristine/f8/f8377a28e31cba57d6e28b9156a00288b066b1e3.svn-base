@@ -1,0 +1,60 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.MyInfoDialog;
+import com.boyaa.testholdemsina.uilib.RoomPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="个人信息检查")
+public class MyItemTest extends TestCaseBase {
+	private LobbyPage lobbyPage = null;
+	private LoginPage loginPage = null;
+	private RainbowDriver rd = null;
+	
+	public MyItemTest(){
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		lobbyPage = new LobbyPage();
+		loginPage = new LoginPage();
+	}
+	
+	
+	@CaseDesc(id="personal_detail", name="个人详情")
+	@Test(description="个人详情")
+	public void test_PersonalDetail() throws InterruptedException{
+		loginPage.loginWithMachineCodeIntoTestEnv(CommonBusiness.machineCode);//Todo:for test
+//		loginPage.loginWithMachineCode(CommonBusiness.machineCode);
+		lobbyPage.waitSubElement("立即开始").click();
+		
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitPresent();
+		rd.pressBack();
+//		roomPage.waitSubElement("下拉菜单").click();
+//		roomPage.waitSubElement("返回选项").click();
+		
+		lobbyPage.waitSubElement("头像").click();
+		
+		MyInfoDialog myInfoDialog = new MyInfoDialog();
+		myInfoDialog.waitPresent();
+		myInfoDialog.waitSubElement("关闭按钮").click();
+//		Thread.sleep(5*1000);
+//		WebElement closeBtn = rd.findElement(By.id("com.boyaa.sina:id/close"));
+//		closeBtn.click();
+	}
+	
+}

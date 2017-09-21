@@ -1,0 +1,299 @@
+package com.boyaa.testholdemth.cases;
+
+import java.util.Locale;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+
+
+import com.boyaa.testholdemth.business.CommonBusiness;
+import com.boyaa.testholdemth.business.CommonBusiness.RoomLevel;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testholdemth.uilib.BankruptcyPage;
+import com.boyaa.testholdemth.uilib.GoogleCheckoutPage;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+import com.boyaa.testholdemth.uilib.LobbySlotPage;
+import com.boyaa.testholdemth.uilib.PayCenterPage;
+import com.boyaa.testholdemth.uilib.PersonalInformationPage;
+import com.boyaa.testholdemth.uilib.PersuadePage;
+import com.boyaa.testholdemth.uilib.PropsMarketPage;
+import com.boyaa.testholdemth.uilib.RoomListPage;
+import com.boyaa.testholdemth.uilib.RoomPage;
+import com.boyaa.testholdemth.uilib.LobbyPage.SlotPage;
+import com.boyaa.testholdemth.uilib.RoomPage.PayDialog;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is a smoke test that use for Rainbow2 framework testing")
+public class PayLogic extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	public PayLogic() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	protected void assertForPayType(String payType) {
+//		page.waitSubElements("支付类型按钮组").get(payTypeIndex).click();
+		if (payType.toLowerCase(Locale.getDefault()).equals("google checkout")) {
+			GoogleCheckoutPage googleCheckoutPage = new GoogleCheckoutPage();
+			assertTrue(googleCheckoutPage.isSubElementPresent("支付页面"));
+			//TODO: We can do more
+			googleCheckoutPage.waitSubElement("继续按钮").click();
+		}
+	}
+	
+	@CaseDesc(id="PayLogic_001")
+	@Test(description="Test the lobby pay entrance")
+	public void test_lobbyPay() throws InterruptedException{	
+//		cb.loginAsGuestWithCoins(2000);//Login as guest with user has 2000
+		loginPage.loginAsGuestWithTag("normal");
+	//	cb.loginAsGuestWithTag("normal");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		PayCenterPage payCenterPage = new PayCenterPage();
+		assertTrue(payCenterPage.isSubElementPresent("游戏币按钮"));
+		payCenterPage.waitSubElement("google checkout的购买按钮").click();
+		assertForPayType("google checkout");
+
+	}
+	
+	@CaseDesc(id="PayLogic_002")
+	@Test(description="Test the room pay entrance")
+	public void test_roomPay() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(2000);
+	//	cb.loginAsGuestWithCoins(2000);//Login as guest with user has 2000
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitSubElement("游戏币图标").click();
+		assertTrue(roomPage.getPayDialog().isPresent());
+		roomPage.getPayDialog().waitSubElement("立即支付按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_003")
+	@Test(description="Test the room list pay entrance")
+	public void test_roomListPay() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.waitSubElement("金币显示栏").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_004")
+	@Test(description="Test the pay entrance - when there is not enough money for playing game")
+	public void test_gameNotEnough() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		cb.clickONANonFullRoom();
+		PayDialog payDialog = new RoomPage().getPayDialog();
+		assertTrue(payDialog.isPresent());
+		payDialog.waitSubElement("立即支付按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_005")
+	@Test(description="Test the pay entrance - when there is not enough money for playing slots (lobby)")
+	public void test_slotsNotEnough1() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();
+		lobbyPage.waitSubElement("老虎机按钮").click();
+		SlotPage slotPage = new LobbyPage().getSlotPage();
+		assertTrue(slotPage.isPresent());
+		slotPage.shake();
+		com.boyaa.testholdemth.uilib.LobbyPage.PayDialog payDialog = new LobbyPage().getPayDialog();
+		assertTrue(payDialog.isPresent());
+		payDialog.waitSubElement("立即支付按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_006")
+	@Test(description="Test the pay entrance - when there is not enough money for playing slots (room)")
+	public void test_slotsNotEnough2() throws InterruptedException{
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		PayDialog payDialog = roomPage.getPayDialog();
+		payDialog.close();
+		roomPage.waitSubElement("游戏按钮").click();
+		roomPage.waitSubElement("老虎机按钮").click();
+		assertTrue(roomPage.getSlotPage().isPresent());
+		roomPage.getSlotPage().shake();
+		assertForPayType("google checkout");
+		
+	}
+//	
+	@CaseDesc(id="PayLogic_009")
+	@Test(description="Test the pay entrance - when the user is bankruptcy on the lobby")
+	public void test_lobbyBankruptcy() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("破产碗的图标").click();
+		BankruptcyPage bPage = new BankruptcyPage();
+		assertTrue(bPage.isPresent());
+		bPage.waitSubElement("购买按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_010")
+	@Test(description="Test the pay entrance - when the user is under the sit and go game")
+	public void test_sitGoGame() throws InterruptedException{
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		cb.clickONANonFullSitGoGameRoom();
+		PayDialog payDialog = new RoomPage().getPayDialog();
+		assertTrue(payDialog.isPresent());
+		payDialog.waitSubElement("立即支付按钮").click();
+		assertForPayType("google checkout");	
+	}
+	
+	@CaseDesc(id="PayLogic_013")
+	@Test(description="Test the pay entrance - when the user doesn't have the megaphone function under the room")
+	public void test_roomMegaPhone() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(0);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		cb.clickONANonFullRoom();
+		PayDialog payDialog = new RoomPage().getPayDialog();
+		payDialog.close();
+		assertTrue(payDialog.isPresent());
+		payDialog.waitSubElement("立即支付按钮").click();
+		assertForPayType("google checkout");	
+	}
+	
+	@CaseDesc(id="PayLogic_014")
+	@Test(description="Test the lobby pay entrance to stay")
+	public void test_roomPayLeave() throws InterruptedException{	
+		loginPage.loginAsGuest();
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		PayCenterPage payCenterPage = new PayCenterPage();
+		payCenterPage.close();
+		PersuadePage persuadePage = new PersuadePage();
+		persuadePage.waitSubElement("[不需要充值]按钮").click();
+		assertFalse(persuadePage.isPresent());
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		payCenterPage.close();
+		persuadePage.waitSubElement("[继续充值]按钮").click();
+		persuadePage.waitSubElement("确定按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_015")
+	@Test(description="Test the room pay entrance to stay")
+	public void test_roomPayLeave1() throws InterruptedException{
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitSubElement("设置按钮").click();
+		roomPage.waitSubElement("商城菜单项").click();
+		roomPage.waitSubElement("商城支付页面的关闭按钮").click();
+		PersuadePage persuadePage = new PersuadePage();
+		persuadePage.waitSubElement("[继续充值]按钮").click();
+		persuadePage.waitSubElement("确定按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+	@CaseDesc(id="PayLogic_016")
+	@Test(description="Test the room pay entrance to leave")
+	public void test_roomPayLeave2() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitSubElement("设置按钮").click();
+		roomPage.waitSubElement("商城菜单项").click();
+		roomPage.waitSubElement("商城支付页面的关闭按钮").click();
+		PersuadePage persuadePage = new PersuadePage();
+		persuadePage.waitSubElement("[不需要充值]按钮").click();
+		assertFalse(roomPage.isSubElementPresent("商城支付页面的关闭按钮"));
+	}
+	
+	@CaseDesc(id="PayLogic_017")
+	@Test(description="Test the pay entrance under the personal information page")
+	public void test_PersonalPay() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.getMyPropsPage().waitSubElement("去道具商场逛按钮").click();
+		PropsMarketPage propsMarketPage = new PropsMarketPage();
+		propsMarketPage.waitSubElement("购买按钮").click();
+		propsMarketPage.waitSubElement("博雅币不足提示页面的确定按钮").click();
+		PayCenterPage payCenterPage = new PayCenterPage();
+		assertTrue(payCenterPage.isPresent());
+		payCenterPage.waitSubElement("google checkout的购买按钮").click();
+		assertForPayType("google checkout");
+		
+	}
+	
+	@CaseDesc(id="PayLogic_018")
+	@Test(description="Test the TOAST under the unsuccessful pay condition")
+	public void test_unsuccessfulPay() throws InterruptedException{	
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		PayCenterPage payCenterPage = new PayCenterPage();
+		assertTrue(payCenterPage.isSubElementPresent("游戏币按钮"));
+		payCenterPage.waitSubElement("google checkout的购买按钮").click();
+		GoogleCheckoutPage googleCheckoutPage = new GoogleCheckoutPage();
+		assertTrue(googleCheckoutPage.isSubElementPresent("支付页面"));
+		super.getDriver().pressBack();
+		payCenterPage.close();
+		new PersuadePage().waitSubElement("[不需要充值]按钮").click();
+		assertTrue(lobbyPage.isSubElementPresent("支付不成功TOAST", 180));
+	}
+	
+	@CaseDesc(id="PayLogic_021")
+	@Test(description="Test the room pay entrance to stay")
+	public void test_roomPayLeave3() throws InterruptedException{
+		loginPage.loginAsGuestWithCoins(2000);
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitSubElement("设置按钮").click();
+		assertTrue(roomPage.isSubElementPresent("商城菜单项"));
+		roomPage.waitSubElement("商城菜单项").click();
+		roomPage.waitSubElement("商城支付页面的购买按钮").click();
+		assertForPayType("google checkout");
+	}
+	
+}

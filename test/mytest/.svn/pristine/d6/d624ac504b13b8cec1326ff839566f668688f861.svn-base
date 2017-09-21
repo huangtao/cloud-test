@@ -1,0 +1,73 @@
+package com.boyaa.hallbase.common;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class SubGame {
+	private List<SubGameInfo> subGameInfoArray = new ArrayList<SubGameInfo>();
+	
+	public SubGame() {	//TODO 找开发确认每个版本的唯一标识，暂时采用英文(英文即为子游戏文件夹名称)的方式，后续如果有重名现象则要使用中英文双重确认的方式应对
+		this.subGameInfoArray.add(new SubGameInfo("201","大连穷胡","dlqh"));
+		this.subGameInfoArray.add(new SubGameInfo("202","大连打滚子","dgz"));
+		this.subGameInfoArray.add(new SubGameInfo("203","大连斗地主","ddz"));
+		this.subGameInfoArray.add(new SubGameInfo("204","大连德州","dzpk"));
+		this.subGameInfoArray.add(new SubGameInfo("205","大连推倒胡","tdh"));
+		this.subGameInfoArray.add(new SubGameInfo("206","四国军棋","sgjq"));
+		this.subGameInfoArray.add(new SubGameInfo("207","红五","hw"));
+		this.subGameInfoArray.add(new SubGameInfo("208","象棋","zgxq"));
+		this.subGameInfoArray.add(new SubGameInfo("10","马股","magu"));
+		this.subGameInfoArray.add(new SubGameInfo("20","干瞪眼","gdy"));
+		this.subGameInfoArray.add(new SubGameInfo("21","焖鸡","menji"));
+		this.subGameInfoArray.add(new SubGameInfo("401","宜宾麻将","ybmj"));
+		this.subGameInfoArray.add(new SubGameInfo("402","宜宾斗地主","ybddz"));
+		this.subGameInfoArray.add(new SubGameInfo("601","自贡麻将","zgmj"));
+		this.subGameInfoArray.add(new SubGameInfo("602","自贡斗地主","zgddz"));
+		this.subGameInfoArray.add(new SubGameInfo("603","五人麻将","zgfmj"));
+	}
+	
+	public SubGameInfo getSubGameInfoByChineseName(String name) {
+		for(SubGameInfo subGame:this.subGameInfoArray) {
+			if(subGame.getChineseName().equals(name)) {
+				return subGame;
+			}
+		}
+		throw new RuntimeException("找不到与："+name+"对应的游戏信息");
+	}
+	
+	public SubGameInfo getSubGameInfoByEnglishName(String name) {
+		for(SubGameInfo subGame:this.subGameInfoArray) {
+			if(subGame.getEnglishName().equals(name)) {
+				return subGame;
+			}
+		}
+		throw new RuntimeException("找不到与："+name+"对应的游戏信息");
+	}
+		
+	
+	public class SubGameInfo {
+		private String id;
+		private String name;
+		private String englishName;
+		
+		public SubGameInfo(String id, String name, String englishName) {
+			this.id = id;
+			this.name = name;
+			this.englishName = englishName;
+		}
+			
+			public String getGameId() {
+				return id;
+			}
+			
+			public String getChineseName() {
+				return this.name;
+			}
+			
+			public String getEnglishName() {
+				return this.englishName;
+			}
+	}		
+	
+}

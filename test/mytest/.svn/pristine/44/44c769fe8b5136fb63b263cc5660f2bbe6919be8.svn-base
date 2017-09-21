@@ -1,0 +1,72 @@
+package com.boyaa.hallsmoketest.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.common.CommonBusiness.ServerEnvironment;
+import com.boyaa.hallbase.uilib.ExitDialog;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.UserPage;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="退出游戏")
+public class ExitTest extends SmokeTestCase {
+	
+
+	@CaseDesc(id="大厅核心检查项", name="游戏退出-物理返回键")
+	@Test(description="在游戏大厅界面（非游戏内）点击手机物理返回键，均能正常掉出退出确认框")
+	public void test_backKey() throws InterruptedException{
+		hallPage.waitPresent(20);
+		
+		super.getDriver().pressBack();
+		assertTrue(new ExitDialog().isPresent(), "没有弹出退出游戏确认框");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="游戏退出-确认框")
+	@Test(description="退出确认框有标题和说明以及【考虑好了】与【我再想想】的选项按钮以及明日签到奖励数值提示显示")
+	public void test_exitDialog() throws InterruptedException{
+		hallPage.waitPresent(20);
+		
+		super.getDriver().pressBack();
+		ExitDialog exitDialog = new ExitDialog();
+		assertTrue(exitDialog.isPresent(), "没有弹出退出游戏确认框");
+		assertTrue(exitDialog.isSubElementPresent("考虑好了按钮"), "考虑好了按钮不存在");
+		assertTrue(exitDialog.isSubElementPresent("我再想想按钮"), "我再想想按钮不存在");
+		assertTrue(exitDialog.isSubElementPresent("VIP双倍提示"), "VIP双倍奖励提示不存在");
+		
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="游戏退出-考虑好了")
+	@Test(description="退出确认框中点击【考虑好了】能正常退出游戏，玩家数据被正确保留，下次登录时无数据错误")
+	public void test_confirmExit() throws InterruptedException{
+		hallPage.waitPresent(20);
+		
+		super.getDriver().pressBack();
+		ExitDialog exitDialog = new ExitDialog();
+		assertTrue(exitDialog.isPresent(), "没有弹出退出游戏确认框");
+		exitDialog.waitSubElement("考虑好了按钮").click();
+		
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="游戏退出-我再想想和X按钮")
+	@Test(description="点击【我再想想】与X正常关闭退出弹框，游戏界面无异常，能可以继续选择进行游戏")
+	public void test_cancelExit() throws InterruptedException{
+		hallPage.waitPresent(20);
+		
+		super.getDriver().pressBack();
+		ExitDialog exitDialog = new ExitDialog();
+		assertTrue(exitDialog.isPresent(), "没有弹出退出游戏确认框");
+		exitDialog.waitSubElement("我再想想按钮").click();
+		assertFalse(exitDialog.isPresent(), "退出游戏确认框没有关闭");
+		
+		super.getDriver().pressBack();
+		exitDialog.close();
+		assertFalse(exitDialog.isPresent(), "退出游戏确认框没有关闭");
+	}
+
+}

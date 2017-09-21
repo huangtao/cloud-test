@@ -1,0 +1,18 @@
+package com.boyaa.testholdemth.uilib;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemth.business.CommonBusiness;;
+public class SitAndGoRoomPage  extends RainbowElement  {
+	private CommonBusiness cb = null;
+
+	public SitAndGoRoomPage(){
+		cb= new CommonBusiness();
+		
+	}
+	public int getUserIntegral(){
+		String st = waitSubElement("积分数量按钮").getText();
+		int count = cb.strChangToInt(st);
+		return count;
+	}	
+}

@@ -1,0 +1,7 @@
+I     20140902 13:05:42    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    chmod 777 /data/data/com.boyaa.androidmarketit/files success
+I     20140902 13:05:45    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140902 13:05:45    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140902 13:05:47    LocalLib    Element: "id/op_gallery_img" is not fond.
+I     20140902 13:06:48    LocalLib    id/function_out is not found.
+I     20140902 13:06:59    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasIT_20140902_01-00-51PM/_Screenshots/PayLogic_004_20140902_13_06_59.jpg
+I     20140902 13:07:04    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    tear down time out!

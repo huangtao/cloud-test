@@ -1,0 +1,42 @@
+local community_pin_map = require("qnFiles/qnPlist/hall/community_pin");
+local communityRankLayer=
+{
+	name="communityRankLayer",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="freindRankView",type=0,typeName="View",time=96120011,x=177,y=181,width=64,height=64,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=1,fillParentHeight=1,
+		{
+			name="searchView",type=0,typeName="View",time=96120674,x=0,y=20,width=64,height=57,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=1,fillParentHeight=0,
+			{
+				name="search",type=0,typeName="Image",time=96118790,x=25,y=0,width=730,height=57,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file=community_pin_map['search.png'],gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="searchEdit",type=0,typeName="EditText",time=96119153,x=-35,y=0,width=640,height=58,nodeAlign=kAlignCenter,visible=1,fillParentWidth=1,fillParentHeight=1,string=[[输入好友昵称或ID]],fontSize=28,textAlign=kAlignLeft,colorRed=255,colorGreen=255,colorBlue=255
+				},
+				{
+					name="Image11",type=0,typeName="Image",time=101412743,x=65,y=0,width=1,height=36,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,file=community_pin_map['searchLine.png']
+				},
+				{
+					name="delBtn",type=0,typeName="Button",time=101412871,x=65,y=0,width=80,height=58,nodeAlign=kAlignRight,visible=0,fillParentWidth=0,fillParentHeight=0,file="hall/common/bg_blank.png",
+					{
+						name="Image1",type=0,typeName="Image",time=102075370,x=0,y=0,width=39,height=39,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=community_pin_map['del.png']
+					}
+				},
+				{
+					name="searchIcon",type=0,typeName="View",time=102158977,x=0,y=0,width=67,height=64,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,
+					{
+						name="Image1",type=0,typeName="Image",time=96119731,x=18,y=0,width=33,height=37,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,file=community_pin_map['magnifier.png']
+					}
+				}
+			}
+		},
+		{
+			name="listView",type=0,typeName="View",time=98641784,x=168,y=387,width=64,height=64,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,fillTopLeftX=5,fillTopLeftY=75,fillBottomRightX=5,fillBottomRightY=5
+		},
+		{
+			name="typeView",type=0,typeName="View",time=96127704,x=-58,y=22,width=300,height=54,nodeAlign=kAlignTopRight,visible=1,fillParentWidth=0,fillParentHeight=0
+		},
+		{
+			name="notFriend",type=0,typeName="Text",time=99760194,x=0,y=0,width=64,height=64,nodeAlign=kAlignCenter,visible=0,fillParentWidth=0,fillParentHeight=0,string=[[暂无好友]],fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=255
+		}
+	}
+}
+return communityRankLayer;

@@ -1,0 +1,20 @@
+inviteListItem2=
+{
+	name="inviteListItem2",type=0,typeName="View",time=0,x=0,y=0,width=478,height=74,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=0,fillParentHeight=0,
+	{
+		name="checkBox",type=0,typeName="CheckBox",time=107000780,x=20,y=0,width=48,height=48,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0
+	},
+	{
+		name="name",type=0,typeName="Text",time=107001192,x=10,y=0,width=52,height=32,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[名称]],fontSize=26,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,colorA=1
+	},
+	{
+		name="number",type=0,typeName="Text",time=107001330,x=124,y=0,width=143,height=32,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[13631297777]],fontSize=26,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,colorA=1
+	},
+	{
+		name="line",type=0,typeName="Image",time=107001523,x=0,y=0,width=478,height=2,nodeAlign=kAlignBottom,visible=1,fillParentWidth=1,fillParentHeight=0,file="isolater/com_line5.png"
+	},
+	{
+		name="invited",type=0,typeName="Text",time=107001192,x=4,y=0,width=78,height=32,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[已邀请]],fontSize=22,textAlign=kAlignCenter,colorRed=176,colorGreen=77,colorBlue=49,colorA=1
+	}
+}
+return inviteListItem2;

@@ -1,0 +1,32 @@
+local match_hall_enroll_list_layout=
+{
+	name="match_hall_enroll_list_layout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="bg",type=0,typeName="Image",time=98552510,x=331,y=0,width=1280,height=720,nodeAlign=kAlignTop,visible=1,fillParentWidth=1,fillParentHeight=1,file="hall/common/bg_shiled.png",
+		{
+			name="txtTitle",type=4,typeName="Text",time=72841867,report=0,x=0,y=-8,width=396,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[已报名比赛]],colorA=1
+		}
+	},
+	{
+		name="content",type=0,typeName="Image",time=114602562,x=0,y=0,width=810,height=480,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,
+		{
+			name="titleBg",type=0,typeName="Image",time=98552510,x=0,y=-55,width=617,height=190,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="txtTitle",type=4,typeName="Text",time=72841867,report=0,x=0,y=-8,width=396,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[已报名比赛]],colorA=1
+			}
+		},
+		{
+			name="closeBtn",type=0,typeName="Button",time=98552463,x=-15,y=-15,width=60,height=60,nodeAlign=kAlignTopRight,visible=1,fillParentWidth=0,fillParentHeight=0,file="isolater/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="listBg",type=0,typeName="Image",time=114603000,x=3,y=30,width=672,height=355,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/common/bg_blank.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="listView",type=0,typeName="View",time=0,x=0,y=0,width=672,height=355,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft
+			}
+		}
+	},
+	{
+		name="tips",type=4,typeName="Text",time=0,x=0,y=0,width=192,height=100,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,string=[[你还没有报名比赛]],colorA=1
+	}
+}
+return match_hall_enroll_list_layout;

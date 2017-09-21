@@ -1,0 +1,12 @@
+package com.boyaa;
+
+import java.util.HashMap;
+
+public class Config {
+	public static final String appId = "203003";
+	public static final String prePublicEnvFriendId = "100001528";
+	public static final String testEnvFriendId = "2005044";
+	public static final String onlineEnvFriendId = "333403";
+	
+	public static final String waitActivity = "com.boyaa.enginedlqp.main.Game";
+}

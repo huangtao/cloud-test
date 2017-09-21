@@ -1,0 +1,67 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class RankListPage extends RainbowElement{
+	
+	public int getExp() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (int)(Integer.valueOf(waitSubElement("经验值").getText().replace(",", "").substring(5)));
+	}
+	
+	public int getEarnMoney() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String money_string = waitSubElement("赚金值").getText().replace(",", "").substring(5);
+		int money;
+		if (money_string.contains("万")) {
+			money = (int)((Float.valueOf(money_string.replace("万", "")))*10000);
+		} else {
+			money = (int)(Integer.valueOf(money_string));
+		}
+		return money;
+	}
+	
+	public int getMoney() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String money_string = waitSubElement("金币值").getText().replace(",", "").substring(3);
+		int money;
+		if (money_string.contains("万")) {
+			money = (int)((Float.valueOf(money_string.replace("万", "")))*10000);
+		} else {
+			money = (int)(Integer.valueOf(money_string));
+		}
+		return money;
+	}
+	
+	public int getOrder() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//note: 如果未入榜，则返回999999；
+		if (waitSubElement("未入榜文本").isDisplayed()) {
+			return 999999;
+		} else {
+		return Integer.valueOf(waitSubElement("具体排名").getText());
+		}
+	}
+
+}

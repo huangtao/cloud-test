@@ -1,0 +1,13 @@
+package com.boyaa.testhallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class FeedBackPage extends RainbowElement{
+	public PromptDialog getPromptDialog(){
+		return new PromptDialog();
+	}
+	
+	public class PromptDialog extends RainbowElement{
+	}
+
+}

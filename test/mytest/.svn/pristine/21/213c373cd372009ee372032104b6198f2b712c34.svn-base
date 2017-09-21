@@ -1,0 +1,1021 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link REL="StyleSheet" HREF="Report.css" TYPE="text/css"><script language="javascript" type="text/javascript">
+                function toggleMenu(id,b)
+    			{
+    				if (document.getElementById)
+    				{
+    					var e = document.getElementById(id);
+    					var b = document.getElementById(b);
+
+    					if (e)
+    					{
+    						if (e.style.display != "block")
+    						{
+    							e.style.display = "block";
+    							b.src='_images/check-min.jpg';
+    						}
+    						else
+    						{
+    							e.style.display = "none";
+    							b.src='_images/check-plus.jpg';
+    						}
+    					}
+    				}
+    			}
+    			function expandall()
+    			{
+    				var e = document.all.tags("div");
+    				var b = document.all.tags("img");
+
+    				for (var i = 0; i < e.length; i++)
+    				{
+    					if (e[i].style.display == "none")
+    					{
+    						e[i].style.display = "block";
+    					}
+    				}
+    				for (var i = 0; i < b.length; i++)
+    				{
+    					if (b[i].id != "m1" && b[i].id != "m2")
+    					{
+    						if (b[i].src.substring(b[i].src.lastIndexOf("_"), b[i].src.length) == "_images/check-plus.jpg")
+    						{
+    							b[i].src = "_images/check-min.jpg";
+    						}
+    					}
+    				}
+    			}
+    			function collapseall()
+    			{
+    				var e = document.all.tags("div");
+    				var b = document.all.tags("img");
+
+    				for (var i = 0; i < e.length; i++)
+    				{
+    					if(e[i].id != "Step" && e[i].id != "Summary" && e[i].id != "Application" && e[i].id != "TestSuite")
+    					{
+    						if (e[i].style.display == "block")
+    						{
+    							e[i].style.display = "none";
+    						}
+    					}
+    				}
+    				for (var i = 0; i < b.length; i++)
+    				{
+    					if (b[i].id != "m1" && b[i].id != "m2")
+    					{
+    						if (b[i].src.substring(b[i].src.lastIndexOf("_"), b[i].src.length) == "_images/check-min.jpg")
+    							{
+    								b[i].src = "_images/check-plus.jpg";
+    							}
+    					}
+    				}
+    			}</script></head>
+<body>
+<table ID="TableTitle">
+<tr Class="header">
+<td>Boyaa Automation Test</td>
+</tr>
+<tr>
+<td>
+                        Automation Test Report
+                    </td>
+</tr>
+</table><br><div id="Application" Style="position: relative; display:block; text-align:center">
+<table ID="TableApplication">
+<tr>
+<td>
+                            Application Name:
+                        </td>
+<td><span>TexasDE</span></td>
+</tr>
+<tr>
+<td>
+                            Release:
+                        </td>
+<td><span>texasPoker_de_3.4</span></td>
+</tr>
+<tr>
+<td>
+                            Build:
+                        </td>
+<td><span>V3.4.0</span></td>
+</tr>
+</table>
+</div>
+<table>
+<tr>
+<td><strong>Start Time :</strong></td>
+<td><span>2014/09/04 01:42:26 PM</span></td>
+</tr>
+<tr>
+<td><strong>End Time :</strong></td>
+<td><span>2014/09/04 02:03:33 PM</span></td>
+</tr>
+<tr>
+<td><strong>Execute Time :</strong></td>
+<td><span>0 Hr(s) </span><span>21 Min(s) </span><span>7 Sec(s)</span></td>
+</tr>
+</table><br><div id="Summary" Style="position:relative; display:block; text-align:center">
+<table id="TableSummary" cellSpacing="0" cellPadding="0">
+<tr class="Head">
+<td>
+                            Summary of TestSuites
+                        </td>
+<td>
+                            Passed
+                        </td>
+<td>
+                            Failed
+                        </td>
+</tr>
+<tr class="Count">
+<td>ATC_Texas_PayLogicDE</td>
+<td>14</td>
+<td>5</td>
+</tr>
+<tr class="Count">
+<td>Total</td>
+<td>14</td>
+<td>5</td>
+</tr>
+</table>
+</div><br><img src="_images/check-plus.jpg" onClick="expandall()" id="m1"> <a href="#" onClick="expandall()"><span>Expand All</span></a> <img src="_images/check-min.jpg" onClick="collapseall()" id="m2"> <a href="#" onClick="collapseall()"><span>Collapse All</span></a><br><div id="TestSuite" Style="position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" onClick="toggleMenu('div1.0', 'm1.0')">
+<tr>
+<td class="message"><img id="m1.0" src="_images/check-plus.jpg" border="0"> ATC_Texas_PayLogicDE</td>
+<td class="Passed">Passed -
+                        14</td>
+<td class="Failed">Failed -
+						5</td>
+</tr>
+</table>
+</div>
+<div id="div1.0" Style="display:none">
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.1', 'm1.1')">
+<tr>
+<td class="message"><img id="m1.1" src="_images\check-plus.jpg" border="0"> PayLogic_001 lobbyPay: Test the lobby pay enterence.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.1" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_lobbyPay</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_001_20140904_13_43_02.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_001.log" target="_new">PayLogic_001.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.2', 'm1.2')">
+<tr>
+<td class="message"><img id="m1.2" src="_images\check-plus.jpg" border="0"> PayLogic_002 roomPay: Test the room pay enterence.</td>
+<td class="
+                                Passed
+                                
+                                Failed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.2" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_roomPay</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: java.lang.RuntimeException: Can not find a room which is not full!  at com.boyaa.TestTexasDE.Common_business.clickOnANonFullRoom(Common_business.java:571)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_roomPay(Texas_PayLogicDE.java:79)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_002_20140904_13_43_43.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_002.log" target="_new">PayLogic_002.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomPay</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_002_20140904_13_44_45.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_002.log" target="_new">PayLogic_002.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.3', 'm1.3')">
+<tr>
+<td class="message"><img id="m1.3" src="_images\check-plus.jpg" border="0"> PayLogic_003 roomListPay: Test the room list pay enterence.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.3" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomListPay</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_003_20140904_13_45_25.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_003.log" target="_new">PayLogic_003.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.4', 'm1.4')">
+<tr>
+<td class="message"><img id="m1.4" src="_images\check-plus.jpg" border="0"> PayLogic_004 gameNotEnough: Test the pay enterence - when there is not enough money for playing game.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.4" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_gameNotEnough</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_004_20140904_13_46_15.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_004.log" target="_new">PayLogic_004.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.5', 'm1.5')">
+<tr>
+<td class="message"><img id="m1.5" src="_images\check-plus.jpg" border="0"> PayLogic_005 slotsNotEnough1: Test the pay enterence - when there is not enough money for playing slots (lobby).</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.5" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_slotsNotEnough1</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_005_20140904_13_46_57.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_005.log" target="_new">PayLogic_005.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.6', 'm1.6')">
+<tr>
+<td class="message"><img id="m1.6" src="_images\check-plus.jpg" border="0"> PayLogic_006 slotsNotEnough2: Test the pay enterence - when there is not enough money for playing slots (room).</td>
+<td class="
+                                Failed
+                                ">Failed </td>
+</tr>
+</table>
+</div>
+<div id="div1.6" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_slotsNotEnough2</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 房间中的老虎机按钮 is not found.  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.rainbow.local.LocalLib.clickElementById(LocalLib.java:505)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_slotsNotEnough2(Texas_PayLogicDE.java:163)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_006_20140904_13_47_52.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_006.log" target="_new">PayLogic_006.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Failed
+                        ">- test_slotsNotEnough2</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 房间中的老虎机按钮 is not found.  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.rainbow.local.LocalLib.clickElementById(LocalLib.java:505)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_slotsNotEnough2(Texas_PayLogicDE.java:163)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_006_20140904_13_48_48.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_006.log" target="_new">PayLogic_006.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.7', 'm1.7')">
+<tr>
+<td class="message"><img id="m1.7" src="_images\check-plus.jpg" border="0"> PayLogic_007 cardGuessNotEnough: Test the pay entrance - when there is not enough money for playing card guess.</td>
+<td class="
+                                Failed
+                                ">Failed </td>
+</tr>
+</table>
+</div>
+<div id="div1.7" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_cardGuessNotEnough</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 没有找到合适的房间,房间要求：（用户携带的金额 &lt; 小盲*10*10） and （携带的金额 &gt; 房间最小携带数）  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.TestTexasDE.Common_business.selectARoomForCardGuess(Common_business.java:679)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_cardGuessNotEnough(Texas_PayLogicDE.java:185)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_007_20140904_13_49_32.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_007.log" target="_new">PayLogic_007.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Failed
+                        ">- test_cardGuessNotEnough</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 没有找到合适的房间,房间要求：（用户携带的金额 &lt; 小盲*10*10） and （携带的金额 &gt; 房间最小携带数）  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.TestTexasDE.Common_business.selectARoomForCardGuess(Common_business.java:679)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_cardGuessNotEnough(Texas_PayLogicDE.java:185)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_007_20140904_13_50_17.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_007.log" target="_new">PayLogic_007.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.8', 'm1.8')">
+<tr>
+<td class="message"><img id="m1.8" src="_images\check-plus.jpg" border="0"> PayLogic_008 roomBankruptcy: Test the pay enterence - when the user is bankruptcying on the room.</td>
+<td class="
+                                Failed
+                                ">Failed </td>
+</tr>
+</table>
+</div>
+<div id="div1.8" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_roomBankruptcy</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 破产对话框上的Fortumo购买按钮 is not found.  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.rainbow.local.LocalLib.clickElementById(LocalLib.java:505)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_roomBankruptcy(Texas_PayLogicDE.java:220)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_008_20140904_13_51_23.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_008.log" target="_new">PayLogic_008.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Failed
+                        ">- test_roomBankruptcy</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 房间里加注按钮一直没有出现  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.TestTexasDE.Common_business.waitAndClickAddMoneyIconOnCanvas(Common_business.java:999)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_roomBankruptcy(Texas_PayLogicDE.java:215)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_008_20140904_13_52_49.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_008.log" target="_new">PayLogic_008.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.9', 'm1.9')">
+<tr>
+<td class="message"><img id="m1.9" src="_images\check-plus.jpg" border="0"> PayLogic_009 lobbyBankruptcy: Test the pay enterence - when the user is bankruptcying on the lobby</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.9" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_lobbyBankruptcy</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_009_20140904_13_53_27.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_009.log" target="_new">PayLogic_009.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.10', 'm1.10')">
+<tr>
+<td class="message"><img id="m1.10" src="_images\check-plus.jpg" border="0"> PayLogic_010 sitGoGame: Test the pay enterence - when the user is under the sit and go game.</td>
+<td class="
+                                Passed
+                                
+                                Failed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.10" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_sitGoGame</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 储值中心页面列表中的购买按钮 is not found.  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.rainbow.local.LocalLib.ifElementExist(LocalLib.java:609)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_sitGoGame(Texas_PayLogicDE.java:257)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_010_20140904_13_54_18.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_010.log" target="_new">PayLogic_010.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Passed
+                        ">- test_sitGoGame</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_010_20140904_13_55_03.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_010.log" target="_new">PayLogic_010.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.11', 'm1.11')">
+<tr>
+<td class="message"><img id="m1.11" src="_images\check-plus.jpg" border="0"> PayLogic_011 lobbyMegaPhone: Test the pay enterence - when the user doesn't have the megaphone function under the lobby.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.11" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_lobbyMegaPhone</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_011_20140904_13_55_46.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_011.log" target="_new">PayLogic_011.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.12', 'm1.12')">
+<tr>
+<td class="message"><img id="m1.12" src="_images\check-plus.jpg" border="0"> PayLogic_012 roomListMegaPhone: Test the pay enterence - when the user doesn't have the megaphone function under the room list.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.12" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomListMegaPhone</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_012_20140904_13_56_35.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_012.log" target="_new">PayLogic_012.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.13', 'm1.13')">
+<tr>
+<td class="message"><img id="m1.13" src="_images\check-plus.jpg" border="0"> PayLogic_013 roomMegaPhone: Test the pay enterence - when the user doesn't have the megaphone function under the room.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.13" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomMegaPhone</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_013_20140904_13_57_31.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_013.log" target="_new">PayLogic_013.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.14', 'm1.14')">
+<tr>
+<td class="message"><img id="m1.14" src="_images\check-plus.jpg" border="0"> PayLogic_014 lobbyPayLeave: Test the lobby pay enterence to stay.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.14" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_lobbyPayLeave</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_014_20140904_13_58_13.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_014.log" target="_new">PayLogic_014.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.15', 'm1.15')">
+<tr>
+<td class="message"><img id="m1.15" src="_images\check-plus.jpg" border="0"> PayLogic_017 PersonalPay: Test the pay enterence under the personal information page.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.15" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_PersonalPay</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_017_20140904_13_58_54.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_017.log" target="_new">PayLogic_017.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.16', 'm1.16')">
+<tr>
+<td class="message"><img id="m1.16" src="_images\check-plus.jpg" border="0"> PayLogic_018 unsuccessfulPay: Test the pop up dialog box under the unsuccessful pay condition.</td>
+<td class="
+                                Failed
+                                ">Failed </td>
+</tr>
+</table>
+</div>
+<div id="div1.16" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_unsuccessfulPay</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 脚本技术Block，无法从第三方法应用返回  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_unsuccessfulPay(Texas_PayLogicDE.java:401)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_018_20140904_13_59_34.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_018.log" target="_new">PayLogic_018.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Failed
+                        ">- test_unsuccessfulPay</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: 脚本技术Block，无法从第三方法应用返回  at junit.framework.Assert.fail(Assert.java:50)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_unsuccessfulPay(Texas_PayLogicDE.java:401)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_018_20140904_14_00_18.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_018.log" target="_new">PayLogic_018.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.17', 'm1.17')">
+<tr>
+<td class="message"><img id="m1.17" src="_images\check-plus.jpg" border="0"> PayLogic_019 lobbyFirstPay: Test the pay entrance for the first pay under the lobby.</td>
+<td class="
+                                Failed
+                                ">Failed </td>
+</tr>
+</table>
+</div>
+<div id="div1.17" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Failed
+                        ">- test_lobbyFirstPay</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: Third Party checkout dialog is not found after 5 seconds  at junit.framework.Assert.fail(Assert.java:50)  at junit.framework.Assert.assertTrue(Assert.java:20)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_lobbyFirstPay(Texas_PayLogicDE.java:418)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_019_20140904_14_01_21.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_019.log" target="_new">PayLogic_019.log</a></td>
+</tr>
+</table>
+</div>
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M2
+                        ">
+<td class="
+                        Failed
+                        ">- test_lobbyFirstPay</td>
+<td class="
+                            Failed
+                            "> </td>
+<td class="
+                            Failed
+                            "> Failed  执行过程中出问题: junit.framework.AssertionFailedError: Third Party checkout dialog is not found after 5 seconds  at junit.framework.Assert.fail(Assert.java:50)  at junit.framework.Assert.assertTrue(Assert.java:20)  at com.boyaa.TestTexasDE.cases.Texas_PayLogicDE.test_lobbyFirstPay(Texas_PayLogicDE.java:418)  at java.lang.reflect.Method.invokeNative(Native Method)  at java.lang.reflect.Method.invoke(Method.java:525)  at android.test.InstrumentationTestCase.runMethod(InstrumentationTestCase.java:214)  at android.test.InstrumentationTestCase.runTest(InstrumentationTestCase.java:199)  at android.test.ActivityInstrumentationTestCase2.runTest(ActivityInstrumentationTestCase2.java:192)  at junit.framework.TestCase.runBare(TestCase.java:134)  at junit.framework.TestResult$1.protect(TestResult.java:115)  at junit.framework.TestResult.runProtected(TestResult.java:133)  at junit.framework.TestResult.run(TestResult.java:118)  at junit.framework.TestCase.run(TestCase.java:124)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)  at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)  at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)  at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1738) </td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_019_20140904_14_02_26.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_019.log" target="_new">PayLogic_019.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.18', 'm1.18')">
+<tr>
+<td class="message"><img id="m1.18" src="_images\check-plus.jpg" border="0"> PayLogic_020 roomFirstPay: Test the pay entrance for the first pay in a room.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.18" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomFirstPay</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_020_20140904_14_03_27.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_020.log" target="_new">PayLogic_020.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="TestCase" Style="left:10px; position: relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="TestCase" onClick="toggleMenu('div1.19', 'm1.19')">
+<tr>
+<td class="message"><img id="m1.19" src="_images\check-plus.jpg" border="0"> PayLogic_021 roomPayCenter: Test the room pay center enterence.</td>
+<td class="
+                                Passed
+                                ">Passed </td>
+</tr>
+</table>
+</div>
+<div id="div1.19" Style="display:none">
+<div id="Step" Style="left:20px; position:relative; display:block">
+<table cellSpacing="1" cellPadding="1" align="center" Class="Step">
+<tr class="
+                        M1
+                        ">
+<td class="
+                        Passed
+                        ">- test_roomPayCenter</td>
+<td class="
+                            Passed
+                            "> </td>
+<td class="
+                            Passed
+                            "> Passed</td>
+<td class="
+                            LinkToFile
+                            "><a href=".\_Screenshots\PayLogic_021_20140904_14_04_19.jpg" target="_new">Screenshot</a></td>
+<td class="
+                            LinkToFile
+                            "> <a href=".\_Logs\PayLogic_021.log" target="_new">PayLogic_021.log</a></td>
+</tr>
+</table>
+</div>
+</div>
+</div><br><div id="SummaryOfTestCase" Style="position:relative; display:none; text-align:center">
+<table id="SummaryOfTestCaseTable" cellSpacing="0" cellPadding="0">
+<tr class="SummaryOfTestCaseTable_Head">
+<td>ATC_Texas_PayLogicDE<br>Test Cases
+                            </td>
+<td>
+                                Critical
+                            </td>
+<td>
+                                 High
+                            </td>
+<td>
+                                Medium
+                            </td>
+<td>
+                                 Low
+                            </td>
+</tr>
+<tr class="TotalPassed">
+<td>Total Passed</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="TotalFailed">
+<td>Total Failed</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</table>
+</div><br></body>
+</html>

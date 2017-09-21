@@ -1,0 +1,263 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.BaseTestCase;
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.BoyaaLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.lianyuntest.uilib.login.MobileLoginPage;
+import com.boyaa.lianyuntest.uilib.login.QQLoginPage;
+import com.boyaa.lianyuntest.uilib.login.SinaLoginPage;
+import com.boyaa.lianyuntest.uilib.login.WeChatLoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListenerLocal.class })
+@Test(description = "联运登录基准测试用例")
+public abstract class BaseLoginTest extends BaseTestCase {
+
+	protected void isLoginSucc(String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.closeTheLauncherDialog();
+		hp.waitPresent();
+		String account_name = hp.waitSubElement("账号").getText()
+				.replace(".", "");
+		assertNotEquals(account_name, "未登录", "登录失败");
+		if (name != null) {
+			assertTrue(name.contains(account_name), "账号登陆错误");
+		}
+	}
+
+	protected void isLoginSucc(HallPage hp, String name) {
+		CommonBusiness.closeTheLauncherDialog(hp);
+		hp.waitPresent();
+		String account_name = hp.waitSubElement("账号").getText()
+				.replace(".", "");
+		assertNotEquals(account_name, "未登录", "登录失败");
+		if (name != null) {
+			assertTrue(name.contains(account_name), "账号登陆错误");
+		}
+	}
+
+	protected void openLoginPage(HallPage hp, String loginMode,RainbowDriver nativeDriver) {
+		CommonBusiness.closeTheLauncherDialog(hp);
+
+		hp.waitSubElement("设置").click();
+		hp.waitSubElement("切换帐号").click();
+
+		Point p = CommonBusiness.coordinate(hp.waitSubElement(loginMode), 0.5,
+				-1.2);
+		nativeDriver.clickScreen(p.getX(), p.getY(), 100);
+	}
+	
+	protected void sinaLogin(String account,String pwd){
+		SinaLoginPage sinaP = new SinaLoginPage();
+		sinaP.waitSubElement("账号输入框").clear();
+		sinaP.waitSubElement("账号输入框").sendKeys(account);
+		sinaP.waitSubElement("密码输入框").clear();
+		sinaP.waitSubElement("密码输入框").sendKeys(pwd);
+		sinaP.waitSubElement("登录按钮").click();
+		sinaP.waitSubElement("确定").click();
+	}
+	
+	protected void qqLogin(String account,String pwd){
+		QQLoginPage qqp = new QQLoginPage();
+		qqp.waitPresent(30);
+		qqp.waitSubElement("账号输入框").clear();
+		qqp.waitSubElement("账号输入框").sendKeys(account);
+		qqp.waitSubElement("密码输入框").clear();
+		qqp.waitSubElement("密码输入框").sendKeys(pwd);
+		qqp.waitSubElement("登录按钮").click();
+	}
+	
+	protected void weChatLogin(String account,String pwd){
+		String oauthUI = ".plugin.webview.ui.tools.OAuthUI";
+		String loginUI = ".ui.account.SimpleLoginUI";
+		WeChatLoginPage wechatp = new WeChatLoginPage();
+		wechatp.waitPresent();
+		System.out.println(wechatp.getDriver().currentActivity());
+		wechatp.waitSubElement("账号输入框").clear();
+		wechatp.waitSubElement("账号输入框").sendKeys(account);
+		wechatp.waitSubElement("密码输入框").clear();
+		wechatp.waitSubElement("密码输入框").sendKeys(pwd);
+		wechatp.waitSubElement("登录按钮").click();
+		while(CommonBusiness.isActivity(wechatp.getDriver(), loginUI, 1)){
+			try {
+				wechatp.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//webview暂时无法获取元素，现在先用这种方式授权，后续看appium能不能获取到webview中元素再进行修改
+		if(CommonBusiness.isActivity(wechatp.getDriver(), oauthUI, 10)){
+			System.out.println(wechatp.getDriver().getPageSource());
+			try {
+				wechatp.sleep(8*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Point p = wechatp.waitSubElement("授权界面").getLocation();
+			Dimension d = wechatp.waitSubElement("授权界面").getSize();
+			int x = (d.getWidth()-p.getX())/2;
+			int y = p.getY()+d.getHeight()/4;
+			int endY = p.getY()+d.getHeight();
+			while(CommonBusiness.isActivity(wechatp.getDriver(), oauthUI, 1)&&y<=endY){
+				wechatp.getDriver().clickScreen(x, y, 500);
+				y+=80;
+				try {
+					wechatp.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	protected void boyaaLogin(HallPage hp,BoyaaLoginPage boyaap,String account,String pwd){
+		if(!boyaap.isPresent(5*1000)){
+			CommonBusiness.closeTheLauncherDialog(hp);
+			hp.waitSubElement("设置").click();
+			hp.waitSubElement("切换帐号").click();
+			
+			Point p = CommonBusiness.coordinate(hp.waitSubElement("博雅通行证"), 0.5, -1.2);
+			getDriver().clickScreen(p.getX(), p.getY(), 100);
+		}
+		
+		boyaap.waitSubElement("账号输入框").click();
+//		boyyap.waitSubElement("账号输入框").clear();
+//		boyyap.waitSubElement("账号输入框").sendKeys(account);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getDriver().findElementByClassName("android.widget.EditText").clear();
+		getDriver().findElementByClassName("android.widget.EditText").sendKeys(account);
+		getDriver().findElementByName("完成").click();
+		
+		boyaap.waitSubElement("密码输入框").click();
+//		boyyap.waitSubElement("密码输入框").clear();
+//		boyyap.waitSubElement("密码输入框").sendKeys(pwd);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getDriver().findElementByClassName("android.widget.EditText").clear();
+		getDriver().findElementByClassName("android.widget.EditText").sendKeys(pwd);
+		getDriver().findElementByName("完成").click();
+		
+		boyaap.waitSubElement("登录按钮").click();
+	}
+	
+	protected void mobileLogin(MobileLoginPage mobilep,String account,String pwd){
+		mobilep.waitSubElement("账号输入框").click();
+//		boyyap.waitSubElement("账号输入框").clear();
+//		boyyap.waitSubElement("账号输入框").sendKeys(account);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getDriver().findElementByClassName("android.widget.EditText").clear();
+		getDriver().findElementByClassName("android.widget.EditText").sendKeys(account);
+		getDriver().findElementByName("完成").click();
+		
+		mobilep.waitSubElement("密码输入框").click();
+//		boyyap.waitSubElement("密码输入框").clear();
+//		boyyap.waitSubElement("密码输入框").sendKeys(pwd);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getDriver().findElementByClassName("android.widget.EditText").clear();
+		getDriver().findElementByClassName("android.widget.EditText").sendKeys(pwd);
+		getDriver().findElementByName("完成").click();
+		
+		mobilep.waitSubElement("登录按钮").click();
+	}
+	
+	protected void openLoginPage(HallPage hp,String loginMode){
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		RainbowDriver nativeDriver = super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		
+		openLoginPage(hp, loginMode, nativeDriver);
+	}
+	
+	protected void loginQQ(String account, String pwd, String name){		
+		CommonBusiness.clearAppData("com.tencent.mobileqq");
+
+		HallPage hp = new HallPage();
+		openLoginPage(hp, "QQ登录");
+		
+		qqLogin(account, pwd);
+		
+		isLoginSucc(hp, name);
+	}
+	
+	protected void loginMobile(String account, String pwd, String name,String filePath) {
+		CommonBusiness.delFile(filePath);
+		HallPage hp = new HallPage();
+		MobileLoginPage mobilep = new MobileLoginPage();
+		openLoginPage(hp, "手机登录");
+		
+		mobileLogin(mobilep, account, pwd);
+		
+		isLoginSucc(hp, name);
+
+	}
+	
+	protected void loginWeChat(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.clearAppData("com.tencent.mm");
+		openLoginPage(hp, "微信登录");
+		
+		weChatLogin(account, pwd);
+		
+		isLoginSucc(hp, name);
+
+	}
+	
+	protected void loginVisitor() {
+		HallPage hp = new HallPage();
+		
+		openLoginPage(hp, "游客登录");
+		
+		isLoginSucc(hp, null);
+
+	}
+	
+	protected void hideKeyboard(RainbowDriver driver){
+		try {
+			driver.sleep(500);
+			driver.hideKeyboard();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	protected void createNativeDriver(){
+		super.setCapability("unicodeKeyboard", "True");
+		super.setCapability("resetKeyboard", "True");
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+	}
+
+}

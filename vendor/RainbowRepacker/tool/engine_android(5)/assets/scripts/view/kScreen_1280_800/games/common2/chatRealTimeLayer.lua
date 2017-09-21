@@ -1,0 +1,32 @@
+chatRealTimeLayer=
+{
+	name="chatRealTimeLayer",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,isLuaLocal=0,
+	{
+		name="tipsView",type=1,typeName="Image",time=0,x=0,y=-50,width=531,height=54,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/chatRealTime/video_tips_bg.png",
+		{
+			name="text",type=4,typeName="Text",time=0,x=0,y=0,width=572,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=20,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=255,string=[[语音功能升级啦！点击一次开启实时对讲，再次点击关闭！]],colorA=1
+		}
+	},
+	{
+		name="chatSwitch",type=0,typeName="View",time=0,x=0,y=0,width=68,height=68,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="messageContent",type=0,typeName="View",time=0,x=0,y=0,width=214,height=66,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,
+			{
+				name="clipView",type=0,typeName="View",time=0,x=-1258,y=0,width=1280,height=53,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignRight,
+				{
+					name="messageBg",type=1,typeName="Image",time=0,x=0,y=0,width=130,height=53,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="games/common/chatRealTime/video_message_bg.png",gridLeft=20,gridRight=20,gridTop=15,gridBottom=15,effect={shader="mirror",mirrorType=1},
+					{
+						name="messageView",type=0,typeName="View",time=0,x=0,y=0,width=82,height=53,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fillTopLeftX=28,fillBottomRightX=20,fillTopLeftY=0,fillBottomRightY=0
+					}
+				}
+			}
+		},
+		{
+			name="chatSwitchOpen",type=0,typeName="Button",time=107365242,x=0,y=0,width=214,height=66,nodeAlign=kAlignLeft,visible=0,fillParentWidth=0,fillParentHeight=0,file="games/common/chatRealTime/video_btn.png"
+		},
+		{
+			name="chatSwitchClose",type=0,typeName="Button",time=107365242,x=0,y=0,width=68,height=68,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/chatRealTime/video_open.png"
+		}
+	}
+}
+return chatRealTimeLayer;

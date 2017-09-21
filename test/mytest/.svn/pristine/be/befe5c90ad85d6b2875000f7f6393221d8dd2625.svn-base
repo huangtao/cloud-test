@@ -1,0 +1,85 @@
+package com.boyaa.testholdemhk.cases;
+
+import java.awt.image.BufferedImage;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.utils.ImageTools;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.PersonalInformationPage;
+
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="This suite is used to test the head shwo change")
+public class ChangePersonInfo extends RainbowTestCase {
+	private LoginPage loginPage=null;
+	private LobbyPage lobbyPage=null;
+	private PersonalInformationPage personalInformationPage=null;
+	
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();		
+		loginPage=new LoginPage();
+		lobbyPage=new LobbyPage();
+		personalInformationPage=new PersonalInformationPage();
+		loginPage.enterTestEnv();
+	}
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="change_headshow1",name="change_headshow_default")
+	@Test(description="从相册更换默认头像")
+	public void test_change_headshow1() throws Exception{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("个人头像图标").click();
+		BufferedImage headChangeBefore=ImageTools.getElementImage(personalInformationPage.waitSubElement("用户头像框"));
+		personalInformationPage.waitSubElement("修改头像按钮").click();
+		personalInformationPage.waitSubElement("确认上传按钮").click();
+		personalInformationPage.waitSubElement("本地相册按钮").click();
+		//personalInformationPage.waitSubElement("选中照片").click();
+		//BufferedImage headchangeAfter=ImageTools.getElementImage(personalInformationPage.waitSubElement("用户头像框"));
+		//personalInformationPage.waitSubElement("关闭按钮").click();
+		//assertFalse(ImageTools.sameAs(headChangeBefore, headchangeAfter, 0.9), "期望：个性详情处，原有头像发生改变，实际：原有头像没有改变");
+	}
+	
+	@CaseDesc(id="change_headshow6",name="change_name")
+	@Test(description="更换玩家的昵称")
+	public void test_changeName() throws Exception{		
+		loginPage.loginAsGuestWithTag("normal");		
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("编辑按钮").click();
+		personalInformationPage.waitSubElement("昵称文本编辑框").click();
+		String nameBefore=personalInformationPage.waitSubElement("昵称文本编辑框").getText();
+		System.out.println(nameBefore);		
+		personalInformationPage.waitSubElement("昵称文本编辑框").sendKeys("daisy");
+		String nameAfter=personalInformationPage.waitSubElement("昵称文本编辑框").getText();
+		System.out.println(nameAfter);
+		
+		personalInformationPage.waitSubElement("性别昵称编辑确定按钮").click();
+		personalInformationPage.waitSubElement("关闭按钮").click();
+		assertNotEquals(nameBefore,nameAfter,"修改失败");
+	}
+	
+	@CaseDesc(id="change_headshow5",name="change_headshow 5")
+	@Test(description="change_headshow 5")
+	public void test_changeSex() throws Exception{
+		loginPage.loginAsGuestWithTag("normal");		
+		lobbyPage.waitSubElement("个人头像图标").click();		
+		BufferedImage sexChangeBefore=ImageTools.getElementImage(personalInformationPage.waitSubElement("性别字段图标"));
+		personalInformationPage.waitSubElement("编辑按钮").click();
+		personalInformationPage.waitSubElement("性别选择框").click();
+		personalInformationPage.waitSubElement("性别选择项").click();
+		personalInformationPage.waitSubElement("性别昵称编辑确定按钮").click();
+		BufferedImage sexChangeAfter=ImageTools.getElementImage(personalInformationPage.waitSubElement("性别字段图标"));
+		assertFalse(ImageTools.sameAs(sexChangeBefore, sexChangeAfter, 0.9), "期望：个性详情处，性别字段图标发生改变，实际：性别字段图标没有改变");
+	}
+	
+
+}

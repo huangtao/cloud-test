@@ -1,0 +1,27 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class PrivateRoomPage extends RainbowElement{
+	private UpdateDialog updateDialog = null;
+	
+	public class UpdateDialog extends RainbowElement{
+		
+	}
+	
+	public UpdateDialog getUpdateDialog() {
+		if (updateDialog == null) {
+			updateDialog = new UpdateDialog();
+		}
+		return updateDialog;
+	}
+
+	public void closeErrorPromptDialogIfPresent() {
+		PromptDialog promptDialog = new PromptDialog();
+		if (promptDialog.isPresent()) {
+			promptDialog.close();
+		}
+		super.waitSubElement("选择游戏栏下拉菜单").click();		//重新打开下拉菜单
+	}
+
+}

@@ -1,0 +1,9 @@
+问有没有办法更改 windows 下 cmd(dos) 编码方式 将其改为UTF-8?
+chcp 命令，
+chcp 65001  就是换成UTF-8代码页
+
+chcp 936 可以换回默认的GBK
+chcp 437 是美国英语
+
+
+2.加机器人

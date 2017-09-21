@@ -1,0 +1,68 @@
+package com.boyaa.testdalianhall.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testdalianhall.business.CommonBusiness;
+import com.boyaa.testdalianhall.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testdalianhall.uilib.AnouncementDialog;
+import com.boyaa.testdalianhall.uilib.CheckinDialog;
+import com.boyaa.testdalianhall.uilib.HallPage;
+import com.boyaa.testdalianhall.uilib.TaskRewardDialog;
+import com.boyaa.testdalianhall.uilib.UpdateDialog;
+import com.boyaa.testdalianhall.uilib.UserPage;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="每日任务")
+public class EverydayTaskTest extends BaseTestCase {
+//	private static CommonBusiness cb = null;
+	private HallPage hallPage = null ;
+	public EverydayTaskTest() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+		hallPage = new HallPage();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	
+	@CaseDesc(id="DFHALL-1220", name="任务列表界面显示(Phase I)")
+	@Test(description="test_taskList")
+	public void test_taskList() {
+		hallPage.waitSubElement("任务按钮").click();
+		TaskRewardDialog td = new TaskRewardDialog();
+		assertTrue(td.isPresent(), "检查对话框为每日任务对话框");
+		assertTrue(td.waitSubElement("任务图标").isDisplayed(), "检查任务图标存在");
+		assertTrue(td.waitSubElement("任务名称").isDisplayed(), "检查任务名称存在");
+		assertTrue(td.waitSubElement("任务奖励").isDisplayed(), "检查任务奖励存在");
+		assertTrue(td.waitSubElement("任务进度").isDisplayed(), "检查任务进度存在");
+		assertTrue(td.waitSubElement("做任务按钮").isDisplayed(), "检查做任务按钮存在");
+		
+		td.waitSubElement("每日签到TAB按钮").click();
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.isPresent(), "检查每日签到对话框存在");
+		assertTrue(cd.waitSubElement("标题文本").getText().equals("每日签到"), "检查对话框标题变为每日签到");
+	}
+	
+	@CaseDesc(id="DFHALL-1233", name="任务完成")
+	@Test(description="test_taskComplete")
+	public void test_taskComplete() {
+		CommonBusiness.setTaskComplete(1, 1);
+		hallPage.waitSubElement("任务按钮").click();
+		//TODO:领取奖励接口
+//		td.waitSubElement("领取奖励按钮").click();
+	}
+}

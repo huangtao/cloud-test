@@ -1,0 +1,190 @@
+/**
+ * Created by GuixiangGui on 2016/9/8.
+ */
+
+var dbapi = require('../../db/api')
+var monkeyTest = require('../monkey/test')
+var Promise = require('bluebird')
+var logger = require('../../util/logger')
+var util = require('util')
+var emailNotiecs = require('../emailNotiecs')
+var report = require('../report')
+var activityTest = require('../activity/test')
+var uiAutoTest = require('../autoui/test')
+
+module.exports = function () {
+  var log = logger.createLogger('taskManager')
+  var cleanArr = new Array()
+  var cleanInterval
+  var isPlanRunning = false
+  var isCleanPlanRunning = false
+  function plan() {
+    dbapi.loadFreeDevices()
+      .then(function(cursor) {
+        return Promise.promisify(cursor.toArray, cursor)()
+          .then(function(list) {
+            var freeSerials=[]
+            list.forEach(function(serial) {
+              freeSerials.push(serial)
+            })
+            return freeSerials
+
+          })
+          .then(function (freeSerials) {
+            dbapi.loaddevicetaskstatus()
+              .then(function (cursor) {
+                return Promise.promisify(cursor.toArray, cursor)()
+                  .then(function (tasks) {
+                    if(tasks){
+                      freeSerials.forEach(function (serial) {
+                        for(var i=0;i<tasks.length;i++) {
+                          if(tasks[i].serials.indexOf(serial)!=-1){
+                            test(tasks[i], serial)
+                            break
+                          }
+                        }
+                      })
+                    }
+                  })
+                  .then(function () {
+                    isPlanRunning = false
+                  })
+              })
+          })
+      })
+      .catch(function(err) {
+        isPlanRunning = false
+        log.error('Failed to load device list: ', err.stack)
+      })
+  }
+  setInterval(function () {
+    if(!isPlanRunning){
+      isPlanRunning = true
+      plan()
+    }
+
+  },1000*60*2)
+
+  function cleanplan() {
+    isCleanPlanRunning = true
+    if(cleanArr.length > 0){
+      var taskid = cleanArr[0].taskid
+      var serial = cleanArr[0].serial
+      return dbapi.loaddevicetaskserial(taskid)
+        .then(function (serials) {
+          if(serials && serials.length > 0){
+            serials.splice(serials.indexOf(serial),1)
+
+            if(serials.length>0){
+              var newdata = {serials:serials}
+              dbapi.updatedevicetaskStatus(taskid,newdata)
+                .then(function(){
+                  log.debug('Release %s:%s', taskid,serial)
+                  dbapi.unsetDeviceOwner(serial)
+                    .then(clearArray)
+                })
+            }
+            else{
+              dbapi.removedevicetask(taskid)
+                .then(function () {
+                  return dbapi.updateTaskReport(taskid,{allstatus:'finish'})
+                    .then(function () {
+                      log.debug('Release %s:%s', taskid,serial)
+                      dbapi.unsetDeviceOwner(serial)
+                        .then(clearArray)
+                    })
+                })
+
+
+              report(taskid, null, dbapi, function () {
+                log.info('%s pack finish', taskid)
+              })
+              emailNotiecs(taskid)
+            }
+          }
+
+
+        })
+
+        .catch(function (err) {
+          log.debug('loaddevicetaskserial err :', err)
+          if(/non-object non-sequence.*null/.test(err)){
+            dbapi.unsetDeviceOwner(serial)
+              .then(clearArray)
+            log.debug('loaddevicetaskserial null clear task serial :', taskid,serial)
+          }
+        })
+    }else{
+      isCleanPlanRunning = false
+      /*clearInterval(cleanInterval)
+      cleanInterval = null*/
+    }
+
+    function clearArray(){
+      log.debug('clear %s %s', cleanArr[0].taskid, cleanArr[0].serial)
+      cleanArr.splice(0,1)
+      cleanplan()
+    }
+
+  }
+
+  function test(task, serial) {
+    var testType = 'monkey'
+    if(task.testType){
+      testType = task.testType
+    }
+    dbapi.setDeviceOwner(serial,{name: testType})
+      .then(function(){
+        return dbapi.loadDevice(serial)
+      })
+      .then(function (device) {
+        var data = task.options
+        data.cases = task.cases
+        data.deviceInfo = util.format('%s , %s , %s',device.manufacturer,device.model,device.version)
+        data.model = device.model
+        data.manufacturer = device.manufacturer
+        data.serial = device.serial
+        data.host = device.provider.name
+
+        switch (testType){
+          case 'monkey':
+            log.debug('task.taskid', task.taskid)
+            monkeyTest(data, task.taskid, dbapi, testFinish)
+            break
+          case 'activityTest':
+            log.debug('activityTest', task.taskid)
+            activityTest(data, task.taskid, dbapi, testFinish)
+            break
+          case 'uiTest':
+            log.debug('uiTest', task.taskid)
+            uiAutoTest(data, task.taskid, dbapi, testFinish)
+            break
+        }
+
+      })
+      .catch(function (err) {
+        log.debug('setDeviceOwner err:',err.stack)
+        dbapi.unsetDeviceOwner(serial)
+      })
+  }
+
+  function testFinish(taskid, finishserial) {
+    log.debug('test finish start')
+    cleanArr.push({taskid:taskid, serial:finishserial})
+    if(!isCleanPlanRunning){
+      cleanplan()
+    }
+
+    /*if(!cleanInterval){
+      log.debug('clean interval create')
+      cleanInterval = setInterval(function () {
+        if(!isCleanPlanRunning){
+          log.debug('clean plan start')
+          cleanplan()
+          isCleanPlanRunning = true
+        }
+      }, 1000*10)
+    }*/
+
+  }
+}

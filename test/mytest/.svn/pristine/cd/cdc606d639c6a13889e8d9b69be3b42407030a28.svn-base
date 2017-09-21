@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<uses-interface package="com.boyaa.androidmarkettaiyu"/>
+		<uses-interface launchactivitie="com.boyaa.texaspoker.application.module.op.OpeningShowActivity"/>
+		<uses-interface uirepository="\\fs03\byDFS\部门共享\棋牌事业部\测试部\自动化测试部\Projects\Holdem\TestHoldemTH\TexasUIRepositoryTH.xls"/>
+		<uses-interface reports="E:\tmp\report"/>
+		<uses-interface appiumurlport="4723;4623;4823"/>
+		<uses-interface devicename="0cf16cf5;0cf16cf6;0cf16cf8"/>
+	</project>
+</interface>

@@ -1,0 +1,54 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.TaskPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="每日任务")
+public class TaskTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private TaskPage taskpage=null;
+	private CommonBusiness commonBusiness=null;
+
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		commonBusiness=new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		taskpage=new TaskPage();
+	}
+	
+	@CaseDesc(id="day_task1", name="每日任务1")
+	@Test(description="每日任务1")
+	public void test_dayTask1() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("任务").click();	
+		taskpage.waitSubElement("未完成").click();
+		assertTrue(taskpage.isPresent(),"预期结果：无响应停留在任务界面，实际结果：任务界面不存在");
+
+	}
+	@CaseDesc(id="day_task2", name="每日任务2")
+	@Test(description="每日任务2")
+	public void test_dayTask2() throws Exception{
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("任务").click();
+		taskpage.waitSubElement("成就任务").click();
+		Thread.sleep(3*1000);
+		assertTrue(taskpage.isSubElementPresent("成就星"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

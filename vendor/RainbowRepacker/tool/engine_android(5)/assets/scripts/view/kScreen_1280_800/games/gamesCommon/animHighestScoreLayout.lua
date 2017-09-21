@@ -1,0 +1,20 @@
+animHighestScoreLayout=
+{
+	name="animHighestScoreLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="content",type=0,typeName="View",time=44589960,report=0,x=0,y=0,width=950,height=342,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="contentBgView",type=0,typeName="View",time=44589970,report=0,x=0,y=0,width=500,height=180,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft
+		},
+		{
+			name="title",type=1,typeName="Image",time=44590043,report=0,x=0,y=-50,width=518,height=179,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/animation/highest_score/highestWord.png"
+		},
+		{
+			name="score",type=0,typeName="View",time=44590116,report=0,x=0,y=70,width=200,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter
+		}
+	},
+	{
+		name="bg",type=1,typeName="Image",time=44589929,report=0,x=0,y=0,width=384,height=240,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="games/common/animation/highest_score/screen_efect.png"
+	}
+}
+return animHighestScoreLayout;

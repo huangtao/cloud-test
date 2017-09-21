@@ -1,0 +1,18 @@
+package com.boyaa.testholdemhk.uilib;
+
+import java.util.List;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class LobbySlotPage extends RainbowElement{
+
+	public void addSubElements(List<String[]> elementsDescription) {
+		elementsDescription.add(new String[]{"老虎机页面", "id", "com.boyaa.androidmarkettaiyu:id/tigermachine_popup"});
+		elementsDescription.add(new String[]{"关闭按钮", "id", "com.boyaa.androidmarkettaiyu:id/close"});
+	}
+	
+	public LobbySlotPage() {
+		super();
+		addSubElements(subElementsDescription);
+	}
+}

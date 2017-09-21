@@ -1,0 +1,9 @@
+I     20140904 14:03:28    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    chmod 777 /data/data/com.boyaa.androidmarketit/files success
+I     20140904 14:03:31    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140904 14:03:31    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140904 14:03:33    LocalLib    Element: "id/op_gallery_img" is not fond.
+D     20140904 14:04:16    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    roomPeople:0/9
+I     20140904 14:04:25    Common_business:    clickXiaoLaBaByCoordinate-x:16.0
+I     20140904 14:04:25    Common_business:    clickXiaoLaBaByCoordinate-y:695.0
+I     20140904 14:04:27    SnapshotHelper    savePath:/storage/sdcard0/ATR/TexasIT_20140904_01-43-15PM/_Screenshots/PayLogic_013_20140904_14_04_27.jpg
+I     20140904 14:04:32    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    tear down time out!

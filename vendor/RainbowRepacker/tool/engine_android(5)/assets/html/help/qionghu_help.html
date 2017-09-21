@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>帮助</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="generator" content="Web Page Maker">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var sections = $(".section");
+	$(".section .title").click(function(){
+		var section = $(this).parent();
+		if (!section.hasClass("open")) {
+			sections.each(function(){
+				if ($(this).hasClass("open")){
+					$(this).find(".content").slideUp(200);
+					$(this).removeClass("open");
+				}
+			});
+		}
+		if (section.hasClass("open")){
+			section.find(".content").slideUp(200);
+			section.removeClass("open");
+		} else {
+			section.find(".content").slideDown(200);
+			section.addClass("open");
+		}
+	});
+});
+</script>
+
+<style type="text/css">
+body {
+	margin:0;
+	margin-top:2px;
+	background: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-family: '微软雅黑', 'STHeiti';
+}
+
+.section {
+	background-color: rgba(92,30,0,0.2);
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.section .title {
+	color: #875316;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 10px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.open .title {
+	border-bottom: 1px solid #E8CDA1;
+}
+
+.title .arrow {
+	width: 24px;
+	height: 24px;
+	float: right;
+	cursor: pointer;
+	margin-right: 12px;
+	margin-top: 4px;
+	background: url(images/arrow_down.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.open .title .arrow {
+	background: url(images/arrow_up.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.section .content {
+	display: none;
+	color: #177E41;
+	font-size: 14px;
+	padding: 12px;
+	line-height: 26px;
+}
+
+.open .content {
+	display: block;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="">
+	<div class="section open" style="margin-top:2px;">
+		<div class="title">游戏简介<div class="arrow"></div></div>
+		<div class="content">大连穷胡麻将是辽宁省大连地区特有的麻将玩法，其特色在于“宝牌”的设定，当玩家“报听”时，可翻看“宝牌”，如果“宝牌”正好是自己要胡的牌，则可直接“冲宝”胡牌。
+如果没有“冲宝”，之后抓进“宝牌”或者所听的牌也可直接胡牌。</div>
+	</div>
+	<div class="section">
+		<div class="title">宝牌<div class="arrow"></div></div>
+		<div class="content"><pre>1.开局时系统会随机设定一张牌为宝牌，只有上听的玩家才能看到宝牌。
+2.上听看宝后不能再入手牌和换听。 
+3.上听后看宝时，若发现宝牌正好是要胡的牌，可以直接胡。
+4.听牌后若摸到宝牌，宝牌可代替任何牌，即：听牌后摸到宝牌即可胡。
+</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">听牌<div class="arrow"></div></div>
+		<div class="content"><pre>1.听牌时，分普通听牌和夹听，夹张听牌和边张听牌叫夹听，即手中存在1、2听3，8、9听7或4、6听5的情况。 
+2.听牌后仍可杠牌，前提是杠完后还可听。
+3.听牌后下一次摸牌时可先看宝，若所听的牌不是宝牌，则继续摸牌，未听牌者不许看宝。
+4.夹听后胡牌可加番。
+</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">胡牌规则<div class="arrow"></div></div>
+		<div class="content"><pre>1.必须三色全：胡牌时必须有万、有饼、 有条才能胡牌；
+2.必须有一刻子或有杠。（刻子：就是3个一样的牌）。
+3.不断19：胡牌时至少有一张1、9牌，风牌也可以算作19牌。
+4.不允许只留最后一张单钓。
+5.不允许门清，并且未开门的玩家输时要多出1番（未开门指没有碰、吃、杠的情况）。
+6.中发白作将免幺免刻子，中发白不能碰，只能杠或做将。
+7.必须要有1顺子，不能胡碰碰胡。</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">番型计算<div class="arrow"></div></div>
+		<div class="content"><pre>2的（总番数-1）次方 * 房间底注+杠分
+放炮：放炮家不包分，但多输一番。
+自摸：自摸为1番。
+夹胡：报夹听后胡牌可多加一番。
+摸宝：听牌后摸到宝牌即可胡牌，加2番。
+冲宝：听牌看宝后，发现宝牌正好是要胡的牌，可以直接胡，加2番。
+庄家：庄家胡牌，每人多输一番，庄家以外的其他玩家胡牌，则庄家额外多输一番。
+未开门：有人胡牌时，未开门的玩家都要多出1番。玩家放炮时，若放炮玩家未开门，放炮玩家多加一番。
+三家门清：除胡牌者外，其他三家都还没有吃、碰、明杠过牌，则可多加三家门清一番。
+杠上开花：上听后开杠摸到的补牌正好为所听的牌，可加2番。
+抢杠胡：其他玩家开杠的牌正好为自己所听的牌，即可抢杠胡牌，加2番。</pre></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+package com.boyaa.testholdemhk.uilib;
+
+import io.appium.java_client.TouchAction;
+
+import java.awt.Point;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.business.CommonBusiness.RoomLevel;
+
+
+public class RoomPage extends RainbowElement{
+	public static RainbowDriver rd = null;
+	public static CommonBusiness cb=null;
+	public RoomPage(){
+		rd = RainbowDriver.getInstance();
+		CommonBusiness cb = new CommonBusiness();
+	}
+	public MegaPhonePage megaPhonePage() {
+		return new MegaPhonePage();
+	}
+	
+	public PayDialog payDialog() {
+		return new PayDialog();
+	}
+	
+	public SlotPage getSlotPage() {
+		return getSlotPage(true);
+	}
+	public void hideKeyboard(){
+		try{
+			rd.hideKeyboard();
+		}catch(Exception e){
+			//DONOTING
+		}
+	}
+
+	
+	 public void clickOnTheCustomPosition(String location, int timeout){		 
+		 Dimension size = waitSubElement("房间图片").getSize();
+		 int selfLocationX = 0;
+		 int selfLocationY = 0;
+		 if(location.equals("8") || location.equals("self") ){//本人座位的位置
+			 selfLocationX = 0 + (size.width / 2);//X轴值为屏幕宽度的1/2
+			 selfLocationY = 0 + (size.height / 4)*3;//Y轴值为屏幕高度的3/4的位置			
+		 }
+		 if(location.equals("9") || location.equals("BottomLeftCorner") ){//Bottom left corner表示桌子左下角的位置
+			 selfLocationX = 0 + (size.width / 4);//X轴值为屏幕宽度的1/4
+			 selfLocationY = 0 + (size.height / 4)*3;//Y轴值为屏幕高度的3/4的位置		
+		 }
+		 if(location.equals("1") || location.equals("Left") ){//表示桌子最左边的位置
+			 selfLocationX = 0 + (size.width / 4);//X轴值为屏幕宽度的1/4
+			 selfLocationY = 0 + (size.height / 4)*3;//Y轴值为屏幕高度的3/4的位置		
+		 }
+		 
+		 if(location.equals("2") || location.equals("Right") ){//表示桌子最左边的位置
+			 selfLocationX = 0 + (size.width / 4)*3;//X轴值为屏幕宽度的3/4
+			 selfLocationY = 0 + (size.height / 4)*3;//Y轴值为屏幕高度的3/4的位置		
+		 }
+		 rd.clickScreen(selfLocationX, selfLocationY ,1);//点击坐标位置		 
+	 }
+	 
+	public PersonInfo personInfo(){
+		return  new PersonInfo();
+	}
+
+	public void openMegaPhonePopPage(){
+		waitSubElement("聊天按钮").click();
+		waitSubElement("聊天框").click();
+		waitSubElement("小喇叭").click();
+		
+	}
+	public SlotPage getSlotPage(boolean ifCloseTips) {
+		SlotPage slotPage = new SlotPage();
+		if(ifCloseTips) {
+			for(int i=0;i<3;i++) {
+				slotPage.waitSubElement("幸运图片", 1).click();
+			}
+		}
+		return slotPage;
+	}
+	public void fromRoomGoToLobby(){
+		//由于本身就有超时timeout，如果没响应可将超时设长，无需等待
+		//local.waitFor(6); //TODO: 太早的话，会不出现不响应的情况。这里要等待更好的方式去做同步
+		clickRoomTopLeftCornerDropDown(15*1000);
+		waitSubElement("返回按钮").click();//点击返回按钮
+		waitSubElement("离开按钮").click();
+	}
+	
+	public void leaveRoomAndGoToLobby(){		
+		clickRoomTopLeftCornerDropDown(15*1000);
+		waitSubElement("返回按钮").click();//点击返回按钮
+		waitSubElement("离开按钮").click();
+		rd.sleep(2*1000);
+	}
+			
+	public boolean clickRightBuyCoin(long timeout){
+		long end =System.currentTimeMillis()+ timeout;
+		while(System.currentTimeMillis() <=end){
+			waitSubElement("游戏币图标").click();
+			if(payDialog().isPresent()){
+				return true;
+			}
+		}
+		return true;
+	}
+	
+	public class PayDialog extends RainbowElement{
+		
+	}
+	public class MegaPhonePage extends RainbowElement{
+		public void sendMegaPhoneMessage(String text){
+			waitSubElement("小喇叭信息输入框").click();
+			rd.sendKeys(waitSubElement("小喇叭信息输入框"),text);
+			waitSubElement("小喇叭信息发送按钮").click();
+			rd.sleep(2*1000);
+			rd.pressBack();
+		}
+		
+		public int getMegaPhoneCount(){
+			return Integer.parseInt(waitSubElement("小喇叭个数").getText().trim());
+		}
+		
+		
+	}
+	public boolean isUserSitDown(){
+		clickRoomTopLeftCornerDropDown(20*1000);
+		boolean bl = waitSubElement("站起项").isEnabled();
+		rd.pressBack();
+		return bl;
+	}
+	
+	public void clickRoomTopLeftCornerDropDown(long timeout){
+		long end = System.currentTimeMillis() + timeout;
+		while(System.currentTimeMillis() <= end){
+			if(isSubElementPresent("左上角菜单按钮", 2)){
+				waitSubElement("左上角菜单按钮").click();
+			}			
+			if(isSubElementPresent("下拉列表", 2)){
+				return;
+			}
+		}
+		Assert.fail("房间内左上角的下拉菜单列表没有被打开");
+	}
+	public class SlotPage extends RainbowElement{
+		
+		public void shake() {
+			WebElement wbSlotShaker = waitSubElement("拉杆",20);
+			int x = wbSlotShaker.getLocation().getX();
+			int y = wbSlotShaker.getLocation().getY();
+			int height = wbSlotShaker.getSize().getHeight();
+			int width = wbSlotShaker.getSize().getWidth();
+			new TouchAction(rd).press(x, y).moveTo(x, y+height).release().perform();
+		}
+	}
+	
+	public class PersonInfo extends RainbowElement{
+		public  CommonBusiness comb=null;
+		public PersonInfo(){
+			CommonBusiness comb = new CommonBusiness();
+		}
+		/*
+		 * 在房间使用救济卡
+		 */
+		public void useFastCashCardInTheRoom(String iteminfo){
+			clickOnTheCustomPosition("self", 2*1000);
+			isPresent();
+			waitSubElement("使用道具页面").click();
+			String desc="";
+			while(true){ 
+				List<WebElement> propwes = waitSubElements("道具行");
+				List<WebElement> propdownlistwes = waitSubElements("道具信息下拉按钮");
+				propdownlistwes.get(0).click(); //打开道具信息
+				if (!waitSubElement("道具描述").getText().equals(desc)){
+				desc =  waitSubElement("道具描述").getText();
+				if (desc.equals(iteminfo)){	
+					propwes.get(0).findElements(By.className(AndroidElementClass.ANDROID_BUTTON)).get(0).click(); //点击使用按钮
+					isSubElementPresent("使用道具提示框确认按钮");  
+					waitSubElement("使用道具提示框确认按钮").click();
+					waitSubElement("关闭按钮").click();
+					return;
+				}
+				propdownlistwes.get(0).click();//关闭道具信息
+				WebElement pwe= propwes.get(1);
+				comb.drag(pwe,"up", 1, (float) 1.1);
+				
+			   }else{
+				   for(int i =1 ;i<propdownlistwes.size();i=i+1){
+					   propdownlistwes.get(0).click();//关闭道具信息
+					   propdownlistwes.get(i).click();
+					   desc =  waitSubElement("道具描述").getText();
+						if (desc.equals(iteminfo)){	
+							propwes.get(0).findElements(By.className(AndroidElementClass.ANDROID_BUTTON)).get(0).click(); //点击使用按钮
+							isSubElementPresent("使用道具提示框确认按钮");  
+							waitSubElement("使用道具提示框确认按钮").click();
+							waitSubElement("关闭按钮").click();
+							return ;
+						}
+					   propdownlistwes.get(0).click();//关闭道具信息
+					   
+					   
+				   }
+				   	Assert.fail("没有找到道具"+iteminfo);
+				 }
+			}
+			
+		}
+		/*
+		 * 在房间使用救济卡
+		 */
+		public void useFastCashCardInTheRoom(){
+			clickOnTheCustomPosition("self", 2*1000);
+			isPresent();
+			waitSubElement("使用道具页面").click();
+			waitSubElement("使用按钮").click();
+			isSubElementPresent("使用道具提示框确认按钮");  
+			waitSubElement("使用道具提示框确认按钮").click();
+			waitSubElement("关闭按钮").click();
+	    }
+		/*
+		 * 在房间使用踢人卡
+		 */
+		public void kickingAPlayerInTheRoom(){
+			clickOnTheCustomPosition("Left", 2*1000);
+			isPresent();
+			waitSubElement("踢人卡").click();
+		
+		}
+	}
+	
+
+	
+	/*
+     *通过房间设置改变自动坐下状态为未勾选，并判断状态是未勾选
+     */ 
+	public void uncheckAutomaticSitDownSettings(){
+		clickRoomTopLeftCornerDropDown(15*1000);
+		waitSubElement("设置项").click();
+		waitSubElement("自动坐下复选框选中").click();
+		Assert.assertTrue(isSubElementPresent("自动坐下复选框未选中"), "去除自动坐下复选框的勾选之后，状态依然为被选中");
+		rd.pressBack();
+		
+	}
+	
+
+	/*
+	 * 在房间使用兔子表情——AppleWang
+	 */
+	public void useRabbitEmoticons() throws InterruptedException {
+		clickOnTheCustomPosition("self", 2*1000);//点击自己的名片
+		WebElement personInfoElement=getDriver().findElementById("com.boyaa.androidmarket:id/three_of_one");
+		org.openqa.selenium.Point point=personInfoElement.getLocation();
+		Dimension size = personInfoElement.getSize();
+		System.out.println("size:"+size);
+		int width = size.getWidth();
+		int height = size.getHeight();
+		System.out.println("width:"+width);
+		System.out.println("height:"+height);
+		int x = point.getX();
+		int y= point.getY();
+		System.out.println("x:"+x);
+		System.out.println("y:"+y);
+		personInfo().waitSubElement("关闭按钮").click();
+		Thread.sleep(1000);	
+		waitSubElement("聊天按钮").click();	
+		Thread.sleep(1000);	
+		getDriver().tap(1, x+width/2, y, 10);//选择兔子表情栏
+		Thread.sleep(1000);	
+		getDriver().tap(1, x, y+height*2, 10);//选择某个兔子表情发送
+	}
+	
+	/*
+	 * 在房间使用互动表情——AppleWang
+	 */
+	public void useAnimatedEmoticons() throws InterruptedException {
+		WebElement frameLayout;//目标元素所在的layout
+		frameLayout=rd.findElementByClassName("android.widget.RelativeLayout");
+		Dimension size=frameLayout.getSize();//获取layout的尺寸
+		int x=size.getWidth();
+		int y=size.getHeight();//获取layout的长和宽（即屏幕的长宽）。
+		getDriver().tap(1, x/2, y/2, 10);
+		Thread.sleep(1000);
+	}
+}

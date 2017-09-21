@@ -1,0 +1,46 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusinessHuaWei;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.HuaWeiLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HuaWeiNativeLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HuaWeiNativeServerPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListenerLocal.class })
+@Test(description = "华为联运登录测试用例")
+public class HuaWeiLoginTest extends BaseLoginTest {
+
+	public boolean isLogin = false;
+
+	@BeforeClass
+	public void setUpBeforeClass() {
+		super.setUp();
+		isLogin = CommonBusinessHuaWei.isLogin(this);
+	}
+
+	@CaseDesc(id = "LIANYUN-HUAWEILOG-1", name = "登录账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginHuaWei(String account, String pwd, String name) {
+		if(isLogin){
+			CommonBusinessHuaWei.logout(pwd,this);
+		}	
+
+		CommonBusinessHuaWei.login(account, pwd,this);
+		createRainbowDriver();
+		super.isLoginSucc(name);
+
+	}
+}

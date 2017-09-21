@@ -1,0 +1,47 @@
+gameOverItemOther=
+{
+	name="gameOverItemOther",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=90,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="head_image",type=1,typeName="Image",time=43231081,report=0,x=31,y=6,width=64,height=65,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="isolater/female_head.png"
+	},
+	{
+		name="zhuangbg",type=1,typeName="Image",time=73043420,report=0,x=29,y=5,width=37,height=47,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomLeft,file="games/dlqh/room/dingque/zhuang_bg.png",badImage=1,
+		{
+			name="zhuangtxt",type=1,typeName="Image",time=73043423,report=0,x=0,y=0,width=37,height=47,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/dlqh/room/dingque/zhuangjia.png",badImage=1
+		}
+	},
+	{
+		name="head_frame",type=1,typeName="Image",time=43231110,report=0,x=26,y=4,width=74,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/head_frame_big.png"
+	},
+	{
+		name="vipIcon",type=1,typeName="Image",time=66219691,report=0,x=26,y=-12,width=85,height=90,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/vipheadFream.png"
+	},
+	{
+		name="name_text",type=4,typeName="Text",time=43231363,report=0,x=182,y=13,width=140,height=28,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=28,textAlign=kAlignLeft,colorRed=255,colorGreen=255,colorBlue=255,string=[[上家五个字]]
+	},
+	{
+		name="position_icon",type=1,typeName="Image",time=43231437,report=0,x=118,y=8,width=58,height=38,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/game_result/game_result_mahjong_xiajia_icon.png"
+	},
+	{
+		name="win_money_text",type=4,typeName="Text",time=43231544,report=0,x=68,y=20,width=108,height=24,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=24,textAlign=kAlignRight,colorRed=178,colorGreen=255,colorBlue=135,string=[[本局+5241]]
+	},
+	{
+		name="exp_text",type=4,typeName="Text",time=43231665,report=0,x=118,y=5,width=88,height=22,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomLeft,fontSize=22,textAlign=kAlignLeft,colorRed=131,colorGreen=209,colorBlue=255,string=[[+352经验]]
+	},
+	{
+		name="room_toatal_money",type=4,typeName="Text",time=43231781,report=0,x=30,y=5,width=130,height=20,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomRight,fontSize=20,textAlign=kAlignRight,colorRed=131,colorGreen=209,colorBlue=255,string=[[房间累计+2545]]
+	},
+	{
+		name="pochan_icon",type=1,typeName="Image",time=43231850,report=0,x=14,y=9,width=126,height=88,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/game_result/game_result_pochang_icon.png"
+	},
+	{
+		name="blank_cover",type=0,typeName="View",time=43399511,report=0,x=0,y=0,width=1280,height=90,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+		{
+			name="focus_frame",type=1,typeName="Image",time=43233162,report=0,x=0,y=0,width=1280,height=90,visible=0,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="games/common/game_result/game_result_current_select.png",gridLeft=15,gridRight=15,gridTop=15,gridBottom=15
+		}
+	},
+	{
+		name="Image1",type=1,typeName="Image",time=87482919,report=0,x=25,y=15,width=37,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="games/common/game_result/coin_img.png"
+	}
+}
+return gameOverItemOther;

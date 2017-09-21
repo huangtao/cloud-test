@@ -1,0 +1,44 @@
+roomReport=
+{
+	name="roomReport",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="touchLayer",type=0,typeName="Image",time=102189444,x=0,y=0,width=1280,height=720,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=1,fillParentHeight=1,file="isolater/bg_shiled.png",effect={shader="mirror",mirrorType=0}
+	},
+	{
+		name="ImageBack",type=0,typeName="Image",time=102096620,x=0,y=0,width=606,height=390,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/frame/grayBack.png",
+		{
+			name="CheckBoxGroup1",type=0,typeName="CheckBoxGroup",time=102096707,x=0,y=-50,width=190,height=180,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,
+			{
+				name="CheckBox_Game",type=0,typeName="CheckBox",time=102096719,x=0,y=1,width=48,height=48,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="Text211",type=0,typeName="Text",time=102182472,x=105,y=0,width=112,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[游戏作弊]],fontSize=28,textAlign=kAlignCenter,colorRed=231,colorGreen=212,colorBlue=187,colorA=1
+				}
+			},
+			{
+				name="CheckBox_Name",type=0,typeName="CheckBox",time=102096726,x=0,y=0,width=48,height=48,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="Text11",type=0,typeName="Text",time=102182921,x=105,y=0,width=112,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[不良昵称]],fontSize=28,textAlign=kAlignCenter,colorRed=231,colorGreen=212,colorBlue=187
+				}
+			},
+			{
+				name="CheckBox_Head",type=0,typeName="CheckBox",time=102096729,x=0,y=0,width=48,height=48,nodeAlign=kAlignBottomLeft,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="Text31",type=0,typeName="Text",time=102182928,x=105,y=0,width=112,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[不良头像]],fontSize=28,textAlign=kAlignCenter,colorRed=231,colorGreen=212,colorBlue=187
+				}
+			}
+		},
+		{
+			name="Button_Cancel",type=0,typeName="Button",time=102097198,x=-125,y=65,width=154,height=79,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/btns/154x79_green.png",
+			{
+				name="Text1",type=0,typeName="Text",time=102097225,x=0,y=0,width=72,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[取消]],fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=232,colorBlue=255
+			}
+		},
+		{
+			name="Button_Sure",type=0,typeName="Button",time=102097204,x=125,y=65,width=154,height=79,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/btns/154x79_brown.png",file2="games/common/btns/154x79_gray.png",
+			{
+				name="Text1",type=0,typeName="Text",time=102097255,x=0,y=0,width=72,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[举报]],fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=232,colorBlue=164
+			}
+		}
+	}
+}
+return roomReport;

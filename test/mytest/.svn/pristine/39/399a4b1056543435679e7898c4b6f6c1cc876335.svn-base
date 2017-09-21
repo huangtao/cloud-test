@@ -1,0 +1,27 @@
+I     20140904 13:53:41    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    chmod 777 /data/data/com.boyaa.androidmarketit/files success
+I     20140904 13:53:43    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140904 13:53:43    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140904 13:53:46    LocalLib    Element: "id/op_gallery_img" is not fond.
+I     20140904 13:54:34    Common_business:    room TextView:4000 / 80000
+I     20140904 13:54:34    Common_business:----clickOnARoomWithRobot--    ifsatisfycarrycoin:true
+I     20140904 13:54:34    Common_business:    room TextView:10250 / Urbino
+I     20140904 13:54:34    Common_business:    roomId: 10250
+I     20140904 13:54:34    Common_business:---joinARobot---uri:    http://texas-demo-143.boyaa.com/texas/api/user.php?do=robot&tid=10250&num=1
+I     20140904 13:54:36    Common_business:---joinARobot:    请求服务器端成功
+I     20140904 13:54:36    Common_business:---joinARobot:
+    http://texas-demo-143.boyaa.com/texas/api/user.php?do=robot&tid=10250&num=1
+I     20140904 13:54:36    Common_business:---joinARobot:进入机器人返回结果：    {"action":1,"isAll":0,"allErr":0,"num":1,"robotID":0,"tid":10250,"err":0,"args":["192.168.200.145",10143,1,0,1,[{"robotID":0,"tid":10250,"seatID":0}]]}
+I     20140904 13:54:36    Common_business:---joinARobot:进入机器人返回状态为：    0
+I     20140904 13:54:37    Common_business:    waitAndClickAddMoneyIconOnCanvas-x:1154.76
+I     20140904 13:54:37    Common_business:    waitAndClickAddMoneyIconOnCanvas-y:674.72
+I     20140904 13:54:48    Common_business:    waitAndClickAddMoneyIconOnCanvas-x1:1154.76
+I     20140904 13:54:48    Common_business:    waitAndClickAddMoneyIconOnCanvas-y1:674.72
+I     20140904 13:54:52    Common_business:---kickAllRobot:    Start
+I     20140904 13:54:52    Common_business:---kickARobot---uri:    http://texas-demo-143.boyaa.com/texas/api/user.php?do=kick&tid=10250
+I     20140904 13:54:55    Common_business:---kickARobot:    请求服务器端成功
+I     20140904 13:54:55    Common_business:---kickARobot:
+    http://texas-demo-143.boyaa.com/texas/api/user.php?do=kick&tid=10250
+I     20140904 13:54:55    Common_business:---kickARobot:进入机器人返回状态为：    0
+I     20140904 13:54:55    Common_business:---kickAllRobot:    End
+I     20140904 13:54:55    SnapshotHelper    savePath:/storage/sdcard0/ATR/TexasIT_20140904_01-43-15PM/_Screenshots/PayLogic_008_20140904_13_54_55.jpg
+I     20140904 13:55:00    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    tear down time out!

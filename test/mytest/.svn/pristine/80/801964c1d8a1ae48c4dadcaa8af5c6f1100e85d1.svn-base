@@ -1,0 +1,103 @@
+package com.boyaa.testholdemhk.uilib;
+
+import io.appium.java_client.MobileElement;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+public class PersonalInformationPage extends RainbowElement{
+	CommonBusiness cb = new CommonBusiness();
+    /***等id加号之后可以使用
+	public int  getUserPersonalProps(String propname){
+		try{
+			MobileElement me =cb.srocllToText(propname);
+		}catch (Exception e){
+			return 0;
+		}
+		List<WebElement> lwe= waitSubElements("包含道具名与描述的Layout");
+		for(int i=0;i<=(lwe.size()-1);i++){
+			List<WebElement> lt= lwe.get(i).findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+			if(lt.get(0).getText().toString().replace(" ", "").equals(propname.replace(" ", ""))){
+				List<WebElement> ltbt= lwe.get(i).findElements(By.className(AndroidElementClass.ANDROID_BUTTON));
+				if(ltbt.get(0).getText().equals("未使用")){
+					String st =lt.get(1).getText().toString().trim().replace(" ", "");
+					return cb.fromStringGetNumber(st);
+				}
+			}
+		}
+		return 0;
+	} 
+	
+	***/
+	public int  getUserPersonalProps(String propname){
+		try{
+			MobileElement me =cb.srocllToText(propname);
+		}catch (Exception e){
+
+		}
+		List<WebElement> lwe= waitSubElements("包含道具名与描述的Layout");
+		for(int i=0;i<=(lwe.size()-1);i++){
+			List<WebElement> lt= lwe.get(i).findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+			if(lt.get(0).getText().toString().replace(" ", "").equals(propname.replace(" ", ""))){
+				
+					String st =lt.get(1).getText().toString().trim().replace(" ", "");
+					return cb.fromStringGetNumber(st);
+				
+			}
+		}
+		return 0;
+	} 
+	public int  getUsedPropsSurplusDays(String iteminfo){
+		try{
+			MobileElement me =cb.srocllToText(iteminfo);
+			String st = me.getText().toString().trim().replace(" ", "");
+			return cb.fromStringGetNumber(st);
+		}catch (Exception e){
+			return 0;
+		}
+	} 
+	
+	public int  getUsedPropsSurplusDaysWhenhasOne(String iteminfo){
+		try{
+			WebElement me = waitSubElement("道具剩余天数");
+			String st = me.getText().toString().trim().replace(" ", "");
+			return cb.fromStringGetNumber(st);
+		}catch (Exception e){
+			return 0;
+		}
+	} 
+	
+	
+	public void  clickPersonalPropsToUseButton(String propname){
+		try{
+			MobileElement me =cb.srocllToText(propname);
+		}catch (Exception e){
+			Assert.fail("没有找到道具");
+		}
+		List<WebElement> lwe= waitSubElements("包含道具名与描述的Layout");
+		List<WebElement> nub= waitSubElements("未使用按钮");
+		for(int i=0;i<=(lwe.size()-1);i++){
+			List<WebElement> lt= lwe.get(i).findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+			if(lt.get(0).getText().toString().replace(" ", "").equals(propname.replace(" ", ""))){
+				if(nub.get(i).getText().equals("未使用")){
+					nub.get(i).click();
+					return; 
+				}
+			}
+		}
+		Assert.fail("没有找到未使用的该道具");
+	} 
+	public ConfirmPage confirmPage(){
+		return new ConfirmPage();
+	}
+	
+	public class ConfirmPage extends RainbowElement{
+	}
+}

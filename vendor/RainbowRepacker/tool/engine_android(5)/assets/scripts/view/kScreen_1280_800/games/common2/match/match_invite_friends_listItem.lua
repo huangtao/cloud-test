@@ -1,0 +1,20 @@
+match_invite_friends_listItem=
+{
+	name="match_invite_friends_listItem",type=0,typeName="View",time=0,report=0,x=0,y=0,width=350,height=60,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="name",type=4,typeName="Text",time=67143063,report=0,x=0,y=0,width=10,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=22,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=255,string=[[昵称]]
+	},
+	{
+		name="line",type=1,typeName="Image",time=67161807,report=0,x=0,y=0,width=483,height=2,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottom,file="games/common/popup_line.png",fillTopLeftX=5,fillBottomRightX=5,fillTopLeftY=58,fillBottomRightY=0
+	},
+	{
+		name="clickCover",type=2,typeName="Button",time=67162231,report=0,x=0,y=0,width=350,height=67,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="isolater/bg_blank.png"
+	},
+	{
+		name="normal",type=0,typeName="Image",time=103633967,x=20,y=0,width=36,height=36,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/friend/normal2.png"
+	},
+	{
+		name="selected",type=0,typeName="Image",time=103634037,x=20,y=0,width=36,height=36,nodeAlign=kAlignLeft,visible=0,fillParentWidth=0,fillParentHeight=0,file="games/common/friend/selected2.png"
+	}
+}
+return match_invite_friends_listItem;

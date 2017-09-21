@@ -1,0 +1,24 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Test(description = "联通豌豆荚联运登录测试用例")
+public class Unicom_WdjLoginTest extends BaseLoginTest {
+	@CaseDesc(id = "LIANYUN-UNICOM_WDJ-1", name = "登录QQ账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginQQ(String account, String pwd, String name) {
+		super.loginQQ(account, pwd, name);
+
+	}
+	
+	@CaseDesc(id = "LIANYUN-UNICOM_WDJ-3", name = "游客登陆")
+	@Test(description = "检查账号能正常登录")
+	public void test_loginVisitor() {
+		super.loginVisitor();
+
+	}
+}

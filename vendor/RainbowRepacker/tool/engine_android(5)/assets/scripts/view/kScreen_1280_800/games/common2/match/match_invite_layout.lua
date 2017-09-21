@@ -1,0 +1,36 @@
+local match_wait_pin_map = require("qnFiles/qnPlist/games/match_wait_pin");
+match_invite_layout=
+{
+	name="match_invite_layout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="contentBg",type=0,typeName="Image",time=103372243,x=0,y=0,width=250,height=172,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/popup_bg.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+		{
+			name="momentBtn",type=0,typeName="Button",time=103372339,x=0,y=0,width=250,height=86,nodeAlign=kAlignTop,visible=0,fillParentWidth=1,fillParentHeight=0,file="isolater/bg_blank.png",
+			{
+				name="img",type=0,typeName="Image",time=103372455,x=0,y=0,width=171,height=58,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_wait_pin_map['icon_invite_moment.png']
+			}
+		},
+		{
+			name="wechatBtn",type=0,typeName="Button",time=103372503,x=0,y=0,width=250,height=86,nodeAlign=kAlignTop,visible=1,fillParentWidth=1,fillParentHeight=0,file="isolater/bg_blank.png",
+			{
+				name="img",type=0,typeName="Image",time=103372504,x=0,y=0,width=171,height=58,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_wait_pin_map['icon_invite_wechat.png']
+			}
+		},
+		{
+			name="gameBtn",type=0,typeName="Button",time=103372505,x=0,y=0,width=250,height=86,nodeAlign=kAlignBottom,visible=1,fillParentWidth=1,fillParentHeight=0,file="isolater/bg_blank.png",
+			{
+				name="img",type=0,typeName="Image",time=103372506,x=0,y=0,width=171,height=58,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_wait_pin_map['icon_invite_game.png']
+			}
+		},
+		{
+			name="lineView",type=0,typeName="View",time=110115261,x=0,y=0,width=240,height=172,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,fillTopLeftX=5,fillBottomRightX=5,fillBottomRightY=0,fillTopLeftY=0,
+			{
+				name="line1",type=0,typeName="Image",time=110031596,x=0,y=86,width=240,height=2,nodeAlign=kAlignTop,visible=0,fillParentWidth=1,fillParentHeight=0,file="games/common/popup_line.png"
+			},
+			{
+				name="line2",type=0,typeName="Image",time=110031698,x=0,y=86,width=240,height=2,nodeAlign=kAlignBottom,visible=1,fillParentWidth=1,fillParentHeight=0,file="games/common/popup_line.png"
+			}
+		}
+	}
+}
+return match_invite_layout;

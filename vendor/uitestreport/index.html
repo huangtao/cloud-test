@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <META http-equiv="X-UA-Compatible" content="IE=9"/>
+    <title>手游测试</title>
+
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/test.css" />
+
+    <script src="static/jquery-1.8.3.min.js"></script>
+    <script src="static/bootstrap.js"></script>
+
+
+    <style type="text/css">
+        .strength{
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="static/jrxerror.css">
+
+</head>
+
+<body>
+
+<div class="bodywrap">
+
+    <div class="main container">
+        <ul class="jrxnav">
+            <li class="current li_tab" onclick="summary();" >
+                测试结论
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <div id="reportDetail">
+
+        </div>
+
+    </div>
+
+    <div class="clear">
+        <div class="appSummary">
+            <img style="width: 65px;height: 65px;margin-right: 23px" src="<%= appIcon %>" alt="" class="floatLeft">
+            <div class="floatLeft">
+                <div style="color: #333;font-size: 18px;margin-bottom: 8px;width: 200px;" class="cuttxt">
+                    <%= gameName %>
+                </div>
+                <div class="floatLeft apkInfo">
+                    <img src="http://cdn.wetest.qq.com/cloud/2.2.0/element//images/jrxAppSummary_1.png" alt="" class="floatLeft">
+                    <div class="floatLeft">
+                        <div tips="HEXgame.apk">APK文件：<%= apkFile %></div>
+                        <div class="cuttxt">测试类型：UI自动化</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="floatLeft apkInfo">
+                    <img src="http://cdn.wetest.qq.com/cloud/2.2.0/element//images/jrxAppSummary_2.png" alt="" class="floatLeft">
+                    <div class="floatLeft">
+                        <div class="cuttxt">版　本：<%= apkVersion %></div>
+                        <div class="cuttxt">主版本：<%= apkCode %></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="floatLeft apkInfo">
+                    <img src="http://cdn.wetest.qq.com/cloud/2.2.0/element//images/jrxAppSummary_3.png" alt="" class="floatLeft">
+                    <div class="floatLeft">
+                        <div class="cuttxt">测试终端数：<%= terminalCount %>台</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="floatLeft apkInfo">
+                    <img src="http://cdn.wetest.qq.com/cloud/2.2.0/element//images/jrxAppSummary_4.png" alt="" class="floatLeft">
+                    <div class="floatLeft">
+                        <div class="cuttxt" style="width: 190px;">开始时间：<%= startTime %></div>
+                        <div class="cuttxt" style="width: 190px;">结束时间：<%= endTime %></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+        <div id="jrxDeviceList">
+            <table class="table table-center table-blue minTable">
+                <tbody>
+                <tr>
+                    <th>设备名称</th>
+                    <th>系统版本</th>
+                    <th>分辨率</th>
+                    <th>测试概况</th>
+                    <th>成功率</th>
+
+                </tr>
+                <% for(var i=0; i<devices.length; i++) { %>
+                <tr>
+                    <td><%= devices[i].markName %></td>
+                    <td><%= devices[i].version %></td>
+                    <td><%= devices[i].width %>x<%= devices[i].height %></td>
+                    <td>成功<%= devices[i].sucCount %> 失败<%= devices[i].failCount %></td>
+                    <td><%= devices[i].sucRate %></td>
+                </tr>
+                <% } %>
+  <!--              <tr>
+                    <td>酷派</td>
+                    <td>4.4.2</td>
+                    <td>720x1280</td>
+                    <td> 成功1 失败1</td>
+                    <td>50%</td>
+                </tr>-->
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="footer_wrap fullDiv">
+    <link href="static/footer.css" rel="stylesheet">
+    <div class="container footerC">
+        <div>
+            Copyright
+            <span style="font-family: Tahoma">©</span>
+            1998 - 2017 boyaa. All Rights Reserved
+            <span style="margin-left: 10px;">版权所有</span>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

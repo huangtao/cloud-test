@@ -1,0 +1,13 @@
+package com.boyaa.testholdemhk.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+
+public class GoogleCheckoutPage extends RainbowElement{
+	
+}

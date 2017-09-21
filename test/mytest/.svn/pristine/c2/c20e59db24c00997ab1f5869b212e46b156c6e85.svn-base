@@ -1,0 +1,26 @@
+package com.boyaa.testholdemhk.uilib;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+
+public class LoginSettingPage  extends RainbowElement{
+	public static RainbowDriver rd = null;
+	private static CommonBusiness cb = null;
+	public LoginSettingPage(){
+		rd = RainbowDriver.getRainbowDriver();
+		cb = new CommonBusiness();
+	}
+	
+		
+	
+	
+	
+	public boolean setingItemStat(String button ,WebElement we){
+	
+	    return we.isSelected();
+	}
+}
+

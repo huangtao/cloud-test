@@ -1,0 +1,281 @@
+package com.boyaa.testholdemhk.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+
+
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.LoginPage.FacebookPage;
+import com.boyaa.testholdemhk.business.CaseData.CaseDataDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is suite is to test integral exchange")
+public class HoldemLogin extends TestCaseBase{
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	public HoldemLogin() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();	
+		loginPage = new LoginPage();
+		cb = new CommonBusiness();
+		loginPage.enterTestEnv();
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception {
+		try{			
+			super.tearDown();			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+
+	@CaseDesc(id="Login_001", name="test_loginAsGuest")
+	@Test(description="test login as guest",dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginAsGuest(String launage) throws InterruptedException{	
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+	
+	
+
+	@CaseDesc(id="Login_002", name="test_logout")
+	@Test(description="test the logout function for the Texas traditional Chinese Evn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_logout(String launage) throws InterruptedException{
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("登出按钮").click();
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+	}
+
+	
+	@CaseDesc(id="Login_003", name="test_loginAsFB1")
+	@Test(description="test the facebook login page for the Texas Pocker Thai",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB1(String launage){	
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.clearFBLoginCache(20);
+		loginPage.waitSubElement("FB登录按钮").click();		
+		loginPage.facebookPage().waitSubElement("X关闭按钮").click();
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+	}
+
+	@CaseDesc(id="Login_004", name="test_loginAsFBAuthPage1")
+	@Test(description="test the FB login authorization page",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage1(String username ,String password ,String tips,String launage){	
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.clearFBLoginCache(20);
+		loginPage.waitSubElement("FB登录按钮").click();
+		FacebookPage fb = loginPage.facebookPage();
+		fb.loginFacebookForAllView(username, password, tips);		
+		assertTrue(fb.isSubElementPresent("已经授权提示文本"), tips+"提示信息不存在");//2. The text "你已经授权德州扑克" exists.
+		fb.waitSubElement("取消授权按钮").click();//点击取消按钮		
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+	}
+
+	@CaseDesc(id="Login_005", name="test_loginAsFBAuthPage2")
+	@Test(description="test the FB login authorization page",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage2(String username ,String password ,String tips,String launage){	
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.clearFBLoginCache(20);
+		loginPage.waitSubElement("FB登录按钮").click();
+		FacebookPage fb = loginPage.facebookPage();
+		fb.loginFacebookForAllView(username,password, tips);	
+		assertTrue(fb.isSubElementPresent("已经授权提示文本"), tips+"提示信息不存在");//2. The text "你已经授权德州扑克" exists.		
+		fb.waitSubElement("X关闭按钮").click();		
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+	}
+	
+	
+	@CaseDesc(id="Login_006", name="test_loginAsFB2")
+	@Test(description="test the facebook login function for the Texas Pocker Thai",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB2(String username ,String password ,String tips,String launage){	
+		loginPage.changeLoginLanguage(launage, 20);
+		loginPage.clearFBLoginCache(20);
+		loginPage.waitSubElement("FB登录按钮").click();		
+		FacebookPage fb = loginPage.facebookPage();		
+		fb.loginFacebookForAllView(username, password, tips);		
+		assertTrue(fb.isSubElementPresent("已经授权提示文本"), tips+"提示信息不存在");//2. The text "你已经授权德州扑克" exists.
+		fb.clickFBLoginAuthorizationConfirmButton();		
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.closeThePopupWindowAfterLogin();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");//Check the [quick start] button exists;
+	}
+	
+	
+	//TODO 
+	//由于 context("WEBVIEW")有Bug：
+	//https://github.com/appium/appium/issues/4502
+	//所以当第二次切换到WebView时，没有切换到当前的实际的WebView而是之前的WebView。
+	@CaseDesc(id="Login_007", name="test_switchFBAccount")
+	@Test(enabled=false, description="test the facebook login function for the Texas Pocker Thai",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_switchFBAccount(String username, String password, String tips, String launage){		
+		test_loginAsFB2(username, password, tips, launage);
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.closeThePopupWindowAfterLogin();//关闭登录后弹框		
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("登出按钮").click();
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+		loginPage.clearFBLoginCache(20);
+		loginPage.waitSubElement("FB登录按钮").click();
+		FacebookPage fb = loginPage.facebookPage();		  
+		fb.loginFacebookForAllView(username, password, tips);		
+		assertTrue(fb.isSubElementPresent("已经授权提示文本"), tips+"提示信息不存在");//2. The text "你已经授权德州扑克" exists.
+		fb.clickFBLoginAuthorizationConfirmButton();
+		lobbyPage.closeThePopupWindowAfterLogin();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");//Check the [quick start] button exists;
+	}
+
+	@CaseDesc(id="Login_008", name="test_noNetworkLogin")
+	@Test(description="test the without network account login function for the Texas Pocker Tranditional Thai",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_noNetworkLogin(String launage){
+		loginPage.changeLoginLanguage(launage, 20);
+		try{
+			LoginPage.rd.closeNetWork();
+			loginPage.waitSubElement("游客登录按钮").click();
+			assertTrue(loginPage.isSubElementPresent("游客登录按钮",5),"没有弹出错误提示,游客登录按钮还存在");
+		}finally{
+			LoginPage.rd.openNetWork();
+		}
+	}
+	
+	@CaseDesc(id="Login_009", name="test_loginAsGuestCN")
+	@Test(description="test login as guest with cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsGuestCN(String launage) throws InterruptedException{
+		//切换到简体语言版本
+		test_loginAsGuest(launage);		
+	}
+	
+	@CaseDesc(id="Login_010", name="test_logoutCN")
+	@Test(description="test the logout function for the Texas traditional Chinese Evn cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_logoutCN(String launage) throws InterruptedException{		
+		//切换到简体语言版本
+		test_logout(launage);	
+	}
+	
+	@CaseDesc(id="Login_011", name="test_loginAsFB1CN")
+	@Test(description="test the facebook login page for the Texas Pocker Thai cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB1CN(String launage){		
+		//切换到简体语言版本
+		test_loginAsFB1(launage);	
+	}
+	
+	@CaseDesc(id="Login_012", name="test_loginAsFBAuthPage1CN")
+	@Test(description="test the FB login authorization page cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage1CN(String username ,String password ,String tips,String launage){		
+		//切换到简体语言版本
+		test_loginAsFBAuthPage1(username , password,tips,launage);
+	}
+	
+	@CaseDesc(id="Login_013", name="test_loginAsFBAuthPage2CN")
+	@Test(description="test the FB login authorization page cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage2CN(String username ,String password ,String tips,String launage){
+		//切换到简体语言版本
+		test_loginAsFBAuthPage2(username ,password,tips,launage);
+	}
+	
+	@CaseDesc(id="Login_014", name="test_loginAsFB2CN")
+	@Test(description="test the facebook login function for the Texas Pocker Thai cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB2CN(String username ,String password ,String tips,String launage){
+		//切换到简体语言版本
+		test_loginAsFB2(username ,password,tips,launage);
+	}
+	
+	
+	//TODO 
+	//由于 context("WEBVIEW")有Bug：
+	//https://github.com/appium/appium/issues/4502
+	//所以当第二次切换到WebView时，没有切换到当前的实际的WebView而是之前的WebView。
+	@CaseDesc(id="Login_015", name="test_switchFBAccountCN")
+	@Test(enabled=false, description="test the facebook login function for the Texas Pocker Thai cn",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_switchFBAccountCN(String username ,String password ,String tips,String launage){
+		//切换到简体语言版本
+		test_switchFBAccount(username ,password,tips,launage);
+	}
+	
+	@CaseDesc(id="Login_016", name="test_noNetworkLoginCN")
+	@Test(description="test the without network account login function for the Texas Pocker Tranditional Thai",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_noNetworkLoginCN(String launage){
+		//切换到简体语言版本
+		test_noNetworkLogin(launage);
+	}
+	
+	@CaseDesc(id="Login_017", name="test_loginAsGuestEN")
+	@Test(description="test login as guest with en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsGuestEN(String launage) throws InterruptedException{
+		//切换到英语语言版本
+		test_loginAsGuest(launage);		
+	}
+	
+	@CaseDesc(id="Login_018", name="test_logoutEN")
+	@Test(description="test the logout function for the Texas traditional Chinese Evn en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_logoutEN(String launage) throws InterruptedException{		
+		//切换到英语语言版本
+		test_logout(launage);	
+	}
+	
+	@CaseDesc(id="Login_019", name="test_loginAsFB1EN")
+	@Test(description="test the facebook login page for the Texas Pocker Thai en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB1EN(String launage){		
+		//切换到英语语言版本
+		test_loginAsFB1(launage);	
+	}
+	
+	@CaseDesc(id="Login_020", name="test_loginAsFBAuthPage1EN")
+	@Test(description="test the FB login authorization page en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage1EN(String username ,String password ,String tips,String launage){		
+		//切换到英语语言版本
+		test_loginAsFBAuthPage1(username ,password,tips,launage);
+	}
+	
+	@CaseDesc(id="Login_021", name="test_loginAsFBAuthPage2EN")
+	@Test(description="test the FB login authorization page en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFBAuthPage2EN(String username ,String password ,String tips,String launage){
+		//切换到英语语言版本
+		test_loginAsFBAuthPage2(username , password, tips ,launage);
+	}
+	
+	@CaseDesc(id="Login_022", name="test_loginAsFB2EN")
+	@Test(description="test the facebook login function for the Texas Pocker Thai en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_loginAsFB2EN(String username ,String password ,String tips,String launage){
+		//切换到英语语言版本
+		test_loginAsFB2(username ,password ,tips ,launage);
+	}
+	
+	//TODO 
+	//由于 context("WEBVIEW")有Bug：
+	//https://github.com/appium/appium/issues/4502
+	//所以当第二次切换到WebView时，没有切换到当前的实际的WebView而是之前的WebView。
+	@CaseDesc(id="Login_023", name="test_switchFBAccountEN")
+	@Test(enabled=false,description="test the facebook login function for the Texas Pocker Thai en ",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_switchFBAccountEN(String username ,String password ,String tips,String launage){
+		//切换到英语语言版本
+		test_switchFBAccount(username ,password ,tips ,launage);
+	}
+	@CaseDesc(id="Login_024", name="test_noNetworkLoginEN")
+	@Test(description="test the without network account login function for the Texas Pocker Tranditional Thai en",dataProvider = "HoldemLogin", dataProviderClass =CaseDataDriver.class)
+	public void test_noNetworkLoginEN(String launage){
+		//切换到英语语言版本
+		test_noNetworkLogin(launage);
+	}
+}

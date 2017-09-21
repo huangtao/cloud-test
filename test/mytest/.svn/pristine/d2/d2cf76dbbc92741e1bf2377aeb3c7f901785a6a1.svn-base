@@ -1,0 +1,51 @@
+package com.boyaa.testdalianhall.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testdalianhall.uilib.AboutUsPage;
+import com.boyaa.testdalianhall.uilib.HallPage;
+import com.boyaa.testdalianhall.uilib.SettingsPage;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="系统设置")
+public class SettingsTest extends BaseTestCase {
+//	private static CommonBusiness cb = null;
+	private HallPage hallPage = null ;
+	public SettingsTest() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+//		cb = new CommonBusiness();
+		hallPage = new HallPage();
+//		loginPage.enterTestEnv();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+
+	@CaseDesc(id="DFHALL-1111", name="新用户(Phase I)")
+	@Test(description="test_aboutUs")
+	public void test_aboutUs() {
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("关于我们按钮").click();
+		AboutUsPage aboutUsPage = new AboutUsPage();
+		assertTrue(aboutUsPage.isPresent(), "检查是否打开关于我们页面");
+		
+		aboutUsPage.waitSubElement("版本声明TAB按钮").click();
+		assertTrue(aboutUsPage.waitSubElement("版本号").getText().contains("V"), "检查版本号能正常显示");
+	}
+
+}

@@ -1,0 +1,83 @@
+package com.boyaa.testholdemth.uilib;
+
+
+
+import java.util.List;
+
+
+
+import org.testng.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemth.uilib.RoomPage.PayDialog;
+import com.boyaa.testholdemth.uilib.SitAndGoRoomPage;
+import com.boyaa.testholdemth.business.CommonBusiness;;
+public class IntegralExchangePage extends RainbowElement {
+	public RainbowDriver rd=null;
+	public CommonBusiness cb=null;
+	/*
+	 * @author :FoxHu
+	 * 获取指定道具的index，text 为道具名字
+	 */
+	 public IntegralExchangePage(){
+	 	rd = RainbowDriver.getRainbowDriver();
+	 	cb = new CommonBusiness();
+	 }
+	 public int getTheIndexByNameInList(String text){
+		 List<WebElement> lt =  waitSubElements("兑换道具名字");
+		 for(int i=0;i<=(lt.size()-1);i++){ 
+			 if(lt.get(i).getText().equals(text)){
+				 return i;
+			 }
+		 }
+		 return -1;
+	 }
+	 
+	 /*
+	  * @author :FoxHu
+	  * 点击指定道具的兑换按钮，text 为道具名字
+	  */
+	 public void clickSpecificExchangeButtou(String text){
+		int i = getTheIndexByNameInList(text);
+		Assert.assertTrue(i>=0, "没有找到名字为："+text+",的道具兑换项");
+		waitSubElements("兑换按钮").get(i).click();
+	 }
+	 
+	public int getCanExchangeItemCount(String text){
+		int i = getTheIndexByNameInList(text);
+		String str= (waitSubElements("兑换道具描述").get(i).getText().split("เหลือ"))[1].toString().replace(" ", "");
+	    int count=cb.fromStringGetNumber(str);
+	    return count;
+		}
+	
+	public void text(){
+		rd.findElement(By.name("เกียรติของคุณยังไม่พอ สู้ๆนะ !!"));
+		}
+	
+	 public boolean checkSpecificExchangeButtouStat(String text){
+			int i = getTheIndexByNameInList(text);
+			Assert.assertTrue(i>=0, "没有找到名字为："+text+",的道具兑换项");
+			boolean bl = waitSubElements("兑换按钮").get(i).isEnabled();
+			return bl ;
+	}
+	 
+	public  void goBack(long timeout) throws InterruptedException{
+		long endtime =System.currentTimeMillis() + timeout;
+		while(System.currentTimeMillis()<=endtime){
+			rd.pressBack();
+			SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+			sitAndGoRoomPage.isPresent(3*1000);
+			//sleep(2*1000);
+		}
+	}
+	 
+	public ConfirmPage confirmPage() {
+			return new ConfirmPage();
+	}
+	public class ConfirmPage extends RainbowElement{
+		
+	}
+}

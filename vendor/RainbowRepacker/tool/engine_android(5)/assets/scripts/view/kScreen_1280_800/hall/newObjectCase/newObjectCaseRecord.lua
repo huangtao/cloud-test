@@ -1,0 +1,39 @@
+local backpack_qn_pin_map = require("qnFiles/qnPlist/backpack_qn_pin");
+local newObjectCaseRecord=
+{
+	name="newObjectCaseRecord",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="Image_mask",type=0,typeName="Image",time=108131269,x=165,y=286,width=1280,height=720,nodeAlign=kAlignTopLeft,visible=0,fillParentWidth=1,fillParentHeight=1,file="isolater/bg_shiled.png"
+	},
+	{
+		name="ImageBack",type=0,typeName="Image",time=108131298,x=0,y=0,width=723,height=720,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=1,file=backpack_qn_pin_map['backpack_bg.png'],gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,callbackfunc="onBindBlankFunc",varname="ImageBack",
+		{
+			name="Image_tittle_bg",type=1,typeName="Image",time=0,x=0,y=0,width=700,height=82,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file=backpack_qn_pin_map['backpack_tittle_bg.png'],
+			{
+				name="Text_tittle",type=4,typeName="Text",time=0,x=0,y=0,width=128,height=36,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=32,textAlign=kAlignLeft,colorRed=159,colorGreen=115,colorBlue=50,string=[[兑换记录]],colorA=1
+			}
+		},
+		{
+			name="closeBtn",type=0,typeName="Button",time=108131047,x=43,y=10,width=80,height=57,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/backpack/backpack_btn_bg.png",gridLeft=20,gridRight=20,gridTop=20,gridBottom=20,varname="closeBtn",callbackfunc="oncloseBtnClick",
+			{
+				name="Image18",type=1,typeName="Image",time=0,x=0,y=0,width=39,height=39,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=backpack_qn_pin_map['backpack_back.png']
+			}
+		},
+		{
+			name="Image_bg2",type=1,typeName="Image",time=0,x=10,y=15,width=659,height=615,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/bg_blank.png",gridLeft=10,gridRight=10,gridTop=10,gridBottom=10,fillTopLeftX=40,fillBottomRightX=24,fillTopLeftY=90,fillBottomRightY=15,
+			{
+				name="View_list_bg",type=0,typeName="View",time=0,x=0,y=0,width=659,height=615,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,varname="View_list_bg"
+			},
+			{
+				name="View_nothing",type=0,typeName="View",time=0,x=301,y=287,width=659,height=615,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,varname="View_nothing",
+				{
+					name="Image9",type=1,typeName="Image",time=0,x=0,y=-51,width=187,height=178,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=backpack_qn_pin_map['backpack_recordNothing.png']
+				},
+				{
+					name="Text11",type=4,typeName="Text",time=0,x=0,y=216,width=234,height=29,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=26,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,string=[[你还没有兑换过奖品]],colorA=1
+				}
+			}
+		}
+	}
+}
+return newObjectCaseRecord;

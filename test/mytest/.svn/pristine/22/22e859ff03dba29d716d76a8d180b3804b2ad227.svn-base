@@ -1,0 +1,32 @@
+package com.boyaa.testholdemsina.business;
+
+import com.boyaa.rainbow2.RainbowDriver;
+
+public class CommonBusiness {
+	
+	public static final String machineCode = "personaldetail"; 
+	
+	private RainbowDriver rd = null;
+	
+	public CommonBusiness() {
+		this.rd = RainbowDriver.getCurrentDriver();
+	}
+	
+	public CommonBusiness(RainbowDriver rd) {
+		this.rd = rd;
+	}
+	
+	public enum RoomLevel {
+		Junior("初级场"), Middle("中级场"), Senior("高级场");
+		
+		private String roomLevelName;
+		
+		private RoomLevel(String name){
+			roomLevelName = name;
+		}
+		
+		public String getName() {
+			return roomLevelName;
+		}
+	}
+}

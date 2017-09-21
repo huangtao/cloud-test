@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<!-- <uses-interface package="com.boyaa.scmj.HUAWEI"/> -->
+		<!-- <uses-interface package="com.boyaa.scmj.qihoo"/> -->
+		<!-- <uses-interface launchactivitie="com.boyaa.scmj.Game"/> -->
+		<!-- <uses-interface package="com.boyaa.scmj.nearme.gamecenter"/> -->
+		<!-- <uses-interface package="com.boyaa.scmjwdj.wdj.egame"/> -->
+		<!-- <uses-interface package="com.boyaa.scmj.anzhi"/> -->
+		<uses-interface package="com.boyaa.scmj.channel.baidu"/>
+		<uses-interface launchactivitie="com.boyaa.scmj.Game"/>
+		<uses-interface datapath="D:\\工作\\联运版登录" />	
+		<uses-interface reports="F:\workspace\Rainbow2\reports"/>
+		<uses-interface appium_server="http://localhost:4777/wd/hub"/>
+		<uses-interface native_appium_server="http://localhost:4723/wd/hub"/>
+		<uses-interface appiumurlport="4723;4623;4823"/>
+		<uses-interface devicename="D8YDU16325002121"/>
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\autotest_sc_mahjong_huawei_v5.1.1_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.1_sc_mahjong_qihoo.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.3_sc_mahjong_oppo.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_baidu_channel_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.5_scmj_wdj_egame_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_anzhi_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\Indonesia\\app-debug.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\ApkIDE_auto_v5.1.3_sc_mahjong_anzhi_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_baiducps_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_mmcps_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_unicom.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_wdj_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.1_sc_mahjong_mobile.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_meizu_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.1_sc_mahjong_mm_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_tencent_qqbrowser.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.2.1_sc_mahjong_samsung_test.apk"/> -->
+		<!-- <uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.5_scmj_wdj_unicom_test.apk"/> -->
+		<uses-interface scr_apk_path="F:\\testapp\\360\\auto_v5.1.3_sc_mahjong_yixin_test.apk"/>
+		<uses-interface app_id="403000"/>
+		<uses-interface environment="test"/>		
+	</project>
+</interface>

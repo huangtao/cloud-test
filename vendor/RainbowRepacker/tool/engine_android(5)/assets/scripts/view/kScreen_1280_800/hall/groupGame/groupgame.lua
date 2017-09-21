@@ -1,0 +1,35 @@
+local groupgame=
+{
+	name="groupgame",type=0,typeName="View",time=0,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=0,typeName="View",time=89458981,report=0,x=0,y=0,width=200,height=150,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,
+		{
+			name="topView",type=0,typeName="View",time=89459113,report=0,x=0,y=0,width=0,height=97,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="bg",type=1,typeName="Image",time=89459114,report=0,x=0,y=0,width=1280,height=123,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/scene_top.png"
+			},
+			{
+				name="returnBtn",type=2,typeName="Button",time=89459115,report=0,x=26,y=14,width=71,height=71,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/btn_return.png"
+			},
+			{
+				name="titleBg",type=1,typeName="Image",time=89459118,report=0,x=0,y=-45,width=430,height=147,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/title_bg.png",
+				{
+					name="Image1",type=1,typeName="Image",time=89459119,report=0,x=0,y=65,width=200,height=52,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/groupGame/groupGame_title.png"
+				}
+			}
+		},
+		{
+			name="shiled",type=1,typeName="Image",time=89459120,report=0,x=0,y=0,width=1280,height=635,fillTopLeftX=0,fillTopLeftY=85,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/scene_bg.png"
+		},
+		{
+			name="contentLayer",type=0,typeName="View",time=89459121,report=0,x=0,y=90,width=1280,height=630,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="contentView",type=0,typeName="ScrollView",time=89459122,report=0,x=0,y=0,width=1260,height=720,fillTopLeftX=20,fillTopLeftY=20,fillBottomRightX=20,fillBottomRightY=20,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter
+			},
+			{
+				name="errorInfo",type=4,typeName="Text",time=89459123,report=0,x=0,y=0,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=250,colorBlue=200,string=[[列表获取失败]]
+			}
+		}
+	}
+}
+return groupgame;

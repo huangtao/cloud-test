@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root type="0" typeName="View" time="0" id="" func="" report="false" x="0" y="0" width="202" height="272" visible="true" fillParentWidth="false" fillParentHeight="false" nodeAlign="0">
+  <back type="1" typeName="Image" time="83498775" id="" func="" report="false" x="0" y="0" width="202" height="272" visible="false" fillParentWidth="true" fillParentHeight="true" nodeAlign="8" file="games/common/pokers/poker_big_back.png" packFile="" gridLeft="0" gridRight="0" gridTop="0" gridBottom="0"/>
+  <fore type="1" typeName="Image" time="79847552" id="" func="" report="false" x="0" y="0" width="202" height="272" visible="true" fillParentWidth="true" fillParentHeight="true" nodeAlign="8" file="foreBg.png" packFile="games/common/pokers/layout/poker_big.lua" gridLeft="0" gridRight="0" gridTop="0" gridBottom="0">
+    <numIcon type="1" typeName="Image" time="79847712" id="" func="" report="false" x="16" y="19" width="46" height="66" visible="true" fillParentWidth="false" fillParentHeight="false" nodeAlign="8" file="8red.png" packFile="games/common/pokers/layout/poker_big.lua" gridLeft="0" gridRight="0" gridTop="0" gridBottom="0"/>
+    <smallIcon type="1" typeName="Image" time="79847865" id="" func="" report="false" x="18" y="91" width="40" height="46" visible="true" fillParentWidth="false" fillParentHeight="false" nodeAlign="8" file="squareSmall.png" packFile="games/common/pokers/layout/poker_big.lua" gridLeft="0" gridRight="0" gridTop="0" gridBottom="0"/>
+    <bigIcon type="1" typeName="Image" time="79847923" id="" func="" report="false" x="8" y="37" width="168" height="226" visible="true" fillParentWidth="false" fillParentHeight="false" nodeAlign="8" file="heartBig.png" packFile="games/common/pokers/layout/poker_big.lua" gridLeft="0" gridRight="0" gridTop="0" gridBottom="0"/>
+  </fore>
+</root>

@@ -1,0 +1,7 @@
+package com.boyaa.testupdate;
+
+import java.util.HashMap;
+
+public class Config {
+	public static final String defaultUserGuid = "b9285b5a-9edd-4a1d-b792-563128e62407";
+}

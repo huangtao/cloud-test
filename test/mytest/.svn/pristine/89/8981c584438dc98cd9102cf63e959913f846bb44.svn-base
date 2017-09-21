@@ -1,0 +1,154 @@
+package com.boyaa.testdalianhall.business;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Map;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
+import org.json.JSONObject;
+
+//import org.apache.commons.httpclient.HttpClient; 
+//import org.apache.commons.httpclient.HttpMethod; 
+//import org.apache.commons.httpclient.HttpStatus; 
+//import org.apache.commons.httpclient.URIException; 
+//import org.apache.commons.httpclient.methods.GetMethod; 
+//import org.apache.commons.httpclient.methods.PostMethod; 
+//import org.apache.commons.httpclient.params.HttpMethodParams; 
+
+
+public class Superman {
+	
+	public enum ServerUrl {
+		Intra, Online, OnlineTest
+	}
+
+	public JSONObject set(ServerUrl serverUrl, JSONObject jso){
+		 final String encryptedKey = "terfv%^&4826oo";
+		 final String timeStamp = "14571212354";	//server不检验时间戳，所以随便设置一个不变的
+		 String paramsToSend = "time="+timeStamp+"&action=externals.autoTest";
+		 
+		 try {
+			byte[] jsoBytesInBase64 = Base64.encodeBase64(jso.toString().getBytes("UTF-8"));
+			String jsoStringInBase64 = new String(jsoBytesInBase64);
+//			jsonObject.put("code", jsoStringInBase64);
+			paramsToSend = paramsToSend+"&code="+jsoStringInBase64;
+			String stringNeedToBeEncryted = jsoStringInBase64+timeStamp+encryptedKey;
+			byte[] bytesOfMessage = new byte[]{};
+			bytesOfMessage = stringNeedToBeEncryted.getBytes("UTF-8");
+			MessageDigest md;
+			md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+			String result = Hex.encodeHexString(thedigest);
+//			jsonObject.put("key", result);
+			paramsToSend = paramsToSend+"&key="+result;
+		} catch (UnsupportedEncodingException e1) {
+			throw new RuntimeException("UnsupportedEncodingException:"+e1.toString());
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException("NoSuchAlgorithmException:"+e.toString());
+		}
+		
+//		jsonObject.put("time", timeStamp);
+//		jsonObject.put("action", "externals.autoTest");
+		
+		JSONObject jsoReturn = new JSONObject();
+		System.out.println("http://192.168.200.21/dfqp/index.php?"+paramsToSend);
+		switch(serverUrl) {
+		case Intra:
+			jsoReturn = postJsonDataToSpecificURL("http://192.168.200.21/dfqp/index.php?", paramsToSend);
+			break;
+		case Online:
+			jsoReturn = postJsonDataToSpecificURL("http://mvsnspus01.ifere.com/ddfqp/index.php?action=externals.autoTest", paramsToSend);
+			break;
+		case OnlineTest:
+			jsoReturn = postJsonDataToSpecificURL("http://pcususus01.ifere.com/ddfqp/index.php?action=externals.autoTest", paramsToSend);
+			break;
+		default:
+			break;
+		}
+		//System.out.println("jsonreturn:"+jsoReturn.toString());
+		return jsoReturn;
+		 
+	 }
+	
+	private JSONObject postJsonDataToSpecificURL(String url ,String postParams){
+		 JSONObject jsonObject = null;
+		 try {
+			URL oUrl =new URL(url);
+			HttpURLConnection oHttpURLC = (HttpURLConnection) oUrl.openConnection();
+			oHttpURLC.setDoOutput(true);
+			oHttpURLC.setDoInput(true);
+			oHttpURLC.setRequestMethod("POST");
+			oHttpURLC.setUseCaches(false);
+			oHttpURLC.setInstanceFollowRedirects(true);
+			oHttpURLC.connect();
+			//设置输出数据流
+			DataOutputStream out = new DataOutputStream(oHttpURLC.getOutputStream());
+			out.writeBytes(postParams);
+          out.flush();
+          out.close(); 
+          BufferedReader reader = new BufferedReader(new InputStreamReader(
+         		oHttpURLC.getInputStream()));
+			 String s;
+			 StringBuilder resultString = new StringBuilder();
+			 while (((s = reader.readLine()) != null)) {
+				 resultString.append(s);
+			 }
+			 reader.close();// 关闭输入流
+			 //在这里把result这个字符串个给JSONObject。解读里面的内容。
+			 System.out.println("resultString:"+resultString.toString());
+			 jsonObject = new JSONObject(resultString.toString());
+			 //String makeRobotStatus = jsonObject.getString("allErr");
+			 reader.close();
+          // 断开连接
+          oHttpURLC.disconnect();
+		} catch (Exception e) {
+//			StringWriter sw = new StringWriter();
+//			PrintWriter pw = new PrintWriter(sw);
+//			e.printStackTrace(pw);
+//			throw new RuntimeException("post json data error:"+sw.toString());		
+		}
+		return jsonObject;
+	 }
+	
+//	private JSONObject postJsonDataToSpecificURL(String url ,Map<String,String> postParams){
+//		StringBuffer response = new StringBuffer(); 
+//        HttpClient client = new HttpClient(); 
+//        HttpMethod method = new HttpMethod(url); 
+//        //设置Http Post数据 
+//        if (params != null) { 
+//                HttpMethodParams p = new HttpMethodParams(); 
+//                for (Map.Entry<String, String> entry : params.entrySet()) { 
+//                        p.setParameter(entry.getKey(), entry.getValue()); 
+//                } 
+//                method.setParams(p); 
+//        } 
+//        try { 
+//                client.executeMethod(method); 
+//                if (method.getStatusCode() == HttpStatus.SC_OK) { 
+//                        BufferedReader reader = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream(), charset)); 
+//                        String line; 
+//                        while ((line = reader.readLine()) != null) { 
+//                                if (pretty) 
+//                                        response.append(line).append(System.getProperty("line.separator")); 
+//                                else 
+//                                        response.append(line); 
+//                        } 
+//                        reader.close(); 
+//                } 
+//        } catch (IOException e) { 
+//                log.error("执行HTTP Post请求" + url + "时，发生异常！", e); 
+//        } finally { 
+//                method.releaseConnection(); 
+//        } 
+//	}
+}

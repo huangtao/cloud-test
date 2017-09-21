@@ -1,0 +1,118 @@
+package com.boyaa.hallsmoketest.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.common.CommonBusiness.ServerEnvironment;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.RankListPage;
+import com.boyaa.hallbase.uilib.ShopPage;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="排行榜")
+public class RankListTest extends SmokeTestCase {
+	
+
+	@CaseDesc(id="DFHALL-1159", name="排行榜跳转入口(Phase I)")
+	@Test(description="检查排行榜跳转入口是否能正常进入")
+	public void test_jumpToShop() throws InterruptedException{
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("排行榜按钮").click();
+		RankListPage rankListPage = new RankListPage();
+		assertTrue(rankListPage.isPresent(), "检查是否打开排行榜页面");
+		
+		Thread.sleep(2000);
+		rankListPage.waitSubElement("快速提升排名按钮").click();
+		assertTrue(new ShopPage().isPresent(), "检查是否打开商城页面");
+	}
+	
+	@CaseDesc(id="DFHALL-1156", name="昨日今日(Phase I)")
+	@Test(description="检查今日和昨日的排名切换是否正常")
+	public void test_changeDay() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("排行榜按钮").click();
+		RankListPage rankListPage = new RankListPage();
+		assertTrue(rankListPage.waitSubElement("昨日今日切换按钮文字").getText().equals("昨日"), "检查昨日按钮是否显示");
+		//TODO 设置用户昨日的排行榜数据
+		
+		//TODO 设置用户今日的排行榜数据
+		rankListPage.waitSubElement("昨日今日切换按钮").click();
+		//TODO 检查用户的排行榜数据是否显示正确
+		assertTrue(rankListPage.waitSubElement("昨日今日切换按钮文字").getText().equals("今日"), "检查今日按钮是否显示");
+		//TODO 检查用户的排行榜数据是否显示正确
+	}
+	
+	@CaseDesc(id="DFHALL-1157", name="经验榜排名变动(Phase II)")
+	@Test(description="检查经验变化后经验榜的排名会发生变化")
+	public void test_changeExpOrder() throws InterruptedException {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("排行榜按钮").click();
+		RankListPage rankListPage = new RankListPage();
+		rankListPage.waitSubElement("经验榜TAB按钮").click();
+//		int curExp = rankListPage.getExp();
+		int curOrder = rankListPage.getOrder();
+		
+		CommonBusiness.setUserExp(currentMid, 500);
+		//设置经验值后，切换界面，经验值不刷新，需要重启应用
+		getDriver().closeApp();
+		getDriver().launchApp();
+		Thread.sleep(5*1000);
+		CommonBusiness.closeTheLauncherDialog();
+		try {
+//			rankListPage.waitSubElement("返回按钮").click();
+			hallPage.waitSubElement("更多按钮").click();
+			hallPage.waitSubElement("排行榜按钮").click();
+			rankListPage.waitSubElement("经验榜TAB按钮").click();
+			Thread.sleep(1000);
+			assertTrue(rankListPage.getOrder() < curOrder, "检查经验值变动后排名发生了变化");
+		} finally {		
+			CommonBusiness.setUserExp(currentMid, -500);
+		}
+	}
+	
+	@CaseDesc(id="DFHALL-1530", name="赚金榜排名变动(Phase II)")
+	@Test(description="检查赚金值变化后赚金榜的排名会发生变化")
+	public void test_changeEarnMoneyOrder() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("排行榜按钮").click();
+		RankListPage rankListPage = new RankListPage();
+		rankListPage.waitSubElement("赚金榜TAB按钮").click();
+		int curEarnMoney = rankListPage.getEarnMoney();
+		int curOrder = rankListPage.getOrder();
+		rankListPage.waitSubElement("返回按钮").click();
+		CommonBusiness.setUserEarnMoney(currentMid, curEarnMoney+10000);
+		try {
+			hallPage.waitSubElement("更多按钮").click();
+			hallPage.waitSubElement("排行榜按钮").click();
+			rankListPage.waitSubElement("赚金榜TAB按钮").click();
+			assertTrue(rankListPage.getOrder() < curOrder, String.format("检查赚金值变动后赚金榜排名发生了变化:原排名为%d,新排名为%d", curOrder, rankListPage.getOrder()));
+		} finally {	
+			CommonBusiness.setUserEarnMoney(currentMid, curEarnMoney);
+		}
+	}
+	
+//	@CaseDesc(id="公共001", name="富豪榜排名变动(Phase II)")
+//	@Test(description="test_changeMoneyOrder")
+//	public void test_changeMoneyOrder() {
+//		hallPage.waitSubElement("更多按钮").click();
+//		hallPage.waitSubElement("排行榜按钮").click();
+//		RankListPage rankListPage = new RankListPage();
+//		rankListPage.waitSubElement("富豪榜TAB按钮").click();
+//		int curMoney = rankListPage.getMoney();
+//		int curOrder = rankListPage.getOrder();
+//		
+//		CommonBusiness.setUserMoney(currentMid, curMoney+20000);
+//		rankListPage.waitSubElement("返回按钮").click();
+//		hallPage.waitSubElement("更多按钮").click();
+//		hallPage.waitSubElement("排行榜按钮").click();
+//		rankListPage.waitSubElement("富豪榜TAB按钮").click();
+//		assertTrue(rankListPage.getOrder() < curOrder, "检查金币数变动后富豪榜排名发生了变化");
+//		
+//		CommonBusiness.setUserMoney(currentMid, curMoney);
+//	}
+
+}

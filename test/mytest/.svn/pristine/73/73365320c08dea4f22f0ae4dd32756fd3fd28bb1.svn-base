@@ -1,0 +1,83 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginAwardPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.SettingsPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="每日登陆奖励")
+public class LoginAwardTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private LoginAwardPage loginAwardPage=null;
+	private SettingsPage settingsPage=null;
+	private CommonBusiness commonBusiness=null;
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		loginAwardPage=new LoginAwardPage();
+		settingsPage=new SettingsPage();
+		commonBusiness=new CommonBusiness();
+//		CommonBusiness.createNativeDriver();
+	}
+	@CaseDesc(id="login_award1", name="每日登陆奖励")
+	@Test(description="每日登陆后不领取奖励")
+	public void test_login_award1() throws Exception {
+		commonBusiness.loginToLobby();
+		Thread.sleep(1*1000);
+		try{
+			loginAwardPage.isPresent();
+			commonBusiness.closeDayLoginDialog();
+			Thread.sleep(1*1000);
+			lobbyPage.waitSubElement("设置").click();
+			settingsPage.waitPresent();
+			settingsPage.waitSubElement("切换").click();
+			loginPage.waitSubElement("立即登录").click();
+			Thread.sleep(5*1000);
+			loginAwardPage.waitPresent();
+			assertTrue(loginAwardPage.isPresent(),"预期结果：出现每日登陆奖励弹框，实际结果：没有出现每日登陆奖励弹框");
+		}catch(Exception e){
+			System.out.println("每日登录奖励已领取");
+		}
+	}
+	@CaseDesc(id="login_award2", name="每日登陆奖励")
+	@Test(description="每日登陆奖励")
+	public void test_login_award2() throws Exception{
+		commonBusiness.loginToLobby();
+		Thread.sleep(1*1000);
+		try{
+			loginAwardPage.isPresent();
+			Thread.sleep(1*1000);
+			String goldBefore=lobbyPage.waitSubElement("金币数量").getText();
+			System.out.println("领取前的金币数量："+goldBefore);
+			try {
+				loginAwardPage.waitSubElement("领取").click();
+				loginAwardPage.waitSubElement("关闭").click();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("无登陆奖励界面");
+			}		
+			String goldAfter=lobbyPage.waitSubElement("金币数量").getText();
+			System.out.println("领取后的金币数量："+goldAfter);
+			assertNotEquals(goldAfter, goldBefore,"预期结果：金币有变化，实际结果：金币无变化");	
+		}catch(Exception e){
+			System.out.println("每日登录奖励已领取");
+		}
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

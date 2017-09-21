@@ -1,0 +1,9 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class SettingsPage extends RainbowElement{
+	public void back() {
+		super.waitSubElement("返回按钮").click();
+	}
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<uses-interface package="com.boyaa.androidmarket" />
+		<uses-interface
+			launchactivitie="com.boyaa.texaspoker.application.module.op.OpeningShowActivity" />
+		<uses-interface
+			datapath="\\fs03\byDFS\部门共享\棋牌事业部\测试部\自动化测试部\Projects\Holdem\TestHoldemHK" />		
+		<uses-interface reports="D:\work\dev\jackworkspace\TestHoldemHK\report" />
+	</project>
+</interface>

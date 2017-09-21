@@ -1,0 +1,21 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class LobbyPage extends RainbowElement{
+	
+private RainbowDriver rd = null;
+	
+	public  LobbyPage(){
+		rd = RainbowDriver.getCurrentDriver();		
+	}
+	public void logout(){
+		waitSubElement("设置").click();		
+		SettingDialog settingDiaLog=new SettingDialog();
+		settingDiaLog.waitSubElement("注销").click();
+		rd.pressBack();
+		
+	}
+
+}

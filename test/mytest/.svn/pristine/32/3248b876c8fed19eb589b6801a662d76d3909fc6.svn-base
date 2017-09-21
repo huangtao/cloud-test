@@ -1,0 +1,91 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.QuickLobbyPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="游戏大厅")
+public class GameLobbyTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage = null;
+	private GameLobbyPage gameLobbyPage = null;
+	private CommonBusiness commonBusiness = null;
+	private CommonLobbyPage commonLobbyPage = null;
+	
+	@BeforeMethod
+	public void setup(){
+		super.setUp();
+		loginPage = new LoginPage();
+		lobbyPage = new LobbyPage();
+		gameLobbyPage = new GameLobbyPage();
+		commonBusiness = new CommonBusiness();
+		commonLobbyPage = new CommonLobbyPage();
+//		CommonBusiness.createNativeDriver();
+	}	
+	@CaseDesc(id="junior_lobby",name="初级场")
+	@Test(description="进入初级场")
+	public void test01_Junior_lobby() throws Exception{
+		commonBusiness.enterLobby("初级");
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		commonBusiness.backLobbyList();//返回游戏列表
+	}
+	@CaseDesc(id="junior_lobby",name="中级场")
+	@Test(description="进入中级场")
+	public void test02_Middle_lobby() throws Exception{
+		commonBusiness.enterLobby("中级");
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");		
+		commonBusiness.backLobbyList();//返回游戏列表
+	}
+	@CaseDesc(id="junior_lobby",name="高级场")
+	@Test(description="进入高级场")
+	public void test03_Senior_lobby() throws Exception{
+		commonBusiness.enterLobby("高级");
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		commonBusiness.backLobbyList();//返回游戏列表
+	}
+	@CaseDesc(id="LobbyList",name="房间列表")
+	@Test(description="资产大于600001，进入房间列表")
+	public void test04_enterLobbyList() throws Exception{
+		commonBusiness.enterLobbyList();
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	@CaseDesc(id="LobbyList2",name="房间列表")
+	@Test(description="资产小于60000，进入房间列表")
+	public void test05_enterLobbyList() throws Exception{
+		Thread.sleep(10*1000);
+		loginPage.waitSubElement("随机游客").click();
+		Thread.sleep(1*1000);
+		loginPage.waitSubElement("测试环境").click();
+		Thread.sleep(1*1000);
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(2*1000);
+		loginPage.waitSubElement("游客登陆确认").click();
+		Thread.sleep(15*1000);
+		commonBusiness.closeAutoPage();
+//		registerPage.waitSubElement("确认").click();
+		Thread.sleep(2*1000);
+		lobbyPage.waitSubElement("跳过").click();
+		Thread.sleep(2*1000);
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(2*1000);
+		gameLobbyPage.isTipsExist("过滤");
+		gameLobbyPage.isTipsExist("俱乐部");
+		Thread.sleep(1*1000);
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

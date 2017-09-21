@@ -1,0 +1,36 @@
+package com.boyaa.testholdemth.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemth.business.CommonBusiness.RoomLevel;
+
+
+public class RoomListPage extends RainbowElement{
+	public void selectRoomLevel(RoomLevel roomLevel){
+
+		WebElement roomTypeButton = waitSubElement("场次类型按钮");
+		if(roomTypeButton.getText() == roomLevel.getName()){
+			return;
+		}
+		roomTypeButton.click();
+		switch(roomLevel) {
+			case Newbie:
+				waitSubElement("新手场按钮").click();
+				break;
+			case Junior:
+				waitSubElement("初级场按钮").click();
+				break;
+			case Middle:
+				waitSubElement("中级场按钮").click();
+				break;
+			case Senior:
+				waitSubElement("高级场按钮").click();
+				break;
+			default:
+				break;
+		}
+	}
+}

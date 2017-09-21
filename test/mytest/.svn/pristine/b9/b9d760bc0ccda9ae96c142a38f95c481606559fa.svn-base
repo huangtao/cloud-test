@@ -1,0 +1,119 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginEveryDayDialog;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.LoginPage.WeiboLoginPage;
+import com.boyaa.testholdemsina.uilib.RoomListPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="登录注册")
+public class LoginTest extends TestCaseBase{
+	private LobbyPage lobbyPage = null;
+	private LoginPage loginPage = null;
+	private RoomListPage roomListPage = null;
+	private RainbowDriver rd = null;
+	
+	public LoginTest(){
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		lobbyPage = new LobbyPage();
+		loginPage = new LoginPage();
+		roomListPage = new RoomListPage();
+	}
+	
+	
+	@CaseDesc(id="guest_login1", name="固定设备的游客登录")
+	@Test(description="固定设备的游客登录")
+	public void test_GuestLoginByDevice() throws InterruptedException{
+		loginPage.waitPresent();
+		rd.pressMenu();
+		loginPage.waitSubElement("正式服务器").click();
+		loginPage.waitSubElement("立即登录").click();
+		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+		if (loginEveryDayDialog.isPresent()){
+			loginEveryDayDialog.close();
+		}
+		lobbyPage.waitPresent();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		
+		roomListPage.waitPresent();
+		roomListPage.waitSubElement("金币数").click();
+		roomListPage.waitSubElement("金币数").click();
+		assertTrue(roomListPage.isSubElementPresent("房名/ID_header"),"预期结果：出现“房名/ID”，实际结果：未出现“房名/ID”");
+	}
+	
+//	@CaseDesc(id="guest_login2", name="设置机器码登录游戏")
+//	@Test(description="设置机器码登录游戏")
+//	public void test_GuestLoginByMachineCode() throws InterruptedException{
+//		loginPage.waitPresent();
+//		rd.pressMenu();
+//		loginPage.waitSubElement("更多").click();
+//		loginPage.waitSubElement("自定义机器码").click();
+//		
+//		EnterMachineCodeDialog emcDialog = new EnterMachineCodeDialog();
+//		emcDialog.waitPresent();
+//		
+//		WebElement machineCodeEle = emcDialog.waitSubElement("机器码输入框");
+//		rd.sendKeys(machineCodeEle, "123456789");
+//		emcDialog.waitSubElement("确认按钮").click();
+//		
+//		loginPage.waitSubElement("立即登录").click();
+//		
+//		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+//		if (loginEveryDayDialog.isPresent()){
+//			loginEveryDayDialog.close();
+//		}
+//		hallPage.waitPresent();
+//		hallPage.waitSubElement("游戏大厅").click();
+//		
+//		roomListPage.waitPresent();
+//		roomListPage.waitSubElement("金币数").click();
+//		roomListPage.waitSubElement("金币数").click();
+//		assertTrue(roomListPage.isSubElementPresent("房名/ID_header"),"预期结果：出现“房名/ID”，实际结果：未出现“房名/ID”");
+//	}
+	
+//	@CaseDesc(id="weibo_login", name="已授权微博账号登录")
+//	@Test(description="已授权微博账号登录", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+//	public void test_WeiboLogin(String userName, String password) throws InterruptedException{
+//		loginPage.waitPresent();
+//		rd.pressMenu();
+//		loginPage.waitSubElement("正式服务器").click();
+//		loginPage.waitSubElement("微博账号登录").click();
+//		
+//		WeiboLoginPage weiboLoginPage = loginPage.getWeiboLoginPage();
+//		weiboLoginPage.loginWithWebView(userName, password);
+//		assertTrue(weiboLoginPage.isSubElementPresent("已授权提示"), "提示信息不存在");
+//		
+//		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+//		if (loginEveryDayDialog.isPresent()){
+//			loginEveryDayDialog.close();
+//		}
+//		hallPage.waitPresent();
+//		hallPage.waitSubElement("游戏大厅").click();
+//		
+//		roomListPage.waitPresent();
+//		roomListPage.waitSubElement("金币数").click();
+//		roomListPage.waitSubElement("金币数").click();
+//		assertTrue(roomListPage.isSubElementPresent("房名/ID_header"),"预期结果：出现“房名/ID”，实际结果：未出现“房名/ID”");
+//	}
+	
+//	@CaseDesc(id="new_account_login", name="新微博账号登录")
+//	@Test(description="新微博账号登录", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+//	public void test_NewAccountLogin(String userName, String password) throws InterruptedException{
+//		
+//	}
+	
+}

@@ -1,0 +1,38 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.EgameLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.YixinLoginPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Test(description = "易信联运登录测试用例")
+public class YixinLoginTest extends BaseLoginTest {
+	@CaseDesc(id = "LIANYUN-Yixin-1", name = "登录易信账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginYixin(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+//		CommonBusiness.clearAppData("com.boyaa.scmj.yixin");
+		CommonBusiness.clearAppData("im.yixin");
+
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		YixinLoginPage yixinp = new YixinLoginPage();
+		// nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		yixinp.waitSubElement("账号输入框").clear();
+		yixinp.waitSubElement("账号输入框").sendKeys(account);
+		yixinp.waitSubElement("密码输入框").clear();
+		yixinp.waitSubElement("密码输入框").sendKeys(pwd);
+		yixinp.waitSubElement("登录按钮").click();
+		if(yixinp.isSubElementPresent("授权使用的信息")){
+			yixinp.waitSubElement("同意").click();
+		}
+		super.isLoginSucc(hp, name);
+
+	}
+}

@@ -1,0 +1,15 @@
+I     20140905 13:32:14    Generator Report:    chmod -R 777 /storage/emulated/0/ATR/TexasCN_20140905_01-15-47PM/ failed!
+
+I     20140905 13:32:14    Generator Report:    createReportXMLFile Start:
+I     20140905 13:32:14    Generator Report:    createReportXMLFile End
+I     20140905 13:32:14    Generator Report:    addTestSuiteNode Start:
+I     20140905 13:32:14    Generator Report:    addTestSuiteNode End
+I     20140905 13:32:14    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    chmod 777 /data/data/com.boyaa.sina/files success
+I     20140905 13:32:18    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140905 13:32:18    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140905 13:32:30    LocalLib    id/button2 is not found.
+I     20140905 13:33:23    LocalLib    超赞礼包（首付礼包）的购买按钮 is not found.
+I     20140905 13:33:23    Generator Report:    getSnapshort Start:
+I     20140905 13:33:23    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasCN_20140905_01-15-47PM/_Screenshots/PayLogic_019_20140905_13_33_23.jpg
+I     20140905 13:33:23    Generator Report:    getSnapshort End
+I     20140905 13:33:28    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    tear down time out!

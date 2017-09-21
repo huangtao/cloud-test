@@ -1,0 +1,38 @@
+match_invite_friends_layout=
+{
+	name="match_invite_friends_layout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="maskBg",type=1,typeName="Image",time=67139323,report=0,x=0,y=0,width=1,height=1,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="isolater/bg_blank.png"
+	},
+	{
+		name="bg",type=1,typeName="Image",time=67139515,report=0,x=0,y=0,width=260,height=420,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/popup_bg.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+		{
+			name="contentBg",type=0,typeName="View",time=103632792,x=112,y=428,width=64,height=64,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,fillTopLeftX=5,fillTopLeftY=51,fillBottomRightX=5,fillBottomRightY=110,
+			{
+				name="contentList",type=0,typeName="ListView",time=67141034,report=0,x=5,y=86,width=352,height=393,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft
+			}
+		},
+		{
+			name="contentEmpty",type=0,typeName="View",time=67141504,report=0,x=0,y=0,width=440,height=513,fillTopLeftX=5,fillTopLeftY=51,fillBottomRightX=5,fillBottomRightY=110,visible=0,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+			{
+				name="tips",type=4,typeName="Text",time=67141652,report=0,x=0,y=0,width=1,height=35,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignCenter,colorRed=255,colorGreen=240,colorBlue=148,string=[[当前无可邀请好友]]
+			}
+		},
+		{
+			name="confirmBtn",type=2,typeName="Button",time=67141150,report=0,x=0,y=20,width=160,height=71,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="games/common/btns/272x71_orange.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="text",type=4,typeName="Text",time=67141249,report=0,x=0,y=-2,width=80,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=28,textAlign=kAlignLeft,colorRed=110,colorGreen=60,colorBlue=0,string=[[确  定]]
+			}
+		},
+		{
+			name="topView",type=0,typeName="View",time=110025677,x=0,y=0,width=64,height=50,nodeAlign=kAlignTop,visible=1,fillParentWidth=1,fillParentHeight=0,
+			{
+				name="title",type=4,typeName="Text",time=58516441,report=0,x=0,y=0,width=1,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=22,textAlign=kAlignCenter,colorRed=255,colorGreen=254,colorBlue=162,string=[[邀请好友]]
+			},
+			{
+				name="line",type=0,typeName="Image",time=110025803,x=0,y=0,width=483,height=2,nodeAlign=kAlignBottom,visible=1,fillParentWidth=1,fillParentHeight=0,file="games/common/popup_line.png",fillTopLeftX=5,fillBottomRightX=5,fillTopLeftY=48,fillBottomRightY=0
+			}
+		}
+	}
+}
+return match_invite_friends_layout;

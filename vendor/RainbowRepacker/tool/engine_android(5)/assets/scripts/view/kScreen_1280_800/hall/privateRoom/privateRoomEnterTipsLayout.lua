@@ -1,0 +1,32 @@
+local privateRoomEnterTipsLayout=
+{
+	name="privateRoomEnterTipsLayout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="content",type=1,typeName="Image",time=0,x=0,y=0,width=810,height=530,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,
+		{
+			name="closeBtn",type=1,typeName="Button",time=0,x=-15,y=-15,width=60,height=60,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="txtTitle",type=4,typeName="Text",time=72841867,report=0,x=0,y=-8,width=200,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[提示]],colorA=1
+			}
+		},
+		{
+			name="confirmBtn",type=2,typeName="Button",time=90644656,report=0,x=0,y=85,width=220,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="text",type=4,typeName="Text",time=90644657,report=0,x=0,y=0,width=144,height=41,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=250,colorBlue=200,string=[[我知道了]],colorA=1
+			}
+		},
+		{
+			name="contentView",type=0,typeName="View",time=0,x=0,y=-35,width=625,height=256,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+			{
+				name="title",type=4,typeName="Text",time=52972960,report=0,x=0,y=0,width=544,height=39,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=234,colorGreen=72,colorBlue=40,string=[[您加入的房间人数已满！]],colorA=1
+			}
+		}
+	}
+}
+return privateRoomEnterTipsLayout;

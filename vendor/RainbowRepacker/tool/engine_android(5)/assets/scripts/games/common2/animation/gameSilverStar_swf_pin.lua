@@ -1,0 +1,72 @@
+-- created with TexturePacker (http://www.texturepacker.com)
+local path = "games/common/animation/gameSilverStar_swf_pin.png";
+local gameSilverStar_swf_pin_map = {
+	
+	["gameSilverStar_1.png"]={ 
+		file=path,
+		x=494,y=196,
+		width=75,height=75
+	},
+	["gameSilverStar_10.png"]={ 
+		file=path,
+		x=581,y=2,
+		width=191,height=192
+	},
+	["gameSilverStar_11.png"]={ 
+		file=path,
+		x=388,y=2,
+		width=191,height=192
+	},
+	["gameSilverStar_12.png"]={ 
+		file=path,
+		x=195,y=2,
+		width=191,height=192
+	},
+	["gameSilverStar_13.png"]={ 
+		file=path,
+		x=2,y=778,
+		width=191,height=192
+	},
+	["gameSilverStar_2.png"]={ 
+		file=path,
+		x=374,y=196,
+		width=118,height=110
+	},
+	["gameSilverStar_3.png"]={ 
+		file=path,
+		x=195,y=196,
+		width=177,height=179
+	},
+	["gameSilverStar_4.png"]={ 
+		file=path,
+		x=774,y=183,
+		width=177,height=179
+	},
+	["gameSilverStar_5.png"]={ 
+		file=path,
+		x=774,y=2,
+		width=177,height=179
+	},
+	["gameSilverStar_6.png"]={ 
+		file=path,
+		x=2,y=584,
+		width=191,height=192
+	},
+	["gameSilverStar_7.png"]={ 
+		file=path,
+		x=2,y=390,
+		width=191,height=192
+	},
+	["gameSilverStar_8.png"]={ 
+		file=path,
+		x=2,y=196,
+		width=191,height=192
+	},
+	["gameSilverStar_9.png"]={ 
+		file=path,
+		x=2,y=2,
+		width=191,height=192
+	},
+}
+
+return gameSilverStar_swf_pin_map;

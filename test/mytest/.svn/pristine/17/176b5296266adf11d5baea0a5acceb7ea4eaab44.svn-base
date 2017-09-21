@@ -1,0 +1,324 @@
+package com.boyaa.common.utils;
+
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.view.Display;
+import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.boyaa.common.BoyaaApp;
+import com.boyaa.message.PhpInfo;
+
+public class ConfigUtil {
+	public static int getW(int pix) {
+		if (BoyaaApp.getApplication().isLandscape() ) {
+			return getX(pix);
+		} else {
+			if (Math.abs(pix) > 480) {
+				pix = pix > 0 ? 480 : -480;
+			}
+			return getY(pix);
+		}
+	}
+	
+	public static int getH(int pix) {
+		if (BoyaaApp.getApplication().isLandscape() ) {
+			return getY(pix);
+		} else {
+			return getX(pix);
+		}
+	}
+	
+ 	public  static int getX(int x) {
+		
+		int int_widh = 0;
+		if(x>=0){
+			float temp=(float)GameConfig.getScreenWidth() / 800 * x;
+			int_widh = (int) (temp + 0.5);
+		}else{
+			float temp=(float)GameConfig.getScreenWidth() / 800 * (-x);
+			int_widh = -(int) (temp + 0.5);
+		}
+		return int_widh;
+	}
+
+	public  static int getY(int y) {
+		
+		int int_height =0;
+		if(y>=0){
+			float temp=(float)GameConfig.getScreenHeight() / 480 * y;
+			int_height = (int) (temp + 0.5);
+		}else{
+			float temp=(float)GameConfig.getScreenHeight() / 480 * (-y);
+			int_height = -(int) (temp + 0.5);
+		}
+		return int_height;
+	}
+
+	public  static float getX(float x) {
+		float float_widh = 0f;
+		float_widh = ((float) GameConfig.getScreenWidth() / 800 * x);
+		return float_widh;
+	}
+
+	public  static float getY(float y) {
+		float float_heightss = 0f;
+		float_heightss = ((float) GameConfig.getScreenHeight() / 480 * y);
+		return float_heightss;
+	}
+	
+	public  static int getZSY(int y) {
+		if(GameConfig.getScreenHeight()==320){
+			return getX(y);
+		}
+		int int_height =0;
+		if(y>=0){
+			float temp=(float)GameConfig.getScreenHeight() / 480 * y;
+			int_height = (int) (temp + 0.5);
+		}else{
+			float temp=(float)GameConfig.getScreenHeight() / 480 * (-y);
+			int_height = -(int) (temp + 0.5);
+		}
+		return int_height;
+	}
+	
+	public static int fontSize(int fontSize){
+		return (PhpInfo.getInstance().getLangtype().equals("0") || PhpInfo.getInstance().getLangtype().equals("1")) ? 0 : ConfigUtil.getX(fontSize);
+	}
+	
+	public static void regist(Context context){
+		Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
+		registrationIntent.putExtra("app", PendingIntent.getBroadcast(context, 0, new Intent(), 0)); // boilerplate
+		registrationIntent.putExtra("sender", "168145358614");
+		context.startService(registrationIntent);
+	}
+	
+	public static void unRegist(Context context){
+		Intent unregIntent = new Intent("com.google.android.c2dm.intent.UNREGISTER");
+		unregIntent.putExtra("app", PendingIntent.getBroadcast(context, 0, new Intent(), 0));
+		unregIntent.putExtra("sender", "85320870623");
+		context.startService(unregIntent);
+	}
+	/**
+	 * 试图将strToInt字符串转换成int返回, 若无法转换, 则返回0
+	 * @param strToInt 需要转换成int的字符串
+	 * @return 如果转换成功则返回成功的值, 否则返回0
+	 */
+	public static int getInt(String strToInt){
+		return getInt(strToInt, 0);
+	}
+
+	/**
+	 * 试图将strToInt字符串转换成int返回, 若无法转换, 则返回指定的默认值defaultVal
+	 * @param strToInt 需要转换成int的字符串
+	 * @param defaultVal 默认返回值
+	 * @return 如果转换成功则返回成功的值, 否则返回指定的默认值defaultVal
+	 */
+	public static int getInt(String strToInt, int defaultVal) {
+		try{
+			return Integer.parseInt(strToInt);
+		}catch(Exception e){
+			return defaultVal;
+		}
+	}
+	
+	/**
+	 * 试图将strToLong字符串转换成long返回, 若无法转换, 则返回0
+	 * @param strToLong 需要转换成long的字符串
+	 * @return 如果转换成功则返回成功的值, 否则返回0
+	 */
+	public static long getLong(String strToLong){
+		return getLong(strToLong, 0);
+	}
+
+	/**
+	 * 试图将strToLong字符串转换成long返回, 若无法转换, 则返回指定的默认值defaultVal
+	 * @param strToLong 需要转换成long的字符串
+	 * @param defaultVal 默认返回值
+	 * @return 如果转换成功则返回成功的值, 否则返回指定的默认值defaultVal
+	 */
+	public static long getLong(String strToLong, long defaultVal) {
+		try{
+			return Long.parseLong(strToLong);
+		}catch(Exception e){
+			return defaultVal;
+		}
+	}
+	
+	/**
+	 * 试图将strToFloat字符串转换成float返回, 若无法转换, 则返回0f
+	 * @param strToFloat 需要转换成float的字符串
+	 * @return 如果转换成功则返回成功的值, 否则返回0
+	 */
+	public static float getFloat(String strToFloat){
+		return getFloat(strToFloat, 0f);
+	}
+	
+	/**
+	 * 试图将strToFloat字符串转换成float返回, 若无法转换, 则返回指定的默认值defaultVal
+	 * @param strToFloat 需要转换成float的字符串
+	 * @param defaultVal 默认返回值
+	 * @return 如果转换成功则返回成功的值, 否则返回指定的默认值defaultVal
+	 */
+	public static float getFloat(String strToFloat, float defaultVal) {
+		try{
+			return Float.parseFloat(strToFloat);
+		}catch(Exception e){
+			return defaultVal;
+		}
+	}
+	
+	/**
+	 * 用于加粗TextView的中文字体, 由于xml中只能对英文加粗, 所以此辅助方法加粗中文
+	 * @param t 需要加粗其中字体的TextView.
+	 */
+	public static void  boldTextView(TextView t) {
+		TextPaint paint = t.getPaint();  
+		paint.setFakeBoldText(true);
+	}
+
+	
+	//
+	// 用于Layout Editor 的带有上下文环境的方法
+	//
+	public static int getW(Context context, int pix) {
+		if (BoyaaApp.isLandscape(context) ) {
+			return getX(context, pix);
+		} else {
+			if (Math.abs(pix) > 480) {
+				pix = pix > 0 ? 480 : -480;
+			}
+			return getY(context, pix);
+		}
+	}
+	
+	public static int getH(Context context, int pix) {
+		if (BoyaaApp.isLandscape(context) ) {
+			return getY(pix);
+		} else {
+			return getX(pix);
+		}
+	}
+	
+	public static int getX(Context context, int x) {
+		Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE ) ).
+				getDefaultDisplay();
+		int width = display.getWidth() > display.getHeight() ? display.getWidth() : display.getHeight();
+		
+		int int_widh = 0;
+		if(x>=0){
+			float temp=(float)width / 800 * x;
+			int_widh = (int) (temp + 0.5);
+		}else{
+			float temp=(float)width / 800 * (-x);
+			int_widh = -(int) (temp + 0.5);
+		}
+		return int_widh;
+	}
+	
+	public static int getY(Context context, int y) {
+		Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE ) ).
+				getDefaultDisplay();
+		int height = display.getWidth() < display.getHeight() ? display.getWidth() : display.getHeight();
+		
+		int int_height =0;
+		if(y>=0){
+			float temp=(float)height / 480 * y;
+			int_height = (int) (temp + 0.5);
+		}else{
+			float temp=(float)height / 480 * (-y);
+			int_height = -(int) (temp + 0.5);
+		}
+		return int_height;
+	}
+
+	/**
+	 * @author JetKang
+	 * 
+	 *         把长数字转换为科学计数法的短的数字 如 1000 =1K 1000000 = 1M
+	 * @param num
+	 *            0<num<1000,000,000
+	 * @param unit
+	 *            货币单位，如￥，不传填写null
+	 * @return 不支持则返回原数字
+	 */
+	public static String ConvertToUnit(long num, String unit) {
+
+		String numFormat = String.format("%1$,d", num);
+		String ret = numFormat.replaceAll(",", ".");
+		char[] numIntArray = ret.toCharArray();
+		int size = numIntArray.length;
+		StringBuilder strBuffer = new StringBuilder();
+		if(num < 1000000 && num >= 1000){
+			if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0'){
+				String str = ret.substring(0, numIntArray.length - 4);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("K ");
+				if(unit != null){					
+					strBuffer.append(unit);
+				}
+				return strBuffer.toString();
+			}
+		}
+		if(num < 1000000000 && num >= 1000000){
+			if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0' && numIntArray[size-7] == '0' && numIntArray[size-6] == '0'&& numIntArray[size-5] == '0'){
+				String str = ret.substring(0, numIntArray.length - 8);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("M ");
+				if(unit != null){
+					strBuffer.append(unit);
+				}	
+				return strBuffer.toString();
+			}else if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0'){
+				String str = ret.substring(0, numIntArray.length - 4);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("M ");
+				if(unit != null){
+					strBuffer.append(unit);
+				}
+				return strBuffer.toString();
+			}
+		}
+		if(num < 1000000000000L && num >= 1000000){
+			if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0' && numIntArray[size-7] == '0' && numIntArray[size-6] == '0'&& numIntArray[size-5] == '0' &&  numIntArray[size-11] == '0' && numIntArray[size-10] == '0'&& numIntArray[size-9] == '0'){
+				String str = ret.substring(0, numIntArray.length - 12);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("B ");
+				if(unit != null){
+					strBuffer.append(unit);
+				}	
+				return strBuffer.toString();
+			}else if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0' && numIntArray[size-7] == '0' && numIntArray[size-6] == '0'&& numIntArray[size-5] == '0'){
+				String str = ret.substring(0, numIntArray.length - 8);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("B ");
+				if(unit != null){
+					strBuffer.append(unit);
+				}	
+				return strBuffer.toString();
+			}else if(numIntArray[size-3] == '0' && numIntArray[size-2] == '0'&& numIntArray[size-1] == '0'){
+				String str = ret.substring(0, numIntArray.length - 4);
+				strBuffer.append(Float.parseFloat(str));
+				strBuffer.append("B ");
+				if(unit != null){
+					strBuffer.append(unit);
+				}
+				return strBuffer.toString();
+			}
+		}if(num < 1000 && num >= 0){
+			if(unit != null){
+				strBuffer.append(Float.parseFloat(ret));
+				strBuffer.append("B ");
+				strBuffer.append(unit);
+			}else{
+				strBuffer.append(Float.parseFloat(ret));
+				strBuffer.append("B ");
+			}	
+			return strBuffer.toString();
+		}
+		return String.valueOf(numFormat);
+}
+
+}

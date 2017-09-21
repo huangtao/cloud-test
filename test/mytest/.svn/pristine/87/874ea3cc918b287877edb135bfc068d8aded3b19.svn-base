@@ -1,0 +1,56 @@
+package com.boyaa.testholdemth.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+
+
+import com.boyaa.testholdemth.business.CommonBusiness;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is a smoke test that use for Rainbow2 framework testing")
+public class SmokeTest extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	public SmokeTest() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="Slots007", name="HallSlotsReopenApp")
+	@Test(description="test the Slot still exists after reopen app")
+	public void test_HallSlotsReopenApp() throws InterruptedException{	
+		//loginPage.loginAsGuest();
+		loginPage.loginAsGuestWithCoins(2000);
+		//cb.loginAsGuest();//Login as guest with default user
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();
+		lobbyPage.waitSubElement("老虎机按钮").click();
+		lobbyPage.getSlotPage().waitPresent();
+		RainbowDriver rd = super.getDriver();
+		rd.runAppInBackground(5);
+		assertTrue(lobbyPage.getSlotPage().isSubElementPresent("老虎机页面", 10));
+	}
+	
+}

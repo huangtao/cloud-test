@@ -1,0 +1,9 @@
+package com.boyaa.testholdemth.uilib;
+
+import java.util.List;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class PayCenterPage extends RainbowElement{
+
+}

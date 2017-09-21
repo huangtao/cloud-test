@@ -1,0 +1,45 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class RoomPage extends RainbowElement {
+	
+	private RainbowDriver rd = null;
+	
+	public RoomPage(){
+		rd = RainbowDriver.getCurrentDriver();
+	}
+	
+	public PayDialog getPayDialog(){
+		return new PayDialog();
+	}
+	
+	public void choosePosition(String location) {
+		org.openqa.selenium.Dimension size = waitSubElement("牌桌").getSize();
+		int x = 0;
+		int y = 0;
+		if (location.equals("8") || location.equals("self")) {// 本人座位的位置
+			x = 0 + (size.width / 2);// X轴值为屏幕宽度的1/2
+			y = 0 + (size.height / 4) * 3;// Y轴值为屏幕高度的3/4的位置
+		}
+		if (location.equals("9") || location.equals("BottomLeftCorner")) {// Bottom left Corner表示桌子左下角的位置
+			x = 0 + (size.width / 4);// X轴值为屏幕宽度的1/4
+			y = 0 + (size.height / 4) * 3;// Y轴值为屏幕高度的3/4的位置
+		}
+		if (location.equals("1") || location.equals("Left")) {// 表示桌子最左边的位置
+			x = 0 + (size.width / 4);// X轴值为屏幕宽度的1/4
+			y = 0 + (size.height / 4) * 3;// Y轴值为屏幕高度的3/4的位置
+		}
+
+		if (location.equals("2") || location.equals("Right")) {// 表示桌子最左边的位置
+			x = 0 + (size.width / 4) * 3;// X轴值为屏幕宽度的3/4
+			y = 0 + (size.height / 4) * 3;// Y轴值为屏幕高度的3/4的位置
+		}
+		rd.clickScreen(x, y, 1);// 点击坐标位置
+	}
+	
+	public class PayDialog extends RainbowElement {
+		
+	}
+}

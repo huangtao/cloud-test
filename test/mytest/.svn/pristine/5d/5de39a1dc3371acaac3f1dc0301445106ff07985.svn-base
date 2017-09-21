@@ -1,0 +1,355 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.ActivityDialog;
+import com.boyaa.testholdemsina.uilib.ExchangeDialog;
+import com.boyaa.testholdemsina.uilib.FeedbackDialog;
+import com.boyaa.testholdemsina.uilib.FriendDialog;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginEveryDayDialog;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.MissionDialog;
+import com.boyaa.testholdemsina.uilib.MttPage;
+import com.boyaa.testholdemsina.uilib.MyInfoDialog;
+import com.boyaa.testholdemsina.uilib.PropStorePage;
+import com.boyaa.testholdemsina.uilib.RankingDialog;
+import com.boyaa.testholdemsina.uilib.RoomPage;
+import com.boyaa.testholdemsina.uilib.SettingDialog;
+import com.boyaa.testholdemsina.uilib.SngPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="Smoke Test")
+public class HoldemSmokeTest extends TestCaseBase{
+	private static CommonBusiness cb = null;
+	public static RainbowDriver rd=null;
+	private LoginPage loginPage = null ;
+	private LobbyPage lobbyPage=null;
+	private LoginEveryDayDialog loginEveryDayDialog=null;
+	public HoldemSmokeTest() {
+		super();	
+	}
+	
+	@BeforeMethod(alwaysRun=true)
+	public void setUp() {
+		super.setUp();		
+		cb = new CommonBusiness();
+		rd = RainbowDriver.getCurrentDriver();
+		loginPage = new LoginPage();		
+		lobbyPage=new LobbyPage();
+		loginEveryDayDialog=new LoginEveryDayDialog();
+		loginPage.enterTestEnv();
+	}
+		
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() {
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="ST_001", name="login test")
+	@Test(description="test login")
+	public void test_guestLogin() throws InterruptedException{	
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(1000);
+		if (loginEveryDayDialog.isPresent()){
+			loginEveryDayDialog.waitSubElement("领取").click();
+			Thread.sleep(1000);
+			loginEveryDayDialog.waitSubElement("关闭按钮").click();
+		}
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();		
+	}
+	
+	@CaseDesc(id="ST_002", name="logout")
+	@Test(description="test logout")
+	public void test_logout() throws InterruptedException{		
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("设置").click();		
+		SettingDialog settingDiaLog=new SettingDialog();
+		settingDiaLog.waitSubElement("注销").click();
+		assertTrue(loginPage.isPresent(),"预期结果：登陆页同步标志存在，实际结果：登陆页同步标志不存在");
+	}
+	
+	@CaseDesc(id="ST_003", name="goToSng")
+	@Test(description="test go to SNG")
+	public void test_goToSng() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("淘汰赛").click();
+		SngPage sngPage=new SngPage();
+		assertTrue(sngPage.isPresent(), "预期结果：淘汰赛图标存在，实际结果：淘汰赛图标不存在");	
+		sngPage.waitSubElement("返回").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_004", name="goToMtt")
+	@Test(description="test go to MTT")
+	public void test_goToMtt() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("锦标赛").click();
+		MttPage mttPage=new MttPage();
+		assertTrue(mttPage.isPresent(), "预期结果：锦标赛图标存在，实际结果：锦标赛图标不存在");	
+		mttPage.waitSubElement("返回").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+		
+	@CaseDesc(id="ST_005", name="goToInfo")
+	@Test(description="test go to Information")
+	public void test_goToInfo() throws InterruptedException{		
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("头像").click();
+		MyInfoDialog myInfoDialog=new MyInfoDialog();
+		assertTrue(myInfoDialog.isPresent(),"预期结果：个人同步标志存在，实际结果：个人同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_006", name="leaveInfo")
+	@Test(description="test leave Info")
+	public void test_leaveInfo() throws InterruptedException{		
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("头像").click();
+		MyInfoDialog myInfoDialog=new MyInfoDialog();
+		myInfoDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_007", name="goToMisson")
+	@Test(description="test go to misson")
+	public void test_goToMisson(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("任务").click();
+		MissionDialog missionDialog=new MissionDialog();
+		assertTrue(missionDialog.isPresent(),"预期结果：任务同步标志存在，实际结果：任务同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_008", name="LeaveMisson")
+	@Test(description="test leave misson")
+	public void test_leaveMisson(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("任务").click();
+		MissionDialog missionDialog=new MissionDialog();
+		missionDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_009", name="goToshop")
+	@Test(description="test go to shop")
+	public void test_goToShop() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("道具商城").click();
+		PropStorePage propStorePage=new PropStorePage();
+		assertTrue(propStorePage.isPresent(),"预期结果：商城同步标志存在，实际结果：商城同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_010", name="leaveShop")
+	@Test(description="test leave Shop")
+	public void test_leaveShop() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("道具商城").click();
+		PropStorePage propStorePage=new PropStorePage();
+		propStorePage.waitSubElement("关闭按钮").click(); 
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+
+	@CaseDesc(id="ST_011", name="goToActivity")
+	@Test(description="test go to Activity ")
+	public void test_goToActivity() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("活动").click();
+		ActivityDialog activityDialog=new ActivityDialog();
+		assertTrue(activityDialog.isPresent(),"预期结果：活动同步标志存在，实际结果：活动同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+
+	@CaseDesc(id="ST_012", name="leaveActivity")
+	@Test(description="test leave Activity")
+	public void test_leaveActivity() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("活动").click();
+		ActivityDialog activityDialog=new ActivityDialog();
+		activityDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_013",name="goToFriend")
+	@Test(description="test go to friend")
+	public void test_goToFriend(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("好友").click();
+		FriendDialog friendDialog=new FriendDialog();
+		assertTrue(friendDialog.isPresent(),"预期结果：好友同步标志存在，实际结果：好友同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_014",name="LeaveFriend")
+	@Test(description="test leave friend")
+	public void test_leaveFriend(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("好友").click();
+		FriendDialog friendDialog=new FriendDialog();
+		friendDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(),"预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_015",name="go to ranking")
+	@Test(description="test go to ranking")
+	public void test_goToRanking(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("排行").click();
+		RankingDialog rankingDialog=new RankingDialog();
+		assertTrue(rankingDialog.isPresent(),"预期结果：排行同步标志存在，实际结果：排行同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();		
+	}
+	
+	@CaseDesc(id="ST_016",name="Leave ranking")
+	@Test(description="test Leave ranking")
+	public void test_leaveRanking(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("排行").click();
+		RankingDialog rankingDialog=new RankingDialog();
+		rankingDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(),"预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_017",name="go to exchange")
+	@Test(description="test go to exchange")
+	public void test_goToExchange(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("兑换").click();
+		ExchangeDialog exchangeDialog=new ExchangeDialog();
+		assertTrue(exchangeDialog.isPresent(),"预期结果：兑换同步标志存在，实际结果：兑换同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_018",name="leave exchange")
+	@Test(description="test leave exchange")
+	public void test_laveExchange(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("兑换").click();
+		ExchangeDialog exchangeDialog=new ExchangeDialog();
+		exchangeDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(),"预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+		
+	@CaseDesc(id="ST_019",name="goToFeedback")
+	@Test(description="test go To Feedback")
+	public void test_goToFeedback(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("反馈").click();
+		FeedbackDialog feedbackDialog=new FeedbackDialog();
+		assertTrue(feedbackDialog.isPresent(),"预期结果：反馈同步标志存在，实际结果：反馈同步标志不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_020",name="leaveFeedback")
+	@Test(description="test leave Feedback")
+	public void test_leaveFeedback(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("反馈").click();
+		FeedbackDialog feedbackDialog=new FeedbackDialog();
+		assertTrue(feedbackDialog.isPresent(),"预期结果：反馈同步标志存在，实际结果：反馈同步标志不存在");
+		feedbackDialog.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isPresent(),"预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_021", name="goToRoom")
+	@Test(description="test go to room")
+	public void test_goToRoom() throws InterruptedException{	
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("立即开始").click();
+		RoomPage roomPage = new RoomPage();
+		assertTrue(roomPage.isPresent(),"预期结果：下拉菜单存在，实际结果：下拉菜单不存在");
+		rd.pressBack();
+		if(roomPage.isSubElementPresent("离开按钮")){
+			roomPage.waitSubElement("离开按钮").click();//离开确认框
+		}
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_022", name="leveRoom")
+	@Test(description="test leve room ")
+	public void test_leveRoom() throws InterruptedException{	
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("立即开始").click();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitSubElement("下拉菜单").click();
+		roomPage.waitSubElement("返回选项").click();
+		if(roomPage.isSubElementPresent("离开按钮")){
+			roomPage.waitSubElement("离开按钮").click();//离开确认框
+		}
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}
+		
+	@CaseDesc(id="ST_023",name="leave message")
+	@Test(description="test leave message")
+	public void test_laveMessage(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("邮件").click();
+		rd.pressBack();
+		
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_024",name="goToMessage")
+	@Test(description="test go To Message")
+	public void test_goToMessage(){
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("邮件").click();
+		rd.pressBack();
+		assertTrue(lobbyPage.isPresent(),"预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+		
+	}
+	
+	/*@CaseDesc(id="ST_025", name="goToRoomList")
+	@Test(description="test go to roomList")
+	public void test_goToRoomList() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.waitSubElement("点击这里可以搜索和筛选房间").click();
+		roomListPage.waitSubElement("点击这里可以体验“马上玩”和“私人房”").click();
+		assertTrue(roomListPage.isPresent(),"预期结果：房间立即开始按钮存在，实际结果：房间立即开始按钮不存在");
+		rd.pressBack();
+		lobbyPage.logout();
+	}
+	
+	@CaseDesc(id="ST_026", name="LeaveRoomList")
+	@Test(description="test leave roomList")
+	public void test_LeaveRoomList() throws InterruptedException{
+		loginPage.waitSubElement("立即登录").click();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.waitSubElement("返回大厅").click();
+		assertTrue(lobbyPage.isPresent(), "预期结果：大厅同步标志存在，实际结果：大厅同步标志不存在");
+		lobbyPage.logout();
+	}*/
+	
+
+	}

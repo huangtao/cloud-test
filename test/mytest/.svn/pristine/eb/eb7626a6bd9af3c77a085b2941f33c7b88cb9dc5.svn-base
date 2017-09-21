@@ -1,0 +1,178 @@
+package com.boyaa.lianyuntest.common;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.jboss.netty.handler.timeout.TimeoutException;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.utils.Parameter;
+
+public class CommonBusiness {
+	public static String nativeAppiumUrl="http://172.20.133.13:4823/wd/hub";
+	public static final String GAMEACTIVITY = "com.boyaa.scmj.Game";
+	
+	public static void closeTheLauncherDialog(){
+		RainbowDriver.getCurrentDriver().sleep(20*1000);
+		
+		int waitSeconds = 10;
+		new HallPage().waitPresent();
+		int times = 0;
+		RainbowDriver currentDriver = RainbowDriver.getCurrentDriver();
+		while ((currentDriver.isElementPresentByName("btn_close", waitSeconds)||currentDriver.isElementPresentByName("closeBtn", waitSeconds)) && times<=5) {
+			if(currentDriver.isElementPresentByName("btn_close", waitSeconds)){
+				currentDriver.waitElementByName("btn_close", waitSeconds).click();
+			}
+
+			if(currentDriver.isElementPresentByName("closeBtn", waitSeconds)){
+				currentDriver.waitElementByName("closeBtn", waitSeconds).click();
+			}
+			
+			waitSeconds = 3;
+			times++;
+		}
+	}
+	
+	public static void closeTheLauncherDialog(HallPage hp){
+		
+		int waitSeconds = 10;
+		hp.waitPresent(20);
+		int times = 0;
+		RainbowDriver rd = hp.getDriver();
+		while ((rd.isElementPresentByName("btn_close", waitSeconds)||rd.isElementPresentByName("closeBtn", waitSeconds)) && times<=5) {
+			
+			if(rd.isElementPresentByName("btn_close", waitSeconds)){
+				rd.waitElementByName("btn_close", waitSeconds).click();
+			}
+			
+			if(rd.isElementPresentByName("closeBtn", waitSeconds)){
+				rd.waitElementByName("closeBtn", waitSeconds).click();
+			}
+			
+			waitSeconds = 3;
+			times++;
+		}
+	}
+	
+	public static void clearAppData(String packageName){
+		String command = "adb shell pm clear "+packageName;
+		Process p = null;
+		BufferedReader br = null;
+		try {
+			p = Runtime.getRuntime().exec(command);
+			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = null;
+			while((line=br.readLine())!=null){
+				System.out.println(line);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(br!=null){
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	public static Point  coordinate(WebElement element, double multipleWidth, double multipleHeight){		
+		 Point point = element.getLocation();
+		 int weX = point.getX();
+		 int weY= point.getY();
+		 Dimension size = element.getSize();				
+		 int width = size.getWidth();
+		 int height = size.getHeight();	
+		 int tapX = (int) (weX +(multipleWidth * width));
+		 int tapY = (int) (weY +(multipleHeight * height));
+		 Point p=new Point(tapX, tapY);
+		 return p;
+	}
+	
+	public static void delFile(String path){
+		String command = "adb shell rm -r ";
+		Process p = null;
+		try {
+			p = Runtime.getRuntime().exec(command+path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void waitActivity(RainbowDriver nativeDriver,String activityName,long seconds){
+		Long outTime = System.currentTimeMillis()+seconds*1000;
+		boolean isActivity = false;
+		while((!isActivity)&&(System.currentTimeMillis()<outTime)){
+			if((nativeDriver.currentActivity()).equals(activityName)){
+				isActivity = true;
+				break;
+			}
+		}
+		if(!isActivity){
+			throw new RuntimeException("找不到界面："+activityName+".（已等待："+seconds+"秒）");
+		}
+	}
+	
+	public static boolean isActivity(RainbowDriver nativeDriver,String activityName,long seconds){
+		try {
+			waitActivity(nativeDriver, activityName, seconds);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+	
+/* 性能太慢暂时使用固定路径，如果遇到固定路径不行再优化
+ 	public static void delFile(String startpwd,String fileName){
+		String cmdls = "adb shell ls -al ";
+		String cmdrm = "adb shell rm -r ";
+		Process pls = null;
+		Process prm = null;
+		BufferedReader br = null;
+		try {
+			pls = Runtime.getRuntime().exec(cmdls+startpwd);
+			br = new BufferedReader(new InputStreamReader(pls.getInputStream()));
+			String line = null;
+			while((line = br.readLine())!=null){
+				if(line.contains("opendir failed")){
+					return;
+				}
+				String[] fileDes = line.split("");
+				if(fileDes[fileDes.length-1].equals(fileName)){
+					System.out.println(cmdrm+startpwd+fileName);
+					prm = Runtime.getRuntime().exec(cmdrm+startpwd+fileName);
+				}else if(fileDes[0].startsWith("d")){
+					delFile(startpwd+fileDes[fileDes.length-1]+"/", fileName);
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(br!=null){
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+*/
+}

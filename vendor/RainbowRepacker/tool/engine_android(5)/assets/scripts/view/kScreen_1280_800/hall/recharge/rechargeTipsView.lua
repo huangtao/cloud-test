@@ -1,0 +1,29 @@
+local rechargeTipsView=
+{
+	name="rechargeTipsView",type=0,typeName="View",time=0,report=0,x=0,y=0,width=668,height=200,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="line1_left",type=0,typeName="View",time=39236500,report=0,x=0,y=0,width=334,height=74,fillTopLeftX=40,fillTopLeftY=0,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="line1_1",type=4,typeName="Text",time=34506175,report=0,x=0,y=0,width=60,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[获得]]
+		},
+		{
+			name="gold",type=4,typeName="Text",time=34506033,report=0,x=70,y=0,width=100,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=252,colorBlue=0,string=[[30,000]]
+		}
+	},
+	{
+		name="line1_right",type=0,typeName="View",time=39236507,report=0,x=0,y=0,width=628,height=200,fillTopLeftX=0,fillTopLeftY=0,fillBottomRightX=40,fillBottomRightY=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,
+		{
+			name="line1_2",type=4,typeName="Text",time=34506375,report=0,x=100,y=0,width=66,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[价格]]
+		},
+		{
+			name="pamount",type=4,typeName="Text",time=34506288,report=0,x=40,y=0,width=51,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=30,textAlign=kAlignCenter,colorRed=255,colorGreen=252,colorBlue=0,string=[[100]]
+		},
+		{
+			name="line1_3",type=4,typeName="Text",time=39236262,report=0,x=0,y=0,width=33,height=74,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[元]]
+		}
+	},
+	{
+		name="line2",type=4,typeName="Text",time=34505919,report=0,x=0,y=100,width=668,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[订单支付失败，是否重新购买？]]
+	}
+}
+return rechargeTipsView;

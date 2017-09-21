@@ -1,0 +1,14 @@
+require("coreex/preloadex");
+require("coreex/stateMachineex");
+require("coreex/systemex");
+require("coreex/constantex");
+require("coreex/mask");
+require("coreex/dictex");
+require("gameBaseex/httpManagerex");
+require("coreex/eventDispatcherex");
+require("coreex/globalex");
+require("coreex/shaderManager");
+require("coreex/customRender");
+require("coreex/animIndexex");
+require("coreex/systemEventex");
+require("coreex/propex");

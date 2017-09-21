@@ -1,0 +1,8 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement1;
+
+public class LobbyPage extends RainbowElement1{
+	
+}

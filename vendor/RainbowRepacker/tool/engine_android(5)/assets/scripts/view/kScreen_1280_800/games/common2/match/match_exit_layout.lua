@@ -1,0 +1,54 @@
+local match_wait_pin_map = require("qnFiles/qnPlist/games/match_wait_pin");
+match_exit_layout=
+{
+	name="match_exit_layout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="maskView",type=1,typeName="Image",time=58518953,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="isolater/bg_shiled.png"
+	},
+	{
+		name="bg",type=1,typeName="Image",time=111237876,report=0,x=0,y=0,width=810,height=530,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,
+		{
+			name="title",type=0,typeName="View",time=111237877,report=0,x=0,y=0,width=810,height=78,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="topImage",type=1,typeName="Image",time=111237878,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="isolater/popupWindow/popupWindow_title.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25
+			},
+			{
+				name="titleText",type=4,typeName="Text",time=111237879,report=0,x=0,y=-5,width=472,height=94,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=254,colorGreen=234,colorBlue=164,string=[[退出比赛]]
+			}
+		},
+		{
+			name="exitBtn",type=2,typeName="Button",time=111237880,report=0,x=130,y=90,width=240,height=79,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomLeft,file="games/common/btns/154x79_brown.png",gridLeft=24,gridRight=24,gridTop=24,gridBottom=24,
+			{
+				name="exitBtnText",type=4,typeName="Text",time=111237881,report=0,x=0,y=-2,width=120,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=30,textAlign=kAlignLeft,colorRed=240,colorGreen=252,colorBlue=201,string=[[我要退赛]],colorA=1
+			}
+		},
+		{
+			name="cancelBtn",type=2,typeName="Button",time=111237882,report=0,x=130,y=90,width=240,height=79,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomRight,file="games/common/btns/154x79_green.png",gridLeft=24,gridRight=24,gridTop=24,gridBottom=24,
+			{
+				name="cancelBtnText",type=4,typeName="Text",time=111237883,report=0,x=0,y=-2,width=120,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=30,textAlign=kAlignLeft,colorRed=240,colorGreen=252,colorBlue=201,string=[[继续比赛]],colorA=1
+			}
+		},
+		{
+			name="contentView",type=0,typeName="View",time=113397687,x=170,y=120,width=420,height=180,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0
+		},
+		{
+			name="contentView2",type=0,typeName="View",time=113397687,x=0,y=120,width=700,height=180,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0
+		},
+		{
+			name="tipsView",type=0,typeName="Image",time=113396887,x=0,y=20,width=524,height=96,nodeAlign=kAlignCenter,visible=0,fillParentWidth=0,fillParentHeight=0,file="hall/common/popupWindow/popupWindow_describe_bg_25_25_25_25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25
+		},
+		{
+			name="closeBtn",type=0,typeName="Button",time=111237885,x=-15,y=-15,width=60,height=60,nodeAlign=kAlignTopRight,visible=1,fillParentWidth=0,fillParentHeight=0,file="isolater/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="championBg",type=1,typeName="Image",time=0,x=-160,y=-54,width=210,height=184,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/match/exitMatchChampionBg.png",
+			{
+				name="icon",type=1,typeName="Image",time=0,x=0,y=0,width=216,height=185,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=match_wait_pin_map['icon_reward_1.png']
+			},
+			{
+				name="cornerMark",type=1,typeName="Image",time=0,x=-2,y=-2,width=75,height=77,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="games/common/match/exitMatchChampion.png"
+			}
+		}
+	}
+}
+return match_exit_layout;

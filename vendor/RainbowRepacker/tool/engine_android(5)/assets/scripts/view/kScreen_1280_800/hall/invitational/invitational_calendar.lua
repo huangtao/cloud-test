@@ -1,0 +1,42 @@
+local invitational_pin_map = require("qnFiles/qnPlist/hall/invitational_pin");
+local invitational_calendar=
+{
+	name="invitational_calendar",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignLeft,
+	{
+		name="shieldBg",type=1,typeName="Image",time=0,x=285,y=427,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="centerView",type=0,typeName="View",time=0,x=-2,y=0,width=606,height=720,visible=1,fillParentWidth=0,fillParentHeight=1,nodeAlign=kAlignRight,
+		{
+			name="bg",type=1,typeName="Image",time=0,x=0,y=0,width=624,height=720,visible=1,fillParentWidth=0,fillParentHeight=1,nodeAlign=kAlignRight,file="hall/common/slide_bg.png"
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=0,x=0,y=0,width=599,height=82,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file=invitational_pin_map['tab_normal_bg.png'],
+			{
+				name="title",type=4,typeName="Text",time=0,x=0,y=0,width=599,height=82,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,fontSize=32,textAlign=kAlignCenter,colorRed=157,colorGreen=115,colorBlue=55,colorA=1,string=[[选择时间]]
+			}
+		},
+		{
+			name="dateView",type=0,typeName="View",time=0,x=96,y=-20,width=250,height=450,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft
+		},
+		{
+			name="hourView",type=0,typeName="View",time=0,x=346,y=-20,width=85,height=450,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft
+		},
+		{
+			name="minuteView",type=0,typeName="View",time=0,x=431,y=-20,width=85,height=450,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft
+		},
+		{
+			name="line1",type=1,typeName="Image",time=0,x=0,y=-65,width=506,height=2,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/invitational/option_line.png"
+		},
+		{
+			name="line2",type=1,typeName="Image",time=0,x=0,y=25,width=506,height=2,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/invitational/option_line.png"
+		},
+		{
+			name="btn",type=1,typeName="Button",time=0,x=0,y=290,width=255,height=95,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="text",type=4,typeName="Text",time=0,x=0,y=0,width=68,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignLeft,colorRed=255,colorGreen=250,colorBlue=200,string=[[确定]],colorA=1
+			}
+		}
+	}
+}
+return invitational_calendar;

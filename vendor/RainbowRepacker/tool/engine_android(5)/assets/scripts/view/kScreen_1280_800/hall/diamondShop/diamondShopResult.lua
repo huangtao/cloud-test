@@ -1,0 +1,41 @@
+local diamondShopResult=
+{
+	name="diamondShopResult",type=0,typeName="View",time=0,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=77436389,report=0,x=0,y=0,width=1,height=1,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="contentView",type=0,typeName="View",time=77436390,report=0,x=0,y=0,width=740,height=495,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="bg",type=1,typeName="Image",time=77436391,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=77436392,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=77436393,report=0,x=0,y=-8,width=111,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[小提示]]
+			}
+		},
+		{
+			name="closeBtn",type=2,typeName="Button",time=77436394,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="centerView",type=0,typeName="View",time=77436398,report=0,x=0,y=0,width=0,height=0,fillTopLeftX=5,fillTopLeftY=95,fillBottomRightX=5,fillBottomRightY=160,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="contentText",type=5,typeName="TextView",time=56824761,report=0,x=0,y=0,width=650,height=150,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=30,textAlign=kAlignCenter,colorRed=118,colorGreen=72,colorBlue=18,string=[[请您耐心等待，实物将于3个工作日内发货。]]
+			},
+			{
+				name="titleText",type=0,typeName="Text",time=102101764,x=0,y=0,width=64,height=120,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[兑换成功！]],fontSize=45,textAlign=kAlignCenter,colorRed=118,colorGreen=72,colorBlue=18
+			}
+		},
+		{
+			name="bottomView",type=0,typeName="View",time=77436403,report=0,x=0,y=0,width=0,height=0,fillTopLeftX=5,fillTopLeftY=280,fillBottomRightX=5,fillBottomRightY=5,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="okBtn",type=2,typeName="Button",time=56099328,report=0,x=0,y=0,width=200,height=89,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="Text1",type=4,typeName="Text",time=56099367,report=0,x=0,y=0,width=70,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=30,textAlign=kAlignLeft,colorRed=255,colorGreen=235,colorBlue=186,string=[[确 定]]
+				}
+			}
+		}
+	}
+}
+return diamondShopResult;

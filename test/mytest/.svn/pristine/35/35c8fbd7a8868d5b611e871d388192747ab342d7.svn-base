@@ -1,0 +1,128 @@
+package com.boyaa.hallsmoketest.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.uilib.AboutUsPage;
+import com.boyaa.hallbase.uilib.FeedBackPage;
+import com.boyaa.hallbase.uilib.GameHelpPage;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.SettingsPage;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="系统设置")
+public class SettingsTest extends SmokeTestCase {
+	
+
+	@CaseDesc(id="DFHALL-1111", name="新用户(Phase I)")
+	@Test(description="检查【关于我们】页面的各元素显示是否正确")
+	public void test_aboutUs() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("关于我们按钮").click();
+		AboutUsPage aboutUsPage = new AboutUsPage();
+		assertTrue(aboutUsPage.isPresent(), "检查是否打开关于我们页面");
+		
+		aboutUsPage.waitSubElement("版本声明TAB按钮").click();
+		assertTrue(aboutUsPage.waitSubElement("版本号").getText().contains("V"), "检查版本号能正常显示");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="界面显示")
+	@Test(description="设置界面显示正常、版本号显示正常，其他按钮界面无重叠显示")
+	public void test_Display() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		assertTrue(settingsPage.isPresent(), "设置界面显示不正常");
+		assertTrue(settingsPage.waitSubElement("版本号文本").getText().contains("2."), "版本号显示不正确");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="查看客服电话热线")
+	@Test(description="反馈界面查看客服热线，电话号码显示正确，点击电话号码能正常弹出拨打提示界面，点击【确定】能正常跳转到电话拨号界面。点击【取消】正常关闭提示界面")
+	public void test_hotline() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("联系客服按钮").click();
+		FeedBackPage feedBackPage = new FeedBackPage();
+//		assertTrue(feedBackPage.waitSubElement("客服热线").getText().equals("400-663-1888"), "电话号码显示不正确！预期为 ：400-663-1888;实际为："+feedBackPage.waitSubElement("客服热线").getText());
+		assertTrue(feedBackPage.waitSubElement("客服热线").getText().replace("-", "").matches("400\\d{7}"), "电话号码显示不正确！预期为 ：400-663-1888;实际为："+feedBackPage.waitSubElement("客服热线").getText());
+		feedBackPage.waitSubElement("客服热线").click();
+		feedBackPage.getPromptDialog().waitSubElement("取消按钮").click();
+		assertFalse(feedBackPage.getPromptDialog().isPresent(), "拨打客服电话提示框没有关闭");
+		
+		feedBackPage.waitSubElement("客服热线").click();
+		feedBackPage.getPromptDialog().waitSubElement("确定按钮").click();
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="反馈界面返回")
+	@Test(description="反馈界面点击【←】/物理返回键 能正常返回到设置界面")
+	public void test_returnFromFeedBackPage() throws InterruptedException {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("联系客服按钮").click();
+		FeedBackPage feedBackPage = new FeedBackPage();
+		feedBackPage.goBack();
+		assertTrue(settingsPage.waitPresent().isDisplayed(), "没有返回设置界面");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="关于我们界面返回")
+	@Test(description="关于我们界面点击【←】/物理返回键 能正常返回到设置界面")
+	public void test_returnFromAboutUsPage() throws InterruptedException {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("关于我们按钮").click();
+		AboutUsPage aboutUsPage = new AboutUsPage();
+		aboutUsPage.goBack();
+		assertTrue(settingsPage.waitPresent().isDisplayed(), "没有返回设置界面");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="游戏帮助界面返回")
+	@Test(description="游戏帮助界面点击【←】/物理返回键 能正常返回到设置界面")
+	public void test_returnFromGameHelp() throws InterruptedException {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("游戏帮助按钮").click();
+		GameHelpPage gameHelpPage = new GameHelpPage();
+		assertTrue(gameHelpPage.isSubElementPresent("常见问题"), "常见问题展示不正确");
+		gameHelpPage.goBack();
+		assertTrue(settingsPage.waitPresent().isDisplayed(), "没有返回设置界面");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="游戏帮助界面显示")
+	@Test(description="游戏帮助界面【常见问题】【子游戏XXX】对应界面对应显示的内容正确，无图片错别字问题，界面显示正常。选项卡相互切换查看显示正常")
+	public void test_gameHelp() {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		settingsPage.waitSubElement("游戏帮助按钮").click();
+		GameHelpPage gameHelpPage = new GameHelpPage();
+		assertTrue(gameHelpPage.isSubElementPresent("常见问题"), "常见问题展示不正确");
+	}
+	
+	@CaseDesc(id="大厅核心检查项", name="设置界面返回")
+	@Test(description="设置界面点击【←】/物理返回键 能正常返回到最初进入设置界面的场景，界面显示正常，返回功能正常")
+	public void test_returnFromSettingPage() throws InterruptedException {
+		hallPage.waitSubElement("更多按钮").click();
+		hallPage.waitSubElement("设置按钮").click();
+
+		SettingsPage settingsPage = new SettingsPage();
+		assertTrue(settingsPage.isPresent(), "设置界面显示不正常");
+		settingsPage.goBack();
+		assertTrue(hallPage.waitPresent().isDisplayed(), "没有返回大厅界面");
+	}
+}

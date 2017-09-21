@@ -1,0 +1,20 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class CheckinDialog extends RainbowElement{
+	public int getBuCheckinCardNum() {
+		int n = Integer.valueOf(waitSubElement("补签卡数目").getText().substring(4, 5));
+		return n;
+	}
+	
+	public void clickToReturn() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO 改成等待补签View
+			e.printStackTrace();
+		}
+		waitSubElement("返回按钮").click();
+	}
+}

@@ -1,0 +1,15 @@
+require("uiex/buttonex");
+require("uiex/sliderex");
+require("uiex/toastex");
+require("uiex/adapterex");
+require("uiex/tableViewex");
+require("uiex/editTextex");
+require("uiex/editTextViewex");
+require("uiex/imagesex");
+require("uiex/viewPagerex");
+require("uiex/scrollableNodeex");
+require("uiex/checkBoxex");
+require("uiex/groupNodeex");
+require("uiex/imageex");
+require("uiex/scrollViewex");
+require("uiex/switchex");

@@ -1,0 +1,7 @@
+package com.boyaa.lianyuntest.uilib.login;
+
+import com.boyaa.rainbow2.RainbowElement1;
+
+public class HallPage extends RainbowElement1{
+
+}

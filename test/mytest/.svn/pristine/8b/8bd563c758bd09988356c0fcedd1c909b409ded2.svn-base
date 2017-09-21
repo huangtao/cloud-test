@@ -1,0 +1,41 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.AnzhiLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.JidiMobileLoginPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Test(description = "基地联运登录测试用例")
+public class Mobile_JidiLoginTest extends BaseLoginTest {
+	@CaseDesc(id = "LIANYUN-Mobile_Jidi-1", name = "登录安智账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginMobileJidi(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		JidiMobileLoginPage jmp = new JidiMobileLoginPage();
+		// nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		jmp.waitSubElement("咪咕游戏账号登录").click();
+		if(jmp.isSubElementPresent("切换账号")){
+				jmp.waitSubElement("切换账号").click();
+		}
+		jmp.waitSubElement("账号输入框").clear();
+		jmp.waitSubElement("账号输入框").sendKeys(account);
+		jmp.goBack();		
+		jmp.waitSubElement("密码输入框").clear();
+		jmp.waitSubElement("密码输入框").sendKeys(pwd);
+		jmp.goBack();
+		jmp.waitSubElement("登录按钮").click();
+		
+		CommonBusiness.waitActivity(jmp.getDriver(), "com.boyaa.scmj.Game", 20);
+		super.isLoginSucc(hp, name);
+
+	}
+}

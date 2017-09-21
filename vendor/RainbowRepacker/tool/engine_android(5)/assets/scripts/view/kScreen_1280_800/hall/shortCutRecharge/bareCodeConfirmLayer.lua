@@ -1,0 +1,35 @@
+local bareCodeConfirmLayer=
+{
+	name="bareCodeConfirmLayer",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1,height=1,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shadeBg",type=1,typeName="Image",time=83654609,report=0,x=415,y=316,width=64,height=64,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="centerView",type=0,typeName="View",time=83654708,report=0,x=0,y=0,width=728,height=492,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="bg",type=1,typeName="Image",time=83654791,report=0,x=0,y=-1,width=659,height=376,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=83654852,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=83654895,report=0,x=0,y=-8,width=140,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignLeft,colorRed=255,colorGreen=235,colorBlue=186,string=[[确认支付]]
+			}
+		},
+		{
+			name="contentBg",type=1,typeName="Image",time=83655101,report=0,x=5,y=64,width=649,height=212,fillTopLeftX=5,fillTopLeftY=64,fillBottomRightX=5,fillBottomRightY=100,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/bg_blank.png",gridLeft=5,gridRight=5,gridTop=5,gridBottom=5,
+			{
+				name="content",type=5,typeName="TextView",time=83655278,report=0,x=0,y=0,width=600,height=250,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignLeft,colorRed=118,colorGreen=72,colorBlue=18
+			}
+		},
+		{
+			name="buyBtn",type=2,typeName="Button",time=83655388,report=0,x=0,y=8,width=200,height=85,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="text",type=4,typeName="Text",time=83655461,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignLeft,colorRed=255,colorGreen=235,colorBlue=186,string=[[购买]]
+			}
+		},
+		{
+			name="closeBtn",type=2,typeName="Button",time=83655523,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		}
+	}
+}
+return bareCodeConfirmLayer;

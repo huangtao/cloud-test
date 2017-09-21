@@ -1,0 +1,7 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class AnouncementDialog extends RainbowElement{
+
+}

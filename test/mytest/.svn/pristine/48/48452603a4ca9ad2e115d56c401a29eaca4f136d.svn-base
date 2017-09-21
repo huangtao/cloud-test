@@ -1,0 +1,150 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.hamcrest.core.Is;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="普通场")
+public class CommonLobbyTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage = null;
+	private GameLobbyPage gameLobbyPage = null;
+	private CommonBusiness commonBusiness =null;
+	private CommonLobbyPage commonLobbyPage = null;
+	@BeforeMethod
+	public void setup(){
+		super.setUp();
+		loginPage = new LoginPage();
+		lobbyPage = new LobbyPage();
+		gameLobbyPage = new GameLobbyPage();
+		commonBusiness = new CommonBusiness();
+		commonLobbyPage = new CommonLobbyPage();
+//		CommonBusiness.createNativeDriver();
+		
+	}
+	@CaseDesc(id="EnterLobby1",name="玩家进入普通场房间后站起，再返回")
+	@Test(description="玩家进入普通场房间后站起，再返回")
+	public void test01_enterCommonLobby() throws Exception{
+		commonBusiness.EnterLobby();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		if(commonLobbyPage.waitSubElement("站起确认").isDisplayed()){
+			commonLobbyPage.waitSubElement("站起确认").click();
+		}else{
+			Thread.sleep(1000);
+		}
+		Thread.sleep(1*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		
+	}
+	
+	@CaseDesc(id="EnterLobby2",name="玩家进入普通场房间后站起，坐下，再返回")
+	@Test(description="玩家进入普通场房间后站起，坐下，再返回")
+	public void test02_enterCommonLobby() throws Exception{
+		commonBusiness.EnterLobby();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		Thread.sleep(1*1000);
+		commonLobbyPage.waitSubElement("站起").click();
+		Thread.sleep(1*1000);
+		if(commonLobbyPage.waitSubElement("站起确认").isDisplayed()){
+			commonLobbyPage.waitSubElement("站起确认").click();
+		}else{
+			Thread.sleep(1000);
+		}
+		Thread.sleep(1*1000);
+		commonLobbyPage.waitSubElement("坐下").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("坐下确认").click();
+		Thread.sleep(3*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+}
+	
+	@CaseDesc(id="CommonLobbyChat",name="玩家进入普通场房间后聊天")
+	@Test(description="玩家进入普通场房间后聊天")
+	public void test03_CommonLobbyChat() throws Exception{
+		commonBusiness.EnterLobby();
+		Thread.sleep(1*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天表情").click();
+		CommonBusiness.takesScreenShot(getDriver(), "CommonLobbyChat1.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天标签头").click();
+		commonLobbyPage.waitSubElement("聊天语句选择").click();
+		commonLobbyPage.waitSubElement("聊天气泡出现");
+		CommonBusiness.takesScreenShot(getDriver(), "CommonLobbyChat2.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天记录").click();
+		commonLobbyPage.waitSubElement("聊天记录页面").isDisplayed();
+		CommonBusiness.takesScreenShot(getDriver(), "CommonLobbyChat3.png");
+		Thread.sleep(3*1000);
+		commonLobbyPage.waitSubElement("聊天记录页面").click();
+		commonLobbyPage.waitSubElement("发送").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+//		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	@CaseDesc(id="CommonLobbyDealerReward1",name="玩家进入房间后坐下打赏荷官")
+	@Test(description="玩家进入房间后坐下打赏荷官")
+	public void test04_DealerReward1() throws Exception{
+		commonBusiness.EnterLobby();;
+		commonLobbyPage.waitSubElement("打赏").click();
+		CommonBusiness.takesScreenShot(getDriver(), "CommonLobbyDealerReward1.png");
+		Thread.sleep(2*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	@CaseDesc(id="CommonLobbyDealerReward2",name="玩家进入房间后站起，再打赏荷官")
+	@Test(description="玩家进入房间后站起，再打赏荷官")
+	public void test05_DealerReward2() throws Exception{
+		commonBusiness.EnterLobby();
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		commonLobbyPage.waitSubElement("打赏").click();
+		commonLobbyPage.isSubElementPresent("不能打赏的抱歉提醒");
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(gameLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	@CaseDesc(id="CommonLobbyInviteFriends",name="玩家进入普通房间，邀请在线好友")
+	@Test(description="玩家进入普通房间，邀请在线好友")
+	public void test06_InviteFriend() throws Exception{
+		commonBusiness.EnterLobby();
+		Thread.sleep(2*1000);
+		commonBusiness.Invite("在线好友");		
+		commonLobbyPage.waitSubElement("邀请").click();
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现标志，实际结果：未出现标志");
+
+	}
+	@CaseDesc(id="CommonLobbyInviteOnline",name="玩家进入普通房间，邀请在线玩家")
+	@Test(description="玩家进入房间，邀请在线玩家")
+	public void test07_InviteOnline() throws Exception{
+		commonBusiness.EnterLobby();
+		commonBusiness.Invite("在线玩家");	
+		commonLobbyPage.waitSubElement("邀请").click();
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现标志，实际结果：未出现标志");
+
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

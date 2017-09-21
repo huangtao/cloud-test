@@ -1,0 +1,13 @@
+$num = 1;
+for($i=0; $i<$num; $i++){
+	$param[$i]['robotID'] = 0;
+	$param[$i]['tid'] = 10884; 
+	$param[$i]['seatID'] = 0;
+}
+$ret = oo::CServer()->SendGetAi('172.20.47.251', 9528,1, 0, $num, $param);
+
+
+说明：
+$num = 1;机器人数量
+SendGetAi('172.20.47.251', 9528,1, 0, $num, $param);   1表示加入机器人， 2 表示删除机器人  9528：繁体, 9527:泰语
+$param[$i]['tid'] = 10884;  房间ID号

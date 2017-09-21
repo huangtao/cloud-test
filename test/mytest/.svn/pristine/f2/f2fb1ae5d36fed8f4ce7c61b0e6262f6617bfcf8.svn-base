@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<uses-interface package="com.boyaa.sina"/>
+		<uses-interface launchactivitie="com.boyaa.texaspoker.application.module.op.OpeningShowActivity"/>
+		<uses-interface datapath="E:\TestHoldemSina\Data"/>	
+		<uses-interface reports="E:\TestHoldemSina\report">
+		<uses-interface appium_server="http://localhost:4723/wd/hub"/>
+		<uses-interface appwaitactivity="com.boyaa.texaspoker.application.activity.LoginActivity"/>
+		<uses-interface appiumurlport="4723"/>
+		<uses-interface devicename="D8YDU16325002121"/>
+	</project>
+</interface>

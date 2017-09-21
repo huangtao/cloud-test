@@ -1,0 +1,287 @@
+package com.boyaa.testhallbase.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testhallbase.uilib.ExchangePage;
+import com.boyaa.testhallbase.uilib.ExchangeRecordPage;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.PromptDialog;
+import com.boyaa.testhallbase.uilib.ShopPage;
+import com.boyaa.testhallbase.uilib.UserPage;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="兑换")
+public class DiamondSystemTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+	public DiamondSystemTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();
+		hallPage = new HallPage();		
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="DFHALL-1026", name="钻石数量展示(Phase I)")
+	@Test(description="检查各个页面下钻石数量的展示是否正常")
+	public void test_diamondVisible() {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+		hallPage.waitSubElement("个人头像").click();
+		UserPage userPage = hallPage.getUserPage();
+		assertTrue(userPage.waitSubElement("钻石图标").isDisplayed(), "检查个人信息页面中钻石图标是否可见");
+//		assertTrue(((int)(Integer.valueOf(userPage.waitSubElement("钻石数").getText().replace("", ""))))>=0, "检查个人信息页面中钻石数量是否大于等于0");	//TODO 获取用户个人信息页面钻石数
+		
+//		userPage.waitSubElement("返回按钮").click();	550版本商城页面已改为显示水晶
+//		hallPage.waitSubElement("商城按钮").click();
+//		ShopPage shopPage = new ShopPage();
+//		assertTrue(shopPage.waitSubElement("钻石图标").isDisplayed(), "检查商城中钻石图标是否可见");
+//		assertTrue(((int)(Integer.valueOf(shopPage.waitSubElement("钻石数").getText().replace("", ""))))>=0, "检查商城中钻石数量是否大于等于0");
+	}
+	
+	@CaseDesc(id="DFHALL-1025", name="兑换入口(Phase I)")
+	@Test(description="检查可以正常进入大厅下的兑换商城入口")
+	public void test_hasExchangeShop() {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+		assertTrue(hallPage.waitSubElement("兑换按钮").isDisplayed(), "检查大厅下兑换入口是否可见");
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+	}
+	
+	@CaseDesc(id="DFHALL-1027", name="兑换信息说明(Phase I)")
+	@Test(description="检查点击【如何获取钻石链接】后弹出的提示是否显示正确")
+	public void test_requireDiamondInstruction() {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		try {
+			Thread.sleep(2000);		//加载钻石页面有时会比较慢，先等待2s.TODO:使用更好的方案
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		exchangePage.waitSubElement("如何获取钻石链接").click();
+		PromptDialog promptDialog = new PromptDialog();
+		assertTrue(promptDialog.isPresent(), "检查是否打开兑换提示对话框");
+		assertTrue(promptDialog.waitSubElement("内容文本").getText().contains("钻石"), "检查是否有如何获得钻石的提示文字");
+	}
+	
+	@CaseDesc(id="DFHALL-1028", name="兑换商品类型(Phase I)")
+	@Test(description="检查可兑换的商品类型是否正常")
+	public void test_exchangeGoodsType() {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		assertTrue(exchangePage.isSubElementPresent("手机充值卡TAB按钮"), "检查是否存在手机充值卡TAB按钮");
+		exchangePage.waitSubElement("手机充值卡TAB按钮").click();
+		assertTrue(exchangePage.isSubElementPresent("10元话费文字"), "检查是否有10元话费选项");
+	}
+	
+//	@CaseDesc(id="DFHALL-1025", name="兑换入口(Phase I)")	这一个检查点在其他用例都会覆盖到，去掉这个用例
+//	@Test(description="检查兑换页面下的商品有兑换按钮")
+//	public void test_exchangeGoodsEntry() {
+//		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+//		hallPage.waitSubElement("兑换按钮").click();
+//		ExchangePage exchangePage = new ExchangePage();
+//		assertTrue(exchangePage.isSubElementPresent("兑换按钮"), "检查是否存在兑换按钮");
+//	}
+		
+	@CaseDesc(id="DFHALL-1032", name="确认商品可兑换数(Phase II)")
+	@Test(description="点击兑换入口，但商品剩余个数不足", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_GoodsSoldOut(String goodsID, String goodsCount) throws InterruptedException{		
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+		CommonBusiness.setGoodsCount(userMID,  Integer.parseInt(goodsID), Integer.parseInt(goodsCount));//设置商品个数为0		
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.waitSubElement("即时兑换TAB按钮").click();		
+		assertTrue(exchangePage.isSubElementPresent("数量为0文本"), "【0个】不存在");	
+		//TODO 提示商品已告罄（使用XPATH准确定位）
+	}
+	
+	@CaseDesc(id="DFHALL-1038", name="确认商品可兑换数(Phase II)")
+	@Test(description="点击兑换入口，商品剩余个数不为0，但钻石不足", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_exchangeGoodsNumber(String diamondCount) throws InterruptedException {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+		CommonBusiness.setUserDiamond(userMID, Integer.parseInt(diamondCount));//设置账号钻石数为0
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境		
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.sleep(3000);//同步商品展现
+		exchangePage.waitSubElement("即时兑换TAB按钮").click();
+		exchangePage.sleep(2000);//同步商品展现
+		exchangePage.waitSubElement("任一兑换按钮0").click();
+		PromptDialog pd = new PromptDialog();
+		pd.waitPresent();
+		assertTrue(pd.isSubElementPresent("钻石余额不足提示文本"), "“钻石余额不足”信息不存在");		
+	}
+	
+	@CaseDesc(id="DFHALL-1033", name="确认兑换(Phase II)")
+	@Test(description="点击兑换入口，商品剩余个数不为0，钻石充足",  dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_exchangeGoodsAndGoToNext(String diamondCount, String goodsID, String goodsCount) throws InterruptedException {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+		CommonBusiness.setUserDiamond(userMID, Integer.parseInt(diamondCount));//设置账号钻石数为5000
+		CommonBusiness.setGoodsCount(userMID,  Integer.parseInt(goodsID), Integer.parseInt(goodsCount));//设置商品个数为10		
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.sleep(3000);//同步商品展现
+		exchangePage.waitSubElement("即时兑换TAB按钮").click();
+		exchangePage.sleep(2000);//同步商品展现
+		exchangePage.waitSubElement("任一兑换按钮2").click();
+		PromptDialog pd = new PromptDialog();
+		pd.waitPresent();
+		pd.waitSubElement("下一步按钮").click();
+		assertTrue(pd.isSubElementPresent("联系电话文本"), "检查【联系电话】文本是否存在");
+		assertTrue(pd.isSubElementPresent("联系电话输入框"), "检查【联系电话】输入框信息是否存在");
+//		assertTrue(pd.isSubElementPresent("收件人姓名文本"), "“收件人姓名：”信息不存在");
+//		assertTrue(pd.isSubElementPresent("详细地址文本"), "“详细地址：”信息不存在");		
+	}
+	
+//	@CaseDesc(id="公共076_a", name="填写信息、兑换成功(Phase II)")
+//	@Test(description="正确填写信息，兑换成功", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+//	public void test_exchangeGoodsAndConfirm1(String diamondCount, String goodsID, String goodsCount, String phoneNumber, String exchangeSuccessfulTips) throws InterruptedException {		
+//		//TODO 设置该商品或者账号可多次兑换
+//		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+//		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+//		CommonBusiness.setUserDiamond(userMID, Integer.parseInt(diamondCount));//设置账号钻石数为5000
+//		CommonBusiness.setGoodsCount(userMID,  Integer.parseInt(goodsID), Integer.parseInt(goodsCount));//设置商品个数为10
+//		hallPage.waitSubElement("兑换按钮").click();
+//		ExchangePage exchangePage = new ExchangePage();
+//		exchangePage.waitPresent();
+//		exchangePage.sleep(3000);//同步商品展现
+//		exchangePage.waitSubElement("即时兑换TAB按钮").click();
+//		exchangePage.sleep(2000);//同步商品展现
+//		exchangePage.waitSubElement("任一兑换按钮0").click();
+//		PromptDialog pd = new PromptDialog();
+//		pd.waitPresent();
+//		pd.waitSubElement("下一步按钮").click();		
+//		pd.waitSubElement("联系电话输入框").sendKeys(phoneNumber);
+//		pd.waitSubElement("兑换按钮").click();
+//		Thread.sleep(2000);//同步兑换生效
+//		//设置该商品或者账号可多次兑换接口完成后
+//		//assertEquals(pd.waitSubElement("兑换成功提示信息").getText().trim(), exchangeSuccessfulTips, "兑换成功提示信息不正确");
+//	}
+	
+	@CaseDesc(id="DFHALL-1035", name="兑换时填写正确/错误的手机号")
+	@Test(description="手机号为空或手机号位数不正确时进行兑换操作",  dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_exchangeGoodsAndConfirm2(String diamondCount, String goodsID, String goodsCount, String phoneNumber, String phoneNumberEerrorMessage, String exchangeSuccessfulTips) throws InterruptedException {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+		CommonBusiness.setUserDiamond(userMID, Integer.parseInt(diamondCount));//设置账号钻石数为5000
+		CommonBusiness.setGoodsCount(userMID,  Integer.parseInt(goodsID), Integer.parseInt(goodsCount));//设置商品个数为10
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.sleep(3000);//同步商品展现
+		exchangePage.waitSubElement("即时兑换TAB按钮").click();
+		exchangePage.sleep(2000);//同步商品展现
+		exchangePage.waitSubElement("任一兑换按钮0").click();
+		PromptDialog pd = new PromptDialog();
+		pd.waitPresent();
+		pd.waitSubElement("下一步按钮").click();
+		
+		String msg = "";
+		//电话号码为空
+		pd.waitSubElement("联系电话输入框").sendKeys("");
+		pd.waitSubElement("兑换按钮").click();
+		msg = pd.waitSubElement("TOAST提示").getText();
+		assertTrue(msg.contains("请输入联系电话"),"检查电话号码为空的提示");
+		
+		Thread.sleep(1000);
+		
+		//电话号码位数不足
+		pd.waitSubElement("联系电话输入框").sendKeys(phoneNumber.substring(0, 8));
+		pd.waitSubElement("兑换按钮").click();
+		msg = pd.waitSubElement("TOAST提示").getText();
+		assertTrue(msg.contains(phoneNumberEerrorMessage),"检查电话号码位数不足的提示");
+		
+		Thread.sleep(1000);
+		
+		//电话号码正确
+		pd.waitSubElement("联系电话输入框").sendKeys(phoneNumber);
+		pd.waitSubElement("兑换按钮").click();
+//		Thread.sleep(2000);//同步兑换生效
+//		//设置该商品或者账号可多次兑换接口完成后
+//		msg = pd.waitSubElement("TOAST提示").getText();
+//		assertTrue(msg.contains(exchangeSuccessfulTips),"检查电话号码正确的提示");
+	}
+	
+	@CaseDesc(id="DFHALL-1042", name="取消兑换(Phase II)")
+	@Test(description="若填写信息时取消弹框", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_exchangeGoodsAndCancel(String diamondCount, String phoneNumber) throws InterruptedException {
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		String userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+		CommonBusiness.setUserDiamond(userMID, Integer.parseInt(diamondCount));//设置账号钻石数为5000	
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.sleep(3000);//同步商品展现
+		exchangePage.waitSubElement("即时兑换TAB按钮").click();
+		exchangePage.sleep(2000);//同步商品展现
+		exchangePage.waitSubElement("任一兑换按钮0").click();
+		PromptDialog pd = new PromptDialog();
+		pd.waitPresent();
+		pd.waitSubElement("下一步按钮").click();		
+		pd.waitSubElement("联系电话输入框").sendKeys(phoneNumber);
+		pd.waitSubElement("取消按钮").click();
+		//TODO 其对话框元素的元素[is_displayed]的值为true所以暂时无法区分是否为显示的状态。
+//		assertFalse(pd.isPresent(1), "兑换弹框仍然存在");
+	}
+	
+	@CaseDesc(id="DFHALL-1050", name="兑换记录入口(Phase II)")
+	@Test(description="点击【兑奖记录】进入兑换记录页面")
+	public void test_exchangeRecordEntrance() {		
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境		
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		exchangePage.waitSubElement("兑换记录").click();
+		ExchangeRecordPage erp = new ExchangeRecordPage();
+		assertTrue(erp.isSubElementPresent("兑奖日期文本"), "“兑奖日期”信息不存在");	
+		assertTrue(erp.isSubElementPresent("奖品名称文本"), "“奖品名称”信息不存在");	
+		assertTrue(erp.isSubElementPresent("消耗钻石文本"), "“消耗钻石”信息不存在");	
+		assertTrue(erp.isSubElementPresent("兑换数量文本"), "“兑换数量”信息不存在");	
+		assertTrue(erp.isSubElementPresent("状态文本"), "“状态”信息不存在");	
+	}
+	
+	@CaseDesc(id="DFHALL-1051", name="查看兑奖状态(Phase II)")
+	@Test(description="点击【兑奖记录】进入兑换记录页面、查看详情", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_exchangeRecordDetails(String exchangeStatusInfo) throws InterruptedException {			
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境		
+		hallPage.waitSubElement("兑换按钮").click();
+		ExchangePage exchangePage = new ExchangePage();
+		exchangePage.waitPresent();
+		exchangePage.waitSubElement("兑换记录").click();
+		exchangePage.sleep(2000);//同步兑换记录展现
+		ExchangeRecordPage erp = new ExchangeRecordPage();
+		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+		erp.waitSubElement("查看详情").click();
+		ExchangeRecordPage.PromptDialog  erpPD = erp.promptDialog();
+		erpPD.waitPresent();		
+		assertTrue(erpPD.isSubElementPresent("单号文本"), "“单号文本”信息不存在");	
+		assertTrue(erpPD.isSubElementPresent("联系电话文本"), "“联系电话文本”信息不存在");
+		assertEquals(erpPD.waitSubElement("状态文本").getText().trim(),  exchangeStatusInfo, "兑换状态提示信息不正确");		
+	}
+}

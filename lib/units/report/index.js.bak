@@ -1,0 +1,150 @@
+/**
+ * Created by GuixiangGui on 2016/9/1.
+ */
+
+var exec = require('child_process').exec
+var logger = require('../../util/logger')
+var fs = require('fs')
+var os = require('os')
+
+
+module.exports = function (taskid, serial, dbapi, call) {
+  var log = logger.createLogger('report')
+
+  dbapi.getTaskDeviceUrl(taskid)
+    .then(function (taskInfo) {
+      if (taskInfo) {
+        var zipFile
+        switch (taskInfo.tasktype) {
+          case 'monkey':
+            zipFile = '/var/stf/file/cptlog/reportzip/'
+            break
+          case 'activityTest':
+            zipFile = '/var/stf/file/activityscreen/reportzip/'
+            break
+        }
+
+        if (serial) {
+          log.debug('serial true')
+          zipFile = zipFile + taskid + '_' + serial + '.zip'
+        }
+        else {
+          zipFile = zipFile + taskid + '.zip'
+        }
+
+        fs.stat(zipFile, function (err, stat) {
+          if (stat && stat.isFile()) {
+            log.debug('report zip file exist')
+            call(zipFile)
+          }
+          else {
+            var tmp = './' + taskid + '/'
+            exec('mkdir ' + tmp, function () {
+              cpFiles(compressFiles)
+            })
+
+            function cpFiles(callback){
+              var fileCount = 0
+              var cpCount = 0
+
+              cpfileTotmp(taskInfo.errorLog, tmp)
+              taskInfo.detail.forEach(function (serialDetail) {
+                if(serial){
+                  if(serial==serialDetail.serial){
+                    var logPath = tmp + serialDetail.serial
+                    var screenPath = logPath + '/screenCap'
+
+                    if(serialDetail.logs){
+                      exec('mkdir -p '+logPath)
+                      cpfileTotmp(serialDetail.logs.anrLog, logPath)
+                      cpfileTotmp(serialDetail.logs.logcatLog, logPath)
+                      cpfileTotmp(serialDetail.logs.monkeyLog, logPath)
+                      cpfileTotmp(serialDetail.performance, logPath)
+                    }
+                    if(serialDetail.screenCap){
+                      exec('mkdir -p '+screenPath)
+                      serialDetail.screenCap.forEach(function (screenCapPath) {
+                        cpfileTotmp(screenCapPath, screenPath)
+                      })
+                    }
+
+                  }
+                }else{
+                  var logPath = tmp + serialDetail.serial
+                  var screenPath = logPath + '/screenCap'
+
+
+
+                  if(serialDetail.logs){
+                    exec('mkdir -p '+logPath)
+                    cpfileTotmp(serialDetail.logs.anrLog, logPath)
+                    cpfileTotmp(serialDetail.logs.logcatLog, logPath)
+                    cpfileTotmp(serialDetail.logs.monkeyLog, logPath)
+                    cpfileTotmp(serialDetail.performance, logPath)
+                  }
+                  if(serialDetail.screenCap){
+                    exec('mkdir -p '+screenPath)
+                    serialDetail.screenCap.forEach(function (screenCapPath) {
+                      cpfileTotmp(screenCapPath, screenPath)
+                    })
+                  }
+                }
+
+              })
+
+              // while(fileCount!=cpCount||fileCount==0){}
+              cpfinish()
+
+              function cpfileTotmp(fileName, targetPath) {
+
+                if(fileName){
+                  fs.stat(fileName,function (err,stat) {
+                    if(stat&&stat.isFile()){
+                      fileCount = fileCount+1
+                      log.debug('file Exist ',fileName)
+                      var cmd = 'cp '+ fileName + ' ' + targetPath
+                      exec(cmd,function (err, stdout, stderr) {
+                        log.debug('cpfile finish',fileName)
+                        cpCount = cpCount+1
+                      })
+                    }
+                  })
+                }
+
+              }
+
+              function cpfinish() {
+                setTimeout(function () {
+                  if(fileCount!=cpCount){
+                    cpfinish()
+                  }
+                  else {
+                    log.debug('fileCount : %s , cpCount : %s',fileCount,cpCount)
+                    callback()
+                  }
+                },500)
+              }
+
+            }
+
+            function compressFiles() {
+              var cmd = 'zip -rm ' + zipFile + ' ' +tmp
+              setTimeout(function () {
+                exec(cmd, function (err, stdout, stderr) {
+                  setTimeout(function () {
+                    exec('rm -r '+tmp)
+                  }, 1000*60*2)
+                  log.info('compressFiles finish')
+                  call(zipFile)
+
+                }, 1000*1)
+              })
+
+            }
+          }
+        })
+      }
+    })
+
+
+}

@@ -1,0 +1,35 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.EgameLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.rainbow2.utils.Parameter;
+@Test(description = "爱游戏联运登录测试用例")
+public class EgameLoginTest extends BaseLoginTest {
+	@CaseDesc(id = "LIANYUN-Egame-1", name = "登录爱游戏账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginEgame(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.delFile("/mnt/sdcard/egame");
+
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		EgameLoginPage ep = new EgameLoginPage();
+		// nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		ep.waitPresent();
+		ep.waitSubElement("账号输入框").clear();
+		ep.waitSubElement("账号输入框").sendKeys(account);
+		ep.waitSubElement("密码输入框").clear();
+		ep.waitSubElement("密码输入框").sendKeys(pwd);
+		ep.waitSubElement("登录按钮").click();
+		
+		super.isLoginSucc(hp, name);
+
+	}
+}

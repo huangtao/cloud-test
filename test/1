@@ -1,0 +1,39 @@
+#!/usr/bin/python
+#coding:utf8
+
+import os
+import sys
+import time
+import fcntl #导入模块
+
+class FLOCK(object):
+    def __init__(self,name):
+        self.fobj = open(name)
+        #self.fd = self.fobj.fileno()
+
+    def lock(self):
+        try:
+            fcntl.lockf(self.fobj,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            #fcntl.lockf(self.fd,fcntl.LOCK_EX)
+            print '加锁中操作中...'
+            time.sleep(10)
+	    #os.system('awk \'/2182942/{gsub($2,"True")}{print}\' login.txt <>login.txt')
+            return True
+        except:
+            print '文件被加锁，无法执行，请稍后运行。'
+            return False
+
+    def unlock(self):
+        self.fobj.close()
+        print '解锁成功'
+if __name__ == "__main__":
+    #print sys.argv[1]
+    locker = FLOCK(sys.argv[1])
+    islock = locker.lock()
+    print islock
+    if islock:
+  	#os.system('awk \'/2182942/{gsub($2,"True")}{print}\' login.txt <>login.txt')
+        print '文件已加锁'
+	#locker.unlock()
+    else:
+        print '无法执行，程序已锁定，请稍等'

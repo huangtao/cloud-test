@@ -1,0 +1,133 @@
+package com.boyaa.hallsmoketest.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.SafeBoxDialog;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="保险箱")
+public class SafeBoxTest extends SmokeTestCase {
+	private int changeMoneyUnit = 10000;
+	
+
+//	@CaseDesc(id="DFHALL-1217", name="手续费(Phase I)")
+//	@Test(description="检查存入金币时无手续费")
+//	public void test_fee() {
+//		CommonBusiness.setUserMoney(currentMid, 50000);
+//		
+//		int orgMoney = hallPage.getCurrentMoney();
+//		hallPage.waitSubElement("更多按钮").click();
+//		hallPage.waitSubElement("保险箱按钮").click();
+//		SafeBoxDialog safeBoxDialog = new SafeBoxDialog();
+//		assertTrue(safeBoxDialog.isPresent(), "检查是否打开保险箱对话框");
+//		
+//		safeBoxDialog.waitSubElement("加按钮").click();
+//		safeBoxDialog.confirm();
+//		int curMoney = hallPage.getCurrentMoney();
+//		assertEquals(curMoney, orgMoney-changeMoneyUnit, "检查已调整为无手续费");
+//		
+//		hallPage.waitSubElement("更多按钮").click();
+//		hallPage.waitSubElement("保险箱按钮").click();
+//		safeBoxDialog.waitSubElement("减按钮").click();
+//		safeBoxDialog.confirm();
+//	}
+	
+	@CaseDesc(id="DFHALL-1209", name="调节按钮(Phase I)")
+	@Test(description="检查可以通过保险箱的加减按钮调节存入的金币数")
+	public void test_changeDepositMoney() {
+		CommonBusiness.setUserMoney(currentMid, 50000);
+		
+		hallPage.clickToOpenSafeBoxDialog();
+		SafeBoxDialog safeBoxDialog = new SafeBoxDialog();
+		assertTrue(safeBoxDialog.isPresent(), "检查是否打开保险箱对话框");
+		
+		int orgDeposit = (int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3)));
+		safeBoxDialog.waitSubElement("加按钮").click();
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit+changeMoneyUnit, String.format("检查+号以%d为单位",changeMoneyUnit));
+		safeBoxDialog.waitSubElement("加按钮").click();
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit+2*changeMoneyUnit, String.format("检查+号以%d为单位",changeMoneyUnit));
+		safeBoxDialog.waitSubElement("减按钮").click();		
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit+changeMoneyUnit, String.format("检查-号以%d为单位",changeMoneyUnit));
+		safeBoxDialog.waitSubElement("减按钮").click();		
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit, String.format("检查-号以%d为单位",changeMoneyUnit));
+	}
+	
+	@CaseDesc(id="DFHALL-1214", name="重置按钮(Phase I)")
+	@Test(description="检查调整存入金币后点击重置按钮的逻辑是否正确")
+	public void test_reset() {
+		CommonBusiness.setUserMoney(currentMid, 50000);
+		
+		hallPage.clickToOpenSafeBoxDialog();
+		SafeBoxDialog safeBoxDialog = new SafeBoxDialog();
+		assertTrue(safeBoxDialog.isPresent(), "检查是否打开保险箱对话框");
+		
+		int orgDeposit = (int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3)));
+		safeBoxDialog.waitSubElement("加按钮").click();
+		assertTrue((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3)))!=orgDeposit, "检查存款发生了变化");
+		safeBoxDialog.waitSubElement("重置按钮").click();		
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit, "检查存款变为了原值");
+	}
+	
+//	@CaseDesc(id="DFHALL-1216", name="确定按钮(Phase I)")
+//	@Test(description="检查调整存入金币后点击确定按钮的逻辑是否正确")
+//	public void test_confirm() throws InterruptedException {
+//		CommonBusiness.setUserMoney(currentMid, 50000);
+//		
+//		int orgMoney = hallPage.getCurrentMoney();
+//		hallPage.clickToOpenSafeBoxDialog();
+//		SafeBoxDialog safeBoxDialog = new SafeBoxDialog();
+//		assertTrue(safeBoxDialog.isPresent(), "检查是否打开保险箱对话框");
+//		
+//		int orgDeposit = (int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().replace(",", "").substring(3)));
+//		safeBoxDialog.waitSubElement("加按钮").click();
+//		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().replace(",", "").substring(3))), orgDeposit+changeMoneyUnit, String.format("检查存款增加%d元", changeMoneyUnit));
+//		safeBoxDialog.confirm();
+//		int curMoney = hallPage.getCurrentMoney();
+//		assertEquals(curMoney, orgMoney-changeMoneyUnit, String.format("检查点击确定后携带现金确实减少了%d", changeMoneyUnit));
+//		
+//		hallPage.clickToOpenSafeBoxDialog();
+//		safeBoxDialog.waitSubElement("减按钮").click();
+//		safeBoxDialog.confirm();
+//	}
+	
+	@CaseDesc(id="DFHALL-1207", name="存入条件(Phase II)")
+	@Test(description="检查保险箱使用的金币数条件")
+	public void test_depositRequirement() {
+		CommonBusiness.setUserMoney(currentMid, 20000);
+
+		hallPage.clickToOpenSafeBoxDialog();
+		SafeBoxDialog safeBoxDialog = new SafeBoxDialog();
+		
+		int orgDeposit = (int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3)));
+		safeBoxDialog.waitSubElement("加按钮").click();
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit, "存款没有发生变化");
+		safeBoxDialog.waitSubElement("减按钮").click();		
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit, "存款没有发生变化");
+		safeBoxDialog.close();
+		
+		CommonBusiness.setUserMoney(currentMid, 30000);
+		hallPage.clickToOpenSafeBoxDialog();
+		safeBoxDialog.waitSubElement("加按钮").click();
+		assertTrue((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3)))>orgDeposit, "存款发生变化");
+		safeBoxDialog.waitSubElement("减按钮").click();		
+		assertEquals((int)(Integer.valueOf(safeBoxDialog.waitSubElement("存款文本").getText().substring(3))), orgDeposit, "存款发生变化：恢复为未操作前的值");
+	}
+	
+//	@CaseDesc(id="公共017", name="破产判断")
+//	@Test(description="test_bankruptcy")
+//	public void test_bankruptcy() {
+//		int bankruptcyNum = 3000;
+//		
+//		CommonBusiness.setUserMoney(CommonBusiness.getUserId(), 2000);
+//		CommonBusiness.setUserDeposit(CommonBusiness.getUserId(), 4000);
+//		
+//		//TODO:检查是否提示去保险箱取钱
+//	}
+
+}

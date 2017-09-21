@@ -1,0 +1,35 @@
+local error=
+{
+	name="error",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=49971286,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/hall/bg.jpg"
+	},
+	{
+		name="Image1",type=1,typeName="Image",time=72257579,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled_blue.png"
+	},
+	{
+		name="panda",type=1,typeName="Image",time=49971388,report=0,x=700,y=160,width=363,height=460,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/error_panda.png"
+	},
+	{
+		name="context1",type=4,typeName="Text",time=49971691,report=0,x=312,y=210,width=280,height=46,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=40,textAlign=kAlignLeft,colorRed=255,colorGreen=250,colorBlue=200,string=[[发生了一点错误]]
+	},
+	{
+		name="context2",type=4,typeName="Text",time=49972005,report=0,x=300,y=270,width=283,height=59,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,fontSize=50,textAlign=kAlignLeft,colorRed=255,colorGreen=250,colorBlue=200,string=[[正在修复中]]
+	},
+	{
+		name="return_btn",type=2,typeName="Button",time=49972079,report=0,x=400,y=500,width=290,height=85,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/btns/290x85_green.png",
+		{
+			name="backGameBtn",type=4,typeName="Text",time=49972268,report=0,x=-1,y=0,width=222,height=43,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=250,colorBlue=200,string=[[带他返回大厅]]
+		}
+	},
+	{
+		name="errorContent",type=5,typeName="TextView",time=50033496,report=0,x=20,y=31,width=1200,height=400,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=24,textAlign=kAlignTopLeft,colorRed=255,colorGreen=255,colorBlue=255,string=[[T的范德萨范德萨刚发的范德萨范德萨范德萨范德萨范德萨范德萨范德萨范德萨范德萨范德萨范德萨发的范德萨范德萨施工方的根本vfdsgfdgfdsgfsgfdsgfdsgfdsgfdsgfdsgbfds]],colorA=1
+	},
+	{
+		name="log_btn",type=2,typeName="Button",time=49972079,report=0,x=40,y=500,width=290,height=85,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/btns/290x85_green.png",
+		{
+			name="logText",type=4,typeName="Text",time=49972268,report=0,x=0,y=0,width=222,height=43,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=250,colorBlue=200,string=[[查看日志]],colorA=1
+		}
+	}
+}
+return error;

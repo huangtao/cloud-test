@@ -1,0 +1,53 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.MessagePage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="动态信息")
+public class MessageTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private MessagePage messagePage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();		
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		messagePage=new MessagePage();
+		commonBusiness=new CommonBusiness();
+	}
+	
+	@CaseDesc(id="PersonMessage", name="个人消息")
+	@Test(description="个人消息")
+	public void test_personMessage() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("消息").click();	
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "PersonMessage.png");
+	}
+	@CaseDesc(id="NoticeMessage", name="公告")
+	@Test(description="公告")
+	public void test_noticeMessage() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("消息").click();	
+		Thread.sleep(2*1000);
+		messagePage.waitSubElement("公告").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "NoticeMessage.png");
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

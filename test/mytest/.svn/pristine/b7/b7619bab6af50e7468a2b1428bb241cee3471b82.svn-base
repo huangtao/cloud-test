@@ -1,0 +1,220 @@
+package com.boyaa.testholdemth.business;
+
+import com.boyaa.rainbow2.RainbowListener;
+import io.appium.java_client.MobileElement;
+
+
+
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import junit.framework.Assert;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.Base64Encoder;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.testholdemth.uilib.ContinuousLoginRewardsPage;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+import com.boyaa.testholdemth.uilib.RoomListPage;
+import com.boyaa.testholdemth.uilib.RoomPage;
+
+public class CommonBusiness {
+	private static RainbowDriver rd = null;
+	
+	public CommonBusiness() {
+		rd = RainbowDriver.getRainbowDriver();
+	}
+	
+	public CommonBusiness(RainbowDriver rainbowd) {
+		rd = rainbowd;
+	}
+	
+	public enum RoomLevel {
+		Newbie("ห้องมือใหม่"), Junior("ห้องระดับต้น"), Middle("ห้องระดับกลาง"), Senior("ห้องระดับสูง");
+		
+		private String roomLevelName;
+		
+		private RoomLevel(String name){
+			roomLevelName = name;
+		}
+		
+		public String getName() {
+			return roomLevelName;
+		}
+	}
+	
+
+    public int strChangToInt(String st){
+    	if(st.equals("0")){
+			return 0;
+		}else{
+			return Integer.parseInt(st);
+		}
+    }
+	
+	public void setAccountCoins(AccountData ad, String coins){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("money", coins);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("setMoney", 29, ad, jso);
+	 }
+	
+	/*
+	 * @author: foxhu
+	 */
+	public JSONObject setUserDataByHTTPRequestWithJson(String settype ,int terraceTaskID ,AccountData ad,JSONObject jsoobject){
+		 JSONObject jso = new JSONObject();
+		 JSONObject oJso =null;
+		 try {
+				if(ad != null){
+					jso.put("act", settype);
+					jso.put("api", terraceTaskID);
+					jso.put("mid", ad.getGameID());
+					jso.put("param", jsoobject);
+					oJso = poseHTTPRequestToSpecificURL("http://texas-demo-57.boyaa.com/texas/api/autoTest.php?", jso);
+					return oJso;
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		  return oJso;
+	 }
+	
+	/*
+	 * @author: foxhu
+	 */
+	public JSONObject poseHTTPRequestToSpecificURL(String url ,JSONObject jso){
+		 JSONObject jsonObject=null;
+		 String jsoString = getBASE64ForAJSON(jso);
+		 try {
+			URL oUrl =new URL(url);
+			HttpURLConnection oHttpURLC = (HttpURLConnection) oUrl.openConnection();
+			oHttpURLC.setDoOutput(true);
+			oHttpURLC.setDoInput(true);
+			oHttpURLC.setRequestMethod("POST");
+			oHttpURLC.setUseCaches(false);
+			oHttpURLC.setInstanceFollowRedirects(true);
+			oHttpURLC.connect();
+			//设置输出数据流
+			DataOutputStream out = new DataOutputStream(oHttpURLC.getOutputStream());
+			out.writeBytes("param="+jsoString);
+            out.flush();
+            out.close(); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+           		oHttpURLC.getInputStream()));
+			 String s;
+			 StringBuilder resultString = new StringBuilder();
+			 while (((s = reader.readLine()) != null)) {
+				 resultString.append(s);
+			 }
+			 reader.close();// 关闭输入流
+			 //在这里把result这个字符串个给JSONObject。解读里面的内容。
+			 jsonObject = new JSONObject(resultString.toString());
+			 //String makeRobotStatus = jsonObject.getString("allErr");
+			 reader.close();
+            // 断开连接
+            oHttpURLC.disconnect();
+            return jsonObject;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
+		 
+		 return jsonObject;
+	 }
+	
+	/*
+	  * @param jso：JSONObject对象，进行base64的加密
+	  * @Return jsoString:jsoString格式的字符串
+	  * @author: foxhu
+	  * 对传入的json对象进行base64的加密
+	  */
+	 public  String getBASE64ForAJSON(JSONObject jso) { 
+	    	String jsoString =  (new Base64Encoder()).encode(jso.toString().getBytes()); 
+	    	return jsoString;
+	    	}
+	
+	
+	
+	
+	public void clickONANonFullRoom() {
+		//TODO: 重新封装RoomView后使用RoomView实现
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.waitSubElement("房间ID和名称").click();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitPresent();
+	}
+
+	public void closeSlotTips() {
+		// TODO Auto-generated method stub
+	}
+
+	public void clickONANonFullSitGoGameRoom() {
+		// TODO: 目前暂时直接调用clickONANonFullRoom重新封装RoomView后使用RoomView实现
+		clickONANonFullRoom();
+	}
+	 public  MobileElement srocllToText(String text){
+		 MobileElement me = rd.scrollToExact(text);
+		 return me;
+	 }
+	 public int fromStringGetNumber(String ptn){
+		 Pattern pattern = Pattern.compile("\\d+");
+			Matcher matcher = pattern.matcher(ptn);
+			if(matcher.find()) {
+				String interPropsCount_string = matcher.group();
+				return Integer.valueOf(interPropsCount_string);
+			}
+			else {
+				throw new RuntimeException("无法识别道具"+ptn+"的数量!");
+			}
+	 }
+	 /*
+	  * x为滑动的元素宽的倍数
+	  * y为滑动的元素高的倍数
+	  */
+	 public void drag(WebElement we ,String direction ,float x ,float y){
+		 Point point = we.getLocation();
+		 Dimension size = we.getSize();
+		 int width = size.getWidth();
+		 int  height = size.getHeight();
+		 int wex = point.getX();
+		 int wey= point.getY();
+		 int startx = wex+width/2;
+		 int starty = wey+height/2;
+		 int xx = (int) (width*x);
+		 int yy  = (int) (height*y);
+		 direction =direction.toLowerCase();
+		 if (direction.equals("up")){
+			 rd.swipe(startx, starty, startx, starty - yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("down")){
+			 rd.swipe(startx, starty, startx, starty + yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("left")){
+			 rd.swipe(startx, starty, startx -xx , starty , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("right")){
+			 rd.swipe(startx, starty, startx +xx, starty , 1000);
+			 rd.sleep(3*1000);
+		 }else{
+			 Assert.fail("direction is error");
+		 }
+	 }
+}

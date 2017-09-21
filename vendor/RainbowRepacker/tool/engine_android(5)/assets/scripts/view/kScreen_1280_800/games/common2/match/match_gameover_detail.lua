@@ -1,0 +1,29 @@
+match_gameover_detail=
+{
+	name="match_gameover_detail",type=0,typeName="View",time=0,report=0,x=0,y=0,width=497,height=220,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+	{
+		name="detailBtn",type=0,typeName="Button",time=112796035,x=0,y=-81,width=172,height=71,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/btns/272x71_orange.png",gridLeft=20,gridRight=20,gridTop=20,gridBottom=25,
+		{
+			name="name",type=0,typeName="Text",time=112796618,x=0,y=0,width=64,height=67,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[结 算]],fontSize=28,textAlign=kAlignCenter,colorRed=110,colorGreen=60,colorBlue=0
+		}
+	},
+	{
+		name="infoBg",type=0,typeName="Image",time=103127199,x=0,y=0,width=497,height=220,nodeAlign=kAlignCenter,visible=1,fillParentWidth=1,fillParentHeight=1,file="games/common/popup_bg.png",gridTop=20,gridLeft=20,gridRight=20,gridBottom=20,
+		{
+			name="topView",type=0,typeName="View",time=110025677,x=0,y=0,width=64,height=70,nodeAlign=kAlignTop,visible=1,fillParentWidth=1,fillParentHeight=0,
+			{
+				name="line",type=0,typeName="Image",time=112794318,x=0,y=0,width=483,height=2,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/popup_line.png"
+			},
+			{
+				name="title",type=4,typeName="Text",time=58516441,report=0,x=0,y=0,width=1,height=1,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=28,textAlign=kAlignCenter,colorRed=240,colorGreen=248,colorBlue=255,string=[[+12,000]]
+			},
+			{
+				name="icon",type=0,typeName="Image",time=112794530,x=-85,y=-75,width=227,height=226,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_gameover/icon_win.png"
+			}
+		},
+		{
+			name="detailView",type=0,typeName="View",time=112795673,x=0,y=85,width=10,height=120,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0
+		}
+	}
+}
+return match_gameover_detail;

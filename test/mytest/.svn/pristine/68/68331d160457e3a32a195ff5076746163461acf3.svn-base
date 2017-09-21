@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="11" failed="0" total="11" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="37102" started-at="2016-11-16T04:39:44Z" finished-at="2016-11-16T04:40:21Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="37102" started-at="2016-11-16T04:39:44Z" finished-at="2016-11-16T04:40:21Z">
+      <class name="com.boyaa.testholdemsina.cases.FriendHomeTest">
+        <test-method status="FAIL" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:44Z" finished-at="2016-11-16T12:39:44Z">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[Create driver failed! Error:
+A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 197 milliseconds
+Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
+System info: host: 'BY-01-0734', ip: '172.20.133.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_101'
+Driver info: com.boyaa.rainbow2.RainbowDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: Create driver failed! Error:
+A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 197 milliseconds
+Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
+System info: host: 'BY-01-0734', ip: '172.20.133.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_101'
+Driver info: com.boyaa.rainbow2.RainbowDriver
+	at com.boyaa.rainbow2.RainbowTestCase.setUp(RainbowTestCase.java:34)
+	at com.boyaa.testholdemsina.cases.TestCaseBase.setUp(TestCaseBase.java:22)
+	at com.boyaa.testholdemsina.cases.FriendHomeTest.setup(FriendHomeTest.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test01_CreateFriendRoom()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test01_CreateFriendRoom" duration-ms="128" started-at="2016-11-16T12:39:45Z" description="玩家创建好友房" finished-at="2016-11-16T12:39:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test01_CreateFriendRoom -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:48Z" finished-at="2016-11-16T12:39:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:48Z" finished-at="2016-11-16T12:39:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test02_CreateFriendRoom()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test02_CreateFriendRoom" duration-ms="115" started-at="2016-11-16T12:39:48Z" description="玩家创建好友房后，退出重新建" finished-at="2016-11-16T12:39:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test02_CreateFriendRoom -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:52Z" finished-at="2016-11-16T12:39:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:52Z" finished-at="2016-11-16T12:39:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test03_EnterErrorPasswd()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test03_EnterErrorPasswd" duration-ms="49" started-at="2016-11-16T12:39:52Z" description="加入牌局输入错误密码" finished-at="2016-11-16T12:39:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test03_EnterErrorPasswd -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:55Z" finished-at="2016-11-16T12:39:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:55Z" finished-at="2016-11-16T12:39:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test04_EnterPasswd()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test04_EnterPasswd" duration-ms="33" started-at="2016-11-16T12:39:55Z" description="加入牌局输入正确的密码" finished-at="2016-11-16T12:39:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test04_EnterPasswd -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:58Z" finished-at="2016-11-16T12:39:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:39:58Z" finished-at="2016-11-16T12:39:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test05_InviteFriend()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test05_InviteFriend" duration-ms="47" started-at="2016-11-16T12:39:58Z" description="好友房邀请好友" finished-at="2016-11-16T12:39:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test05_InviteFriend -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:01Z" finished-at="2016-11-16T12:40:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:01Z" finished-at="2016-11-16T12:40:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test06_InviteOnline()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test06_InviteOnline" duration-ms="35" started-at="2016-11-16T12:40:01Z" description="好友房邀请在线玩家" finished-at="2016-11-16T12:40:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test06_InviteOnline -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:05Z" finished-at="2016-11-16T12:40:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:05Z" finished-at="2016-11-16T12:40:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test07_DealerReward1()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test07_DealerReward1" duration-ms="34" started-at="2016-11-16T12:40:05Z" description="玩家进入好友房坐下打赏荷官" finished-at="2016-11-16T12:40:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test07_DealerReward1 -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:08Z" finished-at="2016-11-16T12:40:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:08Z" finished-at="2016-11-16T12:40:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test08_DealerReward2()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test08_DealerReward2" duration-ms="32" started-at="2016-11-16T12:40:08Z" description="玩家进入好友房站起打赏荷官" finished-at="2016-11-16T12:40:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test08_DealerReward2 -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:11Z" finished-at="2016-11-16T12:40:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:11Z" finished-at="2016-11-16T12:40:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test10_CreatePrivateHome()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test10_CreatePrivateHome" duration-ms="39" started-at="2016-11-16T12:40:11Z" description="玩家资产不足，停留在房间列表页面" finished-at="2016-11-16T12:40:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test10_CreatePrivateHome -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:14Z" finished-at="2016-11-16T12:40:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:14Z" finished-at="2016-11-16T12:40:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test11_EnterFriendHome1()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test11_EnterFriendHome1" duration-ms="33" started-at="2016-11-16T12:40:14Z" description="加入好友房牌局" finished-at="2016-11-16T12:40:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test11_EnterFriendHome1 -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:18Z" finished-at="2016-11-16T12:40:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="setup" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:18Z" finished-at="2016-11-16T12:40:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="test9_Chat()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="test9_Chat" duration-ms="31" started-at="2016-11-16T12:40:18Z" description="玩家进入好友房聊天" finished-at="2016-11-16T12:40:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test9_Chat -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-16T12:40:21Z" finished-at="2016-11-16T12:40:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.boyaa.testholdemsina.cases.FriendHomeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

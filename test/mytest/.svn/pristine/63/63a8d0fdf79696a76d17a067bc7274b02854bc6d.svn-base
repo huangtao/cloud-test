@@ -1,0 +1,62 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.RankingPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="排行榜")
+public class RankingTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private RankingPage rankPage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		commonBusiness=new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		rankPage=new RankingPage();
+	}
+	
+	@CaseDesc(id="checkRanking", name="查看排行榜")
+	@Test(description="查看排行榜")
+	public void test_checkRanking() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("更多").click();
+		lobbyPage.waitSubElement("排行榜").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "FriendRainking.png");
+		rankPage.waitSubElement("第一名头像").click();
+		Thread.sleep(1*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "rank_PersonInfo.png");
+		rankPage.waitSubElement("个人信息关闭").click();
+		rankPage.waitSubElement("世界榜").click();
+		Thread.sleep(1*1000);
+		rankPage.waitSubElement("第一名头像").click();
+		rankPage.waitSubElement("个人信息关闭").click();
+		rankPage.waitSubElement("财富榜").click();
+		rankPage.waitSubElement("好友榜").click();
+		rankPage.waitSubElement("世界榜").click();
+		Thread.sleep(1*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "WorldRainking.png");
+		rankPage.waitSubElement("第一名头像").click();
+		Thread.sleep(1*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "rank_PersonInfo3.png");
+		
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+
+}

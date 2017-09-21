@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.boyaa.testholdemsina.cases.FriendHomeTest">
+        <methods>
+          <include name="test05_InviteFriend"/>
+          <include name="test03_EnterErrorPasswd"/>
+          <include name="test02_CreateFriendRoom"/>
+          <include name="test08_DealerReward2"/>
+          <include name="test10_CreatePrivateHome"/>
+          <include name="test9_Chat"/>
+          <include name="test01_CreateFriendRoom"/>
+          <include name="test04_EnterPasswd"/>
+          <include name="test07_DealerReward1"/>
+          <include name="setup"/>
+          <include name="test06_InviteOnline"/>
+          <include name="test11_EnterFriendHome1"/>
+        </methods>
+      </class> <!-- com.boyaa.testholdemsina.cases.FriendHomeTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

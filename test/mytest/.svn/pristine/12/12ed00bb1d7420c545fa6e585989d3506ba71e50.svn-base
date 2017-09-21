@@ -1,0 +1,17 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class BuyPropDialog extends RainbowElement{
+
+	public void buy() {
+		this.waitSubElement("购买按钮").click();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

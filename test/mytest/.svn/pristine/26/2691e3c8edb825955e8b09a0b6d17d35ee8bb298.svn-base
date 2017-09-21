@@ -1,0 +1,174 @@
+package com.boyaa.testholdemhk.uilib;
+
+import io.appium.java_client.TouchAction;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.repository.UIRepository;
+import com.boyaa.testholdemhk.uilib.RoomPage.PayDialog;
+import com.boyaa.testholdemhk.uilib.RoomPage.SlotPage;
+
+public class LobbyPage extends RainbowElement{
+
+	private static RainbowDriver rd = null;
+	public  LobbyPage(){
+		rd = RainbowDriver.getRainbowDriver();
+	}
+
+
+	public void closeBankruptPopPage(){
+		try{
+			waitSubElement("破产救济弹框关闭按钮",5).click();
+		}catch(Exception e){
+			//DO Nothing 
+		}
+	}
+	public  LobbyPage(RainbowDriver rainbowd){
+		super(rainbowd);
+		rd = rainbowd;
+		activeApp();
+	}
+
+
+	public long getUserCurrentCoins() {
+		WebElement coinsView  = waitSubElement("游戏币数量");
+		if (coinsView != null) {
+			String coinsWithComma = coinsView.getText().toString();
+			return Integer.parseInt(coinsWithComma.replace(",", "").replace("$", ""));
+		}
+		throw new RuntimeException("Could not found the Coins in lobby!");
+	}
+
+	public void expandHappySquareMenu() {
+		try {
+			WebElement happySquareElement = waitSubElement("游戏");//查找游戏
+
+			if(happySquareElement.isDisplayed()) {
+				happySquareElement.click();
+			}
+		}catch(Exception e){
+			//Do Nothing
+		}
+	}
+
+	//TODO　方法还未完成
+	public void expandHappySquareMenu(long timeout) {
+		long endtime = System.currentTimeMillis() + timeout;
+		while(System.currentTimeMillis() <= endtime){
+			WebElement happySquareElement = waitSubElement("欢乐广场按钮");
+			if(happySquareElement.isDisplayed()) {
+				happySquareElement.click();
+			}
+		}
+
+	}
+
+	public ClearingPage clearingPage() {
+		return new ClearingPage();
+	}
+	public MoreOptionPage moreOptionPage() {
+		return new MoreOptionPage();
+	}
+
+	public  PayDialog payDialog() {
+		return new PayDialog();
+	}
+
+	public SlotPage slotPage() {
+		return getSlotPage(true);
+	}
+	
+	public ContinuousLoginRewardsPage getContinuousLoginRewardsPage() {
+		return new ContinuousLoginRewardsPage();
+	}
+	
+	//大厅中水果机page
+	public SlotPage lobbySlotPage(){
+		return new SlotPage();
+	}
+
+	public SlotPage getSlotPage(boolean ifCloseTips) {
+		SlotPage slotPage = new SlotPage();
+		if(ifCloseTips) {
+			for(int i=0;i<3;i++) {
+				//slotPage.waitSubElement("幸运图片",1).click();
+				slotPage.waitSubElement("奖金显示框").click();
+			}
+		}
+		return slotPage;
+	}
+	
+    public class ContinuousLoginRewardsPage extends RainbowElement{    	
+		
+	}
+    
+    public void closeThePopupWindowAfterLogin() {
+    	ContinuousLoginRewardsPage clrp = new ContinuousLoginRewardsPage();
+    	if(clrp.isPresent()){
+    		clrp.close();
+    	}	
+		//TODO: close other popup windows
+	}
+
+	public class ClearingPage extends RainbowElement{
+
+		public void closeClearPage(){
+			if(isPresent()){
+				waitSubElement("结算提示关闭按钮").click();
+			}	
+		}
+
+
+	}
+	public class PayDialog extends RainbowElement{
+
+	}
+
+	public class MoreOptionPage extends RainbowElement{
+
+	}
+
+	public class SlotPage extends RainbowElement{
+
+		public void shake() {
+			RainbowDriver rd = RainbowDriver.getInstance();
+			WebElement wbSlotShaker = waitSubElement("拉杆");
+			int x = wbSlotShaker.getLocation().getX();
+			int y = wbSlotShaker.getLocation().getY();
+			int height = wbSlotShaker.getSize().getHeight();
+			int width = wbSlotShaker.getSize().getWidth();
+			new TouchAction(rd).press(x, y).moveTo(x, y+height).release().perform();
+		}
+
+		public void dragimge(){
+			RainbowDriver rd = RainbowDriver.getInstance();
+			WebElement dragimge = waitSubElement("选择幸运图片");
+			int x = dragimge.getLocation().x;
+			int y= dragimge.getLocation().y;
+			int width =dragimge.getSize().getWidth();
+			int height= dragimge.getSize().getHeight();
+			int start_x = x+width/2;
+			int start_y = y;
+			int end_x = x+width/2;
+			int end_y = y+height;
+			rd.swipe(start_x, start_y, end_x, end_y, 1000);	
+		}
+		//因为应用后台运行后，老虎机popuwindow无法聚焦，通过获取点击大厅女郎对应坐标激活popuwindow
+		public void activePopuwindow(){
+			RainbowDriver rd = RainbowDriver.getInstance();
+			WebElement slotpage = waitSubElement("老虎机页面");
+			int x = slotpage.getLocation().x;
+			int y= slotpage.getLocation().y;
+			int width =slotpage.getSize().getWidth();
+			int height= slotpage.getSize().getHeight();
+			int m = x+width/2;
+			int n = y+height/2;
+			rd.runAppInBackground(3);
+			rd.swipe(m, n, m, n, 1);;
+		}
+	}
+}

@@ -1,0 +1,39 @@
+local message_pin_map = require("qnFiles/qnPlist/hall/message_pin");
+local noticeLayout=
+{
+	name="noticeLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg_top",type=1,typeName="Image",time=77358592,report=0,x=0,y=0,width=0,height=123,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/scene_top.png"
+	},
+	{
+		name="bg_bottom",type=1,typeName="Image",time=88933025,report=0,x=0,y=0,width=0,height=0,fillTopLeftX=0,fillTopLeftY=85,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/scene_bg.png"
+	},
+	{
+		name="bg",type=0,typeName="View",time=88933030,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+		{
+			name="topView",type=0,typeName="View",time=88933031,report=0,x=0,y=0,width=1280,height=90,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="returnBtn",type=2,typeName="Button",time=88933033,report=0,x=26,y=14,width=71,height=71,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/btn_return.png"
+			},
+			{
+				name="topBg",type=1,typeName="Image",time=88933034,report=0,x=0,y=-45,width=430,height=147,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/title_bg.png",
+				{
+					name="title",type=1,typeName="Image",time=88933035,report=0,x=0,y=65,width=200,height=52,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file=message_pin_map['sys_msg.png']
+				}
+			}
+		},
+		{
+			name="contentView",type=0,typeName="View",time=88933038,report=0,x=15,y=120,width=1250,height=643,fillTopLeftX=18,fillTopLeftY=98,fillBottomRightX=18,fillBottomRightY=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="listArea",type=0,typeName="View",time=88933039,report=0,x=0,y=0,width=1240,height=670,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,
+				{
+					name="listView",type=0,typeName="ListView",time=88933040,report=0,x=0,y=0,width=1250,height=585,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTop
+				}
+			},
+			{
+				name="text",type=4,typeName="Text",time=88933041,report=0,x=0,y=0,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignLeft,colorRed=143,colorGreen=94,colorBlue=38,string=[[暂无公告]]
+			}
+		}
+	}
+}
+return noticeLayout;

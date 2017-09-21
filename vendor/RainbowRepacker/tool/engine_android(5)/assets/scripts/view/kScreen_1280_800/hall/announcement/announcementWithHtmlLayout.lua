@@ -1,0 +1,29 @@
+local announcementWithHtmlLayout=
+{
+	name="announcementWithHtmlLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=800,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shiled",type=1,typeName="Image",time=77340453,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="contentView",type=0,typeName="View",time=77340454,report=0,x=0,y=0,width=966,height=530,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="bg",type=1,typeName="Image",time=77340455,report=0,x=0,y=0,width=740,height=495,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=77340456,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=77340457,report=0,x=0,y=-5,width=140,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=245,colorBlue=204,string=[[游戏公告]]
+			}
+		},
+		{
+			name="closeBtn",type=2,typeName="Button",time=77340458,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="centerView",type=0,typeName="View",time=77340459,report=0,x=0,y=0,width=0,height=0,fillTopLeftX=5,fillTopLeftY=75,fillBottomRightX=5,fillBottomRightY=25,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="webArea",type=0,typeName="View",time=68612951,report=0,x=0,y=10,width=860,height=430,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter
+			}
+		}
+	}
+}
+return announcementWithHtmlLayout;

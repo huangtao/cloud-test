@@ -1,0 +1,83 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.BaiduPage;
+import com.boyaa.lianyuntest.uilib.login.BoyaaLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.MobileLoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+
+@Test(description = "百度联运登录基准测试用例")
+public class BaiduLoginTest extends BaseLoginTest {
+
+	private void baiduOpenLoginPage(HallPage hp,String loginMode){
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		RainbowDriver nativeDriver = super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		
+		BaiduPage baiduPage = new BaiduPage();
+		if(baiduPage.isSubElementPresent("关闭按钮")){
+			baiduPage.waitSubElement("关闭按钮").click();
+		}
+		
+		super.openLoginPage(hp, loginMode, nativeDriver);
+	}
+	
+	protected void loginQQ(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.clearAppData("com.tencent.mobileqq");
+		
+		baiduOpenLoginPage(hp, "QQ登录");
+		
+		super.qqLogin(account, pwd);
+		
+		super.isLoginSucc(hp, name);
+
+	}
+	
+	protected void loginWeChat(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.clearAppData("com.tencent.mm");
+		baiduOpenLoginPage(hp, "微信登录");
+		
+		super.weChatLogin(account, pwd);
+		
+		super.isLoginSucc(hp, name);
+
+	}
+	
+	protected void loginMobile(String account, String pwd, String name,String filePath) {
+		CommonBusiness.delFile(filePath);
+		HallPage hp = new HallPage();
+		MobileLoginPage mobilep = new MobileLoginPage();
+		baiduOpenLoginPage(hp, "手机登录");
+		
+		super.mobileLogin(mobilep, account, pwd);
+		
+		super.isLoginSucc(hp, name);
+
+	}
+	
+	protected void loginVisitor() {
+		HallPage hp = new HallPage();
+		
+		baiduOpenLoginPage(hp, "游客登录");
+		
+		super.isLoginSucc(hp, null);
+
+	}
+	
+	protected void loginBoyaa(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		BoyaaLoginPage boyaap = new BoyaaLoginPage();
+		
+		baiduOpenLoginPage(hp, "博雅通行证");
+		
+		super.boyaaLogin(hp, boyaap, account, pwd);
+		
+		super.isLoginSucc(hp, name);
+
+	}
+}

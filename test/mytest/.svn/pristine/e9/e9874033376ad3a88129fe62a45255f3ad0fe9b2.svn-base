@@ -1,0 +1,2389 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- 友盟统计泰语appkey -->
+    <string name="appkey">5159524456240bd5aa00e70d</string>
+    <!-- Global -->
+    <string name="out_game">ตกลงกลับไปหน้าล็อกอินไหมคะ?</string>
+    <string name="go_on_tutorial">ต่อไปค่ะ</string>
+    <string name="hidden_in_room">ซ่อนห้องที่กำลังเล่นอยู่</string>
+    <string name="automaticSatdown"> เข้าห้องนั่งอัตโนมัติ</string>
+    <string name="seeall1">รอบแรก </string>
+    <string name="seeall2">รอบที่สอง</string>
+    <string name="seeall3">รอบที่สาม</string>
+    <string name="net_connect_fail">การเชื่อมต่ออินเทอร์เน็ตเกิดผิดพลาด กรุณาล็อกอินใหม่ค่ะ!</string>
+    <string name="statrt_game">เริ่มเกม</string>
+    <string name="hide_result">ซ่อนผล</string>
+
+    <!-- UserInfoBox -->
+    <string name="userinfo_id">ID：</string>
+    <string name="userinfo_card_name_self">ชื่อไอเทม บัตรช่วย</string>
+    <string name="userinfo_card_desc_self">การใช้ไอเทม ใช้อยู่ในห้อง เมื่อชิปน้อยกว่า500 ใช้แล้วจะจะได้10000ชิปค่ะ</string>
+
+    <!-- 普通场 -->
+    <string name="bianhao_name">ID/ชื่อห้อง</string>
+    <string name="blind">สมอล/บิ๊กบลายด์</string>
+    <string name="carry">ถือต่ำสุด/ถือสูงสุด</string>
+    <string name="play">จำนวนคนที่กำลังเล่น</string>
+
+    <!-- match -->
+    <string name="eliminated">ห้องแข่งขัน</string>
+    <string name="bonus">โบนัสอันดับที่หนึ่ง\n/ที่สอง/ที่สาม</string>
+    <string name="servicecharge">ค่าเข้า+ค่าบริการ</string>
+    <string name="state">สถานะ</string>
+    <string name="sixgames">ห้องหกคน</string>
+    <string name="ninegames">ห้องเก้าคน</string>
+    <string name="joinmatch">เข้าร่วมเกม</string>
+    <string name="network_lining">อินเทอร์เน็ตกำลังเชื่อมต่อค่ะ</string>
+    <string name="get_bag_fail">รับรางวัลหีบสมบัติล้มเหลวค่ะ</string>
+    <string name="huodong_reward_wait">กำลังโหลดรับรางกิจกรรม กรุณารอสักครู่ค่ะ...</string>
+    <string name="noreward">อินเทอร์เน็ตเกิดผิดพลาด กรุณาจับฉลากใหม่</string>
+    <!-- 成就 -->
+    <string name="card_type_achievement">ผลงานรูปแบบไพ่</string>
+    <string name="board_achievement">ผลงานเล่นไพ่</string>
+    <string name="achievements_list">รายชื่อผลงานทั่วประเทศ</string>
+    <string name="achievement_list">รายชื่อผลงาน</string>
+    <string name="ranking">ระดับ</string>
+    <string name="level">อันดับ</string>
+    <string name="achievement_num">จำนวนผลงาน</string>
+    <string name="view">ดูราย</string>
+    <string name="getachievement">กำลังโหลดรายชื่อผลงาน กรุณารอสักครู่ค่ะ...</string>
+    <string name="notOpen">ยังไม่ได้เปิด</string>
+
+    <!-- 每日任务 -->
+    <string name="day1">1\nวัน</string>
+    <string name="day2">2\nวัน</string>
+    <string name="day3">3\nวัน</string>
+    <string name="day4">4\nวัน</string>
+    <string name="day5">5\nวัน</string>
+    <string name="day6">6\nวัน</string>
+    <string name="day1_">1วัน</string>
+    <string name="day2_">2วัน</string>
+    <string name="day3_">3วัน</string>
+    <string name="day4_">4วัน</string>
+    <string name="day5_">5วัน</string>
+    <string name="day6_">6วัน</string>
+    <string name="gradedesc_01_w_01">การเล่นชนะได้รับประสบการณ์: เวลาชนะชนะ บวกจำนวนที่ผู้เล่นชนะ เวลาแพ้ลด1 คะแนน;
+	                   ในห้องสมอลบลายด์มากกว่า5000(ไม่รวม5000) เวลาชนะชนะ บวกจำนวนที่ผู้เล่นชนะX2 เวลาแพ้ลด2 คะแนน .</string>
+    <string name="gradedesc_01_w_02">		 เวลาการเล่นเกมถึง5นาทีสามารถได้รับประสบการณ์5คะแนน 
+		\nเวลาการเล่นเกมถึง15นาทีสามารถได้รับประสบการณ์10คะแนน 
+		\nเวลาการเล่นเกมถึง30นาทีสามารถได้รับประสบการณ์20คะแนน 
+		\nเวลาการเล่นเกมถึง1ชั่วโมงสามารถได้รับประสบการณ์30คะแนน 
+		\nเวลาการเล่นเกมถึง90นาทีสามารถได้รับประสบการณ์50 คะแนน 
+		\nเวลาการเล่นเกมถึง2ชั่วโมงสามารถได้รับประสบการณ์100คะแนอีก 
+		\nเวลาการเล่นเกมมากกว่า2ชั่วโมงสามารถได้รับประสบการณ์20คะแนนแต่ละชั่วโมง  ประสบการณ์เพิ่มทันที 
+		\nเวลาการเล่นเกมเป็นเวลาเล่นไพ่ที่สะสมกัน（วันนี้0:00——วันนี้24:00）</string>
+    <!-- 后面添加的string -->
+    <string name="show_result"> แสดงผล</string>
+    <string name="relieve_money">ท่านยังไม่ถึงความต้องการที่ใช้บัตรช่วยที่ชิปน้อยกว่า500ค่ะ</string>
+    <string name="relieve_getmoney">ท่านใช้บัตรช่วยแล้ว ได้รับ10000ชิปค่ะ รอบหน้าจะอัพเดทค่ะ</string>
+    <string name="facebook_notice1">กำลังโหลดข้อมูลfacebook กรุณารอสักครู่ค่ะ…</string>
+    <string name="facebook_notice2">โหลดข้อมูลfacebookล้มเหลว กรุณาลองอีกครั้งในภายหลังค่ะ</string>
+    <string name="phh_medal_loading">กำลังโหลดข้อมูลผลงาน กรุณารอสักครู่ค่ะ…</string>
+    <!-- Gree平台 start -->
+    <string name="loading">กำลังโหลด</string>
+    <string name="loading_data">กำลังโหลด…</string>
+    <string name="not_login">ไม่ได้ล็อกอิน</string>
+    <string name="friends">เพื่อน</string>
+    <string name="everyone">ทุกคน</string>
+    <string name="all_data_loaded">ข้อมูลโหลดไปแล้ว</string>
+    <string name="get_rankings_failed">โหลดระดับล้มเหลว</string>
+    <string name="gree_total">ทั้งหมด</string>
+    <string name="weekly">ประจำสัปดาห์</string>
+    <string name="daily">ประจำวัน</string>
+    <string name="my_score">คะแนนของฉัน:</string>
+    <string name="get_profile_score_fail">โหลดคะแนนผู้เล่นล้มเหลว</string>
+    <string name="set_new_score_button_text">การตั้งค่าคะแนนใหม่</string>
+    <string name="set_new_score_popout_title">กรุณาการตั้งค่าคะแนนสูงใหม่</string>
+    <string name="set_new_score_success">คะแนนตั้งค่าสำเร็จ</string>
+    <string name="set_new_score_fail">คะแนนตั้งค่าล้มเหลว</string>
+    <string name="set_new_score_cancel">ยกเลิกตั้งค่าคะแนน</string>
+    <string name="sync_failed">Failed To Get Data</string>
+    <string name="load_profile_icon_failed">Load profile icon failed</string>
+    <string name="ok">Ok</string>
+    <string name="get_user_info_fail">โหลดข้อมูลผู้เล่นล้มเหลว</string>
+    <string name="buy_confirm">ยืนยันซื้อ</string>
+    <string name="request_get_goods">การซื้อสำเร็จ กำลังขอร้องจัดส่งสินค้า กรุณารอสักครู่ค่ะ…</string>
+    <!-- Gree平台 end -->
+    <!-- Global -->
+    <string name="app_name">ไพ่เท็กซัส</string>
+    <string name="not_support">เกมนี้ไม่สามารถสนับสนุนความละเอียดโทรศัพท์ของคุณ
+		ไม่สามารถติดตั้งได้ ขอโทษค่ะ</string>
+    <string name="quit_game">ออกจากเกม</string>
+    <!-- Login -->
+    <string name="login_title">เข้าสู่ระบบเกม</string>
+    <string name="login_name">บัญชีโบย่า</string>
+    <string name="login_pwd">รหัสผ่าน</string>
+    <string name="regist_name">ลงทะัเบียน</string>
+    <string name="regist_name_textview_tip">ลงทะัเบียน</string>
+    <string name="login">เข้าสู่ระบบ</string>
+    <string name="yj_login_textview_tip">เข้าระบบทันที</string>
+    <string name="no_login_textview_tip">91通行证登陆</string>
+    <string name="auto_login">เข้าระบบอัตโนมัติ</string>
+    <string name="remenber_pwd">จำไว้</string>
+    <string name="user_name_error">ขอโทษค่ะ ชื่อไม่ถูกค่ะ</string>
+    <string name="user_name_null">กรูณาใส่ชื่อเข้าไป</string>
+    <string name="user_pwd_null">กรูณาใส่รหัสผ่าน</string>
+    <string name="registing">กำลังลงทะเบียน</string>
+    <string name="regist_success">สมัครสำเร็จ</string>
+    <string name="regist_fail">สมัครไม่ได้ กรูณาสมัครใหม่</string>
+    <string name="net_state_bad">อินเทอร์เน็ตไม่มีเสถียรภาพ กรูณาลงอี่กครั้งค่ะ</string>
+    <string name="sex">เพศ</string>
+    <string name="sex_op_man">ชาย</string>
+    <string name="sex_op_woman">หญิง</string>
+    <string name="regist_code_not_understand">ไม่ชัด</string>
+    <string name="game_wait">กรุณารอรอบต่อไปค่ะ</string>
+    <string name="socket_connect_failed">อินเทอร์เน็ตเชื่อมต่อผิดปกติ
+		คลิกตกลงแล้วกลับล็อบบี้</string>
+    <string name="net_error">อินเทอร์เน็ตเชื่อมต่อผิดปกติ
+		กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ตได้หรือเปล่า</string>
+    <string name="net_data_error">ไม่ถูก</string>
+    <string name="login_fail">ไม่สามารถโหลดช้อมูลได้
+		กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ตหรือลงอีกครั้งค่ะ</string>
+    <string name="account_abnormal">บัญชีของท่านผิดปกติ กรุณาติดต่อฝ่ายบริการลูกค้าที่อีเมล์csth@boyaa.comค่ะ</string>
+    <string name="pay_network_fail">สถานะการเชื่อมต่ออินเตอร์เน็ตไม่ดี
+		กรุณาซื้อสินค้าหลังจากอินเตอร์เน็ตเชื่อมต่อได้ค่ะ</string>
+    <string name="QQ_login_fail"> โหลดข้อมูลไม่ได้ กรุณาลงอีกครั้ง</string>
+    <string name="QQ_token_fail">ข้อมูลหมดอายุแล้ว
+		หลังจากลบออกจากทะเบียนแล้วลงเข้าระบบอีกครั้งค่ะ</string>
+    <string name="QQ_get_Message">กำลังยืนยันข้อมูลบัญชี</string>
+    <string name="QQ_get_Socket_failed">ขอโทษค่ะ การโหลดข้อมูลไม่สำเร็จ
+		กรุณาเข้าระบบใหม่ค่ะ</string>
+    <!-- Regist -->
+    <string name="regist_title">สมัคร</string>
+    <string name="name_reg_error">กรุณาเขียนอีเมลไห้ถูกต้องค่ะ</string>
+    <string name="name_len_error">กรอกชื่อเล่น4-18 ตัวอักษรค่ะ</string>
+    <string name="msg_loss">โปรดกรอกแบบฟอร์มให้สมบูรณ์ค่ะ</string>
+    <string name="pwd_len_error">รหัสผ่านต้องเกิน6ตัวอักษร</string>
+    <string name="pwd_reg_error">ใส่รหัสผ่านงสองครั้งไม่ตรงกันค่ะ</string>
+    <string name="regist_email">อีเมล</string>
+    <string name="regist_email_tips">บัญชีโบย่า</string>
+    <string name="regist_nick">ชื่อเล่น</string>
+    <string name="regist_nick_tip">นายทุน</string>
+    <string name="regist_pwd">รหัสผ่าน</string>
+    <string name="regist_repwd">ยืนยันรหัสผ่าน</string>
+    <string name="regist_back_to_login">เข้าสู่ระบบ</string>
+    <string name="regist_regist">สมัคร</string>
+    <string name="regist_code">รหัสยืนยัน</string>
+    <string name="regist_code_error">รหัสยืนยันผิด</string>
+    <!-- market login -->
+    <string name="login_text_fb">บัญชีเฟสบุ๊คเข้าระบบ</string>
+    <string name="login_text_guest">บัญชีนักเที่ยวเข้าระบบ</string>
+    <string name="login_text_message">กำลังโหลดข้อมูล</string>
+    <!-- market logout -->
+    <string name="login_text_logout">ลองชื่อออก</string>
+    <!-- Function -->
+    <string name="menu_close">ปิดเมนู</string>
+    <string name="stand">ลุกขึ้น</string>
+    <string name="back_to_hall">กลับล็อบบี้</string>
+    <string name="vipmessage">บริการVIPยังเปิดใช้งานอยู่ค่ะ</string>
+    <string name="day">วัน</string>
+    <string name="EveryDayAcca">ขอแสดงความยินดี ได้รับรางวัลการเข้าสู่ระบบ</string>
+    <string name="yourAcca">ชิปของคุณที่มีอยู่</string>
+    <string name="getUsePropertyAcca">ขอแสดงความยินดีได้รับอุปกรณ์ฟรี</string>
+    <string name="service_loss">ขอโทษค่ะ บริการนี้ยังไม่ได้เปิดใช้งานค่ัะ</string>
+    <string name="hall">ล็อบบี้</string>
+    <string name="market">ห้าง</string>
+    <string name="setting">ติดตั้ง</string>
+    <string name="help">ช่วย</string>
+    <string name="logout">ออก</string>
+    <string name="no_center">ศูนย์ส่วนตัว </string>
+    <string name="userfeedback">ฟีดแบคing</string>
+    <string name="newcomerteach">การเรียนการสอน </string>
+    <string name="wenxing_thishi">คำเตือน：</string>
+    <string name="get_tablelist">กำลังโหลดรายชื่อห้องค่ะ</string>
+    <string name="init_loginroom">กำลังโหลด ...</string>
+    <string name="update_room">กำลังโหลด...</string>
+    <string name="gameresult_title">คำเตือนชนะและแพ้</string>
+    <string name="gameresult_zhiqian"> ชิปก่อน $ </string>
+    <string name="gameresult_xianzai">ชิปปัจจุบัน $ </string>
+    <string name="gameresult_win">ได้รับ: +$</string>
+    <string name="gameresult_lose">เสีย: -$</string>
+    <!-- Hall -->
+    <string name="list_parse_fail">โหลดรายชื่อห้องไม่สำเร็จ</string>
+    <string name="zstip_1">วันแรกที่คุณเข้าสู่ระบบ\nระบบจะส่งชิป</string>
+    <string name="zstip_2">ระบบจะส่งชิป</string>
+    <string name="game_loss">ขอโทษค่ะ ท่านล้มละลายแล้ว
+		ท่านสามารถเล่นต่อโดยซื้อชิปหรือได้รับรางวัลการเข้าสู่ระบบพรุ่งนี้ค่ะ</string>
+    <string name="back">กลับ</string>
+    <string name="yxc">ห้องเกม</string>
+    <string name="bsc">ห้องแข่งขัน</string>
+    <string name="ksks">เริ่มรวดเร็ว</string>
+    <string name="fj">ห้อง</string>
+    <string name="dxmz"> สมอล/บิ๊กบลายด์</string>
+    <string name="zwrs">คนที่เล่นอยู่</string>
+    <string name="zxxd">การซื้อต่ำสุด</string>
+    <string name="zdxd"> การซื้อสูงสุด</string>
+    <string name="xsc">ห้องมือใหม่</string>
+    <string name="cjc">ห้องระดับต้น</string>
+    <string name="zjc">ห้องระดับกลาง</string>
+    <string name="gjc">ห้องระดับสูง</string>
+    <string name="ksc">ห้องเร็ว</string>
+    <string name="common_game">ห้องเกม</string>
+    <string name="hidden_full_room">ซ่อนไว้ห้องเต็ม</string>
+    <string name="hidden_null_room">ซ่อนไว้ห้องว่าง</string>
+    <string name="alert_null__new_room">ห้องมือใหม่ไม่สามารถเปิดห้องเร็วได้</string>
+    <string name="alert_null_room">ขอโทษค่ะ การดำเนินการจะทำให้การแสดงผลที่ยังว่างอยู่</string>
+    <string name="csf">ค่าเข้าร่วม</string>
+    <string name="fwf">ค่าบริการ</string>
+    <string name="tts">แข่งแบบแพ้ตัดออก</string>
+    <string name="jjs">แข่งแบบเข้ารอบ</string>
+    <string name="status1">เตรียม</string>
+    <string name="status2">การเล่นเกม </string>
+    <!-- Setting -->
+    <string name="sound">ความสว่าง</string>
+    <string name="general">ใช้ปกติ</string>
+    <string name="yx">ความสว่าง</string>
+    <string name="yy">สั่น</string>
+    <string name="sdms">แบบประหยัดไฟ</string>
+    <!-- newComerTeach -->
+    <string name="next">ขั้นตอนหน้า</string>
+    <string name="pre">ขั้นตอนที่แล้ว</string>
+    <string name="rule">1กฎเกม </string>
+    <string name="rule1">2กฎเกมการเล่นเกม </string>
+    <string name="rule2">ฟูลเฮาส์ชนะ</string>
+    <string name="rule01">Welcome！แค่ 7 ขั้นตอน การเรียนเล่นไพ่เท็กซัสไม่ใช่\nปัญหา</string>
+    <string name="rule02"> เวลาเริ่มเล่นเกมส์ ผู้เล่นทุกคนจะได้ไพ่มือ 2 ใบ(เห็นได้เอง)</string>
+    <string name="rule03"> บนโต๊ะจะแจกไพ่ 5 ใบโดยแบ่งเป็น 3 รอบ(เห็นได้ผู้เล่นทุกคน) ก่อนแจกไพ่ทุกรอบ ท่านสามารถเลือก เก สู้ หรือ หมอบ</string>
+    <string name="rule04"> เมื่อการเกรอบสุดท้ายจบ  ผู้เล่นทุกคนแสดงไพ่มือเอง เลือก 5 ใบจากทั้งหมด 7 ใบประกอบเป็นไพ่ที่ดีที่สุดแล้ว\nค่อยเปรียนเทียบกัน</string>
+    <string name="rule05"> ตัวอย่าง เช่น รูปไพ่ดีที่สุดที่ท่านประกอบคือ\nสเตรท 6 7 8 9 10</string>
+    <string name="rule06"> รูปไพ่ดีที่สุดที่ผู้เล่น Fiona ประกอบคือตอง 8 8 8 10 A</string>
+    <string name="rule07"> รูปไพ่ดีที่สุดที่ผู้เล่น Bruce ประกอบคือ 2 คู่ 10 10 A A 9</string>
+    <string name="rule08"> เพราะว่าสเตรทใหญ่กว่าตอง ตองใหญ่กว่า 2 คู่ ดังนั้น รอบนี้ ท่านเอาชนะโดยมีไพ่สเตรท！</string>
+    <string name="rule09"> ยินดีที่ท่านได้รู้จักกติกาการเล่นไพ่เท็กซัสพื้นฐานค่ะ ระบบจะส่งให้ท่าน 0 ชิป ตอนนี้เริ่มกลายเป็นฮีโร่ไพ่เท็กซัสซิ ขอให้ท่านโชคดีๆและชนะชิปเยอะๆค่ะ！</string>
+    <string name="seeall">ไพ่หงาย เห็นได้ทุกคน  </string>
+
+    <string-array name="seeonly">
+        <item>ไพ่มือ</item>
+        <item>(เห็นได้เอง)</item>
+    </string-array>
+
+    <string name="waiting">กำลังรถ...</string>
+    <!-- Room -->
+    <string name="sendmoneyalert">ส่งชิปห่างกัน1นาที </string>
+    <string name="back_to_halllist">กลับรายชื่อห้อง</string>
+    <!-- chat -->
+    <string name="send">ส่ง</string>
+    <string name="am">[ตอนเช้า</string>
+    <string name="pm">[ตอนบ่าย</string>
+    <string name="b_button_text">อีโมดเบบี</string>
+    <string name="m_button_text">อีโมVIP</string>
+    <string name="q_button_text">อีโมQ</string>
+    <string name="common_language_menu">คำพูดบ่อย</string>
+    <string name="expression_menu">อีโม</string>
+    <string name="chat_story_menu">ประวัติการแชท</string>
+    <string name="common_language_1_man">สวัสดีครับ</string>
+    <string name="common_language_2_man">ใจเย็นๆ</string>
+    <string name="common_language_3_man">ฮวงจุ้ยไม่ดี เปลี่ยนที่นั่ง</string>
+    <string name="common_language_4_man">เก่งนะเนี่ย</string>
+    <string name="common_language_5_man">เทหน้าตักไปเลย</string>
+    <string name="common_language_6_man">ส่งชิปให้หน่อยสิ</string>
+    <string name="common_language_7_man">เร็วๆหน่อยสิ</string>
+    <string name="common_language_8_man">เล่นน้อยเกิน ไม่มันเลย</string>
+    <string name="common_language_9_man">ผ่านดีกว่า</string>
+    <string name="common_language_10_man">ตามเถอะ</string>
+    <string name="common_language_11_man">รอไม่ไหวแล้ว</string>
+    <string name="common_language_12_man">ฝีมือสุดยอดไปเลย</string>
+    <string name="common_language_13_man">มีใครกล้าตามหรือเปล่า</string>
+    <string name="common_language_14_man">ขอดูไพ่แล้วเกได้ไหม</string>
+    <string name="common_language_15_man">เน็ตหลุดอีกละ ซวยมากๆอะ</string>
+    <string name="common_language_1_woman">สวัสดีค่ะ</string>
+    <string name="common_language_2_woman">ใจเย็นๆ</string>
+    <string name="common_language_3_woman">ฮวงจุ้ยไม่ดี เปลี่ยนที่ดีกว่า</string>
+    <string name="common_language_4_woman">เก่งนะเนี่ย</string>
+    <string name="common_language_5_woman">เทหน้าตักไปเลย</string>
+    <string name="common_language_6_woman">ส่งชิปให้หน่อยสิคะ</string>
+    <string name="common_language_7_woman">เร็วๆหน่อยสิ</string>
+    <string name="common_language_8_woman">เล่นน้อยเกิน ไม่มันส์เลย</string>
+    <string name="common_language_9_woman">ผ่านดีกว่า</string>
+    <string name="common_language_10_woman">ตามเหอะ</string>
+    <string name="common_language_11_woman">รอไม่ไหวแล้ว</string>
+    <string name="common_language_12_woman">ฝีมือสุดยอดเลย</string>
+    <string name="common_language_13_woman">มีใครกล้าตามไหม</string>
+    <string name="common_language_14_woman">ขอดูไพ่แล้วเกได้ไหม</string>
+    <string name="common_language_15_woman">เน็ตหลุดอีกละ ซวยมากอะ</string>
+    <string name="no_chat_story">ไม่มีบันทึกการสนทนา</string>
+    <string name="no_services">ขอโทษค่ะ ยังไม่เปิดใช้บริการ~</string>
+    <string name="send_expression_error_1">ขอโทษค่ะ นั่งลงจึงสามารถใช้อีโมได้</string>
+    <string name="send_expression_error_2">ขอโทษค่ะ ชิปของคุณไม่พอค่ะ</string>
+    <string name="send_expression_error_3">ขอโทษค่ะ นั่งลงจึงสามารถส่ง sms</string>
+    <string name="send_expression_error_4">ขอโทษค่ะ หลังจากออกเกมแล้วไม่สามารถใช้อีโมได้</string>
+    <string name="send_expression_error_5">ขอโทษค่ะ หลังจากออกเกมแล้วไม่สามารถส่ง sms</string>
+    <string name="tip">คำเตือน</string>
+    <string name="quit_tip">กำลังออก...</string>
+    <string name="net_connect_fail_">网络连接失败，请重新登录！</string>
+    <string name="submit">ตกลง</string>
+    <string name="again">ดูอีกครั้ง</string>
+    <string name="backtohall">กลับล็อบบี้</string>
+    <string name="init_fail">โหลดข้อมูลไม่ได้
+		กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ตของคุณเชื่อมต่อได้หรือเปล่า </string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="reload">รีเฟรชหน้าจอ</string>
+    <string name="chipin_fail">เดิมพันไม่สำเร็จ</string>
+    <string name="net_conflict">ขอโทษค่ะ อินเตอร์เน็ตไม่ดี
+		บัญชีของคุณเข้าสู่ระบบที่อื่น</string>
+    <string name="findseat_fail">ขอโทษค่ะ ที่นั่งนี้มีคนแล้ว กรุณาเลือกที่นั่งอื่น ๆ </string>
+    <string name="net_timeout">ขอโทษค่ะ อินเทอร์เน็ตไม่มีเสถียรภาพ กรูณาลงอีกครั้ง </string>
+    <string name="exception">ขอโทษค่ะ โปรแกรมจะปิดแล้ว
+		คุณสามาีรถเริ่มใำหม่ได้ในภายหลังค่ะ</string>
+    <string name="sys_to_user_chip">สู้ๆ ระบบจะส่งคุณ </string>
+    <string name="sys_to_user_other">ขอโทษค่ะ คุณไม่มีเงินแล้ว
+		คูณสามารถเล่นต่อโดยซื้อชิปโบย่าหรือได้รับรางวัลการเข้าสู่ระบบพรุ่งนี้</string>
+    <string name="room_win_tips">ยินดี คุณชนะแล้ว</string>
+    <string name="room_login_failed_message1">ขอโทษค่ะ เนื่องจากคุณไม่ได้ดำเนินงานตั้งนาน กรุณาเข้าสู่ระบบใหม่หรือติดต่อฝ่ายบริการลูกค้าค่ะ </string>
+    <string name="room_login_failed_message2">กรูณาโทษค่ะฐานข้อมูลไม่สามารถเชื่อมต่อได้
+		กรุณาลองอีกครั้ง หรือติดต่อฝ่ายบริการลูกค้าค่ะ</string>
+    <string name="room_login_failed_message3">ขอโทษค่ะ ไม่มีโต๊ะนี้ค่ะ กรุณาลองอีกครั้งค่ะ</string>
+    <string name="room_login_failed_message4">ขอโทษค่ะ ไม่มีโต๊ะนี้ค่ะ กรุณาลองอีกครั้งค่ะ</string>
+    <string name="room_login_failed_message5">ขอโทษค่ะ คนเต็มโต๊ะเลย กรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_login_failed_message6">ขอโทษค่ะ คุณถูกเชิญออกแล้ว กรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_login_failed_message7">ขอโทษค่ะ บัญชีของคุณผิดปกติค่ะ เข้าระบบไม่ได้ค่ะ</string>
+    <string name="room_login_failed_message8">ขอโทษค่ะ
+		IPเดียวกันไม่สามารถเข้าห้องเดียวค่ะกรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_login_failed_message9">เซิร์ฟเวอร์อัพเกรดเสร็จแล้ว
+		กรุณากลับล็อบบี้และเข้าห้องใหม่</string>
+    <string name="room_cannot_seat">ขอโทษค่ะ ชิปของคุณมากกว่า$6000
+		ไปเล่นที่ห้องระดับต้นหรือห้องที่ระดับ\nชั้นสูง</string>
+    <string name="room_login_failed_messagex">ขอโทษค่ะ การเชื่อมต่ออินเทอร์เน็ตไม่ได้ค่ะ กรุณาลองอีกครั้งหรือติดต่อฝ่ายบริการลูกค้าค่ะ</string>
+    <string name="room_sit_failed_message1">ขอโทษค่ะ คนเต็มโต๊ะเลย</string>
+    <string name="room_sit_failed_message2">ขอโทษค่ะ
+		IPเดียวกันไม่สามารถเข้าห้องเดียวค่ะกรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_sit_failed_message3">ขอโทษค่ะ ชิปของคุณไม่พอ กรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_sit_failed_message4">ขอโทษค่ะ โต็ะไม่มีที่หว่างค่ะ กรุณาเลือกห้องใหม่ค่ะ</string>
+    <string name="room_sit_failed_message5">ขอโทษค่ะ มีคนนั่งอยู่แล้ว กรุณาเปลี่ยนที่นั่งค่ะ</string>
+    <string name="room_sit_failed_message6">ท่านเป็นคนรวย ควรเล่นไพ่ในห้องระดับสูงกว่านี้นะคะ</string>
+    <string name="room_money_less">ชิปไม่พอ </string>
+    <string name="room_money_less2">ขอโทษค่ะ ชิปไม่พอ ไปเล่นที่ห้องบลายด์ต่ำ</string>
+    <string name="room_less_money_to_market"> เข้าห้าง</string>
+    <string name="room_have_money">เงินปัจจุบัน</string>
+    <!-- Entity -->
+    <string name="sitStr">นั่ง</string>
+    <string name="standUp">ลูกขึ้น</string>
+    <string name="money_flow"> เงินเหลือมากกว่า5000 สามาุุรถเปลี่ยนที่อื่นได้</string>
+    <string name="default_name"> ผู้เล่นใหม่</string>
+    <string name="user_state_chiping">เดิมพันอยู่</string>
+    <string name="user_fold">หมอบ  </string>
+    <string name="user_goon">สู้</string>
+    <string name="user_look">เช็ค </string>
+    <string name="user_add">เก</string>
+    <string name="user_allin">เทหน้าตัก</string>
+    <string name="user_win"> ชนะ</string>
+    <string name="user_zp">ไพ่สูง</string>
+    <string name="user_gp">ไพ่สูง</string>
+    <string name="user_dz">1คู่</string>
+    <string name="user_ld">2คู่ </string>
+    <string name="user_st">ตอง</string>
+    <string name="user_sz">สเตรท</string>
+    <string name="user_th">ฟลัช</string>
+    <string name="user_hl">ฟูลเฮาส์</string>
+    <string name="user_sty">โฟร์การ์ด</string>
+    <string name="user_ths">สเตรทฟลัช</string>
+    <string name="user_hjths">รอยัลสเตรทฟลัช</string>
+    <string name="user_gp_win">ไพ่สูงชนะ</string>
+    <string name="user_dz_win">1คู่ชนะ</string>
+    <string name="user_ld_win">2คู่ชนะ</string>
+    <string name="user_st_win">ตองชนะ</string>
+    <string name="user_sz_win">สเตรทชนะ</string>
+    <string name="user_th_win">ฟลัชชนะ</string>
+    <string name="user_hl_win">ฟูลเฮาส์ ชนะ</string>
+    <string name="user_sty_win">โฟร์การ์ดชนะ</string>
+    <string name="user_ths_win">สเตรทฟลัชชนะ</string>
+    <string name="user_hjths_win">รอยัลสเตรทฟลัชชนะ</string>
+    <string name="user_self_next">รอรอบหน้า</string>
+    <string name="user_next">อบหน้า</string>
+    <string name="user_bigblind">บิ๊กบลายด์</string>
+    <string name="user_smallblind">สมอลบลายด์</string>
+    <string name="user_out">ออก</string>
+    <string name="buy_chips_continue">เกต่อไป</string>
+    <string name="buy_chips_cancle">ยกเลิกเก</string>
+    <!-- ChipinStr -->
+    <string name="auto_look">เช็คอัตโนมัติ</string>
+    <string name="look_fold">ผ่านหรือหมอบ </string>
+    <string name="goon_every">สู้ทุกรอบ</string>
+    <string name="fold">หมอบ </string>
+    <string name="goon">สู้</string>
+    <string name="add">เก</string>
+    <string name="look">เช็ค</string>
+    <string name="allin">เทหน้าตัก</string>
+    <!-- UserInfoBox -->
+    <string name="userinfo_message">ข้อมูล</string>
+    <string name="userinfo_name">ชื่อเล่น:</string>
+    <string name="userinfo_sex">เพศ:</string>
+    <string name="userinfo_property">สินทรัพย์:</string>
+    <string name="userinfo_level">ลำดับ:</string>
+    <string name="userinfo_city">เมือง :</string>
+    <string name="userinfo_sendchip">ส่งชิป</string>
+    <string name="userinfo_cannotsend">ส่งไม่ได้</string>
+    <string name="userinfo_send">ส่ง$</string>
+    <string name="userinfo_secret">ความลับ</string>
+    <string name="userinfo_playtohave">ชนะ๑รอบได้ทันที</string>
+    <string name="userinfo_andfriend">เพิ่มเพื่อน</string>
+    <string name="userinfo_alertphoto">แจ้งการ</string>
+    <string name="userinfo_tongji">คำนวณ</string>
+    <string name="userinfo_paiju">เล่นไพ่อยู่ :%1$d รอบ</string>
+    <string name="userinfo_shengfu">ชนะและแพ้ :%1$d ชนะ/%2$d แพ้</string>
+    <string name="userinfo_shenglv">อัตราการชนะ: %1$s อัตราการชนะ</string>
+    <string name="userinfo_mostwin"> ชนะเยอะสุด :$</string>
+
+    <!-- ************************************************************ -->
+    <string name="use_prop">ใช้ไอเทม</string>
+    <string name="userinfo_mostlarge">ไพ่ในมือใหญ่สุด:</string>
+    <string name="userinfo_card_name">ชื่ออุปกรณ์ :บัตรเชิญออก</string>
+    <string name="userinfo_card_num">ยังเหลือ : %1$d ใบ </string>
+    <string name="userinfo_card_desc">การใช้อุปกรณ์ : ใช้ในห้อง เชิญออก  โวทฺ  ถ้าจำนวนคนโวทฺเห็นด้วยมากกว่าครึ่งหนึ่ง เชิญออก ได้</string>
+    <string name="userinfo_photowarn">คุณจะแจ้งความว่ารูปภาพของคนนี้ไม่ตรงกับมาตรฐานแห่งชาติที่เกี่ยวข้องหรือไม่</string>
+    <string name="userinfo_phototips">(คำเตือน เพื่อสภาพแวดล้อมการเล่นเกมของคุณ กรุณาอย่าส่งรายงานแบบไม่        ขอบคุณค่ะ)</string>
+    <string name="room_loadding">กำลังเข้าห้องอยู่ กรุณารอสักครู่ค่ะ...</string>
+    <string name="roomusers_loadding">กำลังโหลดข้อมูลอยู๋ กรุณารอสักครู่ค่ะ...</string>
+    <string name="logout_confirm">ตกลงออกบัญชีนี้ไหมคะ</string>
+    <string name="room_logout_confirm">ตกลงออกจากห้อง เงินเดิมพันของท่านจะถูกหักออก</string>
+    <string name="exit_game">ตกลงออกเกมปัจจุบันนี้</string>
+    <string name="continue_watch">ดูอยู่ข้างๆ</string>
+    <string name="buy_sit">ซื้อนั่งลง</string>
+    <string name="min_buy">การสั่งซื้อตำสุด</string>
+    <string name="max_buy">การสั่งซื้เยอะสุด</string>
+    <!-- Market -->
+    <string name="buy">ซื้อ</string>
+    <string name="tool_num_tip">จำนวน</string>
+    <string name="price">ราคา   </string>
+    <string name="total">ราคาทั้งหมด  </string>
+    <string name="tool_buy_less">ถั่ว91ของคุณไม่พอ ซื้อไม่ได้</string>
+    <string name="use">ใช้</string>
+    <string name="tool_pay_tip">ขอโทษค่ะ ยังใช้บริการนี้ไม่ได้ เราจะเพิ่มเร็ว ๆ นี้</string>
+    <string name="tool_no_buy">ขอโทษค่ะ ถั่ว91ของตุณไม่พอ </string>
+    <string name="market_buy_notice1">ซื้อแล้ว%1$s อุปกรณ์ต้องใช้จึงสามารถทำงานได้ กรุณาเลือก</string>
+    <string name="market_buy_notice2">ซื้อแล้ว%1$s ยินดีต้อนรับเข้ามาใหม่</string>
+    <!-- help -->
+    <string name="help_subject">ธีม</string>
+    <string name="basic_play">วิธีการเล่นพื้นฐาน</string>
+    <string name="bottom_card">ไพ่โฮล</string>
+    <string name="play_A">ผู้เล่นA</string>
+    <string name="play_B">ผู้เล่นB</string>
+    <string name="public_card">หงาย</string>
+    <string name="adult_card">มือ</string>
+    <string name="game_rule">กฎเกม</string>
+    <string name="game_rule_describle"> เลือกไพ่5ใบที่ใหญ่สุดจากไพ่หงายและไพ่โฮล ได้เป็นไพ่1มือ เปรียบเทียบกับผู้เล่นอื่นๆ ผู้เล่นมีไพ่ที่ใหญ่สุดจะชนะ   \n
+ในรูปภาพข้างบน ผู้เล่นAมีตอง ผู้เล่นBมี1คู่ ตามกฎระเบียบเกมตองใหญ่กว่า1
+คู่  ผู้เล่นAชนะ </string>
+    <string name="award_distribution">แบ่งปันรางวัล</string>
+    <string name="award_distribution_title">การอธิบายการแบ่งปันเงินกองกลาง</string>
+    <string name="award_distribution_describle">ไพ่ทุกมือต้องประกอบด้วยไพ่5ใบ ถ้าผู้เล่น2คนมีไพ่แบบเดียวกัน เช่นทั้ง2คนมี“A”1คู่ ก็เปรียบเทียบไพ่ใบอื่นๆ</string>
+    <string name="award">เงินกองกลาง  </string>
+    <string name="award_describle">เงินเกมทั้งหมดที่ผู้เล่นเอาออก  </string>
+    <string name="award_join">เข้าร่วมเงินกองกลาง   </string>
+    <string name="award_join_describle">ผู้เล่นเอาเงินเกมออกมาเพื่อเล่นเกม  </string>
+    <string name="award_subjectandside">เงินกองกลางเอกและเงินกองกลางข้าง  </string>
+    <string name="award_subjectandside_describle_1">การเล่นทุกรอบอาจมีเงินกองกลางเอกและเงินกองกลางข้าง เมื่อคนหนึ่งเทหน้าตัก  </string>
+    <string name="award_subjectandside_describle_2">เงินกองกลางเอกประกอบด้วยเดิมพันของคนเทหน้าตักและคนอื่นๆ เงินกองกลางข้างประกอบด้วยส่วนเกินจากเทหน้าตัก ถ้ามีหลายคนเทหน้าตัก จะมีเงินกองกลางข้างหลายๆ  </string>
+    <string name="distribution_rule">กฎระเบียบการแบ่งปัน  </string>
+    <string name="distribution_describle">1.ผู้ที่เข้าร่วมเงินกองกลางจึงสามารถแบ่งปันรางวัลได้\n2รางวัลสำหรับผู้ที่มีไพ่แบบใหญ่ดีที่สุดในเกมทุกรอบ\n3การแบ่งปันเริ่มจากเงินกองกลางข้างๆ แบ่งตามเวลาสร้างเงินกองกลาง </string>
+    <string name="award_distribution_describle_1"> ได้ไพ่โฮล ผู้เล่น2วางเดิมพัน1000 ผู้เล่น4กับผู้เล่น5เลือกสู้  </string>
+    <string name="award_distribution_describle_2">เปิดไพ่ฟล็อป ผู้เล่น3วางเดิมพัน800 ผู้เล่น4กับผู้เล่น5เลือกสู้</string>
+    <string name="award_distribution_describle_3">เปิดไพ่เทิร์น ผู้เล่น4วางเดิมพัน500 ผู้เล่น5เลือกสู้</string>
+    <string name="award_distribution_describle_4">เวลาเปิดไพ่ ผู้เล่น2 ผู้เล่น3 ผู้เล่น4เทหน้าตัก ผู้เล่น5วางเดิมพัน2300 เงินกองกลางเอกมีเดิมพัน5000ซึ่งออกจากผู็เล่น5คน ผู้ที่มีไพ่ใหญ่สุดผู้เล่น1ได้เงินกองกลางเอก</string>
+    <string name="award_subject">ผู้เ่ล่น1ชนะได้รับเงินกองกลางเอก</string>
+    <string name="award_side_1">ผู้เล่น3ได้เงินกองกลางข้างที่หนึ่ง</string>
+    <string name="award_side_2">ผู้เล่น4ได้เงินกองกลางข้างที่2</string>
+    <string name="award_distribution_describle_5">		ผู้เล่น3 ผู้เล่น4และผู้เล่น5 วางเดิมพันคนละ800สร้างเงินกองกลางข้าง ที่1โดยมีเงินเกมทั้งหมด2400 ผู็้ชนะที่ได้รับเงินกองกลางนี้ต้องมาจาก3คนนี้ ผู้ชนะคือผู้เล่น3ได้รับเงินเกม2400 ผู้เล่น4กับผู้เล่น5ออกเงินเกมคนละ500สร้างเงินกองกลางโดยมีเงินเกม1000 ผู้ชนะต้องเป็นคนที่มีไพ่ใหญ่ดีที่สุดใน2คนนี้</string>
+    <string name="game_process">กระบวนเกม</string>
+    <string name="big_blind">บิ๊กบลายด์</string>
+    <string name="small_blind">สมอลบลายด์</string>
+    <string name="game_process_describle">รอบที่1 ผู้เล่นทุกท่านได้รับไพ่ที่ไม่เปิดเผย2ใบ\nวางเดมพันเริ่มจากคนที่อยู่ซ้ายบิ๊กบลายด์ หากไม่มีใครเก จะเสร็จที่เจ้ามือ\nหากมีคนเก จะเสร็จที่คนที่1ซึ่งอยู่ขาวคนเก</string>
+    <string name="flop">ฟล็อป</string>
+    <string name="flop_describle">รอบที่2 ออกไพ่ฟล็อป\nวางเดมพันเริ่มจากสมอลบลายด์ หากไม่มีใครเก จะเสร็จที่เจ้ามือ\nหากมีคนเก จะเสร็จที่คนที่1ซึ่งอยู่ขาวคนเก</string>
+    <string name="turn_card">เทิร์น</string>
+    <string name="turn_card_describle">รอบที่3 ออกไพ่เทิร์น(วิธีเล่นเหมือนรอบที่แล้ว แต่ว่าหน้าของท่านอาจจะเปลี่ยนไป สู้ๆนะจ๊า)</string>
+    <string name="river_card">ริเวอร์</string>
+    <string name="river_card_describle">รอบที่4 ออกไพ่ริเวอร์ (ตอนนี้หน้าไพ่ตกลงแล้ว จะได้ทราบใครเป็นผู้ชนะ)</string>
+    <string name="compare_card_rule">กฎเกม</string>
+    <string name="compare_card_rule_describle">		เปรียบเทียบไพ่ ไม่เกี่ยวดอก(ถ้ามี1คู่ คู่ใหญ่จะชนะ ถ้ามีคู่ตรงกัน ก็เปรียบเทียบไพ่ที่เหลือ ไพ่ใหญ่ชนะ)ถ้าทุกคนมีไพ่ตรงกัน จะแบ่งปันเงินกองกลางเฉลี่ย</string>
+    <string name="compare_card_order">รอยัลสเตรทฟลัช→สเตรทฟลัช→โฟร์การ์ด→ฟูลเฮาส์→ฟลัช→สเตรท→ตอง→2 คู่→1 คู่→ไพ่สูง</string>
+    <string name="royal_flush">1.รอยัลสเตรทฟลัช</string>
+    <string name="royal_flush_describle">เป็นมือที่มีดอกเดียวกันสูงสุด ประกอบด้วยA K Q.J และ 10</string>
+    <string name="straight_flush">2.สเตรทฟลัช</string>
+    <string name="straight_flush_describle">(ประกอบด้วย สเตรท และ ฟลัช)</string>
+    <string name="four_of_a_Kind">3.โฟร์การ์ด  </string>
+    <string name="four_of_a_Kind_describle">(ไพ่ 4 ใบที่มีแต้มเท่ากัน)</string>
+    <string name="full_house">4.ฟูลเฮาส์ </string>
+    <string name="full_house_describle">(ตองและคู่ นับตองก่อน)</string>
+    <string name="flush">5.ฟลัช </string>
+    <string name="flush_describle">(ไพ่ 5 ใบที่มีดอกเดียวกัน)</string>
+    <string name="straight">6.สเตรท </string>
+    <string name="straight_describle">(ไพ่ 5 ใบดอกใดก็ได้ที่มีแต้มเรียงลำดับต่อกัน)</string>
+    <string name="three_of_a_Kind">7.ตอง</string>
+    <string name="three_of_a_Kind_describle">(ไพ่ 3 ใบที่มีแต้มเท่ากัน)</string>
+    <string name="two_pairs">8.2 คู่</string>
+    <string name="two_pairs_describle">(คู่ 2 ชุด)</string>
+    <string name="one_pair">9.1คู่</string>
+    <string name="highcard">10.ไพ่สูง </string>
+    <string name="competition_notes">กฎการแข่งขัน </string>
+    <string name="competition_notes_title">กฎเกมแข่งขันไพ่เท็กซัสระบุ9คน </string>
+    <string name="competition_notes_describle">         1,เมื่อนั่งลงผู้เล่นทุกท่านต้องวางเดิมพันประจำมาเป็นเงินกองกลาง นั่งลงแล้วระบบจะให้ชิปส์1000แก่ทุกท่าน
+        \n2เกมจะเริ่มเมื่อโต๊ะนี้ครบ9คน(ตอนเล่นอยู่ไม่สามารถเข้าร่วมเกมได้) 
+        \n3บลายด์จะเพิ่ม5นาทีละหนึ่งครั้ง ยืนขึ้นหรือกลับล็อบบี้ตอนเล่นเกมหมายถึงออกจากเกมแล้ว เงินเกมและค่าร่วมเกมจะไม่คืนให้นะคะ
+        \n4ผู้เล่นที่หมดเงินเกมจะต้องออกจากการแข่งขัน ผู้เล่นที่ออกที่สุดท้าย3คนจะได้แบ่งปันเงินกองกลางพร้อมกัน อัตราคือ
+        50％ 30％ 20％ค่ะ </string>
+    <string name="ui_introduction">การแนะนำหน้าจอ</string>
+    <string name="ui_introduction_1">เมื่อนิ้วจิ้มนรูปภาพคน ข้ิอมูลสวนตัวจะแสดงออกมา</string>
+    <string name="ui_introduction_2">ผู้เล่นทุกท่านต้องเสร็จภายใน20วินาที\nถ้าหมดเวลาแล้วผู้เล่นยังไม่เลือกจะหมายถึงทิ้งโดยอัตโนมัติ</string>
+    <string name="ui_introduction_3">เครื่องหมายเจ้ามือ</string>
+    <string name="ui_introduction_4">หากไม่แน่ใจจะเลือกผ่านได้เลย \n ไม่ต้องเสียเงินเกม</string>
+    <string name="ui_introduction_5">ไพ่ไม่ดีก็เลือกหมอบได้เลยค่ะ</string>
+    <string name="ui_introduction_6">ถ้าคุณมั่นใจชนะแน่นอน ทำไมไม่เทหน้าตัก</string>
+    <string name="ui_introduction_7">เลือกเช็คโดยอัตโนมัติรอบต่อไป</string>
+    <string name="ui_introduction_8">เลือกทิ้งโดยอัตโนมัติรอบต่อไป </string>
+    <string name="ui_introduction_9">ถ้าไม่มีใครเพิ่ม เลือกเช็คหรือทิ้ง </string>
+    <string name="ui_introduction_10">ถ้าคุณมีไพ่สูงดี สู้เลยค่ะ  </string>
+    <string name="ui_introduction_11">ถ้าคุณมีไพ่สูงดีอย่างยิ่ง เกเลยค่ะ</string>
+    <string name="ui_introduction_12">สู้ 886</string>
+    <string name="ui_introduction_13">เก 886</string>
+    <string name="ui_introduction_14">ผ่านหรือหมอบ</string>
+    <string name="ui_introduction_15">หมอบอัตโนมัติ</string>
+    <string name="noun_explained">อภิธานศัพท์</string>
+    <string name="noun_explained_1"> ฟล็อป</string>
+    <string name="noun_explained_2"> เทิร์น</string>
+    <string name="noun_explained_3">ริเวอร์</string>
+    <string name="noun_explained_4">ไพ่โฮล:</string>
+    <string name="noun_explained_4_describle">ไพ่ 2 ใบแรกที่แจกให้ท่านโดยคว่ำหน้าลง</string>
+    <string name="noun_explained_5">รอบไพ่โฮล:</string>
+    <string name="noun_explained_5_describle">รอบที่วางเดิมพันทุกคนหลังจากได้ไพ่โฮล</string>
+    <string name="noun_explained_6">副牌圈:</string>
+    <string name="noun_explained_6_describle">同时发出三张公共牌后的押注圈。</string>
+    <string name="noun_explained_7">รอบไพ่เทิร์น  </string>
+    <string name="noun_explained_7_describle">รอบที่วางเดิมพันหลังจากเปิดไพ่หงายใบที่4</string>
+    <string name="noun_explained_8">รอบไพ่ริเวอร์  </string>
+    <string name="noun_explained_8_describle">รอบไพ่ริเวอร์</string>
+    <string name="noun_explained_9">บลายด์คืออะไร </string>
+    <string name="noun_explained_9_describle">ผู้เล่นที่อยู่ทางซ้ายมือของเจ้ามือวางสมอลบลายด์ (เดิมพันบังคับ) ซึ่งเท่า กับครึ่งหนึ่ง ของเดิมพันจำนวนน้อยที่สุด ผู้เล่นที่อยู่ทางซ้ายมือของเขาจะวางบิ๊กบลายด์ ซึ่งมีเท่ากับเงินเดิมพันที่น้อยที่สุด</string>
+    <string name="noun_explained_10">บลายด์ต้องวางเงินเดิมพันเท่าไร</string>
+    <string name="noun_explained_10_describle">ผู้เล่นที่อยู่ทางซ้ายมือของเจ้ามือวางสมอลบลายด์ (เดิมพันบังคับ) ซึ่งเท่า กับครึ่งหนึ่ง ของเดิมพันจำนวนน้อยที่สุด ผู้เล่นที่อยู่ทางซ้ายมือของเขาจะ วางบิ๊กบลายด์ ซึ่งมีเท่ากับเงินเดิมพันที่น้อยที่สุด</string>
+    <string name="game_example">ตัวอย่างเกม</string>
+    <string name="play1_card">ไพ่ดีสุดของผู้เล่น1คือ A 10 10 3 3</string>
+    <string name="play2_card">ไพ่ดีสุดของผู้เล่น2คือ A J J 3 3</string>
+    <string name="play3_card">ไพ่ดีสุดของผู้เล่น3คือ A K Q 3 3</string>
+    <string name="play4_card">ไพ่ดีสุดของผู้เล่น4คือ A Q J 3 3</string>
+    <string name="game_example_result">		ใครเป็นผู้ชนะ คุณดูออกไหมคะ ตามกฎเกมไพ่สองคู่ใหญ่กว่าหนึ่งคู่ ดังนั้นผู้เล่น3กับผู้เล่น4ถูกตัดออกแล้ว ผู้เล่น2มีสองคู่เป็นผู้ชนะ</string>
+    <!-- market -->
+    <string name="props_market">ซื้อชิปโบย่า</string>
+    <string name="buy_by_boyabi">ห้าง</string>
+    <string name="props_using">อุปกรณ์การใช้งาน</string>
+    <string name="props_used">อุปกรณ์ไม่ได้ใช้</string>
+    <string name="no_tool_tip">คุณยังไม่มีอุปกรณ์</string>
+    <string name="tool_pay_yxb">ชิป</string>
+    <string name="tool_pay_byb">ถั่ว91</string>
+    <string name="tool_using_last">วันหมดอายุ   </string>
+    <string name="tool_card_num">จำนวน  </string>
+    <string name="tool_buy_success">ซื้อสำร็จ</string>
+    <string name="tool_buy_fail">ซื้อไม่สำเร็จ</string>
+    <string name="market_title">ห้าง</string>
+    <string name="market_vip_btntx">การ์ดVIP</string>
+    <string name="market_prop_btntx">ไอเทม</string>
+    <string name="market_my_goods_btntx">สินค้าของฉัน</string>
+    <string name="market_buy_details_btntx">รายละเอียด การสั่งซื้อ</string>
+    <string name="market_vip_clew">ซื้อการ์ดVIPจะสามารถอัพเกรดเป็นสมาชิกอัตโนมัติ</string>
+    <string name="market_prop_clew">สามารถใช้อุปกรณ์เมื่อคลิกอยู่ในตาราง“สินค้าของฉัน”หลังจากซิ้ออุปรณ์สำเร็จแล้ว</string>
+    <string name="market_vip_buy_btntx">ซื้อ</string>
+    <string name="market_goods_detail_name">รายละเอียด</string>
+    <string name="market_buy_details_num">จำนวน:</string>
+    <string name="market_buy_details_time">เวลาซื้อ:</string>
+    <string name="market_buy_details_money">จำนวนเงินของ</string>
+    <string name="market_boyaa_money">เงินโบย่า</string>
+    <string name="market_91_money">(ถั่ว91)</string>
+    <string name="market_gfan_money">(机锋券)</string>
+    <string name="market_paypal_money">(เงินโบย่า)</string>
+    <string name="market_unuse">ยังไม่ใช้</string>
+    <string name="market_useing">ใช้แล้ว</string>
+    <string name="market_null_data">ยังไม่มีข้อมูล</string>
+    <string name="market_geting_data">กำลังโหลดข้อมูล...</string>
+    <string name="market_logining">กำหลังเข้าห้าง...</string>
+    <string name="market_buy_faled">ซื้อไม่สำเร็จ</string>
+    <string name="market_buy_success_vip">ยินดี ซื้อการ์ดVIP</string>
+    <string name="market_buy_success_press">ยินดีด้วยค่ะ ซื้อไอเทมสำเร็จ</string>
+    <string name="market_buy_directness_use">สินค้าได้ใช้ทันที</string>
+    <string name="market_buy_success_prop">ยินดี ซื้อสินค้าสำเร็จ \Nอุปรณ์เพชรต้องคลิกเริ่มเปิดใช้</string>
+    <string name="market_buy_loging">กำลังส่งข้อมูล...</string>
+    <string name="market_buy_result">กำลังอัพเดท...</string>
+    <string name="market_use_faled">ใช้อุปกรณ์ไม่ได้ กรุณารีเฟรชหรือส่งฟีดแปกมาค่ะ</string>
+    <string name="market_no_tool_tip">คุณยังไม่มีอุปกรณ์</string>
+    <string name="market_page_init_failed">ขอโทษค่ะ โหลดหน้าจอเติมเงินไม่ได้ กรุณาลองอีกคั้ง</string>
+    <string name="market_sure_buy_goods">ซื้อสินค้าจะหัดออกชิปโบย่าของคุณค่ะ ตกลงการซื้อ</string>
+    <string name="market_sure_buy_goods_vip">ซื้อสินค้าจะหัดออกชิปโบย่าของคุณค่ะ ตกลงการซื้อ</string>
+    <string name="market_sure_enter_recharge_page">ขอโทษค่ะ ชิปโบย่าไม่พอ กรุณาเข้าไปหน้าจอเติมเงินค่ะ</string>
+    <string name="market_room_boyaacache_less">ขอโทษค่ะ ชิปโบย่าไม่พอ กรุณาเข้าห้างเติมเงินค่ะ</string>
+    <string name="market_no_91_user">อินเทอร์เน็ตมีการเชื่อมต่อผิดพลาด กรุณาลองอีกครั้ง</string>
+    <string name="market_buy_failed">ขอโทษค่ะ ซื้อไม่ได้</string>
+    <string name="market_buy_cancel">ยกเลิกการซื้อ</string>
+    <string name="recharge_title">เติมเงิน</string>
+    <string name="Paypage_title">จ่าย</string>
+    <string name="close_recharge">ปิด</string>
+    <string name="market_unuser">ใช้ภายหลัง</string>
+    <string name="out_time_failed">เกินเวลา</string>
+    <string name="need_confirm">ต้องยืนยัน</string>
+    <string name="boyaa_cach_less">เงินเหลือไม่พอ</string>
+    <string name="pay_failed">ไม่สามารถชำระเงินได้</string>
+    <string name="order_id">IDการสั่งซื้อ</string>
+    <string name="order_time">เวลาการสั่งซื้อ</string>
+    <string name="user_order_message">ข้อมูลการสั่งซื้อปัจจุบัน: \n</string>
+    <string name="order_prodect_name">ชื่อสินค้า</string>
+    <string name="order_status">สถานะการสั่งซื้อ</string>
+    <string name="support_to_us">หากคุณมีข้อสงสัยกรุณาติดต่อหรือส่งฟีดแปกมา</string>
+    <string name="order_detail_look">ข้อมูลการสั่งซื้อที่เหลือกรุณาไปดูใบสั่งซื้อล้มเหลวที่ห้าง</string>
+    <string name="load_recharge_page">กำลังโหลด...</string>
+    <string name="load_recharge_page_failed">ขอโทษค่ะ โหลดไม่ได้  กรุณาลองอีกครั้ง</string>
+    <string name="comfirm_cash_money">กำลังเช็คเงินเหลือของผู้เล่น...</string>
+    <!-- market  qq -->
+    <string name="market_sendgoods">กำลังกรุณาส่งสินค้า..</string>
+    <string name="config_net_state">กำลังตรวดสถานะอินเทอร์เน็ต...</string>
+    <string name="page_badfor_recharge">ขอโทษค่ะ อินเทอร์เน็ตไม่ดี กรุณาเดิมเงินอีกครั้ง</string>
+    <string name="net_badfor_recharge">ขอโทษค่ะ อินเทอร์เน็ตไม่ดี กรุณาเดิมเงินอีกครั้ง</string>
+    <string name="meney_less_torecharge">ชิปโบย่าไม่พอ ซื้อไม่ได้ ต้องการเข้าหน้าจอเติมเงินไหม</string>
+    <string name="market_buy_tips">กรุณาเติมชิปQ หลังจากใช้ชิปQซื้อชิปโบย่าแล้ว จึงสามารถใช้ชิปโบย่าซื้ออุปกรณ์ในห้าง</string>
+    <!-- match -->
+    <string name="back_to_buypage">กลับการแข่งขัน</string>
+    <string name="raise_blind">บลายด์ต่อไปจะเป็น</string>
+    <string name="match_user_notice">ปัจจุบันนี้ยังมีผู้เล่น%1$d  คุณเป็นอันดับที่%2$d  สู้ๆนะจ๊า</string>
+    <string name="need_players_1">ยังขาด</string>
+    <string name="need_players_2">เริ่มการแข่งขัน</string>
+    <string name="match_result_lose_1">คุณชนะได้อันดับในการแข่งขันรอบนี้ค่ะ</string>
+    <string name="match_result_lose_2"> อันดับ</string>
+    <string name="match_result_lose_3">คราวหน้าต้องสู้ๆนะ</string>
+    <string name="match_result_win_1">คุณเป็นอันดับที่</string>
+    <string name="match_result_win_2"> อันดับ</string>
+    <string name="match_result_win_3">ชนะ</string>
+    <string name="match_result_win_4">ชิป</string>
+    <string name="match_result_win_5">จิ้มหน้าจอออกจากเกม</string>
+    <string name="chips">ชิป:+</string>
+    <string name="win_point">คะแนนรอบนี้:</string>
+    <string name="total_point">คะแนนทั้งหมด:</string>
+    <string name="match_sitdown_1">รางวัล</string>
+    <string name="match_sitdown_2"> ชิป</string>
+    <string name="match_sitdown_6">ผู้เล่นที่แพ้ก่อนจะถูกหัดคะแนน</string>
+    <string name="match_sitdown_7">ค่าเข้า:</string>
+    <string name="match_sitdown_8">ค่าบริการ:</string>
+    <string name="match_sitdown_9">มีชิป:</string>
+    <string name="match_quit_tournament">คุณออกจากเกมตอนที่เกมยังไม่เสร็จ คุณจะเสียเงินเกม:$</string>
+    <string name="match_only_vip_expression">ในการประกวดมีแต่VIPสามารถใช้อีโมได้</string>
+    <string name="server_upgrade">ขอโทษค่ะเซิร์ฟเวอร์กำลังอัพเกรดอยู่...</string>
+    <string name="cancel_auto_login">ยกเลิกเข้าระบบอัตโนมัติ</string>
+    <string name="only_vip_expression">ขอโทษค่ะ อีโมนี้สำหรับVIP</string>
+    <string name="only_pet_expression">อีโมเบบี้ยังเปิดใช้งานไม่ได้ค่ะ</string>
+    <string name="table_full_match">ขอโทษค่ะ ห้องแข่งขันสำหรับค่าเข้านี้เต็มหมดแล้ว กรุณาเลือกเข้าห้องอื่นหรือลองใหม่อีกครั้งค่ะ</string>
+    <!-- 大厅界面所用的文字 -->
+    <string name="function_level">ระดับ:</string>
+    <string name="function_winrate">ชนะและแพ้:</string>
+    <string name="function_winrate_text">ชนะ %1$d แพ้ %2$d อัตราชนะ %3$d%%</string>
+    <string name="function_bestcards">ไพ่ในมือใหญ่สุด:</string>
+    <string name="function_messages">ข่าว</string>
+    <string name="function_friends">โต้ตอบ</string>
+    <string name="function_community">ชุมชน</string>
+    <string name="function_market">ห้าง</string>
+    <string name="function_help">ช่วย</string>
+    <string name="function_setting">ติดตั้ง</string>
+    <string name="function_honor">ผลการ</string>
+    <string name="function_activity">กิจกรรม</string>
+    <string name="players_num">จำนวนคนที่เล่นอยู่: <xliff:g id="num">%1$d</xliff:g></string>
+    <string name="players_tip">จำนวนคนออนไลน์ปัจจุบันนี้:</string>
+    <string name="quick_start">เริ่มทันที</string>
+    <string name="game_lobby">ห้องเกม</string>
+    <string name="konckout_match">แข่งแบบแพ้ตัดออก</string>
+    <string name="rank_match">แข่งแบบเข้ารอบ</string>
+    <string name="teaching">การเรียนการสอน</string>
+    <string name="function_rewards">ได้รับ\nรางวัล</string>
+    <string name="first">อันดับแรก</string>
+    <string name="second">อันดับ2</string>
+    <string name="third">อันดับ3</string>
+    <string name="first_award">รางวัลเงินกองกลาง50%</string>
+    <string name="second_award">รางวัลเงินกองกลาง30%</string>
+    <string name="third_award">รางวัลเงินกองกลาง20%</string>
+    <string name="joinservicefee">ค่าเข้า/ค่าบริการ</string>
+
+    <!-- 简化切版本 -->
+    <string name="language_name">繁体中文</string>
+    <string name="language_switch">語言選擇</string>
+    <string name="language_switch_back">返回</string>
+    <string name="localize_tips">遊戲幣單位當地語系化</string>
+    <!-- 简化切版本 -->
+
+
+    <!-- 帮助文字 -->
+    <string name="help_title">ช่วย</string>
+    <string name="help_play_method">วิธีการเล่นเกมพื้นฐาน</string>
+    <string name="help_desk_directory">คู่มือเดสท็อป</string>
+    <string name="help_card_compare">เปรียบเทียบไพ่</string>
+    <string name="help_function_intro">คำแนะนำปุ่มฟังก์ชั่น</string>
+    <string name="help_user_info">ข้อมูลบัญชี</string>
+    <string name="help_desk_directory_01">คู่มือเดสท็อป1/3</string>
+    <string name="help_desk_directory_02">คู่มือเดสท็อป2/3</string>
+    <string name="help_desk_directory_03">คู่มือเดสท็อป3/3</string>
+    <string name="help_adettitle">สนับสนุน</string>
+    <string name="help_feedbackbtn">ฟีดแปก</string>
+    <string name="help_historybtn">คำถามประวัติศาสตร์</string>
+    <string name="help_faqbtn">FAQ</string>
+    <string name="help_feedbackname">ชื่อเล่น:</string>
+    <string name="help_feedbackhint">กรุณาเขียนความคิดเห็นของคุณภายในจำนวนคำ1-200</string>
+    <string name="help_sendbtn">ส่ง</string>
+    <string name="help_companyname">ไพ่เท็กซัสออกออกจากบริษัทโบย่าอินเตอร์แอคทีฟ(ออกจากบริษัทโบย่าอินเตอร์แอคทีฟ)</string>
+    <string name="help_urlname">โทรศัพท์บริการลูกค้าสัมพันธ์ :0755-86630020</string>
+    <string name="help_version">หมายเลขเวอร์ชั่น:V%1$s</string>
+    <string name="help_default_version">1.0</string>
+    <string name="help_userid">ผู้เล่นID</string>
+    <string name="help_send_loading">กำลังส่งฟีดแปก...</string>
+    <string name="help_test">ทดสอบ</string>
+    <string name="help_send_defeat">ส่งฟีดแปกไม่ได้ เนื่องจากข้อมูลที่คัณส่งมามีอักขระพิเศษ กรุณาเช็คใหม่และส่งมาอีก กรุณาบคุณค่ะ</string>
+    <string name="help_send_succeed">ส่งข้อมูลเรียบร้อย</string>
+    <string name="help_inputemp">ไม่ได้เป็นช่องว่าง</string>
+    <string name="help_history_defeat">โหลดข้อมูลคำถามไม่ได้</string>
+    <string name="help_input_move">จำนวนคำเยอะเกินไป กรุณาใส่ใหม่</string>
+    <string name="help_question_hint">กำลังจัดฟีดแบกของคุณ</string>
+    <string name="help_history_emp_hint">โหลดข้อมูลไม่ได้</string>
+    <string name="help_faqinfo_1">ทำไมไม่ได้รับรางวัลที่เข้าสู่ระบบทุกวัน</string>
+    <string name="help_faqinfo_2">เข้าสู่ระบบครั้งแรกทุกวันสามารถได้รับรางวันที่เข้าสู่ระบบเท่านั้น ถ้าเวลาที่เข้าสู่ระบบอย่างต่อเนื่องอย่าง๒วัน ต้องออฟไลน์๑ครั้งจึงสามารถได้รับอีก</string>
+    <string name="help_faqinfo_3">ห้องแข่งขันคืออะไร</string>
+    <string name="help_faqinfo_4">ห้องแข่งขันประกอบด้วยการแข่งแพ้ตัดออกและแข่งแบบเข้ารอบ เพื่อไห้ผู้เล่นได้รับความสนุกจากการเล่นเกมที่จัดอันดับไว้ ต้องเสียค่าเข้า จำกัดจำนวนคน9คน ในที่สุดสามอันดับแรกจะแบ่งกันค่าเข้าทั้งหมดที่ผู้เล่นจ่ายไปตามสัดส่วน 
+แข่งแบบเข้ารอบจะเปิดภายหลัง</string>
+    <string name="help_faqinfo_5">อุปกรณ์ที่ฉันซื้อมาหายไปแล้ว ชิปหายไปด้วย</string>
+    <string name="help_faqinfo_6">กรุณาส่งเวลาและจำนวนของอุปกรณหายไปด้วยข้อมูลที่ติดต่อของคุณ ในฟีดแบกเพื่อไห่เราตรวจสอบ</string>
+    <string name="help_faqinfo_7">ทำไมฉันไปแป๊บเดียวก็หมอบไพ่แล้ว</string>
+    <string name="help_faqinfo_8">ระบบจะช่วยหมอบไพ่เมื่อคุณออกไพ่เกินเวลา</string>
+    <string name="help_faqinfo_9">ทำไมส่งชิปไห้คนอื่น</string>
+    <string name="help_faqinfo_10">นั่งลง คลิกรูปภาพผู้เล่นคนอื่น สามารถการดำเนินงานตามข้อแนะนำ</string>
+    <string name="help_faqinfo_11">ทำไมมีบางอีโมต้องจ่ายเงิน บางอีโมฉันไม่มี</string>
+    <string name="help_faqinfo_12">ในปัจจุบันนี้มีอีโมมี๓ประเภท อีโม Q  อีโม  MและอีโมB  สมาชิกVIPlสามารถใช้ อีโม Qและ อีโม  Mฟรี ผู้เล่นธรรมดาใช้ได้อีโม 
+Qเท่านั้นและต้องเสียค่าตรงกับบลายด์ต่ำสุดในทุกครั้ง อีโมBเป็นอุปกรณ์พิเศษ ต้องซื้อจึงสามารถใช้ได้</string>
+    <string name="help_game_rule">กฎเกม</string>
+    <string name="help_game_rule_describle">เลือกไพ่5ใบที่ใหญ่สุดจากไพ่หงายและไพ่โฮล ได้เป็นไพ่1มือ เปรียบเทียบกับผู้เล่นอื่นๆ ผู้เล่นมีไพ่ที่ใหญ่สุดจะชนะ  \n\t\t 
+ ในรูปภาพข้างบน ผู้เล่นAมีตอง ผู้เล่นBมี1คู่ ตามกฎระเบียบเกมตองใหญ่กว่า1คู่  ผู้เล่นAชนะ</string>
+    <string name="help_compare_card_rule">กฎเกม</string>
+    <string name="help_compare_card_rule_describle">เปรียบเทียบไพ่ ไม่เกี่ยวดอก (ถ้ามี1คู่ คู่ใหญ่จะชนะ ถ้ามีคู่ตรงกัน ก็เปรียบเทียบไพ่ที่เหลือ ไพ่ใหญ่ชนะ)
+         ถ้าทุกคนมีไพ่ตรงกัน จะแบ่งปันเงินกองกลางเฉลี่ย</string>
+    <string name="help_compare_card_order_01">รอยัลสเตรทฟลัช</string>
+    <string name="help_compare_card_order_02">สเตรทฟลัช</string>
+    <string name="help_compare_card_order_03">โฟร์การ์ด</string>
+    <string name="help_compare_card_order_04">ฟูลเฮาส์</string>
+    <string name="help_compare_card_order_05">ฟลัช</string>
+    <string name="help_compare_card_order_06">สเตรท</string>
+    <string name="help_compare_card_order_07">ตอง</string>
+    <string name="help_compare_card_order_08">2 คู่</string>
+    <string name="help_compare_card_order_09"> 1คู่</string>
+    <string name="help_compare_card_order_010">ไพ่สูง</string>
+    <string name="help_royal_flush">1.รอยัลสเตรทฟลัช</string>
+    <string name="help_royal_flush_describle">เป็นมือที่มีดอกเดียวกันสูงสุด \nประกอบด้วยA K Q.J และ 10</string>
+    <string name="help_straight_flush">2.สเตรทฟลัช</string>
+    <string name="help_straight_flush_describle">ประกอบด้วย สเตรท และ ฟลัช</string>
+    <string name="help_four_of_a_Kind">3.โฟร์การ์ด</string>
+    <string name="help_four_of_a_Kind_describle">ไพ่ 4 ใบที่มีแต้มเท่ากัน</string>
+    <string name="help_full_house">4.ฟูลเฮาส์</string>
+    <string name="help_full_house_describle">ตองและคู่ นับตองก่อน</string>
+    <string name="help_flush">5.ฟลัช</string>
+    <string name="help_flush_describle">ไพ่ 5 ใบที่มีดอกเดียวกัน</string>
+    <string name="help_straight">6.สเตรท</string>
+    <string name="help_straight_describle">ไพ่ 5 ใบดอกใดก็ได้ที่มีแต้มเรียงลำดับต่อกัน</string>
+    <string name="help_three_of_a_Kind">7.ตอง</string>
+    <string name="help_three_of_a_Kind_describle">ไพ่ 3 ใบที่มีแต้มเท่ากัน</string>
+    <string name="help_two_pairs">8.2 คู่</string>
+    <string name="help_two_pairs_describle">คู่ 2 ชุด</string>
+    <string name="help_one_pair">9.1คู่</string>
+    <string name="help_highcard">10.ไพ่สูง</string>
+    <string name="help_ui_introduction">การแนะนำหน้าจอ</string>
+    <string name="help_ui_introduction_2">ผู้เล่นทุกท่านต้องเสร็จภายใน20วินาที ถ้าหมดเวลาแล้วผู้เล่นยังไม่เลือกจะหมายถึงทิ้งโดยอัตโนมัติ</string>
+    <string name="help_ui_introduction_3">หากไม่แน่ใจจะเลือกผ่านได้เลย ไม่ต้องเสียเงินเกม</string>
+    <string name="help_ui_introduction_4">ไพ่ไม่ดีก็เลือกหมอบได้เลยค่ะ</string>
+    <string name="help_ui_introduction_5">ถ้าคุณมั่นใจชนะแน่นอน ทำไมไม่เทหน้าตัก</string>
+    <string name="help_ui_introduction_6">เลือกเช็คโดยอัตโนมัติรอบต่อไป</string>
+    <string name="help_ui_introduction_7">ถ้าไม่มีใครเพิ่ม เลือกเช็คหรือทิ้ง</string>
+    <string name="help_ui_introduction_8">ถ้าคุณมีไพ่สูงดี สู้เลยค่ะ</string>
+    <string name="help_ui_introduction_9">ถ้าคุณมีไพ่สูงดีอย่างยิ่ง เกเลยค่ะ</string>
+    <string name="help_ui_introduction_10">เลือกสู้ทุกรอบโดยอัตโนมัติรอบต่อไป</string>
+    <string name="help_order_message">สั่งซื้อไม่ได้</string>
+    <string name="dayacc">ยินดีค่ะ ได้รับรางวัลทุกวัน</string>
+    <string name="dayacc_done">รางวัลวันนี้ได้รับแล้ว  ยินดีต้อนรับเข้าสู่วันพรุ่งนี้ค่ะ</string>
+    <!-- error info -->
+    <string name="get_data_failed">อินเทอร์เน็ตเกิดความผิดพลาด โหลดข้อมูลไม่ได้ กรุณาลองอีกครั้งค่ะ</string>
+    <string name="emp_data">ไม่มีข้อมูล...</string>
+    <string name="json_err">โหลดข้อมูลไม่ได้ กรุณาลองอีกครั้งค่ะ</string>
+    <string name="network_err">อินเทอร์เน็ตเชื่อมต่อไม่ดี กรุณาลองอีกครั้ง</string>
+    <string name="fail">ไม่สามารถดำเนินงาน กรุณาลองอีกครั้ง</string>
+    <string name="user_msg_load">กำลังโหลดข้อมูลของผู้ใช้...</string>
+    <string name="sys_msg_load">กำลังได้รับข้อมูลระบบ...</string>
+    <string name="msg_title">ศูนย์ข้อมูล</string>
+    <string name="user_msg">สถานะส่วนบุคคล</string>
+    <string name="sys_msg">ศูนย์ข้อมูล</string>
+    <string name="no_message">คุณยังไม่มีข้อมูล</string>
+    <string name="hall_teach">ยินดีเข้าเกมไพ่เท็กซัสโบย่า</string>
+    <string name="hall_teachr">สำเร็จการเรียนการสอนแล้ว ได้รับ</string>
+    <string name="go_teach">เริ่มการสอน</string>
+    <string name="go_game">เริ่มเกม</string>
+
+    <!-- php提示信息 -->
+    <string name="php_login">กำลังเข้าระบบ...</string>
+    <string name="php_loading">กำลังโหลดข้อมูลผู้ใช้..</string>
+    <string name="php_exit">กำลังออกจากห้อง...</string>
+    <string name="php_pochan">กำลังได้รางวัล...</string>
+    <string name="php_nocomplement">ยังไม่ได้เปิดใช้บริการ...</string>
+    <string name="php_checkroom">กำลังเลือกห้อง...</string>
+    <string name="php_severmessage">กำลังโหลดข้อมูลเซิร์ฟเวอร์...</string>
+    <string name="php_qingqiufahuo">กำลังส่งของ\n(การดำเนินงารหยุดไม่ได้)</string>
+    <string name="nd_boyaa_buy">ซื้ออุปกรณ์โบย่า</string>
+    <string name="market_buy_fail">จ่ายไม่ได้ กรุณาลองอีกครั้ง</string>
+    <string name="market_buy_success">การชำระเงินเรียบร้อยแล้ว</string>
+    <string name="php_sendresult">กำลังส่งผลงาน\n(การดำเนินงานหยุดไม่ได้)</string>
+    <!-- 新手教程 -->
+    <string name="tutorial_more">กรุณาเพิ่มจำนวนสู่งสุด</string>
+    <string name="tutorial_complement">ยินดี คุณได้เรียนเรียบร้อย</string>
+    <string name="tutorial_dont_click">คุณได้รับเยอะเกินไป กรุณารอสักครู่และลองอีกครั้งค่ะ</string>
+    <string name="tutorial_done1">ได้รับเรียบร้อยแล้ว ยินดีค่ะ</string>
+    <string name="tutorial_done3">ได้รับรางวัลรอบที่แล้ว ยินดีค่ะ</string>
+    <string name="tutorial_done2">ชิป ไปเล่นเกมเถอะ กรุณาไห้โชคดีนะ</string>
+    <!-- 设置 -->
+    <string name="setting_sound">ความสว่างหน้าจอและสั่น</string>
+    <string name="setting_tongyong">ใช้ปกติ</string>
+
+    <!-- 运营位 -->
+    <string name="huodong_title">ศูนย์กิจกรรม</string>
+    <string name="huodong_time_title">เวลากิจกรรม</string>
+    <string name="immediate_get">ได้รับทันที</string>
+    <string name="nohuodong_tips">จะลงตลาดในเร็วๆนี้      ติดตามความคืบหน้านะคะ</string>
+    <string name="huodong_getrewardfail">อินเทอร์เน็ตมีปัญหาค่ะ กรุณาลองอีกครั้ง</string>
+    <string name="huodong_content_wait">กำลังโหลลดเนื้อหา...</string>
+    <string name="huodong_image_wait">กำลังโหลดรูปภาพ...</string>
+    <!-- 踢人提示 -->
+    <string name="kick_agree">ตกลง</string>
+    <string name="kick_disagree">ข้าม</string>
+    <string name="kick_giveup">ละเว้น</string>
+    <string name="no_sd">ไม่มีการ์ดSD</string>
+
+    <!-- 好友界面 -->
+    <string name="friend_paiyou">เพื่อน</string>
+    <string name="friend_caifupaihang"> อันดับท็อป</string>
+    <string name="friend_heimingdan"> เพื่อนที่ลบแล้ว</string>
+    <string name="friend_gift">ของขวัญ</string>
+    <string name="friend_xulie">อันดับ</string>
+    <string name="friend_roomname">ชื่อห้อง</string>
+    <string name="friend_caifu">สินทรัพย์ส่วนตัว</string>
+    <string name="friend_caozuo">การดำเนินงาน</string>
+    <string name="friend_get">กำลังโหลดรายชื่อเพื่อน</string>
+    <string name="friend_notify1">ไม่สามารภเพิ่มเพื่อนได้เมื่ออยู่สถานะยืน</string>
+    <string name="friend_notify2">ไม่สามารถเพิ่มเพื่อนได้ในสภาพการออกจากเกมแล้ว</string>
+    <string name="friend_notify3">ไม่สามารถเพิ่มเพื่อนได้ในสภาพการรอ</string>
+    <string name="friend_notify4">ทุกนาทีเพิ่มเพื่อนได้๑ครั้ง</string>
+    <string name="friend_notify5">เพิ่มเป็นเพื่อนเกมแล้ว</string>
+    <string name="friend_notify6">ขอโทษค่ะไม่สามารถเพิ่มเพื่อนเกมแล้ว</string>
+    <string name="friend_notify7">ขอโทษค่ะ คุณยังไม่มีเพื่อนที่ลบไปแล้วในปัจจุบันนี้</string>
+    <string name="friend_notify8">ขอโทษค่ะ คุณยังไม่มีเพื่อน สามารถเพิ่มเพื่อนในหน้าจอเล่นไพ่ค่ะ</string>
+    <string name="friend_notify9">ไม่สามารถเพิ่มเพื่อนที่ออกจากเกมแล้ว</string>
+    <string name="friend_getcardfriend">กำลังได้รับรายชื่อเพื่อน...</string>
+    <string name="friend_huanyuan">กำลังคืนสู่สภาพเดิม...</string>
+    <string name="friend_deletecardfriend">กำลังลบเพื่อน...</string>
+    <string name="friend_getheimingdan">กำลังได้รับรายชื่อเพื่อนลบไปแล้ว...</string>
+    <string name="friend_deleteheimingdan">กำลังลบเพื่อน...</string>
+    <string name="friend_getcaifu">กำลังได้รับรายชื่ออันดับความมั่งคั่ง...</string>
+    <string name="friend_roomstate1">ล็อบบี้</string>
+    <string name="friend_roomstate2">ออฟไลน์</string>
+    <string name="friend_roomstate3">ห้องID</string>
+    <string name="friend_button_genzhong">ติดตาม</string>
+    <string name="friend_button_del">ลบ</string>
+    <!-- <string name="friend_delnotify">ลบเพื่อนคน%1$s นี้หรือ</string> -->
+    <!-- 每日任务 -->
+    <string name="daily_tasks">ภารกิจ</string>
+    <string name="daily_task_list">ภารกิจประจำวัน</string>
+    <string name="describe">ชื่อหน้าที่</string>
+    <string name="progressin">รายละเอียดของหน้าที่</string>
+    <string name="ward">รางวัล:</string>
+    <string name="complete">เรียบร้อย</string>
+    <string name="incomplete">ยังไม่เสร็จ</string>
+    <string name="uncomplete">งานของคุณยังไม่เสร็จ สู้ๆนะ</string>
+    <string name="mainiji">ออนไลน์ทุกวันจะได้รับ๑ครั้ง</string>
+    <string name="gamecount">จำนวนการเล่นเกม</string>
+    <string name="winbywincount">จำนวนชนะอย่างต่อเนื่อง</string>
+    <string name="wincount">จำนวนชนะ</string>
+    <string name="maxwinward">รายได้สูงสุดในรอบเดียว</string>
+    <string name="getable">ได้รับรางวัล</string>
+    <string name="listgetting">กำลังโหลดรายการหน้าที่ทุกวัน...</string>
+    <string name="awardgetting">กำลังได้รับรางวัลหน้าที่...</string>
+    <!-- 等级描述 -->
+    <string name="gradedesc_titile">รายละเอียดของระดับ</string>
+    <string name="gradedesc_titile_01">เนื้อหา</string>
+    <string name="gradedesc_01_q">กฎการคำนวณระดับประสบการณ์:</string>
+    <string name="gradedesc_01_w">   เวลาการเล่นเกมถึง5นาทีสามารถได้รับประสบการณ์5คะแนน เวลาการเล่นเกมถึง15นาทีสามารถได้รับประสบการณ์10คะแนน เวลาการเล่นเกมถึง
+   30นาทีสามารถได้รับประสบการณ์20คะแนน เวลาการเล่นเกมถึง1ชั่วโมงสามารถได้รับประสบการณ์30คะแนน เวลาการเล่นเกมถึง90นาทีสามารถได้รับประสบการณ์50
+   คะแนน เวลาการเล่นเกมถึง2ชั่วโมงสามารถได้รับประสบการณ์100คะแนอีก เวลาการเล่นเกมมากกว่า2ชั่วโมงสามารถได้รับประสบการณ์20คะแนอีกนแต่ละชั่วโมง ประสบการณ์เพิ่มทันที 
+   เวลาการเล่นเกมเป็นเวลาเล่นไพ่ที่สะสมกัน（วันนี้0:00——วันนี้24:00）  </string>
+    <string name="gradedesc_02_q">ตารางระดับ:</string>
+    <string name="gradedesc_02_w">        Lv0 คนธรรมดา \t\t\t Lv1 นักศึกษาวิชาทหาร 
+        \nLv2 นักเรียนนายสิบทหารบก \t Lv3 นักเรียนพยาบาลกองทัพบก
+        \nLv4 นักเรียนแพทย์ทหาร \t\t Lv5 นักเรียนนายร้อย
+        \nLv6 พลทหาร \t\t\t\t Lv7 สิบตรีกองประจำการ 
+        \nLv8 สิบตรี \t\t\t\t\t Lv9 สิบโท
+        \nLv10 สิบเอก \t\t\t\t\t Lv11 จ่าสิบตรี
+        \nLv12 จ่าสิบโท \t\t\t\t Lv13 จ่าสิบเอก
+        \nLv14 ร้อยตรี \t\t\t\t\t Lv15 ร้อยโท
+        \nLv16 ร้อยเอก \t\t\t\t Lv17 พันตรี
+        \nLv18 พันโท \t\t\t\t\t Lv19 พันเอก
+        \nLv20 พลจัตวา \t\t\t\t Lv21 พลตรี
+        \nLv22 พลโท \t\t\t\t\t Lv23 พลเอก
+        \nLv24 จอมพล</string>
+    <string name="continuous_dayward">ได้รางวันเข้าสู่ระบบทุกวัน</string>
+    <string name="continuous_explain">ล็อกอินอย่างต่อเนื่องยิ่งเยอะ ได้รับรางวัลยิ่งเยอะ</string>
+    <string name="money_day1">+150</string>
+    <string name="money_day2">+250</string>
+    <string name="money_day3">+350</string>
+    <string name="money_day4">+500</string>
+    <string name="money_day5">+800</string>
+    <string name="money_day6">+1200</string>
+
+    <!-- 登录错误提示 -->
+    <string name="loginfail_0">ขอโทษค่ะ เข้าระบบไม่ได้ค่ะ</string>
+    <string name="loginfail_2">ขอโทษค่ะบัญชีของคุณใช้ไม่ได้</string>
+    <string name="loginfail_3">ขอโทษค่ะ ไม่สามารถลงทะเบียน จำนวนคนมากที่สุดแล้ว</string>
+    <string name="loginfail_4">ขอโทษค่ะ ยืนยันข้อมูลไม่ได้</string>
+    <string name="loginfail_6">ขอโทษค่ะไม่สามารถลงทะเบียนได้</string>
+    <string name="loginfail_7">ขอโทษค่ะ คุณไม่สามารถลงทะเบียนแล้วในวันนี้</string>
+    <string name="loginfail_8">ขอโทษค่ะ IPของคุณไม่สามารถลงทะเบียนแล้วในวันนี้</string>
+    <string name="roomlist_quick_notify">ถ้าคุณอยากลดเวลาในการวางเดิมพัน สามารถเลือกห้องเร็วได้</string>
+
+    <!-- 上传头像的提示信息 -->
+    <string name="photowarn">เรียนผู้เล่นทุกๆคนคนค่ะ:\n\u0020\u0020\u0020\u0020
+	     \u0020\u0020\u0020\u0020รูปภาพที่อัพโหลดต้องตามข้อกำหนดความปลอดภัยด้านอินเทอร์เน็ตแห่งชาติและอย่างอื่นที่เกี่ยวข้อง ถ้าผิดกฎหมาย เรามีสิทธิ์ปิดบัญชีอย่างเป็นทางการ</string>
+    <string name="phototip">หลังจากเลือกรูปภาพแล้ว กรุณารอเตือนอัพโหลดรูปภาพสำเร็จ ออกมา</string>
+    <string name="uploadphoto_ok">อัพโหลดได้แล้วค่ะ</string>
+    <string name="uploadphoto_fail">อัพโหลดไม่ได้ค่ะ</string>
+    <string name="prosecutphoto_ok">ส่งแจ้งความเรียบร้อยแล้ว กรุณาบคุณสำหรับการสนับสนุนการใช้งานของเกม</string>
+    <string name="prosecutphoto_fail">ผู้เล่นที่รัก ไม่สามารถแจ้งความแล้วในวันนี้ กรุณาดำเนินการต่อวันพรุ่งนี้และขอบคุณสำหรับการสนับสนุนการใช้งานของเกม</string>
+    <string name="protsecutphoto_timefail">จำนวนแจ้งความเยอะเกินไป  (ห่างกัน๑นาที)</string>
+    <string name="photo_pick_err">ดำเนินการไม่ได้</string>
+    <string name="yourturn">ถึงคุณ แล้ว กรุณาดำเนินการทันที</string>
+    <string name="check_update">กำลังตรวจอัพเดท...</string>
+    <string name="update_title">คำเตือนระบบอัพเดท</string>
+    <string name="update_select">อัพเดททันที</string>
+    <string name="update_notify1">คุณไม่ได้ติดตั้งระบบandroid market ไม่สามารถอัพเดทได้</string>
+    <string name="update_notify2">คุณต้ิองติดตั้งเวอร์ชั่นใหม่จึงสามารถดำเนินงานได้ </string>
+    <!-- 后面添加的string -->
+    <string name="friend_addsuccess">เพิ่มเพื่อนสำเร็จ</string>
+    <string name="friend_addfail">เพิ่มเพื่ิอนไม่สำเร็จ</string>
+    <string name="friend_addlimit">ขอโทษค่ะ ไม่สามารถเพิ่มเพื่ิอนได้ค่ะ </string>
+    <string name="friend_wantadd"> อยากเพิ่มเป็นเพื่ิอน  กรุณาเลือก</string>
+    <string name="get_goldbox">ได้รับ</string>
+    <string name="kick_cannot">ไม่เป็น</string>
+    <string name="kick_notice1">ตามผลงานโหวต ผู้เล่น%1$s จะ</string>
+    <string name="kick_notice2">ถูกเชิญออกจากห้อง</string>
+    <string name="kick_notice3"> ตามผลงานโหวต รอบนี้คุณจะถูกเชิญออกจากห้อง%1$s</string>
+    <string name="kick_notice4">คุณต้องรอ%1$dนาทีจึงสามารถเ้ข้าห้องได้</string>
+    <string name="kick_notice5">ใช้บัตรเตะกับกรุณาเลือกตั้ง</string>
+    <string name="kick_notice6">ถูก</string>
+    <string name="kick_fail_notice1">กำลังโหวต</string>
+    <string name="kick_fail_notice2">เขาออกไปแล้ว</string>
+    <string name="kick_fail_notice3">จำนวนคนต้ิองมากกว่าครึ่งหนึ่ง</string>
+    <string name="kick_fail_notice4">การดำเนินงานไม่สำเร็จ</string>
+    <string name="kick_fail_notice5">เชิญออกเองไม่ได้</string>
+
+    <!-- Regist -->
+    <string name="revert">คืนค่า</string>
+    <string name="getwin_fail">รับรางวัลการล้มละลายไม่สำเร็จ</string>
+    <string name="network_fail">การตรวจสอบได้พบว่าเน็ตของท่านช้าลง</string>
+    <string name="online_experience_fail">รับประสบการณ์ความออนไลน์ล้มเหลว</string>
+    <string name="online_experience_success">รับประสบการณ์ออนไลน์สำเร็จ</string>
+    <string name="market_fb_unuse">ห้างยังไม่ได้เปิดใช้งาน ท่านสามารถซื้อชิปผ่านเกมส์ไพ่เท็กซัสโบย่าบนfacebookค่ะ  </string>
+    <string name="market_guest_unuse">ห้างยังไม่ได้เปิดใช้งาน </string>
+    <string name="mol_info1">ชิป</string>
+    <string name="mol_info2">เงินโบย่า</string>
+    <string name="mol_info3">คุณได้เลือกช่องทาง บัตรเงินสดวัน-ทู-คอล! By MOL เติมเงินให้ ไพ่เท็กซัส</string>
+    <string name="mol_info4">50 THB = 50K ชิป</string>
+    <string name="mol_info5">ซื้อจำนวนนี้ช่วยคุณประหยัด 0 THB</string>
+    <string name="mol_info6">100 THB = 130K ชิป</string>
+    <string name="mol_info7">ซื้อจำนวนนี้ช่วยคุณประหยัด 30 THB</string>
+    <string name="mol_info8">300 THB = 480K ชิป</string>
+    <string name="mol_info9">ซื้อจำนวนนี้ช่วยคุณประหยัด 180 THB</string>
+    <string name="mol_info10">500 THB = 850K ชิป</string>
+    <string name="mol_info11">ซื้อจำนวนนี้ช่วยคุณประหยัด 350 THB</string>
+    <string name="mol_info12">1,000 THB = 2,000K ชิป</string>
+    <string name="mol_info13">ซื้อจำนวนนี้ช่วยคุณประหยัด 1,000 THB</string>
+    <string name="mol_info14">50 THB = 10 เงินโบย่า</string>
+    <string name="mol_info15">ซื้อจำนวนนี้ช่วยคุณประหยัด 0 THB</string>
+    <string name="mol_info16">100 THB = 20 เงินโบย่า</string>
+    <string name="mol_info17">ซื้อจำนวนนี้ช่วยคุณประหยัด 0 THB</string>
+    <string name="mol_info18">300 THB = 66 เงินโบย่า</string>
+    <string name="mol_info19">ซื้อจำนวนนี้ช่วยคุณประหยัด 30 THB</string>
+    <string name="mol_info20">500 THB = 115 เงินโบย่า</string>
+    <string name="mol_info21">ซื้อจำนวนนี้ช่วยคุณประหยัด 75 THB</string>
+    <string name="mol_info22">1,000 THB = 240 เงินโบย่า</string>
+    <string name="mol_info23">ซื้อจำนวนนี้ช่วยคุณประหยัด 200 THB</string>
+    <string name="paysbuy_info3">คุณได้เลือกช่องทางPaysbuy Online Bankingเติมเงินให้ไพ่เท็กซัสค่ะ </string>
+    <string name="paysbuy_info4">500 THB = 800K ชิป</string>
+    <string name="paysbuy_info5">ซื้อจำนวนนี้ช่วยคุณประหยัด 300 THB</string>
+    <string name="paysbuy_info6">1,000 THB = 1,840K ชิป</string>
+    <string name="paysbuy_info7">ซื้อจำนวนนี้ช่วยคุณประหยัด 840 THB</string>
+    <string name="paysbuy_info8">2,000 THB = 4,300K ชิป</string>
+    <string name="paysbuy_info9">ซื้อจำนวนนี้ช่วยคุณประหยัด 2,300 THB</string>
+    <string name="paysbuy_info10">5,000 THB = 13,100K ชิป</string>
+    <string name="paysbuy_info11">ซื้อจำนวนนี้ช่วยคุณประหยัด 8,100 THB</string>
+    <string name="paysbuy_info12">10,000 THB = 30,400K ชิป</string>
+    <string name="paysbuy_info13">ซื้อจำนวนนี้ช่วยคุณประหยัด 20,400 THB</string>
+    <string name="paysbuy_info14">500 THB = 115 เงินโบย่า</string>
+    <string name="paysbuy_info15">ซื้อจำนวนนี้ช่วยคุณประหยัด 75 THB</string>
+    <string name="paysbuy_info16">1,000 THB = 240 เงินโบย่า</string>
+    <string name="paysbuy_info17">ซื้อจำนวนนี้ช่วยคุณประหยัด 200 THB</string>
+    <string name="paysbuy_info18">2,000 THB = 510 เงินโบย่า</string>
+    <string name="paysbuy_info19">ซื้อจำนวนนี้ช่วยคุณประหยัด 550 THB</string>
+    <string name="paysbuy_info20">5,000 THB = 1,355 เงินโบย่า</string>
+    <string name="paysbuy_info21">ซื้อจำนวนนี้ช่วยคุณประหยัด 1,755 THB</string>
+    <string name="paysbuy_info22">10,000 THB = 2,855 เงินโบย่า</string>
+    <string name="paysbuy_info23">ซื้อจำนวนนี้ช่วยคุณประหยัด 4,275 THB</string>
+    <string name="login_verify_hint">มองไม่ชัด？คลิ้กเปลี่ยนรูปภาพ</string>
+    <string name="login_verify_input_hint">กรุณากรอกรหัสในรูปภาพ...</string>
+    <string name="login_verify_error_hint">ขอโทษค่ะ คุณกรอกรหัสในรูปภาพผิด กรุณากรอกใหม่</string>
+    <string name="input_verify">กรุณากรอกรหัสยืนยัน</string>
+    <string name="commit">ส่ง</string>
+    <string name="load_verify_image_fail">โหลดรหัสยืนยันไม่ได้  กรุณาตรวจสอบการเชื่อมต่ออีกครั้ง</string>
+    <string name="user_base_info">ข้อมูลพื้นฐาน</string>
+    <string name="user_head_modify">คลิกแก้ไขรูปภาพ</string>
+    <string name="losing">อัตราการชำระ:</string>
+    <string name="besthand">ไพ่ในมือใหญ่สุด:  </string>
+    <string name="addressnow">อาศัยที่อยู่:  </string>
+    <string name="savesure">ตกลง</string>
+    <string name="boyaa_texas_poker">ไพ่เท็กซัสโบย่า</string>
+    <string name="boyaa_game_desc">博雅德州扑克全称为texas hold\'em poker,中文简称德州扑克，是一种玩家对玩家的公共</string>
+    <string name="cardfriend_loading">กำลังโหลดข้อมูลอยู่...</string>
+    <string name="company_name">博雅互动</string>
+    <string name="game_type">เกมเครือข่าย</string>
+    <string name="up_email">กล่องร้องเรียน：</string>
+    <string name="login_help_info1">Androidไพ่เท็กซัสโบย่า#(โดยพัฒนาโบย่า อินเตอร์แอคทีฟ)</string>
+    <string name="login_help_info2">กล่องความคิดเห็น：</string>
+    <string name="chip_autobuy">เมื่อชิปเป็นจำนวน0จะซื้อเข้าไปโดยอัตโนมัติ</string>
+    <string name="mddesc">เสร็จสมบูรณ์：ผู้จัดการ，CEO，เศรษฐี，มหาเศรษฐี，นายทุน，กุฎุมพี</string>
+    <string name="daily_login_reward">รางวัลล็อกอินทุกวัน</string>
+    <string name="random">แบบสุ่ม</string>
+    <string name="daily_login_first">ทุกวันล็อกอิน1ครั้ง</string>
+    <string name="try_again">กรุณาลองใหม่อีกครั้ง</string>
+    <string name="cardfriend_no_more">ไม่มีแล้ว!</string>
+    <string name="chengjiu_loading">กำลังโหลดรายชื้อผลงานอยู่ กรุณาลองอีกครั้ง</string>
+    <string name="choose_head_image">กรุณาเลือกรูปภาพส่วนตัว</string>
+    <string name="run_game">การดำเนิดงานเกม</string>
+    <string name="got_prize">ได้รับแล้ว</string>
+    <string name="please_choose">คุณต้องการดาวน์โหลดโปรแกรมนี้ กรุณาเลือก</string>
+    <string name="getting_prize">กำลังรับรางวัลอยู่</string>
+    <string name="got_gold_coin">ได้รับเหรียญทอง</string>
+    <string name="not_checkoutpay">ขอโทษค่ะ โทรศัพท์ของคุณมไสามารถเติมเงินผ่านช่องทางการชำระเงินcheckoutค่ะ!</string>
+    <string name="sorry_checkoutpay">ขอโทษค่ะ ในเขตของคุณไม่สามารถเติมเงินผ่านช่องทางการชำระเงินcheckoutค่ะ!!</string>
+    <string name="namenotnull">ชื่อผู้ใช้ต้องไม่เป็นว่างเปล่า</string>
+    <string name="namelength">ชื่อผู้ใช้ต้องไม่มากกว่า20 ตัวอักษร</string>
+    <string name="fail_modify_message">การแก้ไขข้อมูลล้มเหลว กรุณาลองอีกครั้ง</string>
+    <string name="wait_modify_message">กำลังแก้ไขข้อมูลอยู่ กรุณารอสักครู่...</string>
+    <string name="share_content">เพิ่มได้รับชิป${chips}ใน ชิปกองกลางด้วย ไพ่โฮลใน Androidไพ่เท็กซัสโบย่า รู้สึกดีมากเลย มาดาวน์โหลดฟรีนะ\nAndroid:</string>
+    <string name="golden_coin">เหรียญทอง</string>
+    <string name="noInteractive">คุณยังไม่ได้ซื้อกระเป๋าอินเตอร์แอคทีฟ ต้องไปห้างถึงจะซื้อได้！</string>
+    <string name="useInter_fail">ไม่สามารถใช้กระเป๋าอินตอร์แอคทีฟ！</string>
+    <string name="useInter_error_1">ขอโทษค่ะ หลังจะคุณนั่งลงให้เรียบร้อยถึงจะรับกระเป๋าอินตอร์แอคทีฟได้！</string>
+    <string name="useInter_error_2">กระเป๋าอินเตอร์แอคทีฟไม่สามารถใช้กับเองได้</string>
+    <string name="box_warning">อีก*ก็จะสามารถรับรางวัลได้แล้ว สู้ๆนะ！</string>
+    <string name="box_warning_hour">ชั่วโมง</string>
+    <string name="box_warning_min">นาที</string>
+    <string name="box_warning_sec">วินาที</string>
+    <string name="interactive_msg1">#ใส่ไข่เน่าให้แก่#อย่างรุนแรง</string>
+    <string name="interactive_msg2">#ใส่ระเบิดให้แก่#อย่างรุนแรง</string>
+    <string name="interactive_msg3">#ส่งกุหลาบให้แก่#อย่างจริงใจ</string>
+    <string name="interactive_msg4">#แสดงความยินดีความร่วมมือให้แก่ #a</string>
+    <string name="interactive_msg5">#ส่งเบียร์เย็นเฉียบ1แก้วให้แก่#a</string>
+    <string name="interactive_msg6">#ใส่มะเขือเทศเน่าให้แก่#อย่างอย่างรุนแรง</string>
+    <string name="get_bankruptcy_prize_fail">รับชิปบรรเทาล่มละลาย</string>
+    <string name="chip_in_notication">ถึงคุณวางเดิมพันแล้ว</string>
+    <string name="today_get">วันนี้ได้รับ</string>
+    <string name="share">แบ่งปัน</string>
+    <string name="share_success">แบ่งปันสำเร็จ</string>
+
+    <!-- 2.0需求 添加在此 -->
+    <string name="cardfriend_footclick"> คลิ๊กเพื่อโหลดเพิ่มเติม</string>
+    <string name="progress_new">สำเร็จ</string>
+    <string name="interact">โต้ตอบ</string>
+    <string name="paiyou_act">สถานะเพื่อน</string>
+    <string name="game_count">จำนวนรอบไพ่ที่เล่นไป：</string>
+    <string name="send_gifs">ส่งของขวัญลึกลับ</string>
+    <string name="receive_gifs">รับของขวัญ</string>
+    <string name="back_gifs">ส่งของขวัญกลับ</string>
+    <string name="had_send">ส่งแล้ว</string>
+    <string name="had_send_back">ส่งกลับแล้ว</string>
+    <string name="sendmoney_info">กำลังส่งคำร้องให้เซอร์เวอร์ส่งของขวัญลึกลับ โปรดรอสักครู่...</string>
+    <string name="get_gifs_text">กำลังส่งของขวัญลึกลับ โปรดรอสักครู่...</string>
+    <string name="sendmoney_info_no">เวอร์ชั่นที่เพื่อนของคุณเล่นไม่สนับสนุนกับฟังก์ชั้นรับของขวัญลึกลับ!</string>
+    <string name="sendmoney_info_success">การส่งของขวัญลึกลับสำเร็จแล้ว!</string>
+    <string name="sendmoney_info_fail">การส่งของขวัญลึกลับล้มเหลว!</string>
+    <string name="del_info_conf">คุณแน่ใจว่าจะลบบันทึกนี้หรือไม่？</string>
+    <string name="get_gifs_info">ได้รับชิปที่ส่งมาจำนวน#เหรียญ</string>
+    <string name="match_help1">เมื่อผู้เล่นเริ่มเล่นไพ่จะถูกหักชิปเพื่อไว้เป็นเงินรางวัลกองกลาง หลังจากนั่งลงแล้วระบบจะมอบชิปให้1000เหรียญทันที</string>
+    <string name="match_help2">ลุกขึ้นหรือออกจากห้องก่อนเวลาการแข่งขันจะไม่ถูกหักค่าทำเนียมการแข่งขัน </string>
+    <string name="match_help3"> ทุกโต๊ะจะต้องมีผู้เล่นนั่งครบ9คนการแข่งขันถึงจะเริ่มต้นขึ้น(ผู้ที่เข้ามาระหว่างทำการแข่งจะไม่สามารถเข้าร่วมการแข่งขันได้)</string>
+    <string name="match_help4">วางเดิมพันบลายด์จะเพิ่มขึ้นทุก5นาที ผู้เล่นที่ยืนขึ้นระหว่างที่รอบไพ่กำลังดำเนินอยู่หรือกลับเข้าสู่ล๊อบบี้จะถือว่าหมอบ และจะไม่คืนชิปและค่าทำเนียมการแข่งขัน</string>
+    <string name="match_help5" formatted="false">การแข่งขันจะใช้ระบบคัดออกผู้เล่นที่เสียชิปจนหมดจะถูกตัดออกจากการแข่งขันทันทีผู้เล่นที่ออกจากการแข่งขัน3คนสุดท้ายจะได้รับเงินรางวัลกองกลาง50%、30%、20%ตามลำดับ </string>
+    <string name="match_helptitle">ตัวช่วยการแข่งขันแบบคัดออก</string>
+    <string name="match_help_notice1">คลิ๊กที่นี่เพื่อทำการจัดลำดับ</string>
+    <string name="match_help_notice2">ต้องการหาที่นั่งแบบรวดเร็ว แนะนำให้ใช้ห้องลับ</string>
+    <string name="match_help_notice3">ต้องเริ่มการแข่งขันแบบรวดเร็ว แนะนำให้ใช้ห้องลับ</string>
+    <string name="match_help_notice4"> อ่านคู่มือการแข่งขัน ทำความเข้าใจกับกติกาการแข่ง</string>
+    <string name="hallist_help_notice">คลิกที่นี้สามารถเลือกห้องมากขึ้น</string>
+    <string name="halllist_help_notice2">ต้องการหาที่นั่งแบบรวดเร็ว แนะนำให้ใช้ห้องลับ</string>
+    <string name="halllist_help_notice3">ต้องการเริ่มเล่นเกมส์อย่างรวดเร็ว แนะนำให้ใช้ห้องลับ</string>
+    <string name="halllist_help_notice4">ระยะเวลาในการรอของห้องเร็วนั้นจะสั้นกว่าครึ่งหนึ่งของห้องธรรมดา</string>
+    <string name="game_help_notice">เรียงลำดับเปรียบเทียบความแกร่งของไพ่โดยฉับพลัน</string>
+    <string name="youxibi">ชิป</string>
+    <string name="understand_play">ฉันเข้าใจวิธีเล่นแล้ว</string>
+    <string name="photo_choose">กรุณาเลือกรูปภาพ</string>
+    <string name="photo_photos">อัลบัมภาพ</string>
+    <string name="photo_camera">ถ่ายจากมือถือ</string>
+    <string name="photo_cancel">ลบ</string>
+    <string name="vip_flag">สัญลักษณ์สมาชิก VIP ผู้ที่เป็นสมาชิกจะได้รับทันที</string>
+    <string name="vip_time_to"> สิทธิVIPของท่านจะหมดอายุในวันที่#</string>
+    <string name="weibo_cancel">วันนี้ไม่แสดงขึ้นมาอีกแล้ว</string>
+    <string name="push_message1">การหาความสนุกในยามว่างจะมีอะไรมาสนุกเท่าเล่นไพ่เท็กซัส  มีชิปฟรีแจกทุกวัน！</string>
+    <string name="push_message2">รีบเข้ามาเล่นสิ เล่นคนเดียวจะสนุกได้อย่างไร รีบเข้ามาเล่นเถอะ！มีเธอมาเล่นไพ่เท็กซัสด้วยถึงจะสนุก</string>
+    <string name="push_message3">เข้ามาเล่นไพ่เท็กซัสสิ แล้วคุณจะหลับสบาย วันนี？</string>
+    <string name="push_message4">กลับมาเร็วๆ สิ คุณเห็นประกายแวววาวของเหรียญทองนั่นมั้ยล่ะ？！</string>
+    <string name="push_message5">รีบมาดูสิ ผู้เล่นบางคนดูท่าแล้วน่าจะเข้าไปลองด้วยสักตั้ง รีบไปแสดงฝีมือความฉกาจของคุณให้เขาดูสิ！</string>
+    <string name="push_message6">ไม่อยากจะบอกเลยว่า มีสาวสวยๆ เล่นไพ่เท็กซัสอยู่เพียบ！</string>
+    <string name="push_message7">หลายวันแล้วที่ไม่เจอคุณในไพ่เท็กซัส ทุกๆ คนต่างคิดถึงคุณสุดๆ</string>
+    <string name="push_message8">ว้าว ได้ชิปเพิ่มอีกแล้ว รีบไปลุยเก็บต่อกันเถอะ</string>
+    <string name="push_message9">ตาฉันแสบไปหมดก็เป็นเพราะประกายแวววาวของชิปสีทองอร่ามเนี่ยแหละ！</string>
+    <string name="push_message10">ระบบทำการแจกชิปในระหว่างที่คุณออกจากเกมส์  รีบเข้าไปเช็คในบัญชีของคุณสิ</string>
+    <string name="push_message11">ชิปโปรยปรายลงมาจากท้องฟ้า รีบเข้ามาเก็บเสียสิ ไม่ง้านจะถูกพวกฉันแย่งเก็บจนหมดนะ </string>
+    <string name="push_message12">ยาจกกลายเป็นมหาเศรษฐี มีในไพ่เท็กซัสที่เดียวเท่านั้น</string>
+    <string name="push_message13">สาวสวยแห่งไพ่เท็กซัสส่งคำเตือนให้คุณรีบไปรับรางวัลเดี๋ยวนี้！</string>
+    <!-- 排行榜BillBoard -->
+    <string name="billboard_title">ลำดับ</string>
+    <string name="billboard_daily">การจัดลำดับวันนี้</string>
+    <string name="billboard_total">ลำดับมืออาชีพ</string>
+    <string name="achievement_title">ผลงาน</string>
+    <string name="billboard_amongfriend">ลำดับเพื่อน</string>
+    <string name="billboard_nationwide">ลำดับทั้งหมด</string>
+    <string name="fetching_billboards">กำลังดึงข้อมูลการจัดลำดับ…</string>
+    <string name="loading_billboards">กำลังโหลดข้อมูลการจัดลำดับ…</string>
+    <string name="king_of_gamblers_board">ลำดับเซียนไพ่</string>
+    <string name="chip_board_desc">ลำดับทรัพย์สินรวม</string>
+    <string name="best_winner_board_desc">ลำดับการชนะชิปในรอบเดียว</string>
+    <string name="king_of_gamblers_board_desc">ลำดับจำนวนรอบที่ชนะ</string>
+    <string name="not_decodable_board">ไม่สามารถแบ่งแยกการจัดจำดับได้</string>
+    <string name="not_decodable_board_desc">โค๊ดของเซอร์เว่อร์ผิดพลาด</string>
+    <string name="rank_friendwide">ลำดับรายชื่อเพื่อน:</string>
+    <string name="rank_nationwide">ลำดับรายชื่อทั้งหมด:</string>
+    <string name="not_in_the_rinking">ยังไม่ถูกจัดลำดับ</string>
+    <string name="my_place">ลำดับของฉัน:</string>
+    <string name="congratulations_to_champion">คุณได้เป็นแชมป์เปี่ยนแล้ว เยี่ยมจริงๆ !</string>
+    <string name="distance_from_ranking">จากลำดับที่${rank}ถึงลำดับปัจจุบันของคุณยังมี</string>
+    <string name="distance_from_previous">จากลำดับที่ 1ถึงลำดับปัจจุบันของคุณยังมี</string>
+    <string name="suffix_of_distance">สู้เขานะ!</string>
+    <string name="not_in_board">ขออภัยด้วย คุณไม่ได้อยู่ในการจัดลำดับนี้!</string>
+    <string name="share_via_weibo">แชร์ผ่าน Weibo</string>
+    <string name="share_via_weixin">แชร์ผ่าน WeChat</string>
+    <string name="share_via_fb">แชร์ผ่าน FB</string>
+    <string name="achievement_hand">ผลงานรูปแบบไพ่</string>
+    <string name="achievement_chip">ผลงานทรัพย์สิน</string>
+    <string name="achievement_overall">ผลงานรวม</string>
+    <string name="no_friends_in_board">คุณยังไม่มีเพื่อนอยู่ในการเรียงลำดับนี้นะ!</string>
+    <string name="no_victory_today">วันนี้คุณยังไม่ได้ชนะเลย!</string>
+    <!-- End of 排行榜 -->
+
+    <string name="dailyward_running">กำลังทำอยู่ </string>
+    <string name="tutorial_processnotice">ขณะนี้คุณได้ทำเสร็จสมบูรณ์%1$sแล้วคุณจะออกการเรียนการสอนมือใหม่มั้ย</string>
+    <string name="checkout_title">ห้างเติมเงิน</string>
+    <string name="checkout_youxibi">ซื้อชิป</string>
+    <string name="checkout_boyaabi">ซื้อเงินโบย่า</string>
+    <string name="check_app_update">ตรวจพบว่ามีโปรแกรม อัพเดทแล้ว ต้องการที่จะอัพเดทเดี๋ยวนี้มั้ย？</string>
+    <string name="manual_pay">การจัดการสั่งซื้อ</string>
+    <string name="manual_submit">จัดส่งโดยอัตโนมัติ</string>
+    <string name="user_order_id">IDการสั่งซื้อ</string>
+    <string name="trade_no">หมายเลขสั่งซื้อ</string>
+    <string name="manual_order_success">เรียบร้อย</string>
+    <string name="manual_order_err">เกิดความผิดพลาดโปรดติดต่อทีมงานของเรา!</string>
+    <string name="get_gifs_errornotice">รับชิปของวันนี้ถึงจำนวนสูงสุดแล้วหรือของขวัญหมดอายุแล้ว</string>
+    <!-- 2.1需求 添加在此 -->
+
+    <string name="nickname_no_char">ชื่อเล่นไม่อนุญาตให้มี{\u0026,\u003f,\u0027,\u0022}ตัวอักษรเหล่านี้ กรุณาแก้ไขค่ะ </string>
+    <string name="qiehuan_zhanghao">เปลี่ยนบัญชี</string>
+    <string name="choose_pay_type">กรุณาเลือกวิธีกานเติมเงิน</string>
+    <string name="login_text_qq"> ใช้บัญชีQQเข้าสู่ระบบ</string>
+    <string name="login_failed">เข้าสู่ระบบล้มเหลว</string>
+    <string name="market_buy_success_delay">หลังจากเติมดเงินเสร็จแล้ว ระบบจะส่งชิปภายใน1นาที</string>
+
+    <!-- 2.1需求 添加在此 ，多语言粘贴出现已定义冲突时，保留此处的，删除之前的 -->
+    <string name="room_logout_to_interact">คุณจะออกจากห้องกลับไปสู่การโต้ตอบ</string>
+    <string name="room_logout_to_interact2">หลังจากคุณออกจากห้องกลับไปสู่การโต้ตอบ ชิปที่คุณวางเดิมพันทั้งหมดจะถูกหักออก！</string>
+    <string name="room_logout_to_paihang"> คุณจะออกจากห้องกลับไปสู่การเรียงลำดับ</string>
+    <string name="room_logout_to_paihang2"> หลังจากคุณออกจากห้องกลับไปสู่ การเรียงลำดับ ชิปที่คุณวางเดิมพันทั้งหมดจะถูกหักออก！</string>
+    <string name="room_logout_to_halllist"> คุณจะออกจากห้องไปสู่รายชื่อห้อง</string>
+    <string name="match_logout_to_halllist">หลังากคุณฮฮกจากการแข่งขันแบบตัดออก จะไม่สามรถหักออกค่าเข้าแข่งของคุณ</string>
+    <string name="nine_peo"> ห้องรับ9คน</string>
+    <string name="six_peo">ห้องรับ6คน</string>
+    <string name="agree">รับ</string>
+    <string name="ignore">ข้าม</string>
+    <string name="go_on_match">แข่งต่อไป</string>
+    <string name="go_away">ออกจากห้อง</string>
+    <string name="go_on_wait">รอต่อไป</string>
+    <string name="go_on_play">เล่นไพ่ต่อไป</string>
+    <string name="go_on_look">ชมต่อ</string>
+    <string name="back_to_interact">กลับไปสู่การโต้ตอบ</string>
+    <string name="back_to_paihang">กลับไปการเรียงลำดับ</string>
+    <string name="exit_knockout">คุณจะออกจากการแข่งแบบตัดออก</string>
+    <string name="hall_faq">ฟีดแบ็ค</string>
+    <!-- 多语言需要搜索 金币 ，筹码  然后替换为 游戏币 -->
+    <string name="room_menu_set">ตั้งค่าเกม</string>
+    <string name="room_menu_up">ลุกขึ้น</string>
+    <string name="share_via_weibo_statue_login">ไพ่เท็กซัสเวอร์ชั่นandroid v2.0มาแล้วค่ะ การจัดลำดับแบบใหม่ที่ดีเยี่ยมกว่าเดิม หน้าหน้า Interactive ใหม่แกะกล่อง ยังสามารถส่งของขวัญลึกลับให้แก่เพื่อนๆ  ลิงค์ดาวน์โหลดhttp://t.cn/zWyJErF</string>
+    <string name="tuosong_set">ได้รับการผลักดัน</string>
+    <string name="tuosong_set_warn">เปิดการผลักดันสามรถได้รับรางวัลนะ</string>
+    <!-- 2.1需求文字 -->
+    <string name="home_index_wrong">กรุณาอ่านการแจ้งเตือนนี้ และเลืกอีกครั้ง </string>
+    <string name="home_index_right">ยินดีด้วย คุณได้ตอบถูกแล้ว เริ่มเล่นเกมได้เลย </string>
+    <string name="interact_delete_record">กำลังลบการบันทึกนี้</string>
+    <string name="room_hint_1">คำเนะนำเปิดแล้วค่ะ</string>
+    <string name="room_hint_2">กดปิด</string>
+    <string name="room_hint_3">คำเนะนำปิดแล้วค่ะ</string>
+    <string name="room_hint_4"> กดเปิด</string>
+
+    <!-- 分享功能中的台词 -->
+    <string name="share_hand_weibo_message">${user_name}$[with_who]เพิ่งได้รับชิป${chips}จากเงินกองกลางด้วยรูปแบบไพ่${hand_type} รู้สึกดีมากเลย รีบไปดาวน์โหลด\nAndroid: ${link}</string>
+    <string name="share_hand_weibo_with"> Pkกับ${other_users}</string>
+    <!-- 此句将可能会替换前一句中的  $[with_who] -->
+    <string name="share_popup_content">ยินดีด้วยนะ คุณได้รับ${typename}รับชิปจำนวนมาก รีบไปแบ่งปันกับเพื่อนเถอะ！！</string>
+    <string name="share_dailyward">ฉันได้รับชิป${chips}จากการเข้าสู่ระบบอย่างต่อเนื่อง${day}วัน รีบมาเล่นกันเถอะ！ลิงค์ดาวน์โหลด：${link}</string>
+    <string name="match_result_share">สัมผัสหน้าจอและแบ่งปันเกียรติ</string>
+    <string name="share_match_result">  ${user_name}เพิ่งได้รับอันดับ${rank}ในการแข่งขันแบบตัดออก ได้รับชิป${chips} เก่งมั้ยคะ เริ่มเล่นเกม：${link}</string>
+    <string name="share_template">ฉันอยู่อันดับ${rank}ในไพ่เท็กซัสโบย่า${which_board}มาเล่นกับฉันเถอะ !เริ่มเล่นเกม：${link}</string>
+
+    <!-- End of 分享功能 -->
+    <string name="wait_for_goods">กำลังส่งชิปอยู่ กรุณารอสักครู่</string>
+    <!-- 进入房间loading的时候随机显示文字 -->
+    <string-array name="loading_tips">
+        <item>อยากได้ชิปมากขึ้นมั้ย  ลงส่งของขวัญลึกลับให้เพื่อนๆดูสิ！</item>
+        <item> อยากเล่นไพ่กับเพื่อนๆมั้ย？ลงใช่ฟังก์ชั่นติดตามเพื่อนสิ！</item>
+        <item>ลงทักท้ายกับเพื่อนในการเรียงลำดับสิ！</item>
+        <item> ซื้อชิปในห้างโดยตรง เลือกวิธีการเติมเงินอีกมากหมายตามที่คุณชอบ！</item>
+    </string-array>
+
+    <!-- 2.1版本 -->
+    <!-- 等待状态tips轮播文字 start -->
+    <string-array name="wait_tips" formatted="false">
+        <item>ผู้เล่นทุกคนจะได้รับไพ่ที่คว่ำไว้ 2 ใบในตอนเริ่มเกมส์ </item>
+        <item>เมื่อถึงตอนที่วางเดิมพันผู้เล่นจะต้องเลือก วางเดิมพัน  ตาม  ผ่าน  เก หรือ หมอบ อย่างใดอย่างหนึ่ง</item>
+        <item>บนโต๊ะไพ่จะต้องวางเดิมพันบลายด์ บลายด์เป็นเดิมพันบังคับเพื่อให้มีเงินกองกลาง</item>
+        <item>ข้อแตกต่างระหว่างไพ่เท็กซัสและ five-card stud ก็คือ ผู้เล่นทุกคนจะได้รับไพ่ที่คว่ำไว้ 2 เท่านั้น</item>
+        <item> การวนรอบการวางเดิมพันตัดสินจากตำแหน่ง “ปุ่ม”ของเจ้ามือ</item>
+        <item>การเดิมพันรอบแรกเรียกว่า “พรีฟร็อบ”</item>
+        <item>หลังจากรอบคว่ำไพ่ก็จะเป็น “ฟร็อบ”จะเริ่มทันทีหลังจากแจกไพ่กองกลาง 3 ใบแล้ว</item>
+        <item>หลังจากนั้นก็คือ “เทิร์น”จะเริ่มทันทีหลังจากออกไพ่ใบที่4</item>
+        <item>รอบวางเดิมพันหลังจากไพ่ทั้ง5ใบออกไปหมดแล้วก็จะเรียกว่า “ริเวอร์”</item>
+        <item>ในไพ่เท็กซัส ไพ่ไม่แบ่งสีและดอก</item>
+        <item>ไพ่สู: ไพ่5ใบที่ไม่มีลักษณะใดๆเหมือนด้านบน ความแกร่งของไพ่จะตัดสินจากแต้มบนไพ่</item>
+        <item> 1คู่:ไพ่คู่หนึ่งคู่รวมกับไพ่ใดๆ(เช่น:ไพ่คู่7รวมกับไพ่แต้ม4 แต้ม10และQอย่างละใบ)</item>
+        <item> 2คู่:ไพ่คู่สองชุดที่มีแต้มไม่เหมือนกันรวมกับไพ่ใดๆ(เช่น:ไพ่คู่Q </item>
+        <item>ตอง：ในไพ่5ใบจะมีไพ่อยู่3ใบที่มีแต้มเดียวกัน ไพ่อีก2ใบที่เหลือเป็นไพ่อะไรก็ได้ (เช่น ไพ่ตอง3รวมกับไพ่แต้ม 5 และไพ่Qอย่างละใบ)</item>
+        <item>ไพ่แต้ม A，2，3，4，5 ทั้งห้าใบนี้ถือว่าเป็นไพ่สเตรทที่มีความแกร่งน้อยที่สุด</item>
+        <item>ไพ่สเตรท：ไพ่ห้าใบที่มีแต้มเรียงกัน ไม่แบ่งตามดอกและสีของไพ่ (เช่น ไพ่ 7 , 8 , 9 , 10 , J ที่มีดอกไม่เหมือนกัน)</item>
+        <item>ฟลัช：ไพ่ห้าใบที่มีดอกและสีเหมือนกันแต่มีแต้มไม่เรียงกัน (เช่น ไพ่โพธิ์ดำแต้ม 4, 5, 7, 10 และ K)</item>
+        <item>ฟูลเฮ้าส์：ไพ่แต้มเหมือนกัน3ใบรวมกับไพ่ที่มีแต้มเดียวกันหนึ่งคู่ (เช่น ไพ่แต้ม10สามใบรวมกับไพ่แต้ม6หนึ่งคู่ หรือ ไพ่ K สามใบรวมกับไพ่แต้ม 5 หนึ่งคู่)</item>
+        <item>โฟร์การ์ด：ไพ่ที่มีแต้มเท่ากันสี่ใบ (เช่น ไพ่แต้ม8สี่ใบ หรือ ไพ่Qสี่ใบ)</item>
+        <item>สเตรทฟลัช：ไพ่ห้าใบที่เป็นไพ่สเตรทที่มีสีและดอกเดียวกัน (เช่นไพ่โพดำแต้ม8,9,10,J และ Q)</item>
+        <item>ไพ่เท็กซัสโป๊กเกอร์จะใช้ไพ่ทั้งหมด 52 ใบ ไม่ใช้ไพ่ Joker</item>
+        <item>ผู้เล่นจะเดิมพันบลายด์เมื่อรอบไพ่เริ่มต้นขึ้นแล้ว</item>
+        <item>หลังรอบไพ่ทุกรอบเจ้ามือจะย้ายตำแหน่งไปอีกหนึ่งตำแหน่ง บิ๊กสมอลบลายด์ก็จะย้ายตามไปด้วย</item>
+        <item>ก่อนการเริ่มเกมส์จะต้องเลือกตำแหน่งของเจ้ามือ (เดิมพันยึดตามตำแหน่งท้ายสุ</item>
+        <item>การเทียบความแกร่งของไพ่จะไม่แบ่งตามดอกและสี เปรียบเทียบแต้มจากใหญ่ไปเล็ก</item>
+        <item>รอยัลฟลัชสเตรท>สเตรทฟลัช>โฟร์การ์ด>ฟูลเฮ้าท์>ฟลัช>สเตรท>ตอง>2คู่>1คู่>ไพ่สูง</item>
+        <item>เมื่อมีผู้เล่นall inแล้ว  ผู้เล่นอื่นจะต้องเลือกตามเดิมพันหรือหมอบไพ่</item>
+        <item>เก：เพิ่มจำนวนเงินเดิมพัน ผู้เล่นคนต่อไปต้องการที่จะเพิ่มเดิมพันให้สูงกว่าผู้เล่นอื่นๆ หรือไม่ก็เลือกหมอบ</item>
+        <item>ในรอบการเดิมพันทุกรอบเมื่อรอบที่ผู้เล่นทุกคนต่างเดิมพัน “ตาม” สิ้นสุดลง ก็จะเข้าสู่การเดิมพันในรอบต่อไป </item>
+        <item>ในรอบการเดิมพันทุกรอบเมื่อรอบที่ผู้เล่นทุกคนต่างเดิมพัน “ตาม” สิ้นสุดลง ก็จะเข้าสู่การเดิมพันในรอบต่อไป</item>
+        <item>ตาม Call：วางเดิมพันในจำนวนที่มากเท่ากับผู้เล่นคนอื่นๆ ในรอบๆ นั้น</item>
+        <item>ในรอบๆ หนึ่ง หากวางเดิมพันชิปในตอนที่ยังไม่มีผู้เล่นวางเดิมพันจะเรียกว่า ”ลงเดิมพัน”</item>
+        <item>หมอบ Fold：หมอบไพ่ ยังหมายรวมไปถึงการยกเลิกชิปที่เดิมพันในรอบก่อนหน้านี้</item>
+        <item>การวางเดิมพันทุกรอบจะวนตามเข็มนาฬิกาเริ่มจากผู้เล่นที่อยู่ทางขวามือของเจ้ามือ ผู้เล่นที่เป็นเจ้ามือจะเป็นผู้วางเดิมพันคนสุดท้าย</item>
+        <item>ตำแหน่งของเจ้ามือจะตัดสินว่าใครจะเป็นผู้วางเดิมพันบลายด์ก่อนออกไพ่</item>
+        <item>จำนวนเดิมพันทั้งหมด：ชิปเดิมพันทั้งหมดบนโต๊ะในรอบไพ่รอบหนึ่ง</item>
+        <item>เจ้ามือจะเป็นคนสุดท้ายที่จะเรียกเดิมพัน</item>
+        <item>ปุ่มของเจ้ามือเป็นสัญลักษณ์หมุนตามเข็มนาฬิกา</item>
+        <item>ตำแหน่งของเจ้ามือเป็นตำแหน่งที่ค่อนข้างได้เปรียบ เพราะเขาจะสามารถคิดวางกลยุทธได้จากการดูการตัดสินใจของผู้เล่นทั้งหมด</item>
+        <item>ไพ่คว่ำคือไพ่สองใบที่แจกมาอยู่ในมือของคุณ (มีคุณเพียงคนเดียวเท่านั้นที่จะมองเห็น)</item>
+        <item>ไพ่ฟล็อบคือไพ่กองกลางสามใบแรก</item>
+        <item>ไพ่เทิร์นคือไพ่กองกลางใบที่สี่ที่วางลงมาในไพ่เท็กซัสโป๊กเกอร์</item>
+        <item>ไพ่ริเวอร์คือไพ่ใบที่ห้าและเป็นไพ่ที่ออกใบสุดท้ายของไพ่กองกลางในไพ่เท็กซัสโป๊กเกอร์</item>
+        <item>เทหน้าตัก （All In）คือการลงเดิมพันด้วยชิปทั้งหมดที่มีอยู่ภายในครั้งเดียว</item>
+        <item> เนื่องจากผู้เล่นสองคนที่อยู่ด้านซ้ายของเจ้ามือมองไม่เห็นไพ่ของตนเอง แต่จะต้องวางเดิมพัน เหตุการณ์เช่นนี้เรียกว่าเดิมพันบลายด์</item>
+        <item>สมอลบลายด์หมายถึงจำนวนเดิมพันที่ผู้เล่นคนแรกที่อยู่ด้านซ้ายของเจ้ามือวางเป็นครึ่งหนึ่งของจำนวนเดิมพันที่น้อยที่สุด</item>
+        <item> บิ๊กบลายด์หมายถึงจำนวนเดิมพันที่ผู้เล่นคนที่สองที่อยู่ด้านซ้ายของเจ้ามือวางมีจำนวนเท่ากับจำนวนเดิมพันที่น้อยที่สุด</item>
+        <item>รอยัลฟลัชสเตรทเป็นไพ่ที่แกร่งที่สุด เช่น ไพ่แต้ม 10,J,Q,K,A ที่มีดอกและสีเดียวกัน</item>
+        <item>คุณรู้หรือไม่ ผู้เล่นคนที่สองที่อยู่ด้านขวามือของเจ้ามือก็คือบิ๊กบลายด์</item>
+        <item>แนะนำผู้เล่นใหม่ให้เล่นไพ่ในมือที่มีแต้มค่อนค้างใหญ่เท่านั้นอาทิ AA、KK、QQ、JJ、AK、AQ、AJ</item>
+        <item>อัตราการได้รับไพ่สูงจะเท่ากับ 1/2</item>
+        <item>อัตราการได้รับไพ่1คู่จะเท่ากับ 1/3</item>
+        <item>อัตราการได้รับไพ่2คู่จะเท่ากับ1/21</item>
+        <item>อัตราการได้รับไพ่ตองจะเท่ากับ 1/47</item>
+        <item>อัตราการได้รับไพ่สเตรทจะเท่ากับ 1/254 </item>
+        <item>อัตราการได้รับไพ่ฟลัชจะเท่ากับ 1/508</item>
+        <item>อัตราการได้รับไพ่ฟูลเฮาส์จะเท่ากับ1/694 </item>
+        <item>อัตราการได้รับไพ่โฟร์จะเท่ากับ 1/4165</item>
+        <item>อัตราการได้รับไพ่ฟลัชสเตรทจะเท่ากับ 1/72193</item>
+        <item>อัตราการได้รับไพ่รอยัลฟลัชสเตรทจะเท่ากับ 1/649740</item>
+        <item>เมื่อมีการแพ้ชิปก็ย่อมมีการชนะชิป</item>
+        <item>อย่าเกรงกลัวผู้เล่นใดๆ และอย่ามองข้ามผู้เล่นใดๆ ทั้งสิ้น</item>
+        <item>เล่นไพ่ก็ต้องมีมาด หากขี้ขลาดก็จะไม่มีผลพลอยได้</item>
+        <item> ถึงแม้ว่าการป้อมจะเป็นกลยุทธที่ดีอย่างหนึ่ง แต่การรุกก็จะทำให้คุณจบเกมส์ได้อย่างรวดเร็ว</item>
+        <item>ยอมที่จะอดทนสักครู่หนึ่ง ดีกว่าเข้ารุกหนึ่งครั้ง</item>
+        <item> all in สิ คนที่จะถูกน๊อกเอ้าท์คนต่อไปก็คือคุณนะ</item>
+        <item>ในชีวิตคนเราย่อมไม่สมหวังเสมอไป การเล่นไพ่ก็เหมือนกัน ย่อมต้องเจอกับอุปสรรค์มากมาย</item>
+        <item>คุณต้องมีสมาธิในการเล่นอยู่ตลอดเวลา</item>
+        <item>อย่าดูว่าคนอื่นมีเงินมากน้อยแค่ไหน จงดูว่าคุณมีไพ่อะไรอยู่ในมือ</item>
+        <item>คำคมพิชิตชัยในไพ่เท็กซัสโป๊กเกอร์：สงบสยบทุกความเคลือนไหว</item>
+        <item>หากฮวงจุ้ยไม่ดี ก็เปลียนตำแหน่งที่นั่งซะ</item>
+        <item>อดทนเพื่อรอเทหน้าตักเลยทีเดียว</item>
+        <item>โอกาสที่อยู่ข้างหน้าของทุกคนเท่าเทียมกันหมด รอให้ชนะก่อนแล้วค่อยพูดออกมาก็ยังไม่สาย</item>
+        <item>อย่ามัวหวังลมๆ แล้งๆว่าโชคจะทำให้คุณชนะ</item>
+        <item>การรุกไม่ใช่สิ่งที่เลวร้าย ความลังเลต่างหากเล่า</item>
+        <item>อย่าพูดว่า 60% เลย  ต่อให้มีโอกาสชนะ 95% ฉันก็ไม่เทหน้าตักบนไพ่กองกลาง </item>
+        <item>จุดเปลี่ยนสำคัญในไพ่เท็กซัสโป๊กเกอร์คือไพ่ริเวอร์งั้นหรือ ไม่ใช่หรอก จิตใจของคุณต่างหาก！</item>
+        <item>ชิปก็เหมือนกับเงินส่วนตัวของคุณ ทีนี้คุณยังจะกล้าซี้ซั้วเทหน้าตักอีกหรือ？</item>
+        <item>อย่าเสียใจที่ได้ไพ่เน่าๆ ในมือ ให้คิดเสียว่าคุณแค่วางเดิมพันน้อยๆ เท่านี้ก็จะประหยัดชิปได้แล้ว</item>
+        <item>ออกไพ่เหมือนออกหมัด มีรุกและมีรับ</item>
+        <item>รอบไพ่ทุกรอบก็เหมือนกับชีวิตคนเรา ถึงเวลาคว้าโอกาสก็คว้าเสีย อย่าเสียโอกาสและกลับมาเสียใจภายหลัง </item>
+        <item>การตักแขนทิ้งถึงแม้ว่าจะเจ็บปวด แต่ก็ทำให้คุณอยู่รอดได้</item>
+        <item>จิตใจบงการการติดสินใจของคุณอยู่</item>
+        <item>สงบนิ่ง สงบนิ่ง และสงบนิ่ง</item>
+        <item>ความแน่วแน่และสายตาที่แม่นยำคือเครื่องมือสำคัญในไพ่เท็กซัสโป๊กเกอร์</item>
+        <item>ชีวิตคนเราก็เหมือนกับรอบไพ่รอบหนึ่ง มีการเริ่มต้นที่เหมือนกัน แต่กระบวนการกลับแตกต่างกันสิ้นเชิง จงคว้าโอกาสเมื่อมาถึง ทำให้ชีวิตมีสีสันยิ่งขึ้น</item>
+        <item>จงกล้าที่จะเกทับ แล้วคุณจะพบว่าไพ่ในมือของผู้เล่นคนอื่นมันไม่น่ากลัวอย่างที่คิด</item>
+        <item> จงรู้ว่าควรหมอบเมื่อไหร่</item>
+        <item>บางครั้งการแพ้ชิปก็เป็นกลวิธีการเอาชนะชิปอย่างหนึ่ง เหมือนกับการปลอมเป็นหมูเพื่อไปกินเสือ ได้ผลดีทีเดียว </item>
+        <item> คุณไม่อาจกำหนดการแพ้ชนะได้ แต่คุณสามารถควบคุมจำนวนการแพ้ชนะได้</item>
+        <item> แบ่งเงินสามแสนออกเป็นยี่สิบแล้วแพ้ให้กับคู่ต่อสู้ของคุณ แล้วค่อยๆ ใช้เวลาในการชนะเอาเงินล้านกลับมา</item>
+        <item>รุก รุกอย่างไม่หยุด เซียนนักเล่นไพ่เท็กซัสโป๊กเกอร์ที่ดีจะต้องรู้จักเล่นกับจิตใจของคน</item>
+        <item>ไพ่ไม่แบ่งสูงต่ำ！ชนะแล้วถึงจะเรียกได้ว่าเป็นไพ่ดี ที่พนันไปนั้นไม่ใช่โชค ชนะแล้วถึงจะเรียกได้ว่าไหวพริบ </item>
+        <item>ความหุนหันพลันแล่นเป็นสิ่งที่เลวร้าย จิตสงบเมื่อไหร่โชคก็จะมาหาคุณเมื่อนั้น</item>
+        <item>รู้กาล เข้าใจโอกาส การรู้จักรุกและรับในไพ่เท็กซัสโป๊กเกอร์ก็ไม่ใช่แบบนี้เสมอไป </item>
+        <item>สิ่งที่สำคัญที่สุดบนโต๊ะไพ่เท็กซัสคืออะไรงั้นรึ  ก็ไพ่ริเวอร์ไงเล่า</item>
+        <item> สิ่งที่ทำให้คุณชนะล้วนแล้วแต่เป็นไพ่ธรรมดาๆ เท่านั้น บางครั้งไพ่ดีๆ ก็ส่งคุณลงนรกได้</item>
+        <item>เป็นคนต้องรู้จักมีหลักการ การเล่นไพ่อย่าละโมบ  อย่าพลีพลาม</item>
+        <item>เคารพตัวเอง เคารพผู้อื่นแล้วชัยชนะก็จะเป็นของคุณตลอดไป</item>
+        <item>การเป็นสุภาพบุรุษนั้น ถึงแม้ว่าจะแพ้เสียชิปไปทั้งหมดแล้วแต่ก็ยังให้ความเคารพต่อคู่แข่ง</item>
+        <item>การเป็นสุภาพบุรุษนั้น เมื่อชนะได้ชิปทั้งหมดของฝ่ายตรงข้ามแล้ว แต่ก็ยังมีมารยาทแต่ต่อคู่แข่งและกล่าวว่าจริงๆ แล้วเป็นเพราะโชคดีเท่านั้นแหละ</item>
+        <item>ปรัชญาของไพ่โป๊กเกอร์ก็คือ ความอยากได้ —— ถ้าอยากคุณก็จะได้ ดังนั้นต้องกล้าที่จะอยากได้ ！</item>
+        <item>เมื่อโชคไม่อยู่ข้างคุณ จงใช้ทักษะและความหลักแหลมของคุณเอาชนะมันเสีย</item>
+        <item>ไพ่เท็กซัสโป๊กเกอร์เป็นเกมส์ของผู้กล้าตลอดกาล แค่คุณกล้าที่จะรุกอยู่เสมอ ชัยชนะก็จะอยู่ในเงือมมือของคุณ</item>
+        <item> แพ้ชนะไม่ใช่ปัญหา มันเป็นเพียงความรู้สึกเพียงชั่วขณะ หากจะต้องออกจากเกมส์นั้นก็เป็นเพราะบัญชาของสวรรค์</item>
+        <item>ที่ผู้เล่น“เอะอะโมโห”นั้นเป็นเพราะสถานการณ์ไพ่ริเวอร์เกิดขึ้นอีกแล้ว！</item>
+        <item>หากยังหาปลาเป็นโต๊ะไม่เจอภายในเวลา30นาที คุณก็จะกลายเป็นปลาตัวนั้นแหละ —— จากภาพยนตร์เรื่อง《ราชชานักพนัน》</item>
+        <item> อยากหาครูที่มาสอนเมื่อยามที่พ่ายแพ้ เพราะหนทางแห่งความสำเร็จของพวกเขานั้นยังอีกยาวไกล——นโปเลียน</item>
+        <item>ความพ่ายแพ่ของคนหนึ่งคนคือผลลัพธิ์โดยตรงของตัวเขาเอง —— James Allen</item>
+        <item>คุณพยายามไขว่ขว้าความสำเร็จได้ แต่อย่าหวังว่ามันจะต้องสำเร็จเสมอไป —— Faraday</item>
+        <item>เกมส์มีกฎและกติกา การเคารพกฎและกติกาเป็นพื้นฐานสำคัญอย่างหนึ่งของนักไพ่</item>
+        <item>อย่าคิดเงินในขณะที่คุณเล่นไพ่ เมื่อผลแพ้ชนะออกมาแล้ว คุณก็จะมีเวลาคิดการแพ้ชนะของตัวเอง</item>
+        <item>หมอบเพราะเหลืออดยังดีกว่าไม่เหลืออะไรเลย</item>
+        <item> การรอคอยก็เป็นความสุขอย่างหนึ่ง เพราะโชคไม่ใช่จะมาหาคุณได้เสมอไป ที่สำคัญคือคุณต้องยังคงอยู่ได้</item>
+        <item> ชีวิตคนก็เหมือนการเล่นไพ่ อย่าไปสนว่าคุณจะได้ไพ่ดีแค่ไหน สิ่งที่สำคัญคือคุณจะออกไพ่แย่ๆ ของคุณเพื่อเอาชนะได้อย่างไร</item>
+        <item>ยึดในรูปแบบการเล่นที่เหมาะสมกับตนเองให้ได้ การพ่ายแพ้ 1 ครั้งก็จะทำให้เกิดความกังวล และมันจะกลายเป็นศัตรูตัวฉกาจของคุณ </item>
+        <item>ชีวิตคนก็เหมือนการพนัน การสับไพ่คือสิ่งที่สวรรค์กำหนด แต่เมื่อเล่นไพ่คุณเท่านั้นที่เป็นผู้กำหนด</item>
+        <item>ชนะเมื่อคุณควรชนะ แต่อย่าแพ้เมื่อคุณไม่ควรที่จะแพ้</item>
+        <item>บางครั้งฝ่ายที่มีความกล้าก็จะสิทธิ์เป็นผู้ชนะ</item>
+        <item>ความสมบูรณ์แบบโดยทั่วไปของคนเรามีลักษณะพิเศษดังนี้：งามสง่า ปราดเปลื่อง แน่วแน่ และเฉียบขาด</item>
+        <item>ไม่มีชัยชนะใดที่จะดีไปกว่าการเอาชนะเหนือตนเอง</item>
+        <item>คบคนพาล พาลพาไปหาผิด คบบัณฑิต บัณฑิตพาไปหาผล</item>
+        <item>ต้องรู้ให้แน่ก่อนว่าพวกเขาไม่มีแผนการใดๆ ในใจ รอคอยโอกาสแล้วค่อยดำเนินการ</item>
+        <item>ปรัชญาของไพ่โป๊กเกอร์ก็คือ ความอยากได้ —— ถ้าอยากคุณก็จะได้ ดังนั้นต้องกล้าที่จะอยากได้ ！</item>
+        <item>เคารพตัวเอง เคารพผู้อื่นแล้วชัยชนะก็จะเป็นของคุณตลอดไป</item>
+        <item>ชีวิตคนก็เหมือนการเล่นไพ่ อย่าไปสนว่าคุณจะได้ไพ่ดีแค่ไหน สิ่งที่สำคัญคือคุณจะออกไพ่แย่ๆ ของคุณเพื่อเอาชนะได้อย่างไร</item>
+        <item> ชีวิตก็เหมือนการเล่นกไพ่ สับไพ่ขึ้นอยู่กับพระเจ้า แต่เล่นไพ่ขึ้นอยู่กับเรา</item>
+        <item>ชนะเมื่อคุณควรชนะ แต่อย่าแพ้เมื่อคุณไม่ควรที่จะแพ้</item>
+        <item>อย่าเสียเงินไปกับการดูไพ่กองกลาง การหมอบก็คือการเอาชนะอีกแบบหนึ่ง</item>
+        <item>โอกาศได้รับไพ่ฟลัชจากไพ่กองกลางนั้นมี 20% ไม่ใช้ 25%</item>
+    </string-array>
+    <!-- 等待状态tips轮播文字 end -->
+    <string name="watch">ชมต่อ</string>
+    <string name="help_content_11">1 วิธีการเล่นพื้นฐาน</string>
+    <string name="help_content_12">ไพ่2ใบที่อยู่ในมือร่วมกับไพ่5ใบที่อยู่บนโต๊ะ เลือกไพ่5ใบที่ใหญที่สุดมาเปรียบเทียบกัน</string>
+    <string name="help_content_21">2 เปรียบเทียบรูปแบบไพ่</string>
+    <string name="help_content_22">เปรียบเทียบไพ่ ไม่เกี่ยวดอก (ถ้ามี1คู่ คู่ใหญ่จะชนะ ถ้ามีคู่ตรงกัน ก็เปรียบเทียบไพ่ที่เหลือ ไพ่ใหญ่ชนะ)ถ้าทุกคนมีไพ่ตรงกัน จะแบ่งปันเงินกองกลางเฉลี่ย</string>
+    <string name="help_content_23">รอยัลฟลัชสเตรท>สเตรทฟลัช>โฟร์การ์ด>ฟูลเฮ้าท์>ฟลัช>สเตรท>ตอง>2คู่>1คู่>ไพ่สูง</string>
+    <string name="help_content_31">3 แบ่งปันเงินกองกลาง</string>
+    <string name="help_content_32"> ไพ่ทุกมือต้องประกอบด้วยไพ่5ใบ ถ้าผู้เล่น2คนมีไพ่แบบเดียวกัน เช่นทั้ง2คนมี“A”1คู่ ก็เปรียบเทียบไพ่ใบอื่นๆ</string>
+    <string name="help_content_33">เงินกองกลาง：ชิปทั้งหมดที่ผู้เล่นวางเดิมพันในรอบนี้</string>
+    <string name="help_content_34">เข้าร่วมเงินกองกลาง：ผู้เล่นคนนี้ได้วางเดิมพันในเงินกองกลาง</string>
+    <string name="help_content_35">เงินกองกลางและวงย่อย：การเล่นทุกรอบอาจมีเงินกองกลางเอกและเงิน กองกลางข้าง เมื่อคนหนึ่งเทหน้าตัก เงินกองกลางเอกประกอบด้วยเดิมพันของคนเทหน้าตักและคนอื่นๆ เงินกองกลางข้างประกอบด้วยส่วนเกินจากเทหน้าตัก ถ้ามีหลายคนเทหน้าตัก จะมีเงินกองกลางข้างหลายๆ</string>
+    <string name="help_content_36">กฎระเบียบการแบ่งปัน</string>
+    <string name="help_content_37">a．แค่มีผู้เล่นที่เข้าร่วมเล่นเงินกองกลางมีสิทธิแบ่งปันเงินกองกลางเท่านั้น</string>
+    <string name="help_content_38">b．แค่มีผู้เล่นถือรูปแบบไพ่ใหญ่ที่สุดจึงสามารถชนะได้ในแต่ละเงินกองกลาง แล้วผู้เล่นคนอี่นจะไม่สามารถรับชิป</string>
+    <string name="help_content_39">c．แบ่งบันเงินกองกลางโดยเริ่มจากวงย่อย（SIDE POT）และแบ่งชิปตามเวลาที่วงย่อยสร้างขึ้น</string>
+    <string name="help_content_41">4ข้อมูลบัญชี</string>
+    <string name="help_content_51">5 ติดต่อทีมงาน</string>
+    <string name="help_content_52">อีเมลล์ฟีดแบ็ค：</string>
+    <string name="chip_board">การเรียงลำดับเงินเกมของผู้เล่น</string>
+    <string name="best_winner_board">ลำดับชัยชนะ</string>
+    <string name="php_loading_market">กำลังโหลดข้อมูลสินค้าค่ะ กรุณารอสักครู่ค่ะ...</string>
+    <string name="friend_delnotify"> จะลบเพื่อน %1$sมั้ย หลังจากลบเพื่อนคนนี้แล้วจะไม่สามารถหากลับมาได้  ตกลงจะลบมั้ย</string>
+    <string name="stand_confirm_game"> เหนื่อยแล้ว ชมต่อมั้ย แต่ชิปทั้งหมดที่คุณวางเดิมพันจะถูกหักออกนะ！</string>
+    <string name="stand_confirm"> เหนื่อยแล้ว พักผ่อนห่นอยมั้ย？</string>
+    <string name="room_logout_confirm_nonseat"> คุณจะออกจากห้องกลับไปสู่ ล็อบบี้</string>
+    <string name="room_logout_to_halllist_confirm"> คุณจะออกจากห้องกลับไปสู่รายชื่อห้อง และชิปทั้งหมดที่คุณวางเดิมพันจะถูกหัก\nออกค่ะ！</string>
+    <string name="room_logout_confirm_match"> คุณจะออกห้องการแข่งขันแบบตัดออก และค่าเข้าร่วมการแข่งขันจะถูกหักออกหลังจากคุณออกจากการแข่งขันค่ะ！</string>
+    <string name="room_money_less3"> ขอโทษค่ะ ชิปไม่พอ  กรุณาไปเล่นที่ห้องบลายด์ต่ำกว่า</string>
+    <string name="guide_title1">เกมขี่กล้าหาญ   เวลาเล่นไม่ใช่ขึ้นอยู่กับดวงเพียงอย่างเดียว</string>
+    <string name="guide_title2">ไพ่ 2 ใบที่อยู่ในมือร่วมกับไพ่5ใบที่อยู่บนโต๊ะ  เลือกไพ่${5}ใบที่ใหญ่ที่สุดมาเปรียบเทียบกัน</string>
+    <string name="guide_tips">ทิป ：ฟลัช>สเตรท</string>
+    <string name="guide_win">ใครจะชนะในที่สุด</string>
+    <!-- 2.2需求 添加在此 -->
+
+
+    <!-- 2.5需求start -->
+    <string name="userinfo_empty_goods"> ยังไม่มีอะไรซักอย่าง</string>
+    <string name="userinfo_go_market">ไปเดิยเล่นที่ห้าง </string>
+    <string name="set_gameresult_tips">แจ้งเตือนการชำระชิป </string>
+    <string name="set_cardtype_tips"> การแจ้งเตือของนรูปแบบไพ่</string>
+    <string name="set_about_tips"> เกี่ยวกับ</string>
+    <string name="five_people_room">ห้อง5คน </string>
+    <string name="other_room">ห้องอื่น </string>
+    <string name="add_shortcut"> เพิ่ม”ทางลัดสก์ท็อป”สามารถเริ่มโปรแกรมนี้ทันที จะเพิ่มมั้ยคะ</string>
+    <string name="helpful_tip">มีจำนวนจำกัดในการสั่งซื้อในทุก24ชั่วโมง ถ้าเกิดปัญหาที่ไม่สามารถสั่งซื้อได้ กรุณามาลองใหม่ในวันพรุ่งนี้</string>
+    <string name="recharge_boyaa_coin">เงินโบย่า</string>
+    <string name="my_account">บัญชีของฉัน </string>
+    <string name="my_prop">ไอเทมของฉัน </string>
+    <string name="integral_item_desc"> เกียรติ#เหลือ #ชิ้น  </string>
+    <string name="submit_for_reward"> กรอกข้อมูลได้รับรางวัล</string>
+    <string name="hint_for_reward"> กรุณากรอกข้อมูลอย่างละเอียดเพื่อได้รับรางวัลค่ะ </string>
+    <string name="phone"> โทรศัพท์</string>
+    <string name="phone_number">หมายเลขโทรศัพท์ </string>
+    <string name="hint_area_code">+ รหัสสากล</string>
+    <string name="email"> อีเมล์</string>
+    <string name="remark"> หมายเหตุ</string>
+    <string name="submit_ok"> ตกลง</string>
+    <string name="integral_error_hint_01">ข้อมูลไม่ครบถ้วนค่ะ</string>
+    <string name="integral_error_hint_02">อีเมล์ไม่ถูกต้องค่ะ</string>
+    <string name="change_integral_fail">ขฮโทษค่ะ แลกคะแนนล้มเหลว </string>
+    <string name="change_integral_not_enough"> เกียรติของคุณยังไม่พอ สู้ๆนะ !!</string>
+    <string name="change_integral_not_product"> ขอโทษค่ะ รางวัลนี้หมดแล้วค่ะ กรุณาติดตามค่ะ</string>
+    <string name="change_integral_share_status">เพิ่มได้แลกเปลี่ยน%2$sโดยใช้%1$d เกียรติในการเข้าร่วมการแข่งขันแบบตัดออกของเกมไพ่เท็กซัสโบย่า รีบเข้ามาเล่นกันเลย! ดาวน์โหลดลิงค์  ：%3$s</string>
+    <string name="play_once_more">เล่นอีกรอบ </string>
+    <string name="change_integral_confirm"> คุณตกลงจะใช้%1$d เกียรติมาแลก%2$sมั้ย</string>
+    <string name="current_market_boyaa_money">เงินโบย่ามีอยู่ในปัจจุบันนี้ </string>
+    <string name="no_hint">ไม่แสดง\nการแจ้งคำเตือน</string>
+    <string name="game_result_share">เพิ่มได้รับ%1$sชิปในเกมไพ่เท็กซัสโบย่า เก่งมากเลย รีบไปเล่นกันเลย ดาวน์โหลดลิงค์%2$s</string>
+    <string name="game_result_toast_text">ใน【การติดตั้ง】สามารถเปิด【การแจ้งเตือนชำระชิป】</string>
+    <string name="evaluate_text"> ว้าว คุณได้ชนะ%1$dรอบแล้ว เก่งมากเลย ถ้าชอบเกมส์เราแล้วก็ให้5ดาวเลยสิ</string>
+    <string name="wait_operation">ค่อยว่าที่หลัง </string>
+    <string name="evaluate">เขียนความคิดเห็น </string>
+    <string name="notice_addfriend">ขอเป็นเพื่อนกัน </string>
+    <string name="upward_sliding">สไลด์ข้างบนก็จะเผยให้คุณเห็น</string>
+    <string name="match_stand">คุณจะออกรอบนี้อัตโนมัติ  ตกลงจะลุกขึ้นมั้ยคะ</string>
+    <!-- 多语言新支付 -->
+    <string name="more_pay">มากขึ้น </string>
+    <string name="coming_soon">กรุณาติดตามค่ะ</string>
+
+    <!-- 多语言新支付end -->
+
+
+    <!-- 二维码版本专用 -->
+    <string name="login_web">ล็อกอินเวอร์ชั่นเว็บ </string>
+    <string name="ready_to_scan"> เริ่มสแกน</string>
+    <string name="logout_pc">ออกระบบ </string>
+    <string name="confirm_login_pc">ตกลง </string>
+    <string name="cancel_login_pc">ยกเลิก </string>
+    <!-- 二维码Zxing开源包 -->
+    <string name="app_picker_name"> โปรแกรมประยุกต์</string>
+    <string name="bookmark_picker_name"> ที่คั่นหนังสือ</string>
+    <string name="button_add_calendar"> เพิ่มเหตุการณ์ลงในปฏิทิน</string>
+    <string name="button_add_contact">เพิ่มไปยังรายชื่อผู้ติดต่อ </string>
+    <string name="button_back">กลับ</string>
+    <string name="button_cancel"> ยกเลิก </string>
+    <string name="button_clipboard_empty">ล้างสมุดฝากข้อความ </string>
+    <string name="button_custom_product_search"> ค้นหาที่กำหนดเอง</string>
+    <string name="button_dial">กดเบอร์ </string>
+    <string name="button_done">สำเร็จ</string>
+    <string name="button_email">ส่ง email</string>
+    <string name="button_get_directions">รับที่อยู่</string>
+    <string name="button_google_shopper"> ช้อปปิ้ง google </string>
+    <string name="button_mms">ส่ง MMS</string>
+    <string name="button_ok">ตกลง</string>
+    <string name="button_open_browser"> เปิดเบราเซอร์</string>
+    <string name="button_product_search"> เปิดใช้เมนูค้นหาสินค้า</string>
+    <string name="button_read_book"> เรียกดูหนังสือเล่มนี้</string>
+    <string name="button_search_book_contents"> ค้นหาเนื้อหาหนังสือ</string>
+    <string name="button_share_app">แบ่งปันโปรแกรมแชร์ </string>
+    <string name="button_share_bookmark">แบ่งปันที่คั่นหนังสือ </string>
+    <string name="button_share_by_email">แบ่งปันทางอีเมล์ </string>
+    <string name="button_share_by_sms">แบ่งปันทางข้อความ </string>
+    <string name="button_share_clipboard"> แบ่งปันสมุดฝากข้อความ</string>
+    <string name="button_share_contact">แบ่งปันผู้ติดต่อ </string>
+    <string name="button_show_map"> แสดงแผนที่</string>
+    <string name="button_sms">ส่งข้อความ</string>
+    <string name="button_web_search"> ค้นหาเว็บ</string>
+    <string name="button_wifi"> เชื่อมต่อกับอินเทอร์เน็ต</string>
+    <string name="contents_contact">ข้อมูลผู้ติดต่อ </string>
+    <string name="contents_email"> อีเมล์</string>
+    <string name="contents_location"> พิกัดทางภูมิศาสตร์</string>
+    <string name="contents_phone"> หมายเลขโทรศัพท์</string>
+    <string name="contents_sms">ข้อความที่อยู่</string>
+    <string name="contents_text"> ข้อความธรรมดา</string>
+    <string name="history_clear_text">ลบบันทึก </string>
+    <string name="history_email_title"> การบันทึกสแกนบาร์โค้ด</string>
+    <string name="history_send">ส่งบันทึก </string>
+    <string name="history_title"> บันทึก</string>
+    <string name="menu_about"> เกี่ยวกับ</string>
+    <string name="menu_help">ช่วยเหลือ </string>
+    <string name="menu_history">บันทึก</string>
+    <string name="menu_settings">การตั้งค่า </string>
+    <string name="menu_share"> แบ่งปัน </string>
+    <string name="msg_default_contents"> เนื้อหา</string>
+    <string name="msg_default_format"> รูปแบบ</string>
+    <string name="msg_default_meta"> เมตาดาต้า</string>
+    <string name="msg_default_time">เวลา </string>
+    <string name="msg_default_type">รูปแบบ </string>
+    <string name="msg_encode_barcode_failed"> ค้นหาบาร์โค้ด</string>
+    <string name="msg_encode_contents_failed">ไม่สามารถอ่านบาร์โค้ด   </string>
+    <string name="msg_google_shopper_missing">ยังไม่ได้ติดตั้งช้อปปิ้งgoogle </string>
+    <string name="msg_intent_failed"> ขอโทษค่ะ ไม่สามารถเปิดซอฟต์แวร์นี้เนื่องจาก บาร์โค้ดนี้ใช้ไม่ได้</string>
+    <string name="msg_loading_apps">โหลดโปรแกรม </string>
+    <string name="msg_not_our_results"> ออกโปรแกรมนี้ เนื่องจากค้นหาโปรแกรมนี้ไม่เจอ</string>
+    <string name="msg_sbc_failed">ขอโทษค่ะ เกิดปัญหาในการค้นหา </string>
+    <string name="msg_sbc_no_page_returned"> ไม่ได้กลับไปหน้า</string>
+    <string name="msg_sbc_page">หน้า </string>
+    <string name="msg_sbc_searching_book">ค้นหาหลันสือ </string>
+    <string name="msg_sbc_snippet_unavailable">ไม่สามารถใช้ข้อมูลอย่างย่อ </string>
+    <string name="msg_sbc_unknown_page"> หน้าไม่รู้จัก</string>
+    <string name="msg_unmount_usb">ขอโทษค่ะ ไม่สามารถอ่านการ์ด SD </string>
+    <!-- <string name="preferences_general_title"> การตั้งค่าทั่วไป</string> -->
+    <!-- <string name="preferences_name">การตั้งค่า </string> -->
+    <!-- <string name="preferences_play_beep_title"> เสียงแจ้งเตือน</string> -->
+    <!-- <string name="preferences_result_title"> การตั้งค่าผล</string> -->
+    <!-- <string name="preferences_vibrate_title"> สั่น</string> -->
+    <string name="result_address_book"> ค้นพบผู้ติดต่อแล้ว</string>
+    <string name="result_calendar"> ค้นพบเหตุการณ์ในปฏิทินแล้ว</string>
+    <string name="result_email_address"> ค้นพบEmailแล้ว</string>
+    <string name="result_geo"> ค้นพบพิกัดแล้ว</string>
+    <string name="result_isbn">ค้นพบหนังสือแล้ว </string>
+    <string name="result_product"> ค้นพบสินค้าแล้ว </string>
+    <string name="result_sms"> ค้นพบข้อความแล้ว </string>
+    <string name="result_tel">ค้นพบหมายเลขโทรศัพท์แล้ว </string>
+    <string name="result_text"> ค้นพบข้อความธรรมดาแล้ว</string>
+    <string name="result_uri">ค้นพบURLแล้ว</string>
+    <string name="result_wifi">ค้นพอตั้งค่าเครือข่าย </string>
+    <string name="sbc_name">ค้นหาหนังสือทางGoogle </string>
+    <string name="share_name"> แบ่งปันผ่านบาร์โค้ด</string>
+    <string name="title_about"> สแกนเนอร์บาร์โค้ด</string>
+    <string name="wa_name"> ตั้งค่าเครือข่าย</string>
+    <string name="wifi_changing_network"> เครือข่ายที่เปลี่ยนไป เรื่อยๆ</string>
+    <string name="wifi_connect_failed"> การเชื่อมต่อเครือข่ายล้มเหลว</string>
+    <string name="wifi_connected">การเชื่อมต่อ </string>
+    <string name="wifi_creating_network"> การสร้างเครือข่าย</string>
+    <string name="wifi_modifying_network"> แก้ไขเครือข่าย</string>
+    <string name="wifi_ssid_label"> ชื่อเครือข่าย</string>
+    <string name="wifi_ssid_missing"> ชื่อเครือข่ายที่ขาดหายไป</string>
+    <string name="wifi_type_incorrect"> รูปแบบเครือข่ายไม่ถูกต้อง</string>
+    <string name="wifi_type_label">รูปแบบ </string>
+    <string name="zxing_url">http://code.google.com/p/zxing</string>
+    <!-- 二维码 end -->
+    <string name="prop">ไอเทม：</string>
+    <string name="have_no_gifs"> ส่งชิปให้เพื่อนๆเลย เขาก็สามารถส่งชิปให้คุณอีกนะ</string>
+    <string name="goto_land">สนับไปหน้าแนวนอน </string>
+    <string name="goto_port">สลับไปหน้าแนวตั้ง </string>
+    <string name="tclpay">การชำระเงินทางUnionPay </string>
+    <string name="not_open">ยังไม่ได้เปิด </string>
+    <string name="thrid_pay">ช่องทางการเติมเงินอย่างอื่น </string>
+    <string name="get_gifs_error"> รับของขวัญล้มเหลวกรุณลองใหม่อีกครั้ง </string>
+    <string name="get_ward_succeed">รับ#ชิปสำเร็จแล้ว</string>
+    <string name="change">แลก </string>
+    <string name="cur_honor"> เกียรติมีอยู่ในปัจจุบันนี้:</string>
+    <!-- <string name="input_password">คุณสามารถคัดลอกเนื้อหาข้อความนะ</string> -->
+    <!-- 第三方支付 -->
+    <string name="loginPage">ล็อกอินหน้าเว็บ </string>
+    <string name="roomtomarket_notice">จะออกจากห้องและเข้าสู่ห้่าง</string>
+    <!-- 2.5需求end -->
+    <!-- 问卷调查 -->
+    <string name="questionnaire_title">แบบสอบถาม</string>
+    <string name="questionnaire_write">กรอกแบบสอบถาม</string>
+    <string name="questionnaire_submit">ส่งแบบสอบถาม</string>
+    <string name="huodong_submitquestionnaire_wait">กำงลังส่งแบบสอบถามอยู่ โปรดรอสักครู่ค่ะ... </string>
+    <string name="questionnaire_notfinish_tip"> คุณยังไม่ได้กรอบแบบสอบถามนี้ให้สำเร็จ หลังจากคุณกรอบให้สำเร็จแล้วจึงสามารถรับรางวัลได้นะ</string>
+    <string name="questionnaire_continue">ตอบคำถามต่อไป </string>
+    <string name="questionnaire_rewrite">กรุณากรอกแบบสอบถามใหม่อีกครั้งคะ </string>
+    <string name="questionnaire_leave">ฉันจะไปแล้ว </string>
+    <string name="image_view_loading">กำลังโหลดรูปภาพอยู่...</string>
+    <string name="pay_checkout_hint">กำลังจัดการอยู่  กรุณารอสักครู่ค่ะ</string>
+    <string name="send_gifs_text">ส่งของขวัญลึกลับให้คุณ!</string>
+    <string name="tomorrow_warn">การแจ้งเตือนวันพรุ่งนี้</string>
+    <string name="task_title">รางวัลล็อกอินอย่างต่อเนื่อง</string>
+    <string name="sp_task">รางวัลพิเศษ</string>
+    <string name="go_task">ไปทำภารกิจ</string>
+    <string name="task_tips">ล็อกอินอย่างต่อเนื่องสามารถรับรางวัลมากขึ้น รางวัลสูงสุด#ในทุกวัน</string>
+    <string name="room_task_tips">ยินดีด้วยคุณได้รับชิป#จากการทำภารกิจให้สำเร็จ รางวัลเยอะๆรอคุณมารับ</string>
+    <string name="payment_question">ในกรณีที่มีการชำระเงินแล้วโดยไม่ได้รับชิป กรุณาส่งหมายเลขใบสั่งซื้อ  วันที่เติมเงิน จำนวนเงินที่เติมให้แก่ทีมงานเรา ทีมงานเราจะได้ทำการตรวจสอบให้คุณค่ะ </string>
+    <string name="account_question">ขอทราบข้อมูลรายละเอียดที่คุณพบค่ะ  ทีมงานจะได้ช่วยแก้ไขปัญหาโดยเร็วที่สุดค่ะ </string>
+    <string name="play_question">ขอทราบข้อมูลรายละเอียดที่คุณพบค่ะ ทีมงานเราจะได้แก้ไขปัญหาให้เร็วที่สุดค่ะ </string>
+    <string name="advice">หากคุณมีข้อเสนอแนะใด ๆ สำหรับเกมเรา กรุณาติดต่อศูนย์บริการลูกค้าของเกมส์เรา คุณจะได้รับรางวัลเพิ่มเติมจากเกมเราค่ะ </string>
+    <string name="payment_question1">ปัญหาการเติมเงิน</string>
+    <string name="account_question2">ปัญหาบัญชี</string>
+    <string name="play_question3">เกมส์/bugกิจกรรม</string>
+    <string name="advice_question4">ข้อเสนอเกมส์</string>
+    <string name="Leave_page">ไม่สามารถบันทึกสไลด์โชว์และตัวอักษรหลังจากคุณออกจากหน้านี้แล้ว</string>
+    <string name="nouse_t">ไม่สามารถใช้บัตรเตะในกรณีลุกขึ้น</string>
+    <string name="updata_usermoney">กำลังรีเฟรชชิปเกมส์  กรุณารอสักครู่ค่ะ ...</string>
+    <string name="upload_pic">โพสต์รูปภาพ</string>
+    <string name="out_of_memory">หน่วยความจำมือถือของคุณไม่เพียงพอ กรุณาลบโปรแกรมที่คุณใช้ไม่บ่อยค่ะ</string>
+
+    <!-- 2.7需求start -->
+    <string-array name="dealer_thx_tips">
+        <item>xx，คุณนิสัยดีมากเลย！</item>
+        <item>xx，ขอบคุณค่ะ ！</item>
+        <item>xx，ขอให้โชคดี！</item>
+        <item>xx，ทิปมา นำความโชคมา！</item>
+        <item>xx，ทิปมากมาย，AAมากมาย！</item>
+        <item>ขอบคุณxxที่ส่งทิปให้ฉันค่ะ！</item>
+    </string-array>
+
+    <string name="hint_wrongtable">ต้องอยู่ในห้องสมอลบลายด์500ขึ้นไปจึงสามารถให้ทิปแก่ผู้แจกไพ่นะ</string>
+    <string name="dealer_hint_wrongstate">ถ้ายังไม้ได้นั่งลงเล่นไพ่ ก็ไม่ต้องเสียเงินนะ</string>
+    <string name="dealer_hint_nomoney">ชิปที่คุณมีอยู่ไม่พอนะ ส่งฉันครั้งหน้านะ</string>
+    <string name="dealer_nickname">เบบี้เซ็กซี่</string>
+    <string name="smallfee">ส่งทิป</string>
+    <string name="hand_card_notify1">ไม่สามารถซื้อทายไพ่ฮอทในสภาพลุกขึ้นได้นะคะ</string>
+    <string name="hand_card_notify2">คุณลุกขึ้นแล้ว ทายไพ่ฮอทใช้ไม่ได้</string>
+    <string name="hand_card_notify3">ชิปไม่พอ ไม่สามารถซื้อเข้าได้</string>
+    <string name="hand_card_notify4">ฟังก์ชั่นทายไพ่ฮอทยังไม่เปิดใช้งานค่ะ</string>
+    <string name="hand_card_notify5">ซื้อทายไพ่ฮอทล้มเหลว</string>
+    <string name="hand_card_notify6">ซื้อทายไพ่ฮอทได้เรียบร้อยค่ะ คุณสามารถเลือกใหม่ก่อนเริ่มเล่นไพ่</string>
+    <string name="hand_card_notify7"> เพิ่มฟังก์ชั่นใหม่แล้ว รีบมาลองเล่นค่ะ</string>
+    <string name="hand_card_notify8">ชิปของท่านไม่พอ  ไม่สามารถซื้อเข้าค่ะ  </string>
+    <string name="guess_handcard">ทายไพ่ฮอท</string>
+    <string name="win_des">คำอธิบายการชนะ</string>
+    <string name="win_record">ประวัติการรับรางวัล</string>
+    <string name="buy_handcard_tip">รอบต่อไป ระบบจะซื้อเข้า\nอัตโนมัติทุกรอบ</string>
+    <string name="buy_handcard_btn">ซื้อ#</string>
+    <string name="win_handcard">ชนะ#ชิป</string>
+    <string name="smallblind_tip">ทายไพ่ฮอทสามารถเล่นได้ที่ห้องสมอลบลายด์#ขึ้นไป</string>
+    <string name="already_buy">ซื้อแล้ว</string>
+    <string name="win_record_tip">ซื้อ# ได้รับ#</string>
+    <string name="handcard_help_title">วิธีการเล่นทายไพ่ฮอท</string>
+    <string name="handcard_help_content">เลือกจำนวนชิปที่จะซื้อเข้า แล้วจะหักจากชิปหน้าตัก หลังจากซื้อเข้าแล้ว หากรอบหน้าคุณได้รับไพ่โฮลเหมือนไพ่โฮลที่กำหนดไว้ในการชี้แจง ก็จะได้รับรางวัลตามกำหนด\nจำนวนชิปที่ซื้อเข้ายิ่งสูง ยิ่งได้รับรางวัลสูงขึ้น\nชิปหน้าตัก=ชิปรวม-ชิปที่ซื้อเข้าในการเล่นไพ่</string>
+    <string name="bankruptReward_title_tips1">เงินบรรเทาล้มละลาย</string>
+    <string name="bankruptReward_title_tips2">น่าเสียดาย คุณล้มละลายแล้ว รับรางวัลของระบบสามารถรีบเล่นเกมได้</string>
+    <string name="goto_daily_tasks_tips">คุณยังมีเงินบรรเทาล้มละลายที่ไม่ได้รับ ตกลงจะไปยังถึงหน้าภารกิจรายวันมั้ย</string>
+    <string name="goto_Interact_tips">คุณยังมีเงินบรรเทาล้มละลายที่ไม่ได้รับ</string>
+    <string name="bankruptReward_loading_tips">กำลังโหลดเงินบรรเทาล้มละลาย กรุณารอสักครู่...</string>
+    <string name="about_method">นโยบายความเป็นส่วนบุคคล</string>
+    <string name="about_server">เงื่อนไขการใช้บริการ</string>
+    <!-- e2pay需要的翻译 -->
+    <string name="confirmOrder">ตกลงจะยืนยันการสั่งซื้อ</string>
+    <string name="waittominutes">เวลาในการเติมเงินต้องการ 30 วินาทีหรือ 1 นาที กรุณารอสักครู่นะคะ</string>
+    <string name="pay_success">ยินดีค่ะ เติมเงินได้สำเร็จค่ะ!</string>
+    <string name="ordering">กำลังส่งใบสั่งซื้ออยู่ค่ะ</string>
+
+    <!-- 2.8需求 -->
+    <string-array name="newcomer_field_userwin_dealerTalk">
+        <item>xx，ท่านเล่นได้ดีมากๆๆค่ะ！</item>
+        <item>xx，ท่านไกล้จะเป็นผู้ช่างไพ่เท็กซัสแล้วนะคะ！</item>
+        <item>xx，ท่านชนะได้ยอดเยี่ยมจริงๆ！</item>
+    </string-array>
+    <string-array name="newcomer_field_userlose_dealerTalk">
+        <item>xx，สู้ๆนะ！</item>
+        <item>xx，โชคดีจะตามท่าน！</item>
+        <item>xx，ฉันอยู่กับคุณตลอดนะคะ！</item>
+    </string-array>
+
+    <string name="see_again">เช็คดูอีกครั้ง</string>
+    <string name="roommarket_tip1">ชิปที่มีอยู่</string>
+    <string name="roommarket_tip2">จำนวนชิปที่ผู้เล่นซื้อทุกวันมีขีดจำกัดค่ะ ถ้าซื้อไม่ได้ กรุณาลองพรุ่งนี้ค่ะ</string>
+    <string name="no_money_tip">ชิปไม่ถึงระดับห้องนี้ค่ะ กรุณาเติมเงินค่ะ</string>
+    <string name="sms_payment">จ่ายเงินโดยผ่านข้อความ</string>
+    <string name="email_feedback">ฟีดแบคทางอีเมล์</string>
+    <string name="device_version">รุ่นมือถือ</string>
+    <string name="version">เวอร์ชั่น</string>
+    <string name="giftbag_title">กระเป๋ารางวันมือใหม่</string>
+    <string name="giftbag_autogive_title">แจกผ่านระบบแล้วค่ะ</string>
+    <string name="giftbag_canget_title">รับได้ค่ะ</string>
+    <string name="giftbag_alreadyget_title">รับแล้ว</string>
+    <string name="giftbag_cannotget_title">ยังรับไม่ได้ค่ะ</string>
+    <string name="giftbag_noget_title">ยังไม่ได้รับ</string>
+    <string name="giftbag_getreward_success_tips">ยินดีที่ท่านได้รับกระเป๋ารางวันมือใหม่ค่ะ</string>
+    <string name="giftbag_day01_proname">ชิป 800</string>
+    <string name="giftbag_day02_proname">สิทธิ์vip 7 วัน</string>
+    <string name="giftbag_day03_proname">กระเป๋าอีโม 7 วัน</string>
+    <string name="giftbag_day04_proname">กระเป๋าไอเทมอินเตอร์แอดท้ฟ 10 ครั้ง</string>
+    <string name="giftbag_day01_regist_tips">ลงทะเบียนวันที่1</string>
+    <string name="giftbag_day02_regist_tips">ลงทะเบียนวันที่2</string>
+    <string name="giftbag_day03_regist_tips">ลงทะเบียนวันที่3</string>
+    <string name="giftbag_day04_regist_tips">ลงทะเบียนวันที่4</string>
+    <string name="giftbag_backgame">กลับเกม</string>
+    <string name="giftbag_exitgame">ออกจากระบบ</string>
+    <string name="newcomer_field_touch_dealer">ตั้งใจเล่นไพ่นะคะ อย่าแตะฉันนะ</string>
+    <string name="room_hint_01">ถ้าผู้เล่นไม่ได้วางเดิมพัน ท่านจะดูไพ่อัตโนมัติ ถ้ามีผู้เล่นวางเดิมพัน ท่านจะหมอบอัตโนมัติ</string>
+    <string name="room_hint_02">ถ้าผู้เล่นไม่ได้เก ท่านจะดูไพ่อัตโนมัติ ถ้ามีผู้เล่นเก ท่านจะต้องการดำเนินการไหม่ค่ะ</string>
+    <string name="room_hint_03">ท่านตกลงจะเกชิป%1$s ถ้ามีผู้เล่นเกชิปสูงกว่า จะต้องการดำเนินการไหม่ค่ะ</string>
+    <string name="room_hint_04">ท่านสามารถสู้ทุกรอบ จนถึงALL IN</string>
+    <string name="room_hint_05">ถ้าท่านจะเลิกเล่นรอบนี้ ชิปที่ท่านเดิมพันจะเอากลับมาไม่ได้</string>
+    <string name="room_hint_06">ท่านจะดูไพ่ใบหน้าโดยไม่เก</string>
+    <string name="room_hint_07">กดปุ่ม เลือกจำนวนชิปที่วางเดิมพัน</string>
+    <string name="room_hint_08">เก%1$sชิป</string>
+    <string name="room_hint_09">ตกลงจะเทหน้าตัก</string>
+
+    <!-- 好友邀请 -->
+    <string name="invite_friend_tip1">ชวนเพื่อนมาเล่นด้วยกัน จะได้รับชิปฟรีมากยิ่งขึ่นต่อวันนะคะ</string>
+    <string name="invite_friend">ชวนเพื่อน</string>
+    <string name="invite_friend_tip2">กรุณาเลือกวิธีชวนเพื่อน</string>
+    <string name="invite_contract">รายชื่อเพื่อน</string>
+    <string name="invite_fb">เฟสบุ๊ค</string>
+    <string name="invite_friend_tip3">ชวนเพื่อนยิ่งเยอะ ได้รับรางวันยิ่งใหญ่ รางวันมากที่สุดถึงชิป#ต่อวันนะ</string>
+    <string name="invite_friend_tip4">กำลังชวนเชิญอยู่</string>
+    <string name="choose_nums">เลือก#คน</string>
+    <string name="invite">ชวนเชิญ</string>
+    <string name="search">ค้นหา</string>
+    <string name="choose_others">เปลียนอีกกรุ๊ปหนึ่ง</string>
+    <string name="invite_friend_tip5">ส่งคำชวนสำเร็จค่ะ ได้รับรางวัลชิป </string>
+    <string name="invite_friend_tip6">ส่งคำชวนไม่สำเร็จค่ะ</string>
+    <string name="invite_friend_tip7">ส่งคำชวนสำเร็จ จำนวนครั้่งรับของขวัญในวันนี้ถึงขีดจำกัดแล้วค่ะ</string>
+    <string name="invite_friend_tip8">ยังไม่มีเพื่อนค่ะ</string>
+    <!-- 破产救济 -->
+    <string name="goto_daily_tasks_tips2">ไปสู่ภารกิจประจำวัน</string>
+    <string name="goto_Interact_tips2">ไปสู่ข่าวเพื่อนไพ่</string>
+    <string name="is_sure_using"> ตกลงจะใช้ไหมคะ</string>
+    <string name="sure_using">ตกลงจะใช้</string>
+    <string name="loadding">loading...</string>
+    <string name="bankrup_null">ขออภัยค่ะ ท่านยังไม่สามารถรับรางวัลล้มละลายค่ะ</string>
+    <string name="verify_change">เปลี่ยน</string>
+    <string name="dailyaward_first">请先领取登录奖励！</string>
+    <string name="duijiang_desc_default">二维码/兑奖码请到XXX处领奖</string>
+    <string name="verify_clean">เคลียร์</string>
+
+    <!-- 2.8优化翻译 -->
+    <string name="try_buy"> ท่านจะซื้อชิป</string>
+    <string name="choose_zero_nums">เลือก0คน </string>
+    <string name="invite_friend_canntfindmen">ค้นหาผู้ติดต่อไม่พบ </string>
+    <string name="bankruptReward_not_have_data">เชื่อมต่อเครือข่ายล้มเหลวโปรดลองอีกครั้งค่ะ...</string>
+    <string name="gain_award_hint">กรุณากรอกที่อยู่ของท่านอ่ยางละเอียดค่ะ</string>
+    <string name="tomorrow_login">ล็อกอินพรุ่งนี้</string>
+    <string name="have_gifts">มีรางวัลใหญ่แจกให้นะ！</string>
+    <string name="confirm_logout">ตกลงออกจากระบบ</string>
+
+    <!--
+    2.9 需求 私人场 
+    <string name="privateroom_description_title">私人房说明</string>
+    <string name="privateroom_description_contents">1.在高级场房间列表中，有VIP表示的就是私人房。\n2.开通金卡及以上的玩家免费创建私人房。\n3.如果创建房间时输入了密码，其他玩家需要输入正确的密码才能进入房间。\n4.私人房创建2小时后，系统将自动回收。\n5.若房主离开房间，房间将会在当前牌局结束后被系统回收。</string>
+    <string name="privateroom">私人房</string>
+    <string name="text_500">500</string>
+    <string name="text_1000">1000</string>
+    <string name="text_10K">10K</string>
+    <string name="text_25K">25K</string>
+    <string name="text_50K">50K</string>
+    <string name="smallblind">小盲</string>
+    <string name="psw">密码</string>
+    <string name="psw_edit_prompt">（1~6位数字或字母）</string>
+    <string name="create">创建</string>
+    <string name="hidden_privateroom">隐藏私人房间</string>
+    <string name="privateroom_setting_info">正在获取设置信息...</string>
+    <string name="iscreate_privateroom">正在创建房间...</string>
+    <string name="level_notenough">立即成为金卡及以上会员，免费创建私人房，和好友玩牌将不受打扰！</string>
+    <string name="money_notenough">资产不足该房间的最小买入，请立即充值！</string>
+    <string name="psw_wrong">请输入1~6位数字或者字母作为密码，不可以输入特殊字符！</string>
+    <string name="nothave_room">当前私人房数目已达上限，请稍后再试！</string>
+    <string name="tabid_and_psw">房间ID：#密码：#有效时间   </string>
+    <string name="create_sucess">创建成功</string>
+    <string name="privateroom_psw">私人房密码</string>
+    <string name="copy">复制</string>
+    <string name="wrong_psw">密码错误！请重新输入</string>
+    <string name="vertify_psw">正在验证密码...</string>
+    <string name="room_login_failed_message16">密码错误！</string>
+    <string name="room_login_failed_message17">该房间已被系统回收，请选择其他房间进行游戏</string>
+    <string name="room_recover_waring_owner">亲爱的玩家，您创建的私人房已经到期，系统将在5分钟后回收房间</string>
+    <string name="room_recover_waring_all">亲爱的玩家，您所在的房间已经过期，请选择其他房间进行游戏</string>
+    <string name="room_owner_out">亲爱的玩家，您所在房间的房主已经退出，请选择其他房间进行游戏</string>
+    <string name="room_time_out">亲爱的玩家，由于您长时间未开始牌局，本房间已经被系统回收，请选择其他房间进行游戏</string>
+    <string name="owner_exit_waring">您将离开私人房回到大厅，离开后本房间被系统回收</string>
+    <string name="no_psw">密码不能为空</string>
+    <string name="psw_hint">不输入默认为空</string>
+    -->
+    <!-- 2.9 私人房 -->
+    <string name="privateroom_description_title">การแนะนำห้องส่วนตัว</string>
+    <string name="privateroom_description_contents">1、เลือกสร้างห้องส่วนตัวในห้องเร็วหรือในห้องเกม\n2、เลือกสมอลบลายด์(##) ระบบจะสร้างห้องโดยอัตโนมัติ\n3、ตั้งค่ารหัสผ่าน เมื่อผู้เล่นคนอื่นเข้าห้อง จะต้องใส่รหัสผ่านถึงจะเข้าได้ ไม่ตั้งค่ารหัสผ่าน ผู้เล่นคนอื่นจะสามารถเข้าห้องโดยตรง\n4、ห้องส่วนตัวสามารถใช้ได้2ชั่วโมง เมื่อผู้สร้างห้องออกจากห้อง  ห้องส่วนตัวนั้นจะถูกยกเลิกการใช้งานหลังจากรอบไพ่นั้นจบ</string>
+    <string name="privateroom">ห้องส่วนตัว</string>
+    <string name="text_500">200</string>
+    <string name="text_1000">500</string>
+    <string name="text_10K">1000</string>
+    <string name="text_25K">2000</string>
+    <string name="text_50K">5000</string>
+    <string name="smallblind">สมอลบลายด์</string>
+    <string name="psw">รหัสผ่าน</string>
+    <string name="psw_edit_prompt">(ตัวอักษร/ตัวเลข1-6ตัว)</string>
+    <string name="create">สร้าง</string>
+    <string name="hidden_privateroom">ซ่อนห้องส่วนตัว</string>
+    <string name="privateroom_setting_info">กำลังโหลดข้อมูลติดตั้ง...</string>
+    <string name="iscreate_privateroom">กำลังสร้างห้อง...</string>
+    <string name="level_notenough">หากเป็นสมาชิกบัตรทองหรือขึ้นไปทันที จะสามารถสร้างห้องเองได้ ซึ่งการเล่นไพ่กับเพื่อนจะไม่โดนรบกวน！</string>
+    <string name="money_notenough">สินทรัพย์ไม่พอที่จะเข้าห้องนี้ค่ะ โปรดเติมเงินทันที！</string>
+    <string name="psw_wrong">โปรดใส่ตัวอักษรหรือตัวเลข1-6ตัวเป็นรหัสผ่านไม่สามารถใส่ตัวอักษรพิเศษอื่นๆค่ะ！</string>
+    <string name="nothave_room">ตอนนี้จำนวนห้องส่วนตัวถึงขีดจำกัด โปรดรอสักครู่ค่อยลองใหม่ค่ะ！</string>
+    <string name="tabid_and_psw">ไอดีห้อง：#รหัสผ่าน：#เวลาที่กำหนด   </string>
+    <string name="create_sucess">สร้างสำเร็จ</string>
+    <string name="privateroom_psw">รหัสผ่านห้องส่วนตัว</string>
+    <string name="copy">ก๊อบปี้</string>
+    <string name="wrong_psw">รหัสผิด โปรดลองใหม่</string>
+    <string name="vertify_psw">กำลังยืนยันรหัสผ่าน...</string>
+    <string name="room_login_failed_message16">รหัสผิด！</string>
+    <string name="room_login_failed_message17">ห้องนี้ถูกระบบเรียกเก็บคืนแล้ว โปรดเลือกห้องอื่นค่ะ</string>
+    <string name="room_recover_waring_owner">ผู้เล่นที่รัก ห้องที่ท่านสร้างหมดอายุแล้วค่ะ ระบบจะเรียกเก็บห้องคืนภายใน5นาที</string>
+    <string name="room_recover_waring_all">ผู้เล่นที่รัก ห้องนี้ที่ท่านอยู่หมดอายุแล้วค่ะ โปรดเลือกห้องอื่นค่ะ</string>
+    <string name="room_time_out">ผู้เล่นที่รัก เนื่องจากท่านไม่ได้เล่นไพ่เป็นระยะเวลาที่ยาวนาน ห้องนี้ได้ถูกระบบเรียกเก็บคืน โปรดเลือกห้องอื่นค่ะ</string>
+    <string name="owner_exit_waring"> ท่านกำลังจะออกจากห้องส่วนตัวกลับไปล็อบบี้ หากออกไปแล้ว ห้องนี้จะถูกระบบเรียกเก็บคืน</string>
+    <string name="no_psw">รหัสผ่านไม่สามารถมีช่องว่าง</string>
+    <string name="room_owner_out">ผู้่เล่นที่รักคะ เจ้าของห้องนี้ออกไปแล้วค่ะ โปรดเลื่อกห้องใหม่ค่ะ</string>
+    <string name="psw_hint">หากไม่กรอก ระบบจะถือว่าเว้นว่าง</string>
+
+    <!-- <string name="room_cannot_seat2">จำนวนชิปของท่านมากกว่า$500,000แล้วค่ะ กรุณาไปเล่นที่ห้องระดับสูงกว่านี้ ขอบคุณค่ะ</string> -->
+    <string name="halllist_search">ค้นหาไอดีห้อง</string>
+    <string name="setting_system">การตั้งค่าระบบ</string>
+    <string name="volume">ระดับเสียง</string>
+    <string name="silence">ปิดเสียง</string>
+    <string name="no_friends_to_invite">ไม่มีเพื่อนที่สามารถชวนได้</string>
+    <string name="halllist_search_tips">ค้นหาห้องอย่างร่วดเร็วโดยใช้ไอดีเกม</string>
+
+    <!-- 小喇叭中所用到的文字 -->
+    <string name="xlb_parenthint">การแจ้งเตือนจากระบบ</string>
+    <string name="xlb_messagehint">ในลำโพงยังไม่มีข้อความค่ะ</string>
+    <string name="xlb_title">ส่งข้อความผ่านลำโพง</string>
+    <string name="xlb_attention">ส่งข้อความลำโพงจะหัก 2 เงินโบย่า</string>
+    <string name="xlb_hint">ผู้เล่นออนไลน์ทุกคนจะเห็นข้อความลำโพงจากท่านได้นะคะ</string>
+    <string name="xlb_msgpay">xlb_msgpay</string>
+    <string name="xlb_buyshop">อยากซื้อมากกว่านี้</string>
+    <string name="xlb_wenxin">ข้อแนะนำ</string>
+    <string name="xlb_contentkk">ท่านยังไม่มีลำโพงค่ะ รีบไปซื้อซิคะ</string>
+    <string name="xlb_sendbutton">ส่ง</string>
+    <string name="buy_good">สินค้า</string>
+    <string name="buy_name">ลำโพง</string>
+    <string name="xlb_price">ราคาต่อหน่วย</string>
+    <string name="one_price">2 เงินโบย่า</string>
+    <string name="xlb_total">ทั้งหมดจะใช้</string>
+    <string name="xlb_num">จำนวนที่จะสั่งซื้อ</string>
+    <string name="qd_but">ตกลง</string>
+    <string name="boyabi">เงินโบย่า</string>
+    <string name="load_sendmsg_xlb">กำลังส่งข้อความออก กรุณารอสักครู่ค่ะ</string>
+    <string name="sendmsgpopo_over">ความยาวข้อความลำโพงของท่านเกิน 150 ตัวอักษรแล้วค่ะ</string>
+    <string name="sendmsgpopo_z">ความยาวของข้อความลำโพงต้องน้อยกว่า 150 ตัวอักษร</string>
+    <string name="sendmsgpopo_null">ต้องกรอกข้อความค่ะ</string>
+    <string name="xiaolb_m">ลำโพง</string>
+    <string name="xiaolb_hello">ฟังก์ชั่นลำโพงสามารถส่งข้อความให้ผู้เล่นออนไลน์ทุกคนค่ะ</string>
+    <string name="xiaolb_sendmsg">สามารถส่งประกาศผ่านลำโพงค่ะ</string>
+    <string name="xiaolb_receivemsg">ข้อความลำโพงนั้นจะแสดงให้ผู้เล่นออนไลน์ทุกคนค่ะ</string>
+    <string name="xiaolb_sendsussce">ยินดีด้วยค่ะ ส่งข้อความลำโพงได้สำเร็จ</string>
+    <string name="xiaolb_sorry">ขออภัยค่ะ ฟังก์ชั่นลำโพงยังไม่เปิดใช้บริการค่ะ</string>
+    <string name="xiaolb_sorrya">ขออภัยค่ะ จำนวนลำโพงของท่านไม่พอค่ะ</string>
+    <string name="boyaabibugou">จำนวนเงินโบย่าของท่านไม่ถึง</string>
+    <string name="xiaolb_text">[ลำโพง]</string>
+
+    <!-- 新手模拟场 -->
+    <string name="cardtypejiedu_playerself">ดิฉัน</string>
+    <string name="cardtypejiedu_title">การแสดงรูปแบบไพ่</string>
+    <string name="cardtypejiedu_nomoretips">ไม่แจ้งอีก</string>
+    <string name="cardtypejiedu_publiccard">ไพ่หงาย</string>
+    <string name="cardtypejiedu_handcard_kuohao">ไพ่ในมือ</string>
+    <string name="cardtypejiedu_publiccard_kuohao">ไพ่บนโต๊ะ</string>
+    <string name="yourhandcards">ไพ่ในมือของคุณ</string>
+    <string name="dealerflag">ไอคอน</string>
+    <string name="aiRoom_msg1">ยินดีด้วยค่ะ ความโชคดีมาแล้ว รีบไปเอาชนะซิคะ</string>
+    <string name="aiRoom_msg2">ฮวงจุ้ยห้องนี้อาจจะไม่ค่อยดี เปลี่ยนอีกห้องหนึ่งจะดีไหมละ</string>
+    <string name="aiRoom_msg3">ไปสู้กัน</string>
+    <string name="aiRoom_msg4">เปลี่ยนห้อง</string>
+    <string name="aiRoom_msg5">ท่านล้มละลายแล้ว ได้รับเงินล้มละลาย</string>
+
+    <!-- 老虎机 -->
+    <string name="reward_list_text">ตารางรางวัล</string>
+    <string name="my_reward">ประวัติที่ได้รับรางวัลของฉัน</string>
+    <string name="recent_reward">ประวัติที่ได้รับรางวัล</string>
+    <string name="shake_out">จับได้</string>
+    <string name="win">ได้รับ</string>
+    <string name="gongxi">ยินดีด้วยค่ะ</string>
+    <string name="tigermachine_neterror">อินเทอร์เน็ตไม่มีเสถียรภาพ กรูณาลงอี่กครั้งค่ะ</string>
+    <string name="tigermachine_win_money">ได้รับ</string>
+    <string name="tigermachine_mostwin_money">ได้รับเยอะสุด</string>
+    <string name="tigermachine_less_money1">เงินชิปไม่พอ 1 หมื่น เข้าห้าง</string>
+    <string name="tigermachine_less_money2">เงินชิปไม่พอ 5 หมื่น เข้าห้าง</string>
+    <string name="tigermachine_less_money3">เงินชิปไม่พอ 20 หมื่น เข้าห้าง</string>
+    <string name="tigermachine_inroom_less_money1">ชิปที่เหลืออยู่ในล็อบบี้ไม่พอ 1 หมื่น เข้าห้างที่อยู่ในห้อง</string>
+    <string name="tigermachine_inroom_less_money2">ชิปที่เหลืออยู่ในล็อบบี้ไม่พอ 5 หมื่น เข้าห้างที่อยู่ในห้อง</string>
+    <string name="tigermachine_inroom_less_money3">ชิปที่เหลืออยู่ในล็อบบี้ไม่พอ 20 หมื่น เข้าห้างที่อยู่ในห้อง</string>
+    <string name="tigermachine_auto_play">เล่นโดยอัตโนมัติ</string>
+    <string name="tigermachine_inroom_auto_play">เล่นโดย\nอัตโนมัติ</string>
+    <string name="tigermachine_goodluck">ขอให้โชคดีนะคะ</string>
+    <string name="tigermachine_details">รายละเอียด</string>
+    <string name="tigermachine_choose_lucky_icon">เลือกภาพนำโชค</string>
+    <string name="tigermachine_name">สล็อต</string>
+    <string name="tigermachine_guide_tips1">ลากลง/ขึ้นเพื่อเลือกภาพนำโชค</string>
+    <string name="tigermachine_guide_tips2">ถ้าภาพที่จับได้=ภาพนำโชค รางวัลจะเป็นสองเท่า</string>
+    <string name="tigermachine_guide_tips3">ลากปุ่มเพื่อทำการรัน</string>
+
+    <!-- 網頁版活動中心 -->
+    <string name="no_seat_forweb">XXXXXXX</string>
+    <string name="isloading">กำลังโหลดเพจ...</string>
+    <string name="back_hall">กลับล็อบบี้</string>
+    <string name="buy_success_download">ยินดีค่ะ ซื้อไอเทมได้สำเร็จ กำลังโหลดข้อมูลอยู่</string>
+    <string name="unziptip">กำลังวิเคราะห์ข้อมูลอยู่ กรุณารอสักครู่นะคะ...</string>
+    <string name="notNet">ไม่มีเน็ต กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ตก่อนค่ะ</string>
+    <string name="tip3gnet">คงจะต้องการหักจำนวนเน็ตของท่าน？</string>
+    <string name="soundpooldewnloaded">ดาวน์โหลดเสียงได้เรียบร้อยแล้วค่ะ</string>
+    <string name="featureisnotturnedon">ฟังก์ชั่นนี้ยังไม่เปิดใช้งานค่ะ</string>
+
+    <!-- 表情包下載 -->
+    <string name="download_text">ดาวน์โหลด</string>
+    <string name="download_fail">ดาวน์โหลดข้อมูลไม่สำเร็จ</string>
+    <string name="unzip_fail">แตกข้อมูลไม่สำเร็จ</string>
+    <string name="no_net">กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ตก่อนค่ะ</string>
+    <string name="grps_download_notify">ดาวน์โหลดข้อมูลนี้จะหักจำนวนเน็ตตามบริการที่ท่านใช้อยู่ค่ะ</string>
+    <string name="has_downloaded">ดาวน์โหลดไฟล์ได้สำเร็จแล้วค่ะ</string>
+    <string name="expression_unnable">ไม่สามารถใช้ได้แล้วค่ะ กรุณาเติมเงินอีกครั้งค่ะ</string>
+    <string name="expression_money_less_torecharge">เงินโบย่าท่านไม่พอ ซื้อไม่สำเร็จ กรุณาเติมเงินที่ห้างก่อนค่ะ</string>
+
+    <!-- 小喇叭优化 -->
+    <string name="xiaolaba_consume_youxibi">ส่งข่าวลำโพงต้องหักชิป</string>
+    <!-- 破产倒计时 -->
+    <string name="wait_time">เวลารอ</string>
+    <string name="receive">กดรับ</string>
+    <string name="bankrupt_tip">ไม่เป็นไรค่ะ ท่านยังสามารถได้รับเงินบรรเทาล้มละลายค่ะ</string>
+    <string name="bankrupt_tip2">คุณยังไม่สามารถรับเงินบรรเทาล้มละลายได้ค่ะ</string>
+    <string name="bankrupt_tip3">ท่านได้รับเงินบรรเทาล้มละลายล้มเหลว</string>
+    <string name="bankrupt_tip4">ฟังก์ชั่นรับเงินบรรเทาการล้มละลายยังไม่ได้เปิดให้ใช้บริการ</string>
+    <string name="bankrupt_tip5">น่าเสียดายค่ะ! ท่านล้มละลายแล้วค่ะ</string>
+    <string name="receive_bankrupt">กำลังได้รับเงินบรรเทาล้มละลาย กรุณารอหน่อยค่ะ...</string>
+    <string name="fortumo_text">จ่ายผ่านSMS</string>
+    <string name="buy_btn_text">ไปรับทันที</string>
+
+    <!-- 限制pc登录 -->
+    <string name="pc_login_ban">ห้ามล็อกอินผ่านคอมพิวเตอร์</string>
+    <string name="notify_php">กำลังรักษาการติดตั้งไว้...</string>
+    <string name="close_pc_login_notice">ท่านตั้งค่าบีญชีท่านไม่สามารถล็อกอินผ่านคอมพิวเตอร์ แล้วค่ะ</string>
+    <string name="pc_login_notice">ท่านตั้งค่าบีญชีท่านจะสามารถล็อกอินผ่านคอมพิวเตอร์แล้ว ค่ะ</string>
+    <string name="error_notify2">CMS没有打开PC限制登录功能</string>
+    <string name="error_notify1">用户验证有误</string>
+    <string name="error_notify3">参数有误</string>
+    <string name="error_notify4">未知错误</string>
+
+    <!-- 禁言 -->
+    <string name="notify_speech_limit">ขออภัยค่ะ ท่านถูกห้ามแชท์ในเกม ต้องรออีก#วันถึงจะแช ท์ได้ค่ะ</string>
+    <string name="notify_sendemotion_limit">ขออภัยค่ะ ท่านถูกห้ามแชท์ในเกม ต้องรออีก#วันถึง จะส่งอีโมได้ค่ะ</string>
+    <string name="notify_props_limit">ขออภัยค่ะ ท่านถูกห้ามแชท์ในเกม ต้องรออีก#วันถึงจะใช้ไอเท มอินเตอร์แอคทีฟได้ค่ะ</string>
+    <string name="notify_voice_limit">ขออภัยค่ะ ท่านถูกห้ามแชท์ในเกม ต้องรออีก#วันถึงจะใช้ ฟังก์ชันส่งเสียงได้ค่ะ</string>
+    <!-- <string name="invite_tips">(ใช้ฟังก์ชันนี้จะถูกหักค่าSMSค่ะ)</string> -->
+    <string name="setting_game">ตั้งค่า</string>
+
+    <!-- 商城改版 -->
+    <string name="sure_buy">ตกลงจะสั่งซื้อ</string>
+    <string name="invite_tips">(ใช้ฟังก์ชั่นนี้ต้องการหักค่าโทรศัพท์ค่ะ)</string>
+    <string name="fanti_sms">เติมเงินผ่านSMS</string>
+    <string name="fanti_sms_tip">交易商品：100,000遊戲幣\n金額：90臺幣\n點擊確定后則立即傳送簡訊至55968\n扣費成功後您將收到成功簡訊并獲得遊戲幣"</string>
+    <string name="input_card_num">กรุณาใส่หมายเลขบัตร</string>
+    <string name="input_password">กรุณาใส่รหัสผ่าน</string>
+    <string name="store_fail">เติมเงินไม่สำเร็จ</string>
+    <string name="store_suc">เติมเงินสำเร็จ</string>
+    <string name="wrong_input">หมายเลขบัตรหรือรหัสผ่านที่ท่านใส่นั้นไม่ถูกต้อง</string>
+    <string name="system_fail">ขออภัยค่ะ ระบบเกิดความผิดพลาด</string>
+    <string name="card_used">หมายเลขบัตรนี้ได้ใช้แล้ว กรุณาเปลี่ยนหมายเลขบัตร</string>
+    <string name="go_identify">ยืนยัน</string>
+    <string name="phone_num">เบอร์โทรศัพท</string>
+    <string name="input_phone_num">กรุณาใส่เบอร์โทรท่าน</string>
+    <string name="card_num">หมายเลขบัตรประชาชน</string>
+    <string name="input_idcard_num">โปรดใส่หมายเลขบัตรประชาชนของคุณ</string>
+    <string name="operator">่ายมือถือ</string>
+    <string name="yuanchuan_operator">遠傳電信</string>
+    <string name="yatai_operator">亞太電信</string>
+    <string name="weibao_operator">威寶電信</string>
+    <string name="auth_code">รหัสยืนยัน</string>
+    <string name="input_auth_code">โปรดใส่รหัสยืนยัน</string>
+    <string name="re_get_auth_code">รับรหัสยืนยันใหม่</string>
+    <string name="sure_pay">ืนยันการชำระเงิน</string>
+    <string name="limit_operator">本服務限遠傳電信/亞太電信/威寶電信號碼使用</string>
+    <string name="choose_operator">โปรดเลือกค่ายมือถือ</string>
+    <string name="identifying">กำลังตรวจสอบอยู่</string>
+    <string name="identify_fail">การตรวจสอบล้มเหลว</string>
+    <string name="system_send_sms">ระบบได้ส่งsmsไปที่</string>
+    <string name="go_check">โปรดเช็คดูค่ะ(ใช้ได้ภายใน3นาที)</string>
+    <string name="Hall_market">เติมเงิน</string>
+    <!-- 分享抽奖 -->
+    <string name="share_lottery">แชร์จับรางวัล</string>
+    <string name="share_fb_notify">กำลังแชร์สกรีนช็อตไปยังเฟสบุ๊ค...</string>
+    <string name="share_guest_notify">กำลังแชร์เนื้อหาให้เพื่อน </string>
+    <string name="share_fb_sucess">แชร์สกรีนช็อตที่หน้าเฟสบุ๊คสำเร็จ</string>
+    <string name="share_fb_fail">ขออภัยค่ะ  แชร์สกรีนช็อตที่หน้าเฟสบุ๊คไม่สำเร็จ</string>
+    <string name="share_msg_notify">ส่งข้อความแล้ว จำนวนโอกาสที่จับรางวัลได้เพิ่มขึ้น</string>
+    <string name="share_msg_fail">ไม่มีเนื้อหาที่จะแชร</string>
+    <string name="msg_share">แชร์ข้อความ</string>
+    <string name="no_sim_card">กรุณาตรวจสอบการติดตั้งซิมการ์ด</string>
+    <string name="msg_share_notify">เลือกเพื่อนและแชร์ผ่านข้อความจะได้รับจำนวนโอกาสที่จับฉลากอีกมากมาย</string>
+    <string name="happy_square_name">แฮปปี้สแควร์</string>
+    <string name="face_to_face_play_name">เล่นหน้าต่อหน้ากัน</string>
+    <string name="face_to_face_play_again">เล่นอีกครั้้ง</string>
+    <string name="face_to_face_play_searching">กำลังลืบค้น…</string>
+    <string name="face_to_face_play_together_press">คลิ๊กปุ่มกับเพื่อนที่ใกล้เคียงด้วยกัน ก็จะสามารภเล่นไพ่ด้วยกันแล้วค่ะ！</string>
+    <string name="face_to_face_play_search_fail">สืบค้นล้มเหลว กรุณาค้นหาใหม่</string>
+    <string name="face_to_face_play_search_success">ระบุตำแหน่งสำเร็จ กรุณารอหน่อยค่ะ…</string>
+    <string name="face_to_face_play_get_user">กำลังโหลดรายชื่อผู้เล่น…</string>
+    <string name="face_to_face_play_has_user">สืบค้นผู้เล่นสำเร็จ ปล่อยมือเพื่อแสดง</string>
+    <string name="face_to_face_play_no_user">น่าเสียดาย ไม่ได้สืบค้นถึงเพื่อนๆที่คลิ๊กปุ่มในขณะเดียวกัน กรุณาแน่ใจว่าเพื่อนๆที่อยู่เคียงข้างถูกนำไปต่างดาวหรือเปล่า</string>
+    <string name="face_to_face_play_no_room">ขอโทษค่ะ ค้นหาห้องที่เหมาะสมไม่เจอ กรุณาค้นหาใหม่ค่ะ</string>
+    <string name="face_to_face_play_go_room">เข้าห้องอยู่แล้ว</string>
+    <string name="face_to_face_play_out_room">ยังไม่ได้เข้าห้อง</string>
+    <string name="face_to_face_play_sametime_user">ผู้เล่นที่คลิ๊กปุ่มเดียวกัน：</string>
+    <string name="face_to_face_play_go_game">เข้าเล่นเกมส์</string>
+    <string name="face_to_face_play_title">คลิ๊กด้วยกัน เล่นไพ่เท็กซัสด้วยกัน</string>
+    <string name="face_to_face_play_scan_room">สแกนห้อง</string>
+    <string name="face_to_face_play_less_money">ชิปไม่พอ ไม่สามารถเข้าห้อง กรุณาไปเติมเงินเพื่อใช้ฟังก์ชั่นนี้ค่ะ</string>
+    <string name="room_qr_code_howtouse">ใช้ฟังก์ชั่น“สแกนห้อง”เพื่อสแกนQR codeและเข้าห้องนี้ค่ะ</string>
+    <string name="room_qr_code_title">ข้อมูลของห้อง</string>
+
+    <!-- 绑定手机号码 -->
+    <string name="upgrade_result">ระบบจะส่ง%1$sชิปให้ท่าน ถ้าบัญชีเกิดความผิดพลาด ทีมงานจะส่งข้อมูลไปมือถือที่เป็นเบอร์%2$sของท่าน</string>
+    <string name="upgrade_tips">ท่านมีชิปจำนวนมาก ทีมงานขอแนะนำให้ท่านอัพเดทการรักษาความปลอดภัยเพื่อป้องการบัญชีของท่าน</string>
+    <string name="upgrade_title">บัญชีได้อัพเดทการรักษาความปลอดภัย</string>
+    <string name="upgrade_Starttxt">อัพเดททันที</string>
+    <string name="upgrade_phonenum">เบอร์โทรศัพท์</string>
+    <string name="upgrade_getcode">รับรหัสยืนยัน</string>
+    <string name="upgrade_getcodetips">โทรศัพท์ได้รับรหัสยืนยันที่เป็นXตัว</string>
+    <string name="upgrade_submit">ส่ง</string>
+    <string name="upgrade_completeok">ยืนยัน</string>
+    <string name="upgrade_regetcode">รับใหม่</string>
+    <string name="upgrade_doing">กำลังอัพเดท...</string>
+    <string name="upgrade_getcodeloading">รับรหัสยืนยัน...</string>
+    <string name="upgrade_failedsms">ส่งข้อความล้มเหลว</string>
+    <string name="upgrade_errorcode">รหัสยืนยันผิดพลาด</string>
+    <string name="upgrade_codetoast">ส่งรหัสยืนยันสำเร็จ ถ้าหากว่าไม่ได้รับข้อความภายใน30วินาที กรุณารับรหัสยืนยันใหม่ค่ะ...</string>
+    <string name="upgrade_nophone">เบอร์โทรศัพท์ไม่ครบ</string>
+    <string name="upgrade_hasbind">บัญชีได้ผูกพันกับเบอร์โทรศัพท์แล้วค่ะ</string>
+    <string name="upgrade_smsofen">รับรหัสยืนยันบ่อยเกินไป</string>
+    <string name="upgrade_failbind">เก็บเปอร์โทรศัพล้มเหลว</string>
+    <string name="happy_square_guide_tips">ตรงนี้มีเกมส์เล็กๆมากมายนะคะ</string>
+    <string name="room_qr_code_guide_tips">ชวนเพื่อนเล่นไพ่กับคุณด้วยกัน</string>
+
+    <!-- 3.2 -->
+    <string name="msg_about">ใช้ZXingเปิดแหล่งข้อมูลของโค้ดเดิม</string>
+    <string name="msg_buggy">อุปกรณ์นี้มีข้อผิดพลาดที่ทำให้การสแกนบาร์โค้ดเกิดปัญหา หากต้องการข้อมูลเพิ่มเติม สืบค้นได้ที่ 
+http://code.google.com/p/zxing/wiki/FrequentlyAskedQuestions</string>
+    <string name="msg_bulk_mode_scanned">โหมดที่เป็นกลุ่ม：สแกนบาร์โค้ดและเซฟ</string>
+    <string name="msg_camera_framework_bug">ขอโทษค่ะ  กล้องเกิดความผิดพลาด ท่านอาจจะต้องเปิดกล้อง
+ใหม่</string>
+    <string name="msg_default_mms_subject">สวัสดีค่ะ</string>
+    <string name="msg_default_status">วางบาร์โค้ดให้ตรงกับขอบเขตของกล้อง  </string>
+    <string name="preferences_actions_title">เมื่อพบบาร์โค้ด</string>
+    <string name="preferences_bulk_mode_summary">สแกนบาร์โค้ดและช่วยเลื่อคนมากมาย</string>
+    <string name="preferences_bulk_mode_title">โหมดที่แสกนเป็นกลุ่ม</string>
+    <string name="preferences_copy_to_clipboard_title">คัดลอกไปยังคลิปบอร์ด</string>
+    <string name="preferences_custom_product_search_summary">ใช้％s  ทำา เป็นidของผลิต
+ภัณฑ์ที่กำาหนดไว้</string>
+    <string name="preferences_custom_product_search_title">ค้นหาเว็บไซต์ที่กำ หน
+ดเอง</string>
+    <string name="preferences_decode_1D_title">ถอดรหัส1มิติ</string>
+    <string name="preferences_decode_Data_Matrix_title">ถอด้อมูลรหัสเมทริกซ์</string>
+    <string name="preferences_decode_QR_title">ถอดรหัสQR code</string>
+    <string name="preferences_front_light_summary">เพิ่มอัตราความสำเร็จในสภาพแวดล้อมที่มีแสง
+สแกนต่ำ  แต่ก็อาจทำ  ให้สว่างมากเกินไป</string>
+    <string name="preferences_front_light_title">ใช้ไฟหน้า</string>
+    <string name="preferences_general_title">การตั้งค่าแบบธรรมดา</string>
+    <string name="preferences_name">การตั้งค่า</string>
+    <string name="preferences_play_beep_title">เสียงเตือน</string>
+    <string name="preferences_result_title">ผลการตั้งค่า</string>
+    <string name="preferences_scanning_title">เมื่อสแกนบาร์โค้ด</string>
+    <string name="preferences_vibrate_title">สั่น</string>
+    <string name="msg_install_google_shopper">Googleช้อปปิ้งที่รวมการสแกนบาร์โค้ดราคา  คอมเมนท์ 
+ไม่ต้องเปิดบราวเซอร์ คุณอยากลองใช้ไหมคะ</string>
+    <string name="msg_share_subject_line">นี่เป็นเนื้อหาที่ฉันสแกนมา</string>
+    <string name="button_book_search">เปิดค้นหาหนังสือ</string>
+    <string name="msg_sbc_book_not_searchable">ขอโทษค่ะ ไม่พบหนังสือเล่มนี้ค่ะ</string>
+    <string name="pay_type_sms_confirm_text">คลิก“ตกลง”เพื่อส่งข้อความและดำเนินการสั่งซื้อ  \n%1$s\n ค่า：
+%2$sหยวน/ครั้ง （ไม่รวมค่าสื่อสาร）</string>
+    <string name="pay_type_sms_send_success">การสั่งซื้อผ่านข้อความสำเร็จ ระบบจะทำการหักเงินพร้อมส่ง
+ข้อความยืนยันการชำระเงินให้ท่าน และทำการจัดส่งสินค้าค่ะ</string>
+    <string name="pay_type_sms_send_fail">การสั่งซื้อผ่านข้อความล้มเหลว กรุณาลองใหม่ค่ะ</string>
+    <string name="money_qian">พัน</string>
+    <string name="money_wan">หมื่น</string>
+    <string name="money_qianwan">สิบล้าน</string>
+    <string name="money_yi">ร้อยล้าน</string>
+    <string name="room_hint_1_1">หากไม่มีผู้เล่นเก เมื่อถึงตาคุณ</string>
+    <string name="room_hint_1_2">ดูไพ่อัตโนมัติ หากมีผู้เล่นเก</string>
+    <string name="room_hint_1_3">เมื่อถึงตาคุณจะหมอบไพ่อัตโนมัติ </string>
+    <string name="room_hint_2_1">หากไม่มีผู้เล่นเก เมื่อถึงตาคุณ</string>
+    <string name="room_hint_2_2">ดูไพ่อัตโนมัติ หากมีผู้เล่นเก</string>
+    <string name="room_hint_2_3">จะต้องดำเนินการใหม่เมื่อถึงตาคุณ</string>
+    <string name="room_hint_3_1">ตกลงเดิมพันเมื่อถึงตาคุณ%1$s</string>
+    <string name="room_hint_3_2">ชิป ถ้าหากว่าผู้เล่นเกชิปมากขึ้น</string>
+    <string name="room_hint_3_3">คุณต้องดำ เนินการใหม่</string>
+    <string name="room_hint_4_1">กลงเดิมพันเมื่อถึงตาคุณ</string>
+    <string name="room_hint_4_2">สู้ทุกตา  จนถึงALL IN</string>
+    <string name="room_hint_5_1">คุณกำลังจะออกจากเกมส์รอบนี้</string>
+    <string name="room_hint_5_2">ชิปที่วางเดิมพันก่อนหน้าไม่สามารถเอาคืนได้</string>
+    <string name="room_hint_6_1">คุณตกลงดูไพ่ใบต่อไป</string>
+    <string name="room_hint_6_2">ในขณะที่ไม่เก</string>
+    <string name="room_hint_7_1">คลิกที่ปุ่ม แล้วเลื่อนแถบเลื่อน</string>
+    <string name="room_hint_7_2">เพิ่มจำนวนชิปที่คุณต้องการเดิมพัน</string>
+    <string name="room_hint_8_1">ตกลงสู้  %1$s ชิป</string>
+    <string name="room_hint_9_1">ตกลงวางเดิมพันชิปทั้งหมดของคุณ</string>
+    <string name="yxb_28k">28K ชิป#3RM</string>
+    <string name="yxb_125k">125K ชิป#10RM</string>
+    <string name="yxb_455k">455K ชิป#30RM</string>
+    <string name="yxb_880k">880K ชิป#50RM</string>
+    <string name="boyabi_6">6 เงินโบย่า#3RM</string>
+    <string name="boyabi_22">22 เงินโบย่า#10RM</string>
+    <string name="boyabi_70">70 เงินโบย่า#30RM</string>
+    <string name="boyabi_125">125 เงินโบย่า#50RM</string>
+    <string name="buy_notify">หลังสั่งซื้อสินค้าสำเร็จ อาจจะต้องรอประมาณ 1-2 นาที สินค้าถึงเข้าบัญชี  ขออภัยในความไม่
+สะดวกค่ะ</string>
+    <string name="sim_invaliable">เครือข่ายอินเตอร์เน็ตที่ใช้ไม่สนับสนุนช่องทางการเติมเงินนี้</string>
+    <string name="sim_select">กรุณาเลือกSIM การ์ดที่คุณใช้ </string>
+    <string name="hava_no_sim">กรุณาตรวจสอบอุปกรณ์ก่อนว่าได้ใส่ SIM การ์ดแล้วหรือไม่ </string>
+    <string name="no_orderid">ออเดอร์รับสินค้าล้มเหลว กรุณาลองใหม่ค่ะ</string>
+
+    <!-- 老虎机快捷充值 -->
+    <string name="recharge_now">เติมเงินเดี๋ยวนี้</string>
+    <string name="recharge_tips">เงินเกมส์ของคุณไม่พอ#แล้วนะ ถึงเวลาเพิ่มเงินเข้าคลังสมบัติของคุณละ!</string>
+
+    <!-- 淘汰赛6人快速场 -->
+    <string name="sng_win">ยินดีด้วย คุณชนะการแข่งขัน！</string>
+    <string name="sng_lose">เสียดายด้วย คุณแพ้แล้ว！</string>
+    <string name="sng_win_tip">คุณได้รับอันดับที่#ในการแข่งขันครั้งนี้ รับรางวัล#ชิป</string>
+    <string name="sng_lose_tip">ลำดับในการแข่งขันครั้งนี้คืออันดับที่# คราวหน้าสู้ๆนะ</string>
+    <string name="sng_integral">คะแนนสะสม</string>
+
+    <!-- 推送支付 -->
+    <string name="pushpay_getreward">รับรางวัล</string>
+    <string name="pushpay_googlepay">Google pay</string>
+    <string name="pushpay_gtelepay">亞太支付</string>
+    <string name="pushpay_molpay">MOL</string>
+    <string name="pushpay_mimopay">MIMO</string>
+    <string name="pushpay_unpaytitle">การสั่งซื้อยังไม่สำเร็จ</string>
+    <string name="pushpay_tip">คำเตือน</string>
+    <string name="continue_buy">เติมเงินต่อ</string>
+    <string name="pusypay_exit_title">คำเตือน</string>
+    <string name="pusypay_gift">ส่ง</string>
+    <string name="dailytast_reward">รางวัล%1$s</string>
+    <string name="dailytast_continus">ล็อกอินต่อเนื่องวันที่%1$s</string>
+    <string name="dailytast_after_day_reward">รางวัลพรุ่งนี้ %1$s</string>
+    <string name="taiwan_telepay">中華電信/臺灣大哥大手機儲值</string>
+    <string name="taiwan_coin">台幣</string>
+    <string name="taiwan_telepay_tip">โปรดเลือกจำนวนเงิน</string>
+    <string name="panicbuy">ชิงซื้อ</string>
+    <string name="oldprice">ราคาเดิม</string>
+    <string name="money_util">บาท</string>
+    <string name="select_pay_channel">โปรดเลือกช่องทางเติมเงิน1ช่องทางค่ะ</string>
+
+    <!-- 猜手牌优化 -->
+    <string name="guess_handcard_tips">ไพ่ดีๆแบบนี้กลับไม่เดิมพันซื้อ"ทายไพ่โฮล" \n ซื้อเข้าตอนนี้ยังไม่สาย</string>
+    <string name="guess_handcard_full_edition">รุ่นสมบูรณ์แบบ</string>
+    <string name="guess_handcard_buy_in_one">ซื้อ1รอบ</string>
+    <string name="guess_handcard_buy_in_ten">ซื้อ10รอบ</string>
+    <string name="guess_handcard_one_winning_rate">9.5%\nถูกรางวัล</string>
+    <string name="guess_handcard_ten_winning_rate">63%\nถูกรางวัล</string>
+    <string name="guess_handcard_record">การบันทึกไพ่โฮล</string>
+    <string name="guess_handcard_detail">รายละเอียด</string>
+    <string name="guess_handcard_end_tips">ซื้อเข้า10รอบโดยอัตโนมัติสิ้นสุดแล้ว รีบเช็คดูผลการเถอะ</string>
+    <string name="guess_handcard_had_buy_one">ซื้อเข้า1รอบแล้ว</string>
+    <string name="guess_handcard_had_buy_ten">ซื้อเข้าโอยอัตโนมัติรอบที่#…</string>
+    <string name="guess_handcard_buy_one_succ">ซื้อเข้า1รอบสำเร็จ</string>
+    <string name="guess_handcard_buy_ten_succ">ซื้อเข้า10รอบสำเร็จ</string>
+    <string name="guess_handcard_not_buy">ไม่ได้ซื้อ</string>
+    <string name="guess_handcard_dz">1คู่</string>
+    <string name="guess_handcard_th">ดอกเดียวกัน</string>
+    <string name="guess_handcard_fth">ดอกต่างกัน</string>
+    <string name="guess_handcard_record_win">ซื้อเข้า${buyin} #ชนะ${winmoney}</string>
+    <string name="guess_handcard_record_lost">ซื้อเข้า${buyin} ไม่ได้ถูก</string>
+    <!-- <string name="guess_handcard_less_money">จำนวนชิปไม่พอจะซื้อเข้าทายไพ่โฮล จะเข้าห้างเติมเงินไหมคะ</string> -->
+
+    <string name="exit_market_tips1">ไม่ต้องการเติมเงิน</string>
+    <string name="exit_market_tips2">เติมเงินทันที</string>
+
+    <!-- 首付礼包 -->
+    <string name="now_price">ใช้เงินไทยชิงซื้อ</string>
+    <string name="original_price">(ราคาเดิม</string>
+    <string name="quick_payment_e2p">E2P</string>
+    <string name="bcall_sucess">ยินดี ซื้อสินค้าสำเร็จ</string>
+
+    <!-- 房间内加注条样式修改 -->
+    <string name="add_money">เก   {add}</string>
+    <string name="third_payment_fortumo">เติมเงินผ่านSMS</string>
+    <string name="payrec_title">เติมเงินสำเร็จ</string>
+
+    <!-- 大场引导 -->
+    <string name="higher_room_guide_tips">เล่นน้อยได้น้อย เล่นมากได้มาก คุณมีจำนวนชิปถึง${usermoney}แล้ว ไปท้าทายกับผู้เล่นคนเก่งเพื่อชนะได้จำนวนชิปเพิ่มเติมเถอะ!</string>
+    <string name="higher_room_guide_accept_challenge">รับการท้าทาย</string>
+    <string name="order_is_operating">กำลังจัดการใบสั่งสินค้าของท่านค่ะ กรุณาอย่ากดปุ่มเติมเงินซ้ำค่ะ </string>
+
+    <!-- 禁言 -->
+    <string name="ban_talk">ห้ามแชท</string>
+    <string name="interactive_msg7">{fname}ห้าม{tname}แชท</string>
+    <string name="ban_interactive_tips"> คุณถูกเขาห้ามแชทแล้วค่ะ</string>
+    <string name="ban_interactive_tips2">สถานะยืนอยู่ ไม่สามารถใช้“ห้ามแชท”ได้ค่ะ</string>
+    <string name="ban_interactive_tips3">คุณได้ห้าม#แชทแล้วค่ะ</string>
+    <string name="ban_interactive_tips4">ไม่สามารถห้ามผู้เล่นที่ถือบัตรVIPทองขึ้นไปแชทค่ะ</string>
+    <string name="ban_interactive_had_ban">ได้ห้ามแชทแล้วค่ะ</string>
+    <string name="ban_prop_title">สิทธิ์VIP</string>
+    <string name="ban_prop_tips">ซื้อบัตรVIPทอง สามารถห้ามผู้เล่นคนอื่นใช้ ไอเทมอินเตอร์แอคทีฟ พร้อมจะได้รับชิปและเพชร</string>
+    <string name="daily_task_open">เปิด</string>
+    <string name="today_getreward">วันนี้รับ</string>
+    <string name="tigermachine_hint">เล่นสล็อตแมชชีนโดยอัตโนมัติ ทุกรอบจะต้องหักจำนวนชิปที่สอดคล้องกัน </string>
+    <string name="about_punish">กฎระเบียบและบทลงโทษ</string>
+    <string name="guess_handcard_other_win_tips">ยินดีด้วย {name}เดิมพันซื้อทายไพ่โฮล ได้รับรางวัล {money}！\nวัวหายล้อมคอก ยังไม่สายเกินไปนะ</string>
+    <string name="guess_handcard_buy10_end_tips_win">ยินดีด้วย ท่านเดิมพันซื้อทายไพ่โฮล ได้รับชิป {money}</string>
+    <string name="guess_handcard_buy10_end_tips_notwin">เสียดายด้วย ครั้งนี้ไม่ค่อยโชคดี ไม่ได้รับรางวัลเลย！</string>
+    <string name="guess_handcard_continu_buy">ซื้อต่อ</string>
+    <string name="guess_handcard_less_money">จำนวนเงินปัจจุบันของคุณไม่พอ ไม่สามารถซื้อได้ค่ะ เติมเงินซื้อชิปลุ้นโอกาสจับรางวัลเพิ่มเติม!</string>
+    <!-- UI界面优化 -->
+    <string name="receive_reward">รางวัล</string>
+    <string name="edit">แก้ไข</string>
+    <string name="modify_user_photo">เปลี่ยนรูปภาพ</string>
+    <string name="modify_message_success">แก้ไขความสำเร็จ</string>
+    <string name="share_rank">แบ่งปันการจัดอันดับ</string>
+    <string name="cannot_share">ที่อยู่ปัจจุบันไม่สามารถใช้ร่วม</string>
+    <string name="help_center">ศูนย์ช่วยเหลือ</string>
+    <string name="basic_play_content">ผู้เล่นทุกคนจะได้รับไพ่ในมือ2ใบ เรียกว่า“ไพ่โฮล”(มีแต่คุณเห็นได้เอง)  คนแจกไพ่จะแจกไพ่หงายอีก5ใบบนโต๊ะโดยแบ่งเป็น3ครั้ง(แจกแบบ3ใบ+1ใบ+1ใบ) เมื่อเริ่มเล่นไพ่ ผู้เล่นทุกคนจะได้รับไพ่โฮล2ใบ หลังจากเดิมพันเล่นจนถึงตาสุดท้าย ถ้ายังไม่สามารถตัดสินได้ว่าใครชนะหรือแพ้ การเล่นจะเข้าสู่ขั้นตอน“เปิดไพ่” หมายถึงให้ผู้เล่นทุกคนที่เหลือในรอบเล่นไพ่นั้นจะต้องเปิดเผยไพ่โฮลเพื่อเปรียบเทียบใหญ่เล็ก ใครได้ไพ่ใหญ่กว่าจะเอาชนะ\n
+การเปรียบเทียบไพ่จะไม่เกี่ยวกับสีของไพ่ กติกาการเปรียบเทียบคือ“รอยัลสเตรทฟรัช>สเตรทฟรัช>โฟร์การ์ด>ฟูลเฮาส์>ฟลัช>สเตรท>ตอง>2คู่>1คู่>ไพ่สูง”  ถ้าหากว่าผู้เล่นทั้งสองฝ่ายก็มี1คู่ งั้นคู่ไหนใหญ่กว่าก็จะเอาชนะ ถ้าหากว่า2คู่เหมือนกัน งั้นไพ่เดี่ยวใบไหนใหญ่กว่าจะเอาชนะ วิธีการเปรียบเทียบตามนี้เอง  ถ้าหากว่าเปรียบเทียบตามวิธีนี้แล้วยังเหมือนกัน ก็จะแบ่งเงินในเงินกองกลางโดยเฉลี่ย</string>
+    <string name="fun_key_introduce">ผ่าน：ถ้าหากว่าไม่มั่นใจ สามารถเลือกผ่าน เลือกผ่านแล้วจะไม่ต้องวางเดิมพัน\n หมอบ：ถ้าไพ่ไม่ดี หมอบดีกว่า\n All in：ถ้าหากว่าคุณมั่นใจว่าไพ่ของคุณดีจริงๆ ก็All inเถอะ\n
+    สู้：ถ้าหากว่าคุณรู้สึกว่าไพ่ของคุณพอใช้ได้ สามารถเลือกสู้ได้ค่ะ\n เก：ถ้าหากว่าได้รับไพ่ดีชัดๆ สามารถเลือกเกได้ค่ะ\n ผ่านอัตโนมัติ：ในตาถัดไปจะเลือกผ่านโดยอัตโนมัติ\n ผ่าน/หมอบ：จะเลือกผ่านก่อน ถ้าต้องให้วางเดิมพัน จะเลือกหมอบโดยอัตโนมัติ\n
+    ูปแบบไพ่：เมื่อเล่นไพ่ สามารถเปรียบเทียบใหญ่เล็กของรูปแบบไพ่ที่คุณได้รับ ณ เวลาใด ๆ</string>
+    <string name="first_day">วันแรก</string>
+    <string name="second_day">วันที่สอง</string>
+    <string name="third_day">วันที่สาม</string>
+    <string name="forth_day">วันที่สี่</string>
+    <string name="fifth_day">วันที่ห้า</string>
+    <string name="sixth_day">หกวัน</string>
+    <string name="sp_task_tip">ทุกวัน{task},รางวัล{money}เหรียญ,แต่ละบัญชีจะได้รับเพียงวันละครั้ง.</string>
+    <string name="coin_nums">เงิน：</string>
+    <string name="win_counts">จำนวนชนะ：</string>
+    <string name="national_rank">อันดับประเทศ：</string>
+    <string name="friend_rank">เพื่อนบน：</string>
+    <string name="room_id">ห้องหมายเลข</string>
+    <string name="quick_recharge_buyin_lessmoney">จำนวนชิปของท่านไม่พอ โปรดเติมเงินซื้อชิปหรือไปเล่นที่ห้องระดับต่ำค่ะ</string>
+    <!-- 土豪限制 -->
+    <string name="room_cannot_seat2">จำนวนชิปของท่านเกิน$#แล้ว ไปเล่นในห้องระดับกลางหรือห้องระดับสูงกว่าจะดีกว่านะ</string>
+    <string name="tuhao_window_btn">แนะนำห้อง</string>
+    <string name="seat_to_play">นั่งเล่นไพ่</string>
+    <string name="more_pay_channel">วิธีเติมเงินเพิ่มเติม</string>
+    <string name="guess_state">สภาพทายผลบอล</string>
+    <string name="guess_submit">ส่ง</string>
+    <string name="happy_square_match_name">แข่งแบบตัดออก</string>
+    <string name="happy_square_face_to_face_name">คลิกสิ</string>
+    <string name="seat_curent">นั่งทันที</string>
+    <string name="setting_heguan_sound">พากย์เสียงของผู้แจกไพ่</string>
+    <string name="daily_task_modify">ไปแก้ไข</string>
+    <string name="goldbox_not_the_time">สามารถรับรางวัลได้หลังนับถอยหลังสิ้นสุด</string>
+    <string name="interact_props_match_not_support">ไม่สามารถใช้ไอเทมอินเตอร์แอคทีฟโดยเสียชิปในห้องแข่งค่ะ</string>
+    <string name="use_interact_props_lessmoney">จำนวนชิปไม่พอ ไม่สามารถใช้ไอเทมอินเตอร์แอคทีฟได้ค่ะ</string>
+    <string name="e2p_tip">คุณกำลังจะเติมเงิน#2\nค่าบริการ#1บาท(ไม่รวมภาษี7%)\nจะถูกหักออกจากเงินในมือถือของคุณ </string>
+    <string name="makesure_to_pay">ยืนยันชำระเงิน</string>
+    <string name="addchips_success">เพิ่ม#ชิปสำเร็จ</string>
+    <string name="addchips_recharge_tips">ชิปรวมของคุณไม่พอที่จะเพิ่มชิปเข้ารอบนี้ค่ะ กรุณาเติมเงินก่อนค่ะ</string>
+    <string name="chip_autoadd">เพิ่มชิปอัตโนมัติ</string>
+    <string name="add_chips_to">เพิ่มชิปถึง</string>
+
+    <!-- 老虎机引导 -->
+    <string name="tiger_machine_guid1">1.เลื่อนลงเพื่อเลือกภาพนำโชค</string>
+    <string name="tiger_machine_guid2">2.โยกคันโยกลงเพื่อเริ่มเล่น</string>
+    <string name="tiger_machine_guid3">3.รูปภาพ3รูปนี้จะระบุจำนวนเงินพื้นฐานของโบนัสค่ะ</string>
+    <string name="tiger_machine_guid4">4.เลือกรูปภาพถูก รางวัลจะเป็น2เท่านะ</string>
+
+    <!-- 每日玩牌任务 -->
+    <string name="daily_task_tips1">คุณยังไม่ได้รับรางวัลภารกิจของวันนี้ค่ะ ออกจากห้องเดี๋ยวนี้น่าจะเสียดายนะ</string>
+    <string name="daily_task_tips2">เล่นไพ่อีก#1รอบ คุณก็จะได้รับ#2ชิปค่ะ ออกจากห้องเดี๋ยวนี้น่าจะเสียดายนะ</string>
+    <string name="daily_task_tips3">คุณยังไม่ได้เสร็จสิ้นภารกิจของวันนี้ค่ะ ออกจากห้องเดี๋ยวนี้น่าจะเสียดายนะ</string>
+    <string name="go_higher_room">ไปเล่นไพ่</string>
+    <string name="daily_task_share_content">เสร็จสิ้นภารกิจในไพ่เท็กซัสโบย่า รับได้รางวัลมากมาย แฮปปี้จริงๆ มาเล่นด้วยสิ</string>
+
+    <!-- 感恩回馈 -->
+    <string name="gift_box_opening">กำลังเปฺิดกล่องรางวัล...</string>
+    <string name="thx_feedback_reward_tips">>ยินดีด้วย ท่านไดรับ{money}ชิป วันนี้โชคดีจริงๆนะ ไปเล่นไพ่กันเถอะ</string>
+    <string name="thx_feedback_iknow">ฉันรู้แล้ว</string>
+    <string name="thx_feedback_surprise_box_tip">คลิ๊กกล่องรางวัลดังกล่าวใดๆ ต่างก็สามารถได้รับเซอร์ไพรส์นะ</string>
+    <string name="thx_feedback_surprise_box_toroom">ไปเล่นไพ่</string>
+    <string name="receive_none_gift">ขอโทษค่ะ ท่านไม่ได้ถูกรางวัล</string>
+
+    <!-- 大场排行榜 -->
+    <string name="room_billboard_title">ลำดับ</string>
+    <string name="room_billboard_win">ชนะ$</string>
+    <string name="room_billboard_backroom">กลับห้องเล่นเกม</string>
+    <string name="room_billboard_guide_tips">ตรงนี้มีของเล่นใหม่ๆ</string>
+
+    <!-- 三张牌 -->
+    <string name="threecards_buy_red">ซื้อแดง</string>
+    <string name="threecards_buy_black">ซื้อดำ</string>
+    <string name="threecards_buy_heart1">โพธิ์แดง 1 ใบ</string>
+    <string name="threecards_buy_diamond1">หลามตัด 1 ใบ</string>
+    <string name="threecards_buy_spade1">โพธิ์ดำ 1 ใบ</string>
+    <string name="threecards_buy_club1">ดอกจิก 1 ใบ</string>
+    <string name="threecards_buy_heart2">โพธิ์แดง 2 ใบ</string>
+    <string name="threecards_buy_diamond2">หลามตัด 2ใบ</string>
+    <string name="threecards_buy_spade2">โพธิ์ดำ 2 ใบ</string>
+    <string name="threecards_buy_club2">ดอกจิก 2 ใบ</string>
+    <string name="threecards_buy_red3">ไพ่ 3 ใบที่มีดอกเดียวกัน</string>
+    <string name="threecards_submit">เปิดรางวัล</string>
+    <string name="threecards_submit2">ซื้อเข้าซ้ำ</string>
+    <string name="threecards_cancel">เคลียร์เป็น 0</string>
+    <string name="threecards_odds_tip">1 ได้  &#160;</string>
+    <string name="threecards_total_amount">ยอดเดิมพัน：%s</string>
+    <string name="threecards_total_amount2">ยอดเดิมพัน：*%s</string>
+    <string name="threecards_about">1，มาทายกันว่าในไพ่ 3 ใบนี้ ไพ่สีแดงมากกว่าหรือไพ่สีดำมากกว่าคะ\n2，สีแดงหมายความว่าในไพ่ 3 ใบที่ยังไม่เปิด ไพ่สีแดงเยอะกว่าไพ่สีดำ ส่วนความหมายของสีดำก็ตรงกันข้ามค่ะ\n3，คลิกแถบเดิมพันเพื่อเดิมพัน คลิกเปิดไพ่เพื่อเช็คดูผลการเปิดไพ่ ระบบจะแจกรางวัลใหญ่ทันที\n4，เมื่อเปิดรางวัล กรอบไฮไลท์เป็นผลการเปิดรางวัลของรอบนี้ กรอบที่มีไฟวิ่ง คือผลลัพธ์รางวัลที่ได้ของคุณ\n5，จำนวนชิปที่ผู้เล่นซื้อเข้ามีความสัมพันธ์กับจำนวนชิปปัจจุบัน ไม่สามารถสูงกว่า1/100ของจำนวนชิปปัจจุบัน</string>
+    <string name="threecards_win_record_suffix">ทาย%1$sถูกต้อง ได้รับ%2$dชิป</string>
+    <string name="rechargenow">เติมเงินทันที</string>
+    <string name="chipinnow">กรุณาวางเดิมพันก่อนค่ะ</string>
+    <string name="threecard_bet19">1 ได้   1.9</string>
+    <string name="threecard_bet2">1 ได้   1.9</string>
+    <string name="threecard_tips">ผู้เล่น%1$sชนะ*%2$sในไพ่3ใบ</string>
+    <string name="threecard_maxtwaring">จำนวนเดิมพันถึงขีดสุดแล้ว</string>
+    <string name="threecards">ไพ่ 3 ใบ</string>
+    <string name="threecards_guess">ลองทายหน่อย</string>
+    <string name="threecards_guess_txt">ในไพ่ 3 ใบ ไพ่สีแดงมากกว่าหรือไพ่สีดำมากกว่า</string>
+    <string name="lessmoney_tip">ขอโทษค่ะ เงินเกมไม่พอ กรุณาไปเติมเงินค่ะ</string>
+    <string name="threecards_goplay">ฉันจะเล่นด้วย</string>
+    <string name="userinfo_simple_city">เมือง：</string>
+    <string name="userinfo_simple_property">สินทรัพย์：</string>
+    <string name="bankrupt_back_recharge_succ">เติมเงินสำเร็จ</string>
+    <string name="bankrupt_back_go_room">ไปตอนนี้</string>
+    <string name="get_award">รับรางวัล</string>
+
+    <!-- add by freddy 2014年9月18日14:28:10 start-->
+    <string name="invite_facebook_friend">ชวนเพื่อนของFB</string>
+    <string name="invite_send">ส่งคำชวน</string>
+    <string name="invite_friend_in">ชวนเพื่อนเข้าเล่นเกม</string>
+    <string name="invite_aquire">จะสามารถได้รับ</string>
+    <string name="invite_prize">รางวัลชิปนะ</string>
+    <string name="invite_search_friend">ค้นหาเพื่อน</string>
+    <string name="invite_change_login">ตกลงจะกลับหน้าล็อกอินหรือ</string>
+    <!-- end -->
+    <string name="userinfo_simple_title">个人信息</string>
+    <string name="info_no_change">ท่านไม่ได้แก้ไขอะไรค่ะ</string>
+    
+    <string name="market_limit_time">จำกัดเวลา</string>
+    <string name="market_outdate">หมดอายุ</string>
+    
+    <string name="voice_server_disable">对不起，暂时无法发送语音，请稍后再试</string>
+    
+    <string name="user_paiju">已进行牌局：</string>
+    <string name="user_shengfu">胜负：</string>
+    <string name="user_shenglv">胜率：</string>
+    <string name="user_mostwin">最多赢取：</string>
+    <string name="user_mostcard">最大手牌：</string>
+    <string name="user_city">住址：</string>
+    <string name="user_ju">#局</string>
+    <string name="user_sf">#胜/*负</string>
+    
+    <string name="interact_props_download_tips">亲，你现在使用的是2G/3G网络，该互动道具(大小：{size})需要下载后才能使用，现在下载么？</string>
+    <string name="interact_props_download_finish_tips">恭喜你，新的互动道具已经下载完成</string>
+    <string name="interact_props_download_failed_tips">新的互动道具下载失败，请重新点击下载</string>
+    <string name="interact_props_download_tips2">玩家{name}对你使用了一个{prop}，你还没有下载该互动道具，需要现在下载么？</string>
+    <string name="interact_props_download_tips_no">否</string>
+    <string name="interact_props_download_tips_yes">是</string>
+    <string name="interact_props_tips1">点我试试</string>
+    <string name="interact_props_tips2">连续点我试试</string>
+    <string name="interact_props_match_not_support">比赛场不支持以游戏币使用互动道具</string>
+    
+        <!-- 补币  -->
+    <string name="user_addchips">增加桌上筹码</string>
+    <string name="max_value">最大\n</string>
+    <string name="min_value">最小\n</string>
+    <string name="add_chips_tip">牌局结束后将为您补充#游戏币</string>
+    <string name="multiple_add_err">一个牌局中不能进行多次补币操作，请稍候进行</string>
+    <string name="addchips_success">已自动帮您补充#游戏币，再战三百回合</string>
+    <string name="add_error1">您目前没有剩余筹码可补充，如需增加筹码请充值</string>
+    <string name="add_error2">已达到房间最大携带，暂时不能增加筹码</string>
+    <string name="add_error3">当前游戏场次不支持补币</string>
+    <string name="aad_error4">您的游戏币已超过房间的最大买入，自动补币不成功</string>
+    <string name="add_chips_tip2">牌局开始时自动添加</string>
+    <string name="add_chips_tip3">每局自动买入最大值</string>
+    <string name="add_chips_err">您已经设置了每局自动买入最大值，一个牌局中不能进行多次补币操作</string>
+    
+    <string name="add_friend">加为好友</string>
+    <string name="send_chips">赠送游戏币</string>
+    <string name="recharge_for_ta">替ta充值</string>
+
+</resources>

@@ -1,0 +1,35 @@
+local qr_TipsItem=
+{
+	name="qr_TipsItem",type=0,typeName="View",time=0,x=0,y=0,width=794,height=128,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=0,fillParentHeight=0,
+	{
+		name="bg",type=0,typeName="Image",time=119786050,x=0,y=0,width=794,height=128,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/qr/slide_bg.png",
+		{
+			name="line",type=0,typeName="Image",time=119792893,x=0,y=01,width=794,height=2,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/qr/line.png"
+		},
+		{
+			name="icon",type=0,typeName="Image",time=119786545,x=10,y=12,width=104,height=104,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/qr/icon_bg.png"
+		},
+		{
+			name="iconBg",type=0,typeName="Image",time=119786499,x=10,y=12,width=106,height=106,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/qr/icon_frame.png"
+		},
+		{
+			name="name",type=0,typeName="Text",time=119786804,x=135,y=26,width=64,height=40,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[兑换券名称]],fontSize=36,textAlign=kAlignLeft,colorRed=249,colorGreen=96,colorBlue=13
+		},
+		{
+			name="textStr",type=0,typeName="Text",time=119786995,x=135,y=71,width=110,height=40,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[有效期：]],fontSize=28,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31
+		},
+		{
+			name="textContent",type=0,typeName="Text",time=119787120,x=250,y=71,width=64,height=40,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[7天]],fontSize=28,textAlign=kAlignLeft,colorRed=225,colorGreen=127,colorBlue=0
+		},
+		{
+			name="btn",type=0,typeName="Button",time=119787193,x=628,y=31,width=138,height=65,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="btnText",type=0,typeName="Text",time=119787369,x=0,y=0,width=64,height=40,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[兑换]],fontSize=28,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186
+			}
+		},
+		{
+			name="tipsText",type=0,typeName="Text",time=120045062,x=20,y=0,width=200,height=64,nodeAlign=kAlignRight,visible=0,fillParentWidth=0,fillParentHeight=0,string=[[请等待商家确认]],fontSize=24,textAlign=kAlignRight,colorRed=143,colorGreen=92,colorBlue=31
+		}
+	}
+}
+return qr_TipsItem;

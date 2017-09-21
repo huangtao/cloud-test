@@ -1,0 +1,88 @@
+package com.boyaa.testhallbase.cases;
+
+import com.boyaa.Config;
+import com.boyaa.rainbow2.RainbowListener;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testhallbase.uilib.AnouncementDialog;
+import com.boyaa.testhallbase.uilib.BankruptcyDialog;
+import com.boyaa.testhallbase.uilib.CheckinDialog;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.UpdateDialog;
+
+public class BaseTestCase extends RainbowTestCase{
+	@Override
+	public void setUp() throws Exception{
+		setUp(true);
+	}
+	
+	public void setUp(boolean closeDialog) throws Exception{
+		try {
+			super.setUp(Config.waitActivity);	//waitActivity名称改为从interface文件获取，以避免外部引用TestHallBase的项目在此处的冲突
+		} catch(Exception e) {
+			super.setUp();	//Config文件没有设置waitActivity的情况
+		}
+		if (closeDialog) {
+			closeTheLauncherDialog();
+		}
+	}
+	
+	/**
+	 * 关闭启动应用后出现的各种弹出窗口。
+	 * @author JackWang
+	 */
+	public static void closeTheLauncherDialog(){
+		AnouncementDialog ad = new AnouncementDialog();//公告对话框
+		UpdateDialog ud = new UpdateDialog();//升级对话框
+		CheckinDialog cd = new CheckinDialog();//每日签到
+		BankruptcyDialog bd = new BankruptcyDialog();//破产窗口
+		HallPage hallPage = new HallPage();
+		hallPage.waitPresent();
+		if(ad.isPresent(5)){
+			if (ad.waitSubElements("关闭按钮").size() == 1) {
+				ad.close();
+			}
+			else if (ad.waitSubElements("关闭按钮").size() > 1) {
+				ad.waitSubElements("关闭按钮").get(1).click();
+			}
+			if(ad.isPresent(1)) {
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if (ad.waitSubElements("关闭按钮").size() == 1) {
+					ad.close();
+				}
+				else if (ad.waitSubElements("关闭按钮").size() > 1) {
+					ad.waitSubElements("关闭按钮").get(1).click();
+				}
+			}
+		}
+		if(ud.isPresent(1)){
+			if (ud.waitSubElements("关闭按钮").size() == 1) {
+				ud.close();
+			}
+			else if (ud.waitSubElements("关闭按钮").size() > 1) {
+				ud.waitSubElements("关闭按钮").get(1).click();
+			}
+		}		
+		if(cd.isPresent(1)){
+			if (cd.waitSubElements("关闭按钮").size() == 1) {
+				cd.close();
+			}
+			else if (cd.waitSubElements("关闭按钮").size() > 1) {
+				cd.waitSubElements("关闭按钮").get(1).click();
+			}
+		}
+		if(bd.isPresent(1)){
+			if (bd.waitSubElements("关闭按钮").size() == 1) {
+				cd.close();
+			}
+			else if (bd.waitSubElements("关闭按钮").size() > 1) {
+				bd.waitSubElements("关闭按钮").get(1).click();
+			}
+		}
+	}
+
+}

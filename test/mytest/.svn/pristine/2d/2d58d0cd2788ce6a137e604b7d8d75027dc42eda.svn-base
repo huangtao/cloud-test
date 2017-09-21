@@ -1,0 +1,204 @@
+package com.boyaa.testholdemhk.business;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+
+
+public class AccountData {
+	
+	public static List<HashMap<String, String>> accountList = new ArrayList<HashMap<String, String>>();		
+	private static HashMap<String, String> accountDetailsMap;
+	static{
+		
+
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "AT400");
+		accountDetailsMap.put("gid", "34724");
+		accountDetailsMap.put("coins", "400");	
+		accountList.add(accountDetailsMap);	
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "AT2000");
+		accountDetailsMap.put("gid", "34725");
+		accountDetailsMap.put("coins", "2000");	
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "AT0");
+		accountDetailsMap.put("gid", "34728");
+		accountDetailsMap.put("coins", "0");	
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "AT5000");
+		accountDetailsMap.put("gid", "34741");
+		accountDetailsMap.put("coins", "5000");	
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "AT25000");
+		accountDetailsMap.put("gid", "34742");
+		accountDetailsMap.put("coins", "25000");
+		accountDetailsMap.put("tag", "for_set");
+		accountList.add(accountDetailsMap); 
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATG400");
+		accountDetailsMap.put("gid", "34760");
+		accountDetailsMap.put("coins", "2000");	
+		accountList.add(accountDetailsMap); 
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATNG");
+		accountDetailsMap.put("gid", "34801");
+		accountDetailsMap.put("coins", "2000");	
+		accountDetailsMap.put("tag", "no_gift");	
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATNormal");
+		accountDetailsMap.put("gid", "35823");
+		accountDetailsMap.put("coins", "2000");	
+		accountDetailsMap.put("tag", "normal");	
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATOneProp");
+		accountDetailsMap.put("gid", "37931");
+		accountDetailsMap.put("coins", "10000");
+		accountDetailsMap.put("tag", "for_myitem_oneprop");
+		accountList.add(accountDetailsMap); 
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATTwoProp");
+		accountDetailsMap.put("gid", "37932");
+		accountDetailsMap.put("coins", "10000");
+		accountDetailsMap.put("tag", "for_myitem_twoprop");
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATMyItem");
+		accountDetailsMap.put("gid", "37942");
+		accountDetailsMap.put("coins", "2000");
+		accountDetailsMap.put("tag", "for_myitem_test");
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATFastcash");
+		accountDetailsMap.put("gid", "37946");
+		accountDetailsMap.put("coins", "500");
+		accountDetailsMap.put("tag", "for_fastcash_2");
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATFastcash1");
+		accountDetailsMap.put("gid", "37947");
+		accountDetailsMap.put("coins", "500");
+		accountDetailsMap.put("tag", "for_fastcash_1");
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATDismiss1");
+		accountDetailsMap.put("gid", "37948");
+		accountDetailsMap.put("coins", "10000");
+		accountDetailsMap.put("tag", "for_dismiss_1");
+		accountList.add(accountDetailsMap);
+		
+		accountDetailsMap = new HashMap<String, String>();
+		accountDetailsMap.put("mid", "ATDismiss2");
+		accountDetailsMap.put("gid", "37949");
+		accountDetailsMap.put("coins", "10000");
+		accountDetailsMap.put("tag", "for_dismiss_2");
+		accountList.add(accountDetailsMap);
+		
+	
+	}
+	
+    private String mid = "";
+    private String gid = "";
+    private String coins = "0";
+    private String tag = "";
+    
+    public String getMachineID(){
+    	return mid;
+    }
+    
+    public String getGameID(){
+    	return gid;
+    }
+	
+    public String getCoins(){
+    	return coins;
+    }
+    
+    public String getTag(){
+    	return tag;
+    }
+    	
+    public static void main(String args[]){
+    	AccountData ad = AccountData.requestByCoins("25000");
+    	System.out.println(ad.mid);
+    }
+    
+	
+    public static AccountData requestByCoins(String coinNumber){
+		String coinNumberLowerCase = coinNumber.toLowerCase(Locale.getDefault());
+		if(coinNumberLowerCase.endsWith("k")){
+			coinNumber = coinNumberLowerCase.split("k")[0].trim()+"000";
+		}
+		else if(coinNumber.toLowerCase(Locale.getDefault()).endsWith("m")){
+			coinNumber = coinNumber.split("m")[0].trim()+"000000";
+		}
+		Iterator<HashMap<String, String>> accountIt = accountList.iterator();
+		while(accountIt.hasNext()){
+			HashMap<String, String> accountValue = accountIt.next();			
+			 if(accountValue.containsKey("coins") && accountValue.get("coins").equals(coinNumber)){				 
+				 AccountData ad = new AccountData();
+				 ad.mid = accountValue.get("mid");
+				 ad.gid = accountValue.get("gid");
+				 ad.coins = accountValue.get("coins");
+				 ad.tag = accountValue.get("tag");
+				 return ad;
+			 }
+		}
+		return null; 		
+	}
+	
+	public static AccountData requestByID(String machineID){
+		Iterator<HashMap<String, String>> accountIt = accountList.iterator();
+		while(accountIt.hasNext()){
+			HashMap<String, String> accountValue = accountIt.next();			
+			 if(accountValue.containsKey("mid") && accountValue.get("mid").equals(machineID)){				 
+				 AccountData ad = new AccountData();
+				 ad.mid = accountValue.get("mid");
+				 ad.gid = accountValue.get("gid");
+				 ad.coins = accountValue.get("coins");
+				 ad.tag = accountValue.get("tag");
+				 return ad;
+			 }
+		}
+		return null; 
+	}
+	
+	public static AccountData requestByTag(String accountTag){
+		String accountTagLowerCase = accountTag.toLowerCase(Locale.getDefault());
+		Iterator<HashMap<String, String>> accountIt = accountList.iterator();
+		while(accountIt.hasNext()){
+			HashMap<String, String> accountValue = accountIt.next();
+			if(accountValue.containsKey("tag") && accountValue.get("tag").toLowerCase(Locale.getDefault()).contains(accountTagLowerCase)){				 
+				AccountData ad = new AccountData();
+				ad.mid = accountValue.get("mid");
+				ad.gid = accountValue.get("gid");
+				ad.coins = accountValue.get("coins");
+				ad.tag = accountValue.get("tag");
+				return ad;
+			}
+		}
+		return null; 	
+	}
+
+}
+

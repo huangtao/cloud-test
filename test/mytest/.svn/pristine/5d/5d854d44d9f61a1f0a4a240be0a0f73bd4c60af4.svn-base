@@ -1,0 +1,68 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.Point;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.BaiduPage;
+import com.boyaa.lianyuntest.uilib.login.BoyaaLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.lianyuntest.uilib.login.QQLoginPage;
+import com.boyaa.lianyuntest.uilib.login.SinaLoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.rainbow2.utils.Parameter;
+
+@Test(description = "百度联运登录测试用例")
+public class BaiduChannelLoginTest extends BaiduLoginTest {
+
+/*	@CaseDesc(id = "LIANYUN-BAIDU-1", name = "登录新浪账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginSina(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.clearAppData("com.sina.weibo");
+		
+		openLoginPage(hp, "新浪微博");
+		
+		super.sinaLogin(account, pwd);
+		
+		super.isLoginSucc(hp, name);
+
+	}*/
+	
+	@CaseDesc(id = "LIANYUN-BAIDU-2", name = "登录QQ账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginQQ(String account, String pwd, String name) {
+		CommonBusiness.delFile("/mnt/sdcard/.com.boyaa.scmj.channel.baidu");
+		super.loginQQ(account, pwd, name);
+
+	}
+	
+	@CaseDesc(id = "LIANYUN-BAIDU-3", name = "登录博雅通行证账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginBoyaa(String account, String pwd, String name) {
+		super.loginBoyaa(account, pwd, name);
+
+	}
+	
+	@CaseDesc(id = "LIANYUN-BAIDU-4", name = "登录手机账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginMobile(String account, String pwd, String name) {
+		super.loginMobile(account, pwd, name, ".com.boyaa.scmj.channel.baidu");
+
+	}
+	
+	@CaseDesc(id = "LIANYUN-BAIDU-5", name = "游客登陆")
+	@Test(description = "检查账号能正常登录")
+	public void test_loginVisitor() {
+		super.loginVisitor();
+	}
+	
+
+}

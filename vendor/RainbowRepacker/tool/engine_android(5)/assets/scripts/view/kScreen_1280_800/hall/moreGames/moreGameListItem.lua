@@ -1,0 +1,69 @@
+local moreGames_pin_map = require("qnFiles/qnPlist/hall/moreGames_pin");
+local num_download_pin_map = require("qnFiles/qnPlist/hall/num_download_pin");
+local num_online_pin_map = require("qnFiles/qnPlist/hall/num_online_pin");
+local roomLevels_pin_map = require("qnFiles/qnPlist/hall/roomLevels_pin");
+local moreGameListItem=
+{
+	name="moreGameListItem",type=0,typeName="View",time=0,report=0,x=0,y=0,width=317,height=392,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+	{
+		name="info_view",type=0,typeName="View",time=110978655,x=55,y=0,width=590,height=380,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0
+	},
+	{
+		name="show_view",type=1,typeName="Image",time=89283560,report=0,x=0,y=0,width=317,height=392,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=moreGames_pin_map['games_bg.png'],
+		{
+			name="game_icon",type=1,typeName="Image",time=89283588,report=0,x=0,y=0,width=245,height=320,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/bg_blank.png",
+			{
+				name="downloading_view",type=0,typeName="View",time=89282354,report=0,x=0,y=0,width=245,height=320,visible=0,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,
+				{
+					name="progress_light",type=1,typeName="Image",time=89266595,report=0,x=0,y=0,width=245,height=86,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file=moreGames_pin_map['circle_light.png']
+				},
+				{
+					name="progress",type=0,typeName="View",time=89266888,report=0,x=0,y=0,width=245,height=45,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottom,
+					{
+						name="num_1",type=1,typeName="Image",time=89267273,report=0,x=-26,y=0,width=30,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/bg_blank.png"
+					},
+					{
+						name="num_2",type=1,typeName="Image",time=89267275,report=0,x=-8,y=0,width=30,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/bg_blank.png"
+					},
+					{
+						name="num_3",type=1,typeName="Image",time=89267277,report=0,x=8,y=0,width=30,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/bg_blank.png"
+					},
+					{
+						name="percent_iocn",type=1,typeName="Image",time=89273054,report=0,x=26,y=0,width=30,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=num_download_pin_map['%.png']
+					}
+				}
+			},
+			{
+				name="undownload_view",type=0,typeName="View",time=111004470,x=0,y=0,width=245,height=320,nodeAlign=kAlignTopLeft,visible=0,fillParentWidth=1,fillParentHeight=1,
+				{
+					name="undownload",type=1,typeName="Image",time=111002855,report=0,x=0,y=11,width=95,height=23,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file=moreGames_pin_map['undownload.png']
+				}
+			},
+			{
+				name="onlineNumView",type=0,typeName="View",time=88854795,report=0,x=0,y=3,width=245,height=30,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,
+				{
+					name="word",type=1,typeName="Image",time=90408443,report=0,x=0,y=0,width=52,height=23,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file=num_online_pin_map['word_online.png']
+				}
+			},
+			{
+				name="gameStatusView",type=0,typeName="View",time=94649113,x=0,y=3,width=245,height=30,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="newGamesIcon",type=0,typeName="Image",time=94648694,x=0,y=0,width=95,height=23,nodeAlign=kAlignCenter,visible=0,fillParentWidth=0,fillParentHeight=0,file=roomLevels_pin_map['newGamesIcon.png']
+				}
+			},
+			{
+				name="game_name",type=0,typeName="Image",time=111005665,x=0,y=0,width=245,height=320,nodeAlign=kAlignBottom,visible=1,fillParentWidth=1,fillParentHeight=1,file="isolater/bg_blank.png"
+			}
+		}
+	},
+	{
+		name="icon_view",type=0,typeName="View",time=110975039,width=260,height=330,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,
+		{
+			name="bg_light",type=1,typeName="Image",time=89266125,report=0,x=0,y=0,width=317,height=392,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=moreGames_pin_map['download_bg_light.png']
+		},
+		{
+			name="new",type=0,typeName="Image",time=110975090,x=0,y=0,width=120,height=74,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file=moreGames_pin_map['icon_new.png']
+		}
+	}
+}
+return moreGameListItem;

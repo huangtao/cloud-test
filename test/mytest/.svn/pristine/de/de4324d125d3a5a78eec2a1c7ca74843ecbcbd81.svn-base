@@ -1,0 +1,111 @@
+package com.boyaa.testholdemth.cases;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowLogger;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemth.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemth.business.CommonBusiness;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testholdemth.uilib.IntegralExchangePage;
+import com.boyaa.testholdemth.uilib.InterActivePage;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+import com.boyaa.testholdemth.uilib.PersonalInformationPage;
+import com.boyaa.testholdemth.uilib.SitAndGoRoomPage;
+import com.boyaa.testholdemth.business.CaseData;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is suite is to test integral exchange")
+public class InterActiveTest extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private static CaseData caseData =null;
+	private LoginPage loginPage = null ;
+	public InterActiveTest() {
+		super();
+	}
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();
+
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	@CaseDesc(id="interactive_005", name="test_MysteriousGift")
+	@Test(description="test my sterious Gift for friend",dataProvider = "interActiveData", dataProviderClass =CaseDataDriver.class)
+	public void test_MysteriousGift(String sended ,String sendmes ,String friendnameviewid) throws InterruptedException{	
+		//调用接口设置用户没有给好友赠送礼物
+		//调用接口设置用户好友
+		loginPage.loginAsGuestWithTag("for_inter_acive");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("互动按钮").click();//点击互动按钮
+		InterActivePage interActivePage = new InterActivePage();
+		interActivePage.isPresent(20);
+		interActivePage.getAFriendElement(friendnameviewid).click();//点击好友
+	    assertTrue(interActivePage.getSendMessageButtonText().equals(sendmes.replace(" ", "")),"按钮不是赠送神秘礼物，请查看该好友是否已经被赠送过礼物");
+	    interActivePage.waitSubElement("神秘礼物按钮").click();
+	    assertTrue(interActivePage.getSendMessageButtonText().equals(sended.replace(" ", "")),"按钮不是已赠送，请查看用户是否赠送成功");
+		
+		}
+	@CaseDesc(id="interactive_008", name="test_CancelTheRemoveFriend")
+	@Test(description="test cancel remove friend",dataProvider = "interActiveData", dataProviderClass =CaseDataDriver.class)
+	public void test_CancelTheRemoveFriend(String friendnameviewid ,String delbutton) throws InterruptedException{	
+		//TODO 调用接口设置用户没有给好友赠送礼物
+		//TODO 调用接口设置用户好友
+		loginPage.loginAsGuestWithTag("for_inter_acive");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("互动按钮").click();//点击互动按钮
+		InterActivePage interActivePage = new InterActivePage();
+		interActivePage.isPresent(20);
+		WebElement we= interActivePage.getAFriendElement(friendnameviewid);
+		we.click();//点击好友
+		String name = we.getText().replace(" ", "");//获取好友的名字
+		cb.drag(interActivePage.waitSubElement("神秘礼物按钮"),"up", 1, (float) 2.5);
+		//interActivePage.rd.scrollToExact(delbutton.toString().replace(" ", ""));
+		interActivePage.waitSubElement("删除好友按钮").click();//点击删除按钮
+		interActivePage.delFriendPage().isPresent(5);
+		interActivePage.delFriendPage().waitSubElement("取消按钮").click();
+		we= interActivePage.getAFriendElement(friendnameviewid);
+		assertTrue(we.getText().replace(" ", "").equals(name) ,"好友被删除了");
+		}
+	
+	
+	@CaseDesc(id="interactive_009", name="test_MakeSureRemoveFriend")
+	@Test(description="test make sure remove friend",dataProvider = "interActiveData", dataProviderClass =CaseDataDriver.class)
+	public void test_MakeSureRemoveFriend(String friendnameviewid ,String delbutton) throws InterruptedException{	
+		//TODO 调用接口设置用户没有给好友赠送礼物
+		//TODO 调用接口设置用户好友
+		loginPage.loginAsGuestWithTag("for_inter_acive");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("互动按钮").click();//点击互动按钮
+		InterActivePage interActivePage = new InterActivePage();
+		interActivePage.isPresent(20);
+		WebElement we= interActivePage.getAFriendElement(friendnameviewid);
+		we.click();//点击好友
+		String name = we.getText().replace(" ", "");//获取好友的名字
+		cb.drag(interActivePage.waitSubElement("神秘礼物按钮"),"up", 1, (float) 2.5);
+		interActivePage.waitSubElement("删除好友按钮").click();//点击删除按钮
+		interActivePage.delFriendPage().isPresent(5);
+		interActivePage.delFriendPage().waitSubElement("确定按钮").click();
+		interActivePage.isPresent(5);
+		if (interActivePage.isHaveFriendElement(friendnameviewid)){
+			we= interActivePage.getAFriendElement(friendnameviewid);
+			assertFalse(we.getText().replace(" ", "").equals(name) ,"好友没有被删除");
+		}
+		}
+	
+
+}

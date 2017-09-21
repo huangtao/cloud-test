@@ -1,0 +1,91 @@
+div(pane='center', ng-controller='CptCtrl')
+  .widget-container.fluid-height
+    .heading
+      stacked-icon(icon='fa-gears', color='color-red')
+      span(translate) 服务项
+    .widget-content.padded
+      .row
+        .col-md-12
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 安装/启动/Monkey/卸载
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 覆盖安装/登录
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 启动时间/CPU/内存/流量
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 错误日志/自动截图
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 测试完成通知
+
+    div(ng-include='"cpt/fileupload/fileupload.pug"' )
+    .row
+    form#monkeyTest
+      .heading
+        span 所属项目：
+        input(type='text',ng-model='appName')
+    .widget-content.padded
+      .row
+        .col-md-12
+          .col-md-2
+            label
+              input(type='radio', name='upload_type', checked='checked')
+              | 本地上传
+          .col-md-2
+            label
+              input(type='radio', name='upload_type')
+              | 选择已上传的包
+    .row
+    .heading
+        stacked-icon(icon='fa-mobile', color='color-red')
+        span(translate) 选择机型
+      .widget-content.padded
+        .row
+          .col-md-12
+            .col-md-12
+              stacked-icon(icon='fa-tv', color='color-red')
+              span 分辨率
+            .col-md-1( ng-repeat="dpi in dpis" )
+              label
+                input(
+                type='checkbox', name='dpi', value='{{dpi}}'
+                , ng-checked='dpisSelection.indexOf(dpi) > -1', ng-click='toggleSelection(dpi,dpisSelection)'
+                )
+                | {{dpi}}
+
+        .row
+          .col-md-12
+            .col-md-12
+              stacked-icon(icon='fa-server', color='color-red')
+              span 操作系统
+            .col-md-1( ng-repeat="os_version in os_versions" )
+              label
+                input(
+                type='checkbox', name='os_version', value='{{os_version}}'
+                , ng-checked='os_versionsSelection.indexOf(os_version) > -1'
+                , ng-click='toggleSelection(os_version,os_versionsSelection)'
+                )
+                | {{os_version}}
+
+        .row
+          .col-md-12
+            .col-md-12
+              stacked-icon(icon='fa-copyright', color='color-red')
+              span 厂商
+            .col-md-1( ng-repeat="manufacturer in manufacturers" )
+              label
+                input(
+                type='checkbox', name='manufacturer', value='{{manufacturer}}'
+                , ng-checked='manufacturersSelection.indexOf(manufacturer) > -1'
+                , ng-click='toggleSelection(manufacturer,manufacturersSelection)'
+                )
+                | {{manufacturer}}
+
+        .row
+          .col-md-12
+            button(ng-click='commit()') 提交
+

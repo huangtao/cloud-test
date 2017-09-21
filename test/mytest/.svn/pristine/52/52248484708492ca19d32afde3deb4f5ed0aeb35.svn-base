@@ -1,0 +1,56 @@
+package com.boyaa.hallsmoketest.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+import com.boyaa.hallbase.BaseTestCase;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.UserPage;
+import com.boyaa.rainbow2.RainbowTestCase;
+
+public class SmokeTestCase extends BaseTestCase{
+	public HallPage hallPage;
+	public String appId;
+	public String currentMid;
+	public String apkPath;
+	
+	@BeforeTest
+	public void setUpForTest() {
+		this.appId = getParamByKey("app_id");
+		CommonBusiness.appId = this.appId;
+		this.apkPath=getParamByKey("scr_apk_path");
+		setUp();
+		try {
+			CommonBusiness.SwitchToEnvironment(getParamByKey("environment"));
+			
+			UserPage userPage = this.hallPage.openAndGetUserPage();
+			this.currentMid = userPage.getCurrentMid();
+		} finally {
+			super.getDriver().quit();
+		}
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp(apkPath);
+		this.hallPage=new HallPage();
+		
+		//增加判断，如果是测试系统公告-消息显示，则不关闭所有的弹出窗口
+		if(!this.getClass().getName().endsWith("AnnouncementTest")){
+			hallPage.getCurrentMoney();
+			CommonBusiness.closeTheLauncherDialog();
+			System.out.println("setUp CommonBusiness.closeTheLauncherDialog");
+		}
+	}
+	
+	
+	@AfterMethod
+	public void tearDown() {
+		super.getDriver().quit();
+	}
+
+}

@@ -1,0 +1,81 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.PropStorePage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="支付基本逻辑检查")
+public class PayLogicTest extends TestCaseBase {
+	private LobbyPage lobbyPage = null;
+	private LoginPage loginPage = null;
+	private RainbowDriver rd = null;
+	
+	public PayLogicTest(){
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		lobbyPage = new LobbyPage();
+		loginPage = new LoginPage();
+		loginPage.loginWithMachineCodeIntoTestEnv(CommonBusiness.machineCode);//Todo:for test
+//		loginPage.loginWithMachineCode(CommonBusiness.machineCode);
+	}
+	
+	
+	@CaseDesc(id="pay_chips30000", name="购买游戏币(3000)")
+	@Test(description="购买游戏币(3000)")
+	public void test_PayChips30000() throws InterruptedException{
+		lobbyPage.waitPresent();
+		lobbyPage.waitSubElement("道具商城").click();
+		
+		PropStorePage propStorePage = new PropStorePage();
+		assertTrue(propStorePage.isSubElementPresent("游戏币tab"), "预期结果：【游戏币】列表按钮出现，实际结果：【游戏币】列表按钮未出现");
+		propStorePage.waitSubElement("游戏币tab").click();
+		
+		//TODO:因无法识别弹出框，下面两个断言为暂时方案
+		assertTrue(propStorePage.isSubElementPresent("游戏币数"), "预期结果：【30,000游戏币】文字出现，实际结果：【30,000游戏币】文字未出现");
+		assertTrue(propStorePage.isSubElementPresent("购买游戏币按钮"), "预期结果：【￥5.00】文字出现，实际结果：【￥5.00】文字未出现");
+	}
+	
+	@CaseDesc(id="pay_item_blue_diamond", name="购买道具(蓝钻)")
+	@Test(description="购买道具(蓝钻)")
+	public void test_PayBlueDiamond() throws InterruptedException{
+		lobbyPage.waitPresent();
+		lobbyPage.waitSubElement("道具商城").click();
+		
+		PropStorePage propStorePage = new PropStorePage();
+		assertTrue(propStorePage.isSubElementPresent("道具tab"), "预期结果：【道具】列表按钮出现，实际结果：【道具】列表按钮未出现");
+		propStorePage.waitSubElement("道具tab").click();
+		
+		//TODO:因无法识别弹出框，下面两个断言为暂时方案
+		assertTrue(propStorePage.isSubElementPresent("蓝钻"), "预期结果：【蓝钻】文字出现，实际结果：【蓝钻】文字未出现");
+		assertTrue(propStorePage.isSubElementPresent("购买蓝钻按钮"), "预期结果：【￥10.00】文字出现，实际结果：【￥10.00】文字未出现");
+	}
+	
+	
+	@CaseDesc(id="pay_vipcard", name="购买vip卡")
+	@Test(description="购买vip卡")
+	public void test_PayVipCard() throws InterruptedException{
+		lobbyPage.waitPresent();
+		lobbyPage.waitSubElement("道具商城").click();
+		
+		PropStorePage propStorePage = new PropStorePage();
+		assertTrue(propStorePage.isSubElementPresent("VIPtab"), "预期结果：【VIP】列表按钮出现，实际结果：【VIP】列表按钮未出现");
+		propStorePage.waitSubElement("VIPtab").click();
+		
+		//TODO:因无法识别弹出框，下面两个断言为暂时方案
+		assertTrue(propStorePage.isSubElementPresent("时限"), "预期结果：【30天】文字出现，实际结果：【30天】文字未出现");
+		assertTrue(propStorePage.isSubElementPresent("购买vip按钮"), "预期结果：【￥20.00】文字出现，实际结果：【￥20.00】文字未出现");
+	}
+}

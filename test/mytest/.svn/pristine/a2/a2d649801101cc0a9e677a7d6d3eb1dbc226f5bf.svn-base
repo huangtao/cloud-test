@@ -1,0 +1,107 @@
+package com.boyaa.testdalianhall.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testdalianhall.business.CommonBusiness;
+import com.boyaa.testdalianhall.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testdalianhall.uilib.FirstPayDialog;
+import com.boyaa.testdalianhall.uilib.HallPage;
+import com.boyaa.testdalianhall.uilib.HowToBuyDialog;
+import com.boyaa.testdalianhall.uilib.LandlordsRoomListPage;
+import com.boyaa.testdalianhall.uilib.QuickPurchaseDialog;
+import com.boyaa.testdalianhall.uilib.ShopPage;
+import com.boyaa.testdalianhall.uilib.UserPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="支付购买入口模块")
+public class PurchaseEntranceTest extends BaseTestCase {
+	private HallPage hallPage = null;
+	private String userMID = "";
+	public PurchaseEntranceTest(){
+		super();
+	}
+
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();
+		hallPage = new HallPage();
+		userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		super.tearDown();
+		
+	}
+	
+	@CaseDesc(id="公共088_a", name="大厅快捷支付入口(Phase II)")
+	@Test(description="大厅头像旁边+快捷支付按钮")
+	public void test_quickPayEntrance(){
+		CommonBusiness.switchToTrialPlay();
+		hallPage.waitSubElement("快捷支付按钮").click();
+		HowToBuyDialog htbd = new HowToBuyDialog();
+		htbd.waitPresent();
+		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+	}
+	
+	@CaseDesc(id="公共088_b", name="首充礼包支付入口(Phase II)")
+	@Test(description="首充礼包支付入口，非首充用户不能看到")
+	public void test_firstPayEntrance(){
+		CommonBusiness.setWhetherToFirstPay(userMID, 0);//设置用户为首充用户
+		CommonBusiness.switchToTrialPlay();
+		hallPage.waitSubElement("首充礼包支付按钮").click();
+		FirstPayDialog fpd = new FirstPayDialog();		
+		fpd.waitPresent();
+		fpd.waitSubElement("礼包按钮").click();
+		HowToBuyDialog htbd = new HowToBuyDialog();
+		htbd.waitPresent();
+		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+	}
+	
+	@CaseDesc(id="公共088_c", name="个人信息下方充值按钮入口(Phase II)")
+	@Test(description="博雅账号登陆，个人信息下方充值按钮", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_userInfoPayEntrance(String phoneNumber, String phonePwd){	
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.OnlineEnv);
+		CommonBusiness.loginWithBoyaaAccount(phoneNumber, phonePwd);//登录到正常账号
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		UserPage userPage = new UserPage();
+		userPage.waitSubElement("充值按钮").click();
+		ShopPage sp = new ShopPage();
+		sp.waitPresent();
+		sp.waitSubElement("购买按钮").click();
+		HowToBuyDialog htbd = new HowToBuyDialog();
+		htbd.waitPresent();
+		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+	}
+	
+	
+	@CaseDesc(id="公共089", name="房间列表支付入口(Phase II)")
+	@Test(description="金币不足进入房间，弹出推荐商品购买", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_roomListPayEntrance(String money){		
+		//通过接口设置用户金币数为3001
+		CommonBusiness.setUserMoney(userMID, Integer.parseInt(money));
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到测试环境		
+		hallPage.waitSubElement("斗地主游戏图标按钮").click();
+		LandlordsRoomListPage lrp = new LandlordsRoomListPage();
+		lrp.waitPresent();
+		lrp.waitSubElement("高级场按钮").click();
+		QuickPurchaseDialog qpd = new QuickPurchaseDialog();
+		qpd.waitPresent();
+		qpd.waitSubElement("立即购买按钮").click();
+		HowToBuyDialog htbd = new HowToBuyDialog();
+		htbd.waitPresent();
+		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+	}
+	
+	
+}

@@ -1,0 +1,26 @@
+match_chat_addAndReport=
+{
+	name="match_chat_addAndReport",type=0,typeName="View",time=0,x=0,y=0,width=270,height=104,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=0,fillParentHeight=0,
+	{
+		name="bg",type=0,typeName="Image",time=114969298,x=0,y=0,width=270,height=104,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_wating/add_report_bg.png",gridLeft=20,gridRight=20,gridTop=20,gridBottom=20,
+		{
+			name="Button_add",type=0,typeName="Button",time=112791654,x=10,y=5,width=120,height=42,nodeAlign=kAlignBottomRight,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_wating/btn_add_friend.png",
+			{
+				name="text",type=0,typeName="Text",time=112791835,x=15,y=0,width=48,height=34,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[好友]],fontSize=23,textAlign=kAlignCenter,colorRed=255,colorGreen=225,colorBlue=173,colorA=1
+			},
+			{
+				name="img",type=0,typeName="Image",time=114969742,x=-25,y=0,width=17,height=17,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_wating/icon_add.png"
+			}
+		},
+		{
+			name="Button_report",type=0,typeName="Button",time=112791655,x=10,y=5,width=120,height=42,nodeAlign=kAlignBottomLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_wating/btn_add_report.png",
+			{
+				name="text",type=0,typeName="Text",time=112792242,x=0,y=1,width=48,height=34,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[举报]],fontSize=23,textAlign=kAlignCenter,colorRed=110,colorGreen=60,colorBlue=0,colorA=1
+			}
+		},
+		{
+			name="name",type=0,typeName="Text",time=114969855,x=0,y=9,width=64,height=40,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,fontSize=22,textAlign=kAlignCenter,colorRed=255,colorGreen=225,colorBlue=173,colorA=1
+		}
+	}
+}
+return match_chat_addAndReport;

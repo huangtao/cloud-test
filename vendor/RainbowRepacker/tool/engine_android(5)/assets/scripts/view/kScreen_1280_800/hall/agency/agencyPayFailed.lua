@@ -1,0 +1,39 @@
+local agency_pin_map = require("qnFiles/qnPlist/hall/agency_pin");
+local agencyPayFailed=
+{
+	name="agencyPayFailed",type=0,typeName="View",time=0,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=80708970,report=0,x=0,y=0,width=20,height=20,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file=agency_pin_map['bg.png'],gridLeft=4,gridRight=4,gridTop=4,gridBottom=4
+	},
+	{
+		name="top",type=1,typeName="Image",time=80708971,report=0,x=0,y=0,width=4,height=90,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file=agency_pin_map['top_bar.png'],
+		{
+			name="title",type=4,typeName="Text",time=80708972,report=0,x=0,y=0,width=10,height=10,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=48,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=255,string=[[开通未成功]]
+		},
+		{
+			name="returnBtn",type=2,typeName="Button",time=80709062,report=0,x=0,y=0,width=120,height=45,visible=1,fillParentWidth=0,fillParentHeight=1,nodeAlign=kAlignLeft,file="hall/common/bg_blank.png",
+			{
+				name="Image1",type=1,typeName="Image",time=80709137,report=0,x=0,y=0,width=29,height=45,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=agency_pin_map['back.png']
+			}
+		}
+	},
+	{
+		name="contentView",type=0,typeName="View",time=80708973,report=0,x=0,y=162,width=410,height=430,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,
+		{
+			name="Image2",type=1,typeName="Image",time=80709208,report=0,x=0,y=0,width=410,height=259,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/agency/shibai.png",
+			{
+				name="View1",type=0,typeName="View",time=80709709,report=0,x=0,y=0,width=200,height=140,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottom,
+				{
+					name="Text1",type=4,typeName="Text",time=80708975,report=0,x=0,y=20,width=10,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=32,textAlign=kAlignLeft,colorRed=114,colorGreen=114,colorBlue=114,string=[[您的支付未完成]]
+				},
+				{
+					name="Text2",type=4,typeName="Text",time=80708976,report=0,x=0,y=70,width=10,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=32,textAlign=kAlignLeft,colorRed=114,colorGreen=114,colorBlue=114,string=[[无法为您开通代理资格]]
+				}
+			}
+		},
+		{
+			name="againBtn",type=2,typeName="Button",time=80709990,report=0,x=0,y=0,width=200,height=86,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file=agency_pin_map['btn_g_1.png'],file2=agency_pin_map['btn_g_2.png']
+		}
+	}
+}
+return agencyPayFailed;

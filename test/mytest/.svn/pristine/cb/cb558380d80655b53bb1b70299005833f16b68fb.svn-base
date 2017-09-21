@@ -1,0 +1,80 @@
+package com.boyaa.testholdemth.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+
+public class InterActivePage extends RainbowElement {
+	public static RainbowDriver rd=null;
+	public void InterActivePage(){
+		rd = RainbowDriver.getRainbowDriver();
+	}
+	public WebElement getFriendElement(String id){
+		WebElement we = waitSubElement("好友列表");
+		WebElement friendElement =null;
+		List<WebElement> lt =we.findElements(By.className(AndroidElementClass.ANDROID_Linear));
+		for(int i=0;i<lt.size();i++){
+			try{
+				friendElement = lt.get(i).findElement(By.id(id));
+				return friendElement;
+			}catch(Exception e){
+				//DO Nothing 
+			}
+		}
+		return friendElement;
+	}
+	
+	public boolean isHaveFriendElement(String id){
+		WebElement we = waitSubElement("好友列表");
+		WebElement friendElement =null;
+		List<WebElement> lt =we.findElements(By.className(AndroidElementClass.ANDROID_Linear));
+		for(int i=0;i<lt.size();i++){
+			try{
+				friendElement = lt.get(i).findElement(By.id(id));
+				return true;
+			}catch(Exception e){
+				//DO Nothing 
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	public WebElement getAFriendElement(String id){
+		WebElement friendElement = getFriendElement(id);
+		try{
+			if (friendElement ==null){
+				Assert.fail("没有找到好友，请确认用户存在好友！");	
+			}
+		}catch (Error e){
+			return friendElement;
+		}
+		return friendElement;
+	}
+	
+	
+	public String getSendMessageButtonText(){
+		WebElement we = waitSubElement("神秘礼物按钮");
+		String str = we.getText().replace(" ", "");
+		return str;
+	}
+	
+	
+	public DelFriendPage delFriendPage(){
+		return new DelFriendPage();
+	}
+	
+	
+	public class DelFriendPage extends RainbowElement{
+
+	}
+	
+	
+}
+

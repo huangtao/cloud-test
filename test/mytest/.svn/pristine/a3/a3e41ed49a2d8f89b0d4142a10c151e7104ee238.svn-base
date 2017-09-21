@@ -1,0 +1,317 @@
+package com.boyaa.testupdate.cases;
+
+import org.json.JSONObject;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.BaseTestCase;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.common.CommonBusiness.ServerEnvironment;
+import com.boyaa.hallbase.uilib.FriendsPage;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.SettingsPage;
+import com.boyaa.hallbase.uilib.UpdateDialog;
+import com.boyaa.hallbase.uilib.UserPage;
+import com.boyaa.testupdate.Config;
+import com.boyaa.testupdate.libs.UpdateConfig;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="大厅升级")
+public class HallUpdateTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+
+//	private String appPackage;
+//	private String launchActivity;
+	private String appId;
+	private String apkPath;
+	private String targetPackageUrl = "";
+	private String targetPackageVersion = "";
+	private String targetPackageInfo = "";
+	
+	private String orgNickName;
+	private String orgMoney;
+	private String orgDiamond;
+	private String userGuid = Config.defaultUserGuid;
+	public HallUpdateTest() {
+		super();
+	}
+	
+	@Parameters({"app_id", "scr_apk_path", "upgrade_package_info", "environment"})
+	@BeforeClass
+	public void setUpBeforeClass(String appId, String apkPath, String stringUpgradePackageInfo, @Optional("online") String environment) {
+		JSONObject jsonUpgradePackageInfo = new JSONObject(stringUpgradePackageInfo);
+
+		this.appId = appId;
+		this.apkPath = apkPath;
+		this.targetPackageUrl = jsonUpgradePackageInfo.getString("targetPackageUrl");
+		this.targetPackageVersion = jsonUpgradePackageInfo.getString("targetPackageVersion");
+		this.targetPackageInfo = jsonUpgradePackageInfo.getJSONObject("targetPackageInfo").toString().toLowerCase();
+		
+		//先清空服务器上原有的相同版本的升级配置
+		UpdateConfig.delHallUpdate(this.appId, this.userGuid, this.targetPackageVersion);
+		
+		super.setCapability("noReset", true);  //升级前启动游戏，来获取用户初始信息。后面还要再启动游戏，所以这里不用清空数据
+		super.setUp(apkPath);
+		try {
+			CommonBusiness.closeTheLauncherDialog();
+			CommonBusiness.loginAsGuestIfNotLoggedIn();
+			CommonBusiness.closeTheLauncherDialog();
+			CommonBusiness.SwitchToEnvironment(environment);
+			hallPage = new HallPage();
+			UserPage userPage = hallPage.openAndGetUserPage();
+			orgNickName = userPage.getNickName();
+			orgMoney = userPage.getMoney();
+			orgDiamond = userPage.getDiamond();
+			userGuid = userPage.getUserGuid();
+			userPage.back();
+		} finally {
+			super.getDriver().quit();
+		}
+	}
+	
+	
+//	@BeforeMethod
+//	public void setUp() {
+//		super.setUp(apkPath);
+//		CommonBusiness.closeTheLauncherDialog();
+//		hallPage = new HallPage();
+//		UserPage userPage = hallPage.openAndGetUserPage();
+//		orgNickName = userPage.getNickName();
+//		orgMoney = userPage.getMoney();
+//		orgDiamond = userPage.getDiamond();
+//		userGuid = userPage.getUserGuid();
+//		userPage.back();
+//		hallPage.exitApp();
+//	}
+//	
+	@AfterMethod
+	public void tearDown() {
+		UpdateConfig.delHallUpdate(this.appId, this.userGuid, this.targetPackageVersion);
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅完整更新（强制）")
+	@Test(description="检查大厅的完整更新是否成功（强制）")
+	public void test_hallFullUpdateForce() throws InterruptedException {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Force, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		hallPage.waitPresent();
+		UpdateDialog updateDialog = hallPage.getUpdateDialog();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "在版本更新提示框弹出的情况下点击社交按钮打开了好友页面！");
+		assertFalse(updateDialog.waitSubElement("关闭按钮").isDisplayed(), "关闭按钮没有显示！");
+		assertFalse(updateDialog.waitSubElement("可选更新VIEW").isDisplayed(), "稍后再说按钮没有显示！");
+		super.getDriver().pressBack();
+		Thread.sleep(2000);
+		assertTrue(new UpdateDialog().isPresent(), "点击手机返回键后升级弹框被关闭了！");
+		
+		updateDialog.waitSubElement("强制更新确认按钮").click();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "更新下载过程中点击社交按钮打开了好友页面！");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "更新下载过程中点击返回键后弹框被关闭了！");
+		Thread.sleep(30000);
+		assertTrue(updateDialog.waitSubElement("安装VIEW").isDisplayed(), "下载完成后安装按钮没有出现！");
+		updateDialog.waitSubElement("安装按钮").click();
+		
+		assertFalse(hallPage.IsUpdateDialogOpen(), "安装后重复弹出了版本更新弹框！");
+		SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+		String version = settingsPage.waitSubElement("版本号文本").getText();
+		assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+		settingsPage.back();
+		UserPage userPage = hallPage.openAndGetUserPage();
+		assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+		assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+		assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+		
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅完整更新（可选）")
+	@Test(description="检查大厅的完整更新是否成功（可选）")
+	public void test_hallFullUpdateOptional() throws InterruptedException {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Optional, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		UpdateDialog updateDialog = hallPage.getUpdateDialog();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "在版本更新提示框弹出的情况下点击社交按钮打开了好友页面！");
+		assertTrue(updateDialog.waitSubElement("关闭按钮").isDisplayed(), "关闭按钮没有显示！");
+		assertTrue(updateDialog.waitSubElement("可选更新VIEW").isDisplayed(), "稍后再说按钮没有显示！");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "点击手机返回键后升级弹框被关闭了！");
+		
+		updateDialog.waitSubElement("可选更新确认按钮").click();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "更新下载过程中点击社交按钮打开了好友页面！");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "更新下载过程中点击返回键后弹框被关闭了！");
+		Thread.sleep(40000);
+		assertTrue(updateDialog.waitSubElement("安装VIEW").isDisplayed(), "下载完成后安装按钮没有出现！");
+		updateDialog.waitSubElement("安装按钮").click();
+		
+		assertFalse(hallPage.IsUpdateDialogOpen(), "安装后重复弹出了版本更新弹框！");
+		SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+		String version = settingsPage.waitSubElement("版本号文本").getText();
+		assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+		settingsPage.back();
+		UserPage userPage = hallPage.openAndGetUserPage();
+		assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+		assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+		assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅完整更新（静默）")
+	@Test(description="检查大厅的完整更新是否成功（静默）")
+	public void test_hallFullUpdateSilent() throws InterruptedException {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Silent, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+		
+		super.startApp(false);
+		assertFalse(hallPage.IsUpdateDialogOpen(120), "配置静默更新，却弹出版本更新提示框。");
+		//TODO:检查设置按钮的红点按钮没有显示（要先支持XPATH或者其他定位）
+
+		super.getDriver().quit();
+		
+		super.startApp(false);
+		try {
+			assertFalse(hallPage.IsUpdateDialogOpen(), "静默安装后重新启动游戏，弹出版本更新弹框！");
+			CommonBusiness.closeTheLauncherDialog();
+			SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+			String version = settingsPage.waitSubElement("版本号文本").getText();
+			assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+			settingsPage.back();
+			UserPage userPage = hallPage.openAndGetUserPage();
+			assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+			assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+			assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+		} finally {
+			super.getDriver().quit();
+			super.startApp(true);	//触发卸载逻辑
+		}
+		
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅增量更新（强制）")
+	@Test(description="检查大厅的增量更新是否成功（强制）")
+	public void test_hallDiffUpdateForce() throws InterruptedException {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Force, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		UpdateDialog updateDialog = hallPage.getUpdateDialog();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "检查社交按钮无响应");
+		assertFalse(updateDialog.waitSubElement("关闭按钮").isDisplayed(), "检查关闭按钮没有显示");
+		assertFalse(updateDialog.waitSubElement("可选更新VIEW").isDisplayed(), "检查稍后再说按钮没有显示");
+		super.getDriver().pressBack();
+		Thread.sleep(2000);
+		assertTrue(new UpdateDialog().isPresent(), "检查点击BACK键后升级弹框没有被关闭");
+		
+		updateDialog.waitSubElement("强制更新确认按钮").click();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "检查更新下载过程中，点击社交按钮无响应");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "检查更新下载过程中，点击BACK键后升级弹框没有被关闭");
+		Thread.sleep(40000);
+		assertTrue(updateDialog.waitSubElement("安装VIEW").isDisplayed(), "检查下载完成，安装按钮出现");
+		updateDialog.waitSubElement("安装按钮").click();
+		
+		assertFalse(hallPage.IsUpdateDialogOpen(), "检查安装后没有重复弹出版本更新弹框");
+		SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+		String version = settingsPage.waitSubElement("版本号文本").getText();
+		assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+		settingsPage.back();
+		UserPage userPage = hallPage.openAndGetUserPage();
+		assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+		assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+		assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅增量更新（可选）")
+	@Test(description="检查大厅的增量更新是否成功（可选）")
+	public void test_hallDiffUpdateOptional() throws InterruptedException {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Optional, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		UpdateDialog updateDialog = hallPage.getUpdateDialog();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "在版本更新提示框弹出的情况下点击社交按钮打开了好友页面！");
+		assertTrue(updateDialog.waitSubElement("关闭按钮").isDisplayed(), "关闭按钮没有显示！");
+		assertTrue(updateDialog.waitSubElement("可选更新VIEW").isDisplayed(), "稍后再说按钮没有显示！");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "点击手机返回键后升级弹框被关闭了！");
+		
+		updateDialog.waitSubElement("可选更新确认按钮").click();
+		hallPage.waitSubElement("社交按钮").click();
+		assertFalse(new FriendsPage().isPresent(3), "更新下载过程中点击社交按钮打开了好友页面！");
+		super.getDriver().pressBack();
+		assertTrue(new UpdateDialog().isPresent(), "更新下载过程中点击返回键后弹框被关闭了！");
+		Thread.sleep(40000);
+		assertTrue(updateDialog.waitSubElement("安装VIEW").isDisplayed(), "下载完成后安装按钮没有出现！");
+		updateDialog.waitSubElement("安装按钮").click();
+		
+		assertFalse(hallPage.IsUpdateDialogOpen(), "安装后重复弹出了版本更新弹框！");
+		SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+		String version = settingsPage.waitSubElement("版本号文本").getText();
+		assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+		settingsPage.back();
+		UserPage userPage = hallPage.openAndGetUserPage();
+		assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+		assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+		assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="大厅增量更新（静默）")
+	@Test(description="检查大厅的增量更新是否成功（静默）")
+	public void test_hallDiffUpdateSilent() {
+		UpdateConfig.setHallUpdate(this.appId, this.userGuid, this.targetPackageUrl, 
+				"autotest_update_hall", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Silent, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		super.startApp(false);
+		assertFalse(hallPage.IsUpdateDialogOpen(120), "配置静默更新，却弹出版本更新提示框。");
+		//TODO:检查设置按钮的红点按钮没有显示（要先支持XPATH或者其他定位）
+
+		super.getDriver().quit();
+		
+		super.startApp(false);
+		try {
+			assertFalse(hallPage.IsUpdateDialogOpen(), "静默安装后重新启动游戏，弹出版本更新弹框！");
+			CommonBusiness.closeTheLauncherDialog();
+			SettingsPage settingsPage = hallPage.openAndGetSettingPage();	//检查大厅版本号是否已成功更新
+			String version = settingsPage.waitSubElement("版本号文本").getText();
+			assertTrue(version.contains("."+this.targetPackageVersion), "大厅没有升级到"+this.targetPackageVersion+"版本！实际版本为:"+version);
+			settingsPage.back();
+			UserPage userPage = hallPage.openAndGetUserPage();
+			assertTrue(userPage.getNickName().equals(this.orgNickName), "升级后用户的昵称发生了变化！原昵称："+this.orgNickName+"/现昵称："+userPage.getNickName());
+			assertTrue(userPage.getMoney().equals(this.orgMoney), "升级后用户的金币发生了变化！原金币数："+this.orgMoney+"/现金币数："+userPage.getMoney());
+			assertTrue(userPage.getDiamond().equals(this.orgDiamond), "升级后用户的钻石发生了变化！原钻石数："+this.orgDiamond+"/现钻石数："+userPage.getDiamond());
+		} finally {
+			super.getDriver().quit();
+			super.startApp(true);	//触发卸载逻辑
+		}
+	}
+	
+	
+}

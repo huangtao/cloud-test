@@ -1,0 +1,45 @@
+local privateRoom_pin_map = require("qnFiles/qnPlist/hall/privateRoom_pin");
+local privateRoomRecordLayout=
+{
+	name="privateRoomRecordLayout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=79692926,report=0,x=0,y=0,width=1280,height=123,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/scene_top.png"
+	},
+	{
+		name="shiled",type=1,typeName="Image",time=79692927,report=0,x=0,y=0,width=1280,height=635,fillTopLeftX=0,fillTopLeftY=85,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/scene_bg.png"
+	},
+	{
+		name="topView",type=0,typeName="View",time=79692928,report=0,x=0,y=0,width=1280,height=97,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+		{
+			name="returnBtn",type=2,typeName="Button",time=79692930,report=0,x=26,y=14,width=71,height=71,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/btn_return.png"
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=79692933,report=0,x=0,y=-45,width=430,height=147,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/title_bg.png",
+			{
+				name="title",type=1,typeName="Image",time=79692934,report=0,x=0,y=67,width=200,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file=privateRoom_pin_map['private_room_record.png']
+			}
+		}
+	},
+	{
+		name="contentView",type=0,typeName="View",time=79692935,report=0,x=0,y=0,width=1280,height=622,fillTopLeftX=0,fillTopLeftY=98,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="listView",type=0,typeName="ListView",time=0,x=0,y=0,width=1240,height=564,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fillTopLeftY=58,fillTopLeftX=20,fillBottomRightX=20,fillBottomRightY=0
+		},
+		{
+			name="titleView",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=60,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="img",type=1,typeName="Image",time=0,x=-3,y=0,width=1257,height=99,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/privateRoom/record_title_bg.png"
+			},
+			{
+				name="titleTextView",type=0,typeName="View",time=0,x=0,y=0,width=1240,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fillTopLeftX=20,fillBottomRightX=20,fillTopLeftY=0,fillBottomRightY=0
+			}
+		}
+	},
+	{
+		name="emptyView",type=0,typeName="View",time=0,x=0,y=94,width=1280,height=625,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fillTopLeftY=95,fillTopLeftX=0,fillBottomRightX=0,fillBottomRightY=0,
+		{
+			name="text",type=4,typeName="Text",time=0,x=0,y=0,width=340,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=142,colorGreen=92,colorBlue=31,string=[[您目前还没有约牌记录]],colorA=1
+		}
+	}
+}
+return privateRoomRecordLayout;

@@ -1,0 +1,51 @@
+package com.boyaa.testhallbase.uilib;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class HallPage extends RainbowElement{
+	private UserPage userPage;
+	
+	public UserPage getUserPage() {
+		if (userPage == null) {
+			userPage = new UserPage();
+		}
+		return userPage;
+	}
+	
+	public int getCurrentMoney() {
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+			
+		}
+		int curMoney = (int)(Integer.valueOf(waitSubElement("金币数").getText().replace(",", "")));
+		return curMoney;
+	}
+	
+	public void clickToOpenCheckinDialog() {
+		WebElement moreMenu = waitSubElement("更多菜单");
+		float moreMenu_bottom_y = moreMenu.getLocation().getY()+moreMenu.getSize().getHeight();
+		WebElement signUpButton = waitSubElement("签到按钮");
+		float signUpButton_bottom_y = signUpButton.getLocation().getY() + signUpButton.getSize().getHeight();
+		
+		if (signUpButton_bottom_y <= moreMenu_bottom_y) {	//签到按钮在更多菜单里
+			waitSubElement("更多按钮").click();
+		}
+		signUpButton.click();
+	}
+	
+	public void clickToOpenSafeBoxDialog() {
+		WebElement moreMenu = waitSubElement("更多菜单");
+		float moreMenu_bottom_y = moreMenu.getLocation().getY()+moreMenu.getSize().getHeight();
+		WebElement safeBoxButton = waitSubElement("保险箱按钮");
+		float signUpButton_bottom_y = safeBoxButton.getLocation().getY() + safeBoxButton.getSize().getHeight();
+		
+		if (signUpButton_bottom_y <= moreMenu_bottom_y) {	//签到按钮在更多菜单里
+			waitSubElement("更多按钮").click();
+		}
+		safeBoxButton.click();
+	}
+
+}

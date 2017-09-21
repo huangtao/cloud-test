@@ -1,0 +1,442 @@
+package com.boyaa.testholdemhk.cases;
+
+import java.util.Locale;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemhk.business.CommonBusiness.RoomLevel;
+import com.boyaa.testholdemhk.uilib.BankruptcyPage;
+import com.boyaa.testholdemhk.uilib.GoogleCheckoutPage;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LobbySettingPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.LoginSettingPage;
+import com.boyaa.testholdemhk.uilib.MegaphoneBuyPage;
+import com.boyaa.testholdemhk.uilib.PayCenterPage;
+import com.boyaa.testholdemhk.uilib.PersonalInformationPage;
+import com.boyaa.testholdemhk.uilib.PrivacyAndServicePage;
+import com.boyaa.testholdemhk.uilib.PropsMarketPage;
+import com.boyaa.testholdemhk.uilib.RoomListPage;
+import com.boyaa.testholdemhk.uilib.RoomPage;
+import com.boyaa.testholdemhk.uilib.RoomPage.PayDialog;
+import com.boyaa.testholdemhk.uilib.SitAndGoRoomPage;
+import com.boyaa.rainbow2.RainbowTestCase;
+
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="This is a smoke test that use for Rainbow2 framework testing")
+public class HoldemSetting extends TestCaseBase {
+	private static CommonBusiness cb = null;
+	private static String robotAPIUrl = "";
+	private LoginPage loginPage = null ;
+	public HoldemSetting() {
+		super();	
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp(120);	
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();
+		loginPage.changeLoginLanguage("繁體中文", 20);//默认切换到繁体语言。
+		
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception {		
+		if(robotAPIUrl != ""){
+			try{
+				cb.kickAllRobot(robotAPIUrl);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		try{
+			RoomPage roomPage = new RoomPage();
+			if(roomPage.isSubElementPresent("左上角菜单按钮", 1)){
+				roomPage.leaveRoomAndGoToLobby();//正常退出房间防止自动进房间。
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		super.tearDown();
+	}
+	
+
+	@CaseDesc(id="Setting_001", name="test_DefaultSettingInLoginCenter")
+	@Test(description="test the DefaultSetting in the login center", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_DefaultSettingInLoginCenter(String button1, String button2, String button3){	
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		boolean buttonState =  cb.getTheSlidingButtonState(loginSettingPage, "自动坐下滑动按钮", button1);//获取自动坐下按钮对象状态	
+		assertTrue(buttonState,"登录处设置模块牌型开关按钮默认是关闭的"); 
+		buttonState =  cb.getTheSlidingButtonState(loginSettingPage, "结算滑动按钮", button2);//获取结算滑动按钮按钮对象状态	
+		assertTrue(buttonState,"登录处设置模块结算滑动按钮默认是关闭的");
+		buttonState =  cb.getTheSlidingButtonState(loginSettingPage, "牌型提示滑动按钮", button3);//获取牌型提示滑动按钮对象状态	
+		assertTrue(buttonState,"登录处设置牌型提示滑动按钮默认是关闭的");
+	}
+	
+	
+	@CaseDesc(id="Setting_002", name="test_DefaultSettingInLobyy")
+	@Test(description="test the ServicesSetting in the lobby",dataProvider = "GetData", dataProviderClass = CaseDataDriver.class)
+	public void test_DefaultSettingInLobby(String button1 ,String button2,String button3) throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		boolean buttonState =  cb.getTheSlidingButtonState(lobbySettingPage, "自动坐下滑动按钮", button1);//获取自动坐下按钮对象状态	
+		assertTrue(buttonState,"登录处设置模块牌型开关按钮默认是关闭的"); 
+		buttonState =  cb.getTheSlidingButtonState(lobbySettingPage, "结算滑动按钮", button2);//获取结算滑动按钮按钮对象状态	
+		assertTrue(buttonState,"登录处设置模块结算滑动按钮默认是关闭的");
+		buttonState =  cb.getTheSlidingButtonState(lobbySettingPage, "牌型提示滑动按钮", button3);//获取牌型提示滑动按钮对象状态	
+		assertTrue(buttonState,"登录处设置牌型提示滑动按钮默认是关闭的");
+	}	
+
+	@CaseDesc(id="Setting_003", name="test_EnterAndSitInLoginCenter")
+	@Test(description="test the EnterAndSit in the login center",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_EnterAndSitInLoginCenter(String button1 ,String button2, String button3) throws InterruptedException{		
+		cb.setButtonToEnableState(button1, button2, button3);//set button to defult enable state 
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		assertTrue(roomPage.isUserSitDown(),"默认打开了自动坐下开关，但是用户不是坐下状态");//判断用户是否是坐下状态
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"用户没有回到大厅页面");//用户没有回到大厅页面
+		loginPage.logoutHoldem();
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		cb.disableSlidingButton(loginSettingPage, "自动坐下滑动按钮", button1);//如果当前是打开状态，关闭自动坐下
+		assertFalse(cb.getTheSlidingButtonState(loginSettingPage, "自动坐下滑动按钮", button1), "登录处自动坐下开关设置：关闭自动坐下，但是状态还是打开");	
+		loginSettingPage.waitSubElement("关闭按钮").click();
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		assertFalse(roomPage.isUserSitDown(),"关闭自动坐下开关，但是用户还是坐下状态");//判断用户是否是坐下状态
+		try{
+			roomPage.leaveRoomAndGoToLobby();//正常退出房间防止自动进房间。
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+
+	@CaseDesc(id="Setting_004", name="test_EnterAndSitInLobby")
+	@Test(description="test the auto-sitdown setting in the lobby",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_EnterAndSitInLobby(String button1, String button2, String button3) throws InterruptedException{	
+		cb.setButtonToEnableState(button1, button2, button3);//set button to defult 
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		assertTrue(roomPage.isUserSitDown(), "默认打开了自动坐下开关，但是用户不是坐下状态");//判断用户是否是坐下状态
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"用户没有回到大厅页面");//用户没有回到大厅页面
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		cb.disableSlidingButton(lobbySettingPage, "自动坐下滑动按钮", button1);//如果当前是打开状态，关闭自动坐下
+		assertFalse(cb.getTheSlidingButtonState(lobbySettingPage, "自动坐下滑动按钮", button1) ,"大厅处自动坐下开关设置：关闭自动坐下，但是状态还是打开");				
+		lobbySettingPage.waitSubElement("关闭按钮").click();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		assertFalse(roomPage.isUserSitDown(), "关闭自动坐下开关，但是用户还是坐下状态");//判断用户是否是坐下状态
+		try{
+			roomPage.leaveRoomAndGoToLobby();//正常退出房间防止自动进房间。
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@CaseDesc(id="Setting_005", name="test_EnterAndSitInRoom")
+	@Test(description="test the EnterAndSit in the room ",dataProvider = "HoldemSetting", dataProviderClass = CaseDataDriver.class)
+	public void test_EnterAndSitInRoom(String button1 ,String button2, String button3) throws InterruptedException{			
+		cb.setButtonToEnableState(button1, button2, button3);//set button to defult enable state.
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		RoomPage roomPage = new RoomPage();
+		assertTrue(roomPage.isUserSitDown(),"默认打开了自动坐下开关，但是用户不是坐下状态");//判断用户是否是坐下状态
+		roomPage.uncheckAutomaticSitDownSettings();//去除房间内【进房间自动坐下】复选框的勾选	
+		RoomPage.rd.pressBack();
+		roomPage.waitSubElement("离开按钮").click();//点击离开按钮
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();
+		assertFalse(roomPage.isUserSitDown(), "房间处设置自动登录开关关闭，但是进去房间为自动坐下");//判断用户是否是坐下状态
+		try{
+			roomPage.leaveRoomAndGoToLobby();//正常退出房间防止自动进房间。
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@CaseDesc(id="Setting_006", name="test_SettleAccountsInLoginCenter")
+	@Test(description="test the test_SettleAccounts in the login center ", dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_SettleAccountsInLoginCenter(String button1 ,String button2, String button3, String apiurl) throws InterruptedException{		
+		LoginSettingPage loginSettingPage = new LoginSettingPage();	
+		//cb.setButtonToEnableState(button1, button2, button3);//set button to defult 
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();		
+		roomListPage.clickOnARoomWithRobot(apiurl, 25000);//进入一个带有机器人的房间		
+		robotAPIUrl = apiurl;//初始化静态变量robotAPIUrl以便在tearDown中用于退出机器人。		
+		RoomPage roomPage = new RoomPage();
+		RoomPage.rd.sleep(60*1000);//等待一局的结束。
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertTrue(lobbyPage.clearingPage().isSubElementPresent("结算提示页面") ,"结算提示信息不存在：预期存在");//检查结算弹框弹出
+		lobbyPage.clearingPage().waitSubElement("结算提示关闭按钮").click();
+		loginPage.logoutHoldem();//返回登录页面
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		cb.disableSlidingButton(loginSettingPage, "结算滑动按钮", button2);//如果当前是打开状态，关闭自动结算	
+		assertFalse(cb.getTheSlidingButtonState(loginSettingPage, "结算滑动按钮", button2), "结算开关开关设置：关闭自动结算，但是状态还是打开");		
+		loginSettingPage.waitSubElement("关闭按钮").click();
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		roomListPage.clickOnARoomWithRobot(apiurl, 25000);//进入一个带有机器人的房间
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertFalse(lobbyPage.clearingPage().isSubElementPresent("结算提示页面") ,"结算提示信息存在：预期不存在");//检查结算弹框弹出
+	}
+/*
+	@CaseDesc(id="Setting_007", name="test_SettleAccountsInLobby")
+	@Test(description="test the clearing setting in the lobby ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_SettleAccountsInLobby(String button1 ,String button2,String button3,String apiurl) throws InterruptedException{
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		cb.setButtonToEnableState( button1 , button2, button3);//set button to defult 
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000);
+		RoomPage roomPage = new RoomPage();
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertTrue(lobbyPage.clearingPage().isSubElementPresent("结算提示页面") ,"结算提示信息不存在：预期存在");//检查结算弹框弹出
+		lobbyPage.clearingPage().waitSubElement("结算提示关闭按钮").click();
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		cb.srocllToText(button2);
+		lobbySettingPage.closeSetingItem(button2, lobbySettingPage.waitSubElement("结算滑动按钮"));
+		cb.srocllToText(button2);
+		assertFalse(lobbySettingPage.setingItemStat(button2,lobbySettingPage.waitSubElement("结算滑动按钮")) ,"结算开关开关设置：关闭自动结算，但是状态还是打开");
+		lobbySettingPage.waitSubElement("关闭按钮").click();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000);
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertFalse(lobbyPage.clearingPage().isSubElementPresent("结算提示页面") ,"结算提示信息存在：预期不存在");//检查结算弹框弹出
+	}
+	@CaseDesc(id="Setting_008", name="test_CardTypeTipsInLoginCenter")
+	@Test(description="test the CardTypeTips in the login center ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_CardTypeTipsInLoginCenter(String button1 ,String button2,String button3 ){	
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		cb.setButtonToEnableState( button1 , button2, button3);//set button to defult 
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		cb.srocllToText(button3);
+		loginSettingPage.closeSetingItem(button3 ,loginSettingPage.waitSubElement("牌型提示滑动按钮"));
+		assertFalse(loginSettingPage.waitSubElement("牌型提示滑动按钮").isSelected(),"登录处设置：牌型开关在关闭之后还是打开的");
+		cb.srocllToText(button3);
+		loginSettingPage.enableSlidingButton(button3 ,loginSettingPage.waitSubElement("牌型提示滑动按钮"));
+		assertTrue(loginSettingPage.waitSubElement("牌型提示滑动按钮").isSelected(),"登录处设置：牌型开关在关闭之后还是打开的"); 
+	}	
+	
+
+	@CaseDesc(id="Setting_009", name="test_CardTypeTipsInLobby")
+	@Test(description="test the card type setting in the lobby ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_CardTypeTipsInLobby(String button1 ,String button2,String button3) throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		cb.srocllToText(button3);
+		lobbySettingPage.closeSetingItem(button3 ,lobbySettingPage.waitSubElement("牌型提示滑动按钮"));
+		assertFalse(lobbySettingPage.waitSubElement("牌型提示滑动按钮").isSelected(),"登录处设置：牌型开关在关闭之后还是打开的");
+		cb.srocllToText(button3);
+		lobbySettingPage.scrollSetingItemToDefult(button3 ,lobbySettingPage.waitSubElement("牌型提示滑动按钮"));
+		assertTrue(lobbySettingPage.waitSubElement("牌型提示滑动按钮").isSelected(),"登录处设置：牌型开关打开之后还是关闭的"); 
+	}
+	
+
+	@CaseDesc(id="Setting_010", name="test_CardTypeTipsInRoom")
+	@Test(description="test the CardTypeTips in room ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_CardTypeTipsInRoom(String button1 ,String button2,String button3) throws InterruptedException{
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		cb.setButtonToEnableState( button1 , button2, button3);//set button to defult 
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();//登录房间
+		RoomPage roomPage = new RoomPage();
+		roomPage.clickRoomTopLeftCornerDropDown(15*1000);
+		roomPage.waitSubElement("设置项").click();
+		roomPage.waitSubElement("牌型提示复选框选中").click();//牌型提示复选框去勾选
+		Assert.assertTrue(roomPage.isSubElementPresent("牌型提示复选框未选中"), "牌型提示复选框去勾选之后，状态依然为被选中");
+		roomPage.waitSubElement("牌型提示复选框未选中").click();//牌型提示复选框去勾选
+		Assert.assertTrue(roomPage.isSubElementPresent("牌型提示复选框选中"), "牌型提示复选框勾选之后，状态依然为未被选中");
+	}
+
+	
+	@CaseDesc(id="Setting_011", name="test_SwitchSetting")
+	@Test(description="test the switch setting from lobby ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_SwitchSetting(String button1 ,String button2,String button3) throws InterruptedException {
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		cb.srocllToText(button1);
+		loginSettingPage.closeSetingItem(button1, loginSettingPage.waitSubElement("自动坐下滑动按钮"));
+		cb.srocllToText(button2);
+		loginSettingPage.closeSetingItem(button2, loginSettingPage.waitSubElement("牌型提示滑动按钮"));
+		cb.srocllToText(button3);
+		loginSettingPage.closeSetingItem(button3, loginSettingPage.waitSubElement("结算滑动按钮"));
+		loginSettingPage.waitSubElement("关闭按钮").click();
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		cb.srocllToText(button1);
+		assertFalse(lobbySettingPage.waitSubElement("自动坐下滑动按钮").isSelected(),"登录处设置：自动坐下开关在关闭之后还是打开的"); 
+		cb.srocllToText(button2);
+		assertFalse(lobbySettingPage.waitSubElement("牌型提示滑动按钮").isSelected(),"登录处设置：牌型开关在关闭之后还是打开的"); 
+		cb.srocllToText(button3);
+		assertFalse(lobbySettingPage.waitSubElement("结算滑动按钮").isSelected(),"登录处设置：结算开关在关闭之后还是打开的"); 
+		lobbySettingPage.waitSubElement("关闭按钮").click();//点击关闭按钮
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		cb.clickONANonFullRoom();//登录房间
+		RoomPage roomPage = new RoomPage();
+		roomPage.clickRoomTopLeftCornerDropDown(15*1000);
+		roomPage.waitSubElement("设置项").click();
+		Assert.assertTrue(roomPage.isSubElementPresent("牌型提示复选框未选中"), "牌型提示复选框去勾选之后，状态依然为被选中");
+		Assert.assertTrue(roomPage.isSubElementPresent("自动坐下复选框未选中"), "自动坐下复选框去勾选之后，状态依然为被选中");
+	}
+
+	@CaseDesc(id="Setting_012", name="test_ServicesSettingInLoginCenter")
+	@Test(description="test the ServicesSetting in the login cente ",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_ServicesSettingInLoginCenter(String button1 ,String privacytext ,String servicetext){
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		cb.srocllToText(button1);//隐私策略和服务条款存在，并滑动到隐私策略和服务条款存在
+		loginSettingPage.waitSubElement("隐私策略和服务条款按钮").click();
+		PrivacyAndServicePage privacyAndServicePage =new PrivacyAndServicePage();
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+		privacyAndServicePage.waitSubElement("隐私策略按钮").click();
+		Assert.assertTrue(privacyAndServicePage.isPageExist(),"个人信息页面不存在");
+		privacyAndServicePage.rd.pressBack();//点击返回按钮
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+		privacyAndServicePage.waitSubElement("服务条款按钮").click();
+		Assert.assertTrue(privacyAndServicePage.isPageExist(),"个人信息页面不存在");
+		privacyAndServicePage.rd.pressBack();//点击返回按钮
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+	}
+	
+
+	@CaseDesc(id="Setting_013", name="test_ServicesSettingInLobby")
+	@Test(description="test the service setting in lobby",dataProvider = "HoldemSetting", dataProviderClass =CaseDataDriver.class)
+	public void test_ServicesSettingInLobby(String button1 ,String privacytext ,String servicetext) throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+		Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("设置按钮").click();
+		LobbySettingPage lobbySettingPage = new LobbySettingPage();
+		cb.srocllToText(button1);//隐私策略和服务条款存在，并滑动到隐私策略和服务条款存在
+		lobbySettingPage.waitSubElement("隐私策略和服务条款按钮").click();
+		PrivacyAndServicePage privacyAndServicePage =new PrivacyAndServicePage();
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+		privacyAndServicePage.waitSubElement("隐私策略按钮").click();
+		Assert.assertTrue(privacyAndServicePage.isPageExist(),"个人信息页面不存在");
+		privacyAndServicePage.rd.pressBack();//点击返回按钮
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+		privacyAndServicePage.waitSubElement("服务条款按钮").click();
+		Assert.assertTrue(privacyAndServicePage.isPageExist(),"个人信息页面不存在");
+		privacyAndServicePage.rd.pressBack();//点击返回按钮
+		Assert.assertTrue(privacyAndServicePage.isSubElementPresent("返回按钮"),"返回按钮不存在");
+	}
+
+	@CaseDesc(id="Setting_014", name="test_FastAndNormalRoomSwitchInRoomList")
+	@Test(description="Test selection fast and normal room setting switch in the Room List")
+	public void test_FastAndNormalRoomSwitchInRoomList() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();//点击游戏大厅按钮
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Newbie);//点击【新手场】按钮		
+	    assertFalse(roomListPage.checkWhetherThereAreRoomSwitchButtonInRoomList() ,"房间列表右上角的房间类型切换按钮（快速/正常）显示出来了");//a.【切换】按钮不显示；
+	    roomListPage.selectRoomLevel(RoomLevel.Junior);//点击【初级场】按钮
+	    assertTrue(roomListPage.checkWhetherThereAreRoomSwitchButtonInRoomList() ,"房间列表右上角的房间类型切换按钮（快速/正常）没有显示");//b.【切换】按钮显示；	   
+	    roomListPage.selectRoomLevel(RoomLevel.Middle); //点击【中级场】按钮
+	    assertTrue(roomListPage.checkWhetherThereAreRoomSwitchButtonInRoomList() ,"房间列表右上角的房间类型切换按钮（快速/正常）没有显示");//b.【切换】按钮显示;
+	    roomListPage.selectRoomLevel(RoomLevel.Senior);//点击【高级场】按钮
+	    assertTrue(roomListPage.checkWhetherThereAreRoomSwitchButtonInRoomList() ,"房间列表右上角的房间类型切换按钮（快速/正常）没有显示");//b.【切换】按钮显示;
+	    roomListPage.switchToSpecifiedModeInRoomList("快速");//点击【切换】按钮切换到快速模式
+	    roomListPage.checkWhetherThereAreQuickIconInRoomList();//房间ID前面都有快速图标；
+	    roomListPage.rd.pressBack();//点击【返回】按钮返回到大厅
+	    lobbyPage.waitSubElement("游戏大厅按钮").click();//点击游戏大厅按钮
+	    roomListPage.selectRoomLevel(RoomLevel.Junior);//点击【初级场】按钮
+	    roomListPage.checkWhetherThereAreQuickIconInRoomList();//房间ID前面都有快速图标；
+	    roomListPage.selectRoomLevel(RoomLevel.Middle); //点击【中级场】按钮
+	    roomListPage.checkWhetherThereAreQuickIconInRoomList();//房间ID前面都有快速图标；
+	    roomListPage.selectRoomLevel(RoomLevel.Senior);//点击【高级场】按钮
+	    roomListPage.checkWhetherThereAreQuickIconInRoomList();//房间ID前面都有快速图标；	
+	}
+	
+	@CaseDesc(id="Setting_015", name="test_HideFullRoomInRoomList")
+	@Test(description="Test the hide full room function in the Room List")
+	public void test_HideFullRoomInRoomList() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();//点击游戏大厅按钮
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.descendingSortByOnlinePlayerNumber();
+		roomListPage.selectRoomLevel(RoomLevel.Newbie);//点击【新手场】按钮	
+	    assertTrue(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框没选中");//b. 【隐藏空房间】复选框选中；		
+	    roomListPage.checkWhetherThereAreEmptyRoomInRoomList();
+		roomListPage.selectRoomLevel(RoomLevel.Junior); //点击【初级场】按钮
+	    assertTrue(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框没选中");//b. 【隐藏空房间】复选框选中；		
+	    roomListPage.checkWhetherThereAreEmptyRoomInRoomList();
+		roomListPage.selectRoomLevel(RoomLevel.Middle); //点击【中级场】按钮
+	    assertTrue(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框没选中");//b. 【隐藏空房间】复选框选中；		
+	    roomListPage.checkWhetherThereAreEmptyRoomInRoomList();
+		roomListPage.selectRoomLevel(RoomLevel.Senior); //点击【高级场】按钮
+	    assertTrue(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框没选中");//b. 【隐藏空房间】复选框选中；		
+	    roomListPage.checkWhetherThereAreEmptyRoomInRoomList();
+		roomListPage.rd.pressBack();//点击【返回】按钮返回到大厅
+		lobbyPage.waitSubElement("游戏大厅按钮").click();//点击游戏大厅按钮
+	    assertTrue(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框没选中");//b. 【隐藏空房间】复选框选中；		
+	    roomListPage.checkWhetherThereAreEmptyRoomInRoomList();		
+	    roomListPage.checkTheCheckBoxOfHideFullRoom();//点击【隐藏空房间】勾选框		
+	    assertFalse(roomListPage.checkTheCheckBoxStatusOfHideEmptyRoom() ,"【隐藏空房间】复选框选中");//a. 【隐藏空房间】复选框未选中；	
+	}
+*/
+}

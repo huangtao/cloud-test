@@ -1,0 +1,14 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class SngRoomPage extends RainbowElement {
+
+	public LeaveRoomDialog getLeaveRoomDialog (){
+		return new LeaveRoomDialog();
+	}
+	
+	public class LeaveRoomDialog extends RainbowElement {
+		
+	}
+}

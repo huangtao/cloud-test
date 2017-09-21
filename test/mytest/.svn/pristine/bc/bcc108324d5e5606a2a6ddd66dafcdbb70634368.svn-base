@@ -1,0 +1,389 @@
+package com.boyaa.testholdemsina.business;
+
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+
+import java.awt.print.Printable;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.collections.map.StaticBucketMap;
+import org.apache.commons.io.FileUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.Base64Encoder;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement1;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.FriendHomePage;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.google.common.io.PatternFilenameFilter;
+
+public class CommonBusiness {
+	private LoginPage loginPage=null;
+	private LobbyPage lobbyPage=null;
+	private GameLobbyPage gameLobbyPage = null;
+	private CommonLobbyPage commonLobbyPage = null;
+	private FriendHomePage friendHomePage = null;
+	public  RainbowDriver luaDriver = RainbowDriver.getCurrentDriver();	
+	public static AndroidDriver nativeDriver=null;
+	public static String url ="http://texas-demo-117.boyaa.com/texas/demo/mtest.php?";
+
+	public  void loginToLobby() throws Exception {
+		lobbyPage=new LobbyPage();
+		gameLobbyPage =  new GameLobbyPage();
+		commonLobbyPage = new CommonLobbyPage();
+		loginEnv();
+		closeAutoPage();
+		Thread.sleep(2000);
+	}
+	public  void  loginEnv() throws Exception {
+		loginPage=new LoginPage();
+		Thread.sleep(15*1000);
+		loginPage.waitSubElement("测试环境").click();	
+//		loginPage.waitSubElement("正式环境").click();	
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(10*1000);
+		//如果登陆后，直接进入游戏房间，则退出房间，返回游戏首页
+		try{
+			commonLobbyPage.isPresent();
+			try {
+				gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("领取您参加活动的奖励提示框不存在");
+			}
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+			System.out.println("从房间返回");
+			backLobbyList();
+			}catch(Exception e){
+				System.out.println("当前未进入房间");
+			}
+		Thread.sleep(15*1000);
+		}
+	//关闭登录后的弹窗
+	public  void closeAutoPage() {
+		//关闭网页BPT弹框
+		closeBPT("android.view.View");
+//		closeOtherDialog();
+		//每日登陆弹窗在最后1
+//		closeDayLoginDialog();
+		try {
+			lobbyPage.waitSubElement("取消").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("未出现此对话框");
+		}
+	}
+	public  void closeBPT() {	
+//		createNativeDriver();
+		try {			
+			WebElement webElement=nativeDriver.findElementByClassName("android.webkit.WebView"); //android.webkit.WebView
+			System.err.println("-----关闭原生web界面-----");
+			for (int i = 0; i <2; i++) {
+				if(webElement!=null) {
+					nativeDriver.sendKeyEvent(AndroidKeyCode.BACK);		
+					Thread.sleep(1*1000);
+				} 
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
+	}	
+	//关闭原生webview页面
+	public  void closeBPT(String Classname) {		
+		try {			
+			WebElement webElement=nativeDriver.findElementByClassName(Classname);
+			System.err.println("-----关闭原生web界面-----");
+			for (int i = 0; i <1; i++) {
+				if(webElement!=null) {
+					nativeDriver.sendKeyEvent(AndroidKeyCode.BACK);		
+					Thread.sleep(1*1000);
+				} 
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
+	}	
+	
+	
+	public  void closeOtherDialog(){
+		try {
+			lobbyPage.waitSubElement("关闭活动弹框").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("每日登陆弹框不存在");
+		}
+		try {
+			lobbyPage.waitSubElement("关闭").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("其他关闭弹框不存在");
+		}
+	}	
+	public  void  closeDayLoginDialog() {
+		try {
+			lobbyPage.waitSubElement("关闭每日登陆弹框").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("每日登陆弹框不存在");
+		}
+	}	
+	
+	public  void closeDialog1(){//关闭游客登陆弹框
+				System.err.println("-----关闭原生web界面-----");
+				for (int i = 0; i <=1; i++) {
+					nativeDriver.sendKeyEvent(AndroidKeyCode.BACK);	
+						System.out.println("每日登陆弹框不存在");
+						}
+		}	
+	
+	public static void takesScreenShot(TakesScreenshot drivername, String filename) {
+		String currentPath = "F:\\TestHoldemSina\\reports\\Screenshots";
+		File scrFile = drivername.getScreenshotAs(OutputType.FILE);
+		try {
+			System.out.println("save snapshot path is:" + currentPath + "/" + filename);
+			FileUtils.copyFile(scrFile, new File(currentPath + "\\" + filename));
+		} catch (IOException e) {
+			System.out.println("Can't save screenshot");
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally {
+			System.out.println("screen shot finished, it's in " + currentPath + " folder");
+		}
+	}
+	/*
+	 * 游客登陆
+	 */
+	public  void  loginAsTourist() throws Exception {
+		loginPage=new LoginPage();
+		lobbyPage=new LobbyPage();
+		Thread.sleep(15*1000);
+		loginPage.waitSubElement("测试环境").click();	
+		loginPage.waitSubElement("随机游客").click();
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(5*1000);
+		loginPage.waitSubElement("游客登陆确认").click();
+		Thread.sleep(25*1000);
+		closeAutoPage();
+		lobbyPage.waitSubElement("跳过").click();
+		Thread.sleep(2*1000);
+		}
+	
+	
+	
+	public static AndroidDriver createNativeDriver()  {
+		String nativeServer="http://localhost:4725/wd/hub";		
+		DesiredCapabilities capabilities=new DesiredCapabilities();
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("appPackage", "com.boyaa.sina");
+		capabilities.setCapability("appActivity", "com.boyaa.texaspoker.application.module.op.OpeningShowActivity");
+		capabilities.setCapability("deviceName", "Android Emulator");
+		capabilities.setCapability("newCommandTimeout", "5*60");	
+		URL remoteURL;
+		try {
+			remoteURL = new URL(nativeServer);
+			nativeDriver=new AndroidDriver(remoteURL, capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return nativeDriver;
+	}
+	/*
+	 * 从游戏大厅进入初级，中级或者高级游戏区
+	 */
+	public void enterLobby(String lobby) throws Exception{
+		gameLobbyPage = new GameLobbyPage();
+		loginToLobby();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(2*1000);
+		gameLobbyPage.isTipsExist("过滤");
+		gameLobbyPage.isTipsExist("俱乐部");
+		gameLobbyPage.waitSubElement(lobby).click();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(3000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}
+		Thread.sleep(1*1000);
+	}
+	/*
+	 * 从游戏大厅进入初级，中级或者高级列表
+	 */
+	public void enterLobbyList() throws Exception{
+		gameLobbyPage = new GameLobbyPage();
+		loginToLobby();
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(5*1000);
+		gameLobbyPage.isTipsExist("过滤");
+		gameLobbyPage.isTipsExist("俱乐部");
+		Thread.sleep(1*1000);
+	}
+	/*
+	 * 截取小/大盲字符串
+	 */
+	public int blindsString(String string){
+		String a[] = string.split("/");
+		System.out.println(a[0]);
+		int b = 0;
+		try{
+			b = Integer.valueOf(a[0]).intValue();
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+		}
+		return b;
+	}
+	
+	/*
+	 * 从界面文本中截取字符串，保存在数组中
+	 */
+	public static String[] getData(String string){ 
+		String regex = "[^0-9]";
+		Pattern  p = Pattern.compile(regex);
+		Matcher m = p.matcher(string);
+		String s = m.replaceAll("/").trim();
+//		System.out.println(s);
+		String a[] = s.split("/");
+		List<String> tmp = new ArrayList<String>(); 
+		for(String str:a){ 
+	        if(str!=null && str.length()!=0){ 
+	               tmp.add(str); 
+	            } 
+		 } 
+        a= tmp.toArray(new String[0]); 
+        String b[] = new String[a.length];
+    	for(int i=0;i<a.length;i++){
+//    		System.out.println(a[i]);
+//    		b[i]=Integer.parseInt(a[i]);
+//    		System.out.println(b[i]);
+    		b[i]=a[i];
+    	}
+    	return b;	
+	}
+	/*
+	 * 从游戏房间返回到游戏列表
+	 */
+	public void backLobbyList() throws Exception{ 
+		commonLobbyPage = new CommonLobbyPage();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("返回").click();
+	}
+	/*
+	 * 从游戏列表选择房间进入普通游戏房
+	 */
+	public void EnterLobby() throws Exception{ 
+		commonLobbyPage = new CommonLobbyPage();
+		enterLobbyList();
+		//判断出现无人房间则进入
+		while(true){
+			int i = 1;
+			String playCount = gameLobbyPage.waitSubElement("在玩人数"+i).getText();
+//			System.out.println(playCount);
+			String playCount1[] = getData(playCount);
+			if(!(playCount1[0]=="0")){
+					gameLobbyPage.waitSubElement("在玩人数"+i).click();
+					break;
+			}else{
+				System.out.println("房间"+i+"已满");
+			}
+			i++;
+		}
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		/*	
+		}
+		if(gameLobbyPage.waitSubElement("在玩人数").getText())
+		String playCount = gameLobbyPage.waitSubElement("在玩人数").getText();
+		String playCount1[] = getData(playCount);
+		if(!(playCount1[0].equals(playCount1[1]))){
+			gameLobbyPage.waitSubElement("在玩人数").click();
+		}else {
+			System.out.println("房间1全满");
+			gameLobbyPage.waitSubElement("在玩人数1").click();
+		}
+		*/
+		Thread.sleep(2*1000);
+//		gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+	}
+	/*
+	 * 拖动设置，把一个元素拖动到另外一个地方
+	 */
+	public void Moveto(WebElement a, WebElement to) throws Exception{ 
+		RainbowElement1 rainbowElement1 = new RainbowElement1();
+		AndroidDriver driver = rainbowElement1.getDriver();
+		TouchAction action = new TouchAction(driver);
+		action.longPress(a).moveTo(to).release().perform();
+	}
+	/*
+	 * 创建好友房，进入好友房游戏页面
+	 */
+	public void CreateFriendHome() throws Exception{ 
+		commonLobbyPage = new CommonLobbyPage();
+		friendHomePage = new FriendHomePage();
+		enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		friendHomePage.waitSubElement("发起牌局").click();
+		friendHomePage.waitSubElement("输入房间名").sendKeys("autoTest");		
+		friendHomePage.waitSubElement("创建").click();
+		Thread.sleep(3000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}
+	}
+	/*
+	 * 邀请好友或者在线玩家
+	 */
+	public void Invite(String string) throws Exception{
+		Thread.sleep(1*1000);
+		try{
+			commonLobbyPage.waitSubElement("邀请好友窗口3").click();
+			commonLobbyPage.waitSubElement(string).click();
+		}catch(Exception e){
+			Thread.sleep(1000);
+		}
+		try{
+			commonLobbyPage.waitSubElement("邀请好友窗口5").click();
+			commonLobbyPage.waitSubElement(string).click();
+		}catch(Exception e){
+			Thread.sleep(1000);
+		}
+		}
+	
+	public static void main(String [] args) {
+		
+		getData("盲注：5/10  口令：318066");
+	}
+}

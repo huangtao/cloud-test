@@ -1,0 +1,26 @@
+reward=
+{
+	name="reward",type=0,typeName="View",time=0,report=0,x=0,y=0,width=181,height=150,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="halo",type=1,typeName="Image",time=59897496,report=0,x=4,y=-1,width=144,height=142,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="isolater/shine_2.png"
+	},
+	{
+		name="diamondView",type=0,typeName="View",time=59798312,report=0,x=0,y=0,width=144,height=142,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="diamond",type=1,typeName="Image",time=59798265,report=0,x=0,y=0,width=144,height=142,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/diamond1.png"
+		},
+		{
+			name="diamondShadow",type=1,typeName="Image",time=59798126,report=0,x=0,y=0,width=144,height=142,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/diamond_shadow.png"
+		}
+	},
+	{
+		name="moneyView",type=0,typeName="View",time=59798363,report=0,x=0,y=0,width=181,height=150,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="money",type=1,typeName="Image",time=59798412,report=0,x=0,y=0,width=182,height=141,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/money.png"
+		},
+		{
+			name="moneyShadow",type=1,typeName="Image",time=59798497,report=0,x=0,y=0,width=182,height=141,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/money_shadow.png"
+		}
+	}
+}
+return reward;

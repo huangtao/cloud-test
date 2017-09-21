@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="titleColor">#ffd2f2ff</color>
+    <color name="warningColor">#ffff9600</color>
+    <color name="errorColor">#ffe52b00</color>
+    <color name="goldcoinColor">#ffffe400</color>
+    <color name="normalColor">#ffffffff</color>
+    <color name="blue">#ff86cbe9</color>
+    <color name="radioBtnColor">#ffffffa5</color>
+</resources>

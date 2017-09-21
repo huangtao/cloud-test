@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.boyaa.enginedlqp.maindevelop">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true"/>
+    <uses-feature android:glEsVersion="0x10001"/>
+    <permission android:name="android.permission.WRITE_MEDIA_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <application android:debuggable="true" android:icon="@drawable/icon" android:label="@string/boyaa_app_name" android:name="com.boyaa.app.BoyaaApplication">
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:label="@string/boyaa_app_name" android:launchMode="singleTask" android:name="com.boyaa.enginedlqp.maindevelop.Game" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="adjustPan|stateHidden|stateVisible">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="boyaa" android:scheme="com.boyaa.enginedlqp.maindevelop"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.boyaa.app.sys.ShortCutActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtr.zxing.activity.CaptureActivity" android:screenOrientation="sensor" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <provider android:authorities="com.boyaa.test.providers.element" android:exported="true" android:multiprocess="false" android:name="com.boyaa.autotest.ElementProvider"/>
+        <service android:name="com.boyaa.downloader.service.DownloadService"/>
+        <meta-data android:name="BOYAA_GODSDK_VERSION_CODE" android:value="2"/>
+        <meta-data android:name="BOYAA_GODSDK_VERSION_NAME" android:value="0.0.0.2beta"/>
+        <receiver android:exported="false" android:name="com.boyaa.entity.godsdk.getui.GeTuiBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.boyaa.godsdk.action.GodSDKPush.RECEIVE_RAW_DATA"/>
+                <action android:name="com.boyaa.godsdk.action.GodSDKPush.RECEIVE_REGISTRATION_ID"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.boyaa.videodemo.utils.BoyaaReceiver">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.PHONE_STATE"/>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="cpId" android:value="cpid:86006161"/>
+        <meta-data android:name="AppId" android:value="appid:90234616120120921431100"/>
+        <meta-data android:name="fid" android:value="fid:00012243"/>
+        <meta-data android:name="CHANNEL" android:value="appid=103000;channel_id=110332;channel_key=6CD2DCAF5A89391C042B0C3B55339FF6"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="552c8f28fd98c54c18000149"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="shoulu"/>
+        <service android:enabled="true" android:name="com.baidu.location.f" android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="2q4xyNDlcRqLXtkXRLoL2Tx3"/>
+    </application>
+</manifest>

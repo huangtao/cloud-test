@@ -1,0 +1,716 @@
+package com.boyaa.testholdemhk.business;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+
+
+
+
+
+import io.appium.java_client.MobileElement;
+
+
+
+
+
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.Base64Encoder;
+import org.testng.Assert;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.LoginSettingPage;
+import com.boyaa.testholdemhk.uilib.RoomListPage;
+import com.boyaa.testholdemhk.uilib.RoomPage;
+
+public class CommonBusiness {
+	private static RainbowDriver rd = null;
+	public static ArrayList<String> robotRoomIdList = new ArrayList<String>();//保存测试过程加入了机器人的Room ID
+	public static String url ="http://texas-demo-13.boyaa.com/texas/api/autoTest.php?";
+	public CommonBusiness() {
+		rd = RainbowDriver.getRainbowDriver();
+	}
+	
+	public CommonBusiness(RainbowDriver rainbowd) {
+		rd = rainbowd;
+	}
+	
+	public enum RoomLevel {
+		Newbie("新手场"), Junior("初级场"), Middle("中级场"), Senior("高级场");
+		
+		private String roomLevelName;
+		
+		private RoomLevel(String name){
+			roomLevelName = name;
+		}
+		
+		public String getName() {
+			return roomLevelName;
+		}
+	}
+	
+	public enum RoomColumn {
+		Roomname(0), MaxAndMinBlinds(1), MaxAndMinCoins(2), PlayerCount(3);
+	
+		private int roomLevelName;
+		
+		private RoomColumn(int name){
+			roomLevelName = name;
+		}
+		
+		public int getName() {
+			return roomLevelName;
+		}
+	}
+	
+		
+	
+	
+	/**
+	 * 获取滑动开关按钮的状态
+	 * @param buttonElement 
+	 * @return
+	 *        true 按钮是开启的状态
+	 *        false 按钮是关闭的状态
+	 */
+	public boolean getTheSlidingButtonState(WebElement buttonElement){
+		 return buttonElement.isSelected();
+	}
+	
+	
+	/**
+	 * 获取滑动开关按钮的状态
+	 * @param elementPage
+	 * 		                                   按钮所在的页面
+	 * @param elementName 
+	 *                  元素在UI存储库中字义的名称（ElementName）
+	 * @param buttonName 
+	 *                  按钮在界面上的名称                  
+	 * @return
+	 *        true 按钮是开启的状态
+	 *        false 按钮是关闭的状态
+	 */
+	public boolean getTheSlidingButtonState(RainbowElement elementPage, String elementName, String buttonName){
+		 rd.scrollToExact(buttonName);//将页面滚动到按钮所在的位置。
+		 WebElement buttonElement = elementPage.waitSubElement(elementName);//得到按钮的WebElement
+		 return getTheSlidingButtonState(buttonElement);//得到按钮的状态
+	}
+	
+	/**
+	 * 设置这些滑动按钮按钮为开启状态
+	 * @param elementPage
+	 * 		                                   按钮所在的页面
+	 * @param button1
+	 * @param button2
+	 * @param button3
+	 */
+	public void setButtonToEnableState(String button1, String button2, String button3){
+		LoginPage loginPage = new LoginPage();
+		loginPage.waitSubElement("Login设置按钮").click();//点击登录页面的设置按钮
+		LoginSettingPage loginSettingPage = new LoginSettingPage();
+		enableSlidingButton(loginSettingPage, "自动坐下滑动按钮", button1);
+		enableSlidingButton(loginSettingPage, "结算滑动按钮", button2);
+		enableSlidingButton(loginSettingPage, "牌型提示滑动按钮", button3);		
+		loginSettingPage.waitSubElement("关闭按钮").click();
+	}
+	
+
+	/**
+	 * 将滑动按钮向右滑动打开关
+	 * @param elementPage
+	 * 		                                   按钮所在的页面
+	 * @param elementName 
+	 *                  元素在UI存储库中字义的名称（ElementName）
+	 * @param buttonName 
+	 *                  按钮在界面上的名称 
+	 */                  
+	public void enableSlidingButton(RainbowElement elementPage, String elementName, String buttonName){
+		rd.scrollToExact(buttonName);//将页面滚动到按钮所在的位置。
+		WebElement buttonElement = elementPage.waitSubElement(elementName);//得到按钮的WebElement
+		drag(buttonElement, "right", (float)0.2,(float)0.5, (float)0.8, (float)1.0);//滑动开启
+	}
+	
+	/**
+	 * 将滑动按钮向左滑动关闭开关
+	 * @param elementPage
+	 * 		                                   按钮所在的页面
+	 * @param elementName 
+	 *                  元素在UI存储库中字义的名称（ElementName）
+	 * @param buttonName 
+	 *                  按钮在界面上的名称 
+	 */                  
+	public void disableSlidingButton(RainbowElement elementPage, String elementName, String buttonName){
+		rd.scrollToExact(buttonName);//将页面滚动到按钮所在的位置。
+		WebElement buttonElement = elementPage.waitSubElement(elementName);//得到按钮的WebElement
+		drag(buttonElement, "left", (float)0.2, (float)0.5, (float)0.8, (float)1.0);//向左滑动关闭开关
+	}
+
+
+    public int strChangToInt(String st){
+    	if(st.equals("0")){
+			return 0;
+		}else{
+			return Integer.parseInt(st);
+		}
+    }
+	
+	public void setAccountCoins(AccountData ad, String coins){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("money", coins);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("setMoney", 22, ad, jso);
+	 }
+	
+	/*
+	 * @author: foxhu
+	 */
+	public JSONObject setUserDataByHTTPRequestWithJson(String settype ,int terraceTaskID ,AccountData ad,JSONObject jsoobject){
+		 JSONObject jso = new JSONObject();
+		 JSONObject oJso =null;
+		 try {
+				if(ad != null){
+					jso.put("act", settype);
+					jso.put("api", terraceTaskID);
+					jso.put("mid", ad.getGameID());
+					jso.put("param", jsoobject);
+					oJso = poseHTTPRequestToSpecificURL(url, jso);
+					return oJso;
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		  return oJso;
+	 }
+	
+	/*
+	 * @author: foxhu
+	 */
+	public JSONObject poseHTTPRequestToSpecificURL(String url ,JSONObject jso){
+		 JSONObject jsonObject=null;
+		 String jsoString = getBASE64ForAJSON(jso);
+		 try {
+			URL oUrl =new URL(url);
+			HttpURLConnection oHttpURLC = (HttpURLConnection) oUrl.openConnection();
+			oHttpURLC.setDoOutput(true);
+			oHttpURLC.setDoInput(true);
+			oHttpURLC.setRequestMethod("POST");
+			oHttpURLC.setUseCaches(false);
+			oHttpURLC.setInstanceFollowRedirects(true);
+			oHttpURLC.connect();
+			//设置输出数据流
+			DataOutputStream out = new DataOutputStream(oHttpURLC.getOutputStream());
+			out.writeBytes("param="+jsoString);
+            out.flush();
+            out.close(); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+           		oHttpURLC.getInputStream()));
+			 String s;
+			 StringBuilder resultString = new StringBuilder();
+			 while (((s = reader.readLine()) != null)) {
+				 resultString.append(s);
+			 }
+			 reader.close();// 关闭输入流
+			 //在这里把result这个字符串个给JSONObject。解读里面的内容。
+			 jsonObject = new JSONObject(resultString.toString());
+			 //String makeRobotStatus = jsonObject.getString("allErr");
+			 reader.close();
+            // 断开连接
+            oHttpURLC.disconnect();
+            return jsonObject;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
+		 
+		 return jsonObject;
+	 }
+	
+	/*
+	  * @param jso：JSONObject对象，进行base64的加密
+	  * @Return jsoString:jsoString格式的字符串
+	  * @author: foxhu
+	  * 对传入的json对象进行base64的加密
+	  */
+	 public  String getBASE64ForAJSON(JSONObject jso) { 
+	    	String jsoString =  (new Base64Encoder()).encode(jso.toString().getBytes()); 
+	    	return jsoString;
+	    	}
+	
+	
+	
+	
+	public void clickONANonFullRoom() {
+		//TODO: 重新封装RoomView后使用RoomView实现
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.waitSubElement("房间ID和名称").click();
+		RoomPage roomPage = new RoomPage();
+		roomPage.waitPresent();
+	}
+
+	public void closeSlotTips() {
+		// TODO Auto-generated method stub
+	}
+
+	public void clickONANonFullSitGoGameRoom() {
+		// TODO: 目前暂时直接调用clickONANonFullRoom重新封装RoomView后使用RoomView实现
+		clickONANonFullRoom();
+	}
+	 public  MobileElement srocllToText(String text){
+		 MobileElement me = rd.scrollToExact(text);
+		 return me;
+	 }
+	 public int fromStringGetNumber(String ptn){
+		 Pattern pattern = Pattern.compile("\\d+");
+			Matcher matcher = pattern.matcher(ptn);
+			if(matcher.find()) {
+				String interPropsCount_string = matcher.group();
+				return Integer.valueOf(interPropsCount_string);
+			}
+			else {
+				throw new RuntimeException("无法识别道具"+ptn+"的数量!");
+			}
+	 }
+	 /*
+	  * 从中间点开始滑动
+	  * x为滑动的元素宽的倍数
+	  * y为滑动的元素高的倍数
+	  */
+	 public void drag(WebElement we ,String direction ,float x ,float y){
+		 Point point = we.getLocation();
+		 Dimension size = we.getSize();
+		 int width = size.getWidth();
+		 int  height = size.getHeight();
+		 int wex = point.getX();
+		 int wey= point.getY();
+		 int startx = wex+width/2;
+		 int starty = wey+height/2;
+		 int xx = (int) (width*x);
+		 int yy  = (int) (height*y);
+		 direction =direction.toLowerCase();
+		 if (direction.equals("up")){
+			 rd.swipe(startx, starty, startx, starty - yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("down")){
+			 rd.swipe(startx, starty, startx, starty + yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("left")){
+			 rd.swipe(startx, starty, startx -xx , starty , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("right")){
+			 rd.swipe(startx, starty, startx +xx, starty , 1000);
+			 rd.sleep(3*1000);
+		 }else{
+			 Assert.fail("direction is error");
+		 }
+	 }
+	 
+	 /*
+	  * 根据传入值决定滑动的起始位置
+	  * x为滑动的元素宽的倍数
+	  * y为滑动的元素高的倍数
+	  */
+	 public void drag(WebElement we, String direction, float sx, float sy, float x, float y){
+		 Point point = we.getLocation();
+		 Dimension size = we.getSize();
+		 int width = size.getWidth();
+		 int  height = size.getHeight();
+		 int wex = point.getX();
+		 int wey= point.getY();
+		 int startx =(int) (wex+width*sx);
+		 int starty = (int) (wey+height*sy);
+		 int xx = (int) (width*x);
+		 int yy  = (int) (height*y);
+		 direction =direction.toLowerCase();
+		 if (direction.equals("up")){
+			 rd.swipe(startx, starty, startx, starty - yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("down")){
+			 rd.swipe(startx, starty, startx, starty + yy , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("left")){
+			 rd.swipe(startx, starty, startx -xx , starty , 1000);
+			 rd.sleep(3*1000);
+		 }else if  (direction.equals("right")){
+			 rd.swipe(startx, starty, startx +xx, starty , 1000);
+			 rd.sleep(3*1000);
+		 }else{
+			 Assert.fail("Direction is error");
+		 }
+	 }
+	 
+	 /**
+	  * 加一个机器人到指定的桌子
+	  * @author JackWang
+	  */
+	 public boolean joinARobot(String url ,String tableId, String num){
+		 String uri = url + tableId + "&num="+num;
+		 try{
+			 //得到HttpClient对象  
+			 HttpClient getClient = new DefaultHttpClient();  
+			 //得到HttpGet对象  
+			 HttpGet request = new HttpGet(uri);  
+			 //客户端使用GET方式执行请教，获得服务器端的回应response  
+			 HttpResponse response = getClient.execute(request);  
+			 //判断请求是否成功    
+			 if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){  
+				 //读取服务器返回的json数据（接受json服务器数据）
+				 //获得输入流  
+				 InputStream inputStream = response.getEntity().getContent();  
+				 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				 BufferedReader reader = new BufferedReader(inputStreamReader);// 读字符串用的。
+				 String s;
+				 StringBuilder resultString = new StringBuilder();
+				 while (((s = reader.readLine()) != null)) {
+					 resultString.append(s);
+				 }
+				 reader.close();// 关闭输入流
+				 //在这里把result这个字符串个给JSONObject。解读里面的内容。
+				 JSONObject jsonObject = new JSONObject(resultString.toString());
+				 //String makeRobotStatus = jsonObject.getString("allErr");
+				 String makeRobotStatus = String.valueOf(jsonObject.getInt("allErr"));
+				 if(makeRobotStatus.equals("0")){ //返回为0，配置机器人成功
+					 robotRoomIdList.add(tableId);//记录此Room ID到robotRoomIdList中					
+					 return true;
+				 }else{
+					 throw new RuntimeException("Add Robot for room:"+tableId+" failed!");					 
+				 }						     
+			 }            
+		 }catch (Exception e) {
+			 e.printStackTrace();
+			 throw new RuntimeException("Add Robot for room:"+tableId+" failed!");			 
+		 }
+		 return false;
+	 }
+	 
+	 /**
+	  * 加多个机器人到指定的桌子
+	  * @author JackWang
+	  */
+	 public boolean joinRobots(String url ,String tableId, int robotCount){
+		 String uri = url + tableId + "&num=" + robotCount;
+		 
+		 try{
+			 //得到HttpClient对象  
+			 HttpClient getClient = new DefaultHttpClient();  
+			 //得到HttpGet对象  
+			 HttpGet request = new HttpGet(uri);  
+			 //客户端使用GET方式执行请教，获得服务器端的回应response  
+			 HttpResponse response = getClient.execute(request);  
+			 //判断请求是否成功    
+			 if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){  
+				 
+				 //读取服务器返回的json数据（接受json服务器数据）
+				 //获得输入流  
+				 InputStream inputStream = response.getEntity().getContent();  
+				 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				 BufferedReader reader = new BufferedReader(inputStreamReader);// 读字符串用的。
+				 String s;
+				 StringBuilder resultString = new StringBuilder();
+				 while (((s = reader.readLine()) != null)) {
+					 resultString.append(s);
+				 }
+				 reader.close();// 关闭输入流
+				 //在这里把result这个字符串个给JSONObject。解读里面的内容。
+				 JSONObject jsonObject = new JSONObject(resultString.toString());
+				 String makeRobotStatus = jsonObject.getString("allErr");
+				
+				 if(makeRobotStatus.equals("0")){ //返回为0，配置机器人成功
+					 robotRoomIdList.add(tableId);//记录此Room ID到robotRoomIdList中
+					 return true;
+				 }else{
+									 
+					 throw new RuntimeException("Add Robot for room:"+tableId+" failed!");					 
+				 }						     
+			 }else{  
+				 
+			 }             
+		 }catch (Exception e) {  
+			 
+			 throw new RuntimeException("Add Robot for room:"+tableId+" failed!");			 
+		 }
+		 return false;
+	 }
+	 
+	 	 
+	 /**
+	  * 踢出所有的机器人从指定的桌子
+	  * @author JackWang
+	  */
+	 public boolean kickARobot(String url ,String tableId){
+		 String uri = url + tableId;
+		 
+		 try{
+			 //得到HttpClient对象  
+			 HttpClient getClient = new DefaultHttpClient();  
+			 //得到HttpGet对象  
+			 HttpGet request = new HttpGet(uri);  
+			 //客户端使用GET方式执行请教，获得服务器端的回应response  
+			 HttpResponse response = getClient.execute(request);  
+			 //判断请求是否成功    
+			 if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){  
+				
+				 //读取服务器返回的json数据（接受json服务器数据）
+				 //获得输入流  
+				 InputStream inputStream = response.getEntity().getContent();  
+				 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				 BufferedReader reader = new BufferedReader(inputStreamReader);// 读字符串用的。
+				 String s;
+				 StringBuilder resultString = new StringBuilder();
+				 while (((s = reader.readLine()) != null)) {
+					 resultString.append(s);
+				 }
+				 reader.close();// 关闭输入流
+				 //在这里把resultString这个字符串个给JSONObject。解读里面的内容。
+				 JSONObject jsonObject = new JSONObject(resultString.toString());
+				 String makeRobotStatus = jsonObject.getString("allErr");
+				 
+				 if(makeRobotStatus.equals("0")){ //返回为0，踢出机器人成功					 
+					 return true;
+				 }else{
+					 				 
+					 throw new RuntimeException("Kick Robot for room:"+tableId+" failed!");					 
+				 }						     
+			 }else{  
+				 
+			 }             
+		 }catch (Exception e) {  
+			 
+			 throw new RuntimeException("Kick Robot for room:"+tableId+" failed!");			 
+		 }
+		 return false;
+	 }
+	 
+	 
+	 /**
+	  * Kick all robot from the robotRoomIdList
+	  * 将所有机器人从房间中删除掉，该方法主要用于Case的tearDown方法
+	  * @author JackWang
+	  */
+	 public void kickAllRobot(String url){
+		 if(robotRoomIdList.size() > 0){//当有加入机器人时才进行踢除
+			 Iterator<String> it =  robotRoomIdList.iterator();
+			 while(it.hasNext()){
+				 try{
+					 
+					 kickARobot(url ,it.next());//从房间中踢除机器人
+					 
+				 }catch(Error e){
+					
+				 }catch(Exception e){
+					 
+				 }
+			 }
+			 robotRoomIdList.clear();//清楚数组里的内容
+		 }
+	 }
+	 
+	 /*
+	  * 清除用户道具
+	  */
+	 public void clearUserItem(AccountData ad, String stat ){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("clearTool", stat);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("clearTool", 22, ad, jso);
+	 }
+	 
+	 
+	 /*
+	  * 设置用户钻石使用记录的有效天数
+	  */
+	 public void setUsedDiamondRemainDays(AccountData ad, String days ,String diatype){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("type", "1");
+			jso.put("ddcard", diatype);
+			jso.put("restCnt", days);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("diamond", 22, ad, jso);
+	 }
+	 
+	 public void setUserRegistrationDates(AccountData ad, int days){
+		 //TODO 设置用户注册天数
+	 }
+	 public void setUserBBfaceCount(AccountData ad, String count){
+		 //TODO 增加兔子表情包
+	 }
+	 /*
+	  * 设置是否为VIP用户
+	  */
+	 public void setUserIfVIP(AccountData ad, String megaphonecount){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("setMvip", megaphonecount);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("setMvip", 22, ad, jso);
+	 }
+	 /*
+	  * 回复钻石的剩余天数
+	  */
+	 public void setUsedDiamondRemainDays(AccountData ad, String diatype){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("type", "0");
+			jso.put("ddcard", diatype);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("diamond", 22, ad, jso);
+	 }
+	 
+	 /*
+	  * 设置连续登录天数
+	  */
+	 public void setUserLoginCount(AccountData ad, int Logincount){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("lianXuDengLu", Logincount);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("lianXuDengLu", 22, ad, jso);
+	 }
+	 
+
+	 /*
+	  * 清除救济卡使用记录
+	  */
+	 public void clearSaveCardUsedStat(AccountData ad, String savecountusestat){
+		 JSONObject jso = new JSONObject();
+		 try {
+			jso.put("clear", savecountusestat);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 setUserDataByHTTPRequestWithJson("saveCard", 22, ad, jso);
+	 }
+	 
+	 
+	 /*
+	  * ******************我的道具、道具商城————AppleWang**************
+	  * 通过滑动屏幕，找到目标元素,若目标存在，则停留在目标存在的页面,并返回目标元素；
+	  * 参数emoticonName使用的是真实道具名称。
+	  */
+	public void getEmoticonElement(String emoticonName){
+		WebElement frameLayout;//目标元素所在的layout		
+		WebElement emoticonElement = null;//目标元素
+		boolean found = false;		
+		int pageCount=6;//定义滑动页面查找的最大次数		
+		frameLayout=rd.findElementByClassName("android.widget.FrameLayout");		
+		org.openqa.selenium.Dimension size=frameLayout.getSize();//获取layout的尺寸
+		System.out.println("界面尺寸"+size);		
+		int x=size.getWidth();
+		int y=size.getHeight();//获取layout的长和宽（即屏幕的长宽）。
+		System.out.println("宽"+x);		
+		System.out.println("高"+y);				
+		int currentPage = 0; 	
+		while (found == false &&currentPage<=pageCount) {
+		found = true;
+		currentPage += 1;
+		try {
+			emoticonElement=rd.findElementByName(emoticonName);
+		}catch (NoSuchElementException e) {
+			found = false;
+			System.out.println(e);
+		}
+		if (found == true){
+			break;
+		}	 			      
+		rd.swipe(x/2, y-20, x/2, (int) (y*0.25+10), 1000);//定义滑动的起点和终点		      
+		}	
+	}
+	
+	
+	/*
+	 * 判断某页面中某元素是否存在————AppleWang
+	 */	
+    public boolean isRainbowElementPersent(String elementName,RainbowElement page){
+		try {
+			page.waitSubElement(elementName);
+			return true;
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			System.out.println("找不到"+elementName+"元素");
+			return false;
+		}
+		
+	}   
+    
+
+    /*
+	 * 从Text文本中提取所有数字————AppleWang
+	 */
+    public int getNumber(String text) {     
+    	String regEx="[^0-9]";     
+    	Pattern p = Pattern.compile(regEx);     
+    	Matcher m = p.matcher(text);     
+    	int after=Integer.valueOf(m.replaceAll("").trim());
+    	return after;
+    }  
+    
+    
+    /**
+     * 从房间内正常退出保证下一个用例不受影响。
+     * 主要解决问题：如果当前用户不从房间内正常退出的话，下一个用例登录时会自动进入房间而不是大厅。 
+     * @author JackWang
+     */
+    public void existTheRoom(){
+    	try{
+    		RoomPage rp = new RoomPage();
+    		rp.leaveRoomAndGoToLobby();
+    		return;
+    	}catch(Exception e1){
+    		e1.printStackTrace();
+    		try{
+    			rd.pressBack();
+    			rd.pressBack();
+    			RoomPage rp = new RoomPage();
+    			rp.waitSubElement("离开按钮").click();
+    			return;
+    		}catch(Exception e2){
+    			e2.printStackTrace();
+    		}
+    	}
+    }  
+    
+}

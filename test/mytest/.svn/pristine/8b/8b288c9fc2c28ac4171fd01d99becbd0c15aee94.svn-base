@@ -1,0 +1,234 @@
+package com.boyaa.testdalianhall.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testdalianhall.business.CommonBusiness;
+import com.boyaa.testdalianhall.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testdalianhall.uilib.AccountLoginPage;
+import com.boyaa.testdalianhall.uilib.AccountRegisterDialog;
+import com.boyaa.testdalianhall.uilib.HallPage;
+import com.boyaa.testdalianhall.uilib.UserPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="登录注册")
+public class LoginRegisterTest extends BaseTestCase {
+    private HallPage hallPage = null;
+    private UserPage userPage = null;
+    private AccountRegisterDialog accountRegisterDialog = null;   
+	public LoginRegisterTest(){
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();			
+		hallPage = new HallPage();
+		userPage = new UserPage();
+		accountRegisterDialog = new AccountRegisterDialog();
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.OnlineEnv);//切换到线上环境
+		CommonBusiness.switchToTrialPlay();//先强制切换到试玩账号
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="DFHALL-682", name="重复注册(Phase I)")
+	@Test(description="一键注册登录时输入已注册手机号，提示已经被注册", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_RepeatRegistration(String phoneNumber, String promptMessage) throws InterruptedException{
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();	
+		userPage.waitSubElement("一键注册登录按钮").click();
+		accountRegisterDialog.waitPresent();
+		accountRegisterDialog.waitSubElement("手机号输入框").sendKeys(phoneNumber);
+		accountRegisterDialog.waitSubElement("确定按钮").click();
+		String acturePromptMessage =  accountRegisterDialog.waitSubElement("已被注册文本").getText();
+		assertEquals(acturePromptMessage, promptMessage, "已经注册提示信息不正确");
+		String acturePromptPhoneNumber =  accountRegisterDialog.waitSubElement("已被注册号码文本").getText();
+		assertEquals(acturePromptPhoneNumber, phoneNumber, "已注册提示号码信息不正确");		
+	}
+	
+	@CaseDesc(id="LR_006", name="重复注册直接登录(Phase I)")
+	@Test(description="一键注册登录时输入已注册手机号，提示已经被注册，然后直接登录", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_RepeatRegistrationAndLogin(String phoneNumber, String phonePawd, String errorPawd, 
+			String haveRegisteredPromptMessage, String passwordErrorPromptMessage) throws InterruptedException{
+		test_RepeatRegistration(phoneNumber, haveRegisteredPromptMessage);
+		accountRegisterDialog.waitSubElement("直接登录按钮").click();
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("密码输入框").sendKeys(errorPawd);
+		al.waitSubElement("重复注册的登录按钮").click();
+		String acturePasswordErrorPromptMessage = al.waitSubElement("密码错误提示信息").getText().trim();
+		assertEquals(acturePasswordErrorPromptMessage, passwordErrorPromptMessage, "密码输入错误的提示信息不正确");		
+		al.waitSubElement("密码输入框").sendKeys(phonePawd);
+		al.waitSubElement("重复注册的登录按钮").click();	
+		super.closeTheLauncherDialog();
+		assertTrue(hallPage.isSubElementPresent("个人头像"), "没有找到个人头像元素，登录失败");
+	}
+
+	@CaseDesc(id="LR_007", name="重复注册返回注册界面(Phase I)")
+	@Test(description = "一键注册登录时输入已注册手机号，提示已经被注册，然后返回注册页面", dataProvider="getExcelData", dataProviderClass = ExcelDataDriver.class )
+	public void test_RepeatRegisteredAndRetention(String phoneNumber, String promptMessage) throws InterruptedException{
+		//CommonBusiness.switchToTrialPlay();
+		test_RepeatRegistration(phoneNumber, promptMessage);
+		accountRegisterDialog.waitSubElement("新手机注册按钮").click();
+		assertTrue(accountRegisterDialog.isSubElementPresent("手机号输入框", 1), "没有找到手机号输入框，返回到注册页面失败");
+	}
+	
+	@CaseDesc(id="LR_008", name="正常注册提示有短信密码已经发送(Phase I)")
+	@Test(description = "一键注册登录时输入未注册手机号，提示有短信密码发送到手机上", dataProvider="getExcelData", dataProviderClass = ExcelDataDriver.class )
+	public void test_Registered(String phoneNumber, String promptMessage) throws InterruptedException{
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();	
+		userPage.waitSubElement("一键注册登录按钮").click();	
+		accountRegisterDialog.waitPresent();
+		accountRegisterDialog.waitSubElement("手机号输入框").sendKeys(phoneNumber);
+		accountRegisterDialog.waitSubElement("确定按钮").click();
+		//String acturePromptMessage =  accountRegisterDialog.waitSubElement("验证码提示信息").getText().trim();TODO[验证码提示信息]元素不维一
+		//assertEquals(acturePromptMessage, promptMessage, "注册时提示信息不正确");		
+		assertTrue(accountRegisterDialog.isSubElementPresent("重发按钮", 2), "重发按钮不存在");	
+	}
+	
+	
+	@CaseDesc(id="LR_009_a", name="正常注册关闭短信密码对话框1(Phase I)")
+	@Test(description = "一键注册登录时输入未注册手机号，关闭短信密码验证对话框暂不注册", dataProvider="getExcelData", dataProviderClass = ExcelDataDriver.class )
+	public void test_RegisteredAndExit(String phoneNumber, String promptMessage) throws InterruptedException{
+		test_Registered(phoneNumber, promptMessage);
+		accountRegisterDialog.close();
+		accountRegisterDialog.waitSubElement("暂不注册按钮").click();
+		assertFalse(accountRegisterDialog.isPresent(1), "短信密码验证对话没有关闭");
+	}
+	
+	
+	@CaseDesc(id="LR_009_b", name="正常注册关闭短信密码对话框2(Phase I)")
+	@Test(description = "一键注册登录时输入未注册手机号，关闭短信密码验证对话框继续注册", dataProvider="getExcelData", dataProviderClass = ExcelDataDriver.class )
+	public void test_RegisteredAndContinue(String phoneNumber, String promptMessage) throws InterruptedException{
+		test_Registered(phoneNumber, promptMessage);
+		accountRegisterDialog.close();
+		accountRegisterDialog.waitSubElement("继续注册").click();
+		assertTrue(accountRegisterDialog.isPresent(1), "短信密码验证对话框不应被关闭了，实际关闭了");
+	}
+	
+	
+	@CaseDesc(id="LR_010", name="正常注册短信验证成功(Phase II)")
+	@Test(description="正常注册并输入正确短信验证成功后并正常登录", dataProvider="getExcelData", dataProviderClass = ExcelDataDriver.class )
+	public void test_RegisteredAndLogin(String phoneNumber, String smsPromptMessage, String errorVerificationCode1, 
+			String errorVerificationCode2, String errorVerificationPromptMessage) throws InterruptedException{
+		test_Registered(phoneNumber, smsPromptMessage);
+		accountRegisterDialog.waitSubElement("密码输入框").sendKeys(errorVerificationCode1);
+		accountRegisterDialog.waitSubElement("注册按钮").click();
+		Thread.sleep(2000);//同步提示信息的出现
+		String actualErrorMessage1 = accountRegisterDialog.waitSubElement("验证码不正确提示信息").getText().trim();
+		assertEquals(actualErrorMessage1, errorVerificationPromptMessage, "验证码不正确提示信息不正确");		
+		accountRegisterDialog.waitSubElement("密码输入框").sendKeys(errorVerificationCode1);
+		accountRegisterDialog.waitSubElement("注册按钮").click();
+		Thread.sleep(2000);//同步提示信息的出现
+		String actualErrorMessage2 = accountRegisterDialog.waitSubElement("验证码不正确提示信息").getText().trim();
+		assertEquals(actualErrorMessage2, errorVerificationPromptMessage, "验证码不正确提示信息不正确");
+		//TODO 3.输入正确的短信验证密码 3.验证通过，提示注册成功，并进行登录操作
+	}
+	
+/*	@CaseDesc(id="LR_012", name="同步原游客账号信息(Phase II)")
+	@Test(description="短信验证通过后，进入登录流程.同步注册前游客的全部信息", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_AccountInformationSynchronization(String phoneNumber, String smsPromptMessage) throws InterruptedException{
+		CommonBusiness.SetAsUnregistered(phoneNumber);//TODO 通过接口实现设置为未注册状态
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		String currentID = userPage.waitSubElement("ID").getText().trim();
+		String currentDiamond = userPage.waitSubElement("钻石数").getText().trim();
+		String currentConis = userPage.waitSubElement("金币数").getText().trim();
+		//TODO 获取性别值，等Lua自动化框架完成修订后再添加
+		String currentNickname = userPage.waitSubElement("昵称输入框").getText().trim();
+		String currentCityname = userPage.waitSubElement("城市值").getText().trim();
+		String currentLevel = userPage.waitSubElement("等级值").getText().trim();
+		String currentExperience = userPage.waitSubElement("经验值").getText().trim();
+		test_Registered(phoneNumber, smsPromptMessage);
+		//TODO 获取验证码
+		String passCode = CommonBusiness.getRegistrationVerificationCode(phoneNumber);
+		test_Registered(phoneNumber, smsPromptMessage);
+		accountRegisterDialog.waitSubElement("密码输入框").sendKeys(passCode);
+		accountRegisterDialog.waitSubElement("注册按钮").click();
+		super.closeTheLauncherDialog();
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		assertEquals(userPage.waitSubElement("ID").getText().trim(), currentID, "ID不正确");
+		assertEquals(userPage.waitSubElement("钻石数").getText().trim(), currentDiamond, "钻石数不正确");
+		assertEquals(userPage.waitSubElement("金币数").getText().trim(), currentConis, "金币数不正确");
+		assertEquals(userPage.waitSubElement("昵称输入框").getText().trim(), currentNickname, "昵称不正确");
+		assertEquals(userPage.waitSubElement("城市值").getText().trim(), currentCityname, "城市值不正确");
+		assertEquals(userPage.waitSubElement("等级值").getText().trim(), currentLevel, "等级值不正确");
+		assertEquals(userPage.waitSubElement("经验值").getText().trim(), currentExperience, "经验值不正确");		
+	}
+*/	
+	
+	
+	@CaseDesc(id="LR_013", name="生成全新的游客试玩账号(Phase I)")
+    @Test(description="切换为游客试玩账号", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_SwitchingAccounts(String phoneNumber, String phonePwd) throws InterruptedException{
+		//CommonBusiness.switchToTrialPlay();//先强制切换到试玩账号
+		CommonBusiness.loginWithBoyaaAccount(phoneNumber, phonePwd);//再登录到正常账号		
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		String currentID1 = userPage.waitSubElement("ID").getText().trim();
+		userPage.waitSubElement("切换账号按钮").click();	
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("游客试玩").click();
+		BaseTestCase.closeTheLauncherDialog();
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		String currentID2 = userPage.waitSubElement("ID").getText().trim();		
+		assertNotEquals(currentID1, currentID2, "切换成一个新的试玩账号失败");	
+	}
+	
+	@CaseDesc(id="LR_014", name="测试修改账号密码入口(Phase I)")
+	@Test(description="打开重置账号密码的入口", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_ResetAccountPasswordEntrance(String phoneNumber) throws InterruptedException{
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		userPage.waitSubElement("切换账号按钮").click();
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("找回密码按钮").click();
+		al.waitSubElement("手机号输入框").sendKeys(phoneNumber);
+		al.waitSubElement("找回密码的确定按钮").click();
+		assertTrue(al.isSubElementPresent("已向你的手机发送验证码文本", 2), "已向你的手机发送验证码文本信息不存在");		
+	}
+	
+	@CaseDesc(id="LR_015", name="重置账号的密码(Phase II)")
+	@Test(description="通修改账号密码入口，重置账号的密码", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_ResetAccountPassword(String phoneNumber, String errorVerificationCode, String newPassword, String verificationCodeErrorPrompt) throws InterruptedException{
+		test_ResetAccountPasswordEntrance(phoneNumber);	
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("验证码输入框").sendKeys(errorVerificationCode);
+		al.waitSubElement("新密码输入框").sendKeys(newPassword);
+		al.waitSubElement("重置密码并进入游戏按钮").click();
+		Thread.sleep(3000);
+		String acturePrompt = al.waitSubElement("验证码不正确提示信息").getText().trim(); 
+		assertEquals(acturePrompt, verificationCodeErrorPrompt, "输入错误的验证码后提示信息不正确");
+		//TODO 4.输入正确的验证码，符合要求的密码		
+	}
+	
+	@CaseDesc(id="LR_016", name="清除已有登录的账号(Phase I)")
+    @Test(description="清除账号输入框中已输入的手机号", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_ClearExistingLoginAccounts(String phoneNumber, String phonePwd) throws InterruptedException{		
+		CommonBusiness.loginWithBoyaaAccount(phoneNumber, phonePwd);//再登录到正常账号		
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();		
+		userPage.waitSubElement("切换账号按钮").click();	
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("账号输入框下拉箭头按钮").click();
+		Thread.sleep(1000);
+		al.waitSubElement("下拉框中的删除按钮").click();
+		Thread.sleep(1000);
+		String currentPhoneNumber = al.waitSubElement("账号输入框").getText().trim();
+		//TODO 此处理程序有Bug，当有一条记录时不能清除此记录
+		assertNotEquals(currentPhoneNumber, phoneNumber, "已登录账号没有被清除，这是一个Bug相关测试人员已经记录");
+		
+	}
+	
+	
+}

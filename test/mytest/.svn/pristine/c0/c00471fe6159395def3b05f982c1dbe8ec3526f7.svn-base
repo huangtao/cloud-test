@@ -1,0 +1,6 @@
+I     20140902 13:01:55    com.boyaa.TestTexasAR.cases.Texas_PayLogicAR    chmod 777 /data/data/com.boyaa.androidmarketar/files success
+I     ٢٠١٤٠٩٠٢ ١٣:٠١:٥٨    CatTestCase    Timeout.getLargeTimeout:20000
+I     ٢٠١٤٠٩٠٢ ١٣:٠١:٥٨    CatTestCase    Timeout.getSmallTimeout:10000
+I     ٢٠١٤٠٩٠٢ ١٣:٠٢:٠٦    LocalLib    升级提示的退出按钮 is not found.
+I     ٢٠١٤٠٩٠٢ ١٣:٠٢:٥٤    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasAR_20140902_12-55-42PM/_Screenshots/PayLogic_007_20140902_130254.jpg
+I     ٢٠١٤٠٩٠٢ ١٣:٠٢:٥٩    com.boyaa.TestTexasAR.cases.Texas_PayLogicAR    tear down time out!

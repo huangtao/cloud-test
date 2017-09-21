@@ -1,0 +1,39 @@
+local roomLevels_pin_map = require("qnFiles/qnPlist/hall/roomLevels_pin");
+local chooseRoomPay=
+{
+	name="chooseRoomPay",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bgImage",type=1,typeName="Image",time=52628297,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="contentBG",type=1,typeName="Image",time=52627315,report=0,x=0,y=0,width=800,height=450,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,
+		{
+			name="titleBg",type=1,typeName="Image",time=77796020,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=77796021,report=0,x=0,y=-5,width=140,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[资金不足]],colorA=1
+			}
+		},
+		{
+			name="closeBtn",type=2,typeName="Button",time=77796249,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="buyBtn",type=2,typeName="Button",time=52630219,report=0,x=0,y=70,width=400,height=91,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="icon",type=1,typeName="Image",time=52886581,report=0,x=30,y=0,width=68,height=52,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file=roomLevels_pin_map['mall.png']
+			},
+			{
+				name="infoBtnText",type=4,typeName="Text",time=52631050,report=0,x=200,y=-18,width=64,height=37,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=32,textAlign=kAlignLeft,colorRed=255,colorGreen=235,colorBlue=186
+			},
+			{
+				name="infoContentTxt",type=4,typeName="Text",time=61033914,report=0,x=200,y=18,width=64,height=35,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=32,textAlign=kAlignLeft,colorRed=255,colorGreen=235,colorBlue=186
+			},
+			{
+				name="failTips",type=4,typeName="Text",time=120649022,report=0,x=0,y=0,width=256,height=36,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[获取失败，请重试]]
+			}
+		},
+		{
+			name="desView",type=0,typeName="View",time=114630562,x=0,y=140,width=64,height=64,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0
+		}
+	}
+}
+return chooseRoomPay;

@@ -1,0 +1,104 @@
+package com.boyaa.testholdemsina.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemsina.business.CommonBusiness.RoomLevel;
+
+public class RoomListPage extends RainbowElement{
+	
+	private void selectRoomLevel(RoomLevel roomLevel){
+		switch(roomLevel) {
+			case Junior:
+				waitSubElement("初级场按钮").click();
+				break;
+			case Middle:
+				waitSubElement("中级场按钮").click();
+				break;
+			case Senior:
+				waitSubElement("高级场按钮").click();
+				break;
+			default:
+				break;
+		}
+	}
+	
+	/**
+	 * 进入一个带有机器人的房间
+	 * @param carryCoin
+	 */
+	public void intoRoom() {
+		float carryCoin = getCoin();
+		System.out.println("carry coin = " + carryCoin);
+		RoomLevel[] roomLevelList = RoomLevel.values();
+		for (RoomLevel rl : roomLevelList){
+			selectRoomLevel(rl);
+			waitSubElement("在线人数_header").click();
+			String text = null;
+			List<WebElement> itemList = waitSubElements("房间item");
+			for (WebElement we : itemList){
+				WebElement coinElement = we.findElement(By.id("com.boyaa.sina:id/item_carry"));
+				text = coinElement.getText().trim();
+				boolean enough = coinEnough(carryCoin, coinElement);
+				if (!enough){
+					continue;
+				}
+				
+				WebElement editElement = we.findElement(By.id("com.boyaa.sina:id/bilie"));
+				text = editElement.getText().trim();
+				System.out.println("text = " + text);
+				int playerNum = Integer.parseInt(text.split("/")[0]);
+				System.out.println("player num = " + playerNum);
+				if (playerNum == 0){
+					editElement.click();
+					return;
+				}
+			}
+		}
+	}
+
+	private float getCoin(){
+		WebElement we = this.waitSubElement("金币数");
+		String text = we.getText();
+		return parseStrToFloat(text);
+	}
+	
+	private boolean coinEnough(float carryCoin, WebElement we){
+		boolean enough = true;
+		String text = we.getText().toString().trim().toUpperCase();
+		String[] tmp = text.split("/");
+		float min = parseStrToFloat(tmp[0]);
+		float max = parseStrToFloat(tmp[1]);
+		
+		if (carryCoin < min || carryCoin > max){
+			enough = false;
+		}
+		
+		return enough;
+	}
+	
+	private float parseStrToFloat(String str){
+		float figure = 0;
+		System.out.println("str = " + str);
+		if (str.trim().endsWith("千")) {
+			figure = Float.parseFloat(str.split("千")[0].trim()) * 1000;
+		} else if (str.trim().endsWith("千万")) {
+			figure = Float.parseFloat(str.split("千万")[0].trim()) * 10000000;
+		} else if (str.trim().endsWith("万")) {
+			figure = Float.parseFloat(str.split("万")[0].trim()) * 10000;
+		} else if (str.trim().endsWith("亿")) {
+			figure = Float.parseFloat(str.split("亿")[0].trim()) * 100000000;
+		} else {
+			String[] tmp = str.trim().split(",");
+			for (int j = 0; j <= (tmp.length - 1); j++) {
+				figure = (long) (Integer.parseInt(tmp[j]) * (Math.pow(1000, (tmp.length - 1 - j))) + figure);
+			}
+		}
+		
+		return figure;
+	}
+
+}

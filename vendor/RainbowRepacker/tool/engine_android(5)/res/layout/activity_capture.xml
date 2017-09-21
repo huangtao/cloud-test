@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:id="@id/capture_preview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/titleBg" android:background="@drawable/dfqp_qr_title_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" />
+    <RelativeLayout android:id="@id/capture_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/capture_center" android:layout_width="210.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/capture_mask_top" android:background="@drawable/dfqp_qr_shadow" android:layout_width="210.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <RelativeLayout android:id="@id/capture_crop_view" android:background="@drawable/dfqp_qr_code_bg" android:layout_width="210.0dip" android:layout_height="210.0dip">
+                <ImageView android:id="@id/capture_scan_line" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/dfqp_qr_scan_line" android:layout_alignParentTop="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/capture_mask_bottom" android:background="@drawable/dfqp_qr_shadow" android:layout_width="210.0dip" android:layout_height="0.0dip" android:layout_weight="1.02">
+                <TextView android:textColor="#ffe5e5e5" android:id="@id/qr_tips_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zxing_qr_tips" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/capture_mask_left" android:background="@drawable/dfqp_qr_shadow" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/capture_center" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/capture_mask_right" android:background="@drawable/dfqp_qr_shadow" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/capture_center" android:layout_alignParentRight="true" />
+        <Button android:id="@id/back" android:background="@drawable/dfqp_qr_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="13.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="20.0sp" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/zxing_qr_title" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

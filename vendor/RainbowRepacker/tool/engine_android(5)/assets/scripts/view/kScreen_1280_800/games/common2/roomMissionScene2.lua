@@ -1,0 +1,29 @@
+roomMissionScene2=
+{
+	name="roomMissionScene2",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="main_bg",type=1,typeName="Image",time=59715906,report=0,x=0,y=0,width=473,height=138,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomMission/bg.png",gridLeft=30,gridRight=30,gridTop=10,gridBottom=10,
+		{
+			name="line",type=1,typeName="Image",time=60318334,report=0,x=0,y=42,width=423,height=2,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="games/common/roomMission/line.png"
+		},
+		{
+			name="title",type=4,typeName="Text",time=60318442,report=0,x=0,y=8,width=0,height=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=26,textAlign=kAlignLeft,colorRed=141,colorGreen=84,colorBlue=39,string=[[牌局任务]]
+		},
+		{
+			name="messageTxt",type=4,typeName="Text",time=60318516,report=0,x=30,y=5,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=24,textAlign=kAlignLeft,colorRed=141,colorGreen=84,colorBlue=39,string=[[aaaaaaaaaaaaaaaaaaaaaaa]]
+		},
+		{
+			name="boxTxt",type=4,typeName="Text",time=60318553,report=0,x=30,y=38,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=24,textAlign=kAlignLeft,colorRed=141,colorGreen=84,colorBlue=39
+		},
+		{
+			name="flag",type=1,typeName="Image",time=60320114,report=0,x=430,y=58,width=29,height=28,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomMission/flag.png"
+		},
+		{
+			name="taskMsgTxt",type=4,typeName="Text",time=60330610,report=0,x=50,y=5,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignRight,fontSize=24,textAlign=kAlignLeft,colorRed=141,colorGreen=84,colorBlue=39,string=[[倍数x]]
+		},
+		{
+			name="boxOtherTxt",type=4,typeName="Text",time=60340436,report=0,x=30,y=18,width=0,height=0,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=24,textAlign=kAlignLeft,colorRed=141,colorGreen=84,colorBlue=39
+		}
+	}
+}
+return roomMissionScene2;

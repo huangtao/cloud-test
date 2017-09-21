@@ -1,0 +1,58 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.openqa.selenium.Point;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.common.CommonBusinessHuaWei;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.lianyuntest.uilib.login.Login360Page;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.rainbow2.utils.Parameter;
+
+@Listeners ({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description = "360联运登录测试用例")
+public class Qihoo360LoginTest extends BaseLoginTest {
+	
+	
+	@BeforeClass
+	public void setUpBeforeClass(){
+		CommonBusiness.clearAppData("com.boyaa.scmj.qihoo");
+	}
+
+	@CaseDesc(id = "LIANYUN-QIHOO360-1", name = "登录360账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_login360(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+//		nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		Login360Page qh = new Login360Page();
+		qh.waitPresent(40);
+		qh.waitSubElement("账号输入框").clear();
+		qh.waitSubElement("账号输入框").sendKeys(account);
+//		qh.goBack();//横屏情况下，输入框会占满全屏，需要返回到登录界面才能继续操作
+		qh.waitSubElement("密码输入框").clear();
+		qh.waitSubElement("密码输入框").sendKeys(pwd);
+//		qh.goBack();
+		qh.waitSubElement("登录按钮").click();
+		if(CommonBusiness.isActivity(qh.getDriver(), "com.qihoopp.qcoinpay.QcoinActivity", 5)){
+			qh.goBack();//关闭绑定界面
+		}
+		
+		if(CommonBusiness.isActivity(qh.getDriver(), "com.qihoo.gamecenter.sdk.activity.ContainerActivity", 10)){
+			qh.goBack();//关闭360广告界面
+		}
+		
+		super.isLoginSucc(hp, name);
+		
+	}
+
+}

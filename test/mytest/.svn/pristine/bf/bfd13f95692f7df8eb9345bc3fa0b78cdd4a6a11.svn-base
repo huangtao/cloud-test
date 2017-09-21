@@ -1,0 +1,60 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.openqa.selenium.Point;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.lianyuntest.uilib.login.OppoLoginPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.rainbow2.utils.Parameter;
+
+@Test(description = "OPPO联运登录测试用例")
+public class OppoLoginTest extends BaseLoginTest {
+
+	@CaseDesc(id = "LIANYUN-OPPO-1", name = "登录OPPO账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginOppo(String account, String pwd, String name) {
+		HallPage hp = new HallPage();
+		CommonBusiness.delFile("/mnt/sdcard/ColorOS");		
+
+		super.setCapability("noReset", true);
+		super.setCapability("newCommandTimeout", "5*60");
+		super.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		// nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		OppoLoginPage op = new OppoLoginPage();
+		op.waitSubElement("使用其他帐号登录").click();
+		if(op.isSubElementPresent("X号",3)){
+			op.waitSubElement("X号").click();
+		}
+
+		op.waitSubElement("账号输入框").clear();
+		op.waitSubElement("账号输入框").sendKeys(account);
+		op.waitSubElement("密码输入框").clear();
+		op.waitSubElement("密码输入框").sendKeys(pwd);
+		op.waitSubElement("登录按钮").click();
+
+		try {
+			op.sleep(10*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(!CommonBusiness.isActivity(op.getDriver(), "com.boyaa.scmj.Game", 2)){
+			op.goBack();
+			
+		}
+
+		
+		super.isLoginSucc(hp, name);
+
+	}
+
+}

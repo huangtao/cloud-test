@@ -1,0 +1,29 @@
+local vipGetAnimPop=
+{
+	name="vipGetAnimPop",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=800,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=66475316,report=0,x=0,y=0,width=1280,height=800,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png",
+		{
+			name="sun",type=1,typeName="Image",time=66475379,report=0,x=0,y=0,width=640,height=640,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/sun.png"
+		},
+		{
+			name="diamond",type=1,typeName="Image",time=66475453,report=0,x=0,y=0,width=520,height=464,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/diamond.png",
+			{
+				name="diamondLight",type=1,typeName="Image",time=66475570,report=0,x=-1,y=1,width=540,height=500,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/diamondlite.png"
+			}
+		},
+		{
+			name="vipTextCode",type=1,typeName="Image",time=66475623,report=0,x=0,y=0,width=366,height=164,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/vipC.png",
+			{
+				name="vipTextCodeLight",type=1,typeName="Image",time=66475687,report=0,x=0,y=0,width=370,height=170,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/viplight.png"
+			}
+		},
+		{
+			name="textTips",type=1,typeName="Image",time=66475734,report=0,x=0,y=145,width=628,height=86,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/vipTextTip.png",
+			{
+				name="textTipsLight",type=1,typeName="Image",time=66475909,report=0,x=0,y=0,width=630,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/vipAnim/textlight.png"
+			}
+		}
+	}
+}
+return vipGetAnimPop;

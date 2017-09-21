@@ -1,0 +1,14 @@
+I     20140905 13:18:38    Generator Report:    chmod -R 777 /storage/emulated/0/ATR/TexasCN_20140905_01-15-47PM/ failed!
+
+I     20140905 13:18:38    Generator Report:    createReportXMLFile Start:
+I     20140905 13:18:38    Generator Report:    createReportXMLFile End
+I     20140905 13:18:38    Generator Report:    addTestSuiteNode Start:
+I     20140905 13:18:38    Generator Report:    addTestSuiteNode End
+I     20140905 13:18:38    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    chmod 777 /data/data/com.boyaa.sina/files success
+I     20140905 13:18:41    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140905 13:18:41    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140905 13:18:53    LocalLib    id/button2 is not found.
+I     20140905 13:19:19    Generator Report:    getSnapshort Start:
+I     20140905 13:19:19    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasCN_20140905_01-15-47PM/_Screenshots/PayLogic_005_20140905_13_19_19.jpg
+I     20140905 13:19:20    Generator Report:    getSnapshort End
+I     20140905 13:19:25    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    tear down time out!

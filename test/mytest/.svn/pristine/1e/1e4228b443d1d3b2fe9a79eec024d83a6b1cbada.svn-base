@@ -1,0 +1,61 @@
+package com.boyaa.testhallbase.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.uilib.AnouncementDialog;
+import com.boyaa.testhallbase.uilib.CheckinDialog;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.TaskRewardDialog;
+import com.boyaa.testhallbase.uilib.UpdateDialog;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="系统消息-公告显示")
+public class AnnouncementTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+	public AnnouncementTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp(false);
+//		cb = new CommonBusiness();
+		hallPage = new HallPage();
+		hallPage.waitPresent();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	@CaseDesc(id="DFHALL-1300", name="弹出时机(Phase II)")
+	@Test(description="检查公告是否最先弹出")
+	public void test_announcementPopup() throws InterruptedException{
+		AnouncementDialog ad = new AnouncementDialog();
+		
+		assertTrue(ad.isPresent(8), "检查公告是否首先弹出");
+		ad.close();
+		UpdateDialog ud = new UpdateDialog();//升级对话框
+		CheckinDialog cd = new CheckinDialog();//每日签到
+		TaskRewardDialog td = new TaskRewardDialog();//每日任务
+		if(ud.isPresent(1)){
+			ud.close();
+		}		
+		if(cd.isPresent(2)){
+			cd.close();
+		}
+		if(td.isPresent(2)){
+			td.close();
+		}
+		
+		CommonBusiness.switchToTrialPlay(false);
+		assertFalse(ad.isPresent(5), "检查重新登录后公告不再弹出");
+	}
+
+}

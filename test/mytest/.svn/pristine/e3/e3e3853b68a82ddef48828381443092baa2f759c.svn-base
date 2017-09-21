@@ -1,0 +1,5 @@
+I     20140903 13:30:00    com.boyaa.TestTexasDE.cases.Texas_PayLogicDE    chmod 777 /data/data/com.boyaa.androidmarketde/files success
+I     20140903 13:30:04    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140903 13:30:04    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140903 13:30:34    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasDE_20140903_01-15-32PM/_Screenshots/PayLogic_017_20140903_13_30_34.jpg
+I     20140903 13:30:39    com.boyaa.TestTexasDE.cases.Texas_PayLogicDE    tear down time out!

@@ -1,0 +1,256 @@
+package com.boyaa.testholdemth.cases;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowLogger;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemth.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemth.business.CommonBusiness;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testholdemth.uilib.IntegralExchangePage;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+import com.boyaa.testholdemth.uilib.PersonalInformationPage;
+import com.boyaa.testholdemth.uilib.SitAndGoRoomPage;
+import com.boyaa.testholdemth.business.CaseData;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is suite is to test integral exchange")
+public class IntegralExchangeTest extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private static CaseData caseData =null;
+	private LoginPage loginPage = null ;
+	public IntegralExchangeTest() {
+		super();
+	}
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();
+
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="Integral_Exchange1", name="test_IntegralExchangeCanceltoPay")
+	@Test(description="test integral exchange with seven day expression click cancle ",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeCanceltoPay(String itemname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		assertTrue(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口打开");
+		integralExchangePage.confirmPage().waitSubElement("取消按钮").click();
+		assertFalse(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有关闭");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(userIntegral ,sitAndGoRoomPage.getUserIntegral(),"没有购买道具，但是积分减少："+(userIntegral-sitAndGoRoomPage.getUserIntegral()));
+	}
+	
+	@CaseDesc(id="Integral_Exchange2", name="test_IntegralExchangeClosePayBox")
+	@Test(description="test integral exchange with seven day expression close pay box ",dataProvider = "integralExchangeData1", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeClosePayBox(String itemname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		assertTrue(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有打开");
+		integralExchangePage.confirmPage().waitSubElement("关闭按钮").click();
+		assertFalse(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有关闭");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(userIntegral ,sitAndGoRoomPage.getUserIntegral(),"没有购买道具，但是积分减少："+(userIntegral-sitAndGoRoomPage.getUserIntegral()));
+	}
+	
+	@CaseDesc(id="Integral_Exchange3", name="test_IntegralExchangeSevenDaySemotion")
+	@Test(description="test integral exchange with seven day expression",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeSevenDaySemotion (String itemname ,String exchangetips ,String propname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage =new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int bCount =personalInformationPage.getUserPersonalProps(propname);//获取指定道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		int itemcount = integralExchangePage.getCanExchangeItemCount(itemname);//获取道具剩余兑换数
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		assertTrue(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口打开");
+		assertTrue(integralExchangePage.confirmPage().waitSubElement("兑换提示框").getText().equals(exchangetips),"兑换时提示信息不正确正确");
+		integralExchangePage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有关闭");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		assertEquals(itemcount-1 ,integralExchangePage.getCanExchangeItemCount(itemname),"可兑换道具没有减少：");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(userIntegral-168 ,sitAndGoRoomPage.getUserIntegral(),"积分减少数量不正确："+(userIntegral-sitAndGoRoomPage.getUserIntegral()));
+		integralExchangePage.rd.pressBack();//返回到大厅
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(bCount+7, personalInformationPage.getUserPersonalProps(propname),"兑换后道具数量不正确");
+	}
+	
+	@CaseDesc(id="Integral_Exchange4", name="test_IntegralExchangeAwardNotEnough")
+	@Test(description="test integral exchange with seven day expression award not enough",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeAwardNotEnough(String itemname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		//@设置七天表情包兑换数量的余数为0
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		boolean bl =integralExchangePage.checkSpecificExchangeButtouStat(itemname);
+		assertFalse(bl,itemname +"：该项兑换道具已经没有兑换余额，但是兑换按钮还是可以可用状态");
+	}
+
+	
+	@CaseDesc(id="Integral_Exchange5", name="test_IntegralExchangeSevenDaySemotion")
+	@Test(description="test integral exchange with Inter active Props",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeInteractiveProps(String itemname ,String exchangetips ,String propname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage =new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int bCount =personalInformationPage.getUserPersonalProps(propname);//获取指定道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		int itemcount = integralExchangePage.getCanExchangeItemCount(itemname);//获取道具剩余兑换数
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		assertTrue(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口打开");
+		assertTrue(integralExchangePage.confirmPage().waitSubElement("兑换提示框").getText().equals(exchangetips),"兑换时提示信息不正确正确");
+		integralExchangePage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有关闭");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		assertEquals(itemcount-1 ,integralExchangePage.getCanExchangeItemCount(itemname),"可兑换道具没有减少：");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(userIntegral-150 ,sitAndGoRoomPage.getUserIntegral(),"积分减少数量不正确："+(userIntegral-sitAndGoRoomPage.getUserIntegral()));
+		integralExchangePage.rd.pressBack();//返回到大厅
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(bCount+10, personalInformationPage.getUserPersonalProps(propname),"兑换后道具数量不正确");
+	}
+	
+	@CaseDesc(id="Integral_Exchange6", name="test_IntegralExchangeSevenDaySemotion")
+	@Test(description="test integral exchange with Marray Props",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeMarrayProps(String itemname ,String exchangetips ,String propname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为2000分
+		loginPage.loginAsGuestWithTag("for_integral_exchange");
+		LobbyPage lobbyPage =new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int bCount =personalInformationPage.getUserPersonalProps(propname);//获取指定道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮").click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		//cb.srocllToText(itemname);//移动到道具行,由于uiautomator原因，暂时不滑动这个道具
+		int itemcount =integralExchangePage.getCanExchangeItemCount(itemname);//获取道具剩余兑换数
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		assertTrue(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口打开");
+		String a=integralExchangePage.confirmPage().waitSubElement("兑换提示框").getText().replace(" ", "");
+		String ab = exchangetips.replace(" ", "");
+		assertTrue(integralExchangePage.confirmPage().waitSubElement("兑换提示框").getText().replace(" ", "").equals(exchangetips.replace(" ", "")),"兑换时提示信息不正确");
+		integralExchangePage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(integralExchangePage.confirmPage().isPresent(),"兑换确认窗口没有关闭");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		assertEquals(itemcount-1 ,integralExchangePage.getCanExchangeItemCount(itemname),"可兑换道具没有减少：");
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(userIntegral-336 ,sitAndGoRoomPage.getUserIntegral(),"积分减少数量不正确："+(userIntegral-sitAndGoRoomPage.getUserIntegral()));
+		integralExchangePage.rd.pressBack();//返回到大厅
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(bCount+1, personalInformationPage.getUserPersonalProps(propname),"兑换后道具数量不正确");
+	}
+	
+	@CaseDesc(id="Integral_Exchange11", name="test_IntegralExchangeNotEnough")
+	@Test(description="test not enough integral to exchange with seven day expression",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeNotEnough(String itemname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为0分
+		loginPage.loginAsGuestWithTag("normal");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮",20).click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		long userIntegral = sitAndGoRoomPage.getUserIntegral();//获取用户积分数量
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行
+		integralExchangePage.clickSpecificExchangeButtou(itemname);//点击道具的兑换按钮
+		integralExchangePage.rd.pressBack();//返回到淘汰赛页面
+		assertEquals(sitAndGoRoomPage.getUserIntegral(), userIntegral,"积分减少，预期积分不变");
+		}
+	
+	
+	@CaseDesc(id="Integral_Exchange12", name="test_IntegralExchangeScroll")
+	@Test(description="test integral exchange page scroll ",dataProvider = "integralExchangeData", dataProviderClass =CaseDataDriver.class)
+	public void test_IntegralExchangeScroll(String itemname) throws InterruptedException{	
+		//@TODO调用接口设置用户积分为0分
+		loginPage.loginAsGuestWithTag("normal");
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage.waitSubElement("淘汰赛按钮",20).click();
+		SitAndGoRoomPage sitAndGoRoomPage =new SitAndGoRoomPage();
+		sitAndGoRoomPage.waitSubElement("积分数量按钮").click();//点击积分兑换入口，进入积分兑换页面
+		IntegralExchangePage integralExchangePage = new IntegralExchangePage();
+		integralExchangePage.waitPresent(20);//等待积分兑换页面出现
+		cb.srocllToText(itemname);//移动到道具行，没有报错则说明页面移动找到了黄钻。
+	}
+
+}

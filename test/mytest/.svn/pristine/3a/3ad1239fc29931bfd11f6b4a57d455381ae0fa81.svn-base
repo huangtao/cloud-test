@@ -1,0 +1,17 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class BuyPropDialog extends RainbowElement{
+
+	public void buy() {
+		this.waitSubElement("购买按钮").click();	
+		try {
+			Thread.sleep(10000);	//TODO 改为等待包含购买成功的文字（需要再研究下appium的wait机制）
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

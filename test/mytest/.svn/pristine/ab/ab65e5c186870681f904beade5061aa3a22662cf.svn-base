@@ -1,0 +1,376 @@
+package com.boyaa.testholdemsina.cases;
+
+import io.appium.java_client.TouchAction;
+
+import org.apache.bcel.generic.NEW;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.PrivateRoomPage;
+import com.boyaa.testholdemsina.uilib.StorePage;
+
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="私人房")
+public class PrivateRoomTest extends TestCaseBase{
+	private PrivateRoomPage privateRoomPage = null;
+	private CommonBusiness commonBusiness = null;
+	private GameLobbyPage gameLobbyPage = null;
+	private StorePage storePage = null;
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage = null;
+	private CommonLobbyPage commonLobbyPage = null;
+	@BeforeMethod
+	public void setup(){
+		super.setUp();
+		privateRoomPage = new PrivateRoomPage();
+		commonBusiness = new CommonBusiness();
+		gameLobbyPage = new GameLobbyPage();
+		storePage = new StorePage();
+		commonLobbyPage = new CommonLobbyPage();
+		loginPage = new LoginPage();
+		lobbyPage = new LobbyPage();
+//		CommonBusiness.createNativeDriver();
+	}
+	
+	@CaseDesc(id="CreatePrivateRoom",name="创建私人房")
+	@Test(description="玩家非金卡VIP，创建私人房失败")
+	public void test01_CreatePrivateRoom() throws Exception{
+		Thread.sleep(10*1000);
+		loginPage.waitSubElement("测试环境").click();	
+		loginPage.waitSubElement("随机游客").click();
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(2*1000);
+		loginPage.waitSubElement("游客登陆确认").click();
+		Thread.sleep(15*1000);
+		commonBusiness.closeAutoPage();
+		lobbyPage.waitSubElement("跳过").click();
+		Thread.sleep(2*1000);
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(2*1000);
+		gameLobbyPage.isTipsExist("过滤");
+		gameLobbyPage.isTipsExist("俱乐部");
+		Thread.sleep(1*1000);
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"), "预期结果：出现同步标志，实际结果：未出现同步标志");
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("购买").click();
+		Thread.sleep(1*1000);
+		assertTrue(storePage.isSubElementPresent("同步标志"), "预期结果：出现同步标志，实际结果：未出现同步标志");
+		storePage.waitSubElement("关闭").click();
+		assertTrue(privateRoomPage.isSubElementPresent("私人房"));
+		
+	}
+	
+	
+	@CaseDesc(id="CreatePrivateRoom1",name="创建私人房1")
+	@Test(description="玩家金卡VIP，创建私人房")
+	public void test02_CreatePrivateRoom() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+//		assertTrue(privateRoomPage.isSubElementPresent("同步标志"), "预期结果：出现同步标志，实际结果：未出现同步标志");
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		Thread.sleep(2*1000);
+		WebElement a = privateRoomPage.waitSubElement("拖动选中");
+		WebElement to = privateRoomPage.waitSubElement("拖动设置");
+		commonBusiness.Moveto(a, to);
+		Thread.sleep(1*1000);
+		privateRoomPage.waitSubElement("输入密码").sendKeys("111111");
+		privateRoomPage.waitSubElement("输入密码").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		privateRoomPage.waitSubElement("创建").click();
+		assertTrue(privateRoomPage.isSubElementPresent("创建成功"), "预期结果：创建成功，实际结果：其他");
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}		
+		assertTrue(privateRoomPage.isSubElementPresent("私人房游戏区"), "预期结果：进入私人房，实际结果：未进入私人房");
+		
+	}
+	@CaseDesc(id="InviteFriend1",name="非加密私人房邀请好友")
+	@Test(description="非加密私人房邀请好友")
+	public void test03_InviteFriend() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(3*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonBusiness.Invite("在线好友");	
+		commonLobbyPage.waitSubElement("邀请").click();
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现标志，实际结果：未出现标志");
+
+	}
+	@CaseDesc(id="InviteFriend2",name="非加密私人房邀请在线玩家")
+	@Test(description="非加密私人房邀请在线玩家")
+	public void test04_InviteOnline() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(3*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonBusiness.Invite("在线玩家");
+		commonLobbyPage.waitSubElement("邀请").click();
+		Thread.sleep(1*1000);
+		System.out.println(commonLobbyPage.waitSubElement("邀请").getText());
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	
+	@CaseDesc(id="InviteFriend3",name="加密私人房邀请好友")
+	@Test(description="加密私人房邀请好友")
+	public void test05_InviteFriend1() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("输入密码").sendKeys("111111");
+		privateRoomPage.waitSubElement("输入密码").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(3*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonBusiness.Invite("在线好友");
+		commonLobbyPage.waitSubElement("邀请").click();
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现标志，实际结果：未出现标志");
+
+	}
+	@CaseDesc(id="InviteFriend4",name="加密私人房邀请在线玩家")
+	@Test(description="加密私人房邀请在线玩家")
+	public void test06_InviteOnline1() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("输入密码").sendKeys("111111");
+		privateRoomPage.waitSubElement("输入密码").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(3*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonBusiness.Invite("在线玩家");
+		commonLobbyPage.waitSubElement("邀请").click();
+		Thread.sleep(1*1000);
+		System.out.println(commonLobbyPage.waitSubElement("邀请").getText());
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	
+	@CaseDesc(id="DealerReward1",name="打赏荷官1")
+	@Test(description="玩家进入私人房坐下打赏荷官")
+	public void test07_DealerReward1() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(3*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		Thread.sleep(1000);
+		commonLobbyPage.waitSubElement("打赏").click();
+		CommonBusiness.takesScreenShot(getDriver(), "PrivateRoomDealerReward1.png");
+		Thread.sleep(2*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	@CaseDesc(id="DealerReward2",name="打赏荷官2")
+	@Test(description="玩家进入私人房站起，再打赏荷官")
+	public void test08_DealerReward2() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		Thread.sleep(1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		commonLobbyPage.waitSubElement("打赏").click();
+		commonLobbyPage.isSubElementPresent("不能打赏的抱歉提醒");
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	
+	@CaseDesc(id="EnterPriviteRoom1",name="进入非加密私人房后，不进入牌局")
+	@Test(description="进入非加密私人房后，不进入牌局")
+	public void test09_EnterPriviteRoom1() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		commonLobbyPage.waitSubElement("坐下").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("坐下确认1").click();
+		Thread.sleep(3*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	
+	@CaseDesc(id="EnterPriviteRoom2",name="进入加密私人房后，不进入牌局")
+	@Test(description="进入加密私人房后，不进入牌局")
+	public void test10_EnterPriviteRoom2() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("输入密码").sendKeys("111111");
+		privateRoomPage.waitSubElement("输入密码").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		commonLobbyPage.waitSubElement("坐下").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("坐下确认1").click();
+		Thread.sleep(3*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	
+	@CaseDesc(id="PrivateRoomChat",name="私人房聊天")
+	@Test(description="玩家进入私人房聊天")
+	public void test11_Chat() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天表情").click();
+		CommonBusiness.takesScreenShot(getDriver(), "PrivateRoomChat1.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天标签头").click();
+		commonLobbyPage.waitSubElement("聊天语句选择").click();
+		commonLobbyPage.waitSubElement("聊天气泡出现");
+		CommonBusiness.takesScreenShot(getDriver(), "PrivateRoomChat2.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天记录").click();
+		commonLobbyPage.waitSubElement("聊天记录页面").isDisplayed();
+		CommonBusiness.takesScreenShot(getDriver(), "PrivateRoomChat3.png");
+		Thread.sleep(3*1000);
+		commonLobbyPage.waitSubElement("聊天记录页面").click();
+		commonLobbyPage.waitSubElement("发送").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+
+	}
+	
+	@CaseDesc(id="RoomClose",name="创建私人房并进入坐下，15分钟后房间关闭")
+	@Test(description="创建私人房并进入坐下，15分钟后房间关闭")
+	public void test12_RoomClose() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		privateRoomPage.waitSubElement("私人房").click();
+		Thread.sleep(2*1000);
+		privateRoomPage.waitSubElement("创建私人房").click();
+		privateRoomPage.waitSubElement("创建").click();
+		privateRoomPage.waitSubElement("确定").click();
+		Thread.sleep(2*1000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}	
+		Thread.sleep(16*60*1000);
+		assertTrue(privateRoomPage.isSubElementPresent("超时退出"),"预期结果：出现超时标志，实际结果：未出现超时标志");
+//		privateRoomPage.waitSubElement("超时确定").click();
+//		commonBusiness.backLobbyList();//返回游戏列表
+//		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

@@ -1,0 +1,188 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.MTTLobbyPage;
+import com.boyaa.testholdemsina.uilib.SNGLobbyPage;
+import com.boyaa.testholdemsina.uilib.StorePage;
+/*
+ * 现在星券所有的商品都下架了，5.7后的版本，没有星券入口了
+ */
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="星券奖励")
+public class PointTest extends TestCaseBase{
+	/*
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private StorePage storePage=null;
+	private GameLobbyPage gameLobbyPage=null;
+	private SNGLobbyPage sngLobbyPage=null;
+	private MTTLobbyPage mttLobbyPage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		commonBusiness=new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		storePage=new StorePage();
+		gameLobbyPage=new GameLobbyPage();
+		sngLobbyPage=new SNGLobbyPage();
+		mttLobbyPage=new MTTLobbyPage();
+	}
+	
+	@CaseDesc(id="checkPoint", name="查看星券奖励")
+	@Test(description="查看星券奖励")
+	public void test_checkPoint() throws Exception {
+		commonBusiness.loginEnv();
+		commonBusiness.closeOtherDialog();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "point.png");
+	}
+	@CaseDesc(id="checkPointChange", name="查看星券兑换")
+	@Test(description="查看星券兑换")
+	public void test_checkPointChange() throws Exception {
+		commonBusiness.loginEnv();
+		lobbyPage.waitSubElement("关闭活动弹框").click();
+		lobbyPage.waitSubElement("关闭活动弹框").click();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("黄钻").click();
+		CommonBusiness.takesScreenShot(getDriver(), "yellowDiamond.png");		
+	}
+	@CaseDesc(id="getPoint1", name="获取星券")
+	@Test(description="获取星券")
+	public void test_getPoint1() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("增加星券").click();
+		Thread.sleep(2*1000);
+		storePage.waitSubElement("玩牌").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "gameLobby.png");
+		assertTrue(gameLobbyPage.isSubElementPresent("立即开始"),"期望结果：游戏大厅界面出现；实际结果：游戏大厅界面没出现");
+		
+	}
+	@CaseDesc(id="getPoint2", name="获取星券")
+	@Test(description="获取星券")
+	public void test_getPoint2() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("增加星券").click();
+		Thread.sleep(2*1000);
+		storePage.waitSubElement("淘汰赛").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "sngLobby.png");
+		assertTrue(sngLobbyPage.isPresent(),"期望结果：淘汰赛大厅界面出现；实际结果：淘汰赛大厅界面没出现");
+		
+	}
+	@CaseDesc(id="getPoint3", name="获取星券")
+	@Test(description="获取星券")
+	public void test_getPoint3() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("增加星券").click();
+		Thread.sleep(2*1000);
+		storePage.waitSubElement("锦标赛").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "mttLobby.png");
+		assertTrue(mttLobbyPage.isPresent(),"期望结果：锦标赛大厅界面出现；实际结果：锦标赛大厅界面没出现");
+		
+	}
+	@CaseDesc(id="getPoint4", name="获取星券")
+	@Test(description="获取星券")
+	public void test_getPoint4() throws Exception {
+		commonBusiness.loginToLobby();	
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("增加星券").click();
+		Thread.sleep(2*1000);
+		storePage.waitSubElement("充值").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "storeLobby.png");
+		assertTrue(storePage.isPresent(),"期望结果：商城界面出现；实际结果：商城界面没出现");
+		
+	}
+	@CaseDesc(id="PointExchange", name="星券兑换")
+	@Test(description="获取星券")
+	public void test_pointExchange() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("黄钻").click();
+		Thread.sleep(1*1000);
+		try {
+			storePage.waitSubElement("如何赚星券").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("星券足够兑换黄钻");
+		}
+		try {
+			storePage.waitSubElement("确定兑换").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("星券不够兑换黄钻");
+		}
+		CommonBusiness.takesScreenShot(getDriver(), "pointLess.png");
+		
+	}
+	@CaseDesc(id="PointRecord", name="星券兑换记录")
+	@Test(description="星券兑换记录")
+	public void test_exchangeRecord() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("兑换记录").click();
+		Thread.sleep(1*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "exchangeRecord.png");		
+	}
+	@CaseDesc(id="codeExchange", name="兑换码兑换")
+	@Test(description="星券兑换记录")
+	public void test_codeExchange() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("商城").click();
+		Thread.sleep(5*1000);
+		storePage.waitSubElement("星券奖励").click();
+		Thread.sleep(8*1000);
+		storePage.waitSubElement("兑换码").click();
+//		storePage.waitSubElement("输入兑换码").sendKeys("");
+		CommonBusiness.takesScreenShot(getDriver(), "exchangeRecord.png");		
+		storePage.waitSubElement("二维码").click();
+		CommonBusiness.takesScreenShot(getDriver(), "two_code.png");	
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+	*/
+}

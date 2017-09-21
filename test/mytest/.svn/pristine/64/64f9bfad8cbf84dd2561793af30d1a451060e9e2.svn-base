@@ -1,0 +1,28 @@
+<h2>Methods run, sorted chronologically</h2><h3>&gt;&gt; means before, &lt;&lt; means after</h3><p/><br/><em>Default suite</em><p/><small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table border="1">
+<tr><th>Time</th><th>Delta (ms)</th><th>Suite<br>configuration</th><th>Test<br>configuration</th><th>Class<br>configuration</th><th>Groups<br>configuration</th><th>Method<br>configuration</th><th>Test<br>method</th><th>Thread</th><th>Instances</th></tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:44</td>   <td>0</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="&gt;&gt;FriendHomeTest.setup()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">&gt;&gt;setup</td> 
+<td>&nbsp;</td>  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:45</td>   <td>584</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test01_CreateFriendRoom()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test01_CreateFriendRoom</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:48</td>   <td>4201</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test02_CreateFriendRoom()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test02_CreateFriendRoom</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:52</td>   <td>7657</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test03_EnterErrorPasswd()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test03_EnterErrorPasswd</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:55</td>   <td>10802</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test04_EnterPasswd()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test04_EnterPasswd</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:39:58</td>   <td>13943</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test05_InviteFriend()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test05_InviteFriend</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:01</td>   <td>17114</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test06_InviteOnline()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test06_InviteOnline</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:05</td>   <td>20387</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test07_DealerReward1()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test07_DealerReward1</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:08</td>   <td>23701</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test08_DealerReward2()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test08_DealerReward2</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:11</td>   <td>26990</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test10_CreatePrivateHome()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test10_CreatePrivateHome</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:14</td>   <td>30200</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test11_EnterFriendHome1()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test11_EnterFriendHome1</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+<tr bgcolor="a58fbd">  <td>16/11/16 12:40:18</td>   <td>33342</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="FriendHomeTest.test9_Chat()[pri:0, instance:com.boyaa.testholdemsina.cases.FriendHomeTest@69d9c55]">test9_Chat</td> 
+  <td>main@1766145591</td>   <td></td> </tr>
+</table>

@@ -1,0 +1,15 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class SafeBoxDialog extends RainbowElement{
+	public void confirm() {
+		waitSubElement("确定按钮").click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

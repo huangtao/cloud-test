@@ -1,0 +1,18 @@
+package com.boyaa;
+
+import java.util.HashMap;
+
+public class Config {
+	public static final String appId = "403000";
+	public static final String prePublicEnvFriendId = "100002025";
+	public static final String testEnvFriendId = "2006700";
+	public static final String onlineEnvFriendId = "462619";
+	public static final HashMap<String, String> cidToMidMap = new HashMap<String, String>();
+	public static final String waitActivity = "";
+	static {
+		cidToMidMap.put("100001300", "100001300");
+		cidToMidMap.put("100000344", "100000344");
+		cidToMidMap.put("100002600", "100002867");
+		cidToMidMap.put("100000599", "100002967");	
+	}
+}

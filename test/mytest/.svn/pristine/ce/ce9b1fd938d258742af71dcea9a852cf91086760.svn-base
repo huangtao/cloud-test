@@ -1,0 +1,66 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.WeeklyRankingPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="每周排行榜")
+public class WeeklyRankingTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private WeeklyRankingPage weeklyRankingPage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		commonBusiness=new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		weeklyRankingPage=new WeeklyRankingPage();
+	}
+	
+	@CaseDesc(id="checkWeeklyRanking", name="查看每周排行榜")
+	@Test(description="查看每周排行榜")
+	public void test_checkRanking() throws Exception {
+		commonBusiness.loginToLobby();
+		CommonBusiness.takesScreenShot(getDriver(), "WeeklyRainking.png");
+	}
+	@CaseDesc(id="WeeklyRankingAddFrient", name="每周排行榜邀请好友")
+	@Test(description="每周排行榜邀请好友")
+	public void test_rankingAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		weeklyRankingPage.waitSubElement("添加好友").click();
+		CommonBusiness.takesScreenShot(getDriver(), "rankingAddFriend.png");
+	}
+	@CaseDesc(id="RankingPersonInfo", name="每周排行玩家信息")
+	@Test(description="每周排行榜玩家信息")
+	public void test_rankingPersonInfo() throws Exception {
+		commonBusiness.loginToLobby();
+		weeklyRankingPage.waitSubElement("每周排行第一名").click();
+		CommonBusiness.takesScreenShot(getDriver(), "RankingPersonInfo.png");
+		weeklyRankingPage.waitSubElement("MTT").click();
+		CommonBusiness.takesScreenShot(getDriver(), "RankingMTTInfo.png");
+		weeklyRankingPage.waitSubElement("SNG").click();
+		CommonBusiness.takesScreenShot(getDriver(), "RankingSNGInfo.png");
+		weeklyRankingPage.waitSubElement("普通场").click();
+		CommonBusiness.takesScreenShot(getDriver(), "RankingNormalInfo.png");
+		weeklyRankingPage.waitSubElement("成就").click();
+		CommonBusiness.takesScreenShot(getDriver(), "RankingHonorInfo.png");
+		assertTrue(weeklyRankingPage.isSubElementPresent("成就"),"期待结果：当前页面为排行个人信息页面,实际结果：当前页面不是排行榜个人信息页面");
+		weeklyRankingPage.waitSubElement("关闭").click();
+		
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

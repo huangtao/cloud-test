@@ -1,0 +1,47 @@
+envelopAnimLayout=
+{
+	name="envelopAnimLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=258,height=106,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="wing1",type=1,typeName="Image",time=66972341,report=0,x=78,y=31,width=50,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/wing.png"
+	},
+	{
+		name="wing2",type=1,typeName="Image",time=66972429,report=0,x=201,y=27,width=50,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/wing_1.png"
+	},
+	{
+		name="envelope",type=1,typeName="Image",time=66971964,report=0,x=117,y=15,width=100,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/envelope.png"
+	},
+	{
+		name="stars",type=0,typeName="View",time=66972501,report=0,x=-5,y=25,width=200,height=100,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="star1",type=1,typeName="Image",time=66972555,report=0,x=101,y=5,width=12,height=12,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star2",type=1,typeName="Image",time=66972876,report=0,x=81,y=9,width=7,height=7,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star3",type=1,typeName="Image",time=66972884,report=0,x=21,y=40,width=13,height=10,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star4",type=1,typeName="Image",time=66972889,report=0,x=93,y=44,width=10,height=10,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star5",type=1,typeName="Image",time=66972893,report=0,x=46,y=37,width=5,height=5,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star6",type=1,typeName="Image",time=66972901,report=0,x=107,y=21,width=14,height=14,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star7",type=1,typeName="Image",time=66972905,report=0,x=126,y=40,width=10,height=10,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star8",type=1,typeName="Image",time=66972910,report=0,x=50,y=21,width=7,height=7,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star9",type=1,typeName="Image",time=66973271,report=0,x=69,y=46,width=9,height=9,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		},
+		{
+			name="star10",type=1,typeName="Image",time=66973275,report=0,x=11,y=28,width=3,height=3,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/animation/messagefly/star.png"
+		}
+	}
+}
+return envelopAnimLayout;

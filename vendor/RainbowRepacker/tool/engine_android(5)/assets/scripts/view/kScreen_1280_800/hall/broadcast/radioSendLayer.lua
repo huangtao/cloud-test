@@ -1,0 +1,50 @@
+local radioSendLayer=
+{
+	name="radioSendLayer",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shieldBg",type=1,typeName="Image",time=90122766,report=0,x=-9,y=17,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="bg",type=1,typeName="Image",time=90121321,report=0,x=0,y=-1,width=1110,height=600,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55,
+		{
+			name="topView",type=0,typeName="View",time=90121322,report=0,x=0,y=45,width=1090,height=65,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="inputBg",type=1,typeName="Image",time=90121323,report=0,x=36,y=0,width=754,height=65,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="hall/common/input_bg_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="laba",type=1,typeName="Image",time=90121324,report=0,x=10,y=0,width=42,height=36,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="hall/broadcast/laba_blue.png"
+				},
+				{
+					name="inputText",type=6,typeName="EditText",time=90121325,report=0,x=56,y=-1,width=699,height=61,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,fontSize=24,textAlign=kAlignLeft,colorRed=60,colorGreen=125,colorBlue=190
+				}
+			},
+			{
+				name="sendMessageBtn",type=2,typeName="Button",time=90121326,report=0,x=27,y=-11,width=200,height=89,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomRight,file="hall/common/btns/btn_green_164x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="Text5",type=4,typeName="Text",time=90121327,report=0,x=0,y=0,width=90,height=41,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=36,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[发  送]]
+				}
+			}
+		},
+		{
+			name="tipsView",type=0,typeName="View",time=90121328,report=0,x=7,y=95,width=1100,height=0,fillTopLeftX=5,fillTopLeftY=180,fillBottomRightX=5,fillBottomRightY=420,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,
+			{
+				name="Image1",type=1,typeName="Image",time=90121329,report=0,x=0,y=-22,width=1020,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_describe_bg_25_25_25_25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="tips1",type=4,typeName="Text",time=90121330,report=0,x=10,y=0,width=261,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=26,textAlign=kAlignLeft,colorRed=167,colorGreen=142,colorBlue=96,string=[[发送世界喇叭将消耗]]
+				},
+				{
+					name="tips2",type=4,typeName="Text",time=90121331,report=0,x=370,y=0,width=659,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=26,textAlign=kAlignLeft,colorRed=167,colorGreen=142,colorBlue=96,string=[[  ，发送成功后所有在线玩家都能接收（比赛场除外）]],colorA=1
+				},
+				{
+					name="tips",type=4,typeName="Text",time=90121332,report=0,x=256,y=0,width=200,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=26,textAlign=kAlignLeft,colorRed=234,colorGreen=72,colorBlue=18,string=[[3000银币]],colorA=1
+				}
+			}
+		},
+		{
+			name="close",type=2,typeName="Button",time=90121334,report=0,x=-15,y=-15,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+		},
+		{
+			name="msgView",type=0,typeName="View",time=0,x=0,y=207,width=1020,height=340,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop
+		}
+	}
+}
+return radioSendLayer;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<uses-interface package="com.boyaa.engineqpsc.yibin"/>
+		<uses-interface launchactivitie="com.boyaa.engineqpsc.yibin.Game"/>
+		<uses-interface datapath="\\\\fs03\\byDFS\\部门共享\\棋牌事业部\\测试部\\自动化测试部\\Projects\\LocalChess\\TestHallYB" />	
+		<uses-interface reports="E:\workspace\Rainbow2\reports"/>
+		<uses-interface appium_server="http://localhost:4723/wd/hub"/>
+	</project>
+</interface>

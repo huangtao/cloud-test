@@ -1,0 +1,32 @@
+I     20140902 12:53:00    Generator Report:    chmod -R 777 /storage/emulated/0/ATR/TexasCN_20140902_12-52-52PM/ failed!
+
+I     20140902 12:53:00    Generator Report:    createReportXMLFile Start:
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:Header
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:Boyaa Automation Test
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:ApplicationName
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:TexasCN
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:Release
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:TexasCNV3.3
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:Build
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:V3.3.0
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:StartTime
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:2014/09/02 12:52:52 PM
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:EndTime
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:0
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:ExecuteHourTime
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:0
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:ExecuteMinuteTime
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:0
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrName:ExecuteSecondTime
+I     20140902 12:53:00    XMLReportOperator:    childNodeAttrValue:0
+I     20140902 12:53:00    Generator Report:    createReportXMLFile End
+I     20140902 12:53:00    Generator Report:    addTestSuiteNode Start:
+I     20140902 12:53:00    Generator Report:    addTestSuiteNode End
+I     20140902 12:53:00    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    chmod 777 /data/data/com.boyaa.sina/files success
+I     20140902 12:53:04    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140902 12:53:04    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140902 12:53:17    LocalLib    id/button2 is not found.
+I     20140902 12:53:42    Generator Report:    getSnapshort Start:
+I     20140902 12:53:42    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasCN_20140902_12-52-52PM/_Screenshots/PayLogic_001_20140902_12_53_42.jpg
+I     20140902 12:53:42    Generator Report:    getSnapshort End
+I     20140902 12:53:47    com.boyaa.TestTexasCN.cases.Texas_PayLogicCN    tear down time out!

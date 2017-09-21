@@ -1,0 +1,108 @@
+package com.boyaa.testholdemth.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.TimeoutException;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.repository.UIRepository;
+import com.boyaa.testholdemth.business.AccountData;
+
+public class LoginPage extends RainbowElement{
+	private static RainbowDriver rd = null;
+	public  LoginPage(){
+		rd = RainbowDriver.getRainbowDriver();
+	}
+	public  LoginPage(RainbowDriver rainbowd){
+		super(rainbowd);
+		rd = rainbowd;
+		activeApp();
+	
+	}
+	public AccountData loginAsGuestWithTag(String tag) throws InterruptedException{		
+		
+		AccountData ad = AccountData.requestByTag(tag); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到tag为:" + tag + "的账号");
+		}
+		loginAsGuestWithAccount(ad);
+		return ad;
+	}
+	
+	public AccountData loginAsGuestWithCoins(long coins) throws InterruptedException{		
+		AccountData ad = AccountData.requestByCoins(String.valueOf(coins)); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到金币数为:" + coins + "的账号");
+		}
+		loginAsGuestWithAccount(ad);
+		return ad;
+	}
+	
+	public void enterTestEnv() {
+		try {
+			Thread.sleep(2*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(int i=0;i<5;i++) {	//由于去掉了waitActivity的设计，调试菜单有时候第一次不响应，所以需要多次尝试
+			rd.pressMenu();
+			try	{
+				waitSubElement("测试环境菜单项",2).click();
+				return;
+			}
+			catch (TimeoutException e) {	
+			}
+		}
+		throw new RuntimeException("多次点击菜单键后仍然没有弹出调试菜单！");
+	}
+	
+
+	/*
+	public AccountData loginAsGuestWithCoins(long coins) throws InterruptedException{ //本接口使用本地账户，演示而用		
+		AccountData ad = AccountData.requestByTag("for_vm"); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到tag为: for_vm的账号");
+		}
+		String setCoins;
+		if (coins == 0) {
+			setCoins = "0";
+		}
+		else {
+			setCoins = String.valueOf(coins);
+		}
+		//setAccountCoins(ad, setCoins); @//TODO 此设置是在case中调，还是此page中调用comm
+		loginAsGuest();
+		return ad;
+	}
+	*/
+	public void loginAsGuestWithAccount(AccountData ad) throws InterruptedException {
+		rd.pressMenu();
+		//LoginPage loginPage = new LoginPage();
+		waitSubElement("更多菜单项").click();
+		waitSubElement("自定义机器码菜单项").click();
+		rd.sendKeys(waitSubElement("自定义机器码输入框"), ad.getMachineID());
+		waitSubElement("自定义机器码输入框的确定按钮").click();		
+		loginAsGuest();
+	}
+	
+	public void loginAsGuest() throws InterruptedException{
+		//LoginPage loginPage = new LoginPage();
+//		if (loginPage.isSubElementPresent("是否添加到桌面快捷方式的确认按钮")) {
+//			loginPage.waitSubElement("是否添加到桌面快捷方式的确认按钮").click();
+//		}
+		waitSubElement("游客登录按钮").click();
+		//new LobbyPage().waitPresent();
+		closeThePopupWindowAfterLogin();
+	}
+	
+	public void closeThePopupWindowAfterLogin() {
+		ContinuousLoginRewardsPage clogin = new ContinuousLoginRewardsPage(rd);
+		if (clogin.isPresent()) {
+			clogin.close();
+		}
+		//TODO: close other popup windows
+	}
+
+}

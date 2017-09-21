@@ -1,0 +1,182 @@
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+package com.boyaa.testholdemhk.cases;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.MissionPage;
+import com.boyaa.testholdemhk.uilib.PayCenterPage;
+import com.boyaa.testholdemhk.uilib.PropsMarketPage;
+import com.boyaa.testholdemhk.uilib.RoomListPage;
+import com.boyaa.testholdemhk.uilib.RoomPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="This is a smoke test that use for Rainbow2 framework testing")
+public class HoldemSmokeTest extends TestCaseBase{
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	public HoldemSmokeTest() {
+		super();	
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();		
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();		
+		loginPage.enterTestEnv();	  
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="ST_001", name="login")
+	@Test(description="test the guest login function for the Texas Pocker Thai")
+	public void test_login() throws InterruptedException{	
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+	
+
+	@CaseDesc(id="ST_002", name="logout")
+	@Test(description="test the logout function for the Texas Pocker Thai")
+	public void test_logout() throws InterruptedException{		
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+		lobbyPage.waitSubElement("更多选项按钮").click();
+		assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+		lobbyPage.moreOptionPage().waitSubElement("登出按钮").click();
+		assertTrue(loginPage.isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+	}
+	
+
+	@CaseDesc(id="ST_003", name="fastStart")
+	@Test(description="test the [Play Now] entrance ")
+	public void test_fastStart() throws InterruptedException{	
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("快速开始按钮").click();//Check the [quick start] button exists;		
+		RoomPage roomPage = new RoomPage();
+		assertTrue(roomPage.isSubElementPresent("左上角菜单按钮"),"预期结果：离开下拉列表存在，实际结果：离开下拉列表不存在");//check The drop down list for leaving the room exists；
+		//保证当前用户正常退出房间不影响后面的用例执行。
+		try{
+			roomPage.leaveRoomAndGoToLobby();
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+	}
+	
+
+	@CaseDesc(id="ST_004", name="leaveRoom")
+	@Test(description="test the leaving room function ")
+	public void test_leaveRoom() throws InterruptedException{		
+		loginPage.loginAsGuestWithTag("normal");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("快速开始按钮").click();//Check the [quick start] button exists;	
+		RoomPage roomPage = new RoomPage();		
+		roomPage.leaveRoomAndGoToLobby();		
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+	
+
+	@CaseDesc(id="ST_005", name="goToRoomList")
+	@Test(description="test the go to room list function ")
+	public void test_goToRoomList() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		assertTrue(roomListPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+	
+	@CaseDesc(id="ST_005x", name="goToRoomList")
+	@Test(description="test the go to room list function ")
+	public void test_goToRoomListx() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();		
+		RoomListPage roomListPage = new RoomListPage();
+		assertTrue(roomListPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+		RoomListPage.rd.scrollForwardOneLine(roomListPage, "房间列表页面", "房间列表中行");
+	}
+	
+
+	@CaseDesc(id="ST_006", name="leaveRoomList")
+	@Test(description="test the leaving room list function ")
+	public void test_leaveRoomList() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("游戏大厅按钮").click();			
+		super.getDriver().pressBack();//Click the phone_return_button；
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+		
+	}
+	
+
+	@CaseDesc(id="ST_007", name="shop")
+	@Test(description="test the [Recharge] entrance ")
+	public void test_shop() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		PayCenterPage payCenterPage =new PayCenterPage();
+		assertTrue(payCenterPage.isPresent(),"储值中心页面没有出现");
+	}
+	
+
+	@CaseDesc(id="ST_008", name="leaveShop1")
+	@Test(description="test the leaving pay center function, to leave.")
+	public void test_leaveShop1() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("储值中心按钮").click();
+		PayCenterPage payCenterPage =new PayCenterPage();
+		assertTrue(payCenterPage.isPresent(),"储值中心页面没有出现");
+		payCenterPage.waitSubElement("关闭按钮").click(); 
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+			
+	
+
+	@CaseDesc(id="ST_010", name="taskPage")
+	@Test(description=" test the [Mission] entrance")
+	public void test_taskPage() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("任务按钮").click();
+		MissionPage missionPage =new MissionPage();
+		assertTrue(missionPage.isPresent(),"任务页面没有出现");
+	}
+	
+
+	@CaseDesc(id="ST_011", name="leaveTaskPage")
+	@Test(description="test the leaving task page function ")
+	public void test_leaveTaskPage() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("for_set");//使用游客登录
+		LobbyPage lobbyPage = new LobbyPage();
+		lobbyPage.waitSubElement("任务按钮").click();
+		MissionPage missionPage = new MissionPage();
+		assertTrue(missionPage.isPresent(), "任务页面没有出现");
+		missionPage.waitSubElement("关闭按钮").click();
+		assertTrue(lobbyPage.isSubElementPresent("快速开始按钮"),"预期结果：快速开始按钮存在，实际结果：快速开始按钮不存在");//Check the [quick start] button exists;
+	}
+	
+	@CaseDesc(id="ST_012",name="propsMall")
+	@Test(description="test the [Item] entrance")
+	public void test_propsMall() throws Exception {		
+		loginPage.loginAsGuestWithTag("normal");//游客登陆
+		LobbyPage lobbyPage = new LobbyPage();		
+		lobbyPage.waitSubElement("道具按钮").click(); //大厅中点击道具按钮
+		PropsMarketPage propsMarketPage = new PropsMarketPage();
+		assertTrue(propsMarketPage.isPresent(), "预期结果：道具商城页面打开，实际结果：道具商城页面没有出现");
+	}
+	
+	
+}

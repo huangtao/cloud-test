@@ -1,0 +1,603 @@
+package com.boyaa.hallbase.common;
+
+import java.util.Calendar;
+
+import org.json.JSONObject;
+
+import com.boyaa.hallbase.uilib.AccountLoginPage;
+import com.boyaa.hallbase.uilib.AnouncementDialog;
+import com.boyaa.hallbase.uilib.BankruptcyDialog;
+import com.boyaa.hallbase.uilib.CheckinDialog;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.RichTextAnouncementDialog;
+import com.boyaa.hallbase.uilib.UpdateDialog;
+import com.boyaa.hallbase.uilib.UserPage;
+//import com.boyaa.Config;
+import com.boyaa.rainbow2.RainbowDriver;
+
+public class CommonBusiness {
+	public static ServerEnvironment currentEnv = ServerEnvironment.TestEnv;
+	public static String appId = "203001";	//TODO:改成从计划读取
+	
+	public enum CheckinStatus {
+		Checked, UnChecked
+	}
+	
+	public enum VipType {
+		OneDay(4), WeekCard(5), MonthCard(6), NotVip(0);
+		
+		private int flag;
+		private VipType(int flag) {
+			this.flag = flag;
+		}
+		
+		public int getFlag() {
+			return this.flag;
+		}
+	}
+	
+	/**
+	 * 根据参数来切换到指定的服务器环境，如：测试服、线上、大厅等
+	 * @author JackWang
+	 * @param be 
+	 *          枚举类参数 参考ServerEnvironment类
+	 */
+	public static void SwitchToEnvironment(ServerEnvironment be){
+		HallPage hallPage = new HallPage();
+		hallPage.waitPresent();
+		switch(be){
+		case TestEnv:
+			hallPage.waitSubElement("测试服按钮").click();
+			currentEnv = ServerEnvironment.TestEnv;
+			break;
+		case OnlineEnv:
+			hallPage.waitSubElement("线上服按钮").click();
+			currentEnv = ServerEnvironment.OnlineEnv;
+			break;
+		case PrePublicEnv:
+			hallPage.waitSubElement("预发布服按钮").click();
+			currentEnv = ServerEnvironment.PrePublicEnv;
+		default:
+			hallPage.waitSubElement("测试服按钮").click();
+			currentEnv = ServerEnvironment.TestEnv;
+		}
+//		hallPage.waitSubElement("切换服务器按钮").click();	//2.0的没有切换按钮了，点击直接切
+		closeTheLauncherDialog();
+	}
+	
+	public static void SwitchToEnvironment(String environment){
+		HallPage hallPage = new HallPage();
+		hallPage.waitPresent();
+		if (environment.equals("test")) {
+			hallPage.waitSubElement("测试服按钮").click();
+			currentEnv = ServerEnvironment.TestEnv;
+		} else if (environment.equals("prePublic")) {
+			hallPage.waitSubElement("预发布服按钮").click();
+			currentEnv = ServerEnvironment.PrePublicEnv;
+		} else if (environment.equals("online")){
+			hallPage.waitSubElement("线上服按钮").click();
+			currentEnv = ServerEnvironment.OnlineEnv;
+		} else {
+			throw new RuntimeException("不支持切换到该环境:"+environment);
+		}
+//		hallPage.waitSubElement("切换服务器按钮").click();	//2.0的没有切换按钮了，点击直接切
+		closeTheLauncherDialog();
+	}
+	
+	
+	public enum ServerEnvironment{
+	    TestEnv, OnlineEnv, PrePublicEnv;
+	}
+	
+	
+	/**
+	 * 关闭启动应用后出现的各种弹出窗口。
+	 * @author JackWang
+	 */
+//	public static void closeTheLauncherDialog(){
+//		AnouncementDialog ad = new AnouncementDialog();//公告对话框
+//		RichTextAnouncementDialog rad = new RichTextAnouncementDialog();	//富文本公告框
+//		UpdateDialog ud = new UpdateDialog();//升级对话框
+//		CheckinDialog cd = new CheckinDialog();//每日签到
+//		BankruptcyDialog bd = new BankruptcyDialog();//破产窗口
+//		HallPage hallPage = new HallPage();
+//		hallPage.waitPresent();
+//		if(ad.isPresent(10)){
+//			if (ad.waitSubElements("关闭按钮").size() == 1) {
+//				ad.close();
+//			}
+//			else if (ad.waitSubElements("关闭按钮").size() > 1) {
+//				ad.waitSubElements("关闭按钮").get(1).click();
+//			}
+//			if(ad.isPresent(1)) {
+//				try {
+//					Thread.sleep(3000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				if (ad.waitSubElements("关闭按钮").size() == 1) {
+//					ad.close();
+//				}
+//				else if (ad.waitSubElements("关闭按钮").size() > 1) {
+//					ad.waitSubElements("关闭按钮").get(1).click();
+//				}
+//			}
+//		}
+//		if(rad.isPresent(1)){
+//			if (rad.waitSubElements("关闭按钮").size() == 1) {
+//				rad.close();
+//			}
+//			else if (rad.waitSubElements("关闭按钮").size() > 1) {
+//				rad.waitSubElements("关闭按钮").get(1).click();
+//			}
+//		}
+//		if(ud.isPresent(1)){
+//			if (ud.waitSubElements("关闭按钮").size() == 1) {
+//				ud.close();
+//			}
+//			else if (ud.waitSubElements("关闭按钮").size() > 1) {
+//				ud.waitSubElements("关闭按钮").get(1).click();
+//			}
+//		}		
+//		if(cd.isPresent(1)){
+//			if (cd.waitSubElements("关闭按钮").size() == 1) {
+//				cd.close();
+//			}
+//			else if (cd.waitSubElements("关闭按钮").size() > 1) {
+//				cd.waitSubElements("关闭按钮").get(1).click();
+//			}
+//		}
+//		if(bd.isPresent(1)){
+//			if (bd.waitSubElements("关闭按钮").size() == 1) {
+//				cd.close();
+//			}
+//			else if (bd.waitSubElements("关闭按钮").size() > 1) {
+//				bd.waitSubElements("关闭按钮").get(1).click();
+//			}
+//		}
+//	}
+	
+	public static void closeTheLauncherDialog(){
+		new HallPage().waitPresent();
+		int waitSeconds = 10;
+		int times = 0;
+		RainbowDriver currentDriver = RainbowDriver.getCurrentDriver();
+		while (currentDriver.isElementPresentByName("closeBtn", waitSeconds) && times<=10) {
+			currentDriver.waitElementByName("closeBtn", waitSeconds).click();
+			waitSeconds = 5;
+			times++;
+		}
+	}
+	
+	/**
+	 * 切换到试玩账号，操作的起始位置为大厅页面，默认关闭弹出窗口
+	 * @author JackWang
+	 */
+	public static void switchToTrialPlay(){
+		switchToTrialPlay(true);
+	}
+	
+	/**
+	 * 切换到试玩账号，操作的起始位置为大厅页面，可选择切换后是否关闭弹出窗口
+	 * @author JackWang
+	 */
+	public static void switchToTrialPlay(boolean closeDialog){
+		HallPage hallPage = new HallPage();
+		UserPage userPage = new UserPage();
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();		
+		userPage.waitSubElement("切换账号按钮").click();	
+		AccountLoginPage al = new AccountLoginPage();
+		al.waitSubElement("游客试玩").click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (closeDialog) {
+			CommonBusiness.closeTheLauncherDialog();
+		}
+	}
+	
+	/**
+	 * 使用Boyaa通行证（手机账号）登录
+	 * @author JackWang
+	 * @param boyaaAccount
+	 * @param boyaaAccountPwd
+	 */
+	public static void loginWithBoyaaAccount(String boyaaAccount, String boyaaAccountPwd){		
+			HallPage hallPage = new HallPage();
+			UserPage userPage = new UserPage();
+			hallPage.waitPresent();
+			hallPage.waitSubElement("个人头像").click();
+			userPage.waitSubElement("切换账号按钮").click();	
+			AccountLoginPage al = new AccountLoginPage();
+			al.waitPresent();
+			al.waitSubElement("账号输入框").sendKeys(boyaaAccount);
+			al.waitSubElement("密码输入框").sendKeys(boyaaAccountPwd);
+			al.waitSubElement("登录按钮").click();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			CommonBusiness.closeTheLauncherDialog();			
+	}
+	
+	/**
+	 * 获取注册时发送给手机的验证码
+	 * @author JackWang
+	 * @return String: 手机的验证码
+	 */
+	public static String getRegistrationVerificationCode(String phoneNumber){
+		return "";//TODO通过接口实现
+	}
+	
+	
+	/**
+	 * 将手机号设置为未注册状态
+	 * @param phoneNumber
+	 */
+	public static void SetAsUnregistered(String phoneNumber){
+		//TODO 通过接口实现设置为未注册状态
+	}
+	
+	/**
+	 * 设置用户的经验值
+	 * @author JonLiang
+	 * @param exp 用户的经验值
+	 */
+	public static void setUserExp(String userId, int exp){
+		JSONObject jso = new JSONObject();
+		jso.put("type", "exp");
+		jso.put("value", exp);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("tab", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);	
+	}
+	
+	/**
+	 * 设置用户的赚金数
+	 * @author JonLiang
+	 * @param  earnMoney 用户的赚金数
+	 */
+	public static void setUserEarnMoney(String userId, long earnMoney){
+		JSONObject jso = new JSONObject();
+		jso.put("type", "jbrank");
+		jso.put("value", earnMoney);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("tab", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);	//重新进一次环境来更新状态
+	}
+
+	public static String getCurrentUserIdInHall() {
+		HallPage hallPage = new HallPage();
+		hallPage.waitSubElement("个人头像").click();
+		UserPage userPage = hallPage.openAndGetUserPage();
+		String currentCid = userPage.waitSubElement("ID").getText().trim().substring(3);	//V2.0.1起需求变更，此处显示的是cid，虽然不知道这是什么鬼，MD
+		userPage.waitSubElement("返回按钮").click();
+		String currentMid = getMidFromCid(currentCid);
+		return currentMid;
+	}
+	
+	/**
+	 * 设置用户的携带金币数
+	 * @author JonLiang
+	 * @param money 用户的经验值
+	 */
+	public static void setUserMoney(String userId, int money) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", "gold");
+		jso.put("value", money);		
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("tab", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);  //重新进入环境才能更新金币数
+	}
+	
+	/**
+	 * 设置用户的钻石数
+	 * @author JackWang
+	 * @param userMID 用户的MID
+	 *        diamondCount 钻石的数量
+	 */
+	public static void setUserDiamond(String userMID, int diamondCount) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", "diamond");
+		jso.put("nums", diamondCount);		
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("change", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userMID);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		System.out.println("jso3："+jso3.toString());
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);  //重新进入环境才能更新钻石数
+	}
+	
+	/**
+	 * 设置用户的钻石数
+	 * @author JackWang
+	 * @param userMID 用户的MID
+	 *        goodsID 兑换商品的ID
+	 *        goodsCount 兑换商品的数量
+	 */
+	public static void setGoodsCount(String userMID, int goodsID, int goodsCount) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", "goods");
+		jso.put("goods_id", goodsID);
+		jso.put("nums", goodsCount);		
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("change", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userMID);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		System.out.println("jso3："+jso3.toString());
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);  //重新进入环境才能更新对话的商品数量
+	}
+	
+	/**
+	 * 设置用户是否为首充用户
+	 * @author JackWang
+	 * @param userMID 用户的MID
+	 *        flag 0：首次充值  1：不是首次充值 
+	 */
+	public static void setWhetherToFirstPay(String userMID, int flag) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", flag);		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("firstpay", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userMID);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		System.out.println("jso3："+jso3.toString());
+		new Superman().set(currentEnv, jso3);
+	}
+
+	public static void setUserDeposit(String userId, int deposit) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void setFriendOnline(String userId, boolean ifOnline) {
+		int status = -1;
+		if(ifOnline) {
+			status = 1;
+		}
+		
+		JSONObject jso = new JSONObject();
+		jso.put("type", "on_off");
+		jso.put("status", status);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("friend", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);	
+	}
+
+	public static void addFriend(String userId, String friendId) {
+		int id = CommonBusiness.getAddFriendRequest(userId, friendId);
+		
+		if (id != 0) {
+			JSONObject jso = new JSONObject();
+			jso.put("type", "agree");
+			jso.put("id", id);
+			jso.put("agree", 1);
+			
+			JSONObject jso2 = new JSONObject();
+			jso2.put("friend", jso);
+			
+			JSONObject jso3 = new JSONObject();
+			jso3.put("mid", userId);
+			jso3.put("app", appId);
+			jso3.put("cmds", jso2);
+		
+			new Superman().set(currentEnv, jso3);
+		}
+	}
+
+	public static int getAddFriendRequest(String userId, String friendId) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", "add");
+		jso.put("mid_to", userId);
+		jso.put("message","hello friend");
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("friend", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", friendId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		JSONObject jsoReturn = new Superman().set(currentEnv, jso3);
+		if (jsoReturn.getInt("code") == 1) {
+			JSONObject returnData = jsoReturn.getJSONObject("ret").getJSONObject("data");
+			int requestId = 0;
+			if (returnData.has("id")) {
+				requestId = returnData.getInt("id");
+			}
+			return requestId;
+		} else {
+			throw new RuntimeException("Get request Id failed: " + jsoReturn.getString("msg"));
+		}
+	}
+	
+	public static void setCheckinStatus(String userId, CheckinStatus checkinStatus) {
+		Calendar c = Calendar.getInstance();
+		int d = c.get(Calendar.DATE);
+		CommonBusiness.setCheckinStatus(userId, d, checkinStatus);
+	}
+	
+	public static void setBuCheckinCardNum(String userId, int cardNum) {
+		JSONObject jso = new JSONObject();
+		jso.put("num", cardNum);
+		
+		JSONObject jso1 = new JSONObject();
+		jso1.put("type", "card");
+		jso1.put("value", jso);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("signin", jso1);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);  //重新进入环境才能更新补签卡数目
+	}
+	
+	public static void setVipType(String userId, VipType vipType) {
+		
+		JSONObject jso = new JSONObject();
+		jso.put("type", vipType.getFlag());
+		
+		JSONObject jso1 = new JSONObject();
+		jso1.put("type", "vip");
+		jso1.put("value", jso);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("signin", jso1);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);
+	}
+
+	public static void setCheckinStatus(String userId, int dayOfTheMonth, CheckinStatus checkinStatus) {
+		String signFlag = "sign";
+		if(checkinStatus == CheckinStatus.UnChecked) {
+			signFlag = "unsign";
+		}
+		JSONObject jso = new JSONObject();
+		jso.put("type", signFlag);
+		jso.put("value", dayOfTheMonth);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("signin", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		System.out.println("singup_params:"+jso3.toString());
+		new Superman().set(currentEnv, jso3);
+		SwitchToEnvironment(currentEnv);
+		
+	}
+
+	public static void setTaskComplete(int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public static void delFriend(String userId, String friendId) {
+		JSONObject jso = new JSONObject();
+		jso.put("type", "del");
+		jso.put("mid_to", friendId);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("friend", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);	
+		
+	}
+	
+	
+	public static String getMidFromCid(String cid) {
+		JSONObject jso = new JSONObject();
+		jso.put("cid", cid);	//传cid字段即代表要获取mid
+		jso.put("app", appId);
+
+		JSONObject jsoReturn = new Superman().set(currentEnv, jso);
+		if (jsoReturn.getInt("code") == 1) {
+			String returnMid = String.valueOf(jsoReturn.getJSONObject("ret").getLong("data"));
+			return returnMid;
+		} else {
+			throw new RuntimeException("Get mid failed: " + jsoReturn.getString("msg"));
+		}
+	}
+	
+	public static void setBuCheckinCardUsed(String userId, boolean isUsed) {
+		int IsUsedInt = -1;
+		if (isUsed) {
+			IsUsedInt = 1;
+		}
+		JSONObject jso = new JSONObject();
+		jso.put("type", IsUsedInt);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put("signcard", jso);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("mid", userId);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		new Superman().set(currentEnv, jso3);
+//		SwitchToEnvironment(currentEnv);	//TODO: 目前主要用作环境恢复，且设置时可能未在大厅，不做切换环境操作
+	}
+
+
+
+	public static void loginAsGuestIfNotLoggedIn() {
+		AccountLoginPage loginPage = new AccountLoginPage();
+		if (loginPage.isPresent(5)) {
+			loginPage.waitSubElement("游客试玩").click();
+		}
+		
+	}
+	
+	
+}

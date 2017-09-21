@@ -1,0 +1,14 @@
+I     20140905 10:14:18    Generator Report:    chmod -R 777 /storage/emulated/0/ATR/TexasVN_20140905_10-11-21AM/ failed!
+
+I     20140905 10:14:18    Generator Report:    createReportXMLFile Start:
+I     20140905 10:14:18    Generator Report:    createReportXMLFile End
+I     20140905 10:14:18    Generator Report:    addTestSuiteNode Start:
+I     20140905 10:14:18    Generator Report:    addTestSuiteNode End
+I     20140905 10:14:18    com.boyaa.TestTexasVN.cases.Texas_PayLogicVN    chmod 777 /data/data/com.boyaa.vn/files success
+I     20140905 10:14:21    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140905 10:14:21    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140905 10:14:23    LocalLib    重新安装apk后出现的Image is not found.
+I     20140905 10:14:53    Generator Report:    getSnapshort Start:
+I     20140905 10:14:53    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasVN_20140905_10-11-21AM/_Screenshots/PayLogic_003_20140905_10_14_53.jpg
+I     20140905 10:14:53    Generator Report:    getSnapshort End
+I     20140905 10:14:58    com.boyaa.TestTexasVN.cases.Texas_PayLogicVN    tear down time out!

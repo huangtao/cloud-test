@@ -1,0 +1,199 @@
+package com.boyaa.testholdemhk.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemhk.business.AccountData;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+import com.boyaa.testholdemhk.uilib.PayCenterPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="This is a Lobby Slot test that use for Rainbow2 framework testing")
+public class LobbySlot extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	private LobbyPage lobbyPage=null;
+	public LobbySlot() {
+		super();	
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp(60,"com.boyaa.texaspoker.application.activity.LoginActivity");	
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		loginPage.enterTestEnv();	
+
+	}	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	@CaseDesc(id="Slots_001", name="Test the slot basic in lobby")
+	@Test(description="测试大厅打开老虎机")
+	public void test_LobbySlotsLaunch() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		lobbyPage.slotPage();// 检查是否有引导提示
+		assertTrue(lobbyPage.lobbySlotPage().isSubElementPresent("老虎机页面"),"老虎机是否出现");
+	}
+	
+	@CaseDesc(id="Slots_002", name="test Fortunately Photos")
+	@Test(description="测试幸运图片是否可以滑动")
+	public void test_LobbySlotsSlideFortunatelyPhotos() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		lobbyPage.lobbySlotPage().waitPresent();
+		lobbyPage.lobbySlotPage().dragimge();
+	}
+	
+	
+	
+	
+	@CaseDesc(id="Slots_003", name="test_LobbySlotsAutoPlay")
+	@Test(description="测试【自动玩】功能是否实现")
+	public void test_LobbySlotsAutoPlay() throws InterruptedException{
+		AccountData ad = AccountData.requestByTag("normal");
+		loginPage.loginAsGuestWithTag("normal");
+		cb.setAccountCoins(ad, "500000");
+		Thread.sleep(10000);//等待游戏币到账
+		lobbyPage.waitSubElement("储值中心按钮").click();//通过打开储值中心操作，刷新游戏币
+		PayCenterPage payCenterPage=new PayCenterPage();
+		payCenterPage.waitSubElement("关闭按钮").click();
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		lobbyPage.lobbySlotPage().waitSubElement("自动玩按钮").click();
+		String check_text=lobbyPage.lobbySlotPage().waitSubElement("祝您好运").getText();
+		System.out.println(check_text);
+		assertEquals(check_text,"祝您好运","检查点：判断是否滑动，获取滑动后的祝福语，实际结果：文本内容不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();		
+	}
+	
+	
+	@CaseDesc(id="Slots_004", name="test_LobbySlotsDetails")
+	@Test(description="测试详情页相关菜单能否正常切换")
+	public void test_LobbySlotsDetails() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();		
+		lobbyPage.lobbySlotPage().waitSubElement("详情按钮").click();	
+		String reward_text=lobbyPage.lobbySlotPage().waitSubElement("奖金表按钮").getText();
+		System.out.println(reward_text);
+		assertEquals(reward_text,"奖金表","检查点：奖金表高亮显示，获取文本内容，实际结果：文本内容不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("我的中奖记录按钮").click();
+		String my_reward_text=lobbyPage.lobbySlotPage().waitSubElement("我的中奖记录按钮").getText();
+		System.out.println(my_reward_text);
+		assertEquals(my_reward_text,"我的中奖记录","检查点：我的中奖记录高亮显示，获取文本内容，实际结果：文本内容不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("最近中奖记录按钮").click();
+		String resent_reward_text=lobbyPage.lobbySlotPage().waitSubElement("最近中奖记录按钮").getText();
+		System.out.println(resent_reward_text);
+		assertEquals(resent_reward_text,"最近中奖记录","检查点：最近中奖记录高亮显示，获取文本内容，实际结果：文本内容不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();
+	}
+	@CaseDesc(id="Slots_005", name="test_LobbySlotsSwithingLotteryMoney")
+	@Test(description="测试能否正常切换抽奖金额")
+	public void test_LobbySlotsSwithingLotteryMoney() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		String somme1=lobbyPage.lobbySlotPage().waitSubElement("金额选择按钮").getText();
+		System.out.println(somme1);
+		assertEquals(somme1,"1,000","检查点：默认金额1,000，获取文本内容，实际结果：默认金额不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("金额选择按钮").click();
+		lobbyPage.lobbySlotPage().waitSubElement("2万金额").click();
+		String somme2=lobbyPage.lobbySlotPage().waitSubElement("金额选择按钮").getText();
+		System.out.println(somme2);
+		assertEquals(somme2,"2万","检查点：默认金额2万，获取文本内容，实际结果：默认金额不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("金额选择按钮").click();
+		lobbyPage.lobbySlotPage().waitSubElement("10万金额").click();
+		String somme3=lobbyPage.lobbySlotPage().waitSubElement("金额选择按钮").getText();
+		System.out.println(somme3);
+		assertEquals(somme3,"10万","检查点：默认金额10万，获取文本内容，实际结果：默认金额不一致");
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();
+	}
+	
+	@CaseDesc(id="Slots_006", name="test_LobbySlotsLottery")
+	@Test(description="测试能否正常抽奖")
+	public void test_LobbySlotsLottery() throws InterruptedException{
+		AccountData ad = AccountData.requestByTag("normal");
+		loginPage.loginAsGuestWithTag("normal");
+		cb.setAccountCoins(ad, "500000");
+		Thread.sleep(10000);//游戏币的添加到账有延迟，此步为等待游戏币到账
+		lobbyPage.waitSubElement("储值中心按钮").click();//通过打开储值中心操作，此本步为刷新游戏币
+		PayCenterPage payCenterPage=new PayCenterPage();
+		payCenterPage.waitSubElement("关闭按钮").click();
+		String presentCoinText=lobbyPage.waitSubElement("当前游戏币").getText();
+		System.out.println(presentCoinText);
+		int persentCoin=cb.getNumber(presentCoinText);
+		System.out.println(persentCoin);
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		LobbyPage.SlotPage slotPage=lobbyPage.new SlotPage();
+		slotPage.shake();
+		Thread.sleep(1000);
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();
+		String afterCoinText=lobbyPage.waitSubElement("当前游戏币").getText();
+		System.out.println(afterCoinText);
+		int afterCoin=cb.getNumber(afterCoinText);
+		System.out.println(afterCoin);
+		//1000为水果机的底注,1000的底注摇动一次,扣除底注后，若前后金币不一致，即奖励到账
+		assertNotEquals(persentCoin-1000, afterCoin, "检查点：摇杆前后游戏币不一致，获取游戏币数值，实际结果：游戏币无变化");
+	}
+	
+	@CaseDesc(id="Slots_007", name="SlotsReopenApp")
+	@Test(description="When you reopen the app slots  does not show")
+	public void test_lobbySlotsReopenApp() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		lobbyPage.slotPage();// 检查是否有引导提示
+		//重启当前的Activity
+		lobbyPage.lobbySlotPage().activePopuwindow();
+		assertTrue(lobbyPage.lobbySlotPage().isSubElementPresent("老虎机页面", 5));
+	}
+	
+	@CaseDesc(id="Slots_008", name="LobbySlotsCloseWiFi")
+	@Test(description="test reopen the slots after close WiFi")
+	public void test_LobbySlotsCloseWiFi() throws InterruptedException{
+		loginPage.loginAsGuestWithTag("normal");
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		lobbyPage.slotPage();// 检查是否有引导提示
+		lobbyPage.lobbySlotPage().waitSubElement("关闭按钮").click();
+		RainbowDriver rd=RainbowDriver.getInstance();
+		try{
+		rd.closeNetWork();//关闭wifi
+		//rd.runAppInBackground(5);//后台运行5秒
+		lobbyPage.lobbySlotPage().activePopuwindow();
+		lobbyPage.waitSubElement("游戏图标按钮").click();
+		lobbyPage.waitSubElement("大厅老虎机按钮").click();
+		}
+		finally{
+		rd.openNetWork();//重启网络
+		}
+		//TODO 暂时无法获取toast信息	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

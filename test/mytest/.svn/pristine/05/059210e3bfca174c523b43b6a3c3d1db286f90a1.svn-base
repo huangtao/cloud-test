@@ -1,0 +1,706 @@
+package com.boyaa.testholdemhk.cases;
+
+
+import java.text.ParseException;
+
+import org.json.JSONException;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemhk.business.AccountData;
+import com.boyaa.testholdemhk.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.business.CommonBusiness.RoomLevel;
+import com.boyaa.testholdemhk.uilib.LobbyPage;
+import com.boyaa.testholdemhk.uilib.LoginPage;
+
+import com.boyaa.testholdemhk.uilib.PersonalInformationPage;
+
+import com.boyaa.testholdemhk.uilib.RoomListPage;
+import com.boyaa.testholdemhk.uilib.RoomPage;
+
+
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="This is a smoke test that use for Rainbow2 framework testing")
+public class HoldemMyItem extends RainbowTestCase {
+	private static CommonBusiness cb = null;
+	private LoginPage loginPage = null ;
+	public HoldemMyItem() {
+		super();	
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp(60,"com.boyaa.texaspoker.application.activity.LoginActivity");	
+		cb = new CommonBusiness();
+		loginPage = new LoginPage();
+		loginPage.enterTestEnv();	
+
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	
+	@CaseDesc(id="MyItem_001", name="test_Megaphone1")
+	@Test(description="test prop used when has two megaphone",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_Megaphone1(String itemname) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_twoprop");
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "1000000");//设置用户金币数100000
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click(); 
+		int countbefore =personalInformationPage.getUserPersonalProps(itemname);//获取小喇叭数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		roomListPage.clickOnAEmptyRoom(1000000);
+		RoomPage roomPage = new RoomPage();
+		roomPage.openMegaPhonePopPage();
+		Assert.assertTrue(roomPage.megaPhonePage().isPresent(),"小喇叭页面没有弹出");
+		assertEquals(roomPage.megaPhonePage().getMegaPhoneCount(),countbefore,"房间小喇叭数量与我的物品中小喇叭数量不一致");
+		roomPage.megaPhonePage().sendMegaPhoneMessage("test");
+		roomPage.leaveRoomAndGoToLobby();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),(countbefore-1),"使用后预期小喇叭数量与我的物品中小喇叭数量不一致");
+	}
+	
+	@CaseDesc(id="MyItem_002", name="test_Megaphone2")
+	@Test(description="test prop used when has one megaphone",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_Megaphone2(String itemname) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_oneprop");
+		loginPage.loginAsGuestWithTag("for_myitem_oneprop");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "10000000");//设置用户金币数100000
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int countbefore =personalInformationPage.getUserPersonalProps(itemname);//获取小喇叭数量
+		assertEquals(countbefore,1,"小喇叭数量不是1。由于用例目的为测试使用后道具消失，case运行无意义");
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.selectRoomLevel(RoomLevel.Junior);
+		roomListPage.clickOnAEmptyRoom(10000000);
+		RoomPage roomPage = new RoomPage();
+		roomPage.openMegaPhonePopPage();
+		Assert.assertTrue(roomPage.megaPhonePage().isPresent(),"小喇叭页面没有弹出");
+		assertEquals(roomPage.megaPhonePage().getMegaPhoneCount(),countbefore,"房间小喇叭数量与我的物品中小喇叭数量不一致");
+		roomPage.megaPhonePage().sendMegaPhoneMessage("test");
+		roomPage.leaveRoomAndGoToLobby();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),(countbefore-1),"使用后预期小喇叭数量与我的物品中小喇叭数量不一致");
+	}
+	
+	@CaseDesc(id="MyItem_003", name="test_RedDiamond1")
+	@Test(description="test use red diamond when has two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_RedDiamond1(String itemname ,String iteminfo) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_twoprop");
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int redbrickcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击红钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname) ,redbrickcount-1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+80000,"金币数增加不正确：预计增加80000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+	}
+	
+	@CaseDesc(id="MyItem_004", name="test_RedDiamond2")
+	@Test(description="test use red diamond when has one",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_RedDiamond2(String itemname,String iteminfo) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_oneprop");
+		loginPage.loginAsGuestWithTag("for_myitem_oneprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int redbrickcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(redbrickcount ,1,"道具数量不为1，测试无意义。前提条件道具数量必须为1");
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击红钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertTrue(personalInformationPage.getUserPersonalProps(itemname)!=1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+80000,"金币数增加不正确：预计增加80000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+		}
+	
+	@CaseDesc(id="MyItem_005", name="test_RedDiamond3")
+	@Test(description="test  add money when has used red diamond",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_RedDiamond3(String iteminfo ,String itemindex) throws InterruptedException{	
+		int money =10000;
+		int days=30;
+		AccountData ad = AccountData.requestByTag("for_myitem_test");
+		cb.clearUserItem(ad,"1");//清除用户的道具
+		cb.setAccountCoins(ad, Integer.toString(money));
+		cb.setUserLoginCount(ad,0);//设置用户连续登录天数为0
+		cb.setUsedDiamondRemainDays(ad ,itemindex);//调用接口设置用户存在一个领取过的红记录、天数为30、没有领取过每日的金币奖励
+		loginPage.loginAsGuestWithTag("for_myitem_test");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		assertEquals(beforeCoins,money+5500,"金币数增加不正确，请确定用户是否领取了连续登录奖励或者红钻奖励未领取");
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDaysWhenhasOne(iteminfo)+1==days,itemindex+"的使用天数不是减少1天");//检查使用天数变化是否正确
+	}
+	
+	@CaseDesc(id="MyItem_006", name="test_PurpleDiamond1")
+	@Test(description="test use purple diamond when has two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_PurpleDiamond1(String itemname ,String iteminfo) throws InterruptedException{	
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int purplecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击紫钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname) ,purplecount-1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+150000,"金币数增加不正确：预计增加150000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+	
+	}
+	
+	@CaseDesc(id="MyItem_007", name="test_PurpleDiamond2")
+	@Test(description="test use purple diamond when has one",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_PurpleDiamond2(String itemname,String iteminfo) throws InterruptedException{
+		AccountData ad = AccountData.requestByTag("for_myitem_oneprop");
+		loginPage.loginAsGuestWithTag("for_myitem_oneprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int purplecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(purplecount ,1,"道具数量不为1，测试无意义。前提条件道具数量必须为1");
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击红钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertTrue(personalInformationPage.getUserPersonalProps(itemname)!=1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+150000,"金币数增加不正确：预计增加150000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+	}
+	
+	@CaseDesc(id="MyItem_008", name="test_PurpleDiamond3")
+	@Test(description="test  add money when has used purple diamond ",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_PurpleDiamond3(String iteminfo ,String itemindex) throws InterruptedException{	
+		int money =10000;
+		int days=30;
+		AccountData ad = AccountData.requestByTag("for_myitem_test");
+		cb.clearUserItem(ad,"1");//清除用户的道具
+		cb.setAccountCoins(ad, Integer.toString(money));
+		cb.setUserLoginCount(ad,0);//设置用户连续登录天数为0
+		cb.setUsedDiamondRemainDays(ad ,itemindex);//调用接口设置用户存在一个领取过的红记录、天数为30、没有领取过每日的金币奖励
+		loginPage.loginAsGuestWithTag("for_myitem_test");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		assertEquals(money+10000,beforeCoins,"金币数增加不正确，请确定用户是否领取了连续登录奖励或者红钻奖励未领取");
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDaysWhenhasOne(iteminfo)+1==days,itemindex+"的使用天数不是减少1天");//检查使用天数变化是否正确
+	}
+	
+	@CaseDesc(id="MyItem_009", name="test_GoldenDiamond1")
+	@Test(description="test redeemding the gold diamond when there were two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_GoldenDiamond1(String itemname ,String iteminfo) throws InterruptedException{	
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int goldencount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击金钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname) ,goldencount-1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+350000,"金币数增加不正确：预计增加350000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+	 }
+	
+	@CaseDesc(id="MyItem_010", name="test_GoldenDiamond2")
+	@Test(description="test redeemding the gold diamond when there were one",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_GoldenDiamond2(String itemname,String iteminfo) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_oneprop");
+		loginPage.loginAsGuestWithTag("for_myitem_oneprop");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int goldencount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(goldencount ,1,"道具数量不为1，测试无意义。前提条件道具数量必须为1");
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击红钻的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertTrue(personalInformationPage.getUserPersonalProps(itemname)!=1,"使用后数量没有减少");
+		personalInformationPage.waitSubElement("个人信息按钮").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDays(iteminfo)>0,"没有找到道具:"+itemname+" 使用后的记录");//检查多出一行使用记录
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),beforeCoins+350000,"金币数增加不正确：预计增加350000，实际增加："+(lobbyPage.getUserCurrentCoins()-beforeCoins));
+	}
+	
+	@CaseDesc(id="MyItem_011", name="test_GoldenDiamond3")
+	@Test(description="test redeemding the gold diamond for daily award",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_GoldenDiamond3(String iteminfo ,String itemindex) throws InterruptedException{
+		int money =10000;
+		int days=30;
+		AccountData ad = AccountData.requestByTag("for_myitem_test");
+		cb.clearUserItem(ad,"1");//清除用户的道具
+		cb.setAccountCoins(ad, Integer.toString(money));
+		cb.setUserLoginCount(ad,0);//设置用户连续登录天数为0
+		cb.setUsedDiamondRemainDays(ad ,itemindex);//调用接口设置用户存在一个领取过的红记录、天数为30、没有领取过每日的金币奖励
+		loginPage.loginAsGuestWithTag("for_myitem_test");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		assertEquals(beforeCoins,money+20000,"金币数增加不正确，请确定用户是否领取了连续登录奖励或者红钻奖励未领取");
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertTrue(personalInformationPage.getUsedPropsSurplusDaysWhenhasOne(iteminfo)+1==days,itemindex+"的使用天数不是减少1天");//检查使用天数变化是否正确
+	}
+	
+	@CaseDesc(id="MyItem_012", name="test_DismissalCard1")
+	@Test(description="test use dismissal Card when has two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_DismissalCard1(String itemname ,String apiurl) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_dismiss_2");
+		loginPage.loginAsGuestWithTag("for_dismiss_2");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "25000");//设置用户金币数10000
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int kickplayercardcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000,"2");
+		RoomPage roomPage =new RoomPage();
+		roomPage.personInfo().kickingAPlayerInTheRoom();//踢掉一个玩家
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		lobbyPage.clearingPage().closeClearPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),(kickplayercardcount-1),"使用后踢人卡数量减少不对");
+	}
+	
+	@CaseDesc(id="MyItem_013", name="test_DismissalCard2")
+	@Test(description="test use dismissal Card when has one",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_DismissalCard2(String itemname ,String apiurl) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_dismiss_1");
+		loginPage.loginAsGuestWithTag("for_dismiss_1");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "25000");//设置用户金币数10000
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int kickplayercardcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(kickplayercardcount,1,"踢人卡数量不是1。由于用例目的为测试使用后道具消失，case运行无意义");
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000,"2");
+		RoomPage roomPage =new RoomPage();
+		roomPage.personInfo().kickingAPlayerInTheRoom();//踢掉一个玩家
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		lobbyPage.clearingPage().closeClearPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),(kickplayercardcount-1),"实际结果：踢人卡使用完之后，在我的物品中还有踢人卡。预期结果为：不存在踢人卡道具项");
+		}
+	
+	@CaseDesc(id="MyItem_014", name="test_FastCashCard1")
+	@Test(description="test use twice fast cash Card when has two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_FastCashCard1(String itemname ,String tipsinfo ,String errorinfo) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_twoprop");
+		cb.clearSaveCardUsedStat(ad,"1");//设置救济卡没有使用记录
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "400");//设置用户金币数400
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击救济卡的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：救济卡使用之后数量减少不是1");
+		cb.setAccountCoins(ad, "400");//设置用户金币数400
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击救济卡的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(errorinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：第二次使用救济卡减少了救济卡，预期结果是提示只能使用一次，不减少救济卡");
+	
+	}
+	
+	@CaseDesc(id="MyItem_015", name="test_FastCashCard2")
+	@Test(description="test use fast cash Card when has one",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_FastCashCard2(String itemname ,String tipsinfo) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_oneprop");
+		cb.clearSaveCardUsedStat(ad,"1");//设置救济卡没有使用记录
+		loginPage.loginAsGuestWithTag("for_myitem_oneprop");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "400");//设置用户金币数400
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(fastcashdcount,1,"救济卡数量不是1。由于用例目的为测试使用后道具消失，case运行无意义");
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击救济卡的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：预期结果，救济卡使用完之后不存在，实际结果：使用完之后还有救济卡");
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),400+10000,"金币数增加不正确：预计增加10000，实际增加："+(lobbyPage.getUserCurrentCoins()-400));
+	}
+	
+	
+	@CaseDesc(id="MyItem_016", name="test_FastCashCard3")
+	@Test(description="test use fast cash Card when has two and money more than 500",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_FastCashCard3(String itemname) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_myitem_twoprop");
+		loginPage.loginAsGuestWithTag("for_myitem_twoprop");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "1000");//设置用户金币数1000
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击救济卡的使用按钮
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面弹出");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount ,"检查点：预期结果，救济卡数量不变，实际结果：救济卡数量发生变化");
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		assertEquals(lobbyPage.getUserCurrentCoins(),1000,"金币数发生变化，变化数量为："+(lobbyPage.getUserCurrentCoins()-1000));
+	}
+	
+	
+	@CaseDesc(id="MyItem_017", name="test_FastCashCard4")
+	@Test(description="test use fast cash Card when has two",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_FastCashCard4(String itemname) throws InterruptedException{
+		AccountData ad = AccountData.requestByTag("for_fastcash_2");
+		cb.clearSaveCardUsedStat(ad,"1");//设置救济卡没有使用记录
+		loginPage.loginAsGuestWithTag("for_fastcash_2");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "500");//设置用户金币数500
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage =new RoomListPage();
+		roomListPage.clickOnAEmptyRoom(500);
+		RoomPage roomPage =new RoomPage();
+		roomPage.personInfo().useFastCashCardInTheRoom();//消耗救济卡
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		assertEquals(lobbyPage.getUserCurrentCoins(),500+10000,"金币数增加不正确：预计增加10000，实际增加："+(lobbyPage.getUserCurrentCoins()-500));
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：预期结果，救济卡减少1，实际结果：数量不是减少1");
+	
+	}
+	
+	@CaseDesc(id="MyItem_018", name="test_FastCashCard5")
+	@Test(description="test use fast cash Card when has one and used in the room",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)
+	public void test_FastCashCard5(String itemname) throws InterruptedException{	
+		AccountData ad = AccountData.requestByTag("for_fastcash_1");
+		cb.clearSaveCardUsedStat(ad,"1");//设置救济卡没有使用记录
+		loginPage.loginAsGuestWithTag("for_fastcash_1");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "500");//设置用户金币数1000
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		assertEquals(fastcashdcount,1,"救济卡数量不是1。由于用例目的为测试使用后道具消失，case运行无意义");
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage =new RoomListPage();
+		roomListPage.clickOnAEmptyRoom(500);
+		RoomPage roomPage =new RoomPage();
+		roomPage.personInfo().useFastCashCardInTheRoom();// 消耗救济卡
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),0 ,"实际结果：救济卡使用完之后，在我的物品中还有救济卡项。预期结果为：不存在救济卡道具项");
+	
+	}	
+	
+	@CaseDesc(id="MyItem_019",name="RabbitEmoticons")//——AppleWang
+	@Test(description="测试我的物品中开心兔子表情包")	
+	public void test_RabbitEmoticons() throws InterruptedException{
+//		loginPage.loginAsGuestWithTag("for_myitem_oneprop");
+		loginPage.loginAsGuest();
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		cb.getEmoticonElement("宝贝表情包");
+		cb.isRainbowElementPersent("宝贝表情包",personalInformationPage);//检查是否存在兔子表情包
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("快速开始按钮").click();
+		Thread.sleep(1000);
+		RoomPage roomPage=new RoomPage();
+		roomPage.useRabbitEmoticons();
+		roomPage.leaveRoomAndGoToLobby();
+	}
+	
+	@CaseDesc(id="MyItem_020",name="AnimatedEmoticons1")//——AppleWang
+	@Test(description="测试我的物品中互动表情包",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_AnimatedEmoticons1(String itemname ,String apiurl) throws InterruptedException{
+//		loginPage.loginAsGuestWithTag("for_myitem_oneprop");	
+		loginPage.loginAsGuest();
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int animatedCountBefo =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		System.out.println("互动道具包目前的数量为："+animatedCountBefo);
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000,"2");//携带机器人进入房间
+		RoomPage roomPage=new RoomPage();
+		roomPage.clickOnTheCustomPosition("Right", 2*1000);//点击右侧玩家名片
+		roomPage.useAnimatedEmoticons();//使用互动表情
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int animatedCountAft =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		System.out.println("互动道具包目前的数量为："+animatedCountAft);
+		assertEquals(animatedCountAft, animatedCountBefo-1,"检查点：预期结果，互动表情减少1，实际结果：数量不是减少1");//使用前后道具数量比较
+	}
+	
+
+	@CaseDesc(id="MyItem_021",name="test_AnimatedEmoticons2")
+	@Test(description="test gifting interactive props logic when user has 1",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_AnimatedEmoticons2(String itemname ,String apiurl) throws JSONException, InterruptedException{
+		AccountData ad = AccountData.requestByTag("for_dismiss_2");
+		loginPage.loginAsGuestWithTag("for_dismiss_2");//Login as tag with for_myitem_twoprop
+		cb.setAccountCoins(ad, "25000");//设置用户金币数10000
+		LobbyPage lobbyPage= new LobbyPage();
+		long beforeCoins = lobbyPage.getUserCurrentCoins();//获取用户当前的金币数，获取数据点a
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int kickplayercardcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.waitSubElement("关闭按钮").click();//关闭个人物品页面
+		lobbyPage.waitSubElement("游戏大厅按钮").click();
+		RoomListPage roomListPage = new RoomListPage();
+		roomListPage.clickOnARoomWithRobot(apiurl ,25000,"2");
+		RoomPage roomPage =new RoomPage();
+		roomPage.personInfo().kickingAPlayerInTheRoom();//踢掉一个玩家
+		roomPage.leaveRoomAndGoToLobby();//返回到大厅
+		lobbyPage.clearingPage().closeClearPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),(kickplayercardcount-1),"使用后踢人卡数量减少不对");
+		}
+	
+	//以下case需要在我的物品中添加对应的（新手礼包）道具
+	@CaseDesc(id="MyItem_022",name="test_YourFirstGift1")
+	@Test(description="test the newbie first gift logic when user was not VIP",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourFirstGift1(String itemname,String tipsinfo) throws ParseException, InterruptedException{
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 2); 
+		cb.setUserIfVIP(ad, "0");
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：新手礼包使用之后数量减少不是1");
+		//TODO，检查vip天数是否正确
+		
+	}
+	
+	@CaseDesc(id="MyItem_023",name="test_YourFirstGift2")
+	@Test(description="test the newbie first gift logic when user has been VIP",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourFirstGift2(String itemname,String tipsinfo) throws ParseException, InterruptedException{
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 2);
+		cb.setUserIfVIP(ad, "1");
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int fastcashdcount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),fastcashdcount-1 ,"检查点：新手礼包使用之后数量减少不是1");	
+		//TODO，检查vip天数增加是否正确
+	}
+	
+
+	@CaseDesc(id="MyItem_024",name="test_YourSecondGift1")
+	@Test(description="test the newbie second gift logic when user has no rabbit faces",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourSecondGift1(String itemname,String itemname2 ,String tipsinfo) throws InterruptedException{
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 3); // set the user have registered 3 days
+		cb.setUserBBfaceCount(ad, "0"); // set the user has no BB face
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int newbiecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		int  rabbitcount=personalInformationPage.getUserPersonalProps(itemname2);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),newbiecount-1 ,"检查点：新手礼包使用之后数量减少不是1");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname2),rabbitcount+1 ,"检查点：兔子表情包数量增加不是1");
+	
+	}
+	@CaseDesc(id="MyItem_025",name="test_YourSecondGift2")
+	@Test(description="test the newbie second gift logic when user has had rabbit faces",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourSecondGift2(String itemname,String itemname2 ,String tipsinfo) throws InterruptedException{
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 3); // set the user have registered 3 days
+		cb.setUserBBfaceCount(ad, "0"); // set the user has 7 BB face
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int newbiecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		int  rabbitcount=personalInformationPage.getUserPersonalProps(itemname2);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),newbiecount-1 ,"检查点：新手礼包使用之后数量减少不是1");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname2),rabbitcount+1 ,"检查点：兔子表情包数量增加不是1");
+	
+	}
+	
+
+	@CaseDesc(id="MyItem_026",name="test_YourThirdGift1")
+	@Test(description="test the newbie third gift logic when user has no interactive props",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourThirdGift1(String itemname,String itemname2,String tipsinfo) throws JSONException, InterruptedException{
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 3); // set the user have registered 3 days
+		cb.setUserRegistrationDates(ad, 0); // set the user have registered 4 days
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int newbiecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		int  Interactivecount=personalInformationPage.getUserPersonalProps(itemname2);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertFalse(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有关闭");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),newbiecount-1 ,"检查点：新手礼包使用之后数量减少不是1");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname2),Interactivecount+1 ,"检查点：互动数量增加不是1");
+	
+	}
+	
+	@CaseDesc(id="MyItem_027",name="test_YourThirdGift2")
+	@Test(description="test the newbie third gift logic when user has had interactive props",dataProvider = "HoldemMyItem", dataProviderClass =CaseDataDriver.class)	
+	public void test_YourThirdGift2(String itemname,String itemname2,String tipsinfo) throws JSONException, InterruptedException{	
+		AccountData ad = AccountData.requestByID("for_newbie_gift"); //Login as the specific newbie user
+		cb.setUserRegistrationDates(ad, 4); // set the user have registered 4 days
+		loginPage.loginAsGuestWithTag("for_newbie_gift");//Login as tag with for_myitem_twoprop
+		LobbyPage lobbyPage= new LobbyPage();
+		lobbyPage.waitSubElement("个人头像图标").click();
+		PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+		personalInformationPage.waitSubElement("我的物品按钮").click();
+		int newbiecount =personalInformationPage.getUserPersonalProps(itemname);//获取道具数量
+		int  Interactivecount=personalInformationPage.getUserPersonalProps(itemname2);//获取道具数量
+		personalInformationPage.clickPersonalPropsToUseButton(itemname);//点击新手礼包的使用按钮
+		assertTrue(personalInformationPage.confirmPage().isPresent(),itemname + "使用提示页面没有出现");
+		assertTrue(personalInformationPage.confirmPage().waitSubElement("确认信息框").getText().equals(tipsinfo),"弹框内容不正确");
+		personalInformationPage.confirmPage().waitSubElement("确认按钮").click();
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname),newbiecount-1 ,"检查点：新手礼包使用之后数量减少不是1");
+		assertEquals(personalInformationPage.getUserPersonalProps(itemname2),Interactivecount+1 ,"检查点：互动包数量增加不是1");
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

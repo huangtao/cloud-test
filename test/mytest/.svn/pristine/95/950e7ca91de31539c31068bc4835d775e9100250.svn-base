@@ -1,0 +1,191 @@
+package com.boyaa.testholdemhk.business;
+
+import java.io.*;
+import java.lang.reflect.Method;
+
+import org.testng.annotations.DataProvider;
+
+import com.boyaa.rainbow2.RainbowListener;
+import com.boyaa.rainbow2.utils.ExcelHelper;;
+
+public   class CaseData extends ExcelHelper {
+
+	public   CaseData() throws Exception{
+		super();
+	}
+	
+	public   CaseData(String file ,String sheet) throws Exception{
+		super(file ,sheet);
+	}
+
+	public   Object[][] getTableArray(String sTestCaseName)    throws Exception{   
+		int caserow =getRowNumbleAppointCaseName(sTestCaseName ,0);
+
+	   String[][] tabArray = null;
+	   String[][] ra =null;
+	   try{
+
+		   int startCol = 1;
+
+		   int ci=0,cj=0;
+
+		   int totalRows = 1;
+
+		   int totalCols = getColCount();
+		   int forcount=0;
+		   tabArray=new String[totalRows][totalCols-1];
+
+			   for (int j=startCol;j<=totalCols-1;j++, cj++){
+				   if(getCellData(caserow,j)!=""){
+					   String  ab = getCellData(caserow,j);
+					   forcount =forcount+1;
+					   tabArray[ci][cj]= getCellData(caserow,j);
+				   }
+				  
+			   }
+		   //剔除到没有值的参数
+			   cj =0;
+			   if(forcount !=totalCols-1 ){
+				   ra =new String[totalRows][forcount];
+				   for (int j=startCol;j<=totalCols-1;j++){
+					   if(getCellData(caserow,j)!=""){
+						   String  a = getCellData(caserow,j);
+						   ra[ci][cj]= getCellData(caserow,j);
+						   cj=cj+1;
+					   }
+					  
+				   }
+			   }else{
+				   ra =tabArray;
+			   }
+		}
+
+		catch (FileNotFoundException e)
+
+		{
+
+			e.printStackTrace();
+
+		}
+
+		catch (IOException e)
+
+		{
+
+
+			e.printStackTrace();
+
+		}
+
+		return(ra);
+
+	}
+
+
+
+	public  String getTestCaseName(String sTestCase)throws Exception{
+
+		String value = sTestCase;
+
+		try{
+
+			int posi = value.indexOf("@");
+
+			value = value.substring(0, posi);
+
+			posi = value.lastIndexOf(".");	
+
+			value = value.substring(posi + 1);
+
+			return value;
+
+				}catch (Exception e){
+
+			throw (e);
+
+					}
+
+		}
+	
+	public String[] getDeviceName(){
+		String dname = RainbowListener.devicenamerunxml;
+		String[] dn = null;
+		if(dname!=null){
+			dn = dname.split(";");	
+		}else{
+			dname = RainbowListener.devicenameinterface;
+			dn = dname.split(";");	
+		}
+		return  dn;
+	}
+	
+	public String[] getAppiumUrlPort(){
+		String portnumber = RainbowListener.appiumurlport;
+		return  portnumber.split(";");
+	}
+	
+	public  int getRowNumbleAppointCaseName(String sTestCaseName, int colNum) throws Exception{
+		
+		int i;
+
+		try {
+
+			int rowCount = getRowUsed();
+
+			for ( i=0 ; i<rowCount; i++){
+
+				if  (getCellData(i,colNum).equalsIgnoreCase(sTestCaseName)){
+
+					break;
+
+				}
+
+			}
+
+			return i;
+
+				}catch (Exception e){
+
+					throw(e);
+
+			}
+
+		}
+	public static class CaseDataDriver{
+		@DataProvider(name = "HoldemLogin")  
+		public static Object[][] HoldemLogin(Method m) throws Exception{
+			CaseData caseData = new CaseData("\\\\fs03\\byDFS\\部门共享\\棋牌事业部\\测试部\\自动化测试部\\Projects\\Holdem\\TestHoldemHK\\Data\\HoldemLogin.xls", "Sheet1");
+		 	String sTestCaseName = m.getName();
+		 	Object[][] dataObjArray = caseData.getTableArray(sTestCaseName);
+		 	return dataObjArray;
+		}
+		
+		@DataProvider(name = "PayLogic")  
+		public static Object[][] PayLogic(Method m) throws Exception{
+			CaseData caseData = new CaseData("\\\\fs03\\byDFS\\部门共享\\棋牌事业部\\测试部\\自动化测试部\\Projects\\Holdem\\TestHoldemHK\\Data\\PayLogic.xls", "Sheet1");
+		 	String sTestCaseName = m.getName();
+		 	Object[][] dataObjArray = caseData.getTableArray(sTestCaseName);
+		 	return dataObjArray;
+		}
+		
+		@DataProvider(name = "HoldemSetting")  
+		public static Object[][] HoldemSetting(Method m) throws Exception{
+			CaseData caseData = new CaseData("\\\\fs03\\byDFS\\部门共享\\棋牌事业部\\测试部\\自动化测试部\\Projects\\Holdem\\TestHoldemHK\\Data\\HoldemSetting.xls", "Sheet1");
+		 	String sTestCaseName = m.getName();
+		 	Object[][] dataObjArray = caseData.getTableArray(sTestCaseName);
+		 	return dataObjArray;
+		}
+		
+		@DataProvider(name = "HoldemMyItem")  
+		public static Object[][] HoldemMyItem(Method m) throws Exception{
+			CaseData caseData = new CaseData("\\\\fs03\\byDFS\\部门共享\\棋牌事业部\\测试部\\自动化测试部\\Projects\\Holdem\\TestHoldemHK\\Data\\HoldemMyItem.xls", "Sheet1");
+		 	String sTestCaseName = m.getName();
+		 	Object[][] dataObjArray = caseData.getTableArray(sTestCaseName);
+		 	return dataObjArray;
+		}
+	}	 
+	
+	
+ 
+}
+

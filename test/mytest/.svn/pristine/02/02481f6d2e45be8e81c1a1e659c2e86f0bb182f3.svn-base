@@ -1,0 +1,25 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+public class IndonesiaTest extends BaseLoginTest {
+
+	@Test
+	public void test_close() {
+//		getDriver().findElementByName("set_btn").click();
+//		getDriver().findElementsByName("day_text").get(0).click();
+		getDriver().findElementByName("get_reward_btn_text").click();
+		try {
+			Thread.sleep(5*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}

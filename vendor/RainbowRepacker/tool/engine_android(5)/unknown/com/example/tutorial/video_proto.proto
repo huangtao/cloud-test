@@ -1,0 +1,277 @@
+package tutorial;
+option java_package = "com.example.tutorial";
+option java_outer_classname = "VideoProto";
+
+//消息头
+message MessageHead
+{
+    optional int32 client_version = 2;    //客户端版本号
+    optional int32 user_id = 3;           //用户id
+    optional string auth_key = 4;            //验证的key,第一个包要求带
+    optional string message_body_name = 5;  //消息名称
+}
+
+//消息
+message VideoMessage
+{
+    optional MessageHead message_head = 1;
+    optional bytes message_body = 2;
+}
+
+enum ResultID
+{
+    RESULT_SUCCESS = 0;
+    RESULT_ROOM_FULL = 1;       //房间已经满了
+    RESULT_SYSTEM_BUSY = 2;     //系统繁忙
+    RESULT_OTHRE_PICKING_UP_MIC = 3;  //其他人正在上麦
+    RESULT_ROOM_TYPE_NOT_MATCH = 4;     //房间类型不匹配
+}
+
+enum RoomType
+{
+    S_AUDIO_N_VIDEO_ROOM = 1;   // 只能一人说话(上麦了才能说话), 没有视频
+    S_AUDIO_M_VIDEO_ROOM = 2;   // 只能一人说话(上麦了才能说话), 有多路视频
+    M_AUDIO_N_VIDEO_ROOM = 3;   // 多人同时说话(服务器侧混音, P2P模式不混音), 没有视频, 
+    M_AUDIO_M_VIDEO_ROOM = 4;   // 多人同时说话(客户端侧混音), 有多路视频
+}
+
+enum NetworkType
+{
+    NETWORK_TYPE_2G = 2;          // 2G 网络
+    NETWORK_TYPE_3G = 3;          // 3G 网络
+    NETWORK_TYPE_4G = 4;          // 4G 网络
+    NETWORK_TYPE_5G = 5;          // 5G 网络
+    NETWORK_TYPE_WIFI = 6;        // WIFI 网络
+}
+
+
+enum MediaControl
+{
+	OPEN_AUDIO = 0;         // player 开音频
+	SHUTDOWN_AUDIO = 1;     // player 关音频
+	OPEN_VIDEO = 2;         // player 开视频
+	SHUTDOWN_VIDEO = 3;     // player 关视频
+}
+
+message MediaControlRequest
+{
+	optional MediaControl media_control = 1; 
+}
+
+message MediaControlResponse
+{
+    optional ResultID result = 1;
+	optional MediaControl media_control = 2; 
+}
+
+message LoginVideoRoomRequest
+{
+    optional int32 app_id  = 1;
+    optional int32 room_id  = 2;
+    optional int32 height = 3;
+    optional int32 width = 4;
+    optional RoomType room_type = 5;
+    optional NetworkType network_type = 6;
+    
+    optional MediaControl audio_control = 7;
+	optional MediaControl video_control = 8;
+    optional bool support_p2p = 10; //是否支持p2p
+}
+
+message PlayerInfo
+{
+    optional int32 user_id = 1;
+    optional string user_name = 2;
+    optional int32 seat_id = 3;
+    
+    // 为媒体的 p2p 添加
+    optional string audio_ip = 4;
+    optional uint32 audio_port = 5;
+    optional string video_ip = 6;
+    optional uint32 video_port = 7;
+    optional string webrtc_roomid = 8; //告诉客户端webrtc的房间id,模式4生效
+    optional AudioCtrol audio_control = 9; //告诉客户端发言状态， 模式3生效
+}
+
+message LoginVideoRoomResponse
+{
+    optional ResultID result = 1;
+    optional int32 room_id = 2;
+    optional int32 heart_beat = 3;
+    optional int32 seat_id = 4;
+    repeated PlayerInfo other_players = 5; 
+    optional RoomType room_type = 6;
+    optional int64 time_stamp = 7;
+    optional int32 audio_port = 8;  // server 接收音频数据的 udp 端口，房间模式1和2生效
+    optional int32 video_port = 9;  // server 接收视频数据的 udp 端口，房间模式1和2生效
+    optional int32 up_micro_user_id = 10;  //当前房间上麦id
+    optional bool support_p2p = 11; //是否支持p2p
+    optional string proxyserver_ip = 12;//房间模式3生效
+    optional int32 proxyserver_port = 13;//房间模式3生效
+    optional string webrtc_roomserver = 14;//房间模式4生效
+}
+
+enum ChannelType
+{
+    CT_TCP_COMPOSITE = 1;
+    CT_TCP_SIGNAL = 2;
+    CT_UDP_AUDIO = 3;
+    CT_UDP_VIDEO = 4;
+}
+
+message HeartBeat
+{
+    optional ChannelType channel_type = 1;
+}
+
+
+enum FrameType
+{
+    FRAME_P = 0;    //p帧
+    FRAME_I = 1;    //i帧
+}
+
+enum FrameVideoType
+{
+    FRAME_192 = 0;  //帧分辨率192*144
+    FRAME_320 = 1;  //帧分辨率320*240
+}
+
+message VideoDescript
+{
+    optional FrameType frame_type = 1;              //视频帧
+    optional FrameVideoType frame_video_type = 2;   //帧分辨率
+    optional int32 frame_video_value = 3;           //帧率
+    optional int32 frame_video_count = 4;           //分包数
+    optional int32 frame_video_index = 5;           //分包索引 -- P 帧索引, 从
+    optional int64 time_stamp = 9;                  //时间戳
+    optional int32 dst_user_id = 10;                //目标用户id
+    optional int32 dst_seat_id = 11;                //目标用户座位号
+}
+
+message PublishVideoRequest     // udp 通道
+{
+    optional VideoDescript video_descript = 1;      //帧描述
+    optional bytes video_data = 2;                     //帧数据
+}
+
+message VideoNotify             // udp 通道
+{
+    optional int32 send_user_id = 1;                //发送者id
+    optional int32 seat_id = 2;                     //发送者座位
+    optional VideoDescript video_descript = 3;      //帧描述
+    optional bytes video_data = 4;                  //帧数据
+}
+
+message EnterRoomNotify
+{
+    optional PlayerInfo player_info = 1;             // 进入桌子通知
+}
+
+message LeaveRoomNotify
+{
+    optional PlayerInfo player_info = 1;            // 离开桌子通知
+}
+
+message MediaInfoNotify                     // 为媒体的 p2p 添加
+{
+    optional PlayerInfo player_info = 1;    // 媒体信息通知
+}
+
+//上麦克风 microphone
+message UpMicRequest
+{
+    optional PlayerInfo player_info = 1; 
+}
+
+message UpMicResponse
+{
+    optional ResultID result = 1; 
+    optional PlayerInfo player_info = 2; 
+}
+
+message DownMicRequest
+{
+    optional PlayerInfo player_info = 1; 
+}
+
+message DownMicResponse
+{
+    optional ResultID result = 1;
+}
+
+message UpMicNotify
+{
+    optional PlayerInfo player_info = 1;             //上麦通知 
+}
+
+message DownMicNotify
+{
+    optional PlayerInfo player_info = 1;            //下麦通知
+}
+
+message AudioDescript
+{
+    optional int64 time_stamp = 1;                  //时间戳
+    optional int32 dst_user_id = 2;                 //目标用户id
+    optional int32 dst_seat_id = 3;                 //目标用户座位号
+}
+
+message PublishAudioRequest     // udp 通道
+{
+    optional AudioDescript audio_descript = 1;      //描述
+    optional bytes audio_data = 2;                  //数据
+}
+
+message AudioNotify             // udp 通道
+{
+    optional int32 send_user_id = 1;                //发送者id
+    optional int32 seat_id = 2;                     //发送者座位
+    optional AudioDescript audio_descript = 3;      //描述
+    optional bytes audio_data = 4;                  //数据
+}
+
+message P2PInfoNotify
+{
+    repeated PlayerInfo player_info = 1;
+}
+
+
+message AudioCheckRequest
+{
+	optional int32 send_user_id = 1;                  //发送者id
+	optional int32 send_check_num = 2;                //发送check 序列号
+}
+
+message AudioCheckResponse
+{
+	optional int32 send_user_id = 1;                  //发送者id
+	optional int32 send_check_num = 2;                //发送check 序列号
+}
+
+enum AudioCtrol
+{
+   AUDIO_SILENCE =0; //不讲话， 只听别人讲,模式三生效
+   AUDIO_SPEAK = 1;//讲话， 也听别人讲,模式三生效
+}
+
+//控制自己发言还是不发言,模式三生效
+message AudioCtrolRequest
+{
+    optional AudioCtrol audio_control = 1;
+}
+
+//控制自己发言还是不发言,模式三生效
+message AudioCtrolResponse
+{
+    optional ResultID result = 1;
+	optional AudioCtrol media_control = 2; 
+}
+
+message NotifyAudioCtrol
+{
+    optional int32 user_id = 1;                //发送者id
+    optional int32 seat_id = 2;                     //发送者座位
+    optional AudioCtrol audio_control = 3; 
+}
+

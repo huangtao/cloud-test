@@ -1,0 +1,389 @@
+package com.boyaa.testholdemhk.uilib;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+import com.boyaa.testholdemhk.business.CommonBusiness.RoomColumn;
+import com.boyaa.testholdemhk.business.CommonBusiness.RoomLevel;
+
+
+public class RoomListPage extends RainbowElement{
+	
+	public static RainbowDriver rd = null;
+	private static CommonBusiness cb = null;
+	public RoomListPage(){
+		rd = RainbowDriver.getRainbowDriver();
+		cb = new CommonBusiness();
+	}
+	
+	public void selectRoomLevel(RoomLevel roomLevel){
+
+		WebElement roomTypeButton = waitSubElement("场次类型按钮");
+		if(roomTypeButton.getText() == roomLevel.getName()){
+			return;
+		}
+		roomTypeButton.click();
+		switch(roomLevel) {
+			case Newbie:
+				waitSubElement("新手场按钮").click();
+				break;
+			case Junior:
+				waitSubElement("初级场按钮").click();
+				break;
+			case Middle:
+				waitSubElement("中级场按钮").click();
+				break;
+			case Senior:
+				waitSubElement("高级场按钮").click();
+				break;
+			default:
+				break;
+		}
+	}
+	/**
+	  * 进入一个带有机器人的房间，成功进入返回room id,否则返回空串""
+	  * @author FoxHu
+	  */
+	 public void clickOnAEmptyRoom(long carryCoin){
+		 List<RoomLevel> roomTypeList = new ArrayList<RoomLevel>();
+		 roomTypeList.add(RoomLevel.Newbie);
+		 roomTypeList.add(RoomLevel.Junior);
+		 roomTypeList.add(RoomLevel.Middle);
+		 roomTypeList.add(RoomLevel.Senior);
+		 Iterator<RoomLevel> it = roomTypeList.iterator();
+		 selectRoomLevel(it.next());
+		 while(it.hasNext()){
+			 List<WebElement> lwe = getRoomListSubElement();
+			 for (WebElement rommline:lwe){
+				 List<WebElement> texte = rommline.findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+				 WebElement coinswe = texte.get(RoomColumn.MaxAndMinCoins.getName());
+				 boolean ifsatisfycarrycoin = findARoomBetweenMincarryAndMaxcarry(coinswe ,carryCoin);
+				 if(ifsatisfycarrycoin){
+					 WebElement player = texte.get(RoomColumn.PlayerCount.getName());
+					 String[] playernum = player.getText().toString().trim().split("/");
+					if(Integer.parseInt(playernum[0].trim())==0){
+						player.click();//进入一个房间		
+						return ;
+					}
+				 }
+			 }
+			selectRoomLevel(it.next());
+		 }
+		Assert.fail("没有合适的房间，房间条件为：玩家人数为0，资产"+carryCoin+"能坐下的房子满足大于");;//没有进入任何房间
+	 }
+	 
+	 /**
+	  * 进入一个带有机器人的房间，成功进入返回room id,否则返回空串""
+	  * @author JackWang
+	  */
+	 public String clickOnARoomWithRobot(String apiurl ,long carryCoin,String robotnum){
+		 List<RoomLevel> roomTypeList = new ArrayList<RoomLevel>();
+		 roomTypeList.add(RoomLevel.Junior);
+		 roomTypeList.add(RoomLevel.Newbie);
+		 roomTypeList.add(RoomLevel.Middle);
+		 roomTypeList.add(RoomLevel.Senior);
+		 Iterator<RoomLevel> it = roomTypeList.iterator();
+		 selectRoomLevel(it.next());
+		 while(it.hasNext()){
+			 List<WebElement> lwe = getRoomListSubElement();
+			 for (WebElement rommline:lwe){
+				 List<WebElement> texte = rommline.findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+				 WebElement coinswe = texte.get(RoomColumn.MaxAndMinCoins.getName());
+				 boolean ifsatisfycarrycoin = findARoomBetweenMincarryAndMaxcarry(coinswe ,carryCoin);
+				 if(ifsatisfycarrycoin){
+					 WebElement roomidwe = texte.get(RoomColumn.Roomname.getName());
+					 String[] tmpString = roomidwe.getText().toString().trim().split("/");
+					 String roomId = tmpString[0].trim();
+					 //访问Http接口进一个机器人到房间
+					 if(cb.joinARobot(apiurl ,roomId ,robotnum)){ //返回为true，配置机器人成功
+						 //配置房间成功
+						 roomidwe.click();//进入一个房间			 
+						 return roomId;
+					 }else{
+						 return "";
+					 }	
+				 }
+			 }
+			selectRoomLevel(it.next());
+		 }
+		return "";//没有进入任何房间
+	 }
+	
+	/**
+	  * 进入一个带有机器人的房间，成功进入返回room id,否则返回空串""
+	  * @author JackWang
+	  */
+	 public String clickOnARoomWithRobot(String apiurl ,long carryCoin){
+		 List<RoomLevel> roomTypeList = new ArrayList<RoomLevel>();
+		 roomTypeList.add(RoomLevel.Junior);
+		 roomTypeList.add(RoomLevel.Newbie);
+		 roomTypeList.add(RoomLevel.Middle);
+		 roomTypeList.add(RoomLevel.Senior);
+		 Iterator<RoomLevel> it = roomTypeList.iterator();
+		 selectRoomLevel(it.next());
+		 while(it.hasNext()){
+			 List<WebElement> lwe = getRoomListSubElement();
+			 for (WebElement rommline:lwe){
+				 List<WebElement> texte = rommline.findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+				 WebElement coinswe = texte.get(RoomColumn.MaxAndMinCoins.getName());
+				 boolean ifsatisfycarrycoin = findARoomBetweenMincarryAndMaxcarry(coinswe ,carryCoin);
+				 if(ifsatisfycarrycoin){
+					 WebElement roomidwe = texte.get(RoomColumn.Roomname.getName());
+					 String[] tmpString = roomidwe.getText().toString().trim().split("/");
+					 String roomId = tmpString[0].trim();
+					 try{
+						 cb.kickARobot(apiurl, roomId);//删除房间中已有的机器人
+					 }catch(Exception e){
+						 e.printStackTrace();
+					 }
+					 //访问Http接口进一个机器人到房间
+					 if(cb.joinARobot(apiurl ,roomId,"1")){ //返回为true，配置机器人成功
+						 //配置房间成功
+						 roomidwe.click();//进入一个房间			 
+						 return roomId;
+					 }else{
+						 return "";
+					 }	
+				 }
+			 }
+			selectRoomLevel(it.next());
+		 }
+		return "";//没有进入任何房间
+	 }
+	 public  boolean checkWhetherThereAreRoomSwitchButtonInRoomList(){
+		// waitSubElement("房间类型切换按钮").getAttribute(arg0)
+		 if (isSubElementPresent("普通快速按钮")){
+		 return true;
+		 }else{
+			 return false;
+		 }
+	 }
+	 
+	 @SuppressWarnings("null")
+	public  List<WebElement> getRoomListSubElement(){
+		 WebElement roomlt = waitSubElement("房间列表页面");
+		 List<WebElement> listroom =roomlt.findElements(By.className(AndroidElementClass.ANDROID_LAYOUT)) ;
+		 boolean ident =true;
+		 while(ident){
+			 List<WebElement> lwe = roomlt.findElements(By.className(AndroidElementClass.ANDROID_LAYOUT));
+			 String roomId = lwe.get(0).findElements(By.className(AndroidElementClass.ANDROID_TEXT)).get(RoomColumn.Roomname.getName()).getText().toString().trim().split("/")[0].trim();
+			 //以下滑动这步还存在问题，暂时这样是可以执行，但需要解决该问题
+			 //cb.drag(roomlt, "up", 1, 1/2);
+			 List<WebElement> lwe_m = roomlt.findElements(By.className(AndroidElementClass.ANDROID_LAYOUT));
+			 String roomId_m = lwe_m.get(0).findElements(By.className(AndroidElementClass.ANDROID_TEXT)).get(RoomColumn.Roomname.getName()).getText().toString().trim().split("/")[0].trim();
+			 listroom.addAll(lwe);
+			 if(roomId.equals(roomId_m)){
+				 ident =false;
+			 }else{
+				 listroom.addAll(lwe_m);
+			 }
+		 }
+		 
+		 return listroom;
+		 
+	 }
+	 public void switchToSpecifiedModeInRoomList(String mode){
+		 WebElement we = waitSubElement("房间类型切换按钮");
+		 if(mode.equals("快速")){
+			 if(!we.isSelected()){
+				 return;
+			 }
+		 }
+		 if(mode.endsWith("正常")){
+			 if(we.isSelected()){
+				 return;
+			 }
+		 }	
+		 waitSubElement("房间类型切换按钮").click();
+		 rd.sleep(1*1000);
+	 }
+	 public boolean checkWhetherThereAreQuickIconInRoomList(){
+		 if (isSubElementPresent("快速开始闪电图标")){
+			 return true;
+			 }else{
+				 return false;
+			 }
+	 }
+	 
+	 /**
+	  * 检查【隐藏空房间】复选框的选中状态
+	  * @return true:复选框为选中，否则为不选中。
+	  */
+	 public boolean checkTheCheckBoxStatusOfHideEmptyRoom(){
+		 WebElement we = waitSubElement("隐藏房间复选框");	 
+		 return !we.isSelected();//如查是选择的就isSelected()返回False否则返回True
+	 }
+	 /**
+	  * 在房间列表中将【隐藏满房间】复选框选中
+	  */
+	 public void checkTheCheckBoxOfHideFullRoom(){		
+		 WebElement we = waitSubElement("隐藏房间复选框");	 
+		 if(we.isSelected()){
+			 waitSubElement("隐藏房间复选框").click();
+		 }			
+	 }
+	 
+	 /**
+	  * 检查房间列表中是否有空房间存在
+	  */
+	 public void checkWhetherThereAreEmptyRoomInRoomList(){
+		 List<WebElement> listwe =getRoomListSubElement();
+		  WebElement playcount = listwe.get(0).findElements(By.className(AndroidElementClass.ANDROID_TEXT)).get(RoomColumn.MaxAndMinCoins.getName());
+		  String player = playcount.getText().toString().trim().split("/")[0].trim();
+		  if(player.equals("0")){
+			  playcount = listwe.get(listwe.size()-1).findElements(By.className(AndroidElementClass.ANDROID_TEXT)).get(RoomColumn.MaxAndMinCoins.getName());
+			  String player_a = playcount.getText().toString().trim().split("/")[0].trim();
+			if (!player_a.equals("0")){
+				Assert.fail("房间列表存在空房间--->RoomID:" );
+			}
+		  }else{
+			  Assert.fail("房间列表存在空房间--->RoomID:" );
+		  }
+		  
+		 	
+	 }
+	 /**
+	  * 将房间列表按房间在线人数降序排序
+	  */
+	 public void descendingSortByOnlinePlayerNumber(){
+		 //ToDo由于无法区分降序与升序图标，需要研发提供一个Tag属性来识别，下面是目前暂时的解决方案。
+		 waitSubElement("在线人数列名").click();
+		// waitSubElement("在线人数列名").getAttribute(arg0)
+		 rd.sleep(1*1000);//由于没有比较好的同步方法，暂时使用Sleep
+		 waitSubElement("在线人数列名").click();
+	     rd.sleep(2*1000);//由于没有比较好的同步方法，暂时使用Sleep
+	 }
+	 /*
+	  * 寻找一个最小携带小于用户游戏币，最大金额大于用户游戏币的房间
+	  * @Param long carryCoin(用户登录的携带数)
+	  * @author：FoxHu
+	  * 
+	  方法未修改完成，后续修改
+	 public void findARoomBetweenMincarryAndMaxcarry(long carryCoin){  
+		 WebElement roomlt = waitSubElement("房间列表页面");
+		 List<WebElement> lwe = roomlt.findElements(By.className(AndroidElementClass.ANDROID_LAYOUT));
+		 for (WebElement rommline:lwe){
+			 List<WebElement> texte = roomlt.findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+			 texte.get(RoomColumn.MaxAndMinCoins.getName());
+		 }
+		 ViewPager vp = (ViewPager) local.getViewByID(TexasUI.roomList_viewpager);
+		 ListView lv = (ListView) vp.getFocusedChild();
+		 List<TextView> tvlist = local.getCurrentViews(TextView.class, lv);
+		 Iterator<TextView> tvit = tvlist.iterator();
+		 while(tvit.hasNext()){
+			 TextView tv = tvit.next();
+			 if(TexasUI.roomListMincarryAndMaxcarry[0].endsWith(tv.getResources().getResourceEntryName(tv.getId()))){
+				 String getvaluestring = tv.getText().toString().trim().toUpperCase();
+				 String[] tmpString = getvaluestring.split("/");
+				 long mincarry=0;
+				 long maxcarry=0;
+				 if(tmpString[0].trim().endsWith("K")){
+					 mincarry =Integer.parseInt(tmpString[0].split("K")[0].trim())*1000;
+				 }else if(tmpString[0].trim().endsWith("M")){
+					 mincarry =Integer.parseInt(tmpString[0].split("M")[0].trim())*1000000;
+				 }else if(tmpString[0].trim().endsWith("萬")){
+					 mincarry = Integer.parseInt(tmpString[0].split("萬")[0].trim()) * 10000;
+				 }else if(tmpString[0].trim().endsWith("仟萬")){
+					 mincarry = Integer.parseInt(tmpString[0].split("仟萬")[0].trim()) * 10000000;
+				 }else if(tmpString[0].trim().endsWith("億")){
+					 mincarry = Integer.parseInt(tmpString[0].split("億")[0].trim()) * 100000000;
+				 }else{
+					 String[] minimumArr = tmpString[0].trim().split(",");
+					 for(int j=0;j<=(minimumArr.length -1);j++){
+						 Log.i(TAG ,"--test_missionLogin--:uCoins.length"+minimumArr.length);
+						 mincarry =(long) (Integer.parseInt(minimumArr[j])*(Math.pow(1000, (minimumArr.length-1-j)))+mincarry);
+					 }
+				 }
+				 if(tmpString[1].trim().endsWith("K")){
+					 maxcarry =Integer.parseInt(tmpString[1].split("K")[0].trim())*1000;
+				 } else if(tmpString[1].trim().endsWith("M")){
+					 maxcarry =Integer.parseInt(tmpString[1].split("M")[0].trim())*1000000;
+				 }else if(tmpString[0].trim().endsWith("萬")){
+					 maxcarry = Integer.parseInt(tmpString[0].split("萬")[0].trim()) * 1000000;
+				 }else if(tmpString[0].trim().endsWith("仟萬")){
+					 maxcarry = Integer.parseInt(tmpString[0].split("仟萬")[0].trim()) * 10000000;
+				 }else if(tmpString[0].trim().endsWith("億")){
+					 maxcarry = Integer.parseInt(tmpString[0].split("億")[0].trim()) * 100000000;
+				 }else{
+					 String[] minimumArr = tmpString[0].trim().split(",");
+					 for(int j=0;j<=(minimumArr.length -1);j++){
+						 maxcarry =(long) (Integer.parseInt(minimumArr[j])*(Math.pow(1000, (minimumArr.length-1-j)))+maxcarry);
+					 }
+				 }
+				 //所带钱数与最大一般、最小进行比较
+				 if(mincarry <= carryCoin && maxcarry/2 >= carryCoin ){ 
+					 local.clickOnView(tv);					 
+					 if(!local.isElementExist(TexasUI.roomCardType_image)){//检查房间内【牌型】选择图标是否存在
+						 Assert.fail("没有找到房间内【牌型】选择图标，进入房间失败:");
+						 return;
+					 }
+				
+				 }					     
+			 }
+		 }
+		 Assert.fail("没有找到最小携带小于携带金额，最大携带大于携带金额的房间");
+	 }
+	 */
+	 
+	 /*
+	  * @Param Iterator<TextView> tvit(TextView的迭代器) ,long carryCoin(用户登录的携带数)
+	  * @author：FoxHu
+	  */
+	 public boolean findARoomBetweenMincarryAndMaxcarry(WebElement we ,long carryCoin){
+		 	 String getvaluestring = we.getText().toString().trim().toUpperCase();
+			 String[] tmpString = getvaluestring.split("/");
+			 long mincarry=0;
+			 long maxcarry=0;
+			 if(tmpString[0].trim().endsWith("K")){
+				 mincarry =Integer.parseInt(tmpString[0].split("K")[0].trim())*1000;
+			 }else if(tmpString[0].trim().endsWith("M")){
+				 mincarry =Integer.parseInt(tmpString[0].split("M")[0].trim())*1000000;
+			 }else if(tmpString[0].trim().endsWith("萬")){
+				 mincarry = Integer.parseInt(tmpString[0].split("萬")[0].trim()) * 10000;
+			 }else if(tmpString[0].trim().endsWith("仟萬")){
+				 mincarry = Integer.parseInt(tmpString[0].split("仟萬")[0].trim()) * 10000000;
+			 }else if(tmpString[0].trim().endsWith("億")){
+				 mincarry = Integer.parseInt(tmpString[0].split("億")[0].trim()) * 100000000;
+			 }else{
+				 String[] minimumArr = tmpString[0].trim().split(",");
+				 for(int j=0;j<=(minimumArr.length -1);j++){
+					 mincarry =(long) (Integer.parseInt(minimumArr[j])*(Math.pow(1000, (minimumArr.length-1-j)))+mincarry);
+				 }
+			 }
+			 if(tmpString[1].trim().endsWith("K")){
+				 maxcarry =Integer.parseInt(tmpString[1].split("K")[0].trim())*1000;
+			 } else if(tmpString[1].trim().endsWith("M")){
+				 maxcarry =Integer.parseInt(tmpString[1].split("M")[0].trim())*1000000;
+			 }else if(tmpString[1].trim().endsWith("萬")){
+				 maxcarry = Integer.parseInt(tmpString[1].split("萬")[0].trim()) * 10000;
+			 }else if(tmpString[1].trim().endsWith("仟萬")){
+				 maxcarry = Integer.parseInt(tmpString[1].split("仟萬")[0].trim()) * 10000000;
+			 }else if(tmpString[1].trim().endsWith("億")){
+				 maxcarry = Integer.parseInt(tmpString[1].split("億")[0].trim()) * 100000000;
+			 }else{
+				 String[] minimumArr = tmpString[1].trim().split(",");
+				 for(int j=0;j<=(minimumArr.length -1);j++){
+					 maxcarry =(long) (Integer.parseInt(minimumArr[j])*(Math.pow(1000, (minimumArr.length-1-j)))+maxcarry);
+				 }
+			 }
+			//所带钱数与最大一般、最小进行比较
+			// if(mincarry <= carryCoin && maxcarry/2>= carryCoin ){ 
+			if(mincarry <= carryCoin ){ 
+				return true;
+			 }else{
+				 return false;
+			 } 
+   }
+	 
+}
+

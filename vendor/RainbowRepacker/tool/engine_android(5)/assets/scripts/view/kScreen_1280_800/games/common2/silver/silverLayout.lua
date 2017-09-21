@@ -1,0 +1,40 @@
+silverLayout=
+{
+	name="silverLayout",type=0,typeName="View",time=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="touchView",type=0,typeName="View",time=95860292,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft
+	},
+	{
+		name="btnSilver",type=2,typeName="Button",time=95860292,x=0,y=0,width=80,height=78,visible=1,nodeAlign=kAlignRight,file="games/common/roomTask/silverroom/silverNotRewardIcon.png"
+	},
+	{
+		name="bg",type=1,typeName="Image",time=95860305,x=0,y=0,width=369,height=339,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="games/common/roomTask/silverroom/silverBg.png",gridLeft=0,gridRight=0,gridTop=0,gridBottom=0,
+		{
+			name="topView",type=0,typeName="View",time=95909689,x=0,y=118,width=369,height=32,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="moreSilverIcon",type=0,typeName="Image",time=114976939,x=0,y=0,width=161,height=97,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/roomTask/silverroom/moreSilverIcon.png"
+			}
+		},
+		{
+			name="middleView",type=0,typeName="View",time=95910662,x=0,y=200,width=200,height=32,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+			{
+				name="getRewardText",type=0,typeName="Text",time=114968524,x=93,y=0,width=64,height=64,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[即可获取]],fontName="",fontSize=28,textAlign=kAlignCenter,colorRed=255,colorGreen=233,colorBlue=46
+			},
+			{
+				name="silverIcon",type=0,typeName="Image",time=114968737,x=211,y=1,width=30,height=32,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/roomTask/silverroom/oneSilverIcon.png"
+			},
+			{
+				name="silverNumText",type=0,typeName="Text",time=114968835,x=58,y=0,width=64,height=64,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[X50]],fontName="",fontSize=28,textAlign=kAlignLeft,colorRed=213,colorGreen=213,colorBlue=213
+			}
+		},
+		{
+			name="bottomView",type=0,typeName="View",time=114969150,x=0,y=14,width=64,height=64,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,
+			{
+				name="desText",type=0,typeName="Text",time=114969240,x=0,y=0,width=64,height=64,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[（      可用于报名指定比赛 ）]],fontName="",fontSize=20,textAlign=kAlignCenter,colorRed=213,colorGreen=213,colorBlue=213
+			},
+			{
+				name="desIcon",type=0,typeName="Image",time=114969358,x=-88,y=18,width=43,height=28,nodeAlign=kAlignTopLeft,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/roomTask/silverroom/silverIcon.png"
+			}
+		}
+	}
+}

@@ -1,0 +1,53 @@
+package com.boyaa.testholdemth.uilib;
+
+import io.appium.java_client.TouchAction;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemth.business.CommonBusiness.RoomLevel;
+
+
+public class RoomPage extends RainbowElement{
+	
+	
+	
+	
+	public PayDialog getPayDialog() {
+		return new PayDialog();
+	}
+	
+	public SlotPage getSlotPage() {
+		return getSlotPage(true);
+	}
+	
+	public SlotPage getSlotPage(boolean ifCloseTips) {
+		SlotPage slotPage = new SlotPage();
+		if(ifCloseTips) {
+			for(int i=0;i<3;i++) {
+				slotPage.waitSubElement("幸运图片", 1).click();
+			}
+		}
+		return slotPage;
+	}
+	
+	public class PayDialog extends RainbowElement{
+		
+	}
+	
+	public class SlotPage extends RainbowElement{
+		
+		public void shake() {
+			RainbowDriver rd = RainbowDriver.getInstance();
+			WebElement wbSlotShaker = waitSubElement("拉杆");
+			int x = wbSlotShaker.getLocation().getX();
+			int y = wbSlotShaker.getLocation().getY();
+			int height = wbSlotShaker.getSize().getHeight();
+			int width = wbSlotShaker.getSize().getWidth();
+			new TouchAction(rd).press(x, y).moveTo(x, y+height).release().perform();
+		}
+	}
+}

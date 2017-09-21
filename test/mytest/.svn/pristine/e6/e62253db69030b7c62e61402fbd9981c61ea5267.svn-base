@@ -1,0 +1,388 @@
+package com.boyaa.testhallbase.cases;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testhallbase.uilib.BuCheckinDialog;
+import com.boyaa.testhallbase.uilib.BuyPropDialog;
+import com.boyaa.testhallbase.uilib.CheckinDialog;
+import com.boyaa.testhallbase.uilib.ExchangePage;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.ShopPage;
+import com.boyaa.testhallbase.uilib.TaskRewardDialog;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="每日签到")
+public class CheckinTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+	private String currentMid = "";
+	public CheckinTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp(false);
+//		cb = new CommonBusiness();
+		hallPage = new HallPage();
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到测试环境
+		hallPage = new HallPage();
+		currentMid = CommonBusiness.getCurrentUserIdInHall();
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="DFHALL-1203", name="未签到时(Phase II)")
+	@Test(description="检查用户未签到时界面显示是否正常")
+	public void test_beforeCheckin() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.UnChecked);
+		
+		hallPage.clickToOpenCheckinDialog();
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("签到View").isDisplayed(), "检查每日签到对话框出现");
+		assertTrue(cd.waitSubElement("当日签到状态").isDisplayed(), "检查能正确显示当天签到状态");
+		assertTrue(cd.waitSubElement("补签按钮").isDisplayed(), "检查补签按钮被显示");
+		assertTrue(cd.waitSubElement("连续签到天数文本").isDisplayed(), "检查能正确显示连续签到天数");
+		assertTrue(Integer.valueOf(cd.waitSubElement("连续签到天数文本").getText())>=0, "检查连续签到天数为大于等于0的整数");
+		assertTrue(cd.waitSubElement("广告位").isDisplayed(), "检查常态广告位被显示");
+		
+//		cd.waitSubElement("广告位").click();		//运营位置，变动较频繁，暂不做检查点
+//		ExchangePage exchangePage = new ExchangePage();
+//		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+	}
+	
+	@CaseDesc(id="DFHALL-1278", name="已签到(Phase II)")
+	@Test(description="检查用户签到后时界面显示是否正常")
+	public void test_afterCheckin() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.UnChecked);
+		
+		hallPage.clickToOpenCheckinDialog();
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("签到View").isDisplayed(), "检查每日签到对话框出现");
+		cd.waitSubElement("签到按钮").click();
+		assertTrue(cd.waitSubElement("返回按钮").isDisplayed(), "检查返回按钮被显示");
+		assertTrue(cd.waitSubElement("补签卡数目").isDisplayed(), "检查能正确显示补签卡数目");
+		assertTrue(cd.getBuCheckinCardNum()>=0, "检查补签卡数目为大于等于0的整数");
+		assertTrue(cd.waitSubElement("广告位").isDisplayed(), "检查常态广告位被显示");
+		
+//		cd.waitSubElement("广告位").click();		//运营位置，变动较频繁，暂不做检查点
+//		ExchangePage exchangePage = new ExchangePage();
+//		assertTrue(exchangePage.isPresent(), "检查是否打开兑换页面");
+	}
+	
+	@CaseDesc(id="DFHALL-1279", name="签到状态(Phase II)")
+	@Test(description="检查签到的三种状态")
+	public void test_checkinStatus() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+	}
+	
+	@CaseDesc(id="DFHALL-1280", name="返回签到界面(Phase II)")
+	@Test(description="检查点击签到日历的【返回】按钮后是否能正常返回签到界面")
+	public void test_returnToCheckin() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+		
+		cd.clickToReturn();
+		assertTrue(cd.waitSubElement("签到界面").isDisplayed(), "检查返回签到界面");
+	}
+	
+	@CaseDesc(id="DFHALL-1283", name="未签到时签到状态显示(Phase II)")
+	@Test(description="检查用户未签到时签到状态和点击签到后连续签到天数是否正确")
+	public void test_checkinStatusBeforeCheckin() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.UnChecked);
+		
+		hallPage.clickToOpenCheckinDialog();
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("签到View").isDisplayed(), "检查每日签到对话框出现");
+		assertTrue(cd.waitSubElement("当日签到状态").isDisplayed(), "检查能正确显示当天签到状态");
+		
+		int curCheckinDaysNum = (int)Integer.valueOf(cd.waitSubElement("连续签到天数文本").getText());
+		cd.waitSubElement("签到按钮").click();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");	//已签到状态下，签到页签默认显示日历界面
+		cd.clickToReturn();	//签到后会默认跳转到补签View,所以要点击返回按钮返回签到View
+		assertEquals((int)Integer.valueOf(cd.waitSubElement("连续签到天数文本").getText()), curCheckinDaysNum+1, "检查连续签到天数增加了一天");
+		cd.close();
+	}
+	
+	@CaseDesc(id="DFHALL-1284", name="已签到时签到状态显示(Phase II)")
+	@Test(description="检查用户已签到后的各状态点是否正常")
+	public void test_checkinStatusAfterCheckin() throws InterruptedException {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");	//已签到状态下，签到页签默认显示日历界面
+		
+		cd.clickToReturn();
+		assertTrue(cd.waitSubElement("当日签到状态").isDisplayed(), "检查能正确显示当天签到状态");
+		
+		int curCheckinDaysNum = (int)Integer.valueOf(cd.waitSubElement("连续签到天数文本").getText());
+		cd.waitSubElement("签到按钮").click();
+		Thread.sleep(2000);	//TODO:改成等待一定时间内连续签到天数没有发生变化
+		assertEquals((int)Integer.valueOf(cd.waitSubElement("连续签到天数文本").getText()), curCheckinDaysNum, "检查连续签到天数没有发生变化");
+	}
+	
+	@CaseDesc(id="DFHALL-1288", name="补签卡不足(Phase II)")
+	@Test(description="检查补签卡不足时补签的情况")
+	public void test_noBuCheckinCard() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 0);
+
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+		
+		List<WebElement> buElements = cd.waitSubElements("补签提示");
+		int index = 0;
+		for (WebElement bu:buElements) {
+			if (bu.isDisplayed()) {
+				bu.click();
+				break;
+			}
+			index++;
+		}
+		BuCheckinDialog buDialog = new BuCheckinDialog();
+		buDialog.close();
+		assertTrue(cd.waitSubElements("补签提示").get(index).isDisplayed(), "检查补签不成功");
+	}
+	
+	@CaseDesc(id="DFHALL-1289", name="购买补签卡(Phase II)")
+	@Test(description="检查补签卡不足时能跳转到商城")
+	public void test_buyBuCheckinCard() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 0);
+		
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+		
+		List<WebElement> buElements = cd.waitSubElements("补签提示");
+		for (WebElement bu:buElements) {
+			if (bu.isDisplayed()) {
+				bu.click();
+				break;
+			}
+		}
+		BuCheckinDialog buDialog = new BuCheckinDialog();
+		assertTrue(buDialog.waitSubElement("获取补签卡按钮").isDisplayed(), "检查补签不成功");
+		buDialog.waitSubElement("获取补签卡按钮").click();
+		assertTrue(new ShopPage().isPresent(), "检查跳转到商城界面");
+	}
+	
+	@CaseDesc(id="DFHALL-1290", name="补签提示(Phase II)")
+	@Test(description="检查补签时的提示和界面显示是否正常")
+	public void test_buCheckinPrompt() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 1);
+		
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+		
+		List<WebElement> buElements = cd.waitSubElements("补签提示");
+		for (WebElement bu:buElements) {
+			if (bu.isDisplayed()) {
+				bu.click();
+				break;
+			}
+		}
+		BuCheckinDialog buDialog = new BuCheckinDialog();
+		assertTrue(buDialog.isPresent(), "检查补签提示框是否弹出");
+		assertTrue(buDialog.waitSubElement("确定按钮").isDisplayed(), "检查确定按钮是否存在");
+		assertTrue(buDialog.waitSubElement("取消按钮").isDisplayed(), "检查取消按钮是否存在");
+	}
+	
+	@CaseDesc(id="DFHALL-1291", name="补签取消(Phase II)")
+	@Test(description="检查补签时选择取消后的表现是否正常")
+	public void test_buCheckinCancel() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 1);
+		
+		hallPage.clickToOpenCheckinDialog();
+		new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+		CheckinDialog cd = new CheckinDialog();
+		assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+		
+		List<WebElement> buElements = cd.waitSubElements("补签提示");
+		int index = 0;
+		for (WebElement bu:buElements) {
+			if (bu.isDisplayed()) {
+				bu.click();
+				break;
+			}
+			index++;
+		}
+		BuCheckinDialog buDialog = new BuCheckinDialog();
+		buDialog.waitSubElement("取消按钮").click();
+		assertTrue(cd.waitSubElements("补签提示").get(index).isDisplayed(), "检查补签失败，当天仍显示为补签");
+	}
+	
+	@CaseDesc(id="DFHALL-1292", name="补签确认(Phase II)")
+	@Test(description="检查补签时选择确认后的表现是否正常")
+	public void test_buCheckinConfirm() {
+		CommonBusiness.setCheckinStatus(currentMid, CommonBusiness.CheckinStatus.Checked);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 1);
+		
+//		try {
+			hallPage.clickToOpenCheckinDialog();
+			new TaskRewardDialog().waitSubElement("每日签到TAB按钮").click();	//在已签到状态下，默认显示每日任务TAB，需要先切换
+			CheckinDialog cd = new CheckinDialog();
+			assertTrue(cd.waitSubElement("日历界面").isDisplayed(), "检查默认显示日历界面");
+			
+			List<WebElement> buElements = cd.waitSubElements("补签提示");
+			int index = 0;
+			for (WebElement bu:buElements) {
+				if (bu.isDisplayed()) {
+					bu.click();
+					break;
+				}
+				index++;
+			}
+//			BuCheckinDialog buDialog = new BuCheckinDialog();
+//			buDialog.waitSubElement("确定按钮").click();
+//			assertTrue(cd.waitSubElements("已签到提示").get(index).isDisplayed(), "检查补签成功");	//TODO:等待已签到提示变成可见
+//			int dayInt = Integer.valueOf(cd.waitSubElements("日期文本").get(index).getText());
+//			CommonBusiness.setCheckinStatus(currentMid, dayInt, CommonBusiness.CheckinStatus.UnChecked);
+//		} finally {
+//			CommonBusiness.setBuCheckinCardUsed(currentMid, false);	//清空补签卡已使用标志
+//		}
+	}
+	
+//	@CaseDesc(id="DFHALL-1293", name="连续签到奖励")
+//	@Test(description="test_continuousCheckinAward")
+//	public void test_continuousCheckinAward() {
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 1, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 2, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 3, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 5, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 6, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 7, CommonBusiness.CheckinStatus.Checked);
+//		CommonBusiness.setCheckinStatus(CommonBusiness.getUserId(), 4, CommonBusiness.CheckinStatus.UnChecked);
+//		
+//		AnouncementDialog ad = new AnouncementDialog();//公告对话框
+//		UpdateDialog ud = new UpdateDialog();//升级对话框		
+//		if(ad.isPresent(8)){
+//			ad.close();
+//		}
+//		if(ud.isPresent(2)){
+//			ud.close();
+//		}
+//		CheckinDialog cd = new CheckinDialog();
+//	}
+	
+	@CaseDesc(id="DFHALL-1295", name="购买补签卡(Phase II)")
+	@Test(description="检查在商城能够购买补签卡")
+	public void test_buyCheckinCard() {
+		CommonBusiness.setUserMoney(currentMid, 100000);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 0);
+		
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("道具TAB按钮").click();
+		shopPage.waitSubElement("道具TAB-补签卡").click();
+		new BuyPropDialog().buy();
+		shopPage.waitSubElement("返回按钮").click();
+		
+		hallPage.clickToOpenCheckinDialog();
+		CheckinDialog cd = new CheckinDialog();
+		cd.waitSubElement("补签按钮").click();
+		assertEquals(cd.getBuCheckinCardNum(), 1, "检查补签卡数目增加1次");
+	}
+	
+	@CaseDesc(id="DFHALL-1296", name="购买补签卡时增加数量(Phase II)")
+	@Test(description="检查在商城购买补签卡时增加数量的情况")
+	public void test_addNumWhenBuyCheckinCard() {
+		CommonBusiness.setUserMoney(currentMid, 100000);
+		
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("道具TAB按钮").click();
+		shopPage.waitSubElement("道具TAB-补签卡").click();
+		BuyPropDialog bd = new BuyPropDialog();
+		bd.waitSubElement("加1按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 2, "检查购买数量加1");
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("商品总价").getText()), 2*50000, "检查总价正确");
+		
+		bd.waitSubElement("最大数量按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 99, "检查最大购买数量为99");
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("商品总价").getText()), 99*50000, "检查总价正确");
+		bd.waitSubElement("加1按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 99, "检查购买数量不再增加");
+	}
+	
+	@CaseDesc(id="DFHALL-1297", name="购买补签卡时减少数量(Phase II)")
+	@Test(description="检查在商城购买补签卡时减少数量的情况")
+	public void test_removeNumWhenBuyCheckinCard() {
+		CommonBusiness.setUserMoney(currentMid, 100000);
+
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("道具TAB按钮").click();
+		shopPage.waitSubElement("道具TAB-补签卡").click();
+		
+		BuyPropDialog bd = new BuyPropDialog();
+		bd.waitSubElement("减1按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 1, "检查购买数量不再减少");
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("商品总价").getText()), 50000, "检查总价正确");
+		
+		bd.waitSubElement("最大数量按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 99, "检查最大购买数量为99");
+		bd.waitSubElement("减1按钮").click();
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("购买数量").getText()), 98, "检查购买数量减1");
+		assertEquals((int)Integer.valueOf(bd.waitSubElement("商品总价").getText()), 98*50000, "检查总价正确");
+	}
+	
+	@CaseDesc(id="DFHALL-1298", name="购买补签卡成功(Phase II)")
+	@Test(description="检查当金币数足够时可以成功购买1个补签卡")
+	public void test_buyCheckinCardSuccess() {
+		CommonBusiness.setUserMoney(currentMid, 100000);
+		CommonBusiness.setBuCheckinCardNum(currentMid, 0);
+		
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("道具TAB按钮").click();
+		shopPage.waitSubElement("道具TAB-补签卡").click();
+		new BuyPropDialog().buy();
+		shopPage.waitSubElement("返回按钮").click();
+		
+		hallPage.clickToOpenCheckinDialog();
+		CheckinDialog cd = new CheckinDialog();
+		cd.waitSubElement("补签按钮").click();
+		assertEquals(cd.getBuCheckinCardNum(), 1, "检查补签卡数目增加1次");
+		//TODO:检查金币数的扣减是否正确
+	}
+	
+	@CaseDesc(id="DFHALL-1299", name="购买多张补签卡失败(Phase II)")
+	@Test(description="检查当金币数不足以购买多张补签卡时购买会失败")
+	public void test_buyMultipleCheckinCardFail() {
+		CommonBusiness.setUserMoney(currentMid, 100000);
+		
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("道具TAB按钮").click();
+		shopPage.waitSubElement("道具TAB-补签卡").click();
+		BuyPropDialog buyPropDialog = new BuyPropDialog();
+		buyPropDialog.waitSubElement("最大数量按钮").click();
+		buyPropDialog.waitSubElement("购买按钮").click();
+		assertTrue(buyPropDialog.waitSubElement("TOAST提示").getText().contains("至少需要"),"检查弹出金币数量不足的提示");
+	}
+}

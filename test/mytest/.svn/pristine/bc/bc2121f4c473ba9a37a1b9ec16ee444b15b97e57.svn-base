@@ -1,0 +1,14 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class SngPage extends RainbowElement {
+	
+	public PayDialog getPayDialog() {
+		return new PayDialog();
+	}
+
+	public class PayDialog extends RainbowElement {
+
+	}
+}

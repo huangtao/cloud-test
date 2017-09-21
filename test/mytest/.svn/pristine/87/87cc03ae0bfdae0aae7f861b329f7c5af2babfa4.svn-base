@@ -1,0 +1,15 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class ShopPage extends RainbowElement{
+	public ShopPage() {
+		super();
+		try {
+			Thread.sleep(2000);		//打开该页面有时会延时，导致点击无法响应，暂时等待2s
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

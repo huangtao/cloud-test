@@ -1,0 +1,29 @@
+local updateDialogView=
+{
+	name="updateDialogView",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1,height=1,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="maskView",type=1,typeName="Image",time=78476644,report=0,x=-1,y=1,width=1280,height=800,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/bg_shiled.png"
+	},
+	{
+		name="contentView",type=0,typeName="View",time=78476645,report=0,x=0,y=0,width=740,height=495,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,
+		{
+			name="bg",type=1,typeName="Image",time=78476646,report=0,x=0,y=0,width=98,height=96,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_bg_55_55_55_55.png",gridLeft=55,gridRight=55,gridTop=55,gridBottom=55
+		},
+		{
+			name="titleBg",type=1,typeName="Image",time=78476647,report=0,x=0,y=-55,width=617,height=190,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/popupWindow/popupWindow_title.png",
+			{
+				name="title",type=4,typeName="Text",time=78476648,report=0,x=0,y=-8,width=144,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignCenter,colorRed=255,colorGreen=235,colorBlue=186,string=[[版本更新]]
+			}
+		},
+		{
+			name="updateText",type=4,typeName="Text",time=78477184,report=0,x=70,y=80,width=0,height=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=34,textAlign=kAlignLeft,colorRed=118,colorGreen=72,colorBlue=18,string=[[更新下载中]]
+		},
+		{
+			name="updateContent",type=5,typeName="TextView",time=78476971,report=0,x=0,y=0,width=600,height=240,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=34,textAlign=kAlignLeft,colorRed=118,colorGreen=72,colorBlue=18
+		},
+		{
+			name="updateSlider",type=0,typeName="Slider",time=78477079,report=0,x=0,y=40,width=600,height=41,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom
+		}
+	}
+}
+return updateDialogView;

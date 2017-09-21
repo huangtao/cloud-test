@@ -1,0 +1,229 @@
+package com.boyaa.testholdemhk.uilib;
+
+import io.appium.java_client.NetworkConnectionSetting;
+
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.repository.UIRepository;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+import com.boyaa.testholdemhk.business.AccountData;
+
+
+public class LoginPage extends RainbowElement{
+	public static RainbowDriver rd = null;
+	public  LoginPage(){
+		rd = RainbowDriver.getRainbowDriver();		
+	}
+	public  LoginPage(RainbowDriver rainbowd){
+		super(rainbowd);
+		rd = rainbowd;
+		activeApp();
+
+	}
+	public void logoutHoldem(){
+		LobbyPage lobbyPage = new LobbyPage();
+		if(lobbyPage.isSubElementPresent("更多选项按钮")){
+			lobbyPage.waitSubElement("更多选项按钮").click();//点击更多选项
+			Assert.assertTrue(lobbyPage.moreOptionPage().isPresent(),"更多选项页面没有出现");
+			lobbyPage.moreOptionPage().waitSubElement("登出按钮").click();
+			Assert.assertTrue(isSubElementPresent("游客登录按钮"),"预期结果：游客登录按钮存在，实际结果：游客登录按钮不存在");
+		}
+	}
+
+
+	public AccountData loginAsGuestWithTag(String tag) throws InterruptedException{		
+
+		AccountData ad = AccountData.requestByTag(tag); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到tag为:" + tag + "的账号");
+		}
+		loginAsGuestWithAccount(ad);
+		return ad;
+	}
+
+	public  boolean changeLoginLanguage(String launage,long timeoutSeconds){
+		if(!waitSubElement("切换按钮").getText().replace(" ", "").equals(launage.replace(" ", ""))){
+			long end =System.currentTimeMillis() + (timeoutSeconds * 1000);
+			while(System.currentTimeMillis() <=end ){
+				waitSubElement("切换按钮").click();
+				waitSubElement(launage).click();
+				if(waitSubElement("切换按钮").getText().replace(" ", "").equals(launage.replace(" ", ""))){
+					return true;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
+
+	/*
+	 * clear fb login cache
+	 */
+	public void  clearFBLoginCache(long timeout){
+		waitSubElement("切换账号").click();			
+		FacebookPage fb = facebookPage();	  
+		fb.waitSubElement("X关闭按钮").click();		
+		if(isSubElementPresent("游客登录按钮")){
+			return ;
+		}else{
+			Assert.fail("切换账号后没有成功返回到登录页面");
+		}
+
+	}
+
+	public AccountData loginAsGuestWithCoins(long coins) throws InterruptedException{		
+		AccountData ad = AccountData.requestByCoins(String.valueOf(coins)); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到金币数为:" + coins + "的账号");
+		}
+		loginAsGuestWithAccount(ad);
+		return ad;
+	}
+
+	public void enterTestEnv() {
+		try {
+			Thread.sleep(2*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(int i=0;i<5;i++) {	//由于去掉了waitActivity的设计，调试菜单有时候第一次不响应，所以需要多次尝试
+			rd.pressMenu();
+			try	{
+				waitSubElement("更多菜单项").click();
+				waitSubElement("测试环境菜单项",2).click();
+				return;
+			}
+			catch (TimeoutException e) {	
+			}
+		}
+		throw new RuntimeException("多次点击菜单键后仍然没有弹出调试菜单！");
+	}
+
+
+	/*
+	public AccountData loginAsGuestWithCoins(long coins) throws InterruptedException{ //本接口使用本地账户，演示而用		
+		AccountData ad = AccountData.requestByTag("for_vm"); //获取账号信息
+		if (ad == null) {
+			throw new RuntimeException("找不到tag为: for_vm的账号");
+		}
+		String setCoins;
+		if (coins == 0) {
+			setCoins = "0";
+		}
+		else {
+			setCoins = String.valueOf(coins);
+		}
+		//setAccountCoins(ad, setCoins); @//TODO 此设置是在case中调，还是此page中调用comm
+		loginAsGuest();
+		return ad;
+	}
+	 */
+	public void loginAsGuestWithAccount(AccountData ad) throws InterruptedException {
+		rd.pressMenu();
+		//LoginPage loginPage = new LoginPage();
+		waitSubElement("更多菜单项").click();
+		waitSubElement("自定义机器码菜单项").click();
+		rd.sendKeys(waitSubElement("自定义机器码输入框"), ad.getMachineID());
+		waitSubElement("自定义机器码输入框的确定按钮").click();		
+		loginAsGuest();
+	}
+
+	public void loginAsGuest() throws InterruptedException{	
+		changeLoginLanguage("繁體中文", 20);//默认切换到繁体语言。
+		waitSubElement("游客登录按钮").click();
+		rd.sleep(2*1000);//提高稳定性。
+		LobbyPage lp = new LobbyPage();		
+		lp.closeThePopupWindowAfterLogin();	
+
+	}
+
+
+
+
+	public FacebookPage facebookPage(){
+		return  new FacebookPage();
+	}
+
+	public class FacebookPage extends RainbowElement{
+
+		//登录facebook
+		public void  loginFacebookForWebView(String username ,String password, String tips){	
+			rd.switchToWebView();			
+			waitPresent(20);//同步FB登录页面打开
+			waitSubElement("FB账户").sendKeys(username);
+			waitSubElement("FB密码").sendKeys(password);
+			waitSubElement("登录按钮").click();			
+			rd.switchToNativeApp();
+		}
+
+		//登录facebook
+		public void  loginFacebookForAllView(String username, String password, String tips){	
+			if(isSubElementPresent("X关闭按钮")){			
+				WebElement we = waitSubElement("X关闭按钮");				
+				rd.clickOnScreen(we, 2, 1);				
+				if(isSubElementPresent("登录按钮_View", 1)){					
+					waitSubElement("FB账号Email_View").sendKeys(username);
+					rd.hideKeyboard();
+					waitSubElement("FB账号密码_View").sendKeys(password);
+					rd.hideKeyboard();
+					waitSubElement("登录按钮_View").click();			
+				}else{
+					loginFacebookForWebView(username, password, tips);
+				}
+				waitSubElement("X关闭按钮");
+			}else{
+				Assert.fail("FB登录页面没有打开");
+			}
+
+		}	
+
+		//点击fb登录授权的取消按钮
+		public void clickFBLoginAuthorizationCancelButton(){			
+			waitSubElement("取消授权按钮").click();			
+		}
+		
+		//点击登录facebook授权的确认按钮
+		public void clickFBLoginAuthorizationConfirmButtonForWebView(){
+			rd.switchToWebView();
+			waitSubElement("确定授权按钮_WebView").click();
+			rd.switchToNativeApp();
+		}
+		
+		//点击登录facebook授权的确认按钮
+		public void clickFBLoginAuthorizationConfirmButton(){
+			if(isSubElementPresent("X关闭按钮")){
+				if(isSubElementPresent("确定授权按钮", 1)){
+					waitSubElement("确定授权按钮").click();
+				}else{
+					clickFBLoginAuthorizationConfirmButtonForWebView();
+				}
+			}else{
+				Assert.fail("FB登录确认授权页面没有打开");
+			}
+			
+			
+		}
+
+		//点击登录facebook授权的X按钮
+		public void clickFBLoginPageXButton(){
+			rd.findElements(By.className(AndroidElementClass.ANDROID_IMAGE)).get(0).click();			
+		}
+	}
+
+
+
+
+}

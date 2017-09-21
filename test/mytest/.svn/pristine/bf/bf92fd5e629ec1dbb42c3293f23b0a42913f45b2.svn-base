@@ -1,0 +1,22 @@
+package com.boyaa.testholdemhk.uilib;
+
+import java.util.Set;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+public class PrivacyAndServicePage  extends RainbowElement  {
+	private CommonBusiness cb = null;
+	public static RainbowDriver rd = null;
+	public PrivacyAndServicePage(){
+		rd = RainbowDriver.getInstance();
+		cb= new CommonBusiness();
+		
+	}
+	public boolean isPageExist(){
+		
+		boolean bl = isSubElementPresent("服务与隐私页面");
+		return bl;
+	}
+	
+}

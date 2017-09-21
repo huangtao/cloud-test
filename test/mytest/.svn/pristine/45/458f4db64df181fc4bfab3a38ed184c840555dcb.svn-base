@@ -1,0 +1,82 @@
+package com.boyaa.testholdemth.cases;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowLogger;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemth.business.CaseData.CaseDataDriver;
+import com.boyaa.testholdemth.business.CommonBusiness;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testholdemth.uilib.IntegralExchangePage;
+import com.boyaa.testholdemth.uilib.LobbyPage;
+import com.boyaa.testholdemth.uilib.LoginPage;
+import com.boyaa.testholdemth.uilib.PersonalInformationPage;
+import com.boyaa.testholdemth.uilib.SitAndGoRoomPage;
+import com.boyaa.testholdemth.business.CaseData;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="This is suite is to test integral exchange")
+public class TwoPlayerSmokeTest extends RainbowTestCase {
+	private static CaseData cd = null;
+	private static CommonBusiness cb1 = null;
+	private static CommonBusiness cb2 = null;
+	private static CaseData caseData =null;
+	private LoginPage loginPage1 = null ;
+	private LoginPage loginPage2 = null ;
+	public RainbowDriver driver1=null;
+	public RainbowDriver driver2=null;
+	public TwoPlayerSmokeTest() throws Exception {
+		super();
+		
+	}
+	@BeforeMethod
+	public void setUp() throws Exception {
+		cd = new CaseData();
+		String[] dn =cd.getDeviceName();
+		String[] pn =cd.getAppiumUrlPort();
+		try{
+			driver1 =super.setUp(dn[0] , "http://127.0.0.1:"+pn[0]+"/wd/hub" ,600);
+			driver2 =super.setUp(dn[1] , "http://127.0.0.1:"+pn[1]+"/wd/hub",600);
+			driver2 =super.setUp(dn[2] , "http://127.0.0.1:"+pn[2]+"/wd/hub",600);
+		}catch(ArrayIndexOutOfBoundsException aiobe){
+			Assert.fail("接口传入设备或者端口数量不够，传入设备数量为："+dn.length+"，传入端口数量为："+pn.length);
+		}
+		cb1 = new CommonBusiness(driver1);
+		cb2 = new CommonBusiness(driver1);
+		loginPage1 = new LoginPage(driver1);
+		loginPage1.enterTestEnv();
+		loginPage2 = new LoginPage(driver2);
+		loginPage2.enterTestEnv();
+		
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown(driver1);
+		super.tearDown(driver2);
+	}
+	
+	@CaseDesc(id="Integral_Exchange1", name="test_twoPlayers")
+	@Test(description="test integral exchange with seven day expression click cancle ")
+	public void test_twoPlayers() throws InterruptedException{	
+		
+		//@TODO调用接口设置用户积分为2000分
+		loginPage2.loginAsGuestWithTag("normal");
+		loginPage1 = new LoginPage(driver1);
+		loginPage1.loginAsGuestWithTag("normal");
+		LobbyPage lobbyPage1= new LobbyPage(driver1);
+		lobbyPage1.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage1.waitSubElement("淘汰赛按钮").click();
+		LobbyPage lobbyPage2= new LobbyPage(driver2);
+		lobbyPage2.expandHappySquareMenu();//展开欢乐广场
+		lobbyPage2.waitSubElement("淘汰赛按钮").click();
+		}
+	
+	
+}

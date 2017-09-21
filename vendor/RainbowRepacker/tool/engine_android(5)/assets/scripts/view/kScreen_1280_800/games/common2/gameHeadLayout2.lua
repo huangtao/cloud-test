@@ -1,0 +1,47 @@
+gameHeadLayout2=
+{
+	name="gameHeadLayout2",type=0,typeName="View",time=0,report=0,x=0,y=0,width=106,height=160,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,isLuaLocal=0,
+	{
+		name="headView",type=0,typeName="View",time=47285709,report=0,x=0,y=0,width=104,height=106,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,
+		{
+			name="headBg",type=1,typeName="Image",time=49262564,report=0,x=9,y=5,width=89,height=90,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/default_head_bg.png"
+		},
+		{
+			name="headImage",type=1,typeName="Image",time=47285764,report=0,x=0,y=-2,width=88,height=87,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/bg_blank.png"
+		},
+		{
+			name="headRobot",type=1,typeName="Image",time=48067963,report=0,x=0,y=0,width=90,height=90,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/robot.png"
+		},
+		{
+			name="headFrame",type=2,typeName="Button",time=47286848,report=0,x=0,y=0,width=100,height=100,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/head_frame_big.png"
+		},
+		{
+			name="vipFrame",type=2,typeName="Button",time=66910004,report=0,x=7,y=-11,width=120,height=126,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/vipheadFream.png"
+		},
+		{
+			name="defaultHead",type=1,typeName="Image",time=49262462,report=0,x=0,y=8,width=86,height=86,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="isolater/male_head.png"
+		}
+	},
+	{
+		name="headEmpty",type=1,typeName="Image",time=47285838,report=0,x=0,y=0,width=105,height=105,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="games/common/empty_seat.png",
+		{
+			name="inviteBtn",type=2,typeName="Button",time=80206000,report=0,x=0,y=-64,width=109,height=170,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="isolater/bg_blank.png",
+			{
+				name="img",type=0,typeName="Image",time=107465407,x=0,y=0,width=109,height=56,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/btnInvite.png",
+				{
+					name="text",type=4,typeName="Text",time=80206279,report=0,x=0,y=0,width=96,height=24,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignLeft,colorRed=254,colorGreen=237,colorBlue=186,string=[[约战好友]]
+				}
+			}
+		}
+	},
+	{
+		name="coinIcon",type=1,typeName="Image",time=47286905,report=0,x=8,y=139,width=22,height=22,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/jinbi_icon.png"
+	},
+	{
+		name="money",type=4,typeName="Text",time=47287037,report=0,x=33,y=135,width=46,height=25,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=22,textAlign=kAlignLeft,colorRed=251,colorGreen=213,colorBlue=68
+	},
+	{
+		name="nick",type=4,typeName="Text",time=61024376,report=0,x=0,y=105,width=97,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=22,textAlign=kAlignCenter,colorRed=132,colorGreen=187,colorBlue=233
+	}
+}
+return gameHeadLayout2;

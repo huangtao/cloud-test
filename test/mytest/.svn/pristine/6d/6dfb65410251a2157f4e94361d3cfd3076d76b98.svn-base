@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface Type="InterFaceWithPyAndJava" UseFor="Boyaa Automation Test">
+	<project name="Default suite">
+		<uses-interface package="com.boyaa.sina"/>
+		<uses-interface launchactivitie="com.boyaa.texaspoker.application.module.op.OpeningShowActivity"/>
+		<uses-interface datapath="F:\\02Projectdata\\TestHoldemSina"/>	
+		<uses-interface reports="F:\\02Projectdata\\TestHoldemSina\\reports"/>
+		<uses-interface appium_server="http://localhost:4723/wd/hub"/>
+		<uses-interface native_appium_server="http://localhost:4725/wd/hub"/>
+		<uses-interface scr_apk_path="F:\\02Projectdata\\TestHoldemSina\\apk\\autotest_sina_debug_1477885831.apk"/>
+		<uses-interface appwaitactivity="com.boyaa.texaspoker.application.activity.LoginActivity"/>
+		<uses-interface appiumurlport="4723"/>
+		<uses-interface devicename="LG-E985T-0a7d8bd71c09acfa"/>
+	</project>
+</interface>

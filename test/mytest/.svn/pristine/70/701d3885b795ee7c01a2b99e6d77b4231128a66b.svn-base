@@ -1,0 +1,298 @@
+package com.boyaa.testholdemsina.cases;
+
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.FriendHomePage;
+import com.boyaa.testholdemsina.uilib.GameLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.PrivateRoomPage;
+import com.boyaa.testholdemsina.uilib.SettingsPage;
+import com.boyaa.testholdemsina.uilib.StorePage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="好友房")
+public class FriendHomeTest extends TestCaseBase{
+	private FriendHomePage friendHomePage = null;
+	private CommonBusiness commonBusiness = null;
+	private CommonLobbyPage commonLobbyPage = null;
+	private GameLobbyPage gameLobbyPage = null;
+	private PrivateRoomPage privateRoomPage = null;
+	private LobbyPage lobbyPage = null;
+	private SettingsPage settingsPage = null;
+	private LoginPage loginPage = null;
+ 	
+	@BeforeMethod
+	public void setup(){
+		super.setUp();
+		friendHomePage = new FriendHomePage();
+		commonBusiness = new CommonBusiness();
+		commonLobbyPage = new CommonLobbyPage();
+		gameLobbyPage = new GameLobbyPage();
+		privateRoomPage = new PrivateRoomPage();
+		lobbyPage = new LobbyPage();
+		settingsPage = new SettingsPage();
+		loginPage = new LoginPage();
+//		CommonBusiness.createNativeDriver();
+		
+	}
+	@CaseDesc(id="CreateFriendRoom1",name="创建好友房")
+	@Test(description="玩家创建好友房")
+	public void test01_CreateFriendRoom() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		friendHomePage.waitSubElement("发起牌局").click();
+		friendHomePage.waitSubElement("创建").click();
+		friendHomePage.isSubElementPresent("房间名称尚未设置");
+		friendHomePage.waitSubElement("输入房间名").sendKeys("autoTest");
+		friendHomePage.waitSubElement("创建").click();
+		Thread.sleep(2000);
+		try {
+			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("领取您参加活动的奖励提示框不存在");
+		}
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+		Thread.sleep(30*1000);
+
+	}
+	@CaseDesc(id="CreateFriendRoom2",name="玩家创建好友房后，退出重新建")
+	@Test(description="玩家创建好友房后，退出重新建")
+	public void test02_CreateFriendRoom() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(2*1000);
+//		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+//		Thread.sleep(2*1000);
+//		try {
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+//		} catch (Exception e) {
+//			System.out.println("领取您参加活动的奖励提示框不存在");
+//		}
+		commonLobbyPage.waitSubElement("菜单").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("返回").click();
+		friendHomePage.waitSubElement("发起牌局").click();
+		friendHomePage.waitSubElement("输入房间名").sendKeys("autoTest1");
+		friendHomePage.waitSubElement("创建").click();
+		assertTrue(friendHomePage.isSubElementPresent("牌局尚未结束"),"预期结果：出现提示，实际结果：未出现提示");
+
+	}
+	@CaseDesc(id="EnterErrorPasswd",name="加入牌局输入错误密码")
+	@Test(description="加入牌局输入错误密码")
+	public void test03_EnterErrorPasswd() throws Exception{
+		commonBusiness.enterLobbyList();
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		friendHomePage.waitSubElement("搜索牌局").sendKeys("2222221");
+		friendHomePage.waitSubElement("搜索牌局").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		friendHomePage.waitSubElement("进入牌局").click();
+		assertTrue(friendHomePage.isSubElementPresent("口令错误"),"预期结果：出现提示，实际结果：未出现提示");
+
+	}
+	
+	@CaseDesc(id="EnterPasswd",name="加入牌局输入正确的密码")
+	@Test(description="加入牌局输入正确的密码")
+	public void test04_EnterPasswd() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(3*1000);
+		String string = friendHomePage.waitSubElement("口令").getText();
+		System.out.println("口令："+string);
+		String passwd[] = CommonBusiness.getData(string);
+		System.out.println("口令："+passwd[2]);
+		commonLobbyPage.waitSubElement("菜单").click();
+//		Thread.sleep(2*1000);
+		commonBusiness.backLobbyList();
+		Thread.sleep(2*1000);
+		friendHomePage.waitSubElement("搜索牌局").sendKeys(passwd[2]);
+		friendHomePage.waitSubElement("搜索牌局").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		friendHomePage.waitSubElement("进入牌局").click();
+		Thread.sleep(1*1000);
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("坐下").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("坐下确认").click();
+		Thread.sleep(2*1000);
+//		commonBusiness.backLobbyList();
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("返回").click();
+		assertTrue(privateRoomPage.isSubElementPresent("私人房"),"预期结果：出现标志，实际结果：未出现标志");
+		Thread.sleep(40*1000);
+	}
+	@CaseDesc(id="InviteFriend",name="好友房邀请好友")
+	@Test(description="好友房邀请好友")
+	public void test05_InviteFriend() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(3*1000);
+		commonLobbyPage.waitSubElement("在线好友").click();
+		commonLobbyPage.waitSubElement("邀请").click();
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现标志，实际结果：未出现标志");
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+		Thread.sleep(40*1000);
+
+	}
+	@CaseDesc(id="InviteFriend",name="好友房邀请在线玩家")
+	@Test(description="好友房邀请在线玩家")
+	public void test06_InviteOnline() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(3*1000);
+		commonLobbyPage.waitSubElement("在线玩家").click();
+		commonLobbyPage.waitSubElement("邀请").click();
+		Thread.sleep(1*1000);
+//		System.out.println(commonLobbyPage.waitSubElement("邀请").getText());
+		assertTrue((commonLobbyPage.waitSubElement("邀请").getText().equals("已发送")),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+		Thread.sleep(40*1000);
+
+	}
+	
+	@CaseDesc(id="DealerReward1",name="打赏荷官1")
+	@Test(description="玩家进入好友房坐下打赏荷官")
+	public void test07_DealerReward1() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(2*1000);
+//		try {
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+//		} catch (Exception e) {
+//			System.out.println("领取您参加活动的奖励提示框不存在");
+//		}
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("打赏").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("打赏").click();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("打赏").click();
+		CommonBusiness.takesScreenShot(getDriver(), "FriendsRoomDealerReward1.png");
+		Thread.sleep(2*1000);
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		Thread.sleep(40*1000);
+
+	}
+	@CaseDesc(id="DealerReward1",name="打赏荷官2")
+	@Test(description="玩家进入好友房站起打赏荷官")
+	public void test08_DealerReward2() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(2*1000);
+//		try {
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+//			gameLobbyPage.isTipsExist("领取您参加活动的奖励");
+//		} catch (Exception e) {
+//			System.out.println("领取您参加活动的奖励提示框不存在");
+//		}
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("站起").click();
+		commonLobbyPage.waitSubElement("打赏").click();
+		commonLobbyPage.isSubElementPresent("不能打赏的抱歉提醒");
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+//		Thread.sleep(40*1000);
+
+	}
+	
+	@CaseDesc(id="FriendRoomChat",name="好友房聊天")
+	@Test(description="玩家进入好友房聊天")
+	public void test9_Chat() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天表情").click();
+		CommonBusiness.takesScreenShot(getDriver(), "FriendRoomChat1.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天标签头").click();
+		commonLobbyPage.waitSubElement("聊天语句选择").click();
+		commonLobbyPage.waitSubElement("聊天气泡出现");
+		CommonBusiness.takesScreenShot(getDriver(), "FriendRoomChat2.png");
+		Thread.sleep(2*1000);
+		commonLobbyPage.waitSubElement("聊天").click();
+		commonLobbyPage.waitSubElement("聊天记录").click();
+		commonLobbyPage.waitSubElement("聊天记录页面").isDisplayed();
+		CommonBusiness.takesScreenShot(getDriver(), "FriendRoomChat3.png");
+		Thread.sleep(3*1000);
+		commonLobbyPage.waitSubElement("聊天记录页面").click();
+		commonLobbyPage.waitSubElement("发送").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+		assertTrue(privateRoomPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		Thread.sleep(10*1000);
+
+	}
+	
+	@CaseDesc(id="CreatePrivateHome1",name="玩家资产不足，停留在房间列表页面")
+	@Test(description="玩家资产不足，停留在房间列表页面")
+	public void test10_CreatePrivateHome() throws Exception{
+		Thread.sleep(10*1000);
+		loginPage.waitSubElement("测试环境").click();	
+		loginPage.waitSubElement("随机游客").click();
+		loginPage.waitSubElement("立即登录").click();
+		Thread.sleep(2*1000);
+		loginPage.waitSubElement("游客登陆确认").click();
+		Thread.sleep(15*1000);
+		commonBusiness.closeAutoPage();
+		lobbyPage.waitSubElement("跳过").click();
+		Thread.sleep(2*1000);
+		lobbyPage.waitSubElement("游戏大厅").click();
+		Thread.sleep(2*1000);
+		gameLobbyPage.isTipsExist("过滤");
+		gameLobbyPage.isTipsExist("俱乐部");
+		Thread.sleep(1*1000);
+		gameLobbyPage.waitSubElement("俱乐部").click();
+		friendHomePage.waitSubElement("发起牌局").click();
+		friendHomePage.waitSubElement("输入房间名").sendKeys("autoTest");		
+		friendHomePage.waitSubElement("创建").click();
+		assertTrue(friendHomePage.isSubElementPresent("资金不足"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+	}		
+	@CaseDesc(id="EnterPasswd1",name="加入好友房牌局")
+	@Test(description="加入好友房牌局")
+	public void test11_EnterFriendHome1() throws Exception{
+		commonBusiness.CreateFriendHome();
+		Thread.sleep(3*1000);
+		String string = friendHomePage.waitSubElement("口令").getText();
+		System.out.println("口令："+string);
+		String passwd[] = CommonBusiness.getData(string);
+		System.out.println("口令："+passwd[2]);
+		commonLobbyPage.waitSubElement("菜单").click();
+		commonBusiness.backLobbyList();
+		Thread.sleep(2*1000);
+		friendHomePage.waitSubElement("搜索牌局").sendKeys(passwd[2]);
+		friendHomePage.waitSubElement("搜索牌局").click();
+		CommonBusiness.nativeDriver.findElementByClassName("android.widget.Button").click();
+		friendHomePage.waitSubElement("进入牌局").click();
+		Thread.sleep(3*1000);
+		assertTrue(commonLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+//		commonLobbyPage.waitSubElement("菜单").click();
+		commonBusiness.backLobbyList();//返回游戏列表
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+}

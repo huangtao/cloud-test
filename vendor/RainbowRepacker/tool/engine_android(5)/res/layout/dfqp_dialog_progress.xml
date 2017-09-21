@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/imgAnim" android:layout_width="72.0px" android:layout_height="72.0px" android:layout_marginLeft="15.0px" android:src="@drawable/loading_dialog_icon" />
+    <TextView android:layout_gravity="center_vertical" android:id="@id/tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0px" android:singleLine="false" />
+</LinearLayout>

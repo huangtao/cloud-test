@@ -1,0 +1,13 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class ExchangeRecordPage extends RainbowElement{
+
+	public PromptDialog promptDialog(){
+		return new PromptDialog();
+	}
+	
+	public class PromptDialog extends RainbowElement{		
+	}
+}

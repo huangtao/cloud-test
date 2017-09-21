@@ -1,0 +1,19 @@
+package com.boyaa;
+
+import java.util.HashMap;
+
+public class Config {
+	public static final String appId = "603000";
+	public static final String prePublicEnvFriendId = "100002040";
+	public static final String testEnvFriendId = "2006467";
+	public static final String onlineEnvFriendId = "398685";
+//	public static final HashMap<String, String> cidToMidMap = new HashMap<String, String>();	//已经改为调用接口查询
+//	static {
+//		cidToMidMap.put("100001300", "100002329");
+//		cidToMidMap.put("100000344", "100002919");
+//		cidToMidMap.put("100002600", "100002310");
+//		cidToMidMap.put("100000599", "100002968");
+//	}
+	
+	public static final String waitActivity = "com.boyaa.enginedlqp.main.Game";
+}

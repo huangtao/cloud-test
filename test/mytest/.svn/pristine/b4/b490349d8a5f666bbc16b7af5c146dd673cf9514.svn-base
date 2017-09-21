@@ -1,0 +1,5 @@
+package com.boyaa.lianyuntest.uilib.login;
+
+public class BoyaaLoginPage extends LoginPage {
+
+}

@@ -1,0 +1,35 @@
+package com.boyaa.hallbase.uilib;
+
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class UserPage extends RainbowElement{
+	
+	public String getNickName() {
+		return super.waitSubElement("昵称输入框").getText();
+	}
+	
+	public String getMoney() {
+		return super.waitSubElement("金币数").getText();
+	}
+	
+	public String getDiamond() {
+		return super.waitSubElement("钻石数").getText();
+	}
+	
+	public void back() {
+		super.waitSubElement("返回按钮").click();
+	}
+
+	public String getUserGuid() {
+		return "11be6942-3524-437d-80d4-48255ad08333";
+//		return "b9285b5a-9edd-4a1d-b792-563128e62407";	//TODO
+	}
+	
+	public String getCurrentMid() {
+		String currentCid = super.waitSubElement("ID").getText().trim().substring(3);	//V2.0.1起需求变更，此处显示的是cid，虽然不知道这是什么鬼，MD
+		super.waitSubElement("返回按钮").click();
+		String currentMid = CommonBusiness.getMidFromCid(currentCid);
+		return currentMid;
+	}
+}

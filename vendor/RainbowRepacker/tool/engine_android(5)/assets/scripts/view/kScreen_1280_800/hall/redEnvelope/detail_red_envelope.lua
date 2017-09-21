@@ -1,0 +1,45 @@
+local record_envelope_qn_pin_map = require("qnFiles/qnPlist/hall/record_envelope_qn_pin");
+local detail_red_envelope=
+{
+	name="detail_red_envelope",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="Image_mask",type=1,typeName="Image",time=0,x=691,y=190,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png",varname="Image_mask"
+	},
+	{
+		name="Button_close",type=1,typeName="Button",time=0,x=30,y=30,width=68,height=72,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file=record_envelope_qn_pin_map['red_envelope_close.png'],varname="Button_close",callbackfunc="onBindToClose"
+	},
+	{
+		name="Image_bg",type=1,typeName="Image",time=0,x=0,y=0,width=406,height=596,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/redEnvelope/red_envelope_get_bg.png",
+		{
+			name="Button_back",type=1,typeName="Button",time=0,x=0,y=26,width=57,height=25,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file=record_envelope_qn_pin_map['red_envelope_close_back.png'],varname="Button_back",callbackfunc="onBindBack"
+		},
+		{
+			name="Text_status",type=4,typeName="Text",time=0,x=0,y=80,width=336,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=18,textAlign=kAlignCenter,colorRed=255,colorGreen=231,colorBlue=158,string=[[领取18/18个,已领取9999万银币]],colorA=1,varname="Text_status"
+		},
+		{
+			name="Image14",type=1,typeName="Image",time=0,x=0,y=28,width=320,height=368,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file=record_envelope_qn_pin_map['red_envelope_bottom.png'],
+			{
+				name="View_listBottom",type=0,typeName="View",time=0,x=0,y=0,width=320,height=368,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,varname="View_listBottom"
+			},
+			{
+				name="Text_tip",type=4,typeName="Text",time=0,x=0,y=0,width=220,height=100,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=22,textAlign=kAlignLeft,colorRed=255,colorGreen=153,colorBlue=139,string=[[还没有人领过你的红包]],colorA=1,varname="Text_tip"
+			},
+			{
+				name="View_congratulation_tip",type=0,typeName="View",time=0,x=0,y=0,width=320,height=76,visible=0,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignCenter,varname="View_congratulation_tip",
+				{
+					name="Text15",type=4,typeName="Text",time=0,x=0,y=0,width=120,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=24,textAlign=kAlignLeft,colorRed=255,colorGreen=231,colorBlue=158,string=[[红包已发出]],colorA=1
+				},
+				{
+					name="Text16",type=4,typeName="Text",time=0,x=0,y=0,width=216,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=24,textAlign=kAlignLeft,colorRed=255,colorGreen=231,colorBlue=158,string=[[即将收到一大波祝福]],colorA=1
+				}
+			}
+		}
+	},
+	{
+		name="View_chat_left",type=0,typeName="View",time=0,x=45,y=158,width=400,height=552,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,varname="View_chat_left"
+	},
+	{
+		name="View_chat_right",type=0,typeName="View",time=0,x=830,y=158,width=400,height=552,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,varname="View_chat_right"
+	}
+}
+return detail_red_envelope;

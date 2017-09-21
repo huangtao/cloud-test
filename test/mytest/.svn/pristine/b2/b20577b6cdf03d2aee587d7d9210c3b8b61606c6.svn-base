@@ -1,0 +1,23 @@
+package com.boyaa.testholdemhk.uilib;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.utils.AndroidElementClass;
+
+
+public class PropsMarketPage extends RainbowElement{
+	public void clickAppointPropBuyButton(String propname){
+		List<WebElement> welt= waitSubElement("道具行").findElements(By.className(AndroidElementClass.ANDROID_TEXT));
+		for(int i=0;i<welt.size();i++){
+			if(welt.get(i).getText().replace(" ", "").equals(propname.replace(" ", ""))){
+				welt.get(i+1).click();
+				return;
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,24 @@
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:Header
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:Boyaa Automation Test
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:ApplicationName
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:TexasAR
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:Release
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:texasPoker_ar_3.4_08_22_16_18
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:Build
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:V3.4.0
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:StartTime
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:2014/09/01 06:57:07 PM
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:EndTime
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:0
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:ExecuteHourTime
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:0
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:ExecuteMinuteTime
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:0
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrName:ExecuteSecondTime
+I     20140901 18:57:17    XMLReportOperator:    childNodeAttrValue:0
+I     20140901 18:57:17    com.boyaa.TestTexasAR.cases.Texas_PayLogicAR    chmod 777 /data/data/com.boyaa.androidmarketar/files success
+I     ٢٠١٤٠٩٠١ ١٨:٥٧:٢١    CatTestCase    Timeout.getLargeTimeout:20000
+I     ٢٠١٤٠٩٠١ ١٨:٥٧:٢١    CatTestCase    Timeout.getSmallTimeout:10000
+I     ٢٠١٤٠٩٠١ ١٨:٥٧:٢٩    LocalLib    升级提示的退出按钮 is not found.
+I     ٢٠١٤٠٩٠١ ١٨:٥٧:٥٠    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasAR_20140901_06-57-07PM/_Screenshots/PayLogic_001_20140901_185750.jpg
+I     ٢٠١٤٠٩٠١ ١٨:٥٧:٥٥    com.boyaa.TestTexasAR.cases.Texas_PayLogicAR    tear down time out!

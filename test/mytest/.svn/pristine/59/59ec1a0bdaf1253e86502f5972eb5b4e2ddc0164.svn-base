@@ -1,0 +1,6 @@
+package com.boyaa.lianyuntest;
+
+public class Config {
+	public static final String defaultApkPath = "C:\\Users\\JonLiang\\Desktop\\apks\\0420\\autotest_sc_mahjong_huawei_v5.1.1_test.apk";
+	public static final String defaultAppId = "403000";
+}

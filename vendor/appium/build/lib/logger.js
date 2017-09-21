@@ -1,0 +1,13 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _appiumSupport = require('appium-support');
+
+var log = _appiumSupport.logger.getLogger('Appium');
+
+exports['default'] = log;
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxpYi9sb2dnZXIuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7OzZCQUF1QixnQkFBZ0I7O0FBR3ZDLElBQUksR0FBRyxHQUFHLHNCQUFPLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQzs7cUJBRXRCLEdBQUciLCJmaWxlIjoibGliL2xvZ2dlci5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGxvZ2dlciB9IGZyb20gJ2FwcGl1bS1zdXBwb3J0JztcblxuXG5sZXQgbG9nID0gbG9nZ2VyLmdldExvZ2dlcignQXBwaXVtJyk7XG5cbmV4cG9ydCBkZWZhdWx0IGxvZztcbiJdLCJzb3VyY2VSb290IjoiLi4vLi4ifQ==

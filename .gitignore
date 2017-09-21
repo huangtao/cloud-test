@@ -1,0 +1,14 @@
+*.pyc
+
+vendor/RainbowRepacker/workspace/newengine/*
+
+*.log
+
+rethinkdb_data/*
+
+testproject2/*
+
+node_modules/*
+
+file/*
+

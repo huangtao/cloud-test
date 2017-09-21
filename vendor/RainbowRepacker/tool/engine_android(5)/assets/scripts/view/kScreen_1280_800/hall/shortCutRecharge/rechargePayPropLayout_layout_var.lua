@@ -1,0 +1,41 @@
+--Created by the QnEditor,do not modify.If not,you will die very nankan!
+local MAP = {
+	var = {
+		ImageBack = 1,
+		closeBtn = 2,
+		useBtn = 3,
+		Text_type_des = 4,
+		describeText = 5,
+		Button_sub = 6,
+		Button_add = 7,
+		Text_num = 8,
+		Text_money = 9,
+		Image_money = 10,
+		iconFrame = 11,
+		icon = 12,
+		name = 13,
+	},
+	ui = {
+		[1] = {"ImageBack"},
+		[2] = {"ImageBack","closeBtn"},
+		[3] = {"ImageBack","Image_bg2","useBtn"},
+		[4] = {"ImageBack","Image_bg2","describeFrame","Text_type_des"},
+		[5] = {"ImageBack","Image_bg2","describeFrame","describeText"},
+		[6] = {"ImageBack","Image_bg2","Image19","Button_sub"},
+		[7] = {"ImageBack","Image_bg2","Image19","Button_add"},
+		[8] = {"ImageBack","Image_bg2","Image19","Text_num"},
+		[9] = {"ImageBack","Image_bg2","Image23","Text_money"},
+		[10] = {"ImageBack","Image_bg2","Image23","Image_money"},
+		[11] = {"ImageBack","Image_bg2","View24","iconFrame"},
+		[12] = {"ImageBack","Image_bg2","View24","iconFrame","icon"},
+		[13] = {"ImageBack","Image_bg2","View24","iconFrame","name"},
+	},
+	func = {
+		[1] = "onBindBlankFunc",
+		[2] = "onCloseBtnClick",
+		[3] = "onBuyBtnClick",
+		[6] = "onBindSub",
+		[7] = "onBindAdd",
+	},
+}
+return MAP;

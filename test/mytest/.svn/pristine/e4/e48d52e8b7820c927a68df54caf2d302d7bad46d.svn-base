@@ -1,0 +1,205 @@
+package com.boyaa.testhallbase.cases;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testhallbase.uilib.AddFriendDialog;
+import com.boyaa.testhallbase.uilib.ChatDialog;
+import com.boyaa.testhallbase.uilib.FriendsPage;
+import com.boyaa.testhallbase.uilib.HallPage;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="好友")
+public class FriendsTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+	private String currentMid = "";
+	private String targetFriendId = "";
+	public FriendsTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		targetFriendId = CommonBusiness.getAFriendId();
+		hallPage = new HallPage();
+		currentMid = CommonBusiness.getCurrentUserIdInHall();
+		CommonBusiness.addFriend(currentMid, targetFriendId);
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		CommonBusiness.delFriend(currentMid, targetFriendId);
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="DFHALL-1351", name="好友页签-好友状态")
+	@Test(description="检查好友列表中好友的在线状态显示是否正确")
+	public void test_friendsList() throws InterruptedException{
+		CommonBusiness.setFriendOnline(targetFriendId, true);	//先设置状态再进入好友页面，好友状态会立即更新
+		
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		assertTrue(friendsPage.isPresent(), "检查是否打开好友页面");
+		friendsPage.waitSubElement("好友TAB按钮").click();
+		assertTrue(friendsPage.waitSubElement("好友子页面").isDisplayed(), "检查好友子页面是否显示");
+		assertTrue(friendsPage.waitSubElement("好友头像").isDisplayed(), "检查好友头像控件是否显示");
+		assertTrue(friendsPage.waitSubElement("在线状态").getText().contains("[在线]") , "检查好友状态为在线");
+		
+		CommonBusiness.setFriendOnline(targetFriendId, false);
+		friendsPage.waitSubElement("返回大厅按钮").click();
+		hallPage.waitSubElement("社交按钮").click();	//重新进入好友页面
+		Thread.sleep(3000);
+		assertTrue(friendsPage.waitSubElement("在线状态").getText().contains("[离线]"), "检查好友状态为离线");
+	}
+	
+	@CaseDesc(id="DFHALL-1353", name="查看好友信息")
+	@Test(description="检查好友信息页面的各元素能正常显示")
+	public void test_friendInfo() throws InterruptedException{
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		
+//		Thread.sleep(2000);
+		friendsPage.waitSubElement("好友TAB按钮").click();
+		assertTrue(friendsPage.waitSubElement("好友子页面").isDisplayed(), "检查好友子页面是否显示");
+		friendsPage.waitSubElement("好友item").click();
+		assertTrue(friendsPage.waitSubElement("好友个人信息栏").isDisplayed(), "检查好友个人信息页面是否显示");
+		assertTrue(Integer.valueOf(friendsPage.waitSubElement("好友个人信息栏-资产").getText().replace(",", ""))>=0, "检查好友资产被显示并且大于等于0");
+		assertTrue(Integer.valueOf(friendsPage.waitSubElement("好友个人信息栏-水晶").getText().replace(",", ""))>=0, "检查好友钻石数被显示并且大于等于0");
+		assertTrue(friendsPage.waitSubElement("好友个人信息栏-经验").getText().contains("LV"), "检查好友经验被显示并且包含LV字段");
+		assertTrue(friendsPage.waitSubElement("好友个人信息栏-排名").getText().contains("第")||friendsPage.waitSubElement("好友个人信息栏-排名").getText().contains("未进榜"), "检查好友排名被显示");
+		assertTrue(friendsPage.waitSubElement("好友个人信息栏-城市").getText().contains("城市"), "检查好友城市被显示");
+		assertTrue(friendsPage.waitSubElement("好友个人信息栏-删除按钮").isDisplayed(), "检查删除按钮被显示");
+	}
+	
+	@CaseDesc(id="DFHALL-1370", name="好友排行")
+	@Test(description="检查好友的金币排行是否正确")
+	public void test_rankListInFriendsPage() throws InterruptedException {
+		CommonBusiness.setUserMoney(currentMid, 20000);
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到预发布环境
+		
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();		
+		friendsPage.waitSubElement("排行TAB按钮").click();
+		assertTrue(friendsPage.waitSubElement("排行子页面").isDisplayed(), "检查排行子页面是否显示");
+		Thread.sleep(2000);
+		ArrayList<WebElement> friendsMoneys = (ArrayList<WebElement>)friendsPage.waitSubElements("好友金币数");
+		int i = 0;
+		int prvFriendMoney = 0;
+		for (WebElement we:friendsMoneys) {
+			int curFriendMoney = (int)Integer.valueOf((we.getText().replace(",", "").substring(0, we.getText().indexOf("金币")-1)));
+			if (i>=1) {
+				assertTrue(curFriendMoney<prvFriendMoney, "检查好友按金币数进行排名，预期结果为当前好友金币数应该小于前一好友金币数。实际结果为--当前好友金币数："+curFriendMoney+".前一好友金币数："+prvFriendMoney);
+			}
+			prvFriendMoney = curFriendMoney;
+			i++;
+		}
+	}
+	
+	@CaseDesc(id="DFHALL-1337", name="点击【添加好友】按钮")
+	@Test(description="分别输入错误和正确的好友MID检查添加好友的逻辑")
+	public void test_addFriendRequest() throws InterruptedException {
+		CommonBusiness.delFriend(currentMid, targetFriendId);
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		
+		friendsPage.waitSubElement("添加好友按钮").click();
+		AddFriendDialog addFriendDialog = new AddFriendDialog();
+		//提示：没有找到这个玩家
+		addFriendDialog.waitSubElement("好友ID输入框").sendKeys("100");
+		addFriendDialog.waitSubElement("添加按钮").click();
+		assertTrue(addFriendDialog.waitSubElement("TOAST提示").getText().contains("请填写正确的"),"检查ID错误时的提示：请填写正确的mid");
+		
+		Thread.sleep(1000);
+		
+		//提示：好友请求发送成功
+		addFriendDialog.waitSubElement("好友ID输入框").sendKeys(targetFriendId);
+		addFriendDialog.waitSubElement("添加按钮").click();
+		assertTrue(addFriendDialog.waitSubElement("TOAST提示").getText().contains("发送成功"),"检查好友请求发送成功的提示");
+	}
+	
+	@CaseDesc(id="DFHALL-1341", name="加好友【拒绝】")
+	@Test(description="检查拒绝他人申请加好友的逻辑")
+	public void test_refuseFriendRequest() throws InterruptedException {
+		CommonBusiness.delFriend(currentMid, targetFriendId);
+		CommonBusiness.getAddFriendRequest(currentMid, targetFriendId);
+		
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		friendsPage.waitSubElement("消息TAB按钮").click();
+		friendsPage.waitSubElement("拒绝按钮").click();
+		//TODO:消息状态变为"拒绝"且不会消失
+	}
+	
+	@CaseDesc(id="DFHALL-1342", name="加好友【同意】")
+	@Test(description="检查同意他人申请加好友的逻辑")
+	public void test_acceptFriendRequest() throws InterruptedException {
+		CommonBusiness.delFriend(currentMid, targetFriendId);
+		CommonBusiness.getAddFriendRequest(currentMid, targetFriendId);
+
+		hallPage.waitSubElement("社交按钮").click();
+		CommonBusiness.getAddFriendRequest(currentMid, targetFriendId);
+		FriendsPage friendsPage = new FriendsPage();
+		friendsPage.waitSubElement("消息TAB按钮").click();
+		friendsPage.waitSubElement("同意按钮").click();
+		assertTrue(friendsPage.waitSubElement("TOAST提示").getText().contains("添加成功"),"检查添加好友成功的提示");
+		//TODO:在【好友】二级界面可以看到该好友状态，【消息】中该条好友申请消失
+		Thread.sleep(5000);
+	}
+	
+	@CaseDesc(id="DFHALL-1354", name="删除好友")
+	@Test(description="检查通过好友详情页删除好友的情况")
+	public void test_deleteFriend() throws InterruptedException {
+		
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		
+		friendsPage.waitSubElement("好友TAB按钮").click();
+		friendsPage.waitSubElement("好友item").click();
+		friendsPage.waitSubElement("好友个人信息栏-删除按钮").click();
+		friendsPage.waitSubElement("确定按钮").click();
+		friendsPage.waitSubElement("返回大厅按钮").click();
+		hallPage.waitSubElement("社交按钮").click();	//重新进入好友页面
+		Thread.sleep(3000);
+		boolean isPresent = friendsPage.isSubElementPresent("好友item");
+		if (isPresent) {
+			assertFalse(friendsPage.waitSubElement("好友item").isDisplayed(), "检查该玩家从好友列表中剔除");
+		} else {
+			assertFalse(friendsPage.isSubElementPresent("好友item"), "检查该玩家从好友列表中剔除");
+		}
+	}
+	
+	@CaseDesc(id="DFHALL-1356", name="和好友对话")
+	@Test(description="检查是否可以和好友对话")
+	public void test_chatWithFriend() throws InterruptedException{
+		hallPage.waitSubElement("社交按钮").click();
+		FriendsPage friendsPage = new FriendsPage();
+		
+		friendsPage.waitSubElement("好友TAB按钮").click();
+		friendsPage.waitSubElement("好友item").click();
+		assertTrue(friendsPage.waitSubElement("对话按钮").isDisplayed(), "检查对话按钮是否出现");
+		friendsPage.waitSubElement("对话按钮").click();
+		//识别好友聊天窗口
+		String msg = "你好";
+		ChatDialog chatDialog = new ChatDialog();
+		chatDialog.waitSubElement("消息文本").sendKeys(msg);
+		chatDialog.waitSubElement("发送按钮").click();
+		Thread.sleep(3000);
+		boolean isPresent = chatDialog.isSubElementPresent("测试消息");
+		if (isPresent) {
+			assertTrue(chatDialog.waitSubElement("测试消息").isDisplayed(), "检查消息已发送");
+		} else {
+			assertFalse(chatDialog.isSubElementPresent("测试消息"), "检查消息已发送");
+		}
+	}
+
+}

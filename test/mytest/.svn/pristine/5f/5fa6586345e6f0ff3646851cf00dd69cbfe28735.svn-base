@@ -1,0 +1,102 @@
+package com.boyaa.lianyuntest.common;
+
+
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.lianyuntest.cases.login.BaseLoginTest;
+import com.boyaa.lianyuntest.uilib.login.HuaWeiNativeLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HuaWeiNativeServerPage;
+import com.boyaa.lianyuntest.uilib.login.LoginPage;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.rainbow2.RainbowTestCase;
+
+public class CommonBusinessHuaWei extends CommonBusiness{
+
+
+	
+	public static void login(String accout, String pwd,BaseLoginTest test) {
+		RainbowDriver nativeDriver = test.createRainbowDriver(nativeAppiumUrl);
+		try{
+			nativeDriver.resetApp();
+			HuaWeiNativeLoginPage hnl = new HuaWeiNativeLoginPage();
+			hnl.waitPresent();
+			hnl.waitSubElement("已有账号登录").click();
+			hnl.waitSubElement("账号输入框").sendKeys(accout);
+			hnl.waitSubElement("密码输入框").sendKeys(pwd);
+			hnl.waitSubElement("登录按钮").click();
+		}finally{
+			nativeDriver.quitAll();
+		}		
+	}
+	
+	public static boolean isLogin(BaseLoginTest test) {
+		boolean isLogin = false;
+		RainbowDriver nativeDriver = test.createRainbowDriver(nativeAppiumUrl);
+		HuaWeiNativeServerPage hs = new HuaWeiNativeServerPage();
+
+		try{
+			hs.getDriver().startActivity("com.huawei.phoneservice",
+					".ui.HelpCenterActivity");
+
+			if (hs.isPresent()) {
+				swipElement(hs.getDriver(), hs.waitPresent(), "down", 500);
+				String accountText = hs.waitSubElement("账号").getText();
+				if (!("立即登录".equals(accountText))) {
+					isLogin = true;
+				}
+			}
+		}finally{
+			nativeDriver.quitAll();
+		}
+		
+		return isLogin;
+	}
+	
+	public static void logout(String pwd,BaseLoginTest test) {		
+		RainbowDriver nativeDriver = test.createRainbowDriver(nativeAppiumUrl);
+		HuaWeiNativeServerPage hs = new HuaWeiNativeServerPage();
+		try{
+			hs.getDriver().startActivity("com.huawei.phoneservice",
+					".ui.HelpCenterActivity");
+			swipElement(hs.getDriver(), hs.waitPresent(), "down", 500);
+			String accountText = hs.waitSubElement("账号").getText();
+			if (!("立即登录".equals(accountText))) {
+				hs.waitSubElement("账号").click();
+				hs.waitSubElement("设置").click();
+				hs.waitSubElement("退出帐户").click();
+				hs.waitSubElement("确定按钮").click();
+				hs.waitSubElement("密码输入框").sendKeys(pwd);
+				hs.waitSubElement("确定按钮").click();
+				hs.waitSubElement("确定按钮").click();
+			}
+		}finally{
+			nativeDriver.quit();
+		}		
+	}
+	
+	public static void swipElement(RainbowDriver nativeDriver, WebElement element,
+			String direction, int distance) {
+		Point p = element.getLocation();
+		int startX = p.getX() + 20;
+		int startY = p.getY() + 20;
+		int endX = startX;
+		int endY = startY;
+		if ("left".equals(direction)) {
+			endX = startX - distance;
+		} else if ("right".equals(direction)) {
+			endX = startX + distance;
+		} else if ("up".equals(direction)) {
+			endY = startY - distance;
+		} else if ("down".equals(direction)) {
+			endY = startY + distance;
+		} else {
+			return;
+		}
+		nativeDriver.swipe(startX, startY, endX, endY, 500);
+
+	}
+
+
+}

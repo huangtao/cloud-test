@@ -1,0 +1,140 @@
+package com.boyaa.testhallbase.cases;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testhallbase.uilib.FirstPayDialog;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.HowToBuyDialog;
+import com.boyaa.testhallbase.uilib.LandlordsRoomListPage;
+import com.boyaa.testhallbase.uilib.QuickPurchaseDialog;
+import com.boyaa.testhallbase.uilib.ShopPage;
+import com.boyaa.testhallbase.uilib.UserPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListener.class})
+@Test(description="支付模块")
+public class PurchaseEntranceTest extends BaseTestCase {
+	private HallPage hallPage = null;
+	private String userMID = "";
+	public PurchaseEntranceTest(){
+		super();
+	}
+
+	@BeforeMethod
+	public void setUp() throws Exception{
+		super.setUp();
+		hallPage = new HallPage();
+		userMID = CommonBusiness.getCurrentUserIdInHall();//获取用户ID
+	}
+	
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() throws Exception{
+		super.tearDown();
+		
+	}
+	
+//	@CaseDesc(id="DFHALL-1371", name="大厅快捷支付入口(Phase II)")
+//	@Test(description="大厅头像旁边+快捷支付按钮")
+//	public void test_quickPayEntrance(){
+//		CommonBusiness.switchToTrialPlay();
+//		hallPage.waitSubElement("快捷支付按钮").click();
+//		HowToBuyDialog htbd = new HowToBuyDialog();
+//		htbd.waitPresent();
+//		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+//		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+//	}
+//	
+//	@CaseDesc(id="DFHALL-1374", name="首充礼包支付入口(Phase II)")
+//	@Test(description="首充礼包支付入口，非首充用户不能看到")
+//	public void test_firstPayEntrance(){
+//		CommonBusiness.setWhetherToFirstPay(userMID, 0);//设置用户为首充用户
+//		CommonBusiness.switchToTrialPlay();
+//		hallPage.waitSubElement("首充礼包支付按钮").click();
+//		FirstPayDialog fpd = new FirstPayDialog();		
+//		fpd.waitPresent();
+//		fpd.waitSubElement("礼包按钮").click();
+//		HowToBuyDialog htbd = new HowToBuyDialog();
+//		htbd.waitPresent();
+//		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+//		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+//	}
+	
+	@CaseDesc(id="DFHALL-1377", name="个人信息下方充值按钮入口(Phase II)")
+	@Test(description="博雅账号登陆，个人信息下方充值按钮", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+	public void test_userInfoPayEntrance(String phoneNumber, String phonePwd){	
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);
+		CommonBusiness.loginWithBoyaaAccount(phoneNumber, phonePwd);//登录到正常账号
+		hallPage.waitPresent();
+		hallPage.waitSubElement("个人头像").click();
+		UserPage userPage = new UserPage();
+		userPage.waitSubElement("充值按钮").click();
+		ShopPage sp = new ShopPage();
+		sp.waitPresent();
+		sp.waitSubElement("购买按钮").click();
+		HowToBuyDialog htbd = new HowToBuyDialog();
+		htbd.waitPresent();
+		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+	}
+	
+//	@CaseDesc(id="DFHALL-1378", name="房间列表支付入口(Phase II)")
+//	@Test(description="金币不足进入房间，弹出推荐商品购买", dataProvider="getExcelData", dataProviderClass=ExcelDataDriver.class)
+//	public void test_roomListPayEntrance(String money){		
+//		//通过接口设置用户金币数为3001
+//		CommonBusiness.setUserMoney(userMID, Integer.parseInt(money));
+//		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到测试环境		
+//		hallPage.waitSubElement("斗地主游戏图标按钮").click();
+//		LandlordsRoomListPage lrp = new LandlordsRoomListPage();
+//		lrp.waitPresent();
+//		lrp.waitSubElement("高级场按钮").click();
+//		QuickPurchaseDialog qpd = new QuickPurchaseDialog();
+//		qpd.waitPresent();
+//		qpd.waitSubElement("立即购买按钮").click();
+//		HowToBuyDialog htbd = new HowToBuyDialog();
+//		htbd.waitPresent();
+//		assertTrue(htbd.isSubElementPresent("商品文本"), "“商品文本”信息不存在");
+//		assertTrue(htbd.isSubElementPresent("价格文本"), "“价格文本”信息不存在");
+//	}
+	
+	@CaseDesc(id="DFHALL-1376", name="支付入口3 -- 商城入口")
+	@Test(description="检查商城入口及商城页面各页签是否正确显示")
+	public void test_shopEntry() throws InterruptedException{
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		assertTrue(shopPage.isSubElementPresent("金币TAB按钮"), "检查金币页签按钮是否存在");
+		assertTrue(shopPage.isSubElementPresent("VIPTAB按钮"), "检查VIP页签按钮是否存在");
+		assertTrue(shopPage.isSubElementPresent("道具TAB按钮"), "检查道具页签按钮是否存在");
+		
+		shopPage.waitSubElement("VIPTAB按钮").click();
+		assertTrue(shopPage.waitSubElement("VIP子页面").isDisplayed(), "检查是否打开VIP子页面");
+	}
+		
+	
+//	@CaseDesc(id="ShopTest_001", name="VIP提示(Phase II)")
+//	@Test(description="检查商城页面中的VIP页面提示是否正确")
+//	public void test_vipBanner() throws InterruptedException{
+//		hallPage.waitSubElement("商城按钮").click();
+//		ShopPage shopPage = new ShopPage();
+//		shopPage.waitSubElement("VIPTAB按钮").click();
+//		ArrayList<WebElement> weArrayList = (ArrayList<WebElement>)shopPage.waitSubElements("VIP提示文本");
+//		boolean success = false;
+//		for (WebElement we:weArrayList) {
+//			if (we.isDisplayed()&& we.getText().contains("享受")&&we.getText().contains("加赠")) {
+//				success = true;
+//				break;
+//			}
+//		}
+//		assertTrue(success, "检查是否显示VIP购买加赠提示");
+//	}
+	
+}

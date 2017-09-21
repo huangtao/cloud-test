@@ -1,0 +1,42 @@
+--Created by the QnEditor,do not modify.If not,you will die very nankan!
+local MAP = {
+	var = {
+		Image_mask = 1,
+		Button_close = 2,
+		Swf_open_bg = 3,
+		Image_bg = 4,
+		Text_name = 5,
+		Text_id = 6,
+		View_head_root = 7,
+		Image_money = 8,
+		View_money_root = 9,
+		Button_record = 10,
+		Button_info = 11,
+		Swf_num_turn = 12,
+		Swf_wait_fly = 13,
+		CheckBoxGroup_never_get = 14,
+	},
+	ui = {
+		[1] = {"Image_mask"},
+		[2] = {"Button_close"},
+		[3] = {"Swf_open_bg"},
+		[4] = {"Image_bg"},
+		[5] = {"Image_bg","Text_name"},
+		[6] = {"Image_bg","Text_id"},
+		[7] = {"Image_bg","View_head_root"},
+		[8] = {"Image_bg","Image10","Image_money"},
+		[9] = {"Image_bg","Image10","View_money_root"},
+		[10] = {"Image_bg","Button_record"},
+		[11] = {"Image_bg","Button_info"},
+		[12] = {"Swf_num_turn"},
+		[13] = {"Swf_wait_fly"},
+		[14] = {"CheckBoxGroup_never_get"},
+	},
+	func = {
+		[1] = "onBindToClose",
+		[2] = "onBindToClose",
+		[10] = "onBindDetail",
+		[11] = "onBindInfo",
+	},
+}
+return MAP;

@@ -1,0 +1,29 @@
+roomBox=
+{
+	name="roomBox",type=0,typeName="View",time=0,x=0,y=0,width=200,height=200,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="box",type=0,typeName="View",time=59733761,x=0,y=0,width=200,height=200,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="neck",type=1,typeName="Image",time=59732381,x=6,y=42,width=139,height=41,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/box_neck.png",
+			{
+				name="contentView",type=0,typeName="View",time=59732666,x=3,y=0,width=143,height=150,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,
+				{
+					name="diamond",type=1,typeName="Image",time=59795617,x=0,y=0,width=144,height=142,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/roomTask/box/diamond1.png"
+				},
+				{
+					name="money",type=1,typeName="Image",time=59795678,x=0,y=0,width=182,height=141,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/roomTask/box/money.png"
+				}
+			}
+		},
+		{
+			name="cover_opened",type=1,typeName="Image",time=59732487,x=10,y=0,width=132,height=45,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/box_cover.png"
+		},
+		{
+			name="cover",type=1,typeName="Image",time=59888011,x=0,y=31,width=151,height=128,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/box_conver1.png"
+		},
+		{
+			name="bottom",type=1,typeName="Image",time=59731917,x=0,y=31,width=151,height=128,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="games/common/roomTask/box/box_bottom.png"
+		}
+	}
+}
+return roomBox;

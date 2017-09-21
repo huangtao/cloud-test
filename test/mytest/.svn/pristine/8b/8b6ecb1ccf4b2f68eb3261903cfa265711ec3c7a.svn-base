@@ -1,0 +1,41 @@
+package com.boyaa.testholdemhk.uilib;
+
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+
+public class LobbySettingPage  extends RainbowElement{
+	public static RainbowDriver rd = null;
+	private static CommonBusiness cb = null;
+	public LobbySettingPage(){
+		rd = RainbowDriver.getRainbowDriver();
+		cb = new CommonBusiness();
+	}
+	
+	public void scrollItemToDefult(String button1 ,String button2,String button3){
+		cb.srocllToText(button1);
+		WebElement we = waitSubElement("自动坐下滑动按钮");//获取自动坐下按钮对象
+		scrollSetingItemToDefult(button1 ,we);
+		cb.srocllToText(button2);
+		we = waitSubElement("结算滑动按钮");//获取自动坐下按钮对象
+		scrollSetingItemToDefult(button2 ,we);
+		cb.srocllToText(button3);
+		we = waitSubElement("牌型提示滑动按钮");//获取自动坐下按钮对象
+		scrollSetingItemToDefult(button3 ,we);
+		waitSubElement("关闭按钮").click();
+	}
+	public void scrollSetingItemToDefult(String button,WebElement we){
+	    cb.drag(we, "right", (float)0.2,(float)0.5, (float)0.8, (float)1.0);
+	}
+	
+	public void closeSetingItem(String button ,WebElement we){
+	    cb.drag(we, "left", (float)0.2,(float)0.5, (float)0.8, (float)1.0);
+	}
+	
+	public boolean setingItemStat(String button ,WebElement we){
+	    return we.isSelected();
+	}
+}
+

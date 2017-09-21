@@ -1,0 +1,41 @@
+version: 2.0.2
+apkFileName: engine_android(5).apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '8'
+packageInfo:
+  forced-package-id: '127'
+versionInfo:
+  versionCode: '1000'
+  versionName: 2.7.0.0
+sharedLibrary: false
+unknownFiles:
+  boyaa/speex/AudioService.java.txt: '8'
+  com/example/tutorial/video_proto.proto: '8'
+  h264/com/Android.mk: '8'
+  google/protobuf/any.proto: '8'
+  google/protobuf/api.proto: '8'
+  google/protobuf/descriptor.proto: '8'
+  google/protobuf/duration.proto: '8'
+  google/protobuf/empty.proto: '8'
+  google/protobuf/field_mask.proto: '8'
+  google/protobuf/source_context.proto: '8'
+  google/protobuf/struct.proto: '8'
+  google/protobuf/timestamp.proto: '8'
+  google/protobuf/type.proto: '8'
+  google/protobuf/wrappers.proto: '8'
+  google/protobuf/compiler/plugin.proto: '8'
+doNotCompress:
+- resources.arsc
+- assets/plugin
+- assets/premessable.txt
+- assets/scripts/common/license.lua
+- assets/scripts/hall/login/socket/loginSocketCmd.lua
+- assets/scripts/view/kScreen_1280_800/hall/diamondShop/diamondShopResult_string.lua
+- assets/scripts/view/kScreen_1280_800/hall/diamondShop/diamondTabItem_string.lua
+- assets/scripts/view/kScreen_1280_800/hall/loading/loading_string.lua
+- assets/scripts/view/kScreen_1280_800/hall/login/login_editText_item_string.lua
+- assets/scripts/view/kScreen_1280_800/hall/login/login_editText_string.lua

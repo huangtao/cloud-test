@@ -1,0 +1,345 @@
+package com.boyaa.testupdate.cases;
+
+import org.json.JSONObject;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.hallbase.BaseTestCase;
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.common.CommonBusiness.ServerEnvironment;
+import com.boyaa.hallbase.common.SubGame;
+import com.boyaa.hallbase.common.SubGame.SubGameInfo;
+import com.boyaa.hallbase.uilib.FriendsPage;
+import com.boyaa.hallbase.uilib.HallPage;
+import com.boyaa.hallbase.uilib.PrivateRoomPage;
+import com.boyaa.hallbase.uilib.SubGameDownloadingPage;
+import com.boyaa.hallbase.uilib.SubGamePage;
+import com.boyaa.hallbase.uilib.UpdateDialog;
+import com.boyaa.hallbase.uilib.UserPage;
+import com.boyaa.testupdate.Config;
+import com.boyaa.testupdate.libs.UpdateConfig;
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="游戏升级")
+public class GameUpdateTest extends BaseTestCase {
+	private HallPage hallPage = null ;
+	
+	private String appId;
+	private String apkPath;
+	private String targetPackageUrl = "";
+	private String targetPackageVersion = "";
+	private String targetPackageInfo = "";
+	private SubGameInfo subGame = null;
+	
+	private String orgNickName;
+	private String orgMoney;
+	private String orgDiamond;
+	private String userGuid = Config.defaultUserGuid;
+	public GameUpdateTest() {
+		super();
+	}
+	
+	@Parameters({"app_id", "scr_apk_path", "upgrade_package_info", "environment"})
+	@BeforeClass
+	public void setUpBeforeClass(String appId, String apkPath, String stringUpgradePackageInfo, @Optional("online") String environment) {
+		JSONObject jsonUpgradePackageInfo = new JSONObject(stringUpgradePackageInfo);
+		
+		this.appId = appId;
+		this.apkPath = apkPath;
+		this.targetPackageUrl = jsonUpgradePackageInfo.getString("targetPackageUrl");
+		this.targetPackageVersion = jsonUpgradePackageInfo.getString("targetPackageVersion");
+		this.targetPackageInfo = jsonUpgradePackageInfo.getJSONObject("targetPackageInfo").toString().toLowerCase();
+		String subGameName = jsonUpgradePackageInfo.getString("gameName");
+		this.subGame = new SubGame().getSubGameInfoByEnglishName(subGameName);
+		
+		super.setCapability("noReset", true);  //升级前启动游戏，来获取用户初始信息。后面还要再启动游戏，所以这里不用清空数据
+		super.setUp(apkPath);
+		try {
+			CommonBusiness.closeTheLauncherDialog();
+			CommonBusiness.loginAsGuestIfNotLoggedIn();
+			CommonBusiness.closeTheLauncherDialog();
+			CommonBusiness.SwitchToEnvironment(environment);
+			hallPage = new HallPage();
+			UserPage userPage = hallPage.openAndGetUserPage();
+			orgNickName = userPage.getNickName();
+			orgMoney = userPage.getMoney();
+			orgDiamond = userPage.getDiamond();
+			userGuid = userPage.getUserGuid();
+			userPage.back();
+		} finally {
+			super.getDriver().quit();
+		}
+		
+		//先清空服务器上原有的相同版本的升级配置
+		UpdateConfig.delGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageVersion);
+	}
+	
+//	@BeforeMethod
+//	public void setUp() {
+////		super.setCapability("noReset", true);	//由于要退出游戏再重新登录，所以首次启动时不应该重置任何数据
+//		super.setUp(apkPath);
+//		CommonBusiness.closeTheLauncherDialog();
+//		hallPage = new HallPage();
+//		UserPage userPage = hallPage.openAndGetUserPage();
+//		orgNickName = userPage.getNickName();
+//		orgMoney = userPage.getMoney();
+//		orgDiamond = userPage.getDiamond();
+//		userGuid = userPage.getUserGuid();
+//		userPage.back();
+//		hallPage.exitApp();
+//	}
+	
+	@AfterMethod
+	public void tearDown() {
+		UpdateConfig.delGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageVersion);
+		super.tearDown();
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏完整更新（强制）")
+	@Test(description="检查游戏的完整更新是否成功（强制）")
+	public void test_gameFullUpdateForce() throws InterruptedException {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Force, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		CommonBusiness.closeTheLauncherDialog();
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+		assertTrue(subGameDownloadingPage.isPresent(), "子游戏更新页面没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度条"), "子游戏更新页面的更新进度条没有出现！");	//TODO：所有提示中加入子游戏名称
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度文本"), "子游戏更新页面的更新进度文本没有出现！");
+		SubGamePage subGamePage = new SubGamePage();
+		assertTrue(subGamePage.isPresent(30), "更新后进入子游戏失败！");
+		subGamePage.waitSubElement("返回按钮").click();
+		//TODO:更新前显示最新游戏图标；更新成功后检查显示在线人数控件
+		
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		assertFalse(subGameDownloadingPage.isPresent(5), "更新后进入子游戏重复出现了更新页面！");
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		PrivateRoomPage privateRoomPage = hallPage.openAndGetPrivateRoomPage();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		Thread.sleep(20000);
+//		
+//		privateRoomPage.waitSubElement("返回按钮").click();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertFalse(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框重复出现，子游戏（id:"+this.subGame.getGameId()+"）升级失败！");
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏完整更新（可选）")
+	@Test(description="检查游戏的完整更新是否成功（可选）")
+	public void test_gameFullUpdateOptional() throws InterruptedException {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Optional, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+
+		super.startApp(true);
+		CommonBusiness.closeTheLauncherDialog();
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+		assertTrue(subGameDownloadingPage.isPresent(), "子游戏更新页面没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度条"), "子游戏更新页面的更新进度条没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度文本"), "子游戏更新页面的更新进度文本没有出现！");
+		SubGamePage subGamePage = new SubGamePage();
+		assertTrue(subGamePage.isPresent(30), "更新后进入子游戏失败！");
+		subGamePage.waitSubElement("返回按钮").click();
+		//TODO:更新前显示最新游戏图标；更新成功后检查显示在线人数控件
+		
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		assertFalse(subGameDownloadingPage.isPresent(5), "更新后进入子游戏重复出现了更新页面！");
+//		super.startApp(true);
+//		CommonBusiness.closeTheLauncherDialog();
+//		PrivateRoomPage privateRoomPage = hallPage.openAndGetPrivateRoomPage();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		privateRoomPage.waitSubElement("选择游戏栏-宜宾麻将item").click();
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		Thread.sleep(20000);
+//		
+//		privateRoomPage.waitSubElement("返回按钮").click();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		privateRoomPage.waitSubElement("选择游戏栏-宜宾麻将item").click();
+//		assertFalse(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框重复出现，子游戏（id:"+this.subGame.getGameId()+"）升级失败！");
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏完整更新（静默）")
+	@Test(description="检查游戏的完整更新是否成功（静默）")
+	public void test_gameFullUpdateSilent() {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Silent, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);
+		
+		try {
+			super.startApp(false);
+			CommonBusiness.closeTheLauncherDialog();
+			hallPage.startSubGameByGameId(this.subGame.getGameId());
+			SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+			assertFalse(subGameDownloadingPage.isPresent(120), "静默更新模式下却出现了子游戏更新下载页面！");	//同时等待2分钟，等待静默更新完毕
+			SubGamePage subGamePage = new SubGamePage();
+			assertTrue(subGamePage.isPresent(3), "进入子游戏失败！");
+			subGamePage.waitSubElement("返回按钮").click();
+			super.getDriver().quit();
+		} finally {
+			UpdateConfig.delGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageVersion);
+		}
+		
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Optional, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);		
+		super.startApp(false);
+		try {
+			CommonBusiness.closeTheLauncherDialog();
+			hallPage.startSubGameByGameId(this.subGame.getGameId());
+			SubGameDownloadingPage subGameDownloadingPage2 = new SubGameDownloadingPage();
+			assertFalse(subGameDownloadingPage2.isPresent(), "静默更新后重新运行游戏出现了子游戏更新下载页面！更新失败");
+		} finally {
+			super.getDriver().quit();
+			super.startApp(true);	//触发卸载逻辑
+		}
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏增量更新（强制）")
+	@Test(description="检查游戏的增量更新是否成功（强制）")
+	public void test_gameDiffUpdateForce() throws InterruptedException {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Force, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		CommonBusiness.closeTheLauncherDialog();
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+		assertTrue(subGameDownloadingPage.isPresent(), "子游戏更新页面没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度条"), "子游戏更新页面的更新进度条没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度文本"), "子游戏更新页面的更新进度文本没有出现！");
+		SubGamePage subGamePage = new SubGamePage();
+		assertTrue(subGamePage.isPresent(30), "更新后进入子游戏失败！");
+		subGamePage.waitSubElement("返回按钮").click();
+		//TODO:更新前显示最新游戏图标；更新成功后检查显示在线人数控件
+		
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		assertFalse(subGameDownloadingPage.isPresent(5), "更新后进入子游戏重复出现了更新页面！");
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		PrivateRoomPage privateRoomPage = hallPage.openAndGetPrivateRoomPage();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		Thread.sleep(20000);
+//		
+//		privateRoomPage.waitSubElement("返回按钮").click();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertFalse(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框重复出现，子游戏（id:"+this.subGame.getGameId()+"）升级失败！");
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏增量更新（可选）")
+	@Test(description="检查游戏的增量更新是否成功（可选）")
+	public void test_gameDiffUpdateOptional() throws InterruptedException {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Force, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		super.startApp(true);
+		CommonBusiness.closeTheLauncherDialog();
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+		assertTrue(subGameDownloadingPage.isPresent(), "子游戏更新页面没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度条"), "子游戏更新页面的更新进度条没有出现！");
+//		assertTrue(subGameDownloadingPage.isSubElementPresent("下载进度文本"), "子游戏更新页面的更新进度文本没有出现！");
+		SubGamePage subGamePage = new SubGamePage();
+		assertTrue(subGamePage.isPresent(30), "更新后进入子游戏失败！");
+		subGamePage.waitSubElement("返回按钮").click();
+		//TODO:更新前显示最新游戏图标；更新成功后检查显示在线人数控件
+		
+		hallPage.startSubGameByGameId(this.subGame.getGameId());
+		assertFalse(subGameDownloadingPage.isPresent(5), "更新后进入子游戏重复出现了更新页面！");
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		PrivateRoomPage privateRoomPage = hallPage.openAndGetPrivateRoomPage();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertTrue(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框没有出现！");
+//		assertTrue(privateRoomPage.getUpdateDialog().waitSubElement("更新进度条").isDisplayed(), "版本更新进度条没有出现！");
+//		Thread.sleep(20000);
+//		
+//		privateRoomPage.waitSubElement("返回按钮").click();
+//		privateRoomPage.waitSubElement("创建房间按钮").click();
+//		privateRoomPage.waitSubElement("选择游戏栏下拉菜单").click();
+//		privateRoomPage.closeErrorPromptDialogIfPresent();	//测试环境下可能会因为子游戏信息配置不当导致弹出其他子游戏更新信息获取失败的提示框，关闭之
+//		super.getDriver().clickOnText(this.subGame.getChineseName());
+//		assertFalse(privateRoomPage.getUpdateDialog().isPresent(), "版本更新提示框重复出现，子游戏（id:"+this.subGame.getGameId()+"）升级失败！");
+	}
+	
+	@CaseDesc(id="升级测试检查项", name="游戏增量更新（静默）")
+	@Test(description="检查游戏的增量更新是否成功（静默）")
+	public void test_gameDiffUpdateSilent() {
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Silent, UpdateConfig.UpdateMode.Diff, this.targetPackageInfo
+				);
+		
+		try {
+			super.startApp(false);
+			CommonBusiness.closeTheLauncherDialog();
+			hallPage.startSubGameByGameId(this.subGame.getGameId());
+			SubGameDownloadingPage subGameDownloadingPage = new SubGameDownloadingPage();
+			assertFalse(subGameDownloadingPage.isPresent(120), "静默更新模式下却出现了子游戏更新下载页面！");	//同时等待2分钟，等待静默更新完毕
+			SubGamePage subGamePage = new SubGamePage();
+			assertTrue(subGamePage.isPresent(3), "进入子游戏失败！");
+			subGamePage.waitSubElement("返回按钮").click();
+			super.getDriver().quit();
+		} finally {
+			UpdateConfig.delGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageVersion);
+		}
+		
+		UpdateConfig.setGameUpdate(this.appId, this.subGame.getGameId(), this.userGuid, this.targetPackageUrl, 
+				"autotest_update_game", this.targetPackageVersion, "0.0.0", 
+				UpdateConfig.UpdateType.Optional, UpdateConfig.UpdateMode.Full, this.targetPackageInfo
+				);		
+		super.startApp(false);
+		try {
+			CommonBusiness.closeTheLauncherDialog();
+			hallPage.startSubGameByGameId(this.subGame.getGameId());
+			SubGameDownloadingPage subGameDownloadingPage2 = new SubGameDownloadingPage();
+			assertFalse(subGameDownloadingPage2.isPresent(), "静默更新后重新运行游戏出现了子游戏更新下载页面！更新失败");
+		} finally {
+			super.getDriver().quit();
+			super.startApp(true);	//触发卸载逻辑
+		}
+	}
+	
+	
+}

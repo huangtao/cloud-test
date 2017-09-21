@@ -1,0 +1,95 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import io.appium.java_client.android.AndroidKeyCode;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.common.CommonBusinessHuaWei;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.lianyuntest.uilib.login.WdjLoginPage;
+import com.boyaa.lianyuntest.uilib.login.WdjPage;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Test(description = "豌豆荚联运登录测试用例")
+public class WandoujiaLoginTest extends BaseLoginTest {
+	private String wdjPackage = "com.wandoujia.phoenix2";
+	private String wdjAccountActivity = "com.wandoujia.p4.settings.MainSettingActivity";
+
+	@CaseDesc(id = "LIANYUN-WANDOUJIALOG-1", name = "登录豌豆荚账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginWandoujia(String account, String pwd, String name) {
+		clearWdjAccount();
+
+		createRainbowDriver();
+		HallPage hp = new HallPage();
+
+		createNativeDriver();
+		WdjLoginPage wdjlp = new WdjLoginPage();
+
+		if (!wdjlp.isPresent()) {
+			hp.waitPresent();
+			super.openLoginPage(hp, "豌豆荚登录", wdjlp.getDriver());
+		}
+		
+		wdjlp.waitSubElement("已有账号登录").click();
+		wdjlp.waitSubElement("账号输入框").clear();
+		wdjlp.waitSubElement("账号输入框").sendKeys(account);
+		wdjlp.waitSubElement("密码输入框").clear();
+		wdjlp.waitSubElement("密码输入框").sendKeys(pwd);
+		wdjlp.waitSubElement("登录按钮").click();
+
+		super.isLoginSucc(hp, name);
+
+	}
+
+	@CaseDesc(id = "LIANYUN-WANDOUJIALOG-2", name = "游客登陆")
+	@Test
+	// @Test(description = "检查账号能正常登录", dataProvider = "getExcelData",
+	// dataProviderClass = ExcelDataDriver.class)
+	public void test_loginVisitor() {
+		HallPage hp = new HallPage();
+		super.setCapability("newCommandTimeout", "10*60");
+		super.setCapability("noReset", true);
+		RainbowDriver nativeDriver = super
+				.createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		WdjLoginPage wdjlp = new WdjLoginPage();
+		if (wdjlp.isPresent()) {
+			hp.goBack();
+		}
+
+		super.openLoginPage(hp, "游客登录", nativeDriver);
+
+		super.isLoginSucc(hp, null);
+
+	}
+
+	private void clearWdjAccount() {
+		RainbowDriver nativeDriver = createRainbowDriver(CommonBusiness.nativeAppiumUrl);
+		nativeDriver.startActivity(wdjPackage, wdjAccountActivity);
+		System.out.println(nativeDriver.currentActivity());
+		WdjPage wdj = new WdjPage();
+		wdj.waitPresent();
+
+		if (!wdj.isSubElementPresent("登录")) {
+			Point p = wdj.waitSubElement("listView").getLocation();
+			Dimension size = wdj.waitSubElement("listView").getSize();
+			int startx = (p.getX()) / 2;
+			int starty = p.getY() + size.getHeight() - 20;
+			int endy = p.getY() + 20;
+			int i=0;
+			while (!wdj.isSubElementPresent("退出登录", 1)&&i<10) {
+				wdj.getDriver().swipe(startx, starty, startx, endy, 200);
+				i++;
+			}
+			wdj.waitSubElement("退出登录").click();
+			wdj.waitSubElement("确定").click();
+		}
+		getDriver().quitAll();
+	}
+}

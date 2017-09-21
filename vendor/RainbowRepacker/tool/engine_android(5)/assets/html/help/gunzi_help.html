@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>帮助</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="generator" content="Web Page Maker">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var sections = $(".section");
+	$(".section .title").click(function(){
+		var section = $(this).parent();
+		if (!section.hasClass("open")) {
+			sections.each(function(){
+				if ($(this).hasClass("open")){
+					$(this).find(".content").slideUp(200);
+					$(this).removeClass("open");
+				}
+			});
+		}
+		if (section.hasClass("open")){
+			section.find(".content").slideUp(200);
+			section.removeClass("open");
+		} else {
+			section.find(".content").slideDown(200);
+			section.addClass("open");
+		}
+	});
+});
+</script>
+
+<style type="text/css">
+body {
+	margin:0;
+	margin-top:2px;
+	background: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-family: '微软雅黑', 'STHeiti';
+}
+
+.section {
+	background-color: rgba(92,30,0,0.2);
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.section .title {
+	color: #875316;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 10px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.open .title {
+	border-bottom: 1px solid #E8CDA1;
+}
+
+.title .arrow {
+	width: 24px;
+	height: 24px;
+	float: right;
+	cursor: pointer;
+	margin-right: 12px;
+	margin-top: 4px;
+	background: url(images/arrow_down.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.open .title .arrow {
+	background: url(images/arrow_up.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.section .content {
+	display: none;
+	color: #177E41;
+	font-size: 14px;
+	padding: 12px;
+	line-height: 26px;
+}
+
+.open .content {
+	display: block;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="">
+	<div class="section open" style="margin-top:2px;">
+		<div class="title">游戏简介<div class="arrow"></div></div>
+		<div class="content">打滚子起源于大连，在辽宁大部分地区很受欢迎。滚子由升级（拖拉机）游戏演变而来，由四个人用三副扑克进行游戏，以五、十、K为分牌，两人一组协同作战。玩法与普通升级类似，不同之处在于所有玩家都可以在底牌中扣王牌，如果够分且成功抠底还可以凭借底牌中的王追加升级和多吃贡。</div>
+	</div>
+	<div class="section">
+		<div class="title">亮主<div class="arrow"></div></div>
+		<div class="content"><pre>第一把从3打起，亮牌是抢亮大王，亮牌人为庄家。
+从第二把起亮牌必须用级牌，即打3亮3，打6亮6。亮牌后自己和其他人都可以反，自己可以加固自己的亮牌，3个小王或3个大王可以叫任意花色为主花色。</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">扣王<div class="arrow"></div></div>
+		<div class="content">在庄家扣完底牌后，其他玩家可在底牌中扣王。若庄家在扣牌中扣的全是分，则其他玩家不能再扣王。</div>
+	</div>
+	<div class="section">
+		<div class="title">干锅<div class="arrow"></div></div>
+		<div class="content">底牌没有活主或全是主，称为干锅。干锅时底牌不能替换，也不能在底牌中扣王，底牌中的王不升级不算贡。</div>
+	</div>
+	<div class="section">
+		<div class="title">活棒打法<div class="arrow"></div></div>
+		<div class="content"><pre>打滚子时可以不跟滚子不跟棒；打棒可以不跟棒。
+跟打时有可跟打的花色，必须先打该花色，不够时才用其他牌垫出。</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">升级<div class="arrow"></div></div>
+		<div class="content"><pre>抓分方得分大于、等于120分，且成功抠底，抓分方升级。
+抓分方得分少于120分，庄家方保底成功，庄家方升级。</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">进贡<div class="arrow"></div></div>
+		<div class="content"><pre>根据上一局的战果，本局的庄家从下家手中获得贡牌，并返还相同数量的牌。
+若进贡方有三大王或三小王，可以选择暴动，获得返贡或免贡。</pre></div>
+	</div>
+	<div class="section">
+		<div class="title">计分规则<div class="arrow"></div></div>
+		<div class="content"><pre>抓分方得分达到或超过120，则算抓分方胜，否则算庄家方胜。
+胜方每人可从负方赢得相当于 房间底分x本局级数 的金币。
+若胜方升级，每升一级多赢一倍底分的金币。
+若负方出贡，每出一血多输一倍底分的金币。</pre></div>
+	</div>
+</body>
+</html>

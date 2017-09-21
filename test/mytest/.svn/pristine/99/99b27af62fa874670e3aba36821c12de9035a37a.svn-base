@@ -1,0 +1,7 @@
+package com.boyaa.testholdemsina.uilib;
+
+import com.boyaa.rainbow2.RainbowElement1;
+
+public class RankingPage extends RainbowElement1{
+
+}

@@ -1,0 +1,29 @@
+local gui_maker=
+{
+	name="gui_maker",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=800,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+	{
+		name="bg",type=1,typeName="Image",time=65841668,report=0,x=240,y=187,width=64,height=64,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png",
+		{
+			name="popBg",type=1,typeName="Image",time=65841723,report=0,x=0,y=0,width=600,height=400,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/popupWindow/popupWindow_describe_bg_25_25_25_25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+			{
+				name="title",type=4,typeName="Text",time=65841837,report=0,x=0,y=30,width=0,height=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=34,textAlign=kAlignLeft,colorRed=0,colorGreen=58,colorBlue=120,string=[[输入guid自定义你的用户]]
+			},
+			{
+				name="Image1",type=1,typeName="Image",time=65842006,report=0,x=0,y=-50,width=400,height=65,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/input_bg_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25
+			},
+			{
+				name="confirm_btn",type=2,typeName="Button",time=65842112,report=0,x=137,y=252,width=300,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file="hall/common/btns/btn_green_149x58_l10_r10_t10_b10.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+				{
+					name="Text2",type=4,typeName="Text",time=65842174,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=40,textAlign=kAlignLeft,colorRed=255,colorGreen=255,colorBlue=255,string=[[创建用户]]
+				}
+			},
+			{
+				name="btn_close",type=2,typeName="Button",time=65842309,report=0,x=0,y=0,width=60,height=60,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="hall/common/popupWindow/popupWindow_close.png"
+			},
+			{
+				name="guid",type=6,typeName="EditText",time=65842231,report=0,x=8,y=-51,width=360,height=61,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=40,textAlign=kAlignLeft,colorRed=26,colorGreen=145,colorBlue=225
+			}
+		}
+	}
+}
+return gui_maker;

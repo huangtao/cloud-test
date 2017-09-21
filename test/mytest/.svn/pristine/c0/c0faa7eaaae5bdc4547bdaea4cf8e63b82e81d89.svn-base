@@ -1,0 +1,19 @@
+package com.boyaa.testholdemth.uilib;
+
+import java.util.List;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class ContinuousLoginRewardsPage extends RainbowElement{
+	private static RainbowDriver rd = null;
+	public  ContinuousLoginRewardsPage(){
+		rd = RainbowDriver.getRainbowDriver();
+	}
+	
+	public  ContinuousLoginRewardsPage(RainbowDriver rainbowd){
+		super(rainbowd);
+		rd = rainbowd;
+	}
+	
+}

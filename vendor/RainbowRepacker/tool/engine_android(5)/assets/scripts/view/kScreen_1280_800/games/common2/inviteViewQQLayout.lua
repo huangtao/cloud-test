@@ -1,0 +1,41 @@
+local inviteViewQQLayout=
+{
+	name="inviteViewQQLayout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignRight,
+	{
+		name="content",type=0,typeName="View",time=106939128,x=0,y=0,width=606,height=720,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=1,
+		{
+			name="shareQQView",type=0,typeName="View",time=106941360,x=0,y=0,width=598,height=720,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=1,
+			{
+				name="bg",type=1,typeName="Image",time=0,x=0,y=0,width=623,height=720,visible=1,fillParentWidth=0,fillParentHeight=1,nodeAlign=kAlignRight,file="games/common/friend/invite_content_bg.png"
+			},
+			{
+				name="titleView",type=0,typeName="View",time=0,x=0,y=0,width=598,height=78,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+				{
+					name="title",type=4,typeName="Text",time=0,x=0,y=0,width=110,height=36,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=32,textAlign=kAlignCenter,colorRed=159,colorGreen=115,colorBlue=50,colorA=1,string=[[QQ邀请]]
+				}
+			},
+			{
+				name="contentView",type=0,typeName="View",time=0,x=0,y=0,width=598,height=642,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignBottomLeft,
+				{
+					name="text1",type=4,typeName="Text",time=0,x=0,y=-206,width=430,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,string=[[1、选择好友；]],colorA=1
+				},
+				{
+					name="text2",type=4,typeName="Text",time=0,x=0,y=-166,width=430,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,string=[[2、在对话框中 “长按 -> 粘贴”；]],colorA=1
+				},
+				{
+					name="text3",type=4,typeName="Text",time=0,x=0,y=-126,width=430,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=24,textAlign=kAlignLeft,colorRed=143,colorGreen=92,colorBlue=31,string=[[3、发送邀请信息。]],colorA=1
+				},
+				{
+					name="img",type=1,typeName="Image",time=0,x=0,y=24,width=430,height=159,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/friend/invite_tips_qq.png"
+				},
+				{
+					name="inviteBtn",type=2,typeName="Button",time=116698608,report=0,x=0,y=236,width=235,height=89,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="isolater/btns/btn_green_164x89_l25_r25_t25_b25.png",file2="isolater/btns/btn_gray_163x89_l25_r25_t25_b25.png",gridLeft=25,gridRight=25,gridTop=25,gridBottom=25,
+					{
+						name="text",type=4,typeName="Text",time=116698609,report=0,x=0,y=0,width=140,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=32,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=200,string=[[立即邀请]],colorA=1
+					}
+				}
+			}
+		}
+	}
+}
+return inviteViewQQLayout;

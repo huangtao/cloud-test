@@ -1,0 +1,26 @@
+match_wait_table_layout=
+{
+	name="match_wait_table_layout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="wait",type=0,typeName="Image",time=109420996,x=0,y=200,width=1280,height=157,nodeAlign=kAlignCenter,visible=0,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_tips/tips_wait_bg.png",
+		{
+			name="tips",type=0,typeName="Image",time=109421756,x=0,y=4,width=526,height=47,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_tips/wait_table_str.png",
+			{
+				name="icon",type=0,typeName="Image",time=109421703,x=-50,y=0,width=50,height=50,nodeAlign=kAlignLeft,visible=0,fillParentWidth=0,fillParentHeight=0,file="games/common/match/match_tips/tips_wait_iocn.png"
+			},
+			{
+				name="loading",version=1,type=0,typeName="View",time=0,x=-30,y=11,width=33,height=11,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottomRight,
+				{
+					name="img_1",version=1,type=1,typeName="Image",time=0,x=0,y=0,width=11,height=11,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="games/common/match/match_tips/wait_table_loading.png",rLeft=0,rRight=0,rTop=0,rBottom=0
+				},
+				{
+					name="img_2",version=1,type=1,typeName="Image",time=0,x=11,y=0,width=11,height=11,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="games/common/match/match_tips/wait_table_loading.png",rLeft=0,rRight=0,rTop=0,rBottom=0
+				},
+				{
+					name="img_3",version=1,type=1,typeName="Image",time=0,x=22,y=0,width=11,height=11,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="games/common/match/match_tips/wait_table_loading.png",rLeft=0,rRight=0,rTop=0,rBottom=0
+				}
+			}
+		}
+	}
+}
+return match_wait_table_layout;

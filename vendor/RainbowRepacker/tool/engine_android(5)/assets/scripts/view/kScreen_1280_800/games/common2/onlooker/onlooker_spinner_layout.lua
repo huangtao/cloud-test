@@ -1,0 +1,39 @@
+local onlooker_spinner_pin_map = require("qnFiles/qnPlist/games/onlooker_spinner_pin");
+local onlooker_spinner_layout=
+{
+	name="onlooker_spinner_layout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shiled",type=1,typeName="Image",time=0,x=0,y=0,width=1280,height=720,visible=0,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="isolater/bg_blank.png"
+	},
+	{
+		name="infoView",type=0,typeName="View",time=0,x=20,y=8,width=278,height=48,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,
+		{
+			name="listView",type=0,typeName="View",time=0,x=0,y=30,width=275,height=195,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="bg",type=1,typeName="Image",time=0,x=0,y=0,width=275,height=56,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file=onlooker_spinner_pin_map['bg_info.png'],gridLeft=25,gridRight=25,gridTop=25,gridBottom=20
+			},
+			{
+				name="list_detail",type=0,typeName="ListView",time=0,x=0,y=23,width=260,height=165,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop
+			}
+		},
+		{
+			name="title_btn",type=1,typeName="Button",time=0,x=0,y=0,width=278,height=48,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,file=onlooker_spinner_pin_map['bg_title.png'],
+			{
+				name="icon",type=1,typeName="Image",time=0,x=14,y=2,width=35,height=24,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file=onlooker_spinner_pin_map['icon_looker.png']
+			},
+			{
+				name="num_info",type=4,typeName="Text",time=0,x=4,y=0,width=162,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=22,textAlign=kAlignCenter,colorRed=238,colorGreen=206,colorBlue=144,string=[[99+人正在围观]],colorA=1
+			},
+			{
+				name="btn",type=1,typeName="Image",time=0,x=14,y=2,width=28,height=29,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignRight,file=onlooker_spinner_pin_map['bg_btn.png'],
+				{
+					name="arrow",type=1,typeName="Image",time=0,x=0,y=0,width=18,height=11,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=onlooker_spinner_pin_map['arrow_down.png']
+				}
+			},
+			{
+				name="title_btn_ex",type=1,typeName="Button",time=0,x=0,y=0,width=300,height=70,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="isolater/bg_blank.png"
+			}
+		}
+	}
+}
+return onlooker_spinner_layout;

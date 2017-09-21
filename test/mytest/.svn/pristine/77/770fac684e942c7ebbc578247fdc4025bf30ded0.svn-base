@@ -1,0 +1,101 @@
+package com.boyaa.testholdemsina.uilib;
+
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class LoginPage extends RainbowElement {
+	private RainbowDriver rd = null;
+	
+	public  LoginPage(){
+		rd = RainbowDriver.getCurrentDriver();		
+	}
+	
+	public void loginAsGuest() {
+		waitPresent();
+		rd.pressMenu();
+		waitSubElement("正式服务器").click();
+		waitSubElement("立即登录").click();
+		
+		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+		if (loginEveryDayDialog.isPresent()){
+			loginEveryDayDialog.close();
+		}
+	}
+	
+	public void loginAsGuestIntoTestEnv(){
+		enterTestEnv();
+		waitSubElement("立即登录").click();
+		
+		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+		if (loginEveryDayDialog.isPresent()){
+			loginEveryDayDialog.close();
+		}
+	}
+	
+	public void loginWithMachineCodeIntoTestEnv(String machineCode){
+		enterTestEnv();
+		rd.pressMenu();
+		waitSubElement("更多").click();
+		waitSubElement("自定义机器码").click();
+		
+		EnterMachineCodeDialog emcDialog = new EnterMachineCodeDialog();
+		emcDialog.waitPresent();
+		
+		WebElement machineCodeEle = emcDialog.waitSubElement("机器码输入框");
+		rd.sendKeys(machineCodeEle, machineCode);
+		emcDialog.waitSubElement("确认按钮").click();
+		
+		waitSubElement("立即登录").click();
+		
+		LoginEveryDayDialog loginEveryDayDialog = new LoginEveryDayDialog();
+		if (loginEveryDayDialog.isPresent()){
+			loginEveryDayDialog.close();
+		}
+	}
+	
+	public void loginWithMachineCode(String machineCode){
+		waitPresent();
+		rd.pressMenu();
+		waitSubElement("正式服务器").click();
+		waitSubElement("更多").click();
+		waitSubElement("自定义机器码").click();
+	}
+	
+	public void enterTestEnv() {
+		try {
+			Thread.sleep(2 * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 5; i++) {
+			rd.pressMenu();
+			try {
+				waitSubElement("更多").click();
+				waitSubElement("测试环境", 2).click();
+				return;
+			} catch (TimeoutException e) {
+				e.printStackTrace();
+			}
+		}
+		throw new RuntimeException("多次点击菜单键后仍然没有弹出调试菜单！");
+	}
+	
+	public WeiboLoginPage getWeiboLoginPage(){
+		return new WeiboLoginPage();
+	}
+	
+	public class WeiboLoginPage extends RainbowElement {
+		
+		public void  loginWithWebView(String userName, String password){
+			rd.switchToWebView();
+			waitPresent(20);//微博登录页面打开
+			waitSubElement("微博账户").sendKeys(userName);
+			waitSubElement("微博密码").sendKeys(password);
+			waitSubElement("登录按钮").click();			
+			rd.switchToNativeApp();
+		}
+	}
+}

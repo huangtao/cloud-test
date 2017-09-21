@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>帮助</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="generator" content="Web Page Maker">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var sections = $(".section");
+	$(".section .title").click(function(){
+		var section = $(this).parent();
+		if (!section.hasClass("open")) {
+			sections.each(function(){
+				if ($(this).hasClass("open")){
+					$(this).find(".content").slideUp(200);
+					$(this).removeClass("open");
+				}
+			});
+		}
+		if (section.hasClass("open")){
+			section.find(".content").slideUp(200);
+			section.removeClass("open");
+		} else {
+			section.find(".content").slideDown(200);
+			section.addClass("open");
+		}
+	});
+});
+</script>
+
+<style type="text/css">
+body {
+	margin:0;
+	margin-top:2px;
+	background: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-family: '微软雅黑', 'STHeiti';
+}
+
+.section {
+	background-color: rgba(92,30,0,0.2);
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.section .title {
+	color: #875316;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 10px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.open .title {
+	border-bottom: 1px solid #E8CDA1;
+}
+
+.title .arrow {
+	width: 24px;
+	height: 24px;
+	float: right;
+	cursor: pointer;
+	margin-right: 12px;
+	margin-top: 4px;
+	background: url(images/arrow_down.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.open .title .arrow {
+	background: url(images/arrow_up.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.section .content {
+	display: none;
+	color: #177E41;
+	font-size: 14px;
+	padding: 12px;
+	line-height: 26px;
+}
+
+.open .content {
+	display: block;
+}
+</style>
+</head>
+
+<body onload="">
+	<div class="section open" style="">
+		<div class="title">游戏金币用完怎么办？<div class="arrow"></div></div>
+		<div class="content">每次金币用完之后系统都将赠送免费金币，你也可以在牌局中、游戏主界面、商城中购买金币。</div>
+	</div>
+	<div class="section">
+		<div class="title">购买金币后没有见到游戏币增加？<div class="arrow"></div></div>
+		<div class="content">当你使用短信、充值卡等方式购买金币，会因网络的不同情况会出现一定的延迟，请不要担心，耐心等候一下，购买失败不会扣费。</div>
+	</div>
+	<div class="section">
+		<div class="title">赢了之后，获得的金币为什么少了？<div class="arrow"></div></div>
+		<div class="content">本游戏以公平为第一原则，因此你一局里面最多能赢到的金币，不会多于原来身上的金币，也不会多于对手持有的金币数。</div>
+	</div>
+	<div class="section">
+		<div class="title">为什么玩着就到了其他场？<div class="arrow"></div></div>
+		<div class="content">系统会根据你的金币数匹配不同的场次，当你在上一局赢牌/输牌时，可能会根据金币数的变化调整场次。</div>
+	</div>
+	<div class="section">
+		<div class="title">为什么破产补助时间会不一样？<div class="arrow"></div></div>
+		<div class="content">当你在游戏内破产时，系统会为你提供破产救助金。若你一天破产的次数较多，每一次领取破产救助的时间就会变长。</div>
+	</div>
+	<div class="section">
+		<div class="title">如何反馈游戏内遇到的问题？<div class="arrow"></div></div>
+		<div class="content">你可以在主界面点击右上角“设置（齿轮）”，然后点击下方“意见反馈”，输入你的反馈建议。</div>
+	</div>
+	<div class="section">
+		<div class="title">输赢数量限制<div class="arrow"></div></div>
+		<div class="content">
+		1.根据国家规定，设定了每局输赢的数量限制和每日输赢的数量限制。<br/>
+		2.超出每局输赢数量最多达到限制，超出的部分将不会被收入或支出。<br/>
+		3.而到达每日输赢数量的限制时，将会被强制无法进行联网游戏。<br/>
+		每局输赢的数量限制：<strong>± 23,500,000</strong> <br/>
+		每日输赢的数量限制：<strong>± 1,200,000,000</strong>
+		</div>
+	</div>
+</body>
+</html>

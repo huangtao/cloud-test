@@ -1,0 +1,42 @@
+local agency_pin_map = require("qnFiles/qnPlist/hall/agency_pin");
+local agencyConfirmPay=
+{
+	name="agencyConfirmPay",type=0,typeName="View",time=0,report=0,x=0,y=0,width=0,height=0,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="top",type=1,typeName="Image",time=80710552,report=0,x=0,y=0,width=4,height=90,fillTopLeftX=0,fillTopLeftY=0,fillBottomRightX=0,fillBottomRightY=710,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file=agency_pin_map['top_bar.png'],gridLeft=1,gridRight=1,gridTop=1,gridBottom=1,
+		{
+			name="returnBtn",type=2,typeName="Button",time=80710613,report=0,x=0,y=0,width=120,height=64,visible=1,fillParentWidth=0,fillParentHeight=1,nodeAlign=kAlignLeft,file="hall/common/bg_blank.png",
+			{
+				name="Image1",type=1,typeName="Image",time=80710659,report=0,x=0,y=0,width=29,height=45,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=agency_pin_map['back.png']
+			}
+		},
+		{
+			name="title",type=4,typeName="Text",time=80710553,report=0,x=0,y=0,width=10,height=10,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,fontSize=48,textAlign=kAlignCenter,colorRed=255,colorGreen=255,colorBlue=255,string=[[获取代理资格]]
+		}
+	},
+	{
+		name="content",type=1,typeName="Image",time=80710704,report=0,x=0,y=90,width=1280,height=710,fillTopLeftX=0,fillTopLeftY=90,fillBottomRightX=0,fillBottomRightY=0,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/agency/pay_confirm.png",
+		{
+			name="contentView",type=0,typeName="View",time=80710554,report=0,x=0,y=130,width=360,height=500,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,
+			{
+				name="Text1",type=4,typeName="Text",time=80710556,report=0,x=0,y=140,width=10,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=32,textAlign=kAlignLeft,colorRed=255,colorGreen=237,colorBlue=39,string=[[一年代理资格]]
+			},
+			{
+				name="line2",type=0,typeName="View",time=80711498,report=0,x=0,y=210,width=200,height=100,visible=1,fillParentWidth=1,fillParentHeight=0,nodeAlign=kAlignTop,
+				{
+					name="Text2",type=4,typeName="Text",time=80710557,report=0,x=90,y=0,width=10,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=32,textAlign=kAlignLeft,colorRed=255,colorGreen=237,colorBlue=39,string=[[价值]]
+				},
+				{
+					name="Text3",type=4,typeName="Text",time=80711602,report=0,x=157,y=0,width=100,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopLeft,fontSize=40,textAlign=kAlignLeft,colorRed=255,colorGreen=237,colorBlue=39,string=[[500元]]
+				},
+				{
+					name="Text4",type=4,typeName="Text",time=80711685,report=0,x=0,y=50,width=200,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,fontSize=32,textAlign=kAlignLeft,colorRed=255,colorGreen=237,colorBlue=39,string=[[并赠送500W游戏币]]
+				}
+			},
+			{
+				name="confirmBtn",type=2,typeName="Button",time=80711793,report=0,x=0,y=360,width=200,height=86,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file=agency_pin_map['btn_y_1.png'],file2=agency_pin_map['btn_y_2.png']
+			}
+		}
+	}
+}
+return agencyConfirmPay;

@@ -1,0 +1,53 @@
+package com.boyaa.lianyuntest.cases.login;
+
+import org.testng.annotations.Test;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.lianyuntest.uilib.login.AnzhiLoginPage;
+import com.boyaa.lianyuntest.uilib.login.EgameLoginPage;
+import com.boyaa.lianyuntest.uilib.login.HallPage;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.data.ExcelData.ExcelDataDriver;
+
+@Test(description = "安智联运登录测试用例")
+public class AnzhiLoginTest extends BaseLoginTest {
+	@CaseDesc(id = "LIANYUN-Anzhi-1", name = "登录安智账号")
+	@Test(description = "检查账号能正常登录", dataProvider = "getExcelData", dataProviderClass = ExcelDataDriver.class)
+	public void test_loginAnzhi(String account, String pwd, String name) {
+		String noticeActivity = "com.anzhi.usercenter.sdk.NewLoginActivity";
+		
+		HallPage hp = new HallPage();
+		CommonBusiness.delFile("/mnt/sdcard/usercenter");
+
+		createNativeDriver();
+		AnzhiLoginPage ap = new AnzhiLoginPage();
+		// nativeDriver.resetApp(); //resetAPP有时启动应用后应用会直接关闭，导致用例执行失败，所以不采用这种方式
+
+		if(ap.isSubElementPresent("注册页")){
+			ap.goBack();
+		}
+		ap.waitPresent();
+		ap.waitSubElement("账号输入框").clear();
+		ap.waitSubElement("账号输入框").sendKeys(account);
+		ap.waitSubElement("密码输入框").clear();
+		ap.waitSubElement("密码输入框").sendKeys(pwd);
+		ap.waitSubElement("登录按钮").click();
+		
+		try {
+			ap.sleep(8*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		while(!CommonBusiness.isActivity(ap.getDriver(), "com.boyaa.scmj.Game", 2)){
+			ap.goBack();
+		}
+//		if(CommonBusiness.isActivity(ap.getDriver(), noticeActivity, 5)){
+//			ap.goBack();
+//		}
+		
+		super.isLoginSucc(hp, name);
+
+	}
+}

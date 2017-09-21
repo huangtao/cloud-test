@@ -1,0 +1,73 @@
+div(pane='center', ng-controller='PackageCtrl')
+  .widget-container.fluid-height
+    .heading
+      stacked-icon(icon='fa-gears', color='color-red')
+      span(translate) 服务项
+    .widget-content.padded
+      .row
+        .col-md-20
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 安装/启动/Monkey/卸载
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 覆盖安装/登录
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 启动时间/CPU/内存/流量
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 错误日志/自动截图
+          .col-md-2
+            stacked-icon(icon='fa-check', color='color-green')
+            span 测试完成通知
+
+
+   .widget-container.fluid-height
+     .heading
+       stacked-icon(icon='fa-upload',color='color-red')
+       span(translate) App管理
+     .widget-content.padded
+      .row
+         .col-md-8
+          .col-md-2
+            input(
+              type='text',name='Package_name'
+            )
+          .col-md-2
+            input(
+            type='text',name='App_name'
+            )
+          .col-md-4
+               button 查询
+          .col-md-8
+           button 添加App
+      .row
+        table.table.table-hover.dataTable.ng-table
+          thead
+            tr
+              th.header(ng-repeat='title in titles') {{title}}
+          tbody
+          tr(ng-repeat='apkinfo in apkinfos')
+            td
+              {{apkinfo.name}}
+            td
+              a(href="{{apkinfo.url}}"){{apkinfo.apkname}}
+            td
+              {{apkinfo.version}}
+            td
+              {{apkinfo.size}}
+            td
+              {{apkinfo.uploadday}}
+            td
+              {{apkinfo.activity}}
+              
+
+
+
+           
+
+      
+
+           
+

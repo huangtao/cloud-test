@@ -1,0 +1,38 @@
+package com.boyaa.testholdemhk.cases;
+
+
+import com.boyaa.rainbow2.RainbowListener;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.utils.SharedPrefsTools;
+
+public class TestCaseBase extends RainbowTestCase{
+	
+	@Override
+	public void setUp() throws Exception{
+		ModifyAppSharedPreference();
+		super.setUp("com.boyaa.texaspoker.application.activity.LoginActivity");	
+	}
+	
+	public void setUp(long newCommandTimeout) throws Exception{		
+		ModifyAppSharedPreference();
+		super.setUp(newCommandTimeout, "com.boyaa.texaspoker.application.activity.LoginActivity");
+		
+	}	
+	 
+	
+	
+	/**
+	 * For modify the app SharedPreference:
+	 * @author JackWang 
+	 */
+	public void ModifyAppSharedPreference(){		
+		try{
+			SharedPrefsTools spt = new SharedPrefsTools(RainbowListener.packageName);
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "int", "last_login_method", "-1");//关闭自动登录	 
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "boolean", "debugsetdemo", "true");//更改默认设置为测试环境
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "boolean", "create_shortcut", "false");//关闭快捷方式提示
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}

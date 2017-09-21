@@ -1,0 +1,32 @@
+readyLayout=
+{
+	name="readyLayout",type=0,typeName="View",time=0,report=0,x=0,y=0,width=200,height=84,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,isLuaLocal=0,
+	{
+		name="btn_view",type=0,typeName="View",time=107348184,x=0,y=190,width=585,height=95,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,
+		{
+			name="readyBtn",type=2,typeName="Button",time=48242684,report=0,x=0,y=0,width=190,height=95,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignRight,file="games/common/room/operate_btn/btn_green.png",
+			{
+				name="img",type=1,typeName="Image",time=120219154,report=0,x=0,y=-5,width=77,height=39,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/room/operate_btn/ready.png"
+			},
+			{
+				name="nameView",type=0,typeName="View",time=120071891,x=0,y=-5,width=77,height=39,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="time",type=0,typeName="Text",time=120071905,x=77,y=0,width=1,height=39,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,fontSize=28,textAlign=kAlignLeft,colorRed=255,colorGreen=247,colorBlue=81
+				}
+			}
+		},
+		{
+			name="changeTableBtn",type=2,typeName="Button",time=78053887,report=0,x=0,y=0,width=190,height=95,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file="games/common/room/operate_btn/btn_orange.png",
+			{
+				name="img",type=1,typeName="Image",time=120219162,report=0,x=0,y=-5,width=77,height=39,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/room/operate_btn/change_table.png"
+			},
+			{
+				name="nameView",type=0,typeName="View",time=120072087,x=0,y=-5,width=77,height=39,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,
+				{
+					name="time",type=0,typeName="Text",time=120072088,x=77,y=0,width=1,height=39,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,fontSize=28,textAlign=kAlignLeft,colorRed=255,colorGreen=247,colorBlue=81
+				}
+			}
+		}
+	}
+}
+return readyLayout;

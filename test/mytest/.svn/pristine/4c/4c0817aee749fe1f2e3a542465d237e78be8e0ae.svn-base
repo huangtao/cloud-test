@@ -1,0 +1,69 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.CommonLobbyPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+import com.boyaa.testholdemsina.uilib.QuickLobbyPage;
+
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="快速进入游戏")
+public class QuickLobbyTest extends TestCaseBase{
+	private LobbyPage lobbyPage =  null;
+	private LoginPage loginPage = null;
+	private QuickLobbyPage quickLobbyPage = null;
+	private CommonBusiness commonBusiness = null;
+	private CommonLobbyPage commonLobbyPage = null;
+	@BeforeMethod
+	public void setup(){
+		super.setUp();
+		lobbyPage = new LobbyPage();
+		loginPage = new LoginPage();
+		quickLobbyPage = new QuickLobbyPage();
+		commonBusiness = new CommonBusiness();
+		commonLobbyPage = new CommonLobbyPage();
+//		CommonBusiness.createNativeDriver();
+	}
+	@CaseDesc(id="quick_start", name="立即开始游戏")
+	@Test(description="立即开始游戏")
+	public void test01_quick_start() throws Exception{
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("立即开始").click();
+		Thread.sleep(10*1000);
+		assertTrue(quickLobbyPage.isSubElementPresent("同步标志"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		CommonBusiness.takesScreenShot(getDriver(), "quickStart.png");
+	}
+	@CaseDesc(id="tourist_quick_start", name="玩家游戏币不足，立即开始游戏")
+	@Test(description="玩家游戏币不足，立即开始游戏")
+	public void test02_tourist_quick_start() throws Exception{
+		commonBusiness.loginAsTourist();
+		
+		Thread.sleep(3*1000);
+		for(int j=0;j<=2;j++){
+			lobbyPage.waitSubElement("立即开始").click();
+			for(int i=0;i<=50;i++){
+				commonLobbyPage.waitSubElement("打赏").click();
+			}
+			commonBusiness.backLobbyList();
+		}
+		
+		loginPage.waitSubElement("破产提示").click();
+		Thread.sleep(2*1000);
+		lobbyPage.waitSubElement("立即开始").click();
+		assertTrue(quickLobbyPage.isSubElementPresent("游戏币不足提示"),"预期结果：出现同步标志，实际结果：未出现同步标志");
+		CommonBusiness.takesScreenShot(getDriver(), "quickStart.png");
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+
+}

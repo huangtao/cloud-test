@@ -1,0 +1,80 @@
+.col-sm-2
+.col-md-12
+    div(pane='center', ng-controller='TaskCtrl')
+    .widget-container.fluid-height
+      .row
+        .col-md-12
+          .col-md-2
+            select(ng-model='test_status_select', ng-options='test_status.name as test_status.name for test_status in test_status_list')
+          .col-md-2
+            input(type=text, ng-model='task_name', ng-enter='search_task(task_name)', placeholder='请输入任务名称')
+          .col-md-1
+            button 查询
+.col-md-12
+div(id='parent', pane='center',ng-controller='TaskCtrl')   
+.col-md-6
+  div(id='left')   
+    .widget-container.fluid-height
+      table.table.table-hover.dataTable.ng-table
+        thead
+          tr
+            th.header(ng-repeat='column in columns') {{column}}
+          tbody
+          tr(ng-repeat='report in reports')
+            td
+              {{report.taskid}}
+            td
+              a(href="{{report.apkurl}}") APK下载
+            td
+             {{DateFormat(report.committime)}}
+            td
+              {{report.allstatus}}
+            td
+              总数{{report.detail.length}}(成功{{snum(report.taskid)}}/失败{{report.detail.length-snum(report.taskid)}})
+            td
+              {{(snum(report.taskid)/report.detail.length)*100}}%
+            td
+              a(href='/app/api/v1/download/{{report.taskid}}')下载
+            td
+              button(ng-click='lookAll(report.taskid)') 查看
+
+.col-md-6              
+  div(id='right')
+    .row
+      h1终端概况
+       table.table.table-hover.dataTable.ng-table
+        thead
+          tr
+            th.header(ng-repeat='col in devicecols')
+             {{col}}
+             tbody
+              tr(ng-repeat='ov in overview')
+                td
+                  {{ov.model}}
+                td
+                  {{ov.result}}
+                td
+                  a(href='/app/api/v1/download/{{ov.taskid}}/{{ov.serial}}')下载
+      h2性能概况
+       table.table.table-hover.dataTable.ng-table
+        thead
+          tr
+            th.header(ng-repeat='perf in performance')
+             {{perf}}
+             tbody
+              tr(ng-repeat='ov in overview')
+                td
+                  {{ov.model}}
+                td
+                  {{ov.appLaunchTime/1000}}s
+                td
+                  {{ov.cpu}}%
+                td
+                  {{ov.memory}}MB
+                td
+                  {{ov.dataflow}}KB
+              
+               
+
+       
+

@@ -1,0 +1,52 @@
+package com.boyaa.testhallbase.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testhallbase.business.CommonBusiness;
+import com.boyaa.testhallbase.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testhallbase.uilib.HallPage;
+import com.boyaa.testhallbase.uilib.UserPage;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="个人信息")
+public class UserInfoTest extends BaseTestCase {
+//	private static CommonBusiness cb = null;
+	private HallPage hallPage = null ;
+	public UserInfoTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+//		cb = new CommonBusiness();
+		hallPage = new HallPage();
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.PrePublicEnv);//切换到线上环境
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	@CaseDesc(id="DFHALL-712", name="新用户(Phase I)")
+	@Test(description="检查新用户的个人信息窗口各元素是否显示正确")
+	public void test_userInfo() throws InterruptedException{
+		hallPage.waitPresent(20);
+		
+		CommonBusiness.switchToTrialPlay();
+		
+		hallPage.waitSubElement("个人头像").click();
+		UserPage userPage = hallPage.getUserPage();
+		assertTrue(userPage.isPresent(), "检查是否打开个人信息窗口");
+		
+//		assertEquals((int)(Integer.valueOf(userPage.waitSubElement("钻石数").getText())), 0, "检查钻石数是否为0");
+		assertTrue(userPage.waitSubElement("经验值").getText().equals("0%"), "检查经验值是否为0%");
+	}
+
+}

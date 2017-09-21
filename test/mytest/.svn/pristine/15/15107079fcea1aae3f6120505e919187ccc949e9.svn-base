@@ -1,0 +1,58 @@
+package com.boyaa.testholdemsina.cases;
+
+import java.io.IOException;
+
+import org.testng.annotations.AfterMethod;
+
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.rainbow2.utils.Parameter;
+import com.boyaa.rainbow2.utils.SharedPrefsTools;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+
+public class TestCaseBase extends RainbowTestCase{
+	
+	@Override
+	public void setUp(){
+		delFile();
+//		ModifyAppSharedPreference();
+		super.setCapability("newCommandTimeout", "3*60");
+		super.setCapability("app", getParamByKey("scr_apk_path"));
+		
+		
+		super.setUp();
+		CommonBusiness.createNativeDriver();
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+		CommonBusiness.nativeDriver.quit();
+	}
+	public static void delFile(){
+//		String deviceName = "LG-E985T-0a7d8bd71c09acfa";
+		System.out.println("----删除自动登录文件----");
+		String command = "adb shell rm -r ";
+		try {
+			//System.out.println(command+" ");
+			Runtime.getRuntime().exec(command+"/mnt/sdcard/.com.boyaa.sina/dict/default_shared_preference_group.dat");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * For modify the app SharedPreference:
+	 * @author JackWang 
+	 */
+	public void ModifyAppSharedPreference(){		
+		try{
+			SharedPrefsTools spt = new SharedPrefsTools(Parameter.getParam("package"));
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "int", "last_login_method", "-1");//关闭自动登录	 
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "boolean", "debugsetdemo", "true");//更改默认设置为测试环境
+			spt.modifyParameter(SharedPrefsTools.appSettingFileName_SOUND, "boolean", "create_shortcut", "false");//关闭快捷方式提示
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+}

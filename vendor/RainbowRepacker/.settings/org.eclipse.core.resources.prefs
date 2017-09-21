@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/cmd_tools.py=utf8
+encoding//src/entry.py=utf8
+encoding//src/file_utils.py=utf8
+encoding//src/log_utils.py=utf8
+encoding//src/manifest_utils.py=utf8
+encoding//src/pack_exception.py=utf8
+encoding//src/pack_managers/base_pack_manager.py=utf8
+encoding//src/pack_managers/newengine_pack_manager.py=utf8

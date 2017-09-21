@@ -1,0 +1,71 @@
+--don't resolve in qneditor
+-- created with TexturePacker (http://www.texturepacker.com)
+local path = "swfTweenAnim/anim_package_swf_pin.png"
+anim_package_swf_pin_map = {
+	
+	["anim_package_1.png"]={ 
+		file=path,
+		x=2,y=197,
+		width=59,height=52
+	},
+	["anim_package_10.png"]={ 
+		file=path,
+		x=69,y=132,
+		width=65,height=63
+	},
+	["anim_package_11.png"]={ 
+		file=path,
+		x=69,y=67,
+		width=65,height=63
+	},
+	["anim_package_12.png"]={ 
+		file=path,
+		x=2,y=132,
+		width=65,height=63
+	},
+	["anim_package_13.png"]={ 
+		file=path,
+		x=2,y=67,
+		width=65,height=63
+	},
+	["anim_package_2.png"]={ 
+		file=path,
+		x=63,y=228,
+		width=59,height=24
+	},
+	["anim_package_3.png"]={ 
+		file=path,
+		x=63,y=197,
+		width=59,height=29
+	},
+	["anim_package_4.png"]={ 
+		file=path,
+		x=136,y=67,
+		width=65,height=58
+	},
+	["anim_package_5.png"]={ 
+		file=path,
+		x=136,y=2,
+		width=65,height=63
+	},
+	["anim_package_6.png"]={ 
+		file=path,
+		x=218,y=2,
+		width=12,height=13
+	},
+	["anim_package_7.png"]={ 
+		file=path,
+		x=203,y=2,
+		width=13,height=12
+	},
+	["anim_package_8.png"]={ 
+		file=path,
+		x=69,y=2,
+		width=65,height=63
+	},
+	["anim_package_9.png"]={ 
+		file=path,
+		x=2,y=2,
+		width=65,height=63
+	},
+}

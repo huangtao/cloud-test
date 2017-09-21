@@ -1,0 +1,191 @@
+package com.boyaa.testholdemsina.cases;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.testholdemsina.business.CommonBusiness;
+import com.boyaa.testholdemsina.uilib.FriendPage;
+import com.boyaa.testholdemsina.uilib.LobbyPage;
+import com.boyaa.testholdemsina.uilib.LoginPage;
+
+@Listeners({com.boyaa.rainbow2.RainbowListenerLocal.class})
+@Test(description="好友")
+public class FriendTest extends TestCaseBase{
+	private LoginPage loginPage = null;
+	private LobbyPage lobbyPage=null;
+	private FriendPage friendPage=null;
+	private CommonBusiness commonBusiness=null;
+	@BeforeMethod
+	public void setUp() {
+		super.setUp();
+		loginPage = new LoginPage();
+		lobbyPage=new LobbyPage();
+		friendPage=new FriendPage();
+		commonBusiness=new CommonBusiness();
+//		CommonBusiness.createNativeDriver();
+		
+	}
+	
+	@CaseDesc(id="checkFriend", name="查看好友界面")
+	@Test(description="查看好友")
+	public void test_checkFriend() throws Exception {
+		
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		CommonBusiness.takesScreenShot(getDriver(), "Friend.png");
+	}
+	@CaseDesc(id="randomaddFriend", name="随机添加好友")
+	@Test(description="随机添加好友")
+	public void test_randomAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("添加好友").click();
+		friendPage.waitSubElement("添加").click();
+		CommonBusiness.takesScreenShot(getDriver(), "randomAddFriend.png");
+		
+	}
+	@CaseDesc(id="exchangeFriend", name="换一批好友")
+	@Test(description="换一批好友")
+	public void test_exchangeFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("添加好友").click();
+		CommonBusiness.takesScreenShot(getDriver(), "exchangeBeforeFriend.png");
+		friendPage.waitSubElement("换一批").click();
+		CommonBusiness.takesScreenShot(getDriver(), "exchangeAfterFriend.png");
+	}
+	@CaseDesc(id="searchAddFriend1", name="ID添加好友")
+	@Test(description="ID添加好友")
+	public void test_searchAddFriend1() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("添加好友").click();
+		friendPage.waitSubElement("输入ID").sendKeys("89262");
+		friendPage.waitSubElement("搜索").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("添加").click();
+
+	}
+	@CaseDesc(id="searchAddFriend2", name="ID添加好友")
+	@Test(description="ID添加好友")
+	public void test_searchAddFriend2() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("添加好友").click();
+		friendPage.waitSubElement("输入ID").sendKeys("123456789");
+		friendPage.waitSubElement("搜索").click();
+		assertTrue(friendPage.isSubElementPresent("无此ID"),"预期结果：无此ID提示信息存在,实际结果：无此ID提示信息不存在");
+	}
+	@CaseDesc(id="QQAddFriend", name="QQ添加好友")
+	@Test(description="QQ添加好友")
+	public void test_qqAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("邀请朋友").click();
+		friendPage.waitSubElement("QQ邀请").click();
+		CommonBusiness.takesScreenShot(getDriver(), "QQAddFriend.png");
+	}
+	@CaseDesc(id="WeChatAddFriend", name="微信添加好友")
+	@Test(description="微信添加好友")
+	public void test_weChatAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("邀请朋友").click();
+		friendPage.waitSubElement("微信邀请").click();
+		CommonBusiness.takesScreenShot(getDriver(), "WeChatAddFriend.png");
+	}
+	@CaseDesc(id="FriendsterAddFriend", name="朋友圈添加好友")
+	@Test(description="朋友圈添加好友")
+	public void test_friendsterAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("邀请朋友").click();
+		friendPage.waitSubElement("朋友圈邀请").click();
+		CommonBusiness.takesScreenShot(getDriver(), "friendsterAddFriend.png");
+	}
+	@CaseDesc(id="bookAddFriend", name="通讯录添加好友")
+	@Test(description="通讯录添加好友")
+	public void test_bookAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("邀请朋友").click();
+		friendPage.waitSubElement("通讯录邀请").click();
+		CommonBusiness.takesScreenShot(getDriver(), "bookAddFriend.png");
+	}
+	@CaseDesc(id="receiveAddFriend", name="接受好友添加")
+	@Test(description="接受好友添加")
+	public void test_receiveAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("消息").click();
+		try {
+			friendPage.waitSubElement("同意").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("无好友添加请求");
+		}
+		
+		CommonBusiness.takesScreenShot(getDriver(), "receiveAddFriend.png");
+	}
+	@CaseDesc(id="refuseAddFriend", name="拒绝好友添加")
+	@Test(description="拒绝好友添加")
+	public void test_refuseAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("消息").click();
+		try {
+			friendPage.waitSubElement("拒绝").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("无好友添加请求");
+		}
+		
+		CommonBusiness.takesScreenShot(getDriver(), "refuseAddFriend.png");
+	}
+	@CaseDesc(id="receiveGift", name="接受礼物")
+	@Test(description="接受礼物")
+	public void test_receiveGift() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("消息").click();
+		try {
+			friendPage.waitSubElement("接受礼物").click();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("无好友赠送");
+		}
+
+	}	
+	
+	@CaseDesc(id="noAddFriend", name="无好友添加")
+	@Test(description="无好友添加")
+	public void test_noAddFriend() throws Exception {
+		commonBusiness.loginToLobby();
+		lobbyPage.waitSubElement("好友").click();
+		Thread.sleep(2*1000);
+		friendPage.waitSubElement("消息").click();
+		assertTrue(friendPage.isSubElementPresent("暂无消息"),"期待结果：暂无互动消息提示信息存在,实际结果：暂无互动消息提示信息不存在");
+	}
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+//		CommonBusiness.nativeDriver.quit();
+	}
+
+}

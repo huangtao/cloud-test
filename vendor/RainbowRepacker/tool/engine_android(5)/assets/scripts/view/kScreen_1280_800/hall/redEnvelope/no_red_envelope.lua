@@ -1,0 +1,42 @@
+local record_envelope_qn_pin_map = require("qnFiles/qnPlist/hall/record_envelope_qn_pin");
+local no_red_envelope=
+{
+	name="no_red_envelope",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="Image_mask",type=1,typeName="Image",time=0,x=691,y=190,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png",varname="Image_mask",callbackfunc="onBindToClose"
+	},
+	{
+		name="Button_close",type=1,typeName="Button",time=0,x=30,y=30,width=68,height=72,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file=record_envelope_qn_pin_map['red_envelope_close.png'],varname="Button_close",callbackfunc="onBindToClose"
+	},
+	{
+		name="Image_bg",type=1,typeName="Image",time=0,x=0,y=0,width=406,height=596,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file=record_envelope_qn_pin_map['red_envelope_close_no_bg.png'],
+		{
+			name="Text_name",type=4,typeName="Text",time=0,x=0,y=210,width=144,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=24,textAlign=kAlignTop,colorRed=255,colorGreen=255,colorBlue=255,string=[[齐天大圣悟空]],colorA=1,varname="Text_name"
+		},
+		{
+			name="Text_id",type=4,typeName="Text",time=0,x=0,y=180,width=144,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=18,textAlign=kAlignTop,colorRed=255,colorGreen=255,colorBlue=255,string=[[ID:12345678]],colorA=1,varname="Text_id"
+		},
+		{
+			name="View_head_root",type=0,typeName="View",time=0,x=0,y=315,width=1,height=1,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,varname="View_head_root"
+		},
+		{
+			name="Button_close2",type=1,typeName="Button",time=0,x=0,y=30,width=300,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/bg_blank.png",varname="Button_close2",callbackfunc="onBindToClose"
+		},
+		{
+			name="Button_info",type=1,typeName="Button",time=0,x=0,y=220,width=150,height=200,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/bg_blank.png",varname="Button_info",callbackfunc="onBindInfo"
+		}
+	},
+	{
+		name="Text13",type=4,typeName="Text",time=0,x=0,y=150,width=252,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=28,textAlign=kAlignLeft,colorRed=250,colorGreen=236,colorBlue=31,string=[[手慢了，红包派完了]],colorA=1
+	},
+	{
+		name="CheckBoxGroup_never_get",type=0,typeName="CheckBoxGroup",time=0,x=-105,y=14,width=50,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,varname="CheckBoxGroup_never_get",stageH=0,
+		{
+			name="CheckBox_never_get",type=0,typeName="CheckBox",time=0,x=0,y=9,width=32,height=32,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/checkBox/redEnvelop_back.png",file2="hall/common/checkBox/redEnvelop_selected.png",varname="CheckBox_never_get"
+		}
+	},
+	{
+		name="Text14",type=4,typeName="Text",time=0,x=25,y=20,width=216,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=24,textAlign=kAlignLeft,colorRed=236,colorGreen=227,colorBlue=198,string=[[今天不再提示抢红包]],colorA=1
+	}
+}
+return no_red_envelope;

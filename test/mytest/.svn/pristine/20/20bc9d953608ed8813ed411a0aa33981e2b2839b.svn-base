@@ -1,0 +1,64 @@
+package com.boyaa.testdalianhall.cases;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.boyaa.rainbow2.annotations.CaseDesc;
+import com.boyaa.rainbow2.RainbowTestCase;
+import com.boyaa.testdalianhall.business.CommonBusiness;
+import com.boyaa.testdalianhall.business.CommonBusiness.ServerEnvironment;
+import com.boyaa.testdalianhall.uilib.AnouncementDialog;
+import com.boyaa.testdalianhall.uilib.HallPage;
+import com.boyaa.testdalianhall.uilib.ShopPage;
+import com.boyaa.testdalianhall.uilib.TaskRewardDialog;
+import com.boyaa.testdalianhall.uilib.UpdateDialog;
+import com.boyaa.testdalianhall.uilib.UserPage;
+
+
+@Listeners({ com.boyaa.rainbow2.RainbowListener.class })
+@Test(description="商城")
+public class ShopTest extends BaseTestCase {
+//	private static CommonBusiness cb = null;
+	private HallPage hallPage = null ;
+	public ShopTest() {
+		super();
+		
+	}
+	
+	@BeforeMethod
+	public void setUp() throws Exception {
+		super.setUp();
+//		cb = new CommonBusiness();
+		hallPage = new HallPage();
+		CommonBusiness.SwitchToEnvironment(ServerEnvironment.OnlineEnv);//切换到线上环境
+	}
+	
+	@AfterMethod
+	public void tearDown() throws Exception {
+		super.tearDown();
+	}
+	
+
+	@CaseDesc(id="ShopTest_001", name="VIP提示(Phase II)")
+	@Test(description="test_vipBanner")
+	public void test_vipBanner() throws InterruptedException{
+		
+		hallPage.waitSubElement("商城按钮").click();
+		ShopPage shopPage = new ShopPage();
+		shopPage.waitSubElement("VIPTAB按钮").click();
+		ArrayList<WebElement> weArrayList = (ArrayList<WebElement>)shopPage.waitSubElements("VIP提示文本");
+		boolean success = false;
+		for (WebElement we:weArrayList) {
+			if (we.isDisplayed()&& we.getText().contains("享受")&&we.getText().contains("加赠")) {
+				success = true;
+				break;
+			}
+		}
+		assertTrue(success, "检查是否显示VIP购买加赠提示");
+	}
+}

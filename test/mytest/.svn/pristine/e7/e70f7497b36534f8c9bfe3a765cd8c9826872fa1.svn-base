@@ -1,0 +1,25 @@
+package com.boyaa.testdalianhall.uilib;
+
+import com.boyaa.rainbow2.RainbowElement;
+
+public class HallPage extends RainbowElement{
+	private UserPage userPage;
+	
+	public UserPage getUserPage() {
+		if (userPage == null) {
+			userPage = new UserPage();
+		}
+		return userPage;
+	}
+	
+	public int getCurrentMoney() {
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+			
+		}
+		int curMoney = (int)(Integer.valueOf(waitSubElement("金币数").getText().replace(",", "")));
+		return curMoney;
+	}
+
+}

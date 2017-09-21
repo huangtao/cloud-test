@@ -1,0 +1,15 @@
+package com.boyaa.testholdemhk.uilib;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+import com.boyaa.testholdemhk.business.CommonBusiness;
+public class MegaphoneBuyPage  extends RainbowElement  {
+	private CommonBusiness cb = null;
+	private static RainbowDriver rd = null;
+	public MegaphoneBuyPage(){
+		rd = RainbowDriver.getInstance();
+		cb= new CommonBusiness();
+		
+	}
+	
+}

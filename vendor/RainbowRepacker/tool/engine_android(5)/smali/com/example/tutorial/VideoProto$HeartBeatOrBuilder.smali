@@ -1,0 +1,25 @@
+.class public interface abstract Lcom/example/tutorial/VideoProto$HeartBeatOrBuilder;
+.super Ljava/lang/Object;
+.source "VideoProto.java"
+
+# interfaces
+.implements Lcom/google/protobuf/MessageOrBuilder;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/example/tutorial/VideoProto;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "HeartBeatOrBuilder"
+.end annotation
+
+
+# virtual methods
+.method public abstract getChannelType()Lcom/example/tutorial/VideoProto$ChannelType;
+.end method
+
+.method public abstract hasChannelType()Z
+.end method

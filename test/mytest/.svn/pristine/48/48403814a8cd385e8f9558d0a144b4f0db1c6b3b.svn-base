@@ -1,0 +1,57 @@
+I     20140902 13:46:57    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    chmod 777 /data/data/com.boyaa.androidmarketit/files success
+I     20140902 13:46:59    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140902 13:46:59    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140902 13:47:02    LocalLib    Element: "id/op_gallery_img" is not fond.
+I     20140902 13:47:42    Common_business:    String id: hall_t1
+I     20140902 13:47:42    Common_business:    5
+I     20140902 13:47:42    Common_business:    small blind:5
+I     20140902 13:47:42    Common_business:    String id: hall_t3
+I     20140902 13:47:42    Common_business:    String id: bilie
+I     20140902 13:47:42    Common_business:    String id: hall_t1
+I     20140902 13:47:42    Common_business:    5
+I     20140902 13:47:42    Common_business:    small blind:5
+I     20140902 13:47:42    Common_business:    String id: hall_t3
+I     20140902 13:47:42    Common_business:    String id: bilie
+I     20140902 13:47:42    Common_business:    String id: hall_t1
+I     20140902 13:47:42    Common_business:    5
+I     20140902 13:47:42    Common_business:    small blind:5
+I     20140902 13:47:42    Common_business:    String id: hall_t3
+I     20140902 13:47:42    Common_business:    String id: bilie
+I     20140902 13:47:42    Common_business:    String id: hall_t1
+I     20140902 13:47:42    Common_business:    5
+I     20140902 13:47:42    Common_business:    small blind:5
+I     20140902 13:47:42    Common_business:    String id: hall_t3
+I     20140902 13:47:42    Common_business:    String id: bilie
+I     20140902 13:47:48    Common_business:    String id: hall_t1
+I     20140902 13:47:48    Common_business:    5
+I     20140902 13:47:48    Common_business:    small blind:5
+I     20140902 13:47:48    Common_business:    String id: hall_t3
+I     20140902 13:47:48    Common_business:    String id: bilie
+I     20140902 13:47:48    Common_business:    String id: hall_t1
+I     20140902 13:47:48    Common_business:    5
+I     20140902 13:47:48    Common_business:    small blind:5
+I     20140902 13:47:48    Common_business:    String id: hall_t3
+I     20140902 13:47:48    Common_business:    String id: bilie
+I     20140902 13:47:48    Common_business:    String id: hall_t1
+I     20140902 13:47:48    Common_business:    5
+I     20140902 13:47:48    Common_business:    small blind:5
+I     20140902 13:47:48    Common_business:    String id: hall_t3
+I     20140902 13:47:48    Common_business:    String id: bilie
+I     20140902 13:47:48    Common_business:    String id: hall_t1
+I     20140902 13:47:48    Common_business:    5
+I     20140902 13:47:48    Common_business:    small blind:5
+I     20140902 13:47:48    Common_business:    String id: hall_t3
+I     20140902 13:47:48    Common_business:    String id: bilie
+I     20140902 13:47:54    Common_business:    String id: hall_t1
+I     20140902 13:47:54    Common_business:    20
+I     20140902 13:47:54    Common_business:    small blind:20
+I     20140902 13:47:54    Common_business:    String id: hall_t3
+I     20140902 13:47:54    Common_business:    String id: bilie
+I     20140902 13:47:54    Common_business:    String id: hall_t1
+I     20140902 13:47:54    Common_business:    200
+I     20140902 13:47:54    Common_business:    small blind:200
+I     20140902 13:47:54    Common_business:    miniumCoins: 4000 / 80000
+I     20140902 13:47:54    Common_business:    minimum_carry: 4000
+I     20140902 13:47:55    Common_business:    进入房间成功
+I     20140902 13:48:08    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasIT_20140902_01-38-56PM/_Screenshots/PayLogic_007_20140902_13_48_08.jpg
+I     20140902 13:48:13    com.boyaa.TestTexasIT.cases.Texas_PayLogicIT    tear down time out!

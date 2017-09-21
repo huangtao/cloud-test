@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="decode" />
+    <item type="id" name="decode_failed" />
+    <item type="id" name="decode_succeeded" />
+    <item type="id" name="quit" />
+    <item type="id" name="restart_preview" />
+    <item type="id" name="return_scan_result" />
+    <item type="id" name="capture_preview">false</item>
+    <item type="id" name="titleBg">false</item>
+    <item type="id" name="capture_container">false</item>
+    <item type="id" name="capture_center">false</item>
+    <item type="id" name="capture_mask_top">false</item>
+    <item type="id" name="capture_crop_view">false</item>
+    <item type="id" name="capture_scan_line">false</item>
+    <item type="id" name="capture_mask_bottom">false</item>
+    <item type="id" name="qr_tips_text_view">false</item>
+    <item type="id" name="capture_mask_left">false</item>
+    <item type="id" name="capture_mask_right">false</item>
+    <item type="id" name="back">false</item>
+    <item type="id" name="textView1">false</item>
+    <item type="id" name="download_icon">false</item>
+    <item type="id" name="download_name">false</item>
+    <item type="id" name="update_notification_progresstext">false</item>
+    <item type="id" name="update_notification_progressblock">false</item>
+    <item type="id" name="update_notification_progressbar">false</item>
+    <item type="id" name="imgAnim">false</item>
+    <item type="id" name="tips">false</item>
+    <item type="id" name="main">false</item>
+    <item type="id" name="progress">false</item>
+    <item type="id" name="text">false</item>
+    <item type="id" name="progressBar1">false</item>
+    <item type="id" name="fb_login">false</item>
+    <item type="id" name="fb_out">false</item>
+    <item type="id" name="gl_surfaceview">false</item>
+    <item type="id" name="RelativeLayout1">false</item>
+    <item type="id" name="ivIcon">false</item>
+    <item type="id" name="tvProgress">false</item>
+    <item type="id" name="pbProgress">false</item>
+    <item type="id" name="LinearLayout1">false</item>
+    <item type="id" name="tvText">false</item>
+    <item type="id" name="startVideo">false</item>
+    <item type="id" name="imageviewpicture">false</item>
+    <item type="id" name="et">false</item>
+    <item type="id" name="btn">false</item>
+</resources>

@@ -1,0 +1,38 @@
+match_toolbar_2=
+{
+	name="match_toolbar_2",type=0,typeName="View",time=0,report=0,x=0,y=0,width=1280,height=800,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="shield",type=1,typeName="Image",time=92557376,report=0,x=0,y=0,width=2,height=2,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="games/common/blank.png"
+	},
+	{
+		name="menu_view",type=0,typeName="View",time=92557695,report=0,x=10,y=0,width=210,height=255,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,
+		{
+			name="menu_btn",type=2,typeName="Button",time=92557784,report=0,x=10,y=0,width=110,height=88,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file="games/common/blank.png",
+			{
+				name="btn_img",type=1,typeName="Image",time=92557871,report=0,x=0,y=0,width=110,height=88,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/match/match_toolbar/more_down.png"
+			}
+		},
+		{
+			name="more_view",type=0,typeName="View",time=92557955,report=0,x=0,y=0,width=210,height=160,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,
+			{
+				name="bg",type=1,typeName="Image",time=92561857,report=0,x=0,y=0,width=210,height=160,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignCenter,file="games/common/match/match_toolbar/more_frame_bg.png",gridLeft=20,gridRight=20,gridTop=20,gridBottom=20
+			},
+			{
+				name="split_line_1",type=1,typeName="Image",time=92558073,report=0,x=0,y=0,width=136,height=2,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/match/match_toolbar/more_split_line.png"
+			},
+			{
+				name="exit_btn",type=2,typeName="Button",time=92558166,report=0,x=0,y=0,width=210,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="games/common/blank.png",
+				{
+					name="btn_img",type=1,typeName="Image",time=92558210,report=0,x=0,y=0,width=142,height=44,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/match/match_toolbar/exit_btn_grey.png",gridRight=020,gridTop=20,gridBottom=20
+				}
+			},
+			{
+				name="setting_btn",type=2,typeName="Button",time=92558234,report=0,x=0,y=80,width=210,height=80,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="games/common/blank.png",
+				{
+					name="btn_img",type=1,typeName="Image",time=92558235,report=0,x=0,y=0,width=142,height=44,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="games/common/match/match_toolbar/setting_btn.png"
+				}
+			}
+		}
+	}
+}
+return match_toolbar_2;

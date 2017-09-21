@@ -1,0 +1,42 @@
+local match_record_pin_map = require("qnFiles/qnPlist/hall/match_record_pin");
+local match_hall_record_info_history_layout=
+{
+	name="match_hall_record_info_history_layout",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,nodeAlign=kAlignTopLeft,fillParentWidth=1,fillParentHeight=1,
+	{
+		name="contentView",type=0,typeName="View",time=116174242,x=0,y=0,width=578,height=182,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,
+		{
+			name="contentBg",type=0,typeName="Image",time=115400272,x=0,y=0,width=578,height=196,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_record_pin_map['popup_bg_down.png']
+		},
+		{
+			name="text",type=0,typeName="Text",time=115400590,x=0,y=14,width=1,height=40,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,fontSize=24,textAlign=kAlignCenter,colorRed=255,colorGreen=240,colorBlue=219
+		},
+		{
+			name="btnView",type=0,typeName="View",time=114888680,x=0,y=2,width=552,height=110,nodeAlign=kAlignBottom,visible=1,fillParentWidth=0,fillParentHeight=0,
+			{
+				name="wechatBtn",type=0,typeName="Button",time=114888613,x=30,y=0,width=184,height=110,nodeAlign=kAlignRight,visible=1,fillParentWidth=0,fillParentHeight=1,file="hall/common/bg_blank.png",
+				{
+					name="img",type=0,typeName="Image",time=114888914,x=-50,y=0,width=50,height=43,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_record_pin_map['share_wechat.png'],
+					{
+						name="text",type=0,typeName="Text",time=114889058,x=55,y=0,width=96,height=40,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[微信好友]],fontSize=24,textAlign=kAlignLeft,colorRed=255,colorGreen=240,colorBlue=219
+					}
+				}
+			},
+			{
+				name="momentBtn",type=0,typeName="Button",time=114889224,x=30,y=0,width=184,height=110,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=1,file="hall/common/bg_blank.png",
+				{
+					name="img",type=0,typeName="Image",time=114889225,x=-42,y=0,width=50,height=43,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_record_pin_map['share_moment.png'],
+					{
+						name="text",type=0,typeName="Text",time=114889226,x=55,y=0,width=72,height=40,nodeAlign=kAlignLeft,visible=1,fillParentWidth=0,fillParentHeight=0,string=[[朋友圈]],fontSize=24,textAlign=kAlignLeft,colorRed=255,colorGreen=240,colorBlue=219
+					}
+				}
+			},
+			{
+				name="line1",type=0,typeName="Image",time=117134253,x=0,y=0,width=1,height=71,nodeAlign=kAlignCenter,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_record_pin_map['popup_line_v.png']
+			}
+		},
+		{
+			name="line",type=0,typeName="Image",time=115400330,x=0,y=66,width=557,height=1,nodeAlign=kAlignTop,visible=1,fillParentWidth=0,fillParentHeight=0,file=match_record_pin_map['popup_line_h.png']
+		}
+	}
+}
+return match_hall_record_info_history_layout;

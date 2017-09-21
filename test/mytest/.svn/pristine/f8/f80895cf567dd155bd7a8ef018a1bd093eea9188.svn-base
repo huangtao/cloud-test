@@ -1,0 +1,139 @@
+package com.boyaa.hallbase.uilib;
+
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowElement;
+
+public class HallPage extends RainbowElement{
+	private UserPage userPage;
+	private SettingsPage settingsPage;
+	
+	public UserPage openAndGetUserPage() {
+		super.waitPresent();
+		super.waitSubElement("个人头像").click();
+		if (userPage == null) {
+			userPage = new UserPage();
+		}
+		return userPage;
+	}
+	
+	public SettingsPage openAndGetSettingPage() {
+		clickToOpen("设置按钮");
+		if (settingsPage == null) {
+			settingsPage = new SettingsPage();
+		}
+		return settingsPage;
+	}
+	
+	public int getCurrentMoney() {
+		super.waitPresent();
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+			
+		}
+		int curMoney = (int)(Integer.valueOf(waitSubElement("金币数").getText().replace(",", "")));
+		return curMoney;
+	}
+	
+	public void clickToOpenCheckinDialog() {
+		clickToOpen("签到按钮");
+	}
+	
+	public void clickToOpenSafeBoxDialog() {
+		clickToOpen("保险箱按钮");
+	}
+	
+	public UpdateDialog getUpdateDialog() {
+		super.waitPresent();
+		RainbowDriver currentDriver = RainbowDriver.getCurrentDriver();
+		int waitSeconds = 15;
+		int times = 0;
+		boolean bClickClose = false;
+		do {
+			if (bClickClose) {
+				currentDriver.waitElementByName("closeBtn", 5).click();
+			}
+			UpdateDialog ud = new UpdateDialog();
+			if (ud.isPresent(waitSeconds)) {
+				return ud;
+			}
+			waitSeconds = 5;
+			bClickClose = true;
+			times++;
+		} while (currentDriver.isElementPresentByName("closeBtn", 5) && times<=10);
+		throw new TimeoutException("没有找到升级提示框，升级失败！");
+	}
+	
+	public boolean IsUpdateDialogOpen() {	//TODO:临时实现，需要修改
+		try {
+			getUpdateDialog();
+			return true;
+		} catch (TimeoutException e) {
+			return false;
+		}
+	}
+	
+	public boolean IsUpdateDialogOpen(int seconds) {
+		IsUpdateDialogOpen();
+		return new UpdateDialog().isPresent(seconds);
+	}
+	
+	public void exitApp() {
+		super.getDriver().pressBack();
+		new ExitDialog().waitSubElement("考虑好了按钮").click();
+		try {	//TODO 使用同步方式检查是否已退出
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void enterSubGame() {
+		super.waitPresent();
+		super.waitSubElement("子游戏图标").click();
+		
+	}
+
+	public PrivateRoomPage openAndGetPrivateRoomPage() {
+//		WebElement moreButton = super.waitSubElement("更多按钮");
+//		int x = moreButton.getSize().getHeight();
+//		int y = (int)(-2.7*moreButton.getSize().getHeight());
+//		new TouchActions(super.getDriver()).moveToElement(moreButton, x, y).click().perform();
+		int times = 0;
+		do {
+			super.waitSubElement("向右箭头").click();
+			times ++;
+		} while(!super.isSubElementPresent("自建场",3) && times<=5);
+		super.waitSubElement("自建场").click();
+		return new PrivateRoomPage();
+		
+	}
+	
+	public void startSubGameByGameId(String gameId) {
+		super.waitPresent();
+		int times = 0;
+		while(!super.getDriver().isElementPresentByName("game"+gameId, 5) && times<=5) {
+			super.waitSubElement("向右箭头").click();
+			times++;
+		}
+		super.getDriver().waitElementByName("game"+gameId, 5).click();
+	}
+	
+	public void clickToOpen(String elementName) {
+		super.waitPresent();
+		WebElement moreMenu = waitSubElement("更多菜单");
+		float moreMenu_bottom_y = moreMenu.getLocation().getY()+moreMenu.getSize().getHeight();
+		WebElement we = waitSubElement(elementName);
+		float safeBoxButton_bottom_y = we.getLocation().getY() + we.getSize().getHeight();
+		
+		if (safeBoxButton_bottom_y <= moreMenu_bottom_y) {	//保险箱按钮在更多菜单里
+			waitSubElement("更多按钮").click();
+		}
+		we.click();
+	}
+
+}

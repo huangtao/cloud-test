@@ -1,0 +1,57 @@
+local record_envelope_qn_pin_map = require("qnFiles/qnPlist/hall/record_envelope_qn_pin");
+local geted_red_envelope=
+{
+	name="geted_red_envelope",type=0,typeName="View",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,
+	{
+		name="Image_mask",type=1,typeName="Image",time=0,x=691,y=190,width=1280,height=720,visible=1,fillParentWidth=1,fillParentHeight=1,nodeAlign=kAlignTopLeft,file="hall/common/bg_shiled.png",callbackfunc="onBindToClose",varname="Image_mask"
+	},
+	{
+		name="Button_close",type=1,typeName="Button",time=0,x=30,y=30,width=68,height=72,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTopRight,file=record_envelope_qn_pin_map['red_envelope_close.png'],varname="Button_close",callbackfunc="onBindToClose"
+	},
+	{
+		name="Swf_open_bg",type=0,typeName="Swf",time=0,x=0,y=0,width=1280,height=720,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,swfFrame=1,swfKeep=1,swfRepeat=-1,swfDelay=0,swfAuto=0,swfAutoClean=1,swfInfoLua="qnFiles/qnSwfRes/sfw/red_envelope_bg_open_swf_info",swfPinLua="qnFiles/qnSwfRes/sfw/red_envelope_bg_open_swf_pin",varname="Swf_open_bg"
+	},
+	{
+		name="Image_bg",type=1,typeName="Image",time=0,x=0,y=0,width=406,height=596,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/bg_blank.png",varname="Image_bg",
+		{
+			name="Text_name",type=4,typeName="Text",time=0,x=0,y=210,width=144,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=24,textAlign=kAlignTop,colorRed=255,colorGreen=255,colorBlue=255,string=[[齐天大圣悟空]],colorA=1,varname="Text_name"
+		},
+		{
+			name="Text_id",type=4,typeName="Text",time=0,x=0,y=180,width=144,height=30,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=18,textAlign=kAlignTop,colorRed=255,colorGreen=255,colorBlue=255,string=[[ID:12345678]],colorA=1,varname="Text_id"
+		},
+		{
+			name="View_head_root",type=0,typeName="View",time=0,x=0,y=315,width=1,height=1,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,varname="View_head_root"
+		},
+		{
+			name="Image10",type=1,typeName="Image",time=0,x=0,y=100,width=270,height=64,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/bg_blank.png",
+			{
+				name="Image_money",type=1,typeName="Image",time=0,x=-17,y=0,width=84,height=70,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignLeft,file=record_envelope_qn_pin_map['red_envelope_gold .png'],varname="Image_money"
+			},
+			{
+				name="View_money_root",type=0,typeName="View",time=0,x=17,y=2,width=1,height=1,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,varname="View_money_root"
+			}
+		},
+		{
+			name="Button_record",type=1,typeName="Button",time=0,x=0,y=30,width=300,height=40,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,file="hall/common/bg_blank.png",varname="Button_record",callbackfunc="onBindDetail"
+		},
+		{
+			name="Button_info",type=1,typeName="Button",time=0,x=0,y=220,width=150,height=200,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignTop,file="hall/common/bg_blank.png",varname="Button_info",callbackfunc="onBindInfo"
+		}
+	},
+	{
+		name="Swf_num_turn",type=0,typeName="Swf",time=0,x=11,y=116,width=1280,height=720,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,swfFrame=1,swfKeep=1,swfRepeat=-1,swfDelay=0,swfAuto=0,swfAutoClean=1,swfInfoLua="qnFiles/qnSwfRes/sfw/red_envelope_num_turn_swf_info",swfPinLua="qnFiles/qnSwfRes/sfw/red_envelope_num_turn_swf_pin",varname="Swf_num_turn"
+	},
+	{
+		name="Swf_wait_fly",type=0,typeName="Swf",time=0,x=0,y=130,width=600,height=600,visible=0,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,swfFrame=1,swfKeep=1,swfRepeat=-1,swfDelay=0,swfAuto=0,swfAutoClean=1,swfInfoLua="qnFiles/qnSwfRes/sfw/red_envelope_wait_fly_swf_info",swfPinLua="qnFiles/qnSwfRes/sfw/red_envelope_wait_fly_swf_pin",varname="Swf_wait_fly"
+	},
+	{
+		name="CheckBoxGroup_never_get",type=0,typeName="CheckBoxGroup",time=0,x=-105,y=14,width=50,height=50,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,stageH=0,varname="CheckBoxGroup_never_get",
+		{
+			name="CheckBox_never_get",type=0,typeName="CheckBox",time=0,x=0,y=0,width=32,height=32,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignCenter,file="hall/common/checkBox/redEnvelop_back.png",file2="hall/common/checkBox/redEnvelop_selected.png"
+		}
+	},
+	{
+		name="Text14",type=4,typeName="Text",time=0,x=25,y=20,width=216,height=34,visible=1,fillParentWidth=0,fillParentHeight=0,nodeAlign=kAlignBottom,fontSize=24,textAlign=kAlignLeft,colorRed=236,colorGreen=227,colorBlue=198,string=[[今天不再提示抢红包]],colorA=1
+	}
+}
+return geted_red_envelope;

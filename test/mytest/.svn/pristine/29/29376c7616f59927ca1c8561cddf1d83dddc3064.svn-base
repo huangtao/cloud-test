@@ -1,0 +1,199 @@
+package com.boyaa.testupdate.libs;
+
+import org.json.JSONObject;
+
+import com.boyaa.hallbase.common.CommonBusiness;
+import com.boyaa.hallbase.common.CommonBusiness.ServerEnvironment;
+import com.boyaa.hallbase.common.Superman;
+
+/**
+ * 升级测试接口配置类
+ */
+public class UpdateConfig {
+	
+	/**
+	 * 升级对象，包括应用升级，大厅升级，游戏升级三种
+	 */
+	public enum UpdateTarget {
+		Application, Hall, Game;
+	}
+	
+	/**
+	 * 升级类型，包括可选升级，强制升级，静默升级三种
+	 */
+	public enum UpdateType {
+		Optional(1), Force(2), Silent(3);
+
+		private int nCode;
+		
+		private UpdateType(int index) {
+			this.nCode = index;
+		}
+		
+		public int getIndex() {
+			return this.nCode;
+		}
+	}
+	
+	/**
+	 * 升级模式，包括增量升级，第三方升级（保留），完整升级三种
+	 */
+	public enum UpdateMode {
+		Diff(0), ThirdParty(1), Full(2);
+
+		private int nCode;
+		
+		private UpdateMode(int index) {
+			this.nCode = index;
+		}
+		
+		public int getIndex() {
+			return this.nCode;
+		}
+	}
+	
+	/**
+	 * 配置升级
+	 * @param appId 地方棋牌的appId
+	 * @param target 升级对象
+	 * @param guid 需要配置升级的机器guid(可通过dms后台获得)
+	 * @param url 升级包存放的http路径
+	 * @param desc 升级说明（会显示在升级弹框界面上）
+	 * @param version 升级版本号
+	 * @param dependVer 升级依赖版本号
+	 * @param type 升级类型
+	 * @param mode 升级模式
+	 * @param channelId 应用渠道id(仅应用升级时需要)
+	 * @param gameId 子游戏Id(仅大厅升级和子游戏升级需要，大厅时为0)
+	 * @param files 升级具体信息
+	 */
+	public static void setUpdate(String appId, UpdateTarget target, String guid, String url, String desc, String version, String dependVer,
+			UpdateType type, UpdateMode mode, String channelId, String gameId, String files) {
+		String update_key = "addlua";
+		switch(target) {
+		case Application:
+			update_key = "addver";
+			gameId = "0";
+			break;
+		default:
+			update_key = "addlua";
+			break;
+		}
+		JSONObject jso1 = new JSONObject();
+		jso1.put("url", url);
+		jso1.put("desc", desc);
+		jso1.put("version", version);
+		jso1.put("depend_ver", dependVer);
+		jso1.put("update_type", type.getIndex());
+		jso1.put("update_mode", mode.getIndex());
+		jso1.put("app", appId);
+		jso1.put("channel", channelId);
+		jso1.put("game", gameId);		
+		jso1.put("files", files);
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put(update_key, jso1);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("guid", guid);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		JSONObject jsoReturn = new Superman().set(CommonBusiness.currentEnv, jso3);
+		try {
+			int statusCode = jsoReturn.getJSONObject("ret").getInt("status");
+			switch(statusCode) {
+			case 1000:
+				throw new RuntimeException("增加升级配置的接口参数错误！");
+			case 1001:
+				throw new RuntimeException("该版本的升级配置已存在，测试前请先确认并删除已有的升级配置！");
+			default:
+				break;
+			}
+		} catch (NullPointerException e) {
+			throw new RuntimeException("获取返回值时发生错误！错误信息为：\n"+e.getLocalizedMessage());
+		}
+	}
+	
+	/**
+	 * 删除升级配置
+	 * @param appId 地方棋牌的appId
+	 * @param target 升级对象
+	 * @param guid 需要配置升级的机器guid(可通过dms后台获得)
+	 * @param version 升级版本号
+	 * @param type 升级类型
+	 * @param mode 升级模式
+	 * @param channelId 应用渠道id(仅应用升级时需要)
+	 * @param gameId 子游戏Id(仅大厅升级和子游戏升级需要，大厅时为0)
+	 */
+	
+	public static void delUpdate(String appId, UpdateTarget target, String guid, String version, String channelId, String gameId) {
+		JSONObject jso1 = new JSONObject();
+		jso1.put("version", version);
+		jso1.put("app", appId);
+		
+		String update_key = "dellua";
+		switch(target) {
+		case Application:
+			update_key = "delver";
+			jso1.put("channel", channelId);
+			break;
+		default:
+			update_key = "dellua";
+			jso1.put("game", gameId);
+			break;
+		}
+		
+		JSONObject jso2 = new JSONObject();
+		jso2.put(update_key, jso1);
+		
+		JSONObject jso3 = new JSONObject();
+		jso3.put("guid", guid);
+		jso3.put("app", appId);
+		jso3.put("cmds", jso2);
+		
+		JSONObject jsoReturn = new Superman().set(CommonBusiness.currentEnv, jso3);
+		try {
+			int statusCode = jsoReturn.getJSONObject("ret").getInt("status");
+			switch(statusCode) {
+			case 1000:
+				throw new RuntimeException("删除升级配置的接口参数错误！");
+			default:
+				break;
+			}
+		} catch (NullPointerException e) {
+			throw new RuntimeException("获取返回值时发生错误！错误信息为：\n"+e.getLocalizedMessage());
+		}
+	}
+	
+	public static void setApplicationUpdate(String appId, String channelId, String guid, String url, String desc, String version, 
+			UpdateType type, UpdateMode mode, String files) {
+		setUpdate(appId, UpdateConfig.UpdateTarget.Application, guid, url, desc, version, "0", type, mode, channelId, "0", files);
+	}
+	
+	public static void delApplicationUpdate(String appId, String channelId, String guid, String version) {
+		delUpdate(appId, UpdateConfig.UpdateTarget.Application, guid, version, channelId, "0");
+	}
+	
+	public static void setHallUpdate(String appId, String guid, String url, String desc, String version, String dependVer,
+			UpdateType type, UpdateMode mode, String files) {
+		setUpdate(appId, UpdateConfig.UpdateTarget.Hall, guid, 
+				url, desc, version, dependVer, 
+				type, mode, "0", "0", files);
+	}
+	
+	public static void delHallUpdate(String appId, String guid, String version) {
+		delUpdate(appId, UpdateConfig.UpdateTarget.Hall, guid, version, "0", "0");
+	}
+	
+	public static void setGameUpdate(String appId, String gameId, String guid, String url, String desc, String version, String dependVer,
+			UpdateType type, UpdateMode mode, String files) {
+		setUpdate(appId, UpdateConfig.UpdateTarget.Game, guid, 
+				url, desc, version, dependVer, 
+				type, mode, "0", gameId, files);
+	}
+	
+	public static void delGameUpdate(String appId, String gameId, String guid, String version) {
+		delUpdate(appId, UpdateConfig.UpdateTarget.Game, guid, version, "0", gameId);
+	}
+}

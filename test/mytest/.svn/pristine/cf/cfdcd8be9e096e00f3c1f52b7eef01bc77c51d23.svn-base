@@ -1,0 +1,23 @@
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:Header
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:Boyaa Automation Test
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:ApplicationName
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:TexasDE
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:Release
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:texasPoker_de_3.4
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:Build
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:V3.4.0
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:StartTime
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:2014/09/04 01:42:26 PM
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:EndTime
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:0
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:ExecuteHourTime
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:0
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:ExecuteMinuteTime
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:0
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrName:ExecuteSecondTime
+I     20140904 13:42:36    XMLReportOperator:    childNodeAttrValue:0
+I     20140904 13:42:36    com.boyaa.TestTexasDE.cases.Texas_PayLogicDE    chmod 777 /data/data/com.boyaa.androidmarketde/files success
+I     20140904 13:42:38    CatTestCase    Timeout.getLargeTimeout:20000
+I     20140904 13:42:38    CatTestCase    Timeout.getSmallTimeout:10000
+I     20140904 13:43:02    SnapshotHelper    savePath:/storage/emulated/0/ATR/TexasDE_20140904_01-42-26PM/_Screenshots/PayLogic_001_20140904_13_43_02.jpg
+I     20140904 13:43:07    com.boyaa.TestTexasDE.cases.Texas_PayLogicDE    tear down time out!

@@ -1,0 +1,55 @@
+package com.boyaa.lianyuntest;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+import com.boyaa.lianyuntest.common.CommonBusiness;
+import com.boyaa.rainbow2.RainbowDriver;
+import com.boyaa.rainbow2.RainbowTestCase;
+
+public class BaseTestCase extends RainbowTestCase{
+	private Map<String, String> globalConfig = new HashMap<String, String>();
+	
+	@BeforeTest
+	public void getTestNGParams() {
+		globalConfig.put("app_id", getParamByKey("app_id"));
+		globalConfig.put("scr_apk_path", getParamByKey("scr_apk_path"));
+	}
+	
+	
+	public Map<String, String> getGlobalConfigs() {
+		return this.globalConfig;
+	}
+	
+	public String getGlobalConfig(String key) {
+		if (!this.globalConfig.containsKey(key)) {
+			return null;
+		}
+		return this.globalConfig.get(key);
+	}
+	
+	@BeforeMethod
+	public void setUp() {
+		if(!("".equals(getParamByKey("native_appium_server")))){
+			CommonBusiness.nativeAppiumUrl = getParamByKey("native_appium_server");
+		}
+		super.setCapability("unicodeKeyboard", "True");
+		super.setCapability("resetKeyboard", "True");
+		super.setCapability("newCommandTimeout", "5*60");
+		super.setCapability("app", getGlobalConfig("scr_apk_path"));
+		super.setUp();
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		super.tearDown();
+	}
+
+}
