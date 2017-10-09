@@ -8,8 +8,6 @@ rethinkdb_data/*
 
 testproject2/*
 
-node_modules/*
-
 file/*
 
 log/*

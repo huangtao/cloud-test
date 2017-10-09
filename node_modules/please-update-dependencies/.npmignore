@@ -1,0 +1,5 @@
+.DS_Store
+/*.tgz
+/example.png
+/node_modules/
+/npm-debug.log
