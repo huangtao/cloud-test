@@ -10,6 +10,8 @@ rethinkdb --bind $ipaddr --cache-size 512 &
 sleep 3
 DATE=`date +%F`
 
+mkdir /var/stf/log 2>&1
+
 if [ "$para" = "ldap" ];then
 #  echo $para    stf-test.oa.com
 stf local --public-ip=stf-test.oa.com -C --poorxy-port 80 --auth-type ldap --auth-options '["--ldap-url","ldap://192.168.100.51:389", "--ldap-bind-dn","CN=LdapSync,OU=SpecUsers,OU=PublicOU,OU=BoyaaSZ,DC=boyaa,DC=com","--ldap-search-dn","OU=BoyaaSZ,DC=boyaa,DC=com", "--ldap-bind-credentials","ldap234%^", "--ldap-search-class","Person", "--ldap-search-field", "sAMAccountName"]' >> /var/stf/log/$DATE.log 2>&1 &
