@@ -22,7 +22,7 @@ fi
 sleep 30
 stf provider --name 172.20.101.130 --min-port 8400 --max-port 8700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip stf-test.oa.com --storage-url http://localhost:80/ --adb-host 172.20.101.130 --adb-port 5037 --vnc-initial-size 600x800>>/var/stf/log/$DATE.log 2>&1 &
 stf provider --name 172.20.101.11 --min-port 9400 --max-port 9700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip stf-test.oa.com --storage-url http://localhost:80/ --adb-host 172.20.101.11 --adb-port 5037 --vnc-initial-size 600x800>>/var/stf/log/$DATE.log 2>&1 &
-#stf provider --name 172.20.101.12 --min-port 10400 --max-port 10700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip stf-test.oa.com --storage-url http://localhost:80/ --adb-host 172.20.101.12 --adb-port 5037 --vnc-initial-size 600x800>>/var/stf/log/$DATE.log 2>&1 &
+stf provider --name 172.20.101.12 --min-port 10400 --max-port 10700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip stf-test.oa.com --storage-url http://localhost:80/ --adb-host 172.20.101.12 --adb-port 5037 --vnc-initial-size 600x800>>/var/stf/log/$DATE.log 2>&1 &
 #stf provider --name 172.20.108.43 --min-port 11400 --max-port 11700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip stf-test.oa.com --storage-url http://localhost:80/ --adb-host 172.20.108.43 --adb-port 5037 --vnc-initial-size 600x800>>/var/stf/log/$DATE.log 2>&1 &
 ulimit -c unlimited
 ulimit -n 65535
