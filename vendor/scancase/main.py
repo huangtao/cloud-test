@@ -82,7 +82,10 @@ def parsePy2Dict(pyfile, pro_base_url, package, module, sub_module, modules, mod
                         value = value.id
                     elif type(value) == ast.Attribute:
                         value = _getAttributeValue(value)
-                    property[key] = value
+                    else:
+                        value = None
+                    if value != None:
+                        property[key] = value
             property['class_name'] = c.name
             property['local_path'] = pyfile
             property['base_url'] = pro_base_url
@@ -167,7 +170,9 @@ if '__main__' == __name__:
         checkout_or_update()
         result = scan_cases(constant.LOCAL_BASE_URL)
         print json.JSONEncoder().encode(result)
-
+        #with open('casecontent.txt', 'w') as f:
+        #    f.write(str(result))
+        #print json.dumps(result)
     # 传入多个参数，这里只做特殊处理，规定只传文件过来
     elif len(sys.argv) >= 2:
         path = sys.argv[1]
