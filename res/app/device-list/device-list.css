@@ -87,15 +87,3 @@ img.device-icon-smallest {
 .stf-device-list .device-note:hover .device-note-edit {
   visibility: visible;
 }
-
-.stf-device-list .device-asset-num {
-}
-
-.stf-device-list .device-asset-num-edit {
-  margin-left: 15px;
-  visibility: hidden;
-}
-
-.stf-device-list .device-asset-num:hover .device-asset-num-edit {
-  visibility: visible;
-}

@@ -9,9 +9,6 @@ require.ensure([], function(require) {
     require('gettext').name,
     require('angular-hotkeys').name,
     require('./layout').name,
-    require('./package').name,
-    require('./cpt').name,
-    require('./task').name,
     require('./device-list').name,
     require('./control-panes').name,
     require('./menu').name,
@@ -19,7 +16,7 @@ require.ensure([], function(require) {
     require('./docs').name,
     require('./user').name,
     require('./../common/lang').name,
-    require('stf/standalone').name,
+    require('stf/standalone').name
   ])
     .config(function($routeProvider, $locationProvider) {
       $locationProvider.hashPrefix('!')

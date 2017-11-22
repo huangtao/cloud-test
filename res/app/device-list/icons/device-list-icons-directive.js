@@ -6,7 +6,6 @@ module.exports = function DeviceListIconsDirective(
 , DeviceColumnService
 , GroupService
 , StandaloneService
-, UserService
 ) {
   function DeviceItem() {
     return {
@@ -67,7 +66,8 @@ module.exports = function DeviceListIconsDirective(
             present: 'state-present btn-primary-outline',
             preparing: 'state-preparing btn-primary-outline btn-success-outline',
             unauthorized: 'state-unauthorized btn-danger-outline',
-            offline: 'state-offline btn-warning-outline'
+            offline: 'state-offline btn-warning-outline',
+            automation: 'state-automation btn-info'
           }[state]
           if (typeof stateClasses === 'undefined') {
             stateClasses = 'btn-default-outline'
@@ -86,7 +86,8 @@ module.exports = function DeviceListIconsDirective(
         if (device.usable) {
           a.href = '#!/control/' + device.serial
           li.classList.remove('device-is-busy')
-        } else {
+        }
+        else {
           a.removeAttribute('href')
           li.classList.add('device-is-busy')
         }
@@ -116,8 +117,7 @@ module.exports = function DeviceListIconsDirective(
       var mapping = Object.create(null)
       var builder = DeviceItem()
 
-      scope.currentUser = UserService.currentUser
-      
+
       function kickDevice(device, force) {
         return GroupService.kick(device, force).catch(function(e) {
           alert($filter('translate')(gettext('Device cannot get kicked from the group')))

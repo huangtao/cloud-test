@@ -2,7 +2,6 @@ var QueryParser = require('./util/query-parser')
 
 module.exports = function DeviceListCtrl(
   $scope
-, $http
 , DeviceService
 , DeviceColumnService
 , GroupService
@@ -77,6 +76,10 @@ module.exports = function DeviceListCtrl(
     , selected: false
     }
   , {
+      name: 'imsi'
+    , selected: false
+    }
+  , {
       name: 'iccid'
     , selected: false
     }
@@ -110,10 +113,6 @@ module.exports = function DeviceListCtrl(
     }
   , {
       name: 'owner'
-    , selected: true
-    }
-  , {
-      name: 'assetNum'
     , selected: true
     }
   ]
@@ -150,8 +149,6 @@ module.exports = function DeviceListCtrl(
   $scope.filter = []
 
   $scope.activeTabs = {
-//    icons: true
-//  , details: false
     icons: true
     , details: false
     , monkey: false

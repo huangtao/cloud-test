@@ -40,7 +40,6 @@ module.exports = function LoginPage() {
     return browser.driver.wait(function() {
       return browser.driver.getCurrentUrl().then(function(url) {
         return /devices/.test(url)
-        //return /boyaa/.test(url)
       })
     })
   }

@@ -28,7 +28,7 @@ function Ctrl($scope) {
 ### Declarative syntax (future):
 ```html
 <nice-tabs key='ControlBottomTabs' direction='below'>
-      <nice-tab title='Tab One' icon='fa-bolt' templateUrl='"terminal/tab-one.pug"'></nice-tab>
-      <nice-tab title='Tab Two' icon='fa-bolt' templateUrl='"terminal/tab-two.pug"' ng-show='showOtherTabs'></nice-tab>
+      <nice-tab title='Tab One' icon='fa-bolt' templateUrl='"terminal/tab-one.jade"'></nice-tab>
+      <nice-tab title='Tab Two' icon='fa-bolt' templateUrl='"terminal/tab-two.jade"' ng-show='showOtherTabs'></nice-tab>
 </nice-tabs>
 ```

@@ -29,32 +29,3 @@ html(ng-app='app')
     script(src='/app/api/stf/state.js')
     script(src='static/app/build/entry/commons.entry.js')
     script(src='static/app/build/entry/app.entry.js')
-    
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js')
-    script.
-      $(window).on('mouseover', (function () {
-        window.onbeforeunload = null;
-      }));
-      $(window).on('mouseout', (function () {
-        window.onbeforeunload = ConfirmLeave;
-      }));
-     function ConfirmLeave() {
-        $('#releaseBtn').trigger("click");
-     }
-     var prevKey="";
-     $(document).keydown(function (e) {
-        if (e.key=="F5") {
-          window.onbeforeunload = null;
-        }
-        else if (e.key.toUpperCase() == "W" && prevKey == "CONTROL") {
-          window.onbeforeunload = ConfirmLeave;
-        }
-        else if (e.key.toUpperCase() == "R" && prevKey == "CONTROL") {
-          window.onbeforeunload = ConfirmLeave;
-        }
-        else if (e.key.toUpperCase() == "F4" && (prevKey == "ALT" || prevKey == "CONTROL")) {
-          window.onbeforeunload = ConfirmLeave;
-        }
-        prevKey = e.key.toUpperCase();
-     });
-

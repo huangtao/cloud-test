@@ -22,12 +22,9 @@
   text-align: center;
   color: #b7b7b7;
   padding-top: 10px;
-  border: 1px solid #c0ccda;
+  border: 2px transparent dashed;
   border-radius: 2px;
   cursor: pointer;
-}
-.stf-upload .drop-area:hover {
-  border-color: #20a0ff;
 }
 
 .stf-upload .dragover {
@@ -44,12 +41,5 @@
 
 .stf-upload .drop-area-text {
   font-size: 14px;
-  font-weight: 500;
-}
-.stf-upload .drop-area-text .btnClick {
-  font-style: normal;
-  color: #20a0ff;
-}
-.fa-download:before {
-  color: #20a0ff;
+  font-weight: 300;
 }

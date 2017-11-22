@@ -2,19 +2,19 @@ var _ = require('lodash')
 
 var filterOps = {
   '<': function(a, filterValue) {
-    return a < filterValue
+    return a !== null && a < filterValue
   }
-  , '<=': function(a, filterValue) {
-    return a <= filterValue
+, '<=': function(a, filterValue) {
+    return a !== null && a <= filterValue
   }
-  , '>': function(a, filterValue) {
-    return a > filterValue
+, '>': function(a, filterValue) {
+    return a !== null && a > filterValue
   }
-  , '>=': function(a, filterValue) {
-    return a >= filterValue
+, '>=': function(a, filterValue) {
+    return a !== null && a >= filterValue
   }
-  , '=': function(a, filterValue) {
-    return a === filterValue
+, '=': function(a, filterValue) {
+    return a !== null && a === filterValue
   }
 }
 
@@ -128,7 +128,19 @@ module.exports = function DeviceColumnService($filter, gettext) {
   , network: TextCell({
       title: gettext('Network')
     , value: function(device) {
-        return device.phone ? device.phone.network : ''
+        if (!device.network) {
+          return ''
+        }
+
+        if (!device.network.connected) {
+          return ''
+        }
+
+        if (device.network.subtype) {
+          return (device.network.type + ' (' + device.network.subtype + ')').toUpperCase()
+        }
+
+        return (device.network.type || '').toUpperCase()
       }
     })
   , display: TextCell({
@@ -171,7 +183,10 @@ module.exports = function DeviceColumnService($filter, gettext) {
       title: gettext('SDK')
     , defaultOrder: 'desc'
     , value: function(device) {
-        return device.sdk || ''
+        return device.sdk
+      }
+    , format: function(value) {
+        return value || ''
       }
     })
   , abi: TextCell({
@@ -190,6 +205,12 @@ module.exports = function DeviceColumnService($filter, gettext) {
       title: gettext('Phone IMEI')
     , value: function(device) {
         return device.phone ? device.phone.imei : ''
+      }
+    })
+  , imsi: TextCell({
+      title: gettext('Phone IMSI')
+    , value: function(device) {
+        return device.phone ? device.phone.imsi : ''
       }
     })
   , iccid: TextCell({
@@ -222,28 +243,24 @@ module.exports = function DeviceColumnService($filter, gettext) {
           : ''
       }
     })
-  , batteryLevel: TextCell({
+  , batteryLevel: NumberCell({
       title: gettext('Battery Level')
     , value: function(device) {
         return device.battery
-          ? Math.floor(device.battery.level / device.battery.scale * 100) + '%'
-          : ''
+          ? Math.floor(device.battery.level / device.battery.scale * 100)
+          : null
       }
-    , compare: function(deviceA, deviceB) {
-        var va = deviceA.battery ? deviceA.battery.level : 0
-        var vb = deviceB.battery ? deviceB.battery.level : 0
-        return va - vb
+    , format: function(value) {
+        return value === null ? '' : value + '%'
       }
     })
-  , batteryTemp: TextCell({
+  , batteryTemp: NumberCell({
       title: gettext('Battery Temp')
     , value: function(device) {
-        return device.battery ? device.battery.temp + '°C' : ''
+        return device.battery ? device.battery.temp : null
       }
-    , compare: function(deviceA, deviceB) {
-        var va = deviceA.battery ? deviceA.battery.temp : 0
-        var vb = deviceB.battery ? deviceB.battery.temp : 0
-        return va - vb
+    , format: function(value) {
+        return value === null ? '' : value + '°C'
       }
     })
   , provider: TextCell({
@@ -266,12 +283,6 @@ module.exports = function DeviceColumnService($filter, gettext) {
       }
     , link: function(device) {
         return device.owner ? device.enhancedUserProfileUrl : ''
-      }
-    })
-  , assetNum: AssetNumCell({
-      title: gettext('Asset Num')
-    , value: function(device) {
-        return device.assetNum || ''
       }
     })
   }
@@ -342,11 +353,13 @@ function NumberCell(options) {
     }
   , update: function(td, item) {
       var t = td.firstChild
-      t.nodeValue = options.value(item)
+      t.nodeValue = options.format(options.value(item))
       return td
     }
   , compare: function(a, b) {
-      return options.value(a) - options.value(b)
+      var va = options.value(a) || 0
+      var vb = options.value(b) || 0
+      return va - vb
     }
   , filter: (function() {
       return function(item, filter) {
@@ -505,7 +518,8 @@ function DeviceModelCell(options) {
       var span = td.firstChild
       var image = span.firstChild
       var t = span.nextSibling
-      var src = '/static/app/devices/icon/x24/' + (device.image || '_default.jpg')
+      var src = '/static/app/devices/icon/x24/' +
+            (device.image || '_default.jpg')
 
       // Only change if necessary so that we don't trigger a download
       if (image.getAttribute('src') !== src) {
@@ -580,6 +594,7 @@ function DeviceStatusCell(options) {
   , preparing: 'state-preparing btn-primary-outline btn-success-outline'
   , unauthorized: 'state-unauthorized btn-danger-outline'
   , offline: 'state-offline btn-warning-outline'
+  , automation: 'state-automation btn-info'
   }
 
   return _.defaults(options, {
@@ -622,6 +637,7 @@ function DeviceStatusCell(options) {
   , compare: (function() {
       var order = {
         using: 10
+      , automation: 15
       , available: 20
       , busy: 30
       , ready: 40
